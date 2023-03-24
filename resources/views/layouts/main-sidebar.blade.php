@@ -6,16 +6,23 @@
     <div class="user-panel">
     <div class="pull-right image">
         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        @if (isset(Auth::user()->name))
+        @if(count(data_get(Auth::user()->image,'image')??[]))
+        @foreach(data_get(Auth::user()->image,'image') as $image)
+        <img src="{{ '/uploads/' . $image }}" class="img-circle" alt="User Image">
+        @endforeach
+        @endif
     </div>
     <div class="pull-left info">
-        <p>محمد شریفی</p>
+        <p>{{auth()->user()->name}}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
+        @endif
     </div>
     </div>
     <!-- search form -->
     <form action="#" method="get" class="sidebar-form">
     <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="جستوجو ...">
+        <input type="text" name="q" class="form-control" placeholder="بحـث ...">
         <span class="input-group-btn">
         <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
         </span>
@@ -25,13 +32,32 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
     <li class="header">برنامج عبدالوهاب لإدارة المدارس</li>
+    {{-- <li>
+        <a href="#">
+            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">الرئيسية</span>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+    </li> --}}
     <li class="active treeview">
         <a href="#">
-        <i class="fa fa-dashboard"></i> <span>پیشخوان</span> <i class="fa fa-angle-left pull-left"></i>
+        <i class="fa fa-dashboard"></i> <span>الرئيسية</span> <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
         <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> پیشخوان v1</a></li>
         <li><a href="index2.html"><i class="fa fa-circle-o"></i> پیشخوان v2</a></li>
+        </ul>
+    </li>
+    <!-- Grades-->
+    <li class="active treeview">
+        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
+            <div class="pull-left"><i class="fas fa-school"></i><span
+                    class="right-nav-text">المراحل الدراسية</span></div>
+            <div class="pull-right"><i class="ti-plus"></i></div>
+            <div class="clearfix"></div>
+        </a>
+        <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
+            <li><a href="{{route('Grades.index')}}">قائمة المراحل الدراسية</a></li>
         </ul>
     </li>
     <li class="treeview">
