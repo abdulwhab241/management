@@ -15,9 +15,10 @@
     </div>
     <div class="pull-left info">
         <p>{{auth()->user()->name}}</p>
-        <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
-        @endif
+        {{-- <a href="#"><i class="fa fa-circle text-success">آنلاین</i> </a> --}}
+
     </div>
+    @endif
     </div>
     <!-- search form -->
     <form action="#" method="get" class="sidebar-form">
@@ -31,17 +32,10 @@
     <!-- /.search form -->
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
-    <li class="header">برنامج عبدالوهاب لإدارة المدارس</li>
-    {{-- <li>
-        <a href="#">
-            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">الرئيسية</span>
-            </div>
-            <div class="clearfix"></div>
-        </a>
-    </li> --}}
+    <li class="header">برنامـج عبدالوهـاب لإدارة المدارس</li>
     <li class="active treeview">
         <a href="#">
-        <i class="fa fa-dashboard"></i> <span>الرئيسية</span> <i class="fa fa-angle-left pull-left"></i>
+        <i class="fa fa-home"></i> <span>الرئيسيـة</span> <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
         <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> پیشخوان v1</a></li>
@@ -80,18 +74,18 @@
     </li>
     <li class="treeview">
         <a href="#">
-        <i class="fa fa-pie-chart"></i>
-        <span>Charts</span>
+        <i class="fas fa-school"></i>
+        <span>المراحل الدراسية</span>
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
-        <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+        <li><a href="{{route('Grades.index')}}"><i class="fa fa-circle-o"></i> قائمة المراحل الدراسية</a></li>
         <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
     </li>
-    <li class="treeview">
+    {{-- <li class="treeview">
         <a href="#">
         <i class="fa fa-laptop"></i>
         <span>UI Elements</span>
@@ -181,7 +175,7 @@
     <li class="header">LABELS</li>
     <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
     <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> --}}
     </ul>
 </section>
 <!-- /.sidebar -->

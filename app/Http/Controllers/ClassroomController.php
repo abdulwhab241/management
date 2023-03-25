@@ -13,7 +13,7 @@ class ClassroomController extends Controller
     {
         $My_Classes = Classroom::all();
         $Grades = Grade::all();
-        return view('pages.Classrooms.index',compact('My_Classes','Grades'));
+        return view('pages.Classrooms.empty',compact('My_Classes','Grades'));
     }
 
     public function store(ClassroomRequest $request)
@@ -26,6 +26,7 @@ class ClassroomController extends Controller
                 $My_Classes = new Classroom();
                 $My_Classes->name_class = $list['Name'];
                 $My_Classes->grade_id = $list['Grade_id'];
+                $My_Classes->create_by =  auth()->id();
 
                 $My_Classes->save();
             }
@@ -47,6 +48,7 @@ class ClassroomController extends Controller
             $Classrooms->update([
             $Classrooms->name_class = $request->Name,
             $Classrooms->grade_id = $request->Grade_id,
+            $Classrooms->create_by =  auth()->id(),
             ]);
             toastr()->success('تم تعديل الصف بنجاح');
             return redirect()->route('Classrooms.index');

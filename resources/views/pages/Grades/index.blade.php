@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('css')
-@toastr_css
+{{-- @toastr_css --}}
 @section('title')
 المراحل الدراسية
 @stop
@@ -237,6 +237,6 @@
 <!-- row closed -->
 @endsection
 @section('js')
-    @toastr_js
-    @toastr_render
+    {{-- @toastr_js
+    @toastr_render --}}
 @endsection

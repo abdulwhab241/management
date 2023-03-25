@@ -11,7 +11,7 @@
     @include('layouts.head')
 </head>
 
-<body>
+<body  class="skin-blue sidebar-mini">
 
     <div class="wrapper">
 
@@ -33,7 +33,7 @@
         <!--=================================
  Main content -->
         <!-- main-content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="min-height: 923px;">
 
             @yield('page-header')
 

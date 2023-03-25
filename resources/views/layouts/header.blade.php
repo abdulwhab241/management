@@ -2,7 +2,7 @@
 <!-- Logo -->
 <a href="#" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>A.M.</b>P.S</span>
+    <span class="logo-mini"><b>A.</b>P.S</span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg"><b>Abdulwhab.</b>S.M.P</span>
 </a>
@@ -201,19 +201,20 @@
             </li>
         </ul>
         </li>
+        @if (isset(Auth::user()->name))
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-            <span class="hidden-xs">محمد شریفی</span>
+            <span class="hidden-xs">{{auth()->user()->name}}</span>
         </a>
         <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
             <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             <p>
-                محمد شریفی - توسعه دهنده سمت کاربر
-                <small>Member since Nov. 2012</small>
+                {{auth()->user()->name}}
+                <small>{{auth()->user()->email}}</small>
             </p>
             </li>
             <!-- Menu Body -->
@@ -237,6 +238,7 @@
                 <a href="#" class="btn btn-default btn-flat">Sign out</a>
             </div>
             </li>
+            @endif
         </ul>
         </li>
     </ul>
