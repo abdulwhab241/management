@@ -1,7 +1,7 @@
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
 <!-- sidebar: style can be found in sidebar.less -->
-<section class="sidebar">
+<section class="sidebar"  style="font-family: 'Cairo', sans-serif">
     <!-- Sidebar user panel -->
     <div class="user-panel">
     <div class="pull-right image">
@@ -33,27 +33,8 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
     <li class="header">برنامـج عبدالوهـاب لإدارة المدارس</li>
-    <li class="active treeview">
-        <a href="#">
-        <i class="fa fa-home"></i> <span>الرئيسيـة</span> <i class="fa fa-angle-left pull-left"></i>
-        </a>
-        <ul class="treeview-menu">
-        <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> پیشخوان v1</a></li>
-        <li><a href="index2.html"><i class="fa fa-circle-o"></i> پیشخوان v2</a></li>
-        </ul>
-    </li>
+    <li><a href="#"><i class="fa fa-home"></i> الرئيسيـة</a></li>
     <!-- Grades-->
-    <li class="active treeview">
-        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
-            <div class="pull-left"><i class="fas fa-school"></i><span
-                    class="right-nav-text">المراحل الدراسية</span></div>
-            <div class="pull-right"><i class="ti-plus"></i></div>
-            <div class="clearfix"></div>
-        </a>
-        <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
-            <li><a href="{{route('Grades.index')}}">قائمة المراحل الدراسية</a></li>
-        </ul>
-    </li>
     <li class="treeview">
         <a href="#">
         <i class="fa fa-files-o"></i>
@@ -80,6 +61,19 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Grades.index')}}"><i class="fa fa-circle-o"></i> قائمة المراحل الدراسية</a></li>
+        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+        <i class="fa fa-building"></i>
+        <span>الصفـوف الدراسيـة</span>
+        <i class="fa fa-angle-left pull-left"></i>
+        </a>
+        <ul class="treeview-menu">
+        <li><a href="{{route('Classrooms.index')}}"><i class="fa fa-circle-o"></i> قائمـة الصفـوف الدراسيـة</a></li>
         <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>

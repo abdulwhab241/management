@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="main-header"  style="font-family: 'Cairo', sans-serif">
 <!-- Logo -->
 <a href="#" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -235,7 +235,12 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
             </div>
             <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+            <a class="btn btn-default btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();
+            this.closest('form').submit();">تسجيـل خـروج</a>
+            </form>
+                {{-- <a href="#" class="btn btn-default btn-flat">تسجيـل خـروج</a> --}}
             </div>
             </li>
             @endif

@@ -1,34 +1,18 @@
 @extends('layouts.master')
+
 @section('css')
-{{-- @livewireStyles --}}
+
 @section('title')
-    empty
+المراحـل الدراسيـة
 @stop
 @endsection
-{{-- @section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> ncvlxcnvxcnvxcv</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
-                <li class="breadcrumb-item active">Page Title</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@endsection --}}
+
 @section('content')
-{{-- <div class="content-wrapper"> --}}
+
     <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
         المراحـل الدراسيـة
-    {{-- <small>preview of simple tables</small> --}}
     </h1>
     <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
@@ -38,311 +22,261 @@
 </section>
 <!-- Main content -->
 <section class="content">
-{{-- <div class="row">
-    <div class="col-md-6">
-    <div class="box">
-        <div class="box-header with-border">
-        <h3 class="box-title">Bordered Table</h3>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-        <table class="table table-bordered">
-            <tr>
-            <th style="width: 10px">#</th>
-            <th>Task</th>
-            <th>Progress</th>
-            <th style="width: 40px">Label</th>
-            </tr>
-            <tr>
-            <td>1.</td>
-            <td>Update software</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-red">55%</span></td>
-            </tr>
-            <tr>
-            <td>2.</td>
-            <td>Clean database</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-yellow">70%</span></td>
-            </tr>
-            <tr>
-            <td>3.</td>
-            <td>Cron job running</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-light-blue">30%</span></td>
-            </tr>
-            <tr>
-            <td>4.</td>
-            <td>Fix and squish bugs</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-green">90%</span></td>
-            </tr>
-        </table>
-        </div><!-- /.box-body -->
-        <div class="box-footer clearfix">
-        <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-        </ul>
-        </div>
-    </div><!-- /.box -->
 
-    <div class="box">
-        <div class="box-header">
-        <h3 class="box-title">Condensed Full Width Table</h3>
-        </div><!-- /.box-header -->
-        <div class="box-body no-padding">
-        <table class="table table-condensed">
-            <tr>
-            <th style="width: 10px">#</th>
-            <th>Task</th>
-            <th>Progress</th>
-            <th style="width: 40px">Label</th>
-            </tr>
-            <tr>
-            <td>1.</td>
-            <td>Update software</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-red">55%</span></td>
-            </tr>
-            <tr>
-            <td>2.</td>
-            <td>Clean database</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-yellow">70%</span></td>
-            </tr>
-            <tr>
-            <td>3.</td>
-            <td>Cron job running</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-light-blue">30%</span></td>
-            </tr>
-            <tr>
-            <td>4.</td>
-            <td>Fix and squish bugs</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-green">90%</span></td>
-            </tr>
-        </table>
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
-    </div><!-- /.col -->
-    <div class="col-md-6">
-    <div class="box">
-        <div class="box-header">
-        <h3 class="box-title">Simple Full Width Table</h3>
-        <div class="box-tools">
-            <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">&raquo;</a></li>
-            </ul>
-        </div>
-        </div><!-- /.box-header -->
-        <div class="box-body no-padding">
-        <table class="table">
-            <tr>
-            <th style="width: 10px">#</th>
-            <th>Task</th>
-            <th>Progress</th>
-            <th style="width: 40px">Label</th>
-            </tr>
-            <tr>
-            <td>1.</td>
-            <td>Update software</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-red">55%</span></td>
-            </tr>
-            <tr>
-            <td>2.</td>
-            <td>Clean database</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-yellow">70%</span></td>
-            </tr>
-            <tr>
-            <td>3.</td>
-            <td>Cron job running</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-light-blue">30%</span></td>
-            </tr>
-            <tr>
-            <td>4.</td>
-            <td>Fix and squish bugs</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-green">90%</span></td>
-            </tr>
-        </table>
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
-
-    <div class="box">
-        <div class="box-header">
-        <h3 class="box-title">Striped Full Width Table</h3>
-        </div><!-- /.box-header -->
-        <div class="box-body no-padding">
-        <table class="table table-striped">
-            <tr>
-            <th style="width: 10px">#</th>
-            <th>Task</th>
-            <th>Progress</th>
-            <th style="width: 40px">Label</th>
-            </tr>
-            <tr>
-            <td>1.</td>
-            <td>Update software</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-red">55%</span></td>
-            </tr>
-            <tr>
-            <td>2.</td>
-            <td>Clean database</td>
-            <td>
-                <div class="progress progress-xs">
-                <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-yellow">70%</span></td>
-            </tr>
-            <tr>
-            <td>3.</td>
-            <td>Cron job running</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-light-blue">30%</span></td>
-            </tr>
-            <tr>
-            <td>4.</td>
-            <td>Fix and squish bugs</td>
-            <td>
-                <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                </div>
-            </td>
-            <td><span class="badge bg-green">90%</span></td>
-            </tr>
-        </table>
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
-    </div><!-- /.col -->
-</div><!-- /.row --> --}}
 <div class="row">
-    <div class="col-xs-12">
-    <div class="box">
-        <div class="box-header">
-        <h3 class="box-title">Responsive Hover Table</h3>
-        <div class="box-tools">
-            <div class="input-group" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-            <div class="input-group-btn">
-                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-            </div>
+<div class="col-xs-12">
+<div class="box">
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+<div class="box-header">
+<button type="button" class="btn btn-success btn-flat " 
+style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal">
+    إضافة مرحلة
+</button>
+<br><br>
+<div class="box-tools">
+    <div class="input-group" style="width: 150px;">
+    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+    <div class="input-group-btn">
+        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+    </div>
+    </div>
+</div>
+</div><!-- /.box-header -->
+<div class="box-body table-responsive no-padding">
+<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <tr>
+        <th style="text-align: center;">#</th>
+        <th style="text-align: center;">أسـم المرحلـة</th>
+        <th style="text-align: center;">الملاحظـات</th>
+        <th style="text-align: center;">أُنـشأ بواسطـة</th>
+        <th style="text-align: center;">العمليات</th>
+    </tr>
+</thead>
+<tbody>
+<?php $i = 0; ?>
+@foreach ($grades as $grade)
+    <tr>
+        <?php $i++; ?>
+        <td>{{ $i }}</td>
+        <td>{{ $grade->name }}</td>
+        <td>{{ $grade->notes }}</td>
+        <td>{{ $grade->create_by }}</td>
+        <td>
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#edit{{ $grade->id }}"
+                    title="تعديل"><i
+                    class="fa fa-edit"></i></button>
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                    data-target="#delete{{ $grade->id }}"
+                    title="حذف"><i
+                    class="fa fa-trash"></i></button>
+        </td>
+    </tr>
+
+    <!-- edit_modal_Grade -->
+    <div class="modal fade" id="edit{{ $grade->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                        id="exampleModalLabel">
+                        تعديل مرحلة
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- add_form -->
+                    <form action="{{route('Grades.update','test')}}" method="post">
+                        {{method_field('patch')}}
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <label for="Name"
+                                        class="mr-sm-2">أسم المرحلة
+                                    :</label>
+                                <input id="Name" type="text" name="Name"
+                                        class="form-control"
+                                        value="{{$grade->name }}"
+                                        required>
+                                <input id="id" type="hidden" name="id" class="form-control"
+                                        value="{{ $grade->id }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label
+                                for="exampleFormControlTextarea1">ملاحظات
+                                :</label>
+                            <textarea class="form-control" name="Notes"
+                                        id="exampleFormControlTextarea1"
+                                        rows="3">{{ $grade->notes }}</textarea>
+                        </div>
+                        <br><br>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">إغلاق</button>
+                            <button type="submit"
+                                    class="btn btn-success">تعديل البيانات</button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
         </div>
-        </div><!-- /.box-header -->
-        <div class="box-body table-responsive no-padding">
-        <table class="table table-hover">
-            <tr>
-            <th>ID</th>
-            <th>User</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Reason</th>
-            </tr>
-            <tr>
-            <td>183</td>
-            <td>John Doe</td>
-            <td>11-7-2014</td>
-            <td><span class="label label-success">Approved</span></td>
-            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-            <tr>
-            <td>219</td>
-            <td>Alexander Pierce</td>
-            <td>11-7-2014</td>
-            <td><span class="label label-warning">Pending</span></td>
-            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-            <tr>
-            <td>657</td>
-            <td>Bob Doe</td>
-            <td>11-7-2014</td>
-            <td><span class="label label-primary">Approved</span></td>
-            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-            <tr>
-            <td>175</td>
-            <td>Mike Doe</td>
-            <td>11-7-2014</td>
-            <td><span class="label label-danger">Denied</span></td>
-            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-        </table>
-        </div><!-- /.box-body -->
-    </div><!-- /.box -->
     </div>
+
+    <!-- delete_modal_Grade -->
+    <div class="modal fade" id="delete{{ $grade->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                        id="exampleModalLabel">
+                        حذف مرحلة
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('Grades.destroy','test')}}" method="post">
+                        {{method_field('Delete')}}
+                        @csrf
+                        هل انت متأكد من عملية الحذف ؟
+                        <input id="id" type="test" name="Name" class="form-control"
+                                value="{{ $grade->name }}" disabled>
+                        <input id="id" type="hidden" name="id" class="form-control"
+                                value="{{ $grade->id }}">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">إغلاق</button>
+                            <button type="submit"
+                                    class="btn btn-danger">حذف البيانات</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@endforeach
+</table>
+
+    {{-- <tr>
+    <td>183</td>
+    <td>John Doe</td>
+    <td>11-7-2014</td>
+    <td><span class="label label-success">Approved</span></td>
+    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+    </tr>
+    <tr>
+    <td>219</td>
+    <td>Alexander Pierce</td>
+    <td>11-7-2014</td>
+    <td><span class="label label-warning">Pending</span></td>
+    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+    </tr>
+    <tr>
+    <td>657</td>
+    <td>Bob Doe</td>
+    <td>11-7-2014</td>
+    <td><span class="label label-primary">Approved</span></td>
+    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+    </tr>
+    <tr>
+    <td>175</td>
+    <td>Mike Doe</td>
+    <td>11-7-2014</td>
+    <td><span class="label label-danger">Denied</span></td>
+    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+    </tr>
+</table> --}}
+</div><!-- /.box-body -->
+{{-- <div class="d-flex justify-content-center">
+{{ $grades->links() }}
+</div> --}}
+<div class="box-footer clearfix">
+<ul class="pagination pagination-sm no-margin pull-right">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>
+</div>
+</div><!-- /.box -->
+</div>
+
+<!-- add_modal_Grade -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+            id="exampleModalLabel">
+            إضافة مرحلة
+        </h5>
+        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button> --}}
+    </div>
+    <div class="modal-body">
+        <!-- add_form -->
+        <form action="{{ route('Grades.store') }}" method="POST">
+            @csrf
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="Name"
+                            class="mr-sm-2">أسم المرحلة
+                        :</label>
+                    <input id="Name" type="text" name="Name" class="form-control" id="exampleFormControlTextarea1">
+                </div>
+            </div>
+            <div class="box-body">
+            <div class="form-group">
+                <label
+                    for="exampleFormControlTextarea1">ملاحظات
+                    :</label>
+                <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
+            </div>
+            </div>
+            {{-- <br><br> --}}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">إغلاق</button>
+        <button type="submit"
+                class="btn btn-success">حفظ البيانات</button>
+    </div>
+    </form>
+
+</div>
+</div>
+</div>
+
 </div>
 </section><!-- /.content -->
 {{-- </div> --}}
 @endsection
 @section('js')
-{{-- @livewireScripts --}}
+@toastr_js
+@toastr_render
+
 @endsection

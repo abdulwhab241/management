@@ -26,7 +26,7 @@ class ClassroomController extends Controller
                 $My_Classes = new Classroom();
                 $My_Classes->name_class = $list['Name'];
                 $My_Classes->grade_id = $list['Grade_id'];
-                $My_Classes->create_by =  auth()->id();
+                $My_Classes->create_by = auth()->user()->name;
 
                 $My_Classes->save();
             }
@@ -48,7 +48,7 @@ class ClassroomController extends Controller
             $Classrooms->update([
             $Classrooms->name_class = $request->Name,
             $Classrooms->grade_id = $request->Grade_id,
-            $Classrooms->create_by =  auth()->id(),
+            $Classrooms->create_by = auth()->user()->name,
             ]);
             toastr()->success('تم تعديل الصف بنجاح');
             return redirect()->route('Classrooms.index');

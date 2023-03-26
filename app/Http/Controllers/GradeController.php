@@ -23,6 +23,9 @@ class GradeController extends Controller
             $Grade = new Grade();
             $Grade->name = $request->Name;
             $Grade->notes = $request->Notes;
+            $Grade->notes = $request->Notes;
+            $Grade->create_by = auth()->user()->name;
+
             $Grade->save();
             toastr()->success('تم حفظ المرحلة بنجاح');
             return redirect()->route('Grades.index');
@@ -42,6 +45,7 @@ class GradeController extends Controller
             $Grade->update([
                 $Grade->name = $request->Name,
                 $Grade->notes = $request->Notes,
+                $Grade->create_by = auth()->user()->name,
             ]);
             toastr()->success('تم تعديل المرحلة بنجاح');
             return redirect()->route('Grades.index');
