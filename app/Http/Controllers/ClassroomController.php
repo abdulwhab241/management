@@ -13,23 +13,27 @@ class ClassroomController extends Controller
     {
         $My_Classes = Classroom::all();
         $Grades = Grade::all();
-        return view('pages.Classrooms.empty',compact('My_Classes','Grades'));
+        return view('pages.Classrooms.index',compact('My_Classes','Grades'));
     }
 
     public function store(ClassroomRequest $request)
     {
-        $List_Classes = $request->List_Classes;
+        // $Grade = new Grade();
+        // $Grade->name = $request->Name;
+        // $Grade->notes = $request->Notes;
+        // $Grade->notes = $request->Notes;
+        // $Grade->create_by = auth()->user()->name;
         try
             {
             $validated = $request->validated();
-            foreach ($List_Classes as $list) {
+            // foreach ($List_Classes as $list) {
                 $My_Classes = new Classroom();
-                $My_Classes->name_class = $list['Name'];
-                $My_Classes->grade_id = $list['Grade_id'];
+                $My_Classes->name_class = $request->Name;
+                $My_Classes->grade_id = $request->Grade_id;
                 $My_Classes->create_by = auth()->user()->name;
 
                 $My_Classes->save();
-            }
+            // }
                 toastr()->success('تم حفظ الصفوف بنجاح');
                 return redirect()->route('Classrooms.index');
             }

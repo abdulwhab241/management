@@ -12,9 +12,9 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $Grades = Grade::with(['Sections'])->get();
-        $list_Grades = Grade::all();
-        return view('pages.Sections.index',compact('Grades','list_Grades'));
+        $Sections = Section::all();
+        $Grades = Grade::all();
+        return view('pages.Sections.empty',compact('Sections','Grades'));
     }
 
     public function store(SectionRequest $request)
@@ -27,6 +27,7 @@ class SectionController extends Controller
             $Sections->name_section = $request->Name_Section;
             $Sections->grade_id = $request->Grade_id;
             $Sections->class_id = $request->Class_id;
+            $Sections->create_by = auth()->user()->name;
             $Sections->save();
             toastr()->success('تم حفظ القسم بنجاح');
             return redirect()->route('Sections.index');
@@ -47,6 +48,7 @@ class SectionController extends Controller
         $Sections->name_section = $request->Name_Section;
         $Sections->grade_id = $request->Grade_id;
         $Sections->class_id = $request->Class_id;
+        $Sections->create_by = auth()->user()->name;
         $Sections->save();
         toastr()->success('تم تعديل القسم بنجاح');
 

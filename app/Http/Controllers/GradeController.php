@@ -12,7 +12,7 @@ class GradeController extends Controller
     public function index()
     {
         $grades = Grade::all();
-        return view('pages.Grades.empty', compact('grades'));
+        return view('pages.Grades.index', compact('grades'));
     }
 
     public function store(GradeRequest $request)
