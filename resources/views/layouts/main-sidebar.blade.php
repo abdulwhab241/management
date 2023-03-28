@@ -92,6 +92,20 @@
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
     </li>
+    <li class="treeview">
+        <a href="#">
+        <i class="fas fa-money-bill-wave-alt"></i>
+        <span>الحسابـات</span>
+        <i class="fa fa-angle-left pull-left"></i>
+        </a>
+        <ul class="treeview-menu">
+            {{-- <a href="">الرسوم الدراسية</a> --}}
+        <li><a href="{{route('Fees.index')}}"><i class="fa fa-circle-o"></i> الرسـوم الدراسيـة</a></li>
+        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        </ul>
+    </li>
     {{-- <li class="treeview">
         <a href="#">
         <i class="fa fa-laptop"></i>

@@ -16,7 +16,7 @@
     </h1>
     <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-    {{-- <li><a href="#">Tables</a></li> --}}
+
     <li class="active">الأقسـام</li>
     </ol>
 </section>
@@ -218,57 +218,6 @@
     </div>
     </div>
     <!-- end -->
-
-{{-- <!-- delete_modal_Grade -->
-<div class="modal fade"
-        id="delete{{ $list_Sections->id }}"
-        tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;"
-                    class="modal-title"
-                    id="exampleModalLabel">
-                    حذف قسـم
-                </h5>
-                <button type="button" class="close"
-                        data-dismiss="modal"
-                        aria-label="Close">
-                <span
-                    aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form
-                    action="{{ route('Sections.destroy', 'test') }}"
-                    method="post">
-                    {{ method_field('Delete') }}
-                    @csrf
-                    هل انت متاكد من عملية حذف القسم
-                    <input  type="text" style="font-weight: bolder; font-size:20px;"
-                    name="Name_Section"
-                    class="form-control"
-                    value="{{ $list_Sections->name_section }}"
-                    disabled>
-                    <input id="id" type="hidden"
-                            name="id"
-                            class="form-control"
-                            value="{{ $list_Sections->id }}">
-                    <div class="modal-footer">
-                        <button type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal">إغلاق</button>
-                        <button type="submit"
-                                class="btn btn-danger">حذف البيانات</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
 
 @endforeach
 </table>
