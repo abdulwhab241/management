@@ -57,7 +57,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
         <th style="text-align: center;">#</th>
         <th style="text-align: center;">أسـم المرحلـة</th>
         <th style="text-align: center;">الملاحظـات</th>
-        <th style="text-align: center;">أُنـشأ بواسطـة</th>
+        <th style="text-align: center;">انشـئ بواسطـة</th>
         <th style="text-align: center;">العمليات</th>
     </tr>
 </thead>
@@ -92,46 +92,43 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
                         id="exampleModalLabel">
                         تعديل مرحلة
                     </h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        
                 </div>
                 <div class="modal-body">
-                    <!-- add_form -->
-                    <form action="{{route('Grades.update','test')}}" method="post">
-                        {{method_field('patch')}}
-                        @csrf
-                        <div class="row">
-                            <div class="col">
-                                <label for="Name"
-                                        class="mr-sm-2">أسم المرحلة
-                                    :</label>
-                                <input id="Name" type="text" name="Name"
-                                        class="form-control"
-                                        value="{{$grade->name }}"
-                                        required>
-                                <input id="id" type="hidden" name="id" class="form-control"
-                                        value="{{ $grade->id }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label
-                                for="exampleFormControlTextarea1">ملاحظات
-                                :</label>
-                            <textarea class="form-control" name="Notes"
-                                        id="exampleFormControlTextarea1"
-                                        rows="3">{{ $grade->notes }}</textarea>
-                        </div>
-                        <br><br>
+<!-- add_form -->
+<form  class="form-horizontal" action="{{route('Grades.update','test')}}" method="post">
+    {{method_field('patch')}}
+    @csrf
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">إغلاق</button>
-                            <button type="submit"
-                                    class="btn btn-success">تعديل البيانات</button>
-                        </div>
-                    </form>
+    <div class="box-body">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
+            <div class="col-sm-9">
+            <input id="Name" type="text" name="Name"
+            class="form-control"
+            value="{{$grade->name }}"
+            required>
+            <input id="id" type="hidden" name="id" class="form-control"
+                value="{{ $grade->id }}">
+        </div>
+        </div>
+    <br>
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" name="Notes" rows="3">{{ $grade->notes }}</textarea>
+    </div>
+    </div>
+    
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+            data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+            class="btn btn-success">تعديل البيانات</button>
+    </div>
+</form>
 
                 </div>
             </div>
@@ -178,39 +175,9 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 @endforeach
 </table>
 
-    {{-- <tr>
-    <td>183</td>
-    <td>John Doe</td>
-    <td>11-7-2014</td>
-    <td><span class="label label-success">Approved</span></td>
-    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-    </tr>
-    <tr>
-    <td>219</td>
-    <td>Alexander Pierce</td>
-    <td>11-7-2014</td>
-    <td><span class="label label-warning">Pending</span></td>
-    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-    </tr>
-    <tr>
-    <td>657</td>
-    <td>Bob Doe</td>
-    <td>11-7-2014</td>
-    <td><span class="label label-primary">Approved</span></td>
-    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-    </tr>
-    <tr>
-    <td>175</td>
-    <td>Mike Doe</td>
-    <td>11-7-2014</td>
-    <td><span class="label label-danger">Denied</span></td>
-    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-    </tr>
-</table> --}}
+
 </div><!-- /.box-body -->
-{{-- <div class="d-flex justify-content-center">
-{{ $grades->links() }}
-</div> --}}
+
 <div class="box-footer clearfix">
 <ul class="pagination pagination-sm no-margin pull-right">
     <li><a href="#">&laquo;</a></li>
@@ -233,39 +200,32 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             id="exampleModalLabel">
             إضافة مرحلة
         </h5>
-        {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button> --}}
-    </div>
     <div class="modal-body">
         <!-- add_form -->
-        <form action="{{ route('Grades.store') }}" method="POST">
+        <form class="form-horizontal" action="{{ route('Grades.store') }}" method="POST">
             @csrf
             <div class="box-body">
                 <div class="form-group">
-                    <label for="Name"
-                            class="mr-sm-2">أسم المرحلة
-                        :</label>
-                    <input id="Name" type="text" name="Name" class="form-control" id="exampleFormControlTextarea1">
+                    <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
+                    <div class="col-sm-9">
+                        <input  type="text" name="Name" class="form-control" id="inputEmail3">
                 </div>
-            </div>
-            <div class="box-body">
+                </div>
+
             <div class="form-group">
-                <label
-                    for="exampleFormControlTextarea1">ملاحظات
-                    :</label>
-                <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
-                            rows="3"></textarea>
+                <label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="Notes" rows="3"></textarea>
             </div>
             </div>
-            {{-- <br><br> --}}
-    </div>
+ 
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
                 data-dismiss="modal">إغلاق</button>
         <button type="submit"
                 class="btn btn-success">حفظ البيانات</button>
     </div>
+</div>
     </form>
 
 </div>

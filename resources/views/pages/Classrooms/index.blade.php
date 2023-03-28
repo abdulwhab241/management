@@ -15,7 +15,7 @@
     </h1>
     <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-    {{-- <li><a href="#">Tables</a></li> --}}
+
     <li class="active">الصفـوف الدراسيـة</li>
     </ol>
 </section>
@@ -73,7 +73,7 @@
         <th style="text-align: center;">#</th>
         <th style="text-align: center;">اسم الصف</th>
         <th style="text-align: center;">اسم المرحلة</th>
-        <th style="text-align: center;"> أُنـشأ بواسطـة</th>
+        <th style="text-align: center;"> انشـئ بواسطـة</th>
         <th style="text-align: center;">العمليات</th>
     </tr>
 </thead>
@@ -117,52 +117,51 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 id="exampleModalLabel">
                 تعديل صف
             </h5>
-            <button type="button" class="close" data-dismiss="modal"
-                aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
         <div class="modal-body">
             <!-- add_form -->
-            <form action="{{ route('Classrooms.update', 'test') }}" method="post">
+            <form class="form-horizontal"  action="{{ route('Classrooms.update', 'test') }}" method="post">
                 {{ method_field('patch') }}
                 @csrf
-                <div class="row">
-                    <div class="col">
-                        <label for="Name"
-                            class="mr-sm-2">اسم الصف
-                            :</label>
-                        <input id="Name" type="text" name="Name"
+                <div class="box-body">
+        
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">أسـم الصـف</label>
+                        <div class="col-sm-10">
+                            <input id="Name" type="text" name="Name"
                             class="form-control"
                             value="{{ $My_Class->name_class }}"
                             required>
                         <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $My_Class->id }}">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label
-                        for="exampleFormControlTextarea1">اسم المرحلة
-                        :</label>
-                    <select class="form-control form-control-lg" name="Grade_id" id="exampleFormControlSelect1">
-                        <option value="{{ $My_Class->Grades->id }}">
-                            {{ $My_Class->Grades->name }}
-                        </option>
-                        @foreach ($Grades as $Grade)
-                            <option value="{{ $Grade->id }}">
-                                {{ $Grade->name }}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">اسـم المرحلـة</label>
+                        <div class="col-sm-10">
+                        <select class="form-control select2" name="Grade_id" id="exampleFormControlSelect1">
+                            <option value="{{ $My_Class->Grades->id }}">
+                                {{ $My_Class->Grades->name }}
                             </option>
-                        @endforeach
-                    </select>
-                </div>
-                <br><br>
+                            @foreach ($Grades as $Grade)
+                                <option value="{{ $Grade->id }}">
+                                    {{ $Grade->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
 
+
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                         data-dismiss="modal">إغلاق</button>
                     <button type="submit"
                         class="btn btn-success">تعديل البيانات</button>
                 </div>
+
             </form>
 
         </div>
@@ -231,52 +230,38 @@ aria-hidden="true">
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
     إضافة صف
 </h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
 </div>
 <div class="box-body">
 
-<form  action="{{ route('Classrooms.store') }}" method="POST">
+<form class="form-horizontal" action="{{ route('Classrooms.store') }}" method="POST">
     @csrf
 
-<div class="card-body">
+    <div class="box-body">
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">أسـم الصـف</label>
+            <div class="col-sm-10">
+                <input  type="text" name="Name" class="form-control" id="inputEmail2" required>
+        </div>
+        </div>
 
-<div class="row">
+        <div class="form-group">
+            <label for="inputEmail2" class="col-sm-2 control-label">أسـم المرحلـة</label>
+            <div class="col-sm-10">
+            <select class="form-control select2" data-placeholder="Select a State" name="Grade_id">
+                @foreach ($Grades as $Grade)
+                    <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        </div>
 
-<div class="col-md-6">
-    <label for="Name"
-        class="mr-sm-2">أسم الصف
-        :</label>
-    <input class="form-control" type="text" name="Name" required />
-</div>
-
-<div class="col-md-6">
-    <label for="Name_en"
-        class="mr-sm-2">أسم المرحلة
-        :</label>
-
-    <div class="box">
-        <select class="form-control select2" data-placeholder="Select a State" name="Grade_id">
-            @foreach ($Grades as $Grade)
-                <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
-            @endforeach
-        </select>
-    </div>
-
-</div>
-
-
-</div>
-
-<div class="modal-footer">
-<button type="button" class="btn btn-secondary"
-data-dismiss="modal">إغلاق</button>
-<button type="submit"
-class="btn btn-success">حفظ البيانات</button>
-</div>
-
-
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+            data-dismiss="modal">إغلاق</button>
+            <button type="submit"
+            class="btn btn-success">حفظ البيانات</button>
+            </div>
 
     </div>
 </form>
@@ -323,7 +308,7 @@ aria-hidden="true">
 </div>
 </div>
 </section><!-- /.content -->
-{{-- </div> --}}
+
 @endsection
 @section('js')
 @toastr_js

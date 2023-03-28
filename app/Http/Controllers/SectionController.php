@@ -13,8 +13,9 @@ class SectionController extends Controller
     public function index()
     {
         $Sections = Section::all();
+        $Classrooms = Classroom::all();
         $Grades = Grade::all();
-        return view('pages.Sections.empty',compact('Sections','Grades'));
+        return view('pages.Sections.index',compact('Sections','Grades','Classrooms'));
     }
 
     public function store(SectionRequest $request)
