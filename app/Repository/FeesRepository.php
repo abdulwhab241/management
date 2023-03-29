@@ -5,6 +5,7 @@ namespace App\Repository;
 
 use App\Models\Fee;
 use App\Models\Grade;
+use App\Models\Classroom;
 use App\Repository\FeesRepositoryInterface;
 
 class FeesRepository implements FeesRepositoryInterface
@@ -21,7 +22,8 @@ class FeesRepository implements FeesRepositoryInterface
     public function create(){
 
         $Grades = Grade::all();
-        return view('pages.Fees.add',compact('Grades'));
+        $Classrooms = Classroom::all();
+        return view('pages.Fees.add',compact('Grades','Classrooms'));
     }
 
     public function edit($id){
@@ -45,6 +47,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->description  =$request->description;
             $fees->year  =$request->year;
             $fees->fee_type  =$request->Fee_type;
+            $fees->create_by = auth()->user()->name;
             $fees->save();
             toastr()->success('تم حفظ الرسوم بنجاح');
             return redirect()->route('Fees.create');
@@ -67,6 +70,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->description  =$request->description;
             $fees->year  =$request->year;
             $fees->fee_type  =$request->Fee_type;
+            $fees->create_by = auth()->user()->name;
             $fees->save();
             toastr()->success('تم تعديل الرسوم بنجاح');
             return redirect()->route('Fees.index');

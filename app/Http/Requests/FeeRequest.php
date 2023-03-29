@@ -29,4 +29,16 @@ class FeeRequest extends FormRequest
             'year' => 'required',
         ];
     }
+    public function messages()
+    {
+        return [
+            'title.required' => trans('validation.required'),
+            'Password.required' => trans('validation.required'),
+            'amount.required' => trans('validation.required'),
+            'amount.numeric' => trans('validation.numeric'),
+            'Grade_id.required' => trans('validation.required'),
+            'Classroom_id.required' => trans('validation.required'),
+            'year.required' => trans('validation.required'),
+        ];
+    }
 }

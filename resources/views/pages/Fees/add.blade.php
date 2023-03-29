@@ -1,128 +1,163 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+{{-- @toastr_css --}}
 @section('title')
-    اضافة رسوم جديدة
+اضافة رسوم جديدة
 @stop
 @endsection
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">  اضافة رسوم جديدة</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active"> اضافة رسوم جديدة</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    اضافة رسوم جديدة
-@stop
-<!-- breadcrumb -->
-@endsection
+
 @section('content')
-    <!-- row -->
-    <div class="row">
-        <div class="col-md-12 mb-30">
-            <div class="card card-statistics h-100">
-                <div class="card-body">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+    اضافة رسوم جديدة
+</h1>
+<ol class="breadcrumb">
+<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> قائمـة الرسـوم الدراسيـة </a></li>
+<li class="active">اضافة رسوم جديدة</li>
+</ol>
+</section>
+<!-- Main content -->
 
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+<!-- Main content -->
+<section class="content">
 
-                    <form method="post" action="{{ route('Fees.store') }}" autocomplete="off">
-                        @csrf
-                        <div class="form-row">
-                            <div class="form-group col">
-                                <label for="inputEmail4">أسم الرسوم</label>
-                                <input type="text" value="{{ old('title') }}" name="title" class="form-control">
-                            </div>
-
-                            {{-- <div class="form-group col">
-                                <label for="inputEmail4">الاسم باللغة الانجليزية</label>
-                                <input type="text" value="{{ old('title_en') }}" name="title_en" class="form-control">
-                            </div> --}}
-
-
-                            <div class="form-group col">
-                                <label for="inputEmail4">المبلغ</label>
-                                <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-row">
-
-                            <div class="form-group col">
-                                <label for="inputState">المرحلة الدراسية</label>
-                                <select class="custom-select mr-sm-2" name="Grade_id">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @foreach($Grades as $Grade)
-                                        <option value="{{ $Grade->id }}">{{ $Grade->Name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group col">
-                                <label for="inputZip">الصف الدراسي</label>
-                                <select class="custom-select mr-sm-2" name="Classroom_id">
-
-                                </select>
-                            </div>
-                            <div class="form-group col">
-                                <label for="inputZip">السنة الدراسية</label>
-                                <select class="custom-select mr-sm-2" name="year">
-                                    <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
-                                    @php
-                                        $current_year = date("Y")
-                                    @endphp
-                                    @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                                        <option value="{{ $year}}">{{ $year }}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group col">
-                            <label for="inputZip">نوع الرسوم</label>
-                            <select class="custom-select mr-sm-2" name="Fee_type">
-                                <option value="1">رسوم دراسية</option>
-                                <option value="2">رسوم باص</option>
-                            </select>
-                        </div>
-                    </div>
-
-                        <div class="form-group">
-                            <label for="inputAddress">ملاحظات</label>
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="4"></textarea>
-                        </div>
-                        <br>
-
-                        <button type="submit" class="btn btn-primary">تاكيد</button>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+    @if(session()->has('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{ session()->get('error') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <!-- row closed -->
+@endif
+</div><!-- /.box-header -->
+
+<form  action="{{ route('Fees.store') }}"  method="POST" autocomplete="off">
+@csrf
+{{-- <div class="box-body"> --}}
+    <div class="box-body">
+        <div class="form-row">
+            <div class="col-6">
+                <label for="inputEmail4">أسم الرسوم</label>
+                <input type="text" value="{{ old('title') }}" name="title" class="form-control">
+                @error('title')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+            <br>
+
+
+            <div class="col-6">
+                <label for="inputEmail4">المبلـغ</label>
+                <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
+                @error('amount')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+
+        </div>
+        <br>
+
+        <div class="form-row">
+            <div class="col-6">
+                <label for="inputEmail4">المرحلـة الدراسيـة</label>
+                <select class="form-control select2" name="Grade_id">
+                    <option selected disabled>حـدد المرحـلة...</option>
+                    @foreach($Grades as $Grade)
+                        <option value="{{ $Grade->id }}">{{ $Grade->name }}</option>
+                    @endforeach
+                </select>                        
+                @error('Grade_id')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+            <br>
+
+
+            <div class="col-6">
+                <label for="inputEmail4">الصـف الدراسـي</label>
+                <select class="form-control select2" name="Classroom_id">
+                    <option selected disabled>حـدد المرحـلة...</option>
+                    @foreach($Classrooms as $Classroom)
+                        <option value="{{ $Classroom->id }}">{{ $Classroom->name_class }}</option>
+                    @endforeach
+                </select>                       
+                @error('Classroom_id')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+
+        </div>   
+        <br>
+
+        <div class="form-row">
+            <div class="col-6">
+                <label for="inputEmail4">السنـة الدراسيـة</label>
+                <select class="form-control select2" name="year">
+                    <option selected disabled>حـدد السنـة...</option>
+                    @php
+                        $current_year = date("Y")
+                    @endphp
+                    @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                        <option value="{{ $year}}">{{ $year }}</option>
+                    @endfor
+                    </select>                       
+                    @error('year')
+                    <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                    @enderror
+            </div>
+            <br>
+
+
+            <div class="col-6">
+                <label for="inputEmail4">نـوع الرسـوم</label>
+                <select class="form-control select2" name="Fee_type">
+                    <option value="رسوم دراسية">رسوم دراسية</option>
+                    <option value="رسوم باص">رسوم باص</option>
+                </select>                       
+                @error('Fee_type')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+
+        </div>
+        <br>
+
+        <div class="col">
+            <label for="inputAddress">ملاحظات</label>
+            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
+        </div>
+
+<div class="modal-footer">
+<button type="submit"
+    class="btn btn-primary btn-block">تأكيـد</button>
+</div>
+</div>
+
+</form>
+
+
+</div>
+</section><!-- /.content -->
+
 @endsection
 @section('js')
-    @toastr_js
-    @toastr_render
+@toastr_js
+@toastr_render
 @endsection

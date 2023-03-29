@@ -5,7 +5,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
     <div class="pull-right image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         @if (isset(Auth::user()->name))
         @if(count(data_get(Auth::user()->image,'image')??[]))
         @foreach(data_get(Auth::user()->image,'image') as $image)
@@ -100,7 +100,7 @@
         </a>
         <ul class="treeview-menu">
             {{-- <a href="">الرسوم الدراسية</a> --}}
-        <li><a href="{{route('Fees.index')}}"><i class="fa fa-circle-o"></i> الرسـوم الدراسيـة</a></li>
+        <li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> الرسـوم الدراسيـة</a></li>
         <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>

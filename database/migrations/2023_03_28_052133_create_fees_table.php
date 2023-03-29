@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->string('description')->nullable();
             $table->string('year');
-            $table->integer('fee_type');
+            $table->string('fee_type');
             
             $table->string('create_by')->nullable();
             $table->softDeletes();
