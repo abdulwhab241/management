@@ -50,15 +50,15 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
     <thead>
     <tr>
-        <th style="text-align: center;">#</th>
-        <th style="text-align: center;">الاسم</th>
-        <th style="text-align: center;">المبلغ</th>
-        <th style="text-align: center;">المرحلة الدراسية</th>
-        <th style="text-align: center;">الصف الدراسي</th>
-        <th style="text-align: center;">السنة الدراسية</th>
-        <th style="text-align: center;">ملاحظات</th>
-        <th style="text-align: center;"> انشـئ بواسطـة</th>
-        <th style="text-align: center;">العمليات</th>
+        <th style="text-align: center;" class="alert-info">#</th>
+        <th style="text-align: center;" class="alert-info">الاسم</th>
+        <th style="text-align: center;" class="alert-info">المبلغ</th>
+        <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
+        <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
+        <th style="text-align: center;" class="alert-info">السنة الدراسية</th>
+        <th style="text-align: center;" class="alert-info">ملاحظات</th>
+        <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
+        <th style="text-align: center;" class="alert-warning">العمليات</th>
     </tr>
 </thead>
 <tbody>

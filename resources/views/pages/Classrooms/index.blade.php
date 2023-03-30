@@ -68,13 +68,13 @@
 <table class="table table-bordered table-hover " style="text-align: center">
 <thead>
 <tr>
-    <th style="text-align: center;"><input name="select_all" id="example-select-all" type="checkbox" onclick="CheckAll('box1', this)" /></th>
+    <th style="text-align: center;" class="alert-info"><input name="select_all" id="example-select-all" type="checkbox" onclick="CheckAll('box1', this)" /></th>
 
-    <th style="text-align: center;">#</th>
-    <th style="text-align: center;">اسم الصف</th>
-    <th style="text-align: center;">اسم المرحلة</th>
-    <th style="text-align: center;"> انشـئ بواسطـة</th>
-    <th style="text-align: center;">العمليات</th>
+    <th style="text-align: center;" class="alert-info">#</th>
+    <th style="text-align: center;" class="alert-info">اسم الصف</th>
+    <th style="text-align: center;" class="alert-info">اسم المرحلة</th>
+    <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
+    <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
 <tbody>
@@ -172,17 +172,14 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <!-- delete_modal_Grade -->
 <div class="modal fade" id="delete{{ $My_Class->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-danger" role="document">
 <div class="modal-content">
     <div class="modal-header">
         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
             id="exampleModalLabel">
             حذف صف
         </h5>
-        <button type="button" class="close" data-dismiss="modal"
-            aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        
     </div>
     <div class="modal-body">
         <form action="{{ route('Classrooms.destroy', 'test') }}" method="post">
@@ -196,10 +193,10 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             <input id="id" type="hidden" name="id" class="form-control"
                 value="{{ $My_Class->id }}">
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
+                <button type="button" class="btn btn-outline pull-left"
                     data-dismiss="modal">إغلاق</button>
                 <button type="submit"
-                    class="btn btn-danger">حذف البيانات</button>
+                    class="btn btn-outline">حذف البيانات</button>
             </div>
         </form>
     </div>

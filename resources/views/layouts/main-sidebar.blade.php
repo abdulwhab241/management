@@ -94,6 +94,19 @@
     </li>
     <li class="treeview">
         <a href="#">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span>المعلمين</span>
+        <i class="fa fa-angle-left pull-left"></i>
+        </a>
+        <ul class="treeview-menu">
+        <li><a href="{{route('Teachers.index')}}"><i class="fa fa-users"></i> قائمة المعلمين</a></li>
+        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
         <i class="fas fa-money-bill-wave-alt"></i>
         <span>الحسابـات</span>
         <i class="fa fa-angle-left pull-left"></i>
