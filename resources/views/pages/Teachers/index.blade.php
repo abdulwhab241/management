@@ -102,13 +102,10 @@
                         disabled>
                     </div>
                     <div class="modal-footer">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline pull-left"
-                                    data-dismiss="modal">إغلاق</button>
-                            <button type="submit"
-                                    class="btn btn-outline"
-                                    style="padding: 10px; margin: 5px;">حذف البيانات</button>
-                        </div>
+                        <button type="button" class="btn btn-outline pull-left"
+                                data-dismiss="modal">إغلاق</button>
+                        <button type="submit"
+                                class="btn btn-outline">حذف البيانات</button>
                     </div>
                 </div>
                 </form>

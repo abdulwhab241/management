@@ -35,7 +35,7 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Teachers.store')}}"  method="POST" >
+<form  action="{{route('Teachers.store')}}"  method="POST" enctype="multipart/form-data">
 @csrf
 <div class="box-body">
     <div class="form-row">
@@ -126,7 +126,7 @@
     <div class="col-md-3">
         <div class="form-group">
             <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للمعلم: </label>
-            <input type="file" accept="image/*" name="photos">
+            <input type="file" accept="image/*" name="Photo">
         </div>
     </div>
 

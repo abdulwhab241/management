@@ -44,6 +44,14 @@ return [
             'throw' => false,
         ],
 
+        'Teachers' => [
+            'driver' => 'local',
+            'root' => storage_path('public/attachments/Teachers/'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'upload_attachments' => [
             'driver' => 'local',
             'root' => public_path('/'),

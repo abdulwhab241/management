@@ -29,34 +29,24 @@ class TeacherRepository implements TeacherRepositoryInterFace
 
     public function storeTeachers($request)
     {
+            // Save Images
+            $file_extension = $request->Photo->getClientOriginalExtension();
+            $file_name = $request->Name . '.' . $file_extension;
+            $path = 'attachments/Teachers';
+            $request->Photo->move($path, $file_name);
+
         try {
             $Teachers = new Teacher();
-    
             $Teachers->name = $request->Name;
+            $Teachers->image = $file_name;
             $Teachers->phone_number = $request->Phone_Number;
             $Teachers->specialization_id = $request->Specialization_id;
             $Teachers->gender_id = $request->Gender_id;
             $Teachers->joining_date = $request->Joining_Date;
             $Teachers->address = $request->Address;
+            $Teachers->create_by = auth()->user()->name;
+
             $Teachers->save();
-
-                    // insert img
-            if($request->hasFile('photos'))
-            {
-                foreach($request->file('photos') as $file)
-                {
-                    $name = $file->getClientOriginalName();
-                    $file->storeAs('attachments/Teachers/'.$Teachers->name, $file->getClientOriginalName(),'teacher_attachments');
-
-                    // insert in image_table
-                    $images= new Image();
-                    $images->filename=$name;
-                    $images->imageable_id= $Teachers->id;
-                    $images->imageable_type = 'App\Models\Student';
-                    $images->save();
-                }
-            }
-
 
             toastr()->success('تم حفظ المعلم بنجاح');
     
@@ -70,15 +60,22 @@ class TeacherRepository implements TeacherRepositoryInterFace
 
     public function updateTeachers($request)
     {
+        // Save Images
+        $file_extension = $request->Photo->getClientOriginalExtension();
+        $file_name = $request->Name . '.' . $file_extension;
+        $path = 'attachments/Teachers';
+        $request->Photo->move($path, $file_name);
         try {
             $Teachers = Teacher::findOrFail($request->id);
     
             $Teachers->name = $request->Name;
+            $Teachers->image = $file_name;
             $Teachers->phone_number = $request->Phone_Number;
             $Teachers->specialization_id = $request->Specialization_id;
             $Teachers->gender_id = $request->Gender_id;
             $Teachers->joining_date = $request->Joining_Date;
             $Teachers->address = $request->Address;
+            $Teachers->create_by = auth()->user()->name;
             $Teachers->save();
             toastr()->success('تم تعديل المعلم بنجاح');
     

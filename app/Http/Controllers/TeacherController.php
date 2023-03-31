@@ -42,7 +42,7 @@ class TeacherController extends Controller
         return view('pages.Teachers.edit', compact('specializations','genders','Teachers'));
     }
 
-    public function update(Request $request)
+    public function update(TeacherRequest $request)
     {
         return $this->Teacher->updateTeachers($request);
     }
