@@ -34,6 +34,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->grade_id = strip_tags($request->Grade_id);
             $subjects->classroom_id = strip_tags($request->Class_id);
             $subjects->teacher_id = strip_tags($request->teacher_id);
+            $subjects->create_by = auth()->user()->name;
             $subjects->save();
             toastr()->success('تم حفظ المادة بنجاح');
             return redirect()->route('Subjects.create');
@@ -62,6 +63,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->grade_id = strip_tags($request->Grade_id);
             $subjects->classroom_id = strip_tags($request->Class_id);
             $subjects->teacher_id = strip_tags($request->teacher_id);
+            $subjects->create_by = auth()->user()->name;
             $subjects->save();
             toastr()->success('تم تعديل المادة بنجاح');
             return redirect()->route('Subjects.create');
