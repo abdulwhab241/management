@@ -81,14 +81,14 @@ aria-pressed="true">اضافة مادة جديدة</a>
 </tr>
 
 
-<div class="modal fade" id="delete_Teacher{{$subject->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete_subject{{$subject->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-danger" role="document">
         <form action="{{route('Subjects.destroy','test')}}" method="post">
             {{method_field('delete')}}
             {{csrf_field()}}
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حذف معلم</h5>
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
             
             </div>
             <div class="modal-body">

@@ -13,6 +13,8 @@
 <!--- Style css -->
 <link rel="stylesheet" href="/style.css">
 
+<link rel="stylesheet" href="/wizard.css">
+
 
 <!-- Bootstrap 3.3.4 -->
 {{-- <link href="{{ URL::asset('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> --}}

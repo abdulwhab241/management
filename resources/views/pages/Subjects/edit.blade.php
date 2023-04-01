@@ -1,32 +1,148 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+
 @section('title')
     تعديل مادة دراسية
 @stop
 @endsection
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">  تعديل مادة دراسية</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
-                <li class="breadcrumb-item active"> تعديل مادة دراسية</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    تعديل مادة دراسية
-@stop
-<!-- breadcrumb -->
-@endsection
+
 @section('content')
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+    تعديل مادة دراسية
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمـة الـمواد الدراسيـة </a></li>
+    <li class="active">تعديل مادة دراسية</li>
+    </ol>
+    </section>
+    
+    <!-- Main content -->
+    <section class="content">
+    
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">
+    @if(session()->has('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{ session()->get('error') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    </div><!-- /.box-header -->
+    
+    <form  action="{{route('Subjects.update','test')}}"  method="POST" >
+    {{ method_field('patch') }}
+    @csrf
+    <div class="box-body">
+        <div class="form-row">
+            <div class="col-6"> 
+                <label for="inputEmail4">أسم المادة</label>
+                <input type="text" value="{{$subject->name}}" name="Name" class="form-control">
+                <input type="hidden" name="id" value="{{$subject->id}}">
+                @error('Name')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+            <br>
+    
+    
+            <div class="col-6">
+                <label for="inputEmail4">الدرجـة</label>
+                <input type="number" value="{{ $subject->degree }}" name="Degree" class="form-control">
+                @error('Degree')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+    
+        </div>
+        <br>
+    
+        <div class="form-row">
+            <div class="col-6">
+                <label for="inputEmail4">المرحلـة الدراسيـة</label>
+                <select class="form-control select2" name="Grade_id">
+                    <option selected disabled>أختـر من القائمة...</option>
+                    @foreach($grades as $grade)
+                    <option
+                        value="{{$grade->id}}" {{$grade->id == $subject->grade_id ?'selected':''}}>{{$grade->name }}</option>
+                @endforeach
+                </select>                        
+                @error('Grade_id')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+            <br>
+    
+    
+            <div class="col-6">
+                <label for="inputEmail4">الصـف الدراسـي</label>
+                <select class="form-control select2" name="Class_id">
+                    <option selected disabled>أختـر من القائمة...</option>
+                    @foreach($classrooms as $classroom)
+                    {{-- <option
+                        value="{{$classroom->id}}" {{$classroom->id == $subject->classroom_id ?'selected':''}}>{{$classroom->name_class }}</option> --}}
+                        <option
+                        value="{{$classroom->id}}" {{$classroom->id == $subject->classroom_id ?'selected':''}}>{{$classroom->name_class}}</option>
+                @endforeach
+                    {{-- @foreach($classrooms as $classroom)
+                    <option value="{{$classroom->id}}">{{$classroom->name_class}}</option>
+                    @endforeach --}}
+                </select>                       
+                @error('Class_id')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+    
+        </div>   
+        <br>
+            <div class="form-group">
+                <label >أسـم المعلـم</label>
+    
+                    <select class="form-control select2" name="teacher_id">
+                        <option selected disabled>أختـر من القائمة...</option>
+                        @foreach($teachers as $teacher)
+                        <option
+                            value="{{$teacher->id}}" {{$teacher->id == $subject->teacher_id ?'selected':''}}>{{$teacher->name}}</option>
+                        @endforeach
+                        {{-- @foreach($teachers as $teacher)
+                            <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                        @endforeach --}}
+                    </select>
+        
+                @error('teacher_id')
+                <div class="alert alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                </div>
+                @enderror
+            </div>
+            <br>
+    
+    </div>
+    <div class="modal-footer">
+    <button type="submit"
+        class="btn btn-success btn-block">تعـديـل البيانات</button>
+    </div>
+    
+    </form>
+    
+    
+    </div>
+    </section><!-- /.content -->
+{{-- 
 <!-- row -->
 <div class="row">
 <div class="col-md-12 mb-30">
@@ -105,31 +221,9 @@
 </div>
 </div>
 </div>
-<!-- row closed -->
+<!-- row closed --> --}}
 @endsection
 @section('js')
 @toastr_js
 @toastr_render
-<script>
-    $(document).ready(function () {
-        $('select[name="Grade_id"]').on('change', function () {
-            var Grade_id = $(this).val();
-            if (Grade_id) {
-                $.ajax({
-                    url: "{{ URL::to('classes') }}/" + Grade_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="Class_id"]').empty();
-                        $.each(data, function (key, value) {
-                            $('select[name="Class_id"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            } else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script>
 @endsection

@@ -23,9 +23,9 @@ class SubjectRequest extends FormRequest
     {
         return [
             'Name' => 'required',
-            'Degree' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:3|max:3',
+            'Degree' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:2|max:3',
             'Grade_id' => 'required|integer',
-            'Classroom_id' => 'required|integer',
+            'Class_id' => 'required|integer',
             'teacher_id' => 'required|integer',
         ];
     }

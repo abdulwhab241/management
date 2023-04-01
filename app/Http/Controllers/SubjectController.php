@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubjectRequest;
 use Illuminate\Http\Request;
 use App\Repository\SubjectRepositoryInterface;
 
@@ -25,7 +26,7 @@ class SubjectController extends Controller
         return $this->Subject->create();
     }
 
-    public function store(Request $request)
+    public function store(SubjectRequest $request)
     {
         return $this->Subject->store($request);
     }
@@ -35,7 +36,7 @@ class SubjectController extends Controller
         return $this->Subject->edit($id);
     }
 
-    public function update(Request $request)
+    public function update(SubjectRequest $request)
     {
         return $this->Subject->update($request);
     }

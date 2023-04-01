@@ -15,7 +15,7 @@
     </div>
     <div class="pull-left info">
         <p>{{auth()->user()->name}}</p>
-        {{-- <a href="#"><i class="fa fa-circle text-success">آنلاین</i> </a> --}}
+
 
     </div>
     @endif
@@ -35,7 +35,7 @@
     <li class="header">برنامـج عبدالوهـاب لإدارة المدارس</li>
     <li><a href="#"><i class="fa fa-home"></i> الرئيسيـة</a></li>
     <!-- Grades-->
-    <li class="treeview">
+    {{-- <li class="treeview">
         <a href="#">
         <i class="fa fa-files-o"></i>
         <span>Layout Options</span>
@@ -52,7 +52,7 @@
         <a href="pages/widgets.html">
         <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-left bg-green">new</small>
         </a>
-    </li>
+    </li> --}}
     <li class="treeview">
         <a href="#">
         <i class="fas fa-school"></i>
@@ -61,9 +61,9 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Grades.index')}}"><i class="fa fa-circle-o"></i> قائمة المراحل الدراسية</a></li>
-        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
@@ -74,9 +74,9 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Classrooms.index')}}"><i class="fa fa-circle-o"></i> قائمـة الصفـوف الدراسيـة</a></li>
-        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
@@ -87,9 +87,9 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Sections.index')}}"><i class="fa fa-circle-o"></i> قائمـة الأقسـام</a></li>
-        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
@@ -100,14 +100,15 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Teachers.index')}}"><i class="fa fa-users"></i> قائمة المعلمين</a></li>
-        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
         <a href="#">
         <i class="fas fa-money-bill-wave-alt"></i>
+        {{-- fa-money --}}
         <span>الحسابـات</span>
         <i class="fa fa-angle-left pull-left"></i>
         </a>
@@ -127,9 +128,9 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمة المواد الدراسية</a></li>
-        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     {{-- <li class="treeview">

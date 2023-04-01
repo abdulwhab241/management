@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\Models\Grade;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\Classroom;
 
 class SubjectRepository implements SubjectRepositoryInterface
 {
@@ -21,7 +22,8 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         $grades = Grade::get();
         $teachers = Teacher::get();
-        return view('pages.Subjects.create',compact('grades','teachers'));
+        $classrooms = Classroom::get();
+        return view('pages.Subjects.create',compact('grades','teachers','classrooms'));
     }
 
 
@@ -50,7 +52,8 @@ class SubjectRepository implements SubjectRepositoryInterface
         $subject =Subject::findOrFail($id);
         $grades = Grade::get();
         $teachers = Teacher::get();
-        return view('pages.Subjects.edit',compact('subject','grades','teachers'));
+        $classrooms = Classroom::get();
+        return view('pages.Subjects.edit',compact('subject','grades','teachers','classrooms'));
 
     }
 
@@ -66,7 +69,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
             toastr()->success('تم تعديل المادة بنجاح');
-            return redirect()->route('Subjects.create');
+            return redirect()->route('Subjects.index');
         }
         catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
