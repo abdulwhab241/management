@@ -52,9 +52,13 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Teachers', TeacherController::class);
         });
-        //==============================parents============================
+        // //==============================parents============================
 
-        Route::view('add_parent','livewire.show_Form')->name('add_parent');
+        // Route::view('add_parent','livewire.show_Form')->name('add_parent');
+
+        //==============================Students============================
+
+        Route::view('add_student','livewire.show_Form')->name('add_student');
 
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {

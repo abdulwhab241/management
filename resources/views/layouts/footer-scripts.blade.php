@@ -53,6 +53,7 @@ $.widget.bridge('uibutton', $.ui.button);
 {{-- <script src="{{ URL::asset('assets/dist/js/demo.js') }}"></script> --}}
 <script src="/dist/js/demo.js"></script>
 
+
 <script>
 $(function () {
     $("#example1").DataTable();
