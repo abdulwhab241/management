@@ -52,6 +52,14 @@ return [
             'throw' => false,
         ],
 
+        'Students' => [
+            'driver' => 'local',
+            'root' => storage_path('public/attachments/Students/'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'upload_attachments' => [
             'driver' => 'local',
             'root' => public_path('/'),

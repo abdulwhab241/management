@@ -31,7 +31,7 @@ return new class extends Migration
              $table->string('employer')->nullable(); // جهة العمل
              $table->string('father_job'); // الوظيفة
              $table->string('father_phone'); // هاتف الاب
-             $table->string('Jop_Phone')->nullable(); // هاتف العمل
+             $table->string('job_phone')->nullable(); // هاتف العمل
              $table->string('home_phone')->nullable(); // هاتف المنزل
              $table->string('address'); // العنوان
 

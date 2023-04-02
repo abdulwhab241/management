@@ -37,7 +37,7 @@
     </div>
     @endif
     <div class="box-header">
-    <a class="btn btn-success btn-flat" style="padding:5px; margin: 5px;" href="{{route('Teachers.create')}}" data-toggle="modal" data-target="#exampleModal">
+    <a class="btn btn-success btn-flat" style="padding:5px; margin: 5px;" href="{{route('Teachers.create')}}">
         إضافة معلم</a>
     <br><br>
     <div class="box-tools">

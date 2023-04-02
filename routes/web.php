@@ -56,9 +56,9 @@ Route::group(
 
         // Route::view('add_parent','livewire.show_Form')->name('add_parent');
 
-        //==============================Students============================
+        // //==============================Students============================
 
-        Route::view('add_student','livewire.show_Form')->name('add_student');
+        // Route::view('add_student','livewire.show_Form')->name('add_student');
 
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {

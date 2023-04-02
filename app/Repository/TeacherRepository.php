@@ -48,7 +48,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
 
             $Teachers->save();
 
-            toastr()->success('تم حفظ المعلم بنجاح');
+            toastr()->success('تم إضـافـة معلومـات المعلم بنجاح');
     
             return redirect()->route('Teachers.create');
         }
@@ -77,7 +77,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
             $Teachers->address = $request->Address;
             $Teachers->create_by = auth()->user()->name;
             $Teachers->save();
-            toastr()->success('تم تعديل المعلم بنجاح');
+            toastr()->success('تم تعديل معلومـات المعلم بنجاح');
     
             return redirect()->route('Teachers.index');
         }

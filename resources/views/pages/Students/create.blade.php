@@ -36,89 +36,232 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Students.store')}}"  method="POST" >
+<form  action="{{route('Students.store')}}"  method="POST" enctype="multipart/form-data">
 @csrf
 <div class="box-body">
-    <br>
+    
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الطـالـب</h5>
-    <div class="form-row">
-        <div class="col-6"> 
-            <label for="inputEmail4">أسم الطـالـب</label>
-            <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
-            @error('Name')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+    {{-- <div class="container"> --}}
+        <div class="row">
+            <div class="col-xs-4"> 
+                <label for="inputEmail4">أسم الطـالـب</label>
+                <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
+                @error('Name')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+
+    
+    
+            <div class="col-xs-4">
+                <label for="inputEmail4">تاريخ الميلاد</label>
+                <input type="text" value="{{ old('Date_Birth') }}" placeholder="2023-03-05" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
+                @error('Date_Birth')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+
+            <div class="col-xs-4">
+                <label for="inputEmail4">النوع</label>
+                <select class="form-control select2" name="Gender_id">
+                    <option selected disabled>أختـر من القائمة...</option>
+                    @foreach($Genders as $Gender)
+                    <option value="{{$Gender->id}}">{{$Gender->name}}</option>
+                @endforeach
+                </select>                        
+                @error('Gender_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+    
+        </div><br>
+
+        <div class="row">
+
+            <div class="col-xs-3">
+                <label for="inputZip">الفصل الدراسي</label>
+                <select class="form-control select2" name="Classroom_id">
+                    <option selected>أختـر من القائمة...</option>
+                    @foreach($Classrooms as $Classroom)
+                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
+                    @endforeach
+                </select>
+                @error('Classroom_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+
+            <div class="col-xs-3">
+                <label for="inputState">المرحلة الدراسية</label>
+                <select class="form-control select2" name="Grade_id">
+                    <option selected>أختـر من القائمة...</option>
+                    @foreach($Grades as $Grade)
+                        <option value="{{$Grade->id}}">{{$Grade->name}}</option>
+                    @endforeach
+                </select>
+                @error('Grade_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+      
+
+        <div class="col-xs-3">
+            <label for="inputZip"> الرسوم الدراسية</label>
+            <select class="form-control select2" name="Fee_id">
+                <option selected>أختـر من القائمة...</option>
+                @foreach($Fees as $Fee)
+                    <option value="{{$Fee->id}}">{{$Fee->amount}}</option>
+                @endforeach
+            </select>
+            @error('Fee_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-        <br>
+        
 
+        <div class="col-xs-3">
+            <label for="title">السنة الدراسية</label>
+            <input type="text" value="{{ old('academic_year') }}" name="academic_year"  class="form-control">
+            @error('academic_year')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
 
-        <div class="col-6">
-            <label for="inputEmail4">تاريخ الميلاد</label>
-            <input type="text" value="{{ old('Date_Birth') }}" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
-            @error('Date_Birth')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+    </div><br>
+
+    <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الأب</h5>
+
+    <div class="row">
+
+        <div class="col-xs-4">
+            <label for="Father_Name">أسم الاب</label>
+            <input type="text" value="{{ old('Father_Name') }}" name="Father_Name"  class="form-control">
+            @error('Father_Name')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-xs-4">
+            <label for="title">جهة العمل</label>
+            <input type="text" value="{{ old('Employer') }}" name="Employer" class="form-control" >
+            @error('Employer')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-xs-4">
+            <label for="title">الوظيفة</label>
+            <input type="text" value="{{ old('Father_Job') }}" name="Father_Job" class="form-control" >
+            @error('Father_Job')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+    </div><br>
+
+    <div class="row">
+
+        <div class="col-xs-4">
+            <label for="title">الهاتف الشخصي</label>
+            <input type="text" value="{{ old('Father_Phone') }}" name="Father_Phone" class="form-control" >
+            @error('Father_Phone')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+        <div class="col-xs-4">
+            <label for="title">هاتف العمل</label>
+            <input type="text" value="{{ old('Job_Phone') }}" name="Job_Phone" class="form-control">
+            @error('Job_Phone')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+        <div class="col-xs-4">
+            <label for="title">هاتف المنزل</label>
+            <input type="text" value="{{ old('Home_Phone') }}" name="Home_Phone" class="form-control">
+            @error('Home_Phone')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+      
+
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">العنوان</label>
+        <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4"></textarea>
+        @error('Address')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+        </div>
+        @enderror
+    </div>
+    <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الأم</h5>
+
+    <div class="row">
+
+        <div class="col-xs-4">
+            <label for="title">أسم الام</label>
+            <input type="text" value="{{ old('Mother_Name') }}" name="Mother_Name" class="form-control">
+            @error('Mother_Name')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+        <div class="col-xs-4">
+            <label for="title">الوظيفة</label>
+            <input type="text" value="{{ old('Mother_Job') }}" name="Mother_Job" class="form-control">
+            @error('Mother_Job')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+        <div class="col-xs-4">
+            <label for="title">الهاتف</label>
+            <input type="text" value="{{ old('Mother_Phone') }}" name="Mother_Phone" class="form-control">
+            @error('Mother_Phone')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
 
     </div>
     <br>
-
-    <div class="form-row">
-        <div class="col-6">
-            <label for="inputEmail4">النوع</label>
-            <select class="form-control select2" name="Gender_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach($Genders as $Gender)
-                <option value="{{$Gender->id}}">{{$Gender->name}}</option>
-            @endforeach
-            </select>                        
-            @error('Gender_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
-            </div>
-            @enderror
-        </div>
-        <br>
+    <div class="col">
+        <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
+        <input type="file" accept="image/*" name="Photo">
+    </div>
 
 
-        <div class="col-6">
-            <label for="inputEmail4">الصـف الدراسـي</label>
-            <select class="form-control select2" name="Class_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach($classrooms as $classroom)
-                <option value="{{$classroom->id}}">{{$classroom->name_class}}</option>
-                @endforeach
-            </select>                       
-            @error('Class_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
-            </div>
-            @enderror
-        </div>
-
-    </div>   
-    <br>
-        <div class="form-group">
-            <label >أسـم المعلـم</label>
-
-                <select class="form-control select2" name="teacher_id">
-                    <option selected disabled>أختـر من القائمة...</option>
-                    @foreach($teachers as $teacher)
-                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
-                    @endforeach
-                </select>
-    
-            @error('teacher_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
-            </div>
-            @enderror
-        </div>
-        <br>
+    {{-- </div> --}}
 
 </div>
 <div class="modal-footer">
@@ -128,7 +271,7 @@
 
 </form>
 
-
+</div>
 </div>
 </section><!-- /.content -->
 

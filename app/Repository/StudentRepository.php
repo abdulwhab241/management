@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Repository;
+use App\Models\Fee;
 use App\Models\Grade;
 use App\Models\Image;
 use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
+// use Illuminate\Support\Facades\DB;
 use App\Models\My_Parent;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,10 +18,11 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Create_Student(){
 
-        $data['my_classes'] = Grade::all();
-        $data['parents'] = My_Parent::all();
+        $data['Grades'] = Grade::all();
+        $data['Fees'] = Fee::all();
+        $data['Classrooms'] = Classroom::all();
         $data['Genders'] = Gender::all();
-        return view('pages.Students.add',$data);
+        return view('pages.Students.create',$data);
 
     }
 
@@ -46,45 +48,49 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Store_Student($request){
 
-        DB::beginTransaction();
+            // Save Images
+            $file_extension = $request->Photo->getClientOriginalExtension();
+            $file_name = $request->Name . '.' . $file_extension;
+            $path = 'attachments/Students';
+            $request->Photo->move($path, $file_name);
 
         try {
             $students = new Student();
-            $students->name = $request->name;
-            $students->email = $request->email;
-            $students->password = Hash::make($request->password);
-            $students->gender_id = $request->gender_id;
-            $students->Date_Birth = $request->Date_Birth;
-            $students->Grade_id = $request->Grade_id;
-            $students->Classroom_id = $request->Classroom_id;
-            $students->section_id = $request->section_id;
-            $students->parent_id = $request->parent_id;
-            $students->academic_year = $request->academic_year;
+
+            // insert student information
+            $students->name = strip_tags($request->Name);
+            $students->image = $file_name;
+            $students->gender_id = strip_tags($request->Gender_id);
+            $students->grade_id = strip_tags($request->Grade_id);
+            $students->classroom_id = strip_tags($request->Classroom_id);
+            $students->birth_date = strip_tags($request->Date_Birth);
+            $students->fee_id = strip_tags($request->Fee_id);
+            $students->academic_year = strip_tags($request->academic_year);
+
+              // insert father information
+            $students->father_name = strip_tags($request->Father_Name);
+            $students->employer = strip_tags($request->Employer);
+            $students->father_job = strip_tags($request->Father_Job);
+            $students->father_phone = strip_tags($request->Father_Phone);
+            $students->job_phone = strip_tags($request->Job_Phone);
+            $students->home_phone = strip_tags($request->Home_Phone);
+            $students->address = strip_tags($request->Address);
+
+              // insert mother information
+            $students->mother_name = strip_tags($request->Mother_Name);
+            $students->mother_phone = strip_tags($request->Mother_Phone);
+            $students->mother_job = strip_tags($request->Mother_Job);
+            $students->create_by = auth()->user()->name;
+
             $students->save();
 
-              // insert img
-            if($request->hasfile('photos'))
-            {
-                foreach($request->file('photos') as $file)
-                {
-                    $name = $file->getClientOriginalName();
-                    $file->storeAs('attachments/students/'.$students->name, $file->getClientOriginalName(),'upload_attachments');
-
-                    // insert in image_table
-                    $images= new Image();
-                    $images->filename=$name;
-                    $images->imageable_id= $students->id;
-                    $images->imageable_type = 'App\Models\Student';
-                    $images->save();
-                }
-            }
-            DB::commit(); // insert data
-            toastr()->success(trans('main_trans.success'));
+    
+            toastr()->success('تم إضـافـة معلومـات الطـالـب بنجاح');
             return redirect()->route('Students.create');
         }
 
         catch (\Exception $e){
-            DB::rollback();
+            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
@@ -92,14 +98,15 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Get_Student()
     {
-        $students = Student::all();
-        return view('pages.Students.index',compact('students'));
+        $Students = Student::all();
+        return view('pages.Students.index',compact('Students'));
     }
 
     public function Edit_Student($id)
     {
         $data['Grades'] = Grade::all();
-        $data['parents'] = My_Parent::all();
+        $data['Fees'] = Fee::all();
+        $data['Classrooms'] = Classroom::all();
         $data['Genders'] = Gender::all();
         $Students =  Student::findOrFail($id);
         return view('pages.Students.edit',$data,compact('Students'));
@@ -107,20 +114,43 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Update_Student($request)
     {
+        // Save Images
+        $file_extension = $request->Photo->getClientOriginalExtension();
+        $file_name = $request->Name . '.' . $file_extension;
+        $path = 'attachments/Students';
+        $request->Photo->move($path, $file_name);
+
         try {
             $Edit_Students = Student::findOrFail($request->id);
-            $Edit_Students->name = $request->name;
-            $Edit_Students->email = $request->email;
-            $Edit_Students->password = Hash::make($request->password);
-            $Edit_Students->gender_id = $request->gender_id;
-            $Edit_Students->Date_Birth = $request->Date_Birth;
-            $Edit_Students->Grade_id = $request->Grade_id;
-            $Edit_Students->Classroom_id = $request->Classroom_id;
-            $Edit_Students->section_id = $request->section_id;
-            $Edit_Students->parent_id = $request->parent_id;
-            $Edit_Students->academic_year = $request->academic_year;
+
+            // insert student information
+            $Edit_Students->name = strip_tags($request->Name);
+            $Edit_Students->image = $file_name;
+            $Edit_Students->gender_id = strip_tags($request->Gender_id);
+            $Edit_Students->grade_id = strip_tags($request->Grade_id);
+            $Edit_Students->classroom_id = strip_tags($request->Classroom_id);
+            $Edit_Students->birth_date = strip_tags($request->Date_Birth);
+            $Edit_Students->fee_id = strip_tags($request->Fee_id);
+            $Edit_Students->academic_year = strip_tags($request->academic_year);
+
+                // insert father information
+            $Edit_Students->father_name = strip_tags($request->Father_Name);
+            $Edit_Students->employer = strip_tags($request->Employer);
+            $Edit_Students->father_job = strip_tags($request->Father_Job);
+            $Edit_Students->father_phone = strip_tags($request->Father_Phone);
+            $Edit_Students->job_phone = strip_tags($request->Job_Phone);
+            $Edit_Students->home_phone = strip_tags($request->Home_Phone);
+            $Edit_Students->address = strip_tags($request->Address);
+
+                // insert mother information
+            $Edit_Students->mother_name = strip_tags($request->Mother_Name);
+            $Edit_Students->mother_phone = strip_tags($request->Mother_Phone);
+            $Edit_Students->mother_job = strip_tags($request->Mother_Job);
+            $Edit_Students->create_by = auth()->user()->name;
+
+    
             $Edit_Students->save();
-            toastr()->success(trans('main_trans.update'));
+            toastr()->success('تم تعـديـل معلومـات الطـالـب بنجاح');
             return redirect()->route('Students.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -139,20 +169,20 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Upload_attachment($request)
     {
-        foreach($request->file('photos') as $file)
-        {
-            $name = $file->getClientOriginalName();
-            $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
+        // foreach($request->file('photos') as $file)
+        // {
+        //     $name = $file->getClientOriginalName();
+        //     $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
 
-            // insert in image_table
-            $images= new image();
-            $images->filename=$name;
-            $images->imageable_id = $request->student_id;
-            $images->imageable_type = 'App\Models\Student';
-            $images->save();
-        }
-        toastr()->success(trans('Students_trans.Add_aa'));
-        return redirect()->route('Students.show',$request->student_id);
+        //     // insert in image_table
+        //     $images= new image();
+        //     $images->filename=$name;
+        //     $images->imageable_id = $request->student_id;
+        //     $images->imageable_type = 'App\Models\Student';
+        //     $images->save();
+        // }
+        // toastr()->success(trans('Students_trans.Add_aa'));
+        // return redirect()->route('Students.show',$request->student_id);
     }
 
     public function Download_attachment($studentsname, $filename)
@@ -166,7 +196,7 @@ class StudentRepository implements StudentRepositoryInterface{
         Storage::disk('upload_attachments')->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
 
         // Delete in data
-        image::where('id',$request->id)->where('filename',$request->filename)->delete();
+        // image::where('id',$request->id)->where('filename',$request->filename)->delete();
         toastr()->error(trans('Students_trans.Delete_aa'));
         return redirect()->route('Students.show',$request->student_id);
     }

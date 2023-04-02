@@ -17,9 +17,9 @@ class RepoServiceProvider extends ServiceProvider
             'App\Repository\TeacherRepositoryInterFace',
             'App\Repository\TeacherRepository');
 
-            // $this->app->bind(
-            //     'App\Repository\StudentRepositoryInterface',
-            //     'App\Repository\StudentRepository');
+            $this->app->bind(
+                'App\Repository\StudentRepositoryInterface',
+                'App\Repository\StudentRepository');
 
             // $this->app->bind(
             //     'App\Repository\StudentPromotionRepositoryInterface',

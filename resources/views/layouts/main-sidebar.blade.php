@@ -99,7 +99,7 @@
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
-        <li><a href="{{url('add_student')}}"><i class="fa fa-users"></i> قائمة الطـلاب</a></li>
+        <li><a href="{{route('Students.index')}}"><i class="fa fa-users"></i> قائمة الطـلاب</a></li>
         {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}

@@ -70,7 +70,7 @@
 
 
     <div class="row">
-        <div class=" col-xs-6">
+        <div class=" col-xs-4">
             <label for="inputEmail4">التخصـص</label>
             <select class="form-control select2" name="Specialization_id">
                 <option selected disabled>حـدد التخصـص...</option>
@@ -86,7 +86,7 @@
         </div>
 
 
-        <div class="col-xs-6">
+        <div class="col-xs-4">
             <label for="inputEmail4">النـوع</label>
             <select class="form-control select2" name="Gender_id">
                 <option selected disabled>حـدد النـوع...</option>
@@ -103,7 +103,7 @@
 
     
     
-        <div class="col">
+        <div class="col-xs-4">
             <label >تاريخ التعيين</label>
             <div class='input-group'>
                 <input  class="form-control timepicker" type="text" value="{{ old('Joining_Date') }}" id="reservation" name="Joining_Date" >

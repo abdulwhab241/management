@@ -74,13 +74,13 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{ $Student->gender->name }}</td>
             <td>{{$Student->grade->name}}</td>
             <td>{{$Student->classroom->name_class}}</td>
-            <td>{{ $Student->fee->amount }}</td>
+            <td>{{ number_format( $Student->fee->amount) }}</td>
             <td>{{ $Student->father_phone }}</td>
             <td>{{ $Student->create_by }}</td>
             <td>
-                <button wire:click="edit({{ $Student->id }})" title="تعديل"
-                        class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-danger btn-sm" wire:click="delete({{ $Student->id }})" title="حذف"><i class="fa fa-trash"></i></button>
+                <a href="{{route('Students.edit',$Student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+
             </td>
         </tr>
 
@@ -96,7 +96,7 @@ aria-pressed="true">اضافة طـالـب</a>
             
             </div>
             <div class="modal-body">
-                <p> هل انت متاكد من عملية حذف المـادة </p>
+                <p> هل انت متاكد من عملية حذف الطـالـب </p>
                 <input type="hidden" name="id"  value="{{$Student->id}}">
                 <input  type="text" style="font-weight: bolder; font-size:20px;"
                 name="Name_Section"
