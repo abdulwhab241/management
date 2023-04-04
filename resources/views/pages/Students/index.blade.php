@@ -115,6 +115,7 @@ aria-pressed="true">اضافة طـالـب</a>
     </div>
 </div>
 @endforeach
+</tbody>
 </table>
 </div>
 </div>

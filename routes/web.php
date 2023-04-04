@@ -6,6 +6,7 @@ use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\StudentClassController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -83,9 +84,9 @@ Route::group(
             Route::resource('Subjects', SubjectController::class);
         });
 
-            //==============================Exams============================
+        //==============================StudentClasss============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Exams', ExamController::class);
+            Route::resource('Classes', StudentClassController::class);
         });
 
           //==============================questions============================

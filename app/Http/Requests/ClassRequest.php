@@ -22,12 +22,14 @@ class ClassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'List_Classes.*.Grade_id'=>'required',
-            'List_Classes.*.Day_id'=>'required',
-            'List_Classes.*.Section_id'=>'required',
-            'List_Classes.*.Teacher_id'=>'required',
-            'List_Classes.*.Subject_id'=>'required',
-            'List_Classes.*.School_id'=>'required',
+            'Grade_id' => 'required|integer',
+            'Day_id' => 'required|integer',
+            'Section_id' => 'required|integer',
+            'Teacher_id' => 'required|integer',
+            'Subject_id' => 'required|integer',
+            'School_id' => 'required|integer',
+            'Classroom_id' => 'required|integer',
+    
         ];
     }
 }

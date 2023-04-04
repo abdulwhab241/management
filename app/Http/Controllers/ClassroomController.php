@@ -23,8 +23,8 @@ class ClassroomController extends Controller
             {
             $validated = $request->validated();
                 $My_Classes = new Classroom();
-                $My_Classes->name_class = $request->Name;
-                $My_Classes->grade_id = $request->Grade_id;
+                $My_Classes->name_class = strip_tags($request->Name);
+                $My_Classes->grade_id = strip_tags($request->Grade_id);
                 $My_Classes->create_by = auth()->user()->name;
 
                 $My_Classes->save();
@@ -45,8 +45,8 @@ class ClassroomController extends Controller
             $validated = $request->validated();
             $Classrooms = Classroom::findOrFail($request->id);
             $Classrooms->update([
-            $Classrooms->name_class = $request->Name,
-            $Classrooms->grade_id = $request->Grade_id,
+            $Classrooms->name_class = strip_tags($request->Name),
+            $Classrooms->grade_id = strip_tags($request->Grade_id),
             $Classrooms->create_by = auth()->user()->name,
             ]);
             toastr()->success('تم تعديل الصف بنجاح');

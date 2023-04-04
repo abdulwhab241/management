@@ -141,6 +141,17 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمة المواد الدراسية</a></li>
+
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+        <i class="fas fa-books"></i>
+        <span>الحصـص الدراسية</span>
+        <i class="fa fa-angle-left pull-left"></i>
+        </a>
+        <ul class="treeview-menu">
+        <li><a href="{{route('Classes.index')}}"><i class="fa fa-book"></i> قائمة الحصـص الدراسية</a></li>
         {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}

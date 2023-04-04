@@ -21,9 +21,8 @@ class GradeController extends Controller
         {
             $validated = $request->validated();
             $Grade = new Grade();
-            $Grade->name = $request->Name;
-            $Grade->notes = $request->Notes;
-            $Grade->notes = $request->Notes;
+            $Grade->name = strip_tags($request->Name);
+            $Grade->notes = strip_tags($request->Notes);
             $Grade->create_by = auth()->user()->name;
 
             $Grade->save();
@@ -43,8 +42,8 @@ class GradeController extends Controller
             $validated = $request->validated();
             $Grade = Grade::findOrFail($request->id);
             $Grade->update([
-                $Grade->name = $request->Name,
-                $Grade->notes = $request->Notes,
+                $Grade->name = strip_tags($request->Name),
+                $Grade->notes = strip_tags($request->Notes),
                 $Grade->create_by = auth()->user()->name,
             ]);
             toastr()->success('تم تعديل المرحلة بنجاح');

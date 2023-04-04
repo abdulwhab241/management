@@ -35,22 +35,21 @@ class StudentClassController extends Controller
 
     public function store(ClassRequest $request)
     {
-        $List_Classes = $request->List_Classes;
         try
             {
-            $validated = $request->validated();
-            foreach ($List_Classes as $list) {
+        
                 $StudentClasses = new StudentClass();
-                $StudentClasses->day_id = $list['Day_id'];
-                $StudentClasses->grade_id = $list['Grade_id'];
-                $StudentClasses->classroom_id = $list['Classroom_id'];
-                $StudentClasses->section_id = $list['Section_id'];
-                $StudentClasses->class_id = $list['School_id'];
-                $StudentClasses->teacher_id = $list['Teacher_id'];
-                $StudentClasses->subject_id = $list['Subject_id'];
+                $StudentClasses->day_id = strip_tags($request->Day_id);
+                $StudentClasses->grade_id = strip_tags($request->Grade_id);
+                $StudentClasses->classroom_id = strip_tags($request->Classroom_id);
+                $StudentClasses->section_id = strip_tags($request->Section_id);
+                $StudentClasses->class_id = strip_tags($request->School_id);
+                $StudentClasses->teacher_id = strip_tags($request->Teacher_id);
+                $StudentClasses->subject_id = strip_tags($request->Subject_id);
+                $StudentClasses->create_by = auth()->user()->name;
 
                 $StudentClasses->save();
-            }
+        
                 toastr()->success('تم إضافـة بيانـات جدول الحصـص بنجاح');
                 return redirect()->route('Classes.index');
             }
@@ -73,20 +72,21 @@ class StudentClassController extends Controller
         return view('pages.Classes.edit',compact('StudentClasses','Grades','Days','Classrooms','Sections','Teachers','Schools','Subjects'));
     }
 
-    public function update(Request $request)
+    public function update(ClassRequest $request)
     {
 
         try {
 
             $StudentClass = StudentClass::findOrFail($request->id);
     
-            $StudentClass->day_id = $request->Day_id;
-            $StudentClass->grade_id = $request->Grade_id;
-            $StudentClass->classroom_id = $request->Classroom_id;
-            $StudentClass->section_id = $request->Section_id;
-            $StudentClass->class_id = $request->School_id;
-            $StudentClass->teacher_id = $request->Teacher_id;
-            $StudentClass->subject_id = $request->Subject_id;
+            $StudentClass->day_id = strip_tags($request->Day_id);
+            $StudentClass->grade_id = strip_tags($request->Grade_id);
+            $StudentClass->classroom_id = strip_tags($request->Classroom_id);
+            $StudentClass->section_id = strip_tags($request->Section_id);
+            $StudentClass->class_id = strip_tags($request->School_id);
+            $StudentClass->teacher_id = strip_tags($request->Teacher_id);
+            $StudentClass->subject_id = strip_tags($request->Subject_id);
+            $StudentClass->create_by = auth()->user()->name;
             $StudentClass->save();
 
             toastr()->success('تم تعديـل بيانـات جدول الحصـص بنجاح');

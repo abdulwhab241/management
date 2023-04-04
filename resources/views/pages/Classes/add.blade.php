@@ -1,215 +1,164 @@
 @extends('layouts.master')
 @section('css')
-@toastr_css
+
 @section('title')
-    إضافة جدول الحصـص
+إضافة جدول الحصـص
 @stop
 @endsection
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> إضافة جدول الحصـص</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
-                <li class="breadcrumb-item active">إضافة جدول الحصـص</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    إضافة جدول الحصـص
-@stop
-<!-- breadcrumb -->
-@endsection
+
 @section('content')
-<!-- row -->
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+إضافة جدول الحصـص
+</h1>
+<ol class="breadcrumb">
+<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{route('Classes.index')}}"><i class="fa fa-book"></i> قائمـة جدول الحصـص </a></li>
+<li class="active">إضافة جدول الحصـص</li>
+</ol>
+</section>
+<!-- Main content -->
+<section class="content">
+
 <div class="row">
-<div class="col-md-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
-
-    @if(session()->has('error'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{ session()->get('error') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-
-
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    <div class="col-xs-12">
-        <div class="col-md-12">
-            <br>
+<div class="col-xs-12">
+<div class="box">
+@if(session()->has('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ session()->get('error') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+</div><!-- /.box-header -->
 
 <form  action="{{ route('Classes.store') }}" method="POST">
-@csrf
-
-
-<div class="repeater">
-<div data-repeater-list="List_Classes">
-<div data-repeater-item>
-
-    <div class="form-row">
-
-        
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2"> اليوم:</label>
-
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="Day_id">
-                    @foreach ($Days as $Day)
-                        <option value="{{ $Day->id }}" required>{{ $Day->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+    @csrf
+<div class="box-body">
+    <div class="row">
+        <div class="col-xs-3"> 
+            <label >الـيوم</label>
+            <select class="form-control select2" name="Day_id">
+                <option selected disabled>أختـر من القائمة...</option>
+            @foreach ($Days as $Day)
+            <option value="{{ $Day->id }}">{{ $Day->name }}</option>
+            @endforeach
+            </select>
             @error('Day_id')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
             @enderror
         </div>
-        
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">المرحلة الدراسية
-                :</label>
-
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="Grade_id">
-                    @foreach ($Grades as $Grade)
-                        <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="col-xs-3">
+            <label >المرحلـة الدراسيـة</label>
+            <select class="form-control select2" name="Grade_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($Grades as $Grade)
+                    <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
+                @endforeach
+            </select>                
             @error('Grade_id')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
             @enderror
         </div>
-
-        
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">الصـف :</label>
-
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="Classroom_id">
-                    @foreach ($Classrooms as $Classroom)
-                        <option value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="col-xs-3">
+            <label >الصـف الدراسـي</label>
+            <select class="form-control select2" name="Classroom_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($Classrooms as $Classroom)
+                    <option value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
+                @endforeach
+            </select>                        
             @error('Classroom_id')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
             @enderror
         </div>
-
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">الشعبـة:</label>
-
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="Section_id">
-                    @foreach ($Sections as $Section)
-                        <option value="{{ $Section->id }}" required>{{ $Section->name_section }}</option>
-                    @endforeach
-                </select>
-            </div>
+        <div class="col-xs-3">
+            <label >الشعبـة</label>
+            <select class="form-control select2" name="Section_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($Sections as $Section)
+                    <option value="{{ $Section->id }}" required>{{ $Section->name_section }}</option>
+                @endforeach
+            </select>
             @error('Section_id')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
             @enderror
         </div>
-    </div>
-    <br>
+    </div><br>
 
-    <div class="form-row">
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">الحصـة:</label>
-
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="School_id">
-                    @foreach ($Schools as $School)
-                        <option value="{{ $School->id }}" required>{{ $School->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <label >الحصـة</label>
+            <select class="form-control select2" name="School_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($Schools as $School)
+                    <option value="{{ $School->id }}" required>{{ $School->name }}</option>
+                @endforeach
+            </select>
             @error('School_id')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
             @enderror
         </div>
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">المادة:</label>
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="Subject_id">
-                    @foreach ($Subjects as $Subject)
-                        <option value="{{ $Subject->id }}" required>{{ $Subject->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+
+        <div class="col-xs-4">
+            <label >المـادة</label>
+            <select class="form-control select2" name="Subject_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($Subjects as $Subject)
+                    <option value="{{ $Subject->id }}">{{ $Subject->name }}</option>
+                @endforeach
+            </select>
             @error('Subject_id')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">الأستـاذ:</label>
-            <div class="box">
-                <select class="custom-select mr-sm-2" name="Teacher_id">
-                    @foreach ($Teachers as $Teacher)
-                        <option value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
-                    @endforeach
-                </select>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
-            @error('Teacher_id')
-            <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-
-
-        <div class="form-group col-md-3">
-            <label for="Name_en"
-                class="mr-sm-2">العمليات
-                :</label>
-            <input class="btn btn-outline-danger btn-block" data-repeater-delete
-                type="button" value="حذف" />
+        <div class="col-xs-4">
+            <label >الأسـتاذ</label>
+            <select class="form-control select2" name="Teacher_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($Teachers as $Teacher)
+                    <option value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
+                @endforeach
+            </select>
+            @error('Teacher_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
         </div>
     </div>
-<br><hr><br>
-</div>
-</div>
-<div class="row mt-20">
-<div class="col-12">
-    <input class="button" data-repeater-create type="button" value="ادراج سجل"/>
-</div>
+        <br>
 
 </div>
-<br>
-
+<div class="modal-footer">
 <button type="submit"
-class="btn btn-outline-primary btn-block" style="padding:5px; margin: 5px;">حفظ البيانات</button>
-
-
-
+    class="btn btn-success btn-block">حفظ البيانات</button>
 </div>
+
 </form>
 
-        </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
 
-<!-- row closed -->
+</div>
+</section><!-- /.content -->
+
+
 @endsection
 @section('js')
-    @toastr_js
-    @toastr_render
+@toastr_js
+@toastr_render
 @endsection
