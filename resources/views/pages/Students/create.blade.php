@@ -53,8 +53,6 @@
                 @enderror
             </div>
 
-    
-    
             <div class="col-xs-4">
                 <label for="inputEmail4">تاريخ الميلاد</label>
                 <input type="text" value="{{ old('Date_Birth') }}" placeholder="2023-03-05" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
@@ -113,14 +111,13 @@
                 </div>
                 @enderror
             </div>
-      
 
         <div class="col-xs-3">
             <label for="inputZip"> الرسوم الدراسية</label>
             <select class="form-control select2" name="Fee_id">
                 <option selected>أختـر من القائمة...</option>
                 @foreach($Fees as $Fee)
-                    <option value="{{$Fee->id}}">{{$Fee->amount}}</option>
+                    <option value="{{$Fee->id}}">{{ number_format($Fee->amount) }}</option>
                 @endforeach
             </select>
             @error('Fee_id')
@@ -133,7 +130,15 @@
 
         <div class="col-xs-3">
             <label for="title">السنة الدراسية</label>
-            <input type="text" value="{{ old('academic_year') }}" name="academic_year"  class="form-control">
+            <select class="form-control select2" name="academic_year">
+                <option selected>أختـر من القائمة...</option>
+            @php
+            $current_year = date("Y");
+            @endphp
+            @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                <option value="{{ $year}}">{{ $year }}</option>
+            @endfor
+            </select>
             @error('academic_year')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -209,8 +214,6 @@
             @enderror
         </div>
 
-      
-
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">العنوان</label>
@@ -220,7 +223,7 @@
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
         @enderror
-    </div>
+    </div><br>
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الأم</h5>
 
     <div class="row">
@@ -259,10 +262,7 @@
         <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
         <input type="file" accept="image/*" name="Photo">
     </div>
-
-
-    {{-- </div> --}}
-
+<br>
 </div>
 <div class="modal-footer">
 <button type="submit"

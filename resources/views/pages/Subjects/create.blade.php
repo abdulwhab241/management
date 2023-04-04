@@ -39,34 +39,26 @@
 <form  action="{{route('Subjects.store')}}"  method="POST" >
 @csrf
 <div class="box-body">
-    <div class="form-row">
-        <div class="col-6"> 
+    <div class="row">
+        <div class="col-xs-3"> 
             <label for="inputEmail4">أسم المادة</label>
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
             @error('Name')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-        <br>
-
-
-        <div class="col-6">
+        <div class="col-xs-3">
             <label for="inputEmail4">الدرجـة</label>
             <input type="number" value="{{ old('Degree') }}" name="Degree" class="form-control">
             @error('Degree')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-
-    </div>
-    <br>
-
-    <div class="form-row">
-        <div class="col-6">
+        <div class="col-xs-3">
             <label for="inputEmail4">المرحلـة الدراسيـة</label>
             <select class="form-control select2" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -75,15 +67,12 @@
                 @endforeach
             </select>                        
             @error('Grade_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-        <br>
-
-
-        <div class="col-6">
+        <div class="col-xs-3">
             <label for="inputEmail4">الصـف الدراسـي</label>
             <select class="form-control select2" name="Class_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -92,15 +81,15 @@
                 @endforeach
             </select>                       
             @error('Class_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
+    </div><br>
 
-    </div>   
-    <br>
-        <div class="form-group">
+    <div class="row">
+        <div class="col-xs-6">
             <label >أسـم المعلـم</label>
 
                 <select class="form-control select2" name="teacher_id">
@@ -111,11 +100,12 @@
                 </select>
     
             @error('teacher_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
+    </div>
         <br>
 
 </div>

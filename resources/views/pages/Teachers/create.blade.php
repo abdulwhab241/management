@@ -45,29 +45,24 @@
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
         
             @error('Name')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
             
     </div>
 
-
-
-    
             <div class="col-xs-6">
             <label for="inputEmail4">رقـم الهاتـف</label>
             <input type="text" value="{{ old('Phone_Number') }}" name="Phone_Number" class="form-control ">
-          
             @error('Phone_Number')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
         </div>
         <br>
-
 
     <div class="row">
         <div class=" col-xs-4">
@@ -79,12 +74,11 @@
                 @endforeach
             </select>                        
             @error('Specialization_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-
 
         <div class="col-xs-4">
             <label for="inputEmail4">النـوع</label>
@@ -95,51 +89,44 @@
                 @endforeach
             </select>                       
             @error('Gender_id')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
 
-    
-    
         <div class="col-xs-4">
             <label >تاريخ التعيين</label>
             <div class='input-group'>
                 <input  class="form-control timepicker" type="text" value="{{ old('Joining_Date') }}" id="reservation" name="Joining_Date" >
             </div>
             @error('Joining_Date')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-        {{-- <br> --}}
     </div>
     <br>
-    <div class="row">
-        <div class="col-xs-12">
-            <label for="exampleFormControlTextarea1">العنوان</label>
-            <textarea class="form-control" name="Address"
-                        id="exampleFormControlTextarea1" rows="4">{{ old('Address') }}</textarea>
-            @error('Address')
-            <div class="alert alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
-            </div>
-            @enderror
-            
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">العنوان</label>
+        <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4">{{ old('Address') }}</textarea>
+        @error('Address')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
+        @enderror
     </div>
     <br>
-    {{-- <div class="col-md-3"> --}}
+
         <div class="col">
             <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للمعلم: </label>
             <input type="file" accept="image/*" name="Photo">
         </div>
         <br>
-    {{-- </div> --}}
 
-
+    </div>
 <div class="modal-footer">
 <button type="submit"
     class="btn btn-success btn-block">حفظ البيانات</button>
