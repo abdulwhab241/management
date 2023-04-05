@@ -126,9 +126,9 @@
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
-            {{-- <a href="">الرسوم الدراسية</a> --}}
+            {{-- <a href="">الرسوم الدراسية</a><i class=""></i> --}}
         <li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> الرسـوم الدراسيـة</a></li>
-        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+        <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-dollar"></i> سندات القبض (تسـديـد رسـوم)</a></li>
         <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>

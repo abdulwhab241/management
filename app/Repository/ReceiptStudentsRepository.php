@@ -4,6 +4,7 @@
 namespace App\Repository;
 
 
+use App\Models\Fee;
 use App\Models\Student;
 use App\Models\FundAccount;
 use App\Models\ReceiptStudent;
@@ -19,6 +20,13 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
         $receipt_students = ReceiptStudent::all();
         return view('pages.Receipts.index',compact('receipt_students'));
 
+    }
+
+    public function create()
+    {
+        $fee =Fee::all();
+        $student = Student::all();
+        return view('pages.Receipts.add',compact('student','fee'));
     }
 
     public function show($id)
@@ -38,38 +46,43 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
         try {
 
-            $The_Rest = $request->Fee - $request->Debit; 
+            // $Fee = Student::select('*')->where('fee_id','=',$request->Student_id)->get();
+            // $The_Rest = $request->Debit- $Fee ; 
             // حفظ البيانات في جدول سندات القبض
             $receipt_students = new ReceiptStudent();
             $receipt_students->date = date('Y-m-d');
-            $receipt_students->student_id = $request->Student_id;
-            $receipt_students->Debit = $request->Debit;
-            $receipt_students->description = $request->description;
+            $receipt_students->student_id = strip_tags($request->Student_id);
+            $receipt_students->Debit = strip_tags($request->Debit);
+            $receipt_students->description = strip_tags($request->description);
+            $receipt_students->create_by = auth()->user()->name;
             $receipt_students->save();
 
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->receipt_id = $receipt_students->id;
-            $fund_accounts->Debit = $request->Debit;
-            $fund_accounts->credit = $The_Rest;
-            $fund_accounts->description = $request->description;
+            $fund_accounts->student_id = strip_tags($request->Student_id);
+            $fund_accounts->receipt_id = strip_tags($receipt_students->id);
+            $fund_accounts->Debit = strip_tags($request->Debit);
+            $fund_accounts->credit =  0.00;
+            $fund_accounts->description = strip_tags($request->description);
+            $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
             // حفظ البيانات في جدول حساب الطالب
-            $fund_accounts = new StudentAccount();
-            $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->type = 'تسديـد رسـوم أو سنـد قبـض';
-            $fund_accounts->receipt_id = $receipt_students->id;
-            $fund_accounts->fee_id = $receipt_students->fee_id;
-            $fund_accounts->student_id = $request->Student_id;
-            $fund_accounts->Debit = $The_Rest;
-            $fund_accounts->credit = $request->Debit;
-            $fund_accounts->description = $request->description;
-            $fund_accounts->save();
+            $student_accounts = new StudentAccount();
+            $student_accounts->date = date('Y-m-d');
+            $student_accounts->type = 'تسديـد رسـوم ';
+            $student_accounts->receipt_id = strip_tags($receipt_students->id);
+            // $student_accounts->fee_id = strip_tags($receipt_students->fee_id);
+            $student_accounts->student_id = strip_tags($request->Student_id);
+            $student_accounts->Debit =  0.00;
+            $student_accounts->credit = strip_tags($request->Debit);
+            $student_accounts->description = strip_tags($request->description);
+            $student_accounts->create_by = auth()->user()->name;
+            $student_accounts->save();
 
             toastr()->success('تـم إضافـة سنـد القبـض بنجـاح');
-            return redirect()->route('receipt_students.index');
+            return redirect()->route('Receipts.index');
 
         }
 
@@ -98,7 +111,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->receipt_id = $receipt_students->id;
             $fund_accounts->Debit = $request->Debit;
-            $fund_accounts->credit = $The_Rest;
+            $fund_accounts->credit =  0.00;
             $fund_accounts->description = $request->description;
             $fund_accounts->save();
 
@@ -116,7 +129,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts->save();
 
             toastr()->success('تـم تعديـل سنـد القبـض بنجـاح');
-            return redirect()->route('receipt_students.index');
+            return redirect()->route('Receipts.index');
         } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);

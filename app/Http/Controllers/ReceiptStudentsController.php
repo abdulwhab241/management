@@ -19,6 +19,10 @@ class ReceiptStudentsController extends Controller
         return $this->Receipt->index();
     }
 
+    public function create()
+    {
+        return $this->Receipt->create();
+    }
 
     public function store(ReceiptRequest $request)
     {

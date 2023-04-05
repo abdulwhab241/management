@@ -23,6 +23,7 @@ class ReceiptRequest extends FormRequest
     {
         return [
             'Debit' => 'required|integer',
+            'Student_id' => 'required|integer',
             'description' => 'required',
         ];
     }

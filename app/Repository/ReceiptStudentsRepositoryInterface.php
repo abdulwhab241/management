@@ -7,6 +7,7 @@ namespace App\Repository;
 interface ReceiptStudentsRepositoryInterface
 {
     public function index();
+    public function create();
 
     public function show($id);
 
