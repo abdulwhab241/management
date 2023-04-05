@@ -87,9 +87,9 @@ aria-pressed="true">اضافة جدول الحصـص</a>
             <td>{{ $StudentClass->schoolClass->name }}</td>
             <td>{{ $StudentClass->subject->name }}</td>
             <td> أ. {{ $StudentClass->teacher->name }}</td>
-            <td>{{ $Student->create_by }}</td>
+            <td>{{ $StudentClass->create_by }}</td>
             <td>
-                <a href="{{route('Students.edit',$StudentClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                <a href="{{route('Classes.edit',$StudentClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $StudentClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
 
             </td>
@@ -112,7 +112,7 @@ aria-pressed="true">اضافة جدول الحصـص</a>
                 <input  type="text" style="font-weight: bolder; font-size:20px;"
                 name="Name_Section"
                 class="form-control"
-                value="{{$Student->name}}"
+                value="{{$StudentClass->name}}"
                 disabled>
             </div>
             <div class="modal-footer">

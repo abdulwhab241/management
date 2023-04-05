@@ -51,7 +51,7 @@ class StudentClassController extends Controller
                 $StudentClasses->save();
         
                 toastr()->success('تم إضافـة بيانـات جدول الحصـص بنجاح');
-                return redirect()->route('Classes.index');
+                return redirect()->route('Classes.add');
             }
             catch(\Exception $e)
             {

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class StudentClass extends Model
 {
     use HasFactory, SoftDeletes;
+    
     protected $guarded=[];
 
     public function day()
