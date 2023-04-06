@@ -32,13 +32,14 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     public function show($id)
     {
         $student = Student::findOrFail($id);
-        return view('pages.Receipts.add',compact('student'));
+        return view('pages.Receipts.show',compact('student'));
     }
 
     public function edit($id)
     {
         $receipt_student = ReceiptStudent::findOrFail($id);
-        return view('pages.Receipts.edit',compact('receipt_student'));
+        $Students = Student::all();
+        return view('pages.Receipts.edit',compact('receipt_student','Students'));
     }
 
     public function store($request)
@@ -97,36 +98,38 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
         try {
 
-            $The_Rest = $request->Fee - $request->Debit; 
             // تعديل البيانات في جدول سندات القبض
             $receipt_students = ReceiptStudent::findOrFail($request->id);
             $receipt_students->date = date('Y-m-d');
-            $receipt_students->student_id = $request->student_id;
-            $receipt_students->Debit = $request->Debit;
-            $receipt_students->description = $request->description;
+            $receipt_students->student_id = strip_tags($request->Student_id);
+            $receipt_students->Debit = strip_tags($request->Debit);
+            $receipt_students->description = strip_tags($request->description);
+            $receipt_students->create_by = auth()->user()->name;
             $receipt_students->save();
 
             // تعديل البيانات في جدول الصندوق
             $fund_accounts = FundAccount::where('receipt_id',$request->id)->first();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->receipt_id = $receipt_students->id;
-            $fund_accounts->Debit = $request->Debit;
+            $fund_accounts->student_id = strip_tags($request->Student_id);
+            $fund_accounts->receipt_id = strip_tags($receipt_students->id);
+            $fund_accounts->Debit = strip_tags($request->Debit);
             $fund_accounts->credit =  0.00;
-            $fund_accounts->description = $request->description;
+            $fund_accounts->description = strip_tags($request->description);
+            $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
             // تعديل البيانات في جدول الصندوق
 
-            $fund_accounts = StudentAccount::where('receipt_id',$request->id)->first();
-            $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->type = 'receipt';
-            $fund_accounts->student_id = $request->student_id;
-            $fund_accounts->fee_id = $receipt_students->fee_id;
-            $fund_accounts->receipt_id = $receipt_students->id;
-            $fund_accounts->Debit = $The_Rest;
-            $fund_accounts->credit = $request->Debit;
-            $fund_accounts->description = $request->description;
-            $fund_accounts->save();
+            $student_accounts = StudentAccount::where('receipt_id',$request->id)->first();
+            $student_accounts->date = date('Y-m-d');
+            $student_accounts->type = 'تسديـد رسـوم ';
+            $student_accounts->receipt_id = strip_tags($receipt_students->id);
+            $student_accounts->student_id = strip_tags($request->Student_id);
+            $student_accounts->Debit =  0.00;
+            $student_accounts->credit = strip_tags($request->Debit);
+            $student_accounts->description = strip_tags($request->description);
+            $student_accounts->create_by = auth()->user()->name;
+            $student_accounts->save();
 
             toastr()->success('تـم تعديـل سنـد القبـض بنجـاح');
             return redirect()->route('Receipts.index');
@@ -140,7 +143,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     {
         try {
             ReceiptStudent::destroy($request->id);
-            toastr()->error(trans('messages.Delete'));
+            toastr()->error('تـم حـذف سنـد القبـض بنجـاح');
             return redirect()->back();
         }
 

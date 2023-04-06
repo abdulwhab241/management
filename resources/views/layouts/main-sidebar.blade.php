@@ -120,7 +120,7 @@
     </li>
     <li class="treeview">
         <a href="#">
-        <i class="fas fa-money-bill-wave-alt"></i>
+        <i class="fa  fa-money"></i>
         {{-- fa-money --}}
         <span>الحسابـات</span>
         <i class="fa fa-angle-left pull-left"></i>
@@ -129,7 +129,7 @@
             {{-- <a href="">الرسوم الدراسية</a><i class=""></i> --}}
         <li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> الرسـوم الدراسيـة</a></li>
         <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-dollar"></i> سندات القبض (تسـديـد رسـوم)</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+        <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-list"></i> الفـواتيـر الدراسيـة</a></li>
         <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
     </li>

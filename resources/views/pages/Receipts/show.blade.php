@@ -2,20 +2,22 @@
 @section('css')
 
 @section('title')
-تعديـل سـند قبـض الطالـب
+   تسديـد رسـوم الطالـب
 @stop
 @endsection
 
 @section('content')
 
+
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-تعديـل سـند قبـض الطالـب <label style="color: #5686E0">{{$receipt_student->student->name}}</label>
+تسديـد رسـوم الطالـب <label style="color: #5686E0">{{$student->name}}</label>
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li class="active">تعديـل سـند قبـض الطالـب  </li>
+<li class="active">تسديـد رسـوم الطالـب </li>
 </ol>
 </section>
 
@@ -35,33 +37,14 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Receipts.update','test')}}"  method="POST" >
-    @method('PUT')
-    @csrf
+<form  action="{{route('Receipts.store')}}"  method="POST" >
+@csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-xs-3"> 
-            <label for="inputEmail4">أسم الطـالـب</label>
-            <input type="hidden" value="{{$receipt_student->id}}" name="id" class="form-control">
-            <select class="form-control select2" name="Student_id">
-                <option value="{{ $receipt_student->student->id }}">
-                    {{ $receipt_student->student->name }}
-                </option>
-                @foreach ($Students as $Student)
-                    <option value="{{ $Student->id }}" disabled>
-                        {{ $Student->name }}
-                    </option>
-                @endforeach
-            </select>
-            @error('Student_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-        <div class="col-xs-3">
+        <div class="col-xs-6">
             <label for="inputEmail4">المبـلغ</label>
-            <input type="number" value="{{ $receipt_student->Debit}}" name="Debit" class="form-control">
+            <input type="number" value="{{ old('Debit') }}" name="Debit" class="form-control">
+            <input type="hidden" value="{{$student->id}}" name="Student_id" class="form-control">
             @error('Debit')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -70,7 +53,7 @@
         </div>
         <div class="col-xs-6">
             <label for="exampleFormControlTextarea1">البيـان</label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="1">{{$receipt_student->description}}</textarea>
+            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="1">{{ old('description') }}</textarea>
             @error('description')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -82,7 +65,7 @@
 </div>
 <div class="modal-footer">
 <button type="submit"
-    class="btn btn-success btn-block">تعديـل البيانات</button>
+    class="btn btn-success btn-block">حفظ البيانات</button>
 </div>
 
 </form>
@@ -93,7 +76,9 @@
 
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+    @toastr_js
+    @toastr_render
+
+
 
 @endsection

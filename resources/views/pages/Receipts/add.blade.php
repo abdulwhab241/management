@@ -42,13 +42,15 @@
 <div class="box-body">
     <div class="row">
         <div class="col-xs-3"> 
-            <label for="inputEmail4">أسم الطـالـب</label>
+            <div class="form-group">
+            <label>أسم الطـالـب</label>
             <select class="form-control select2" name="Student_id">
-                <option selected disabled>أختـر من القائمة...</option>
+                <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($student as $Student)
-                    <option value="{{ $Student->id }}" required>{{ $Student->name }}</option>
+                    <option  value="{{ $Student->id }}" required>{{ $Student->name }}</option>
                 @endforeach
             </select>
+            </div>
             @error('Student_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -91,5 +93,7 @@
 @section('js')
     @toastr_js
     @toastr_render
+
+
 
 @endsection
