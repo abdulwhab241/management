@@ -72,7 +72,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             // حفظ البيانات في جدول حساب الطالب
             $student_accounts = new StudentAccount();
             $student_accounts->date = date('Y-m-d');
-            $student_accounts->type = 'تسديـد رسـوم ';
+            $student_accounts->type = 'تسديـد رسـوم  (دائن)';
             $student_accounts->receipt_id = strip_tags($receipt_students->id);
             // $student_accounts->fee_id = strip_tags($receipt_students->fee_id);
             $student_accounts->student_id = strip_tags($request->Student_id);
@@ -122,7 +122,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
             $student_accounts = StudentAccount::where('receipt_id',$request->id)->first();
             $student_accounts->date = date('Y-m-d');
-            $student_accounts->type = 'تسديـد رسـوم ';
+            $student_accounts->type = 'تعديل تسديـد رسـوم  (دائن)';
             $student_accounts->receipt_id = strip_tags($receipt_students->id);
             $student_accounts->student_id = strip_tags($request->Student_id);
             $student_accounts->Debit =  0.00;
