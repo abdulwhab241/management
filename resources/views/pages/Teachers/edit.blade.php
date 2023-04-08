@@ -1,33 +1,12 @@
 @extends('layouts.master')
 @section('css')
-{{-- @toastr_css --}}
+
 @section('title')
     تعديل معلم
 @stop
 @endsection
-{{-- @section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> تعديل معلم</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
-                <li class="breadcrumb-item active">تعديل معلم</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    تعديل معلم
-@stop
-<!-- breadcrumb -->
-@endsection --}}
-@section('content')
 
+@section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>

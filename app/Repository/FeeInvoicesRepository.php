@@ -9,6 +9,7 @@ use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\FeeInvoice;
+use App\Models\FundAccount;
 use App\Models\StudentAccount;
 
 
@@ -61,6 +62,17 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
                 $Fees->description = strip_tags($request->description);
                 $Fees->create_by = auth()->user()->name;
                 $Fees->save();
+
+                      // حفظ البيانات في جدول الصندوق
+                $fund_accounts = new FundAccount();
+                $fund_accounts->date = date('Y-m-d');
+                $fund_accounts->student_id = strip_tags($request->Student_id);
+                $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
+                $fund_accounts->Debit = 0.00;
+                $fund_accounts->credit = strip_tags($request->amount);
+                $fund_accounts->description = strip_tags($request->description);
+                $fund_accounts->create_by = auth()->user()->name;
+                $fund_accounts->save();
                 
                 // حفظ البيانات في جدول حسابات الطلاب
                 $StudentAccount = new StudentAccount();
@@ -84,43 +96,6 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function update($request)
     {
         try {
-            // تعديل البيانات في جدول فواتير الرسوم الدراسية
-            // $Fees = FeeInvoice::findOrFail($request->id);
-            // $Fees->invoice_date = date('Y-m-d');
-            // // $Fees->student_id = strip_tags($request->student_id);
-            // // $Fees->grade_id = strip_tags($request->Grade_id);
-            // // $Fees->classroom_id = strip_tags($request->Classroom_id);
-            // // $Fees->fee_id = strip_tags($request->fee_id);
-            // // $Fees->amount = strip_tags($request->amount);
-            // // $Fees->description = strip_tags($request->description);
-            // // $Fees->create_by = auth()->user()->name;
-            // $Fees->student_id = strip_tags($request->Student_id);
-            // $Fees->grade_id = strip_tags($request->Grade_id);
-            // $Fees->classroom_id = strip_tags($request->Classroom_id);
-            // $Fees->fee_id = strip_tags($request->Fee_id);
-            // $Fees->amount = strip_tags($request->amount);
-            // $Fees->description = strip_tags($request->description);
-            // $Fees->create_by = auth()->user()->name;
-            // $Fees->save();
-
-            // // تعديل البيانات في جدول حسابات الطلاب
-            // $StudentAccount = StudentAccount::where('fee_invoice_id',$request->id)->first();
-            // $StudentAccount->student_id = strip_tags($request->Student_id);
-            // $StudentAccount->date = date('Y-m-d');
-            // // $StudentAccount->type = 'invoice';
-            // // $StudentAccount->fee_invoice_id = $Fees->id;
-            // // $StudentAccount->Debit = strip_tags($request->amount);
-            // // $StudentAccount->credit = 0.00;
-            // // $StudentAccount->description = strip_tags($request->description);
-            // // $StudentAccount->create_by = auth()->user()->name;
-            // $StudentAccount->type = 'تعديل فـاتـورة دراسية (مـديـن)';
-            // $StudentAccount->fee_invoice_id = strip_tags($request->id);
-            // $StudentAccount->Debit = strip_tags($request->amount);
-            // $StudentAccount->credit = 0.00;
-            // $StudentAccount->description = strip_tags($request->description);
-            // $StudentAccount->create_by = auth()->user()->name;
-            // $StudentAccount->save();
-
             $Fees = FeeInvoice::findOrFail($request->id);
             $Fees->fee_id = strip_tags($request->Fee_id);
             $Fees->amount = strip_tags($request->amount);

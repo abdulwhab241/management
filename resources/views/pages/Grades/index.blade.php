@@ -12,7 +12,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-    المراحـل الدراسيـة
+المراحـل الدراسيـة
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
@@ -29,9 +29,9 @@
 @if ($errors->any())
 <div class="alert alert-danger">
 <ul>
-    @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
+@foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+@endforeach
 </ul>
 </div>
 @endif
@@ -45,7 +45,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <div class="input-group" style="width: 150px;">
 <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
 <div class="input-group-btn">
-    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
 </div>
 </div>
 </div>
@@ -54,69 +54,69 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
 <thead>
 <tr>
-    <th style="text-align: center;" class="alert-info">#</th>
-    <th style="text-align: center;" class="alert-info">أسـم المرحلـة</th>
-    <th style="text-align: center;" class="alert-info">الملاحظـات</th>
-    <th style="text-align: center;" class="alert-success">انشـئ بواسطـة</th>
-    <th style="text-align: center;" class="alert-warning">العمليات</th>
+<th style="text-align: center;" class="alert-info">#</th>
+<th style="text-align: center;" class="alert-info">أسـم المرحلـة</th>
+<th style="text-align: center;" class="alert-info">الملاحظـات</th>
+<th style="text-align: center;" class="alert-success">انشـئ بواسطـة</th>
+<th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
 <tbody>
 <?php $i = 0; ?>
 @foreach ($grades as $grade)
 <tr>
-    <?php $i++; ?>
-    <td>{{ $i }}</td>
-    <td>{{ $grade->name }}</td>
-    <td>{{ $grade->notes }}</td>
-    <td>{{ $grade->create_by }}</td>
-    <td>
-        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                data-target="#edit{{ $grade->id }}"
-                title="تعديل"><i
-                class="fa fa-edit"></i></button>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                data-target="#delete{{ $grade->id }}"
-                title="حذف"><i
-                class="fa fa-trash"></i></button>
-    </td>
+<?php $i++; ?>
+<td>{{ $i }}</td>
+<td>{{ $grade->name }}</td>
+<td>{{ $grade->notes }}</td>
+<td>{{ $grade->create_by }}</td>
+<td>
+    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+            data-target="#edit{{ $grade->id }}"
+            title="تعديل"><i
+            class="fa fa-edit"></i></button>
+    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+            data-target="#delete{{ $grade->id }}"
+            title="حذف"><i
+            class="fa fa-trash"></i></button>
+</td>
 </tr>
 
 <!-- edit_modal_Grade -->
 <div class="modal fade" id="edit{{ $grade->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                    id="exampleModalLabel">
-                    تعديل مرحلة
-                </h5>
-    
-            </div>
-            <div class="modal-body">
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                id="exampleModalLabel">
+                تعديل مرحلة
+            </h5>
+
+        </div>
+        <div class="modal-body">
 <!-- add_form -->
 <form  class="form-horizontal" action="{{route('Grades.update','test')}}" method="post">
 {{method_field('patch')}}
 @csrf
 
 <div class="box-body">
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
-        <div class="col-sm-9">
-        <input id="Name" type="text" name="Name"
-        class="form-control"
-        value="{{$grade->name }}"
-        required>
-        <input id="id" type="hidden" name="id" class="form-control"
-            value="{{ $grade->id }}">
-    </div>
-    </div>
+<div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
+    <div class="col-sm-9">
+    <input id="Name" type="text" name="Name"
+    class="form-control"
+    value="{{$grade->name }}"
+    required>
+    <input id="id" type="hidden" name="id" class="form-control"
+        value="{{ $grade->id }}">
+</div>
+</div>
 <br>
 <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
-    <div class="col-sm-9">
-        <textarea class="form-control" name="Notes" rows="3">{{ $grade->notes }}</textarea>
+<label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
+<div class="col-sm-9">
+    <textarea class="form-control" name="Notes" rows="3">{{ $grade->notes }}</textarea>
 </div>
 </div>
 
@@ -124,48 +124,48 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary"
-        data-dismiss="modal">إغلاق</button>
+    data-dismiss="modal">إغلاق</button>
 <button type="submit"
-        class="btn btn-success">تعديل البيانات</button>
+    class="btn btn-success">تعديل البيانات</button>
 </div>
 </form>
 
-            </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- delete_modal_Grade -->
 <div class="modal fade" id="delete{{ $grade->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-danger" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                    id="exampleModalLabel">
-                    حذف مرحلة
-                </h5>
-               
-            </div>
-            <div class="modal-body">
-                <form action="{{route('Grades.destroy','test')}}" method="post">
-                    {{method_field('Delete')}}
-                    @csrf
-                    هل انت متأكد من عملية الحذف ؟
-                    <input id="id" type="test" name="Name" class="form-control"
-                            value="{{ $grade->name }}" disabled>
-                    <input id="id" type="hidden" name="id" class="form-control"
-                            value="{{ $grade->id }}">
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left"
-                                data-dismiss="modal">إغلاق</button>
-                        <button type="submit"
-                                class="btn btn-outline">حذف البيانات</button>
-                    </div>
-                </form>
-            </div>
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-danger" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                id="exampleModalLabel">
+                حذف مرحلة
+            </h5>
+            
+        </div>
+        <div class="modal-body">
+            <form action="{{route('Grades.destroy','test')}}" method="post">
+                {{method_field('Delete')}}
+                @csrf
+                هل انت متأكد من عملية الحذف ؟
+                <input id="id" type="test" name="Name" class="form-control"
+                        value="{{ $grade->name }}" disabled>
+                <input id="id" type="hidden" name="id" class="form-control"
+                        value="{{ $grade->id }}">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left"
+                            data-dismiss="modal">إغلاق</button>
+                    <button type="submit"
+                            class="btn btn-outline">حذف البيانات</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 
@@ -193,34 +193,34 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
 <div class="modal-header">
-    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-        id="exampleModalLabel">
-        إضافة مرحلة
-    </h5>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+    id="exampleModalLabel">
+    إضافة مرحلة
+</h5>
 <div class="modal-body">
-    <!-- add_form -->
-    <form class="form-horizontal" action="{{ route('Grades.store') }}" method="POST">
-        @csrf
-        <div class="box-body">
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
-                <div class="col-sm-9">
-                    <input  type="text" name="Name" class="form-control" id="inputEmail3">
-            </div>
-            </div>
-
+<!-- add_form -->
+<form class="form-horizontal" action="{{ route('Grades.store') }}" method="POST">
+    @csrf
+    <div class="box-body">
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
+            <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="Notes" rows="3"></textarea>
+                <input  type="text" name="Name" class="form-control" id="inputEmail3">
         </div>
         </div>
+
+    <div class="form-group">
+        <label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" name="Notes" rows="3"></textarea>
+    </div>
+    </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary"
-            data-dismiss="modal">إغلاق</button>
-    <button type="submit"
-            class="btn btn-success">حفظ البيانات</button>
+<button type="button" class="btn btn-secondary"
+        data-dismiss="modal">إغلاق</button>
+<button type="submit"
+        class="btn btn-success">حفظ البيانات</button>
 </div>
 </div>
 </form>

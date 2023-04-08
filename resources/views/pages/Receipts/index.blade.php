@@ -5,27 +5,7 @@
     سندات القبض
 @stop
 @endsection
-{{-- @section('page-header')
-  <!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">  سندات القبض</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسيـة</a></li>
-                <li class="breadcrumb-item active"> سندات القبض</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-   سندات القبض
-@stop
-<!-- breadcrumb -->
-@endsection --}}
+
 @section('content')
 
 

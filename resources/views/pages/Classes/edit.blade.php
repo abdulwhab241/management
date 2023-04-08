@@ -5,27 +5,7 @@
     تعديل جدول الحصـص
 @stop
 @endsection
-{{-- @section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">تعديل جدول الحصـص</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
-                <li class="breadcrumb-item active">تعديل جدول الحصـص</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    تعديل جدول الحصـص
-@stop
-<!-- breadcrumb -->
-@endsection --}}
+
 @section('content')
 
 

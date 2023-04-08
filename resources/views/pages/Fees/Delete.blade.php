@@ -25,38 +25,3 @@
     </div>
 </div>
 </div>
-{{-- 
-<div class="modal fade" id="Delete_Fee{{$fee->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal modal-danger">
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">حـذف رسـوم دراسيـة<</h4>
-        </div>
-        <div class="modal-body">
-        <p>One fine body&hellip;</p>
-        <form action="{{route('Fees.destroy','test')}}" method="post">
-            @csrf
-            @method('DELETE')
-            <input type="hidden" name="id" value="{{$fee->id}}">
-            <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية حـذف ؟</h5>
-            <input id="Name" type="text" name="Name"
-            class="form-control"
-            value="{{ $fee->title }}" style="font-weight: bolder; text-align: center; font-size:20px;"
-            disabled>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغـلاق</button>
-                <button  class="btn btn-danger">حـذف البيانـات</button>
-            </div>
-       
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">إغـلاق</button>
-        <button type="button" class="btn btn-outline">حـذف البيانـات</button>
-        </div>
-    </form>
-    </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-</div><!-- /.example-modal --> --}}

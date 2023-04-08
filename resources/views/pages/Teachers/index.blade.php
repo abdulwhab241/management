@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('css')
-{{-- @toastr_css --}}
+
 @section('title')
     المعلمين
 @stop
@@ -117,11 +117,7 @@
 </div>
 </div>
 </div>
-{{-- </div> --}}
-{{-- </div>
-</div>
-</div> --}}
-<!-- row closed -->
+
 </section>
 @endsection
 @section('js')
