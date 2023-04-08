@@ -1,6 +1,6 @@
 <!-- Deleted inFormation Student -->
 <div class="modal fade" id="Delete_Fee_invoice{{$Fee_invoice->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-danger">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حذف فاتورة</h5>
@@ -12,11 +12,15 @@
                 <form action="{{route('Fees_Invoices.destroy','test')}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="hidden" name="id" value="{{$Fee_invoice->id}}">
-                    <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية الحذف ؟</h5>
+                    <input type="hidden" name="id" value="{{$Fee_invoice->id}}}">
+                    <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية حـذ فـاتـورة الطـالـب ؟</h5>
+                    <input id="Name" type="text" name="Name"
+                    class="form-control"
+                    value="{{ $Fee_invoice->student->name }}" style="font-weight: bolder; text-align: center; font-size:20px;"
+                    disabled>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('Students_trans.Close')}}</button>
-                        <button  class="btn btn-danger">{{trans('Students_trans.submit')}}</button>
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">إغـلاق</button>
+                        <button  class="btn btn-outline">حـذف البيانـات</button>
                     </div>
                 </form>
             </div>

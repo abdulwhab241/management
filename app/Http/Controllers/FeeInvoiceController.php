@@ -48,7 +48,7 @@ class FeeInvoiceController extends Controller
     }
 
 
-    public function destroy($request)
+    public function destroy(Request $request)
     {
         return $this->Fees_Invoices->destroy($request);
     }

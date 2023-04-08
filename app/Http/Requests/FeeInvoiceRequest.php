@@ -27,7 +27,7 @@ class FeeInvoiceRequest extends FormRequest
             'Student_id' => 'required|integer',
             'description' => 'required',
             'Fee_id' => 'required|integer',
-            'amount' => 'required',
+            'amount' => 'required|integer',
         ];
     }
 }
