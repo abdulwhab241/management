@@ -143,6 +143,8 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     {
         try {
             ReceiptStudent::destroy($request->id);
+            StudentAccount::destroy($request->id);
+            FundAccount::destroy($request->id);
             toastr()->error('تـم حـذف سنـد القبـض بنجـاح');
             return redirect()->back();
         }

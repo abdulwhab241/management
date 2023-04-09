@@ -64,7 +64,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->grade_id = strip_tags($request->Grade_id);
             $students->classroom_id = strip_tags($request->Classroom_id);
             $students->birth_date = strip_tags($request->Date_Birth);
-            $students->fee_id = strip_tags($request->Fee_id);
+            // $students->fee_id = strip_tags($request->Fee_id);
             $students->academic_year = strip_tags($request->academic_year);
 
               // insert father information
@@ -130,7 +130,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->grade_id = strip_tags($request->Grade_id);
             $Edit_Students->classroom_id = strip_tags($request->Classroom_id);
             $Edit_Students->birth_date = strip_tags($request->Date_Birth);
-            $Edit_Students->fee_id = strip_tags($request->Fee_id);
+            // // $Edit_Students->fee_id = strip_tags($request->Fee_id);
             $Edit_Students->academic_year = strip_tags($request->academic_year);
 
                 // insert father information

@@ -130,7 +130,7 @@
         <li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> الرسـوم الدراسيـة</a></li>
         <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-dollar"></i> سندات القبض (تسـديـد رسـوم)</a></li>
         <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-list"></i> الفـواتيـر الدراسيـة</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        <li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-user-times"></i> أستبـعاد رسـوم طـالـب </a></li>
         </ul>
     </li>
     <li class="treeview">

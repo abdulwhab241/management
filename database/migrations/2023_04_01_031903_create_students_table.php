@@ -22,8 +22,8 @@ return new class extends Migration
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->bigInteger('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->bigInteger('fee_id')->unsigned();
-            $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade');
+            // $table->bigInteger('fee_id')->unsigned();
+            // $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade');
             $table->string('academic_year');
 
              //Father information

@@ -58,7 +58,7 @@ aria-pressed="true">اضافة طـالـب</a>
     <th style="text-align: center;" class="alert-info"> النوع</th>
     <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
     <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
-    <th style="text-align: center;" class="alert-info">الرسوم الدراسية</th>
+    <th style="text-align: center;" class="alert-info">أسـم الأب </th>
     <th style="text-align: center;" class="alert-info"> هاتف الاب</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
@@ -74,16 +74,17 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{ $Student->gender->name }}</td>
             <td>{{$Student->grade->name}}</td>
             <td>{{$Student->classroom->name_class}}</td>
-            <td>{{ number_format( $Student->fee->amount) }}</td>
+            <td>{{ $Student->father_name }}</td>
             <td>{{ $Student->father_phone }}</td>
             <td>{{ $Student->create_by }}</td>
             <td>
-                <a href="{{route('Students.edit',$Student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}" title="حذف"><i class="fa fa-trash"></i></button>
                 {{-- <a class="btn btn-praymary btn-sm" href="#" title=""></a> --}}
                 <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></a>
                 <a href="{{route('Receipts.show',$Student->id)}}" class="btn btn-default btn-sm" role="button" aria-pressed="true" title="سند قبض أو تسديد رسوم"><i class="fa fa-dollar"></i></a>
                 <a href="{{ route('Fees_Invoices.show',$Student->id) }}" class="btn btn-success btn-sm" role="button" aria-pressed="true" title="اضافة فاتورة رسوم"><i class="fa fa-money"></i></a>
+                <a href="{{ route('ProcessingFee.show',$Student->id) }}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" title="استبعاد رسوم"><i class="fas fa-user-times"></i></a>
+                <a href="{{route('Students.edit',$Student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}" title="حذف"><i class="fa fa-trash"></i></button>
 
                 {{-- <div class="dropdown show">
                     <a class="btn btn-success btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

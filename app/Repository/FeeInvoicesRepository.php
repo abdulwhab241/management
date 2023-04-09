@@ -111,6 +111,17 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $StudentAccount->create_by = auth()->user()->name;
             $StudentAccount->save();
 
+            // حفظ البيانات في جدول الصندوق
+            $fund_accounts = new FundAccount();
+            $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->student_id = strip_tags($request->Student_id);
+            $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
+            $fund_accounts->Debit = 0.00;
+            $fund_accounts->credit = strip_tags($request->amount);
+            $fund_accounts->description = strip_tags($request->description);
+            $fund_accounts->create_by = auth()->user()->name;
+            $fund_accounts->save();
+
             toastr()->success('تـم تـعديـل الفـاتـورة بنجـاح');
             return redirect()->route('Fees_Invoices.index');
         } catch (\Exception $e) {
@@ -123,6 +134,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
         try {
             // dd($request);
             FeeInvoice::destroy($request->id);
+            FundAccount::destroy($request->id);
             StudentAccount::destroy($request->id);
             toastr()->error('تـم حـذف الفـاتـورة بنجـاح');
             return redirect()->back();

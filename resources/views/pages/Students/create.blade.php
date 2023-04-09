@@ -112,7 +112,7 @@
                 @enderror
             </div>
 
-        <div class="col-xs-3">
+        {{-- <div class="col-xs-3">
             <label for="inputZip"> الرسوم الدراسية</label>
             <select class="form-control select2" name="Fee_id">
                 <option selected>أختـر من القائمة...</option>
@@ -125,7 +125,7 @@
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
-        </div>
+        </div> --}}
         
 
         <div class="col-xs-3">
