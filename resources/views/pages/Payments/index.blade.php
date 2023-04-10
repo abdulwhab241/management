@@ -2,21 +2,22 @@
 @section('css')
 
 @section('title')
-    معالجات الرسوم الدراسية
+    سندات الصرف
 @stop
 @endsection
 
 @section('content')
 
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        معالجات الرسوم الدراسية
+        سندات الصرف
     </h1>
     <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
     
-    <li class="active">معالجات الرسوم الدراسية</li>
+    <li class="active">سندات الصرف</li>
     </ol>
     </section>
     
@@ -59,29 +60,29 @@
         </tr>
     </thead>
     <tbody>
+        @foreach($payment_students as $payment_student)
+        <tr>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{$payment_student->student->name}}</td>
+        <td>{{ number_format($payment_student->amount) }} ريال </td>
+        <td>{{$payment_student->description}}</td>
+        <td>{{$payment_student->create_by}}</td>
+            <td>
+                <a href="{{route('Payments.edit',$payment_student->id)}}" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-danger btn-sm" title="حذف"  data-toggle="modal" data-target="#Delete_receipt{{$payment_student->id}}" ><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
 
-    @foreach($ProcessingFees as $ProcessingFee)
-    <tr>
-    <td>{{ $loop->iteration }}</td>
-    <td>{{$ProcessingFee->student->name}}</td>
-    <td>{{ number_format($ProcessingFee->amount) }} ريال </td>
-    <td>{{$ProcessingFee->description}}</td>
-    <td>{{$ProcessingFee->create_by}}</td>
-        <td>
-            <a href="{{route('ProcessingFee.edit',$ProcessingFee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$ProcessingFee->id}}" ><i class="fa fa-trash"></i></button>
-        </td>
-    </tr>
-@include('pages.ProcessingFee.Delete')
+    @include('pages.Payments.Delete')
 @endforeach
     </tbody>
     </tbody>
 </table>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
+</div>
+</div>
+</div>
+</div>
+</section>
 
 @endsection
 @section('js')

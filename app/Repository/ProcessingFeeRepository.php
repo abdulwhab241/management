@@ -29,6 +29,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
     public function edit($id)
     {
         $ProcessingFee = ProcessingFee::findOrFail($id);
+        // $Student = Student::findOrFail($id);
         return view('pages.ProcessingFee.edit',compact('ProcessingFee'));
     }
 
@@ -70,7 +71,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
 
 
             // DB::commit();
-            toastr()->success('تـم إستبـاعد رسـوم الطـالـب  بنجـاح');
+            toastr()->success('تـم إضـافـة إستبـاعد رسـوم الطـالـب  بنجـاح');
             return redirect()->route('ProcessingFee.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -104,7 +105,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts->save();
 
             // حفظ البيانات في جدول الصندوق
-            $fund_accounts = new FundAccount();
+            $fund_accounts = FundAccount::where('processing_id',$request->id)->first();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->processing_id = strip_tags($ProcessingFee->id);

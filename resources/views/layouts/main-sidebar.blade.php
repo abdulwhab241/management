@@ -34,25 +34,7 @@
     <ul class="sidebar-menu">
     <li class="header">برنامـج عبدالوهـاب لإدارة المدارس</li>
     <li><a href="#"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-    <!-- Grades-->
-    {{-- <li class="treeview">
-        <a href="#">
-        <i class="fa fa-files-o"></i>
-        <span>Layout Options</span>
-        <span class="label label-primary pull-left">۴</span>
-        </a>
-        <ul class="treeview-menu">
-        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-        <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="pages/widgets.html">
-        <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-left bg-green">new</small>
-        </a>
-    </li> --}}
+
     <li class="treeview">
         <a href="#">
         <i class="fas fa-school"></i>
@@ -61,9 +43,6 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Grades.index')}}"><i class="fa fa-circle-o"></i> قائمة المراحل الدراسية</a></li>
-        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
@@ -74,9 +53,7 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Classrooms.index')}}"><i class="fa fa-circle-o"></i> قائمـة الصفـوف الدراسيـة</a></li>
-        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
+
         </ul>
     </li>
     <li class="treeview">
@@ -87,9 +64,6 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Sections.index')}}"><i class="fa fa-circle-o"></i> قائمـة الأقسـام</a></li>
-        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
@@ -113,9 +87,6 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Teachers.index')}}"><i class="fa fa-users"></i> قائمة المعلمين</a></li>
-        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     <li class="treeview">
@@ -126,11 +97,11 @@
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
-            {{-- <a href="">الرسوم الدراسية</a><i class=""></i> --}}
         <li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> الرسـوم الدراسيـة</a></li>
         <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-dollar"></i> سندات القبض (تسـديـد رسـوم)</a></li>
         <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-list"></i> الفـواتيـر الدراسيـة</a></li>
         <li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-user-times"></i> أستبـعاد رسـوم طـالـب </a></li>
+        <li><a href="{{route('Payments.index')}}"><i class="fas fa-donate"></i> سـندات الصـرف </a></li>
         </ul>
     </li>
     <li class="treeview">

@@ -83,6 +83,7 @@ aria-pressed="true">اضافة طـالـب</a>
                 <a href="{{route('Receipts.show',$Student->id)}}" class="btn btn-default btn-sm" role="button" aria-pressed="true" title="سند قبض أو تسديد رسوم"><i class="fa fa-dollar"></i></a>
                 <a href="{{ route('Fees_Invoices.show',$Student->id) }}" class="btn btn-success btn-sm" role="button" aria-pressed="true" title="اضافة فاتورة رسوم"><i class="fa fa-money"></i></a>
                 <a href="{{ route('ProcessingFee.show',$Student->id) }}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" title="استبعاد رسوم"><i class="fas fa-user-times"></i></a>
+                <a href="{{ route('Payments.show',$Student->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="سند صرف"><i class="fas fa-donate"></i></a>
                 <a href="{{route('Students.edit',$Student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}" title="حذف"><i class="fa fa-trash"></i></button>
 
@@ -137,6 +138,7 @@ aria-pressed="true">اضافة طـالـب</a>
 @endforeach
 </tbody>
 </table>
+
 </div>
 </div>
 </div>

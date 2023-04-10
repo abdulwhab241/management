@@ -5,26 +5,7 @@
 @stop
 @endsection
 @section('page-header')
-{{-- <!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">  استبعاد رسوم</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active"> استبعاد رسوم</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    استبعاد رسوم{{$student->name}}
-@stop
-<!-- breadcrumb -->
-@endsection --}}
+
 @section('content')
 
 
