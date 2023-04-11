@@ -106,12 +106,23 @@
     </li>
     <li class="treeview">
         <a href="#">
-        <i class="fas fa-book-open"></i>
+        <i class="fa fa-book"></i>
         <span>المواد الدراسية</span>
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمة المواد الدراسية</a></li>
+
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+        <i class="fas fa-book-open"></i>
+        <span>الأختبأرات </span>
+        <i class="fa fa-angle-left pull-left"></i>
+        </a>
+        <ul class="treeview-menu">
+        <li><a href="{{route('Exams.index')}}"><i class="fas fa-book-open"></i> قائمة الأختبأرات</a></li>
 
         </ul>
     </li>

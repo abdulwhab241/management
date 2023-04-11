@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\PaymentController;
@@ -86,6 +87,11 @@ Route::group(
         //==============================Subjects============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Subjects', SubjectController::class);
+        });
+
+         //==============================Exams============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Exams', ExamController::class);
         });
 
         //==============================StudentClasss============================

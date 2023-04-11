@@ -19,7 +19,7 @@ class GradeController extends Controller
     {
         try
         {
-            $validated = $request->validated();
+            // $validated = $request->validated();
             $Grade = new Grade();
             $Grade->name = strip_tags($request->Name);
             $Grade->notes = strip_tags($request->Notes);
