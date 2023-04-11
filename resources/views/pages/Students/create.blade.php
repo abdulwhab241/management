@@ -15,7 +15,7 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Students.index')}}"><i class="fa fa-book"></i> قائمـة الطـلاب </a></li>
+<li><a href="{{route('Students.index')}}"><i class="fa fa-users"></i> قائمـة الطـلاب </a></li>
 <li class="active">اضافة طـالـب</li>
 </ol>
 </section>
@@ -82,22 +82,7 @@
 
         <div class="row">
 
-            <div class="col-xs-3">
-                <label for="inputZip">الفصل الدراسي</label>
-                <select class="form-control select2" name="Classroom_id">
-                    <option selected>أختـر من القائمة...</option>
-                    @foreach($Classrooms as $Classroom)
-                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                    @endforeach
-                </select>
-                @error('Classroom_id')
-                <div class=" alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                </div>
-                @enderror
-            </div>
-
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <label for="inputState">المرحلة الدراسية</label>
                 <select class="form-control select2" name="Grade_id">
                     <option selected>أختـر من القائمة...</option>
@@ -112,23 +97,22 @@
                 @enderror
             </div>
 
-        {{-- <div class="col-xs-3">
-            <label for="inputZip"> الرسوم الدراسية</label>
-            <select class="form-control select2" name="Fee_id">
-                <option selected>أختـر من القائمة...</option>
-                @foreach($Fees as $Fee)
-                    <option value="{{$Fee->id}}">{{ number_format($Fee->amount) }}</option>
-                @endforeach
-            </select>
-            @error('Fee_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            <div class="col-xs-4">
+                <label for="inputZip">الفصل الدراسي</label>
+                <select class="form-control select2" name="Classroom_id">
+                    <option selected>أختـر من القائمة...</option>
+                    @foreach($Classrooms as $Classroom)
+                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
+                    @endforeach
+                </select>
+                @error('Classroom_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
             </div>
-            @enderror
-        </div> --}}
-        
 
-        <div class="col-xs-3">
+        <div class="col-xs-4">
             <label for="title">السنة الدراسية</label>
             <select class="form-control select2" name="academic_year">
                 <option selected>أختـر من القائمة...</option>
@@ -214,7 +198,7 @@
             @enderror
         </div>
 
-    </div>
+    </div><br>
     <div class="form-group">
         <label for="exampleFormControlTextarea1">العنوان</label>
         <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4"></textarea>

@@ -16,7 +16,7 @@
                     <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية سـند صـرف ؟</h5>
                     <input id="Name" type="text" name="Name"
                     class="form-control"
-                    value="{{ $payment_student->student->name }}" style="text-align: center; font-weight: bolder;"
+                    value=" أسـم الطـالـب: {{ $payment_student->student->name }} , المبلغ: {{ number_format($payment_student->amount) }}" style="text-align: center; font-weight: bolder;"
                     disabled>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline pull-left"

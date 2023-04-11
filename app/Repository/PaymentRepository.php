@@ -87,7 +87,7 @@ class PaymentRepository implements PaymentRepositoryInterface
         try {
 
             // تعديل البيانات في جدول سندات الصرف
-            $payment_students = PaymentStudent::findorfail($request->id);
+            $payment_students = PaymentStudent::findOrFail($request->id);
             $payment_students->date = date('Y-m-d');
             $payment_students->student_id = strip_tags($request->student_id);
             $payment_students->amount = strip_tags($request->Debit);
@@ -98,9 +98,9 @@ class PaymentRepository implements PaymentRepositoryInterface
 
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = FundAccount::where('payment_id',$payment_students->id)->first();
-            // $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
-            // $fund_accounts->payment_id = strip_tags($payment_students->id);
+            $fund_accounts->payment_id = strip_tags($payment_students->id);
             $fund_accounts->Debit = 0.00;
             $fund_accounts->credit = strip_tags($request->Debit);
             $fund_accounts->description = strip_tags($request->description);
@@ -119,11 +119,11 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts->description = strip_tags($request->description);
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
-            // DB::commit();
+
             toastr()->success('تـم تعـديـل سـند الصـرف  بنجـاح');
             return redirect()->route('Payments.index');
+
         } catch (\Exception $e) {
-            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
