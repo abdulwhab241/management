@@ -273,6 +273,7 @@ aria-hidden="true">
 
 
 </div>
+</div>
 
 <!-- حذف مجموعة صفوف -->
 <div class="modal fade" id="delete_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

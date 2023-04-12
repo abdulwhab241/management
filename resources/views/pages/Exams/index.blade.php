@@ -36,8 +36,10 @@
 </div>
 @endif
 <div class="box-header">
-<a href="#" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">اضافة إختبـار</a>
+
+<button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+    اضافة إختبـار
+    </button>
 <br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -57,7 +59,7 @@ aria-pressed="true">اضافة إختبـار</a>
     <th style="text-align: center;" class="alert-info">الصـف الدراسـي </th>
     <th style="text-align: center;" class="alert-info"> المـادة</th>
     <th style="text-align: center;" class="alert-info">الأستـاذ </th>
-    <th style="text-align: center;" class="alert-info">مجمـوع الدرجـات</th>
+    <th style="text-align: center;" class="alert-info">الـدرجـة</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -74,17 +76,128 @@ aria-pressed="true">اضافة إختبـار</a>
             <td>{{$Exam->total_marks}}</td>
             <td>{{ $Exam->create_by }}</td>
             <td>
-                {{-- <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></a>
-                <a href="{{route('Receipts.show',$Student->id)}}" class="btn btn-default btn-sm" role="button" aria-pressed="true" title="سند قبض أو تسديد رسوم"><i class="fa fa-dollar"></i></a>
-                <a href="{{ route('Fees_Invoices.show',$Student->id) }}" class="btn btn-success btn-sm" role="button" aria-pressed="true" title="اضافة فاتورة رسوم"><i class="fa fa-money"></i></a>
-                <a href="{{ route('ProcessingFee.show',$Student->id) }}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" title="استبعاد رسوم"><i class="fas fa-user-times"></i></a>
-                <a href="{{ route('Payments.show',$Student->id) }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="سند صرف"><i class="fas fa-donate"></i></a> --}}
-                <a href="{{route('Exams.edit',$Exam->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                data-target="#edit{{ $Exam->id }}"
+                title="تعديل"><i class="fa fa-edit"></i></button>
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $Exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
 
+        <!-- edit_modal_Grade -->
+<div class="modal fade" id="edit{{ $Exam->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                id="exampleModalLabel">
+                تعديل صف
+            </h5>
+        </div>
+        <div class="modal-body">
+            <!-- add_form -->
+            <form class="form-horizontal"  action="{{ route('Exams.update', 'test') }}" method="post">
+                {{ method_field('patch') }}
+                @csrf
+                <div class="box-body">
+                    <div class="row">
 
+                        <div class="col-xs-6"> 
+                            <div class="form-group">
+                            <label>الصـف الدراسي</label>
+                            <input id="id" type="hidden" name="id" class="form-control"
+                            value="{{ $Exam->id }}">
+                            <select class="form-control select2" name="Classroom_id">
+                                <option value="{{ $Exam->classroom->id }}">
+                                    {{ $Exam->classroom->name_class }}
+                                </option>
+                                @foreach ($Classrooms as $Classroom)
+                                    <option value="{{ $Classroom->id }}">
+                                        {{ $Classroom->name_class }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            </div>
+                            @error('Classroom_id')
+                            <div class=" alert-danger">
+                            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                            </div>
+                            @enderror
+                        </div>
+                
+                        <div class="col-xs-6"> 
+                            <div class="form-group">
+                            <label>المـادة</label>
+                            <select class="form-control select2" name="Subject_id">
+                                <option value="{{ $Exam->subject->id }}">
+                                    {{ $Exam->subject->name }}
+                                </option>
+                                @foreach ($Subjects as $Subject)
+                                    <option value="{{ $Subject->id }}">
+                                        {{ $Subject->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            </div>
+                            @error('Subject_id')
+                            <div class=" alert-danger">
+                            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                            </div>
+                            @enderror
+                        </div>
+                </div><br>
+                
+                <div class="row">
+                
+                    <div class="col-xs-6"> 
+                        <div class="form-group">
+                        <label>الأستـاذ</label>
+                        <select class="form-control select2" name="Teacher_id">
+                            <option value="{{ $Exam->teacher->id }}">
+                                {{ $Exam->teacher->name }}
+                            </option>
+                            @foreach ($Teachers as $Teacher)
+                                <option value="{{ $Teacher->id }}">
+                                    {{ $Teacher->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        </div>
+                        @error('Teacher_id')
+                        <div class=" alert-danger">
+                        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                        </div>
+                        @enderror
+                    </div>
+                
+                    <div class="col-xs-6">
+                        <label for="inputEmail4">الـدرجـة</label>
+                        <input type="number" value="{{ $Exam->total_marks }}" name="Total" class="form-control">
+                        @error('Total')
+                        <div class=" alert-danger">
+                        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                        </div>
+                        @enderror
+                    </div>
+                
+                </div>
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger"
+                    data-dismiss="modal">إغلاق</button>
+                    <button type="submit"
+                    class="btn btn-success">تـعديـل البيانات</button>
+                    </div>
+
+            </form>
+    
+        </div>
+    </div>
+    </div>
+    </div>
+
+<!-- Delete modal -->
 <div class="modal fade" id="delete_Exam{{$Exam->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-danger" role="document">
         <form action="{{route('Exams.destroy','test')}}" method="post">
@@ -124,46 +237,97 @@ aria-pressed="true">اضافة إختبـار</a>
 <!-- add_modal_class -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog modal-lg">
+<div class="modal-dialog modal-success">
 <div class="modal-content">
 <div class="modal-header">
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-إضافة صف
+    اضافة إختبـار
 </h5>
 </div>
 <div class="box-body">
 
-<form class="form-horizontal" action="{{ route('Classrooms.store') }}" method="POST">
+<form class="form-horizontal" action="{{ route('Exams.store') }}" method="POST">
 @csrf
 
 <div class="box-body">
-    
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">أسـم الصـف</label>
-        <div class="col-sm-10">
-            <input  type="text" name="Name" class="form-control" id="inputEmail2" required>
-    </div>
-    </div>
+    <div class="row">
 
-    <div class="form-group">
-        <label for="inputEmail2" class="col-sm-2 control-label">أسـم المرحلـة</label>
-        <div class="col-sm-10">
-        <select class="form-control select2" data-placeholder="Select a State" name="Grade_id">
-            @foreach ($Grades as $Grade)
-                <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
+        <div class="col-xs-6"> 
+            <div class="form-group">
+            <label>الصـف الدراسي</label>
+            <select class="form-control select2" name="Classroom_id">
+                <option  selected disabled>أختـر من القائمة...</option>
+                @foreach ($Classrooms as $Classroom)
+                    <option  value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
+                @endforeach
+            </select>
+            </div>
+            @error('Classroom_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-xs-6"> 
+            <div class="form-group">
+            <label>المـادة</label>
+            <select class="form-control select2" name="Subject_id">
+                <option  selected disabled>أختـر من القائمة...</option>
+                @foreach ($Subjects as $Subject)
+                    <option  value="{{ $Subject->id }}" required>{{ $Subject->name }}</option>
+                @endforeach
+            </select>
+            </div>
+            @error('Subject_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+</div><br>
+
+<div class="row">
+
+    <div class="col-xs-6"> 
+        <div class="form-group">
+        <label>الأستـاذ</label>
+        <select class="form-control select2" name="Teacher_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Teachers as $Teacher)
+                <option  value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
             @endforeach
         </select>
-    </div>
+        </div>
+        @error('Teacher_id')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+        </div>
+        @enderror
     </div>
 
+    <div class="col-xs-6">
+        <label for="inputEmail4">الـدرجـة</label>
+        <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
+        @error('Total')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+        </div>
+        @enderror
+    </div>
+
+</div>
+
+</div>
+
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
+        <button type="button" class="btn btn-danger"
         data-dismiss="modal">إغلاق</button>
         <button type="submit"
         class="btn btn-success">حفظ البيانات</button>
         </div>
 
-</div>
+
 </form>
 </div>
 

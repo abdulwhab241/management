@@ -25,7 +25,7 @@ class ExamRequest extends FormRequest
             'Teacher_id' => 'required|integer',
             'Subject_id' => 'required|integer',
             'Classroom_id' => 'required|integer',
-            'Total' => 'required|integer',
+            'Total' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:2|max:3',
         ];
     }
 }
