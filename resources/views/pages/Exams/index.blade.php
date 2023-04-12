@@ -86,12 +86,12 @@
         <!-- edit_modal_Grade -->
 <div class="modal fade" id="edit{{ $Exam->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-success" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                 id="exampleModalLabel">
-                تعديل صف
+                تعديل الأختبـار
             </h5>
         </div>
         <div class="modal-body">
@@ -237,14 +237,15 @@
 <!-- add_modal_class -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog modal-success">
+{{-- aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
+<div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
-<div class="modal-header">
+    <div class="modal-header">
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
     اضافة إختبـار
 </h5>
 </div>
-<div class="box-body">
+<div class="modal-body">
 
 <form class="form-horizontal" action="{{ route('Exams.store') }}" method="POST">
 @csrf

@@ -79,7 +79,7 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{ $Student->create_by }}</td>
             <td>
                 {{-- <a class="btn btn-praymary btn-sm" href="#" title=""></a> --}}
-                <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></a>
+                <a href="{{route('Students.show',$Student->id)}}" class="btn btn-primary btn-sm" role="button" aria-pressed="true" title="عرض بيانات الطالب"><i class="fa fa-eye"></i></a>
                 <a href="{{route('Receipts.show',$Student->id)}}" class="btn btn-default btn-sm" role="button" aria-pressed="true" title="سند قبض أو تسديد رسوم"><i class="fa fa-dollar"></i></a>
                 <a href="{{ route('Fees_Invoices.show',$Student->id) }}" class="btn btn-success btn-sm" role="button" aria-pressed="true" title="اضافة فاتورة رسوم"><i class="fa fa-money"></i></a>
                 <a href="{{ route('ProcessingFee.show',$Student->id) }}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" title="استبعاد رسوم"><i class="fas fa-user-times"></i></a>
