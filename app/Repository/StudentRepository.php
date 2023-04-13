@@ -10,6 +10,7 @@ use App\Models\Student;
 use App\Models\Classroom;
 // use Illuminate\Support\Facades\DB;
 use App\Models\My_Parent;
+use App\Models\StudentAccount;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,7 +30,8 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Show_Student($id)
     {
         $Student = Student::findOrFail($id);
-        return view('pages.Students.show',compact('Student'));
+        $Student_Account = StudentAccount::findOrFail($id);
+        return view('pages.Students.show',compact('Student','Student_Account'));
     }
 
     public function Get_classrooms($id){

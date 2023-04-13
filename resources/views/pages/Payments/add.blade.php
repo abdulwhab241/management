@@ -12,7 +12,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        سند صرف للطـالـب  <label style="color: #5686E0">{{$payment_student->student->name}}</label>
+        سند صرف للطـالـب  <label style="color: #5686E0">{{$student->name}}</label>
     </h1>
     <ol class="breadcrumb">
     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
