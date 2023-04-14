@@ -8,8 +8,12 @@ use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
+use App\Models\FeeInvoice;
 // use Illuminate\Support\Facades\DB;
 use App\Models\My_Parent;
+use App\Models\PaymentStudent;
+use App\Models\ProcessingFee;
+use App\Models\ReceiptStudent;
 use App\Models\StudentAccount;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +35,11 @@ class StudentRepository implements StudentRepositoryInterface{
     {
         $Student = Student::findOrFail($id);
         $Student_Account = StudentAccount::findOrFail($id);
-        return view('pages.Students.show',compact('Student','Student_Account'));
+        $Payment = PaymentStudent::findOrFail($id);
+        $FeeInvoice = FeeInvoice::findOrFail($id);
+        $ReceiptStudent = ReceiptStudent::findOrFail($id);
+        $ProcessingFee = ProcessingFee::findOrFail($id);
+        return view('pages.Students.show',compact('Student','Student_Account','Payment','FeeInvoice','ReceiptStudent','ProcessingFee'));
     }
 
     public function Get_classrooms($id){

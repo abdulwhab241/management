@@ -102,11 +102,11 @@
                     </thead>
                     <tbody>
                         <tr>
-                    
-                            <td>{{ $Student_Account->feeInvoice->amount }}</td>
-                            {{-- <td>{{ $Student_Account->receipt->Debit }}</td> --}}
-                            {{-- <td>{{$Student_Account->processing->amount}}</td> --}}
-                            {{-- <td>{{$Student_Account->payment->amount}}</td> --}}
+                            {{-- <td>{{ number_format($Fee_invoice->amount) }} ريال </td> --}}
+                            <td>{{  number_format($FeeInvoice->amount) }} ريال </td>
+                            <td>{{  number_format($ReceiptStudent->Debit) }} ريال </td>
+                            <td>{{ number_format($ProcessingFee->amount)}} ريال </td>
+                            <td>{{ number_format($Payment->amount)}} ريال </td>
                         </tr>
 
             </tbody>
