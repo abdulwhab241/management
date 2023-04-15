@@ -7,6 +7,7 @@ use App\Models\Grade;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
+use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,5 +43,11 @@ class FeeInvoice extends Model
     public function fees()
     {
         return $this->belongsTo(Fee::class, 'fee_id');
+    }
+
+    // علاقة بين جدول سدادت الطلاب وجدول الطلاب لجلب اجمالي المدفوعات والمتبقي
+    public function student_account()
+    {
+        return $this->hasMany(StudentAccount::class, 'student_id');
     }
 }

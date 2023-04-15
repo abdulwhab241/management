@@ -24,7 +24,7 @@ class StudentAccount extends Model
 
     public function feeInvoice()
     {
-        return $this->belongsTo(FeeInvoice::class, 'fee_invoice_id');
+        return $this->hasMany(FeeInvoice::class, 'fee_invoice_id');
     }
 
     public function receipt()

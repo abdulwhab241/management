@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->decimal('amount',50,2);
-            $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
+            $table->foreignId('grade_id')->nullable()->references('id')->on('grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->string('description')->nullable();
             $table->string('year');

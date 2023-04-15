@@ -89,42 +89,48 @@
     <div class="tab-pane" id="tab_2">
 
         <div class="box-body table-responsive no-padding">
+            {{-- <h3 style="font-weight: bolder; color:blue; text-align: center;"> الرسـوم الدراسيـة</h3> --}}
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                     <thead>
                     <tr>
-                    
+                        {{-- <th style="text-align: center;" class="alert-info">#</th> --}}
                         <th style="text-align: center;" class="alert-info">الـرسـوم الدراسيـة</th>
-                        <th style="text-align: center;" class="alert-success">الرسـوم المدفـوعـة</th>
-                        <th style="text-align: center;" class="alert-danger"> الرسـوم المسـتبعـدة</th>
-                        <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th>
+                        <th style="text-align: center;" class="alert-info">المبـلغ</th>
+                        {{-- <th style="text-align: center;" class="alert-danger"> الرسـوم المسـتبعـدة</th>
+                        <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th> --}}
 
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            @foreach($FeeInvoices as $FeeInvoices)
+                            {{-- <td>{{$loop->iteration}}</td> --}}
+                            <td>{{ $FeeInvoices->description }}</td>
                             {{-- <td>{{ number_format($Fee_invoice->amount) }} ريال </td> --}}
-                            <td>{{  number_format($FeeInvoice->amount) }} ريال </td>
-                            <td>{{  number_format($ReceiptStudent->Debit) }} ريال </td>
+                            <td>{{  number_format($FeeInvoices->amount) }} ريال </td>
+                            {{-- @empty
+                            <td class="alert-danger" colspan="8">لاتوجد بيانات</td> --}}
+                            {{-- <td>{{  number_format($Student->feeInvoice->amount) }} ريال </td> --}}
+                            {{-- <td>{{  number_format($ReceiptStudent->Debit) }} ريال </td>
                             <td>{{ number_format($ProcessingFee->amount)}} ريال </td>
-                            <td>{{ number_format($Payment->amount)}} ريال </td>
+                            <td>{{ number_format($Payment->amount)}} ريال </td> --}}
                         </tr>
-
             </tbody>
             <tfoot>
                 <tr>
-                    <th style="text-align: center;" class="alert-info">إجـمالـي الـرسـوم</th>
-                    <th style="text-align: center;" class="alert-success">إجـمالـي المـدفوعـات</th>
-                    <th style="text-align: center;" class="alert-warning">الرسـوم المتبقيـة</th>
+                    <th style="text-align: center;" class="alert-success">إجـمالـي الـرسـوم</th>
+                    {{-- <th style="text-align: center;" class="alert-success">إجـمالـي المـدفوعـات</th>
+                    <th style="text-align: center;" class="alert-warning">الرسـوم المتبقيـة</th> --}}
 
                 </tr>
                 <tr>
-                    <td>fdsddf</td>
-                    <td>sdfsd</td>
-                    <td>sdfffsd</td>
+                    <td> {{ number_format($Student->student_account->sum('Debit')) }} ريال</td>
+                    {{-- <td>sdfsd</td>
+                    <td>sdfffsd</td> --}}
 
                 </tr>
                 </tfoot>
-
+                @endforeach
             </table>
         </div>
 
