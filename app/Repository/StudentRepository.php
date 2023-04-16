@@ -35,10 +35,13 @@ class StudentRepository implements StudentRepositoryInterface{
     {
         $Student = Student::findOrFail($id);
         $Student_Account = StudentAccount::findOrFail($id);
-        $Payment = PaymentStudent::all();
+        // $Payment = PaymentStudent::all();
+        $Payment = PaymentStudent::select('*')->where('student_id','=',$id)->get();
         // $FeeInvoices = FeeInvoice::all();
-        $ReceiptStudent = ReceiptStudent::all();
-        $ProcessingFee = ProcessingFee::all();
+        // $ReceiptStudent = ReceiptStudent::all();
+        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id)->get();
+        // $ProcessingFee = ProcessingFee::all();
+        $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',$id)->get();
         $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',$id)->get();
         return view('pages.Students.show',compact('Student','Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
     }

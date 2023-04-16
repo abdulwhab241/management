@@ -21,8 +21,18 @@ return new class extends Migration
             $table->foreignId('processing_id')->nullable()->references('id')->on('processing_fees')->onDelete('cascade');
             $table->foreignId('payment_id')->nullable()->references('id')->on('payment_students')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->decimal('Debit',50,2)->nullable();
-            $table->decimal('credit',50,2)->nullable();
+            $table->decimal('Debit_feeInvoice',50,2)->nullable();
+            $table->decimal('credit_feeInvoice',50,2)->nullable();
+            
+            $table->decimal('Debit_receipt',50,2)->nullable();
+            $table->decimal('credit_receipt',50,2)->nullable();
+
+            $table->decimal('Debit_processing',50,2)->nullable();
+            $table->decimal('credit_processing',50,2)->nullable();
+
+            $table->decimal('Debit_payment',50,2)->nullable();
+            $table->decimal('credit_payment',50,2)->nullable();
+
             $table->string('description')->nullable();
 
             $table->string('create_by')->nullable();

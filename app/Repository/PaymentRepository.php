@@ -101,8 +101,8 @@ class PaymentRepository implements PaymentRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->payment_id = strip_tags($payment_students->id);
-            $fund_accounts->Debit = 0.00;
-            $fund_accounts->credit = strip_tags($request->Debit);
+            $fund_accounts->Debit = strip_tags($request->Debit);
+            $fund_accounts->credit = 0.00;
             $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
@@ -114,8 +114,8 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts->type = 'تعديل سند الصرف';
             $students_accounts->student_id = strip_tags($request->student_id);
             $students_accounts->payment_id = strip_tags($payment_students->id);
-            $students_accounts->Debit = strip_tags($request->Debit);
-            $students_accounts->credit = 0.00;
+            $students_accounts->Debit = 0.00;
+            $students_accounts->credit = strip_tags($request->Debit);
             $students_accounts->description = strip_tags($request->description);
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();

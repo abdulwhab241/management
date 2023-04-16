@@ -89,54 +89,135 @@
     <div class="tab-pane" id="tab_2">
 
         <div class="box-body table-responsive no-padding">
-            {{-- <h3 style="font-weight: bolder; color:blue; text-align: center;"> الرسـوم الدراسيـة</h3> --}}
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                     <thead>
                     <tr>
-                        {{-- <th style="text-align: center;" class="alert-info">#</th> --}}
                         <th style="text-align: center;" class="alert-info">الـرسـوم الدراسيـة</th>
                         <th style="text-align: center;" class="alert-info">المبـلغ</th>
-                        {{-- <th style="text-align: center;" class="alert-danger"> الرسـوم المسـتبعـدة</th>
-                        <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th> --}}
-
                     </tr>
                     </thead>
                     <tbody>
                         <tr>
                             @foreach($FeeInvoices as $FeeInvoices)
-                            {{-- <td>{{$loop->iteration}}</td> --}}
                             <td>{{ $FeeInvoices->description }}</td>
-                            {{-- <td>{{ number_format($Fee_invoice->amount) }} ريال </td> --}}
                             <td>{{  number_format($FeeInvoices->amount) }} ريال </td>
-                            {{-- @empty
-                            <td class="alert-danger" colspan="8">لاتوجد بيانات</td> --}}
-                            {{-- <td>{{  number_format($Student->feeInvoice->amount) }} ريال </td> --}}
-                            {{-- <td>{{  number_format($ReceiptStudent->Debit) }} ريال </td>
-                            <td>{{ number_format($ProcessingFee->amount)}} ريال </td>
-                            <td>{{ number_format($Payment->amount)}} ريال </td> --}}
+
                         </tr>
+                        @endforeach
             </tbody>
-            <tfoot>
-                <tr>
-                    <th style="text-align: center;" class="alert-success">إجـمالـي الـرسـوم</th>
-                    {{-- <th style="text-align: center;" class="alert-success">إجـمالـي المـدفوعـات</th>
-                    <th style="text-align: center;" class="alert-warning">الرسـوم المتبقيـة</th> --}}
+            
 
-                </tr>
-                <tr>
-                    <td> {{ number_format($Student->student_account->sum('Debit')) }} ريال</td>
-                    {{-- <td>sdfsd</td>
-                    <td>sdfffsd</td> --}}
-
-                </tr>
-                </tfoot>
-                @endforeach
             </table>
-        </div>
+
+        </div><br>
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+            <thead>
+                <tr>
+                    <th style="text-align: center;" class="alert-success"> الرسـوم المـدفوعـة</th>
+                    <th style="text-align: center;" class="alert-success">المبـلغ</th>
+                    <th style="text-align: center;" class="alert-success">تاريـخ السـداد</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                @foreach ($ReceiptStudent as $Receipt )
+                <td>{{ $Receipt->description }}</td>
+                <td>{{  number_format($Receipt->Debit) }} ريال </td>
+                <td>{{$Receipt->created_at->diffForHumans()}}</td>
+            </tr>
+                @endforeach
+            </tbody>
+        </table>
+            </div><br>
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;" class="alert-warning"> الرسـوم المستبعـدة</th>
+                        <th style="text-align: center;" class="alert-warning">المبـلغ</th>
+                        <th style="text-align: center;" class="alert-warning">تاريـخ الإستبـعاد</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach ( $ProcessingFee as $Processing )
+                        <td>{{ $Processing->description }}</td>
+                        <td>{{  number_format($Processing->amount) }} ريال </td>
+                        <td>{{$Processing->created_at->diffForHumans()}}</td>
+
+                </tr>
+                    @endforeach
+                </tbody>
+            </table>
+                </div><br>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th>
+                            <th style="text-align: center;" class="alert-danger">المبـلغ</th>
+                            <th style="text-align: center;" class="alert-danger">تاريـخ الصـرف</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @foreach ( $Payment as $P )
+                            <td>{{ $P->description }}</td>
+                            <td>{{  number_format($P->amount) }} ريال </td>
+                            <td>{{$P->created_at->diffForHumans()}}</td>
+                    </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                    </div><br>
+        
+            <div class="box-body">
+                <div class="row">
+
+            <div class="col-xs-3">
+                <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم الدراسيـة</label>
+                <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format($Student->student_account->sum('Debit') ) }} ريال " type="text" readonly>
+            </div>
+            
+            <div class="col-xs-3">
+                <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم المـدفوعـة</label>
+                <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format($Student->student_account->sum('credit') ) }} ريال " type="text" readonly>
+            </div>
+
+            <div class="col-xs-6">
+                <label style="text-align: center;" for="inputEmail2">إجمالـي الرصـيد المتبـقي على الطـالـب</label>
+                <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format( $Student->student_account->sum('Debit') - $Student->student_account->sum('credit') ) }} ريال " type="text" readonly>
+            </div>
+
+                </div>
+            </div>
 
     </div><!-- /.tab-pane -->
     <div class="tab-pane" id="tab_3">
-    <p>sdgdfgdfs</p>
+  
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+            <thead>
+                <tr>
+                    <th scope="col" style="text-align: center;" class="alert-info"> أسـم الملـف </th>
+                    <th scope="col" style="text-align: center;" class="alert-info">تاريـخ الإضـافـة</th>
+                    <th scope="col" style="text-align: center;" class="alert-info">العمليـات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                @foreach ($ReceiptStudent as $Receipt )
+                <td>{{ $Receipt->description }}</td>
+                <td>{{  number_format($Receipt->Debit) }} ريال </td>
+                <td>{{$Receipt->created_at->diffForHumans()}}</td>
+            </tr>
+                @endforeach
+            </tbody>
+        </table>
+            </div><br>
+
+
     </div><!-- /.tab-pane -->
 </div><!-- /.tab-content -->
 </div><!-- nav-tabs-custom -->
