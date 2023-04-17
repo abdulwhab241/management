@@ -33,7 +33,7 @@
 <ul class="nav nav-tabs">
     <li class="btn-info active"><a href="#tab_1" data-toggle="tab" style="font-weight:bolder; font-color:white;">معلـومـات الطـالـب</a></li>
     <li class="btn-info"><a href="#tab_2" data-toggle="tab" style="font-weight:bolder; font-color:white;">حسـاب الطـالـب</a></li>
-    <li class="btn-info"><a href="#tab_3" data-toggle="tab" style="font-weight:bolder; font-color:white;">صـور الطـالـب</a></li>
+    {{-- <li class="btn-info"><a href="#tab_3" data-toggle="tab" style="font-weight:bolder; font-color:white;">صـور الطـالـب</a></li> --}}
 </ul>
 <div class="tab-content"><br>
     <div class="tab-pane active" id="tab_1">
@@ -87,7 +87,8 @@
 </div>
 
     <div class="tab-pane" id="tab_2">
-
+<div class="row">
+    <div class="col-xs-6">
         <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                     <thead>
@@ -105,11 +106,13 @@
                         </tr>
                         @endforeach
             </tbody>
-            
-
             </table>
 
-        </div><br>
+        </div>
+    </div>
+
+    <div class="col-xs-6">
+
         <div class="box-body table-responsive no-padding">
             <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
             <thead>
@@ -129,7 +132,16 @@
                 @endforeach
             </tbody>
         </table>
-            </div><br>
+            </div>
+
+    </div>
+
+    </div><hr>
+
+    <div class="row">
+
+        <div class="col-xs-6">
+
             <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
@@ -150,75 +162,74 @@
                     @endforeach
                 </tbody>
             </table>
-                </div><br>
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th>
-                            <th style="text-align: center;" class="alert-danger">المبـلغ</th>
-                            <th style="text-align: center;" class="alert-danger">تاريـخ الصـرف</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            @foreach ( $Payment as $P )
-                            <td>{{ $P->description }}</td>
-                            <td>{{  number_format($P->amount) }} ريال </td>
-                            <td>{{$P->created_at->diffForHumans()}}</td>
-                    </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                    </div><br>
-        
-            <div class="box-body">
-                <div class="row">
-
-            <div class="col-xs-3">
-                <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم الدراسيـة</label>
-                <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format($Student->student_account->sum('Debit') ) }} ريال " type="text" readonly>
-            </div>
-            
-            <div class="col-xs-3">
-                <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم المـدفوعـة</label>
-                <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format($Student->student_account->sum('credit') ) }} ريال " type="text" readonly>
-            </div>
-
-            <div class="col-xs-6">
-                <label style="text-align: center;" for="inputEmail2">إجمالـي الرصـيد المتبـقي على الطـالـب</label>
-                <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format( $Student->student_account->sum('Debit') - $Student->student_account->sum('credit') ) }} ريال " type="text" readonly>
-            </div>
-
                 </div>
-            </div>
 
-    </div><!-- /.tab-pane -->
-    <div class="tab-pane" id="tab_3">
-  
-        <div class="box-body table-responsive no-padding">
-            <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
-            <thead>
-                <tr>
-                    <th scope="col" style="text-align: center;" class="alert-info"> أسـم الملـف </th>
-                    <th scope="col" style="text-align: center;" class="alert-info">تاريـخ الإضـافـة</th>
-                    <th scope="col" style="text-align: center;" class="alert-info">العمليـات</th>
+        </div>
+
+        <div class="col-xs-6">
+
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th>
+                        <th style="text-align: center;" class="alert-danger">المبـلغ</th>
+                        <th style="text-align: center;" class="alert-danger">تاريـخ الصـرف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach ( $Payment as $P )
+                        <td>{{ $P->description }}</td>
+                        <td>{{  number_format($P->amount) }} ريال </td>
+                        <td>{{$P->created_at->diffForHumans()}}</td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                @foreach ($ReceiptStudent as $Receipt )
-                <td>{{ $Receipt->description }}</td>
-                <td>{{  number_format($Receipt->Debit) }} ريال </td>
-                <td>{{$Receipt->created_at->diffForHumans()}}</td>
-            </tr>
-                @endforeach
-            </tbody>
-        </table>
-            </div><br>
+                    @endforeach
+                </tbody>
+            </table>
+                </div>
 
+        </div>
+
+    </div><hr>
+
+    <div class="box-body">
+            <div class="row">
+
+        <div class="col-xs-3">
+            <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم الدراسيـة</label>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format($Student->student_account->sum('Debit_feeInvoice') ) }} ريال " type="text" readonly>
+        </div>
+
+        <div class="col-xs-3">
+            <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم المـدفوعـة</label>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:green;" value="{{ number_format($Student->student_account->sum('credit_receipt') ) }} ريال " type="text" readonly>
+        </div>
+        
+        <div class="col-xs-3">
+            <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم المستبـعدة</label>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:red;" value="{{ number_format($Student->student_account->sum('credit_processing') ) }} ريال " type="text" readonly>
+        </div>
+
+        <div class="col-xs-3">
+            <label style="text-align: center;" for="inputEmail3">إجمالـي سنـدات الصـرف</label>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:red;" value="{{ number_format($Student->student_account->sum('Debit_payment') ) }} ريال " type="text" readonly>
+        </div>
+
+
+            </div>
+<br>
+<div class="row">
+        <div class="col-xs-4">
+            <label style="text-align: center;" for="inputEmail2">إجمالـي الرصـيد المتبـقي على الطـالـب</label>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format( $Student->student_account->sum('Debit_feeInvoice') - $Student->student_account->sum('credit_receipt') ) }} ريال " type="text" readonly>
+        </div>
+    </div>
+
+        </div>
 
     </div><!-- /.tab-pane -->
+
 </div><!-- /.tab-content -->
 </div><!-- nav-tabs-custom -->
 </div><!-- /.col -->

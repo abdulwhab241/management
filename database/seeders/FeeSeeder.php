@@ -28,7 +28,7 @@ class FeeSeeder extends Seeder
         DB::table('fees')->insert([
             'title' => 'رسوم البـاص',
             'amount' => '10000.00',
-            // 'grade_id' => Grade::all()->unique()->random()->id,
+            'grade_id' => Grade::all()->unique()->random()->id,
             'classroom_id' => Classroom::all()->unique()->random()->id,
             'year' => '2023',
             'fee_type' => ' رسوم بـاص',

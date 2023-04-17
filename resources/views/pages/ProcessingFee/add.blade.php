@@ -56,7 +56,7 @@
         </div>
         <div class="col-xs-3">
             <label>رصيد الطالب </label>
-            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($Student->student_account->sum('Debit') - $Student->student_account->sum('credit')) }}" type="text" readonly>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($Student->student_account->sum('Debit_feeInvoice') - $Student->student_account->sum('credit_receipt')) }}" type="text" readonly>
         </div>
         <div class="col-xs-6">
             <label for="inputEmail4">البيان</label>

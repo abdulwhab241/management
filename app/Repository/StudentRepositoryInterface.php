@@ -9,10 +9,10 @@ interface StudentRepositoryInterface{
     public function Create_Student();
 
     // Get classrooms
-    public function Get_classrooms($id);
+    // public function Get_classrooms($id);
 
     //Get Sections
-    public function Get_Sections($id);
+    // public function Get_Sections($id);
 
     //Store_Student
     public function Store_Student($request);
@@ -33,12 +33,12 @@ interface StudentRepositoryInterface{
     public function Delete_Student($request);
 
     //Upload_attachment
-    public function Upload_attachment($request);
+    // public function Upload_attachment($request);
 
     //Download_attachment
-    public function Download_attachment($studentsname,$filename);
+    // public function Download_attachment($studentsname,$filename);
 
     //Delete_attachment
-    public function Delete_attachment($request);
+    // public function Delete_attachment($request);
 
 }

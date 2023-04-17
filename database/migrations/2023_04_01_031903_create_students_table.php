@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('name');
             $table->string('image')->nullable();
+            // $table->json('image')->nullable();
             $table->bigInteger('gender_id')->unsigned();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->date('birth_date');
@@ -22,8 +23,6 @@ return new class extends Migration
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->bigInteger('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            // $table->bigInteger('fee_id')->unsigned();
-            // $table->foreign('fee_id')->references('id')->on('fees')->onDelete('cascade');
             $table->string('academic_year');
 
              //Father information

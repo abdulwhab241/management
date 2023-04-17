@@ -52,8 +52,8 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts->type = 'إستبعاد رسوم دراسية (مدين)';
             $students_accounts->student_id = strip_tags($request->student_id);
             $students_accounts->processing_id = strip_tags($ProcessingFee->id);
-            $students_accounts->Debit = 0.00;
-            $students_accounts->credit = strip_tags($request->Debit);
+            $students_accounts->Debit_processing = 0.00;
+            $students_accounts->credit_processing = strip_tags($request->Debit);
             $students_accounts->description = strip_tags($request->description);
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
@@ -63,8 +63,8 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->processing_id = strip_tags($ProcessingFee->id);
-            $fund_accounts->Debit = 0.00;
-            $fund_accounts->credit = strip_tags($request->Debit);
+            $fund_accounts->Debit_processing = 0.00;
+            $fund_accounts->credit_processing = strip_tags($request->Debit);
             $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
@@ -98,8 +98,8 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts->type = 'تعديل إستبعاد رسوم دراسية (مدين)';
             $students_accounts->student_id = strip_tags($request->student_id);
             $students_accounts->processing_id = strip_tags($ProcessingFee->id);
-            $students_accounts->Debit = 0.00;
-            $students_accounts->credit = strip_tags($request->Debit);
+            $students_accounts->Debit_processing = 0.00;
+            $students_accounts->credit_processing = strip_tags($request->Debit);
             $students_accounts->description = strip_tags($request->description);
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
@@ -109,8 +109,8 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->processing_id = strip_tags($ProcessingFee->id);
-            $fund_accounts->Debit = 0.00;
-            $fund_accounts->credit = strip_tags($request->Debit);
+            $fund_accounts->Debit_processing = 0.00;
+            $fund_accounts->credit_processing = strip_tags($request->Debit);
             $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();

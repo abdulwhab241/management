@@ -35,12 +35,8 @@ class StudentRepository implements StudentRepositoryInterface{
     {
         $Student = Student::findOrFail($id);
         $Student_Account = StudentAccount::findOrFail($id);
-        // $Payment = PaymentStudent::all();
         $Payment = PaymentStudent::select('*')->where('student_id','=',$id)->get();
-        // $FeeInvoices = FeeInvoice::all();
-        // $ReceiptStudent = ReceiptStudent::all();
         $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id)->get();
-        // $ProcessingFee = ProcessingFee::all();
         $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',$id)->get();
         $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',$id)->get();
         return view('pages.Students.show',compact('Student','Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
@@ -48,7 +44,7 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Get_classrooms($id){
 
-        $list_classes = Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
+        $list_classes = Classroom::where("grade_id", $id)->pluck("name_class", "id");
         return $list_classes;
 
     }
@@ -56,7 +52,7 @@ class StudentRepository implements StudentRepositoryInterface{
     //Get Sections
     public function Get_Sections($id){
 
-        $list_sections = Section::where("Class_id", $id)->pluck("Name_Section", "id");
+        $list_sections = Section::where("Class_id", $id)->pluck("name_section", "id");
         return $list_sections;
     }
 
@@ -104,7 +100,6 @@ class StudentRepository implements StudentRepositoryInterface{
         }
 
         catch (\Exception $e){
-            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
@@ -181,39 +176,6 @@ class StudentRepository implements StudentRepositoryInterface{
     }
 
 
-    public function Upload_attachment($request)
-    {
-        // foreach($request->file('photos') as $file)
-        // {
-        //     $name = $file->getClientOriginalName();
-        //     $file->storeAs('attachments/students/'.$request->student_name, $file->getClientOriginalName(),'upload_attachments');
-
-        //     // insert in image_table
-        //     $images= new image();
-        //     $images->filename=$name;
-        //     $images->imageable_id = $request->student_id;
-        //     $images->imageable_type = 'App\Models\Student';
-        //     $images->save();
-        // }
-        // toastr()->success(trans('Students_trans.Add_aa'));
-        // return redirect()->route('Students.show',$request->student_id);
-    }
-
-    public function Download_attachment($studentsname, $filename)
-    {
-        return response()->download(public_path('attachments/students/'.$studentsname.'/'.$filename));
-    }
-
-    public function Delete_attachment($request)
-    {
-        // Delete img in server disk
-        Storage::disk('upload_attachments')->delete('attachments/students/'.$request->student_name.'/'.$request->filename);
-
-        // Delete in data
-        // image::where('id',$request->id)->where('filename',$request->filename)->delete();
-        toastr()->error(trans('Students_trans.Delete_aa'));
-        return redirect()->route('Students.show',$request->student_id);
-    }
-
-
 }
+
+

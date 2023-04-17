@@ -19,7 +19,7 @@ class StudentController extends Controller
     {
         return $this->Student->Get_Student();
     }
-  public function create()
+    public function create()
     {
         return $this->Student->Create_Student();
     }

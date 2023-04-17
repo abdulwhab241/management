@@ -40,34 +40,28 @@
 @csrf
 {{-- <div class="box-body"> --}}
     <div class="box-body">
-        <div class="form-row">
-            <div class="col-6">
+        <div class="row">
+            <div class="col-xs-3">
                 <label for="inputEmail4">أسم الرسوم</label>
                 <input type="text" value="{{ old('title') }}" name="title" class="form-control">
                 @error('title')
-                <div class="alert alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                <div class=" alert-danger">
+                    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
             </div>
-            <br>
 
-
-            <div class="col-6">
+            <div class="col-xs-3">
                 <label for="inputEmail4">المبلـغ</label>
                 <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
                 @error('amount')
-                <div class="alert alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                <div class=" alert-danger">
+                    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
             </div>
 
-        </div>
-        <br>
-
-        <div class="form-row">
-            <div class="col-6">
+            <div class="col-xs-3">
                 <label for="inputEmail4">المرحلـة الدراسيـة</label>
                 <select class="form-control select2" name="Grade_id">
                     <option selected disabled>حـدد المرحـلة...</option>
@@ -76,15 +70,13 @@
                     @endforeach
                 </select>                        
                 @error('Grade_id')
-                <div class="alert alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                <div class=" alert-danger">
+                    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
             </div>
-            <br>
 
-
-            <div class="col-6">
+            <div class="col-xs-3">
                 <label for="inputEmail4">الصـف الدراسـي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected disabled>حـدد المرحـلة...</option>
@@ -93,17 +85,18 @@
                     @endforeach
                 </select>                       
                 @error('Classroom_id')
-                <div class="alert alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                <div class=" alert-danger">
+                    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
             </div>
 
-        </div>   
+        </div>
         <br>
 
-        <div class="form-row">
-            <div class="col-6">
+        <div class="row">
+    
+            <div class="col-xs-3">
                 <label for="inputEmail4">السنـة الدراسيـة</label>
                 <select class="form-control select2" name="year">
                     <option selected disabled>حـدد السنـة...</option>
@@ -115,39 +108,41 @@
                     @endfor
                     </select>                       
                     @error('year')
-                    <div class="alert alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
-                </div>
+                    <div class=" alert-danger">
+                        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                    </div>
                     @enderror
             </div>
-            <br>
 
-
-            <div class="col-6">
+            <div class="col-xs-3">
                 <label for="inputEmail4">نـوع الرسـوم</label>
                 <select class="form-control select2" name="Fee_type">
                     <option value="رسوم دراسية">رسوم دراسية</option>
                     <option value="رسوم باص">رسوم باص</option>
                 </select>                       
                 @error('Fee_type')
-                <div class="alert alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
+                <div class=" alert-danger">
+                    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
             </div>
 
-        </div>
+            <div class="col-xs-6">
+                <label for="inputAddress">ملاحظات</label>
+                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
+            </div>
+
+        </div>   
         <br>
+        <div class="modal-footer">
+            <button type="submit"
+                class="btn btn-success btn-block">تأكيـد</button>
+            </div>
 
-        <div class="col">
-            <label for="inputAddress">ملاحظات</label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
-        </div>
-
-<div class="modal-footer">
+{{-- <div class="modal-footer">
 <button type="submit"
     class="btn btn-primary btn-block">تأكيـد</button>
-</div>
+</div> --}}
 </div>
 
 </form>

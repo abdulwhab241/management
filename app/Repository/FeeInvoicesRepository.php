@@ -68,8 +68,8 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
                 $fund_accounts->date = date('Y-m-d');
                 $fund_accounts->student_id = strip_tags($request->Student_id);
                 $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
-                $fund_accounts->Debit = 0.00;
-                $fund_accounts->credit = strip_tags($request->amount);
+                $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
+                $fund_accounts->credit_feeInvoice = 0.00; 
                 $fund_accounts->description = strip_tags($request->description);
                 $fund_accounts->create_by = auth()->user()->name;
                 $fund_accounts->save();
@@ -80,8 +80,8 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
                 $StudentAccount->date = date('Y-m-d');
                 $StudentAccount->type = 'فـاتـورة دراسية (مـديـن)';
                 $StudentAccount->fee_invoice_id = strip_tags($Fees->id);
-                $StudentAccount->Debit = strip_tags($request->amount);
-                $StudentAccount->credit = 0.00;
+                $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
+                $StudentAccount->credit_feeInvoice = 0.00;
                 $StudentAccount->description = strip_tags($request->description);
                 $StudentAccount->create_by = auth()->user()->name;
                 $StudentAccount->save();
@@ -106,7 +106,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             // تعديل البيانات في جدول حسابات الطلاب
             $StudentAccount = StudentAccount::where('fee_invoice_id',$request->id)->first();
             $StudentAccount->type = 'تعديل فـاتـورة دراسية (مـديـن)';
-            $StudentAccount->Debit = strip_tags($request->amount);
+            $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
             $StudentAccount->description = strip_tags($request->description);
             $StudentAccount->create_by = auth()->user()->name;
             $StudentAccount->save();
@@ -116,8 +116,8 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
-            $fund_accounts->Debit = 0.00;
-            $fund_accounts->credit = strip_tags($request->amount);
+            $fund_accounts->Debit_feeInvoice = 0.00;
+            $fund_accounts->credit_feeInvoice = strip_tags($request->amount);
             $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
