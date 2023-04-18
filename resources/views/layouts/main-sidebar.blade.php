@@ -126,6 +126,18 @@
 
         </ul>
     </li>
+
+    <li class="treeview">
+        <a href="#">
+        <i class="fa fa-check-square-o"></i>
+        <span>النتـائـج </span>
+        <i class="fa fa-angle-left pull-left"></i>
+        </a>
+        <ul class="treeview-menu">
+        <li><a href="{{route('Results.index')}}"><i class="fa fa-check-circle-o"></i> قائمة النتـائـج</a></li>
+
+        </ul>
+    </li>
     <li class="treeview">
         <a href="#">
         <i class="fas fa-books"></i>

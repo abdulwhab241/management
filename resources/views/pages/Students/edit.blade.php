@@ -94,9 +94,6 @@
                 <label for="inputZip">الفصل الدراسي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected>أختـر من القائمة...</option>
-                    {{-- @foreach($Classrooms as $Classroom)
-                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                    @endforeach --}}
                     @foreach($Classrooms as $Classroom)
                     <option
                         value="{{$Classroom->id}}" {{$Classroom->id == $Students->classroom_id ?'selected':''}}>{{$Classroom->name_class }}</option>

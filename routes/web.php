@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
@@ -92,6 +93,11 @@ Route::group(
          //==============================Exams============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Exams', ExamController::class);
+        });
+
+        //==============================Results============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Results', ResultController::class);
         });
 
         //==============================StudentClasss============================

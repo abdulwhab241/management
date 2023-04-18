@@ -33,7 +33,6 @@
 <ul class="nav nav-tabs">
     <li class="btn-info active"><a href="#tab_1" data-toggle="tab" style="font-weight:bolder; font-color:white;">معلـومـات الطـالـب</a></li>
     <li class="btn-info"><a href="#tab_2" data-toggle="tab" style="font-weight:bolder; font-color:white;">حسـاب الطـالـب</a></li>
-    {{-- <li class="btn-info"><a href="#tab_3" data-toggle="tab" style="font-weight:bolder; font-color:white;">صـور الطـالـب</a></li> --}}
 </ul>
 <div class="tab-content"><br>
     <div class="tab-pane active" id="tab_1">

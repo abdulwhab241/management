@@ -59,6 +59,7 @@
         <th style="text-align: center;" class="alert-info">النوع</th>
         <th style="text-align: center;" class="alert-info">تاريخ التعيين</th>
         <th style="text-align: center;" class="alert-info">التخصص</th>
+        <th style="text-align: center;" class="alert-info"> تـاريخ الإضـافـة</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
     </tr>
@@ -74,6 +75,7 @@
         <td>{{$Teacher->genders->name}}</td>
         <td>{{$Teacher->joining_date}}</td>
         <td>{{$Teacher->specializations->name}}</td>
+        <td>{{$Teacher->created_at->diffForHumans()}}</td>
         <td>{{ $Teacher->create_by }}</td>
             <td>
                 <a href="{{route('Teachers.edit',$Teacher->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
