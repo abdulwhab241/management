@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\GraduatedController;
 use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\ReceiptStudentsController;
