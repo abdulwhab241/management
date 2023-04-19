@@ -88,90 +88,83 @@ id="edit{{ $list_Sections->id }}"
 tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
     <div class="modal-header">
         <h5 class="modal-title"
             style="font-family: 'Cairo', sans-serif; font-weidth:bold; font-size:20;" 
             id="exampleModalLabel">
             تعديل قسـم
-        </h5>
-    </div>
-    <div class="modal-body">
+</h5>
+</div>
+<div class="modal-body">
 
-        <form class="form-horizontal" action="{{ route('Sections.update', 'test') }}" method="POST">
-            {{ method_field('patch') }}
-            {{ csrf_field() }}
+<form class="form-horizontal" action="{{ route('Sections.update', 'test') }}" method="POST">
+{{ method_field('patch') }}
+{{ csrf_field() }}
 
-            <div class="box-body">
-                <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">القسـم</label>
-                <div class="col-sm-10">
-                    <input type="text"
-                    name="Name_Section"
-                    class="form-control"
-                    value="{{ $list_Sections->name_section }}">
-                    <input id="id"
-                    type="hidden"
-                    name="id"
-                    class="form-control"
-                    value="{{ $list_Sections->id }}">
-                </div>
-                </div>
-                <br>
+<div class="box-body">
+    <div class="row">
 
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">المرحـلة</label>
-                    <div class="col-sm-10">
-                        <select name="Grade_id"
-                        class="form-control select2"
-                        onclick="console.log($(this).val())">
-                    <!--placeholder-->
-                    <option
-                        value="{{ $list_Sections->Grades->id }}">
-                        {{ $list_Sections->Grades->name }}
-                    </option>
-                    @foreach ($Grades as $list_Grade)
-                        <option
-                            value="{{ $list_Grade->id }}">
-                            {{ $list_Grade->name }}
-                        </option>
-                    @endforeach
-                    </select>
-                        
-                    </div>
-                    </div>
-                    <br>
+        <div class="col-xs-4">
+            <label >المرحـلة الدراسيـة</label>
+            <select name="Grade_id"
+            class="form-control select2"
+            onclick="console.log($(this).val())">
+        <!--placeholder-->
+        <option
+            value="{{ $list_Sections->Grades->id }}">
+            {{ $list_Sections->Grades->name }}
+        </option>
+        @foreach ($Grades as $list_Grade)
+            <option
+                value="{{ $list_Grade->id }}">
+                {{ $list_Grade->name }}
+            </option>
+        @endforeach
+        </select>
+        </div>
 
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">الصـف</label>
-                        <div class="col-sm-10">
-                            <select name="Class_id"
-                            class="form-control select2">
-                        <option
-                            value="{{ $list_Sections->My_Classes->id }}">
-                            {{ $list_Sections->My_Classes->name_class }}
-                        </option>
-                        @foreach ($Classrooms as $list_Classroom)
-                        <option
-                            value="{{ $list_Classroom->id }}">
-                            {{ $list_Classroom->name_class }}
-                        </option>
-                    @endforeach
-                        </select>
-                            
-                        </div>
-                        </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal">إغلاق</button>
-                <button type="submit"
-                        class="btn btn-success">تعديل البيانات</button>
-            </div>
+        <div class="col-xs-4">
+            <label >الصــف الدراسـي</label>
+            <select name="Class_id"
+            class="form-control select2">
+            <option
+                value="{{ $list_Sections->My_Classes->id }}">
+                {{ $list_Sections->My_Classes->name_class }}
+            </option>
+            @foreach ($Classrooms as $list_Classroom)
+            <option
+                value="{{ $list_Classroom->id }}">
+                {{ $list_Classroom->name_class }}
+            </option>
+            @endforeach
+            </select>
+        </div>
+
+        <div class="col-xs-4">
+            <label >القسـم</label>
+            <input type="text"
+            name="Name_Section"
+            class="form-control"
+            value="{{ $list_Sections->name_section }}">
+            <input id="id"
+            type="hidden"
+            name="id"
+            class="form-control"
+            value="{{ $list_Sections->id }}">
+        </div>
+
+    </div><br>
 
 
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger"
+        data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+        class="btn btn-success">تعديل البيانات</button>
+</div>
 
     </form>
 </div>
@@ -203,12 +196,12 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             disabled>
             <input id="id" type="hidden" name="id" class="form-control"
                 value="{{ $list_Sections->id }}">
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left"
-                    data-dismiss="modal">إغلاق</button>
-                <button type="submit"
-                    class="btn btn-outline">حذف البيانات</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left"
+                            data-dismiss="modal">إغلاق</button>
+                    <button type="submit"
+                            class="btn btn-outline">حذف البيانات</button>
+                </div>
         </form>
     </div>
 </div>
@@ -237,60 +230,58 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
 <div class="modal-header">
 <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;"
 id="exampleModalLabel">
 اضافة قسـم</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+
 </div>
 <div class="modal-body">
 
 <form class="form-horizontal" action="{{ route('Sections.store') }}" method="POST">
 {{ csrf_field() }}
 <div class="box-body">
-<div class="form-group">
-<label for="inputEmail3" class="col-sm-2 control-label">القسـم</label>
-<div class="col-sm-10">
-<input type="text" name="Name_Section" class="form-control" id="inputEmail3">
-</div>
-</div>
 
-<div class="form-group">
-<label for="inputEmail3" class="col-sm-2 control-label">المرحـلة</label>
-<div class="col-sm-10">
-    <select name="Grade_id" class="form-control select2"
-    onchange="console.log($(this).val())">
-    <!--placeholder-->
-    <option value="" selected 
-            disabled>-- حدد المرحـلة --
-    </option>
-    @foreach ($Grades as $list_Grade)
-        <option value="{{ $list_Grade->id }}"> {{ $list_Grade->name }}
-        </option>
-    @endforeach
-</select>
-</div>
-</div>
+    <div class="row">
 
-<div class="form-group">
-<label for="inputEmail3" class="col-sm-2 control-label">الصـف</label>
-<div class="col-sm-10">
-<select name="Class_id" class="form-control select2"
-    >
-    <!--placeholder-->
-    <option value="" selected 
-            disabled>-- حدد الصـف --
-    </option>
-    @foreach ($Classrooms as $Classroom)
-        <option value="{{ $Classroom->id }}"> {{ $Classroom->name_class }}
-        </option>
-    @endforeach
-</select>
-</div>
+        <div class="col-xs-4">
+            <label >المرحـلة الدراسيـة</label>
+            <select name="Grade_id" class="form-control select2"
+            onchange="console.log($(this).val())">
+            <!--placeholder-->
+            <option value="" selected 
+                    disabled>-- حدد المرحـلة --
+            </option>
+            @foreach ($Grades as $list_Grade)
+                <option value="{{ $list_Grade->id }}"> {{ $list_Grade->name }}
+                </option>
+            @endforeach
+        </select>
+        </div>
+
+        <div class="col-xs-4">
+            <label >الصــف الدراسـي</label>
+            <select name="Class_id" class="form-control select2">
+            <!--placeholder-->
+            <option value="" selected 
+                    disabled>-- حدد الصـف --
+            </option>
+            @foreach ($Classrooms as $Classroom)
+                <option value="{{ $Classroom->id }}"> {{ $Classroom->name_class }}
+                </option>
+            @endforeach
+        </select>
+        </div>
+
+        <div class="col-xs-4">
+            <label >القسـم</label>
+            <input type="text" value="{{ old('Name_Section') }}" name="Name_Section" class="form-control" >
+        </div>
+
+    </div><br>
+
 </div>
 
 
@@ -298,14 +289,15 @@ id="exampleModalLabel">
 
 
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary"
-data-dismiss="modal">إغلاق</button>
-<button type="submit"
-class="btn btn-success">حفظ البيانات</button>
-</div>
-</div>
-</div>
+    <button type="button" class="btn btn-danger"
+    data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+    class="btn btn-success">حفظ البيانات</button>
+    </div>
+
+{{-- </div> --}}
 </form>
+
 </div>
 </div>
 </div>

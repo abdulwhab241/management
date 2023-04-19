@@ -110,7 +110,7 @@
 <!-- edit_modal_Grade -->
 <div class="modal fade" id="edit{{ $My_Class->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
     <div class="modal-header">
         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
@@ -124,39 +124,36 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             {{ method_field('patch') }}
             @csrf
             <div class="box-body">
-    
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">أسـم الصـف</label>
-                    <div class="col-sm-10">
-                        <input id="Name" type="text" name="Name"
-                        class="form-control"
-                        value="{{ $My_Class->name_class }}"
-                        required>
-                    <input id="id" type="hidden" name="id" class="form-control"
-                        value="{{ $My_Class->id }}">
-                </div>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">اسـم المرحلـة</label>
-                    <div class="col-sm-10">
-                    <select class="form-control select2" name="Grade_id" id="exampleFormControlSelect1">
-                        <option value="{{ $My_Class->Grades->id }}">
-                            {{ $My_Class->Grades->name }}
-                        </option>
-                        @foreach ($Grades as $Grade)
-                            <option value="{{ $Grade->id }}">
-                                {{ $Grade->name }}
+                <div class="row">
+                    <div class="col-xs-6"> 
+                        <label >اسـم المرحلـة</label>
+                        <select class="form-control select2" name="Grade_id" id="exampleFormControlSelect1">
+                            <option value="{{ $My_Class->Grades->id }}">
+                                {{ $My_Class->Grades->name }}
                             </option>
-                        @endforeach
-                    </select>
-                </div>
-                </div>
+                            @foreach ($Grades as $Grade)
+                                <option value="{{ $Grade->id }}">
+                                    {{ $Grade->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
 
+                    <div class="col-xs-6"> 
+                    <label >أسـم الصـف</label>
+                    <input id="Name" type="text" name="Name"
+                    class="form-control"
+                    value="{{ $My_Class->name_class }}"
+                    required>
+                    <input id="id" type="hidden" name="id" class="form-control"
+                    value="{{ $My_Class->id }}">
+                    </div>
+
+                </div><br>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
+                <button type="button" class="btn btn-danger"
                     data-dismiss="modal">إغلاق</button>
                 <button type="submit"
                     class="btn btn-success">تعديل البيانات</button>
@@ -192,12 +189,12 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             disabled>
             <input id="id" type="hidden" name="id" class="form-control"
                 value="{{ $My_Class->id }}">
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left"
-                    data-dismiss="modal">إغلاق</button>
-                <button type="submit"
-                    class="btn btn-outline">حذف البيانات</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left"
+                            data-dismiss="modal">إغلاق</button>
+                    <button type="submit"
+                            class="btn btn-outline">حذف البيانات</button>
+                </div>
         </form>
     </div>
 </div>
@@ -221,46 +218,45 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <!-- add_modal_class -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog modal-lg">
+<div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
 <div class="modal-header">
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
 إضافة صف
 </h5>
 </div>
-<div class="box-body">
+<div class="modal-body">
 
 <form class="form-horizontal" action="{{ route('Classrooms.store') }}" method="POST">
 @csrf
 
 <div class="box-body">
-    
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">أسـم الصـف</label>
-        <div class="col-sm-10">
-            <input  type="text" name="Name" class="form-control" id="inputEmail2" required>
-    </div>
-    </div>
+    <div class="row">
 
-    <div class="form-group">
-        <label for="inputEmail2" class="col-sm-2 control-label">أسـم المرحلـة</label>
-        <div class="col-sm-10">
-        <select class="form-control select2" data-placeholder="Select a State" name="Grade_id">
-            @foreach ($Grades as $Grade)
-                <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
-            @endforeach
-        </select>
-    </div>
-    </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-        data-dismiss="modal">إغلاق</button>
-        <button type="submit"
-        class="btn btn-success">حفظ البيانات</button>
+        <div class="col-xs-6">
+            <label >أسـم المرحلـة</label>
+            <select class="form-control select2" name="Grade_id">
+                <option  selected disabled>أختـر من القائمة...</option>
+                @foreach ($Grades as $Grade)
+                    <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
+                @endforeach
+            </select>
         </div>
 
+        <div class="col-xs-6">
+            <label >أسـم الصـف</label>
+            <input  type="text" name="Name" class="form-control" id="inputEmail2" required>
+        </div>
+    </div><br>
 </div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger"
+    data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+    class="btn btn-success">حفظ البيانات</button>
+    </div>
+
 </form>
 </div>
 

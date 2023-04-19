@@ -60,6 +60,7 @@
     <th style="text-align: center;" class="alert-info"> المـادة</th>
     <th style="text-align: center;" class="alert-info">الأستـاذ </th>
     <th style="text-align: center;" class="alert-info">الـدرجـة</th>
+    <th style="text-align: center;" class="alert-info"> تـاريخ الإضـافـة</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -74,6 +75,7 @@
             <td>{{ $Exam->subject->name }}</td>
             <td>{{$Exam->teacher->name}}</td>
             <td>{{$Exam->total_marks}}</td>
+            <td>{{$Exam->created_at->diffForHumans()}}</td>
             <td>{{ $Exam->create_by }}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -254,7 +256,6 @@ aria-hidden="true">
     <div class="row">
 
         <div class="col-xs-6"> 
-            <div class="form-group">
             <label>الصـف الدراسي</label>
             <select class="form-control select2" name="Classroom_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -262,7 +263,6 @@ aria-hidden="true">
                     <option  value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
                 @endforeach
             </select>
-            </div>
             @error('Classroom_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -271,7 +271,6 @@ aria-hidden="true">
         </div>
 
         <div class="col-xs-6"> 
-            <div class="form-group">
             <label>المـادة</label>
             <select class="form-control select2" name="Subject_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -279,7 +278,6 @@ aria-hidden="true">
                     <option  value="{{ $Subject->id }}" required>{{ $Subject->name }}</option>
                 @endforeach
             </select>
-            </div>
             @error('Subject_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -291,7 +289,6 @@ aria-hidden="true">
 <div class="row">
 
     <div class="col-xs-6"> 
-        <div class="form-group">
         <label>الأستـاذ</label>
         <select class="form-control select2" name="Teacher_id">
             <option  selected disabled>أختـر من القائمة...</option>
@@ -299,7 +296,6 @@ aria-hidden="true">
                 <option  value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
             @endforeach
         </select>
-        </div>
         @error('Teacher_id')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>

@@ -122,19 +122,12 @@
                         </div>
                 
                         <div class="col-xs-6"> 
-                            {{-- <div class="form-group"> --}}
                             <label>المـادة</label>
                             <select class="form-control select2" name="Exam_id">
-                                <option value="{{ $Exam->subject->id }}">
-                                    {{ $Exam->subject->name }}
+                                <option value="{{ $Result->exam->subject->id }}">
+                                    {{ $Result->exam->subject->name }}
                                 </option>
-                                {{-- @foreach ($Subjects as $Subject)
-                                    <option value="{{ $Subject->id }}">
-                                        {{ $Subject->name }}
-                                    </option>
-                                @endforeach --}}
                             </select>
-                            {{-- </div> --}}
                             @error('Exam_id')
                             <div class=" alert-danger">
                             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -145,6 +138,7 @@
                 
                 <div class="row">
                 
+                    <div class="col-xs-6">
                     <label>الدرجـة التي حصـل عليـها</label>
                     <input type="number" value="{{ $Result->marks_obtained }}" name="Marks" class="form-control">
                     @error('Marks')
@@ -152,7 +146,8 @@
                     <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                     </div>
                     @enderror
-                
+                    </div>
+                    
                     <div class="col-xs-6">
                         <label for="inputEmail4">التقـديـر</label>
                         <select class="form-control select2" name="Appreciation">

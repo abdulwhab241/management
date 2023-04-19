@@ -16,7 +16,6 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-{{-- <li><a href="#">Tables</a></li> --}}
 <li class="active">المراحل الدراسية</li>
 </ol>
 </section>
@@ -85,7 +84,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <!-- edit_modal_Grade -->
 <div class="modal fade" id="edit{{ $grade->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-success" role="document">
     <div class="modal-content">
         <div class="modal-header">
             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
@@ -101,32 +100,27 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 @csrf
 
 <div class="box-body">
-<div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
-    <div class="col-sm-9">
-    <input id="Name" type="text" name="Name"
-    class="form-control"
-    value="{{$grade->name }}"
-    required>
-    <input id="id" type="hidden" name="id" class="form-control"
-        value="{{ $grade->id }}">
-</div>
-</div>
-<br>
-<div class="form-group">
-<label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
-<div class="col-sm-9">
-    <textarea class="form-control" name="Notes" rows="3">{{ $grade->notes }}</textarea>
-</div>
-</div>
+    <div class="row">
+
+        <div class="col-xs-6">
+            <label >أسـم المرحلـة</label>
+            <input  type="text" name="Name"  value="{{$grade->name }}" required class="form-control" id="inputEmail3">
+        </div>
+
+        <div class="col-xs-6">
+            <label >ملاحظـات</label>
+            <textarea class="form-control" name="Notes" rows="2">{{ $grade->notes }}</textarea>
+        </div>
+    </div><br>
+
 
 </div>
 
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary"
-    data-dismiss="modal">إغلاق</button>
-<button type="submit"
-    class="btn btn-success">تعديل البيانات</button>
+    <button type="button" class="btn btn-danger"
+        data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+        class="btn btn-success">تعديل البيانات</button>
 </div>
 </form>
 
@@ -190,7 +184,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <!-- add_modal_Grade -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
 <div class="modal-header">
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
@@ -202,27 +196,27 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <form class="form-horizontal" action="{{ route('Grades.store') }}" method="POST">
     @csrf
     <div class="box-body">
-        <div class="form-group">
-            <label for="inputEmail3" class="col-sm-3 control-label">أسـم المرحلـة</label>
-            <div class="col-sm-9">
-                <input  type="text" name="Name" class="form-control" id="inputEmail3">
-        </div>
-        </div>
+        <div class="row">
 
-    <div class="form-group">
-        <label for="inputEmail3" class="col-sm-3 control-label">ملاحظـات</label>
-        <div class="col-sm-9">
-            <textarea class="form-control" name="Notes" rows="3"></textarea>
-    </div>
-    </div>
+            <div class="col-xs-6">
+                <label >أسـم المرحلـة</label>
+                <input  type="text" name="Name" value="{{ old('Name') }}" class="form-control" id="inputEmail3">
+            </div>
+
+            <div class="col-xs-6">
+                <label >ملاحظـات</label>
+                <textarea class="form-control" name="Notes" rows="2">{{ old('Notes') }}</textarea>
+            </div>
+        </div><br>
+</div>
 
 <div class="modal-footer">
-<button type="button" class="btn btn-secondary"
-        data-dismiss="modal">إغلاق</button>
-<button type="submit"
-        class="btn btn-success">حفظ البيانات</button>
-</div>
-</div>
+    <button type="button" class="btn btn-danger"
+    data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+    class="btn btn-success">حفظ البيانات</button>
+    </div>
+
 </form>
 
 </div>

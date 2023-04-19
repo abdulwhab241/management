@@ -39,7 +39,7 @@ class GradeController extends Controller
     {
         try
         {
-            $validated = $request->validated();
+            // $validated = $request->validated();
             $Grade = Grade::findOrFail($request->id);
             $Grade->update([
                 $Grade->name = strip_tags($request->Name),

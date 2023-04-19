@@ -29,7 +29,7 @@ class ClassroomController extends Controller
 
                 $My_Classes->save();
             
-                toastr()->success('تم حفظ الصفوف بنجاح');
+                toastr()->success('تم حفظ الـصـف بنجاح');
                 return redirect()->route('Classrooms.index');
             }
             catch(\Exception $e)
@@ -49,7 +49,7 @@ class ClassroomController extends Controller
             $Classrooms->grade_id = strip_tags($request->Grade_id),
             $Classrooms->create_by = auth()->user()->name,
             ]);
-            toastr()->success('تم تعديل الصف بنجاح');
+            toastr()->success('تم تعديل الـصـف بنجاح');
             return redirect()->route('Classrooms.index');
         }
         catch(\Exception $e)
@@ -61,7 +61,7 @@ class ClassroomController extends Controller
     public function destroy(ClassroomRequest $request)
     {
         $Classrooms = Classroom::findOrFail($request->id)->delete(); 
-        toastr()->error('تم حذف الصف بنجاح');
+        toastr()->error('تم حذف الـصـف بنجاح');
         return redirect()->route('Classrooms.index');
     }
 
