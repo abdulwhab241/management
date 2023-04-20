@@ -45,7 +45,7 @@
 
             <h6 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية السابقة</h6><br>
 
-        <form method="post" action="{{ route('Promotion.store') }}">
+        <form method="post" action="{{ route('Upgrades.store') }}">
             @csrf
             <div class="form-row">
                 <div class="form-group col">

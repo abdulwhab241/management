@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->bigInteger('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
+            $table->bigInteger('section_id')->unsigned();
+            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->string('academic_year');
 
              //Father information

@@ -74,9 +74,16 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Students.index')}}"><i class="fa fa-users"></i> قائمة الطـلاب</a></li>
-        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
+        <li class="treeview">
+            <a href="#">
+            <i class="fa fa-refresh"></i>
+            <span> تـرقيـة الطـلاب </span>
+            <i class="fa fa-angle-left pull-left"></i>
+            </a>
+            <ul class="treeview-menu">
+            <li><a href="{{route('Upgrades.index')}}"><i class="fa fa-refresh"></i> قائمة تـرقيـة الطـلاب</a></li>
+            </ul>
+        </li>
         <li class="treeview">
             <a href="#">
             <i class="fas fa-user-graduate"></i>
@@ -85,9 +92,6 @@
             </a>
             <ul class="treeview-menu">
             <li><a href="{{route('Graduated.index')}}"><i class="fas fa-user-graduate"></i> قائمة الطـلاب المتخـرجيـن</a></li>
-            {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
             </ul>
         </li>
         </ul>
@@ -159,9 +163,6 @@
         </a>
         <ul class="treeview-menu">
         <li><a href="{{route('Classes.index')}}"><i class="fa fa-book"></i> قائمة الحصـص الدراسية</a></li>
-        {{-- <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
     </li>
     {{-- <li class="treeview">

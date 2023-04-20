@@ -11,6 +11,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GraduatedController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\ReceiptStudentsController;
@@ -72,7 +73,7 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Students', StudentController::class);
             Route::resource('Graduated', GraduatedController::class);
-            Route::resource('Promotion',  PromotionController::class);
+            Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
             Route::resource('Fees',  FeeController::class);
             Route::resource('Receipts', ReceiptStudentsController::class);
