@@ -3,6 +3,7 @@
     <div class="modal-dialog modal-danger">
         <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حذف إستبـعاد رسـوم الطـالـب</h5>
             </div>
             <div class="modal-body">

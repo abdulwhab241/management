@@ -91,6 +91,7 @@
     <div class="modal-dialog modal-success" role="document">
     <div class="modal-content">
         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                 id="exampleModalLabel">
                 تعديل النتيجـة
@@ -190,6 +191,7 @@
             {{csrf_field()}}
         <div class="modal-content">
             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
             
             </div>
@@ -226,6 +228,7 @@ aria-hidden="true">
 <div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
     اضافة نتيـجة
 </h5>

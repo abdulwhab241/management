@@ -91,6 +91,7 @@ aria-hidden="true">
 <div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h5 class="modal-title"
             style="font-family: 'Cairo', sans-serif; font-weidth:bold; font-size:20;" 
             id="exampleModalLabel">
@@ -179,6 +180,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
 <div class="modal-content">
     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
             id="exampleModalLabel">
             حـذف قسـم
@@ -233,6 +235,7 @@ aria-hidden="true">
 <div class="modal-dialog modal-success" role="document">
 <div class="modal-content">
 <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 class="modal-title" style="font-family: 'Cairo', sans-serif;"
 id="exampleModalLabel">
 اضافة قسـم</h5>

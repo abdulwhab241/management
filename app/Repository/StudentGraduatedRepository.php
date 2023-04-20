@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\Grade;
 use App\Models\Student;
+use App\Models\Classroom;
 
 class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 {
@@ -19,7 +20,8 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
     public function create()
     {
         $Grades = Grade::all();
-        return view('pages.Students.Graduated.create',compact('Grades'));
+        $Classrooms = Classroom::all();
+        return view('pages.Students.Graduated.create',compact('Grades','Classrooms'));
     }
 
     public function SoftDelete($request)
@@ -35,21 +37,21 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
             student::whereIn('id', $ids)->Delete();
         }
 
-        toastr()->success(trans('messages.success'));
+        toastr()->success('تـم إضـافة الطـلاب المتخـرجيـن بنجـاح');
         return redirect()->route('Graduated.index');
     }
 
     public function ReturnData($request)
     {
         student::onlyTrashed()->where('id', $request->id)->first()->restore();
-        toastr()->success(trans('messages.success'));
+        toastr()->success('تـم إلغـاء عمليـة تخـرج  الطـالـب  بنجـاح');
         return redirect()->back();
     }
 
     public function destroy($request)
     {
         student::onlyTrashed()->where('id', $request->id)->first()->forceDelete();
-        toastr()->error(trans('messages.Delete'));
+        toastr()->error('تـم حـذف الطـالـب بنجـاح');
         return redirect()->back();
     }
 

@@ -36,7 +36,7 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Students.store')}}"  method="POST" enctype="multipart/form-data">
+<form class="form-horizontal"  action="{{route('Students.store')}}"  method="POST" enctype="multipart/form-data">
 @csrf
 <div class="box-body">
     
@@ -98,7 +98,7 @@
             </div>
 
             <div class="col-xs-4">
-                <label for="inputZip">الفصل الدراسي</label>
+                <label for="inputZip">الصـف الدراسي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected>أختـر من القائمة...</option>
                     @foreach($Classrooms as $Classroom)
