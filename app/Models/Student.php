@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Fee;
 use App\Models\Grade;
 use App\Models\Gender;
+use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
@@ -43,12 +44,12 @@ class Student extends Model
         return $this->belongsTo(Fee::class, 'fee_id');
     }
 
-  // // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
+  // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
 
-  // public function section()
-  // {
-  //     return $this->belongsTo(Section::class, 'section_id');
-  // }
+  public function section()
+  {
+      return $this->belongsTo(Section::class, 'section_id');
+  }
 
 //   // علاقة بين الطلاب والصور لجلب اسم الصور  في جدول الطلاب
 //     public function images()

@@ -145,10 +145,13 @@ aria-hidden="true">
 
         <div class="col-xs-4">
             <label >القسـم</label>
-            <input type="text"
-            name="Name_Section"
-            class="form-control"
-            value="{{ $list_Sections->name_section }}">
+            <select class="form-control select2" name="Name_Section">
+                <option >{{$list_Sections->name_section}}</option>
+                <option value="أ">أ</option>
+                <option value="ب">ب</option>
+                <option value="ج">ج</option>
+            </select>
+
             <input id="id"
             type="hidden"
             name="id"
@@ -191,15 +194,15 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
         <form action="{{ route('Sections.destroy', 'test') }}" method="post">
             {{ method_field('Delete') }}
             @csrf
-            هل انت متاكد من عملية الحذف ؟
+            هل انت متاكد من عملية حـذف القسـم ؟
             <input id="Name" type="text" name="Name"
             class="form-control"
             value="{{ $list_Sections->name_section }}"
-            disabled>
+            disabled style="text-align: center; font-weidth:bolder; font-size:20px;">
             <input id="id" type="hidden" name="id" class="form-control"
                 value="{{ $list_Sections->id }}">
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left"
+                    <button type="button" class="btn btn-default"
                             data-dismiss="modal">إغلاق</button>
                     <button type="submit"
                             class="btn btn-outline">حذف البيانات</button>
@@ -254,9 +257,7 @@ id="exampleModalLabel">
             <select name="Grade_id" class="form-control select2"
             onchange="console.log($(this).val())">
             <!--placeholder-->
-            <option value="" selected 
-                    disabled>-- حدد المرحـلة --
-            </option>
+            <option selected disabled>اختـر من القائمة...</option>
             @foreach ($Grades as $list_Grade)
                 <option value="{{ $list_Grade->id }}"> {{ $list_Grade->name }}
                 </option>
@@ -268,9 +269,7 @@ id="exampleModalLabel">
             <label >الصــف الدراسـي</label>
             <select name="Class_id" class="form-control select2">
             <!--placeholder-->
-            <option value="" selected 
-                    disabled>-- حدد الصـف --
-            </option>
+            <option selected disabled>اختـر من القائمة...</option>
             @foreach ($Classrooms as $Classroom)
                 <option value="{{ $Classroom->id }}"> {{ $Classroom->name_class }}
                 </option>
@@ -280,7 +279,13 @@ id="exampleModalLabel">
 
         <div class="col-xs-4">
             <label >القسـم</label>
-            <input type="text" value="{{ old('Name_Section') }}" name="Name_Section" class="form-control" >
+
+            <select class="form-control select2" name="Name_Section">
+                <option selected disabled>اختـر من القائمة...</option>
+                <option value="أ">أ</option>
+                <option value="ب">ب</option>
+                <option value="ج">ج</option>
+            </select>
         </div>
 
     </div><br>

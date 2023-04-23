@@ -22,8 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('from_Classroom');
             $table->foreign('from_Classroom')->references('id')->on('classrooms')->onDelete('cascade');
 
-            $table->unsignedBigInteger('from_section');
-            $table->foreign('from_section')->nullable()->references('id')->on('sections')->onDelete('cascade');
+            // $table->unsignedBigInteger('from_section');
+            // $table->foreign('from_section')->references('id')->on('sections')->onDelete('cascade');
 
             $table->unsignedBigInteger('to_grade');
             $table->foreign('to_grade')->references('id')->on('grades')->onDelete('cascade');
@@ -31,8 +31,8 @@ return new class extends Migration
             $table->unsignedBigInteger('to_Classroom');
             $table->foreign('to_Classroom')->references('id')->on('classrooms')->onDelete('cascade');
 
-            $table->unsignedBigInteger('to_section');
-            $table->foreign('to_section')->nullable()->references('id')->on('sections')->onDelete('cascade');
+            // $table->unsignedBigInteger('to_section');
+            // $table->foreign('to_section')->references('id')->on('sections')->onDelete('cascade');
 
             $table->string('academic_year');
             $table->string('academic_year_new');

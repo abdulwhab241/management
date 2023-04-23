@@ -1,153 +1,197 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+
 @section('title')
-    ترقية الطلاب
+ترقية الطلاب
 @stop
 @endsection
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> ترقية الطلاب</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
-                <li class="breadcrumb-item active">ترقية الطلاب</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    ترقية الطلاب
-@stop
-<!-- breadcrumb -->
-@endsection
+
 @section('content')
-<!-- row -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+ترقية الطلاب
+</h1>
+<ol class="breadcrumb">
+<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{route('Upgrades.index')}}"><i class="fa fa-refresh"></i> قائمـة الترقيـات </a></li>
+<li class="active">ترقية الطلاب</li>
+</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
 <div class="row">
+<div class="col-xs-12">
+<div class="box">
+@if(session()->has('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ session()->get('error') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+</div><!-- /.box-header -->
+<h4 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية السابقة</h4>
+<form  action="{{route('Upgrades.store')}}"  method="POST" enctype="multipart/form-data">
+@csrf
+<div class="box-body">
+    <div class="row">
 
-<div class="col-md-12 mb-30">
-<div class="card card-statistics h-100">
-    <div class="card-body">
-
-        @if (Session::has('error_promotions'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>{{Session::get('error_promotions')}}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="col-xs-4" >
+                <label for="inputState" style="font-weight: bold;">المرحلة الدراسية</label>
+                <select class="form-control select2" name="Grade_id" >
+                    <option selected disabled>اختـر من القائمة...</option>
+                    @foreach($Grades as $Grade)
+                        <option value="{{$Grade->id}}">{{$Grade->name}}</option>
+                    @endforeach
+                </select>
+                @error('Grade_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
             </div>
-        @endif
 
-            <h6 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية السابقة</h6><br>
-
-        <form method="post" action="{{ route('Upgrades.store') }}">
-            @csrf
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="inputState" style="font-weight: bold;">المرحلة الدراسية</label>
-                    <select class="custom-select mr-sm-2" name="Grade_id" required>
-                        <option selected disabled>اختيار من القائمة...</option>
-                        @foreach($Grades as $Grade)
-                            <option value="{{$Grade->id}}">{{$Grade->Name}}</option>
-                        @endforeach
-                    </select>
+            <div class="col-xs-4">
+                <label  style="font-weight: bold;">الصف الدراسي </label>
+                <select class="form-control select2" name="Classroom_id" >
+                    <option selected disabled>اختـر من القائمة...</option>
+                    @foreach($Classrooms as $Classroom)
+                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
+                    @endforeach
+                </select>
+                @error('Classroom_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
-                <div class="form-group col">
-                    <label for="Classroom_id" style="font-weight: bold;">الصف الدراسي  : <span
-                            class="text-danger">*</span></label>
-                    <select class="custom-select mr-sm-2" name="Classroom_id" required>
+                @enderror
+        </div>
 
-                    </select>
-                </div>
-
-                <div class="form-group col">
-                    <label for="section_id" style="font-weight: bold;">الشعبـة : </label>
-                    <select class="custom-select mr-sm-2" name="section_id" required>
-
-                    </select>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="academic_year">السنـة الدراسيـة : <span class="text-danger">*</span></label>
-                        <select class="custom-select mr-sm-2" name="academic_year">
-                            <option selected disabled>اختيار من القائمة...</option>
-                            @php
-                                $current_year = date("Y");
-                            @endphp
-                            @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                                <option value="{{ $year}}">{{ $year }}</option>
-                            @endfor
-                        </select>
-                    </div>
-                </div>
-
-
+        {{-- <div class="col-xs-3">
+            <label for="inputZip">الشـعبة</label>
+            <select class="form-control select2" name="section_id">
+                <option selected>أختـر من القائمة...</option>
+                @foreach($Sections as $Section)
+                    <option value="{{$Section->id}}">{{$Section->name_section}}</option>
+                @endforeach
+            </select>
+            @error('section_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
-            <br><h6 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية الحالية</h6><br>
+            @enderror
+        </div> --}}
 
-            <div class="form-row">
-                <div class="form-group col">
-                    <label for="inputState" style="font-weight: bold;">المرحلة الدراسية</label>
-                    <select class="custom-select mr-sm-2" name="Grade_id_new" >
-                        <option selected disabled>اختيار من القائمة...</option>
-                        @foreach($Grades as $Grade)
-                            <option value="{{$Grade->id}}">{{$Grade->Name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col">
-                    <label for="Classroom_id" style="font-weight: bold;">الصف الدراسي: <span
-                            class="text-danger">*</span></label>
-                    <select class="custom-select mr-sm-2" name="Classroom_id_new" >
+        <div class="col-xs-4">
+            <label for="academic_year">السنـة الدراسيـة </label>
+            <select class="form-control select2" name="academic_year">
+                <option selected disabled>اختـر من القائمة...</option>
+                @php
+                    $current_year = date("Y");
+                @endphp
+                @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                    <option value="{{ $year}}">{{ $year }}</option>
+                @endfor
+            </select>
+            @error('academic_year')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
 
-                    </select>
-                </div>
-                <div class="form-group col">
-                    <label for="section_id" style="font-weight: bold;">الشعبـة: </label>
-                    <select class="custom-select mr-sm-2" name="section_id_new" >
+        </div>
+        <br><h4 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية الحالية</h4><br>
 
-                    </select>
-                </div>
+    <div class="row">
+        <div class=" col-xs-4">
+            <label for="inputState" style="font-weight: bold;">المرحلة الدراسية</label>
+            <select class="form-control select2" name="Grade_id_new" >
+                <option selected disabled>اختـر من القائمة...</option>
+                @foreach($Grades as $Grade)
+                    <option value="{{$Grade->id}}">{{$Grade->name}}</option>
+                @endforeach
+            </select>
+            @error('Grade_id_new')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
 
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="academic_year">السنـة الدراسيـة : <span class="text-danger">*</span></label>
-                        <select class="custom-select mr-sm-2" name="academic_year_new">
-                            <option selected disabled>اختيار من القائمة...</option>
-                            @php
-                                $current_year = date("Y");
-                            @endphp
-                            @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                                <option value="{{ $year}}">{{ $year }}</option>
-                            @endfor
-                        </select>
-                    </div>
-                </div>
+        <div class="col-xs-4">
+            <label  style="font-weight: bold;">الصف الدراسي </label>
+            <select class="form-control select2" name="Classroom_id_new" >
+                <option selected disabled>اختـر من القائمة...</option>
+                @foreach($Classrooms as $Classroom)
+                    <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
+                @endforeach
+            </select>
+            @error('Classroom_id_new')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
 
-            </div><br>
-            <button type="submit"
-            style="padding:5px; margin: 5px;" class="btn btn-outline-primary btn-block">تاكيـد</button>
-        </form>
+        {{-- <div class="col-xs-3">
+            <label for="inputZip">الشـعبة</label>
+            <select class="form-control select2" name="section_id_new">
+                <option selected>أختـر من القائمة...</option>
+                @foreach($Sections as $Section)
+                    <option value="{{$Section->id}}">{{$Section->name_section}}</option>
+                @endforeach
+            </select>
+            @error('section_id_new')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div> --}}
+
+        <div class="col-xs-4">
+            <label for="academic_year">السنـة الدراسيـة </label>
+            <select class="form-control select2" name="academic_year_new">
+                <option selected disabled>اختـر من القائمة...</option>
+                @php
+                    $current_year = date("Y");
+                @endphp
+                @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                    <option value="{{ $year}}">{{ $year }}</option>
+                @endfor
+            </select>
+            @error('academic_year_new')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+    </div>
+    <br>
+
+
 
     </div>
-</div>
+<div class="modal-footer">
+<button type="submit"
+    class="btn btn-success btn-block">تـأكيـد</button>
 </div>
 
+</form>
+
+
 </div>
-    <!-- row closed -->
+</section><!-- /.content -->
+
 @endsection
 @section('js')
+@toastr_js
+@toastr_render
 
-    @toastr_js
-    @toastr_render
 
 
 @endsection
-
 

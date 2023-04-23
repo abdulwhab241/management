@@ -52,16 +52,20 @@
             <tr>
                 <th scope="row" style="text-align: center;" class="alert-default">الصـف الدراسـي</th>
                 <td>{{ $Student->classroom->name_class }}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">أسـم الأب</th>
+                <th scope="row" style="text-align: center;" class="alert-default">الشعبـة</th>
+                <td style="font-weight: bolder;">{{ $Student->section->name_section }}</td>
+            </tr>
+            <tr>
+                <th scope="row" style="text-align: center; " class="alert-default">أسـم الأب</th>
                 <td>{{$Student->father_name}}</td>
                 <th scope="row" style="text-align: center;" class="alert-default">جهـة العمـل</th>
                 <td>{{$Student->employer}}</td>
                 <th scope="row" style="text-align: center;" class="alert-default">الوظيـفة</th>
                 <td>{{$Student->father_job}}</td>
-            </tr>
-            <tr>
                 <th scope="row" style="text-align: center;" class="alert-default"> هـاتف الأب </th>
                 <td>{{ $Student->father_phone }}</td>
+            </tr>
+            <tr>
                 <th scope="row" style="text-align: center;" class="alert-default">هـاتـف العمـل</th>
                 <td>{{$Student->job_phone}}</td>
                 <th scope="row" style="text-align: center;" class="alert-default">هـاتـف المنـزل</th>
@@ -87,7 +91,7 @@
 
     <div class="tab-pane" id="tab_2">
 <div class="row">
-    <div class="col-xs-6">
+    <div class="col-md-6">
         <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                     <thead>
@@ -108,10 +112,10 @@
             </table>
 
         </div>
+
     </div>
 
-    <div class="col-xs-6">
-
+    <div class="col-md-6">
         <div class="box-body table-responsive no-padding">
             <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
             <thead>
@@ -139,8 +143,7 @@
 
     <div class="row">
 
-        <div class="col-xs-6">
-
+        <div class="col-md-6">
             <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
@@ -165,8 +168,7 @@
 
         </div>
 
-        <div class="col-xs-6">
-
+        <div class="col-md-6">
             <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
@@ -195,22 +197,22 @@
     <div class="box-body">
             <div class="row">
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم الدراسيـة</label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format($Student->student_account->sum('Debit_feeInvoice') ) }} ريال " type="text" readonly>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم المـدفوعـة</label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:green;" value="{{ number_format($Student->student_account->sum('credit_receipt') ) }} ريال " type="text" readonly>
         </div>
         
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label style="text-align: center;" for="inputEmail3">إجمالـي الـرسـوم المستبـعدة</label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:red;" value="{{ number_format($Student->student_account->sum('credit_processing') ) }} ريال " type="text" readonly>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label style="text-align: center;" for="inputEmail3">إجمالـي سنـدات الصـرف</label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:red;" value="{{ number_format($Student->student_account->sum('Debit_payment') ) }} ريال " type="text" readonly>
         </div>
@@ -219,7 +221,7 @@
             </div>
 <br>
 <div class="row">
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label style="text-align: center;" for="inputEmail2">إجمالـي الرصـيد المتبـقي على الطـالـب</label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format( $Student->student_account->sum('Debit_feeInvoice') - $Student->student_account->sum('credit_receipt') ) }} ريال " type="text" readonly>
         </div>

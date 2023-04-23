@@ -27,7 +27,7 @@ class StudentRequest extends FormRequest
             'Gender_id' => 'integer',
             'Grade_id' => 'integer',
             'Classroom_id' => 'integer',
-            // 'Fee_id' => 'integer',
+            'Section_id' => 'integer',
             'academic_year' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:4|max:4',
             'Father_Name' => 'required',
             'Father_Phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PromotionRequest;
 use Illuminate\Http\Request;
 use App\Repository\StudentPromotionRepositoryInterface;
 
@@ -40,7 +41,7 @@ class PromotionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PromotionRequest $request)
     {
         return $this->Promotion->store($request);
     }

@@ -24,7 +24,7 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Create_Student(){
 
         $data['Grades'] = Grade::all();
-        $data['Fees'] = Fee::all();
+        $data['Sections'] = Section::all();
         $data['Classrooms'] = Classroom::all();
         $data['Genders'] = Gender::all();
         return view('pages.Students.create',$data);
@@ -52,7 +52,7 @@ class StudentRepository implements StudentRepositoryInterface{
     //Get Sections
     public function Get_Sections($id){
 
-        $list_sections = Section::where("Class_id", $id)->pluck("name_section", "id");
+        $list_sections = Section::where("class_id", $id)->pluck("name_section", "id");
         return $list_sections;
     }
 
@@ -74,7 +74,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->grade_id = strip_tags($request->Grade_id);
             $students->classroom_id = strip_tags($request->Classroom_id);
             $students->birth_date = strip_tags($request->Date_Birth);
-            // $students->fee_id = strip_tags($request->Fee_id);
+            $students->section_id = strip_tags($request->Section_id);
             $students->academic_year = strip_tags($request->academic_year);
 
               // insert father information
@@ -114,7 +114,7 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Edit_Student($id)
     {
         $data['Grades'] = Grade::all();
-        $data['Fees'] = Fee::all();
+        $data['Sections'] = Section::all();
         $data['Classrooms'] = Classroom::all();
         $data['Genders'] = Gender::all();
         $Students =  Student::findOrFail($id);
@@ -139,7 +139,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->grade_id = strip_tags($request->Grade_id);
             $Edit_Students->classroom_id = strip_tags($request->Classroom_id);
             $Edit_Students->birth_date = strip_tags($request->Date_Birth);
-            // // $Edit_Students->fee_id = strip_tags($request->Fee_id);
+            $Edit_Students->section_id = strip_tags($request->Section_id);
             $Edit_Students->academic_year = strip_tags($request->academic_year);
 
                 // insert father information
@@ -171,7 +171,7 @@ class StudentRepository implements StudentRepositoryInterface{
     {
 
         Student::destroy($request->id);
-        toastr()->error(trans('main_trans.delete'));
+        toastr()->error('تـم حـذف الطـالـب بنـجاح');
         return redirect()->route('Students.index');
     }
 

@@ -58,6 +58,7 @@ aria-pressed="true">اضافة طـالـب</a>
     <th style="text-align: center;" class="alert-info"> النوع</th>
     <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
     <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
+    <th style="text-align: center;" class="alert-info"> الشعـبة</th>
     <th style="text-align: center;" class="alert-info">أسـم الأب </th>
     <th style="text-align: center;" class="alert-info"> هاتف الاب</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
@@ -74,6 +75,7 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{ $Student->gender->name }}</td>
             <td>{{$Student->grade->name}}</td>
             <td>{{$Student->classroom->name_class}}</td>
+            <td style="font-weight: bolder;">{{$Student->section->name_section}}</td>
             <td>{{ $Student->father_name }}</td>
             <td>{{ $Student->father_phone }}</td>
             <td>{{ $Student->create_by }}</td>

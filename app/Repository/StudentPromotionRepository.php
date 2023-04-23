@@ -5,8 +5,10 @@ namespace App\Repository;
 
 
 use App\Models\Grade;
-use App\Models\Student;
+use App\Models\Section;
 // use App\Models\promotion;
+use App\Models\Student;
+use App\Models\Classroom;
 use App\Models\Promotion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +19,13 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     public function create()
     {
         $Grades = Grade::all();
-        return view('pages.Upgrades.index',compact('Grades'));
+        $Classrooms = Classroom::all();
+        // $Classrooms = Classroom::select('*')->where('grade_id','=',$Grades)->get();
+        // $Classrooms = Classroom::where("grade_id")->pluck("name_class");
+        $Sections = Section::all();
+        // $Sections = Section::where("class_id")->pluck("name_section");
+        
+        return view('pages.Upgrades.index',compact('Grades','Classrooms','Sections'));
     }
 
     public function index()
@@ -30,7 +38,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     {
         try {
 
-            // $students = student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->section_id)->where('academic_year',$request->academic_year)->get();
+            // $students = student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->where('academic_year',$request->academic_year)->get();
             $students = student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('academic_year',$request->academic_year)->get();
 
             if($students->count() < 1){
@@ -45,8 +53,9 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     ->update([
                         'grade_id'=>$request->Grade_id_new,
                         'classroom_id'=>$request->Classroom_id_new,
-                        // // 'section_id'=>$request->section_id_new,
+                        // 'section_id'=>$request->section_id_new,
                         'academic_year'=>$request->academic_year_new,
+                        'create_by' =>auth()->user()->name,
                     ]);
 
                 // insert in to promotions
@@ -60,15 +69,19 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     // 'to_section'=>$request->section_id_new,
                     'academic_year'=>$request->academic_year,
                     'academic_year_new'=>$request->academic_year_new,
+                    'create_by' =>auth()->user()->name,
                 ]);
 
             }
+
             toastr()->success('تم ترقيـة الطـلاب بنجاح');
-            return redirect()->back();
+            return redirect()->route('Upgrades.management');
 
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+
+        // dd($request);
     }
 
         public function destroy($request)
@@ -88,7 +101,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     ->update([
                     'grade_id'=>$Promotion->from_grade,
                     'classroom_id'=>$Promotion->from_Classroom,
-                    // 'section_id'=> $Promotion->from_section,
+                    'section_id'=> $Promotion->from_section,
                     'academic_year'=>$Promotion->academic_year,
                 ]);
 
@@ -106,7 +119,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 ->update([
                 'grade_id'=>$Promotion->from_grade,
                 'classroom_id'=>$Promotion->from_Classroom,
-                // 'section_id'=> $Promotion->from_section,
+                'section_id'=> $Promotion->from_section,
                 'academic_year'=>$Promotion->academic_year,
             ]);
 

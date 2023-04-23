@@ -70,10 +70,6 @@
             <div class="col-xs-4">
                 <label for="inputEmail4">النوع</label>
                 <select class="form-control select2" name="Gender_id">
-                    <option selected disabled>أختـر من القائمة...</option>
-                    {{-- @foreach($Genders as $Gender)
-                    <option value="{{$Gender->id}}">{{$Gender->name}}</option>
-                @endforeach --}}
                 @foreach($Genders as $Gender)
                 <option
                     value="{{$Gender->id}}" {{$Gender->id == $Students->gender_id ?'selected':''}}>{{$Gender->name }}</option>
@@ -89,27 +85,11 @@
         </div><br>
 
         <div class="row">
-
-            <div class="col-xs-3">
-                <label for="inputZip">الفصل الدراسي</label>
-                <select class="form-control select2" name="Classroom_id">
-                    <option selected>أختـر من القائمة...</option>
-                    @foreach($Classrooms as $Classroom)
-                    <option
-                        value="{{$Classroom->id}}" {{$Classroom->id == $Students->classroom_id ?'selected':''}}>{{$Classroom->name_class }}</option>
-                    @endforeach
-                </select>
-                @error('Classroom_id')
-                <div class=" alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                </div>
-                @enderror
-            </div>
-
+            
             <div class="col-xs-3">
                 <label for="inputState">المرحلة الدراسية</label>
                 <select class="form-control select2" name="Grade_id">
-                    <option selected>أختـر من القائمة...</option>
+
                     @foreach($Grades as $Grade)
                     <option
                         value="{{$Grade->id}}" {{$Grade->id == $Students->grade_id ?'selected':''}}>{{$Grade->name }}</option>
@@ -122,16 +102,32 @@
                 @enderror
             </div>
 
-        <div class="col-xs-3">
-            <label for="inputZip"> الرسوم الدراسية</label>
-            <select class="form-control select2" name="Fee_id">
-                <option selected>أختـر من القائمة...</option>
-                @foreach($Fees as $Fee)
+
+            <div class="col-xs-3">
+                <label for="inputZip">الفصل الدراسي</label>
+                <select class="form-control select2" name="Classroom_id">
+
+                    @foreach($Classrooms as $Classroom)
                     <option
-                        value="{{$Fee->id}}" {{$Fee->id == $Students->fee_id ?'selected':''}}>{{ number_format($Fee->amount) }}</option>
+                        value="{{$Classroom->id}}" {{$Classroom->id == $Students->classroom_id ?'selected':''}}>{{$Classroom->name_class }}</option>
+                    @endforeach
+                </select>
+                @error('Classroom_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+
+        <div class="col-xs-3">
+            <label for="inputZip"> الشـعبة</label>
+            <select class="form-control select2" name="Section_id">
+                @foreach($Sections as $Section)
+                    <option
+                        value="{{$Section->id}}" {{$Section->id == $Students->section_id ?'selected':''}}>{{ $Section->name_section }}</option>
                     @endforeach
             </select>
-            @error('Fee_id')
+            @error('Section_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
@@ -142,7 +138,6 @@
         <div class="col-xs-3">
             <label for="title">السنة الدراسية</label>
             <select class="form-control select2" name="academic_year">
-                <option selected>أختـر من القائمة...</option>
                 @php
                 $current_year = date("Y");
             @endphp

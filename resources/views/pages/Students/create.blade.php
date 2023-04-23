@@ -82,7 +82,7 @@
 
         <div class="row">
 
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <label for="inputState">المرحلة الدراسية</label>
                 <select class="form-control select2" name="Grade_id">
                     <option selected>أختـر من القائمة...</option>
@@ -97,7 +97,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <label for="inputZip">الصـف الدراسي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected>أختـر من القائمة...</option>
@@ -112,7 +112,22 @@
                 @enderror
             </div>
 
-        <div class="col-xs-4">
+            <div class="col-xs-3">
+                <label for="inputZip">الشـعبة</label>
+                <select class="form-control select2" name="Section_id">
+                    <option selected>أختـر من القائمة...</option>
+                    @foreach($Sections as $Section)
+                        <option value="{{$Section->id}}">{{$Section->name_section}}</option>
+                    @endforeach
+                </select>
+                @error('Section_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+
+        <div class="col-xs-3">
             <label for="title">السنة الدراسية</label>
             <select class="form-control select2" name="academic_year">
                 <option selected>أختـر من القائمة...</option>

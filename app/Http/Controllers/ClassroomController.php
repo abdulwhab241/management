@@ -77,7 +77,7 @@ class ClassroomController extends Controller
     public function Filter_Classes(Request $request)
     {
         $Grades = Grade::all();
-        $Search = Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
+        $Search = Classroom::select('*')->where('grade_id','=',$request->Grade_id)->get();
         return view('pages.Classrooms.index',compact('Grades'))->withDetails($Search);
     }
 }

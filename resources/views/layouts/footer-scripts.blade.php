@@ -97,7 +97,7 @@ $(function () {
                         $('select[name="Classroom_id"]').empty();
                         $('select[name="Classroom_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
                         $.each(data, function (key, value) {
-                            $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            $('select[name="classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },
                 });
