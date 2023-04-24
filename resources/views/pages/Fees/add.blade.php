@@ -41,7 +41,7 @@
 {{-- <div class="box-body"> --}}
     <div class="box-body">
         <div class="row">
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">أسم الرسوم</label>
                 <input type="text" value="{{ old('title') }}" name="title" class="form-control">
                 @error('title')
@@ -51,7 +51,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">المبلـغ</label>
                 <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
                 @error('amount')
@@ -61,7 +61,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">المرحلـة الدراسيـة</label>
                 <select class="form-control select2" name="Grade_id">
                     <option selected disabled>حـدد المرحـلة...</option>
@@ -76,7 +76,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">الصـف الدراسـي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected disabled>حـدد المرحـلة...</option>
@@ -96,7 +96,7 @@
 
         <div class="row">
     
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">السنـة الدراسيـة</label>
                 <select class="form-control select2" name="year">
                     <option selected disabled>حـدد السنـة...</option>
@@ -114,7 +114,7 @@
                     @enderror
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">نـوع الرسـوم</label>
                 <select class="form-control select2" name="Fee_type">
                     <option value="رسوم دراسية">رسوم دراسية</option>
@@ -127,7 +127,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <label for="inputAddress">ملاحظات</label>
                 <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
             </div>
@@ -139,10 +139,6 @@
                 class="btn btn-success btn-block">تأكيـد</button>
             </div>
 
-{{-- <div class="modal-footer">
-<button type="submit"
-    class="btn btn-primary btn-block">تأكيـد</button>
-</div> --}}
 </div>
 
 </form>

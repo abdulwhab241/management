@@ -102,10 +102,10 @@ aria-pressed="true">اضافة مادة جديدة</a>
                 disabled>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left"
+                <button type="button" class="btn btn-default"
                         data-dismiss="modal">إغلاق</button>
                 <button type="submit"
-                        class="btn btn-outline">حذف البيانات</button>
+                        class="btn btn-danger">حذف البيانات</button>
             </div>
         </div>
         </form>

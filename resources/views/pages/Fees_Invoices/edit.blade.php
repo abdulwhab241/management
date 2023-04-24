@@ -42,7 +42,7 @@
 @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label>أسم الطـالـب</label>
             <input type="text" value="{{$fee_invoices->student->name}}" readonly name="Student_id" class="form-control">
@@ -56,7 +56,7 @@
             @enderror
         </div>
     
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label>نـوع الرسـوم </label>
             <select class="form-control select2" name="Fee_id">
@@ -71,7 +71,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label> المبلغ</label>
             <input type="text" value="{{ $fee_invoices->amount }}" name="amount" class="form-control">
@@ -82,7 +82,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">البيان</label>
             <input type="hidden" name="Grade_id" value="{{$fee_invoices->grade->grade_id}}">
             <input type="hidden" name="Classroom_id" value="{{$fee_invoices->classroom->classroom_id}}">

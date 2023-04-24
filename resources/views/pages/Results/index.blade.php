@@ -105,7 +105,7 @@
                 <div class="box-body">
                     <div class="row">
 
-                        <div class="col-xs-6"> 
+                        <div class="col-md-6"> 
                             <label>أسـم الطـالـب </label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Result->id }}">
@@ -122,7 +122,7 @@
                             @enderror
                         </div>
                 
-                        <div class="col-xs-6"> 
+                        <div class="col-md-6"> 
                             <label>المـادة</label>
                             <select class="form-control select2" name="Exam_id">
                                 <option value="{{ $Result->exam->subject->id }}">
@@ -139,7 +139,7 @@
                 
                 <div class="row">
                 
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                     <label>الدرجـة التي حصـل عليـها</label>
                     <input type="number" value="{{ $Result->marks_obtained }}" name="Marks" class="form-control">
                     @error('Marks')
@@ -149,7 +149,7 @@
                     @enderror
                     </div>
                     
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                         <label for="inputEmail4">التقـديـر</label>
                         <select class="form-control select2" name="Appreciation">
                             <option >{{$Result->appreciation }}</option>
@@ -241,7 +241,7 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-xs-6"> 
+        <div class="col-md-6"> 
             <label>أسـم الطـالـب</label>
             <select class="form-control select2" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -258,7 +258,7 @@ aria-hidden="true">
             @enderror
         </div>
 
-        <div class="col-xs-6"> 
+        <div class="col-md-6"> 
             <label>المـادة</label>
             <select class="form-control select2" name="Exam_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -278,7 +278,7 @@ aria-hidden="true">
 
 <div class="row">
 
-    <div class="col-xs-6"> 
+    <div class="col-md-6"> 
         <label>الدرجـة التي حصـل عليـها</label>
         <input type="number" value="{{ old('Marks') }}" name="Marks" class="form-control">
         @error('Marks')
@@ -288,7 +288,7 @@ aria-hidden="true">
         @enderror
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-md-6">
         <label for="inputEmail4">التقـديـر</label>
         <select class="form-control select2" name="Appreciation">
             <option  selected disabled>أختـر من القائمة...</option>

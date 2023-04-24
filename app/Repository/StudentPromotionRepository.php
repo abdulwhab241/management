@@ -6,7 +6,6 @@ namespace App\Repository;
 
 use App\Models\Grade;
 use App\Models\Section;
-// use App\Models\promotion;
 use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\Promotion;
@@ -20,25 +19,21 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     {
         $Grades = Grade::all();
         $Classrooms = Classroom::all();
-        // $Classrooms = Classroom::select('*')->where('grade_id','=',$Grades)->get();
-        // $Classrooms = Classroom::where("grade_id")->pluck("name_class");
         $Sections = Section::all();
-        // $Sections = Section::where("class_id")->pluck("name_section");
         
-        return view('pages.Upgrades.index',compact('Grades','Classrooms','Sections'));
+        return view('pages.Upgrades.create',compact('Grades','Classrooms','Sections'));
     }
 
     public function index()
     {
         $promotions = promotion::all();
-        return view('pages.Upgrades.management',compact('promotions'));
+        return view('pages.Upgrades.index',compact('promotions'));
     }
 
     public function store($request)
     {
         try {
 
-            // $students = student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->where('academic_year',$request->academic_year)->get();
             $students = student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('academic_year',$request->academic_year)->get();
 
             if($students->count() < 1){
@@ -53,7 +48,6 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     ->update([
                         'grade_id'=>$request->Grade_id_new,
                         'classroom_id'=>$request->Classroom_id_new,
-                        // 'section_id'=>$request->section_id_new,
                         'academic_year'=>$request->academic_year_new,
                         'create_by' =>auth()->user()->name,
                     ]);
@@ -63,10 +57,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     'student_id'=>$student->id,
                     'from_grade'=>$request->Grade_id,
                     'from_Classroom'=>$request->Classroom_id,
-                    // 'from_section'=>$request->section_id,
                     'to_grade'=>$request->Grade_id_new,
                     'to_Classroom'=>$request->Classroom_id_new,
-                    // 'to_section'=>$request->section_id_new,
                     'academic_year'=>$request->academic_year,
                     'academic_year_new'=>$request->academic_year_new,
                     'create_by' =>auth()->user()->name,
@@ -101,7 +93,6 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     ->update([
                     'grade_id'=>$Promotion->from_grade,
                     'classroom_id'=>$Promotion->from_Classroom,
-                    'section_id'=> $Promotion->from_section,
                     'academic_year'=>$Promotion->academic_year,
                 ]);
 
@@ -119,7 +110,6 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 ->update([
                 'grade_id'=>$Promotion->from_grade,
                 'classroom_id'=>$Promotion->from_Classroom,
-                'section_id'=> $Promotion->from_section,
                 'academic_year'=>$Promotion->academic_year,
             ]);
 

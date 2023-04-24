@@ -13,11 +13,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
     @include('layouts.head')
-    @livewireStyles
+    {{-- @livewireStyles --}}
 </head>
 
 <body class="skin-blue sidebar-mini">
 
+    
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -91,7 +92,7 @@
 </div><!-- ./col -->
 </div><!-- /.row -->
 <!-- Main row -->
-{{-- <div class="row"> --}}
+<div class="row">
 <!-- Left col -->
 <section class="col-lg-7 connectedSortable">
     <!-- Custom tabs (Charts with tabs)-->
@@ -454,7 +455,7 @@
     </div><!-- /.box -->
 
 </section><!-- right col -->
-{{-- </div><!-- /.row (main row) --> --}}
+</div><!-- /.row (main row) -->
 
 </section><!-- /.content -->
 
@@ -462,8 +463,8 @@
 </div><!-- /.content-wrapper -->
 
 @include('layouts.footer-scripts')
-@livewireScripts
-@stack('scripts')
+{{-- @livewireScripts
+@stack('scripts') --}}
 
 </body>
 

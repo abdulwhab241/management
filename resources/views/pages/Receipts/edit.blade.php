@@ -40,7 +40,7 @@
     @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <label for="inputEmail4">أسم الطـالـب</label>
             <input type="hidden" value="{{$receipt_student->id}}" name="id" class="form-control">
             <select class="form-control select2" name="Student_id">
@@ -59,7 +59,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">المبـلغ</label>
             <input type="number" value="{{ $receipt_student->Debit}}" name="Debit" class="form-control">
             @error('Debit')
@@ -68,7 +68,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label for="exampleFormControlTextarea1">البيـان</label>
             <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="1">{{$receipt_student->description}}</textarea>
             @error('description')

@@ -45,7 +45,7 @@
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الطـالـب</h5>
 
         <div class="row">
-            <div class="col-xs-4"> 
+            <div class="col-md-4"> 
                 <label for="inputEmail4">أسم الطـالـب</label>
                 <input type="text" value="{{ $Students->name }}"
                 class="form-control" name="Name">
@@ -57,7 +57,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <label for="inputEmail4">تاريخ الميلاد</label>
                 <input type="text" value="{{ $Students->birth_date }}" placeholder="2023-03-05" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
                 @error('Date_Birth')
@@ -67,7 +67,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <label for="inputEmail4">النوع</label>
                 <select class="form-control select2" name="Gender_id">
                 @foreach($Genders as $Gender)
@@ -86,7 +86,7 @@
 
         <div class="row">
             
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputState">المرحلة الدراسية</label>
                 <select class="form-control select2" name="Grade_id">
 
@@ -103,7 +103,7 @@
             </div>
 
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputZip">الفصل الدراسي</label>
                 <select class="form-control select2" name="Classroom_id">
 
@@ -119,7 +119,7 @@
                 @enderror
             </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputZip"> الشـعبة</label>
             <select class="form-control select2" name="Section_id">
                 @foreach($Sections as $Section)
@@ -135,7 +135,7 @@
         </div>
         
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="title">السنة الدراسية</label>
             <select class="form-control select2" name="academic_year">
                 @php
@@ -159,7 +159,7 @@
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="Father_Name">أسم الاب</label>
             <input type="text" value="{{ $Students->father_name }}" name="Father_Name"  class="form-control">
             @error('Father_Name')
@@ -169,7 +169,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">جهة العمل</label>
             <input type="text" value="{{ $Students->employer }}" name="Employer" class="form-control" >
             @error('Employer')
@@ -179,7 +179,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الوظيفة</label>
             <input type="text" value="{{ $Students->father_job }}" name="Father_Job" class="form-control" >
             @error('Father_Job')
@@ -193,7 +193,7 @@
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الهاتف الشخصي</label>
             <input type="text" value="{{ $Students->father_phone }}" name="Father_Phone" class="form-control" >
             @error('Father_Phone')
@@ -202,7 +202,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">هاتف العمل</label>
             <input type="text" value="{{ $Students->job_phone }}" name="Job_Phone" class="form-control">
             @error('Job_Phone')
@@ -211,7 +211,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">هاتف المنزل</label>
             <input type="text" value="{{ $Students->home_phone }}" name="Home_Phone" class="form-control">
             @error('Home_Phone')
@@ -235,7 +235,7 @@
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">أسم الام</label>
             <input type="text" value="{{ $Students->mother_name }}" name="Mother_Name" class="form-control">
             @error('Mother_Name')
@@ -244,7 +244,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الوظيفة</label>
             <input type="text" value="{{ $Students->mother_job }}" name="Mother_Job" class="form-control">
             @error('Mother_Job')
@@ -253,7 +253,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الهاتف</label>
             <input type="text" value="{{ $Students->mother_phone }}" name="Mother_Phone" class="form-control">
             @error('Mother_Phone')

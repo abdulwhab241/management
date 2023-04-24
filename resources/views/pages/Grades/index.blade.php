@@ -103,12 +103,12 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <div class="box-body">
     <div class="row">
 
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label >أسـم المرحلـة</label>
             <input  type="text" name="Name"  value="{{$grade->name }}" required class="form-control" id="inputEmail3">
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label >ملاحظـات</label>
             <textarea class="form-control" name="Notes" rows="2">{{ $grade->notes }}</textarea>
         </div>
@@ -201,12 +201,12 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="box-body">
         <div class="row">
 
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <label >أسـم المرحلـة</label>
                 <input  type="text" name="Name" value="{{ old('Name') }}" class="form-control" id="inputEmail3">
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <label >ملاحظـات</label>
                 <textarea class="form-control" name="Notes" rows="2">{{ old('Notes') }}</textarea>
             </div>

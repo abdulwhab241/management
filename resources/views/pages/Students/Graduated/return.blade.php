@@ -16,10 +16,10 @@
                 <input type="text" readonly value="{{$student->name}}" style=" font-weight: bolder; font-size:20px; text-align: center;" class="form-control">
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left"
+                    <button type="button" class="btn btn-default"
                             data-dismiss="modal">إغلاق</button>
                     <button type="submit"
-                            class="btn btn-outline">إرجـاع الطـالـب</button>
+                            class="btn btn-success">إرجـاع الطـالـب</button>
                 </div>
             </form>
         </div>

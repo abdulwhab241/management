@@ -41,7 +41,7 @@
     @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <label >الـيوم</label>
             <input id="id" type="hidden" name="id" class="form-control" value="{{ $StudentClasses->id }}">
             <select class="form-control select2" name="Day_id">
@@ -60,7 +60,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label >المرحلـة الدراسيـة</label>
             <select class="form-control select2" name="Grade_id">
 
@@ -79,7 +79,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label >الصـف الدراسـي</label>
             <select class="form-control select2" name="Classroom_id">
 
@@ -98,7 +98,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label >الشعبـة</label>
             <select class="form-control select2" name="Section_id">
 
@@ -120,7 +120,7 @@
     </div><br>
 
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >الحصـة</label>
             <select class="form-control select2" name="School_id">
 
@@ -140,7 +140,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >المـادة</label>
             <select class="form-control select2" name="Subject_id">
 
@@ -159,7 +159,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >الأسـتاذ</label>
             <select class="form-control select2" name="Teacher_id">
 

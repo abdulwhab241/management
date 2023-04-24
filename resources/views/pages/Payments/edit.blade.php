@@ -44,7 +44,7 @@
     <div class="box-body">
         <div class="row">
     
-            <div class="col-xs-3"> 
+            <div class="col-md-3"> 
                 <div class="form-group">
                 <label> المبلغ</label>
                 <input  class="form-control" name="Debit" value="{{ number_format($payment_student->amount) }}" type="number" >
@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <label for="inputEmail4">البيان</label>
                 <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="2">{{$payment_student->description}}</textarea>
                 @error('description')

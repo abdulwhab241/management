@@ -126,7 +126,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             @csrf
             <div class="box-body">
                 <div class="row">
-                    <div class="col-xs-6"> 
+                    <div class="col-md-6"> 
                         <label >اسـم المرحلـة</label>
                         <select class="form-control select2" name="Grade_id" id="exampleFormControlSelect1">
                             <option value="{{ $My_Class->Grades->id }}">
@@ -140,7 +140,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                         </select>
                     </div>
 
-                    <div class="col-xs-6"> 
+                    <div class="col-md-6"> 
                     <label >أسـم الصـف</label>
                     <input id="Name" type="text" name="Name"
                     class="form-control"
@@ -236,7 +236,7 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label >أسـم المرحلـة</label>
             <select class="form-control select2" name="Grade_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -246,7 +246,7 @@ aria-hidden="true">
             </select>
         </div>
 
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label >أسـم الصـف</label>
             <input  type="text" name="Name" class="form-control" id="inputEmail2" required>
         </div>

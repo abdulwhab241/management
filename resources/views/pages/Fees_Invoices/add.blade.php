@@ -42,7 +42,7 @@
 @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label>أسم الطـالـب</label>
             <select class="form-control select2" name="Student_id">
@@ -58,7 +58,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label>المرحلة الدراسية</label>
             <select class="form-control select2" name="Grade_id">
@@ -74,7 +74,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label>الصـف الدراسي</label>
             <select class="form-control select2" name="Classroom_id">
@@ -90,7 +90,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label>نـوع الرسـوم </label>
             <select class="form-control select2" name="Fee_id">
@@ -108,7 +108,7 @@
         </div>
     </div><br>
     <div class="row">
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label> المبلغ</label>
             <select class="form-control select2" name="amount">
@@ -124,7 +124,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">البيان</label>
             <input type="text" value="{{ old('description') }}" name="description" class="form-control">
             @error('description')

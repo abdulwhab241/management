@@ -2,20 +2,21 @@
 @section('css')
 
 @section('title')
-ترقية الطلاب
+قائمة الترقيات
 @stop
 @endsection
 
 @section('content')
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-ترقية الطلاب
+قائمة الترقيات
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Upgrades.index')}}"><i class="fa fa-refresh"></i> قائمـة الترقيـات </a></li>
-<li class="active">ترقية الطلاب</li>
+
+<li class="active">قائمة الترقيات</li>
 </ol>
 </section>
 
@@ -25,173 +26,91 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-@if(session()->has('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>{{ session()->get('error') }}</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+@if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
 </div>
 @endif
+<div class="box-header">
+<a class="btn btn-success btn-flat md-4" style="padding:5px; margin: 5px;" href="{{route('Upgrades.create')}}">
+    إضافة ترقيـة </a>
+<button type="button" class="btn btn-danger md-4 btn-flat" data-toggle="modal" data-target="#Delete_all">
+إرجـاع الكل
+</button>
+
+<div class="box-tools">
+<div class="input-group" style="width: 150px;">
+<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="بحـث">
+
+</div>
+</div>
 </div><!-- /.box-header -->
-<h4 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية السابقة</h4>
-<form  action="{{route('Upgrades.store')}}"  method="POST" enctype="multipart/form-data">
-@csrf
-<div class="box-body">
-    <div class="row">
-
-            <div class="col-xs-4" >
-                <label for="inputState" style="font-weight: bold;">المرحلة الدراسية</label>
-                <select class="form-control select2" name="Grade_id" >
-                    <option selected disabled>اختـر من القائمة...</option>
-                    @foreach($Grades as $Grade)
-                        <option value="{{$Grade->id}}">{{$Grade->name}}</option>
-                    @endforeach
-                </select>
-                @error('Grade_id')
-                <div class=" alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                </div>
-                @enderror
-            </div>
-
-            <div class="col-xs-4">
-                <label  style="font-weight: bold;">الصف الدراسي </label>
-                <select class="form-control select2" name="Classroom_id" >
-                    <option selected disabled>اختـر من القائمة...</option>
-                    @foreach($Classrooms as $Classroom)
-                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                    @endforeach
-                </select>
-                @error('Classroom_id')
-                <div class=" alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                </div>
-                @enderror
-        </div>
-
-        {{-- <div class="col-xs-3">
-            <label for="inputZip">الشـعبة</label>
-            <select class="form-control select2" name="section_id">
-                <option selected>أختـر من القائمة...</option>
-                @foreach($Sections as $Section)
-                    <option value="{{$Section->id}}">{{$Section->name_section}}</option>
-                @endforeach
-            </select>
-            @error('section_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div> --}}
-
-        <div class="col-xs-4">
-            <label for="academic_year">السنـة الدراسيـة </label>
-            <select class="form-control select2" name="academic_year">
-                <option selected disabled>اختـر من القائمة...</option>
-                @php
-                    $current_year = date("Y");
-                @endphp
-                @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                    <option value="{{ $year}}">{{ $year }}</option>
-                @endfor
-            </select>
-            @error('academic_year')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-
-        </div>
-        <br><h4 style="color: blue;font-family: Cairo; font-weight: bold;">المرحلة الدراسية الحالية</h4><br>
-
-    <div class="row">
-        <div class=" col-xs-4">
-            <label for="inputState" style="font-weight: bold;">المرحلة الدراسية</label>
-            <select class="form-control select2" name="Grade_id_new" >
-                <option selected disabled>اختـر من القائمة...</option>
-                @foreach($Grades as $Grade)
-                    <option value="{{$Grade->id}}">{{$Grade->name}}</option>
-                @endforeach
-            </select>
-            @error('Grade_id_new')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-
-        <div class="col-xs-4">
-            <label  style="font-weight: bold;">الصف الدراسي </label>
-            <select class="form-control select2" name="Classroom_id_new" >
-                <option selected disabled>اختـر من القائمة...</option>
-                @foreach($Classrooms as $Classroom)
-                    <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                @endforeach
-            </select>
-            @error('Classroom_id_new')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-
-        {{-- <div class="col-xs-3">
-            <label for="inputZip">الشـعبة</label>
-            <select class="form-control select2" name="section_id_new">
-                <option selected>أختـر من القائمة...</option>
-                @foreach($Sections as $Section)
-                    <option value="{{$Section->id}}">{{$Section->name_section}}</option>
-                @endforeach
-            </select>
-            @error('section_id_new')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div> --}}
-
-        <div class="col-xs-4">
-            <label for="academic_year">السنـة الدراسيـة </label>
-            <select class="form-control select2" name="academic_year_new">
-                <option selected disabled>اختـر من القائمة...</option>
-                @php
-                    $current_year = date("Y");
-                @endphp
-                @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                    <option value="{{ $year}}">{{ $year }}</option>
-                @endfor
-            </select>
-            @error('academic_year_new')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-    </div>
-    <br>
+<div class="box-body table-responsive no-padding">
 
 
+<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+<thead>
+<tr>
+    <th style="text-align: center;" class="alert-info">#</th>
+    <th style="text-align: center;" class="alert-info">أسـم الطالـب</th>
+    <th style="text-align: center;" class="alert-danger">المرحلة الدراسية السابقة</th>
+    <th style="text-align: center;" class="alert-danger">السنة الدراسية</th>
+    <th style="text-align: center;" class="alert-danger">الصف الدراسي السابق</th>
+    <th style="text-align: center;" class="alert-success">المرحلة الدراسية الحالي</th>
+    <th style="text-align: center;" class="alert-success">السنة الدراسية الحالية</th>
+    <th style="text-align: center;" class="alert-success">الصف الدراسي الحالي</th>
+    <th style="text-align: center;" class="alert-success"> تـم الترقيـة بواسطـة</th>
+    <th style="text-align: center;" class="alert-warning">العمليات</th>
+</tr>
+</thead>
+<tbody>
+
+@foreach($promotions as $promotion)
+<tr>
+    <td>{{ $loop->index+1 }}</td>
+    <td scope="row">{{$promotion->student->name}}</td>
+    <td scope="row">{{$promotion->f_grade->name}}</td>
+    <td scope="row">{{$promotion->academic_year}}</td>
+    <td scope="row">{{$promotion->f_classroom->name_class}}</td>
+
+    <td>{{$promotion->t_grade->name}}</td>
+    <td>{{$promotion->academic_year_new}}</td>
+    <td>{{$promotion->t_classroom->name_class}}</td>
+
+    <td>{{$promotion->create_by}}</td>
+    <td>
+
+
+
+
+        {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="Delete_all" title="إرجـاع الكل"><i class="fa fa-users"></i></button> --}}
+        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Delete_one{{ $promotion->id }}" title="إرجاع الطالب"><i class="fa fa-user"></i></button>
+
+    </td>
+</tr>
+@include('pages.Upgrades.Delete_all')
+@include('pages.Upgrades.Delete_one')
+@endforeach
+
+</tbody>
+</tbody>
+</table>
 
     </div>
-<div class="modal-footer">
-<button type="submit"
-    class="btn btn-success btn-block">تـأكيـد</button>
-</div>
-
-</form>
 
 
 </div>
-</section><!-- /.content -->
+</div>
+</div>
+
+</section>
 
 @endsection
 @section('js')
 @toastr_js
 @toastr_render
-
-
-
 @endsection
-

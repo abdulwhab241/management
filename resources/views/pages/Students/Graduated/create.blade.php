@@ -42,7 +42,7 @@
     <div class="box-body">
         <div class="row">
     
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <label > المرحلـة الدراسيـة</label>
                 <select class="form-control select2" name="Grade_id">
                     <option  selected disabled>أختـر من القائمة...</option>
@@ -52,7 +52,7 @@
                 </select>
             </div>
     
-            <div class="col-xs-6">
+            <div class="col-md-6">
                 <label > الصـف الدراسـي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected>أختـر من القائمة...</option>
@@ -65,8 +65,6 @@
     </div>
     
     <div class="modal-footer">
-        {{-- <button type="button" class="btn btn-danger"
-        data-dismiss="modal">إغلاق</button> --}}
         <button type="submit"
         class="btn btn-primary btn-block">حفظ البيانات</button>
         </div>

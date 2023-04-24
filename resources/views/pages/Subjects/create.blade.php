@@ -40,7 +40,7 @@
 @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <label for="inputEmail4">أسم المادة</label>
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
             @error('Name')
@@ -49,7 +49,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">الدرجـة</label>
             <input type="number" value="{{ old('Degree') }}" name="Degree" class="form-control">
             @error('Degree')
@@ -58,7 +58,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">المرحلـة الدراسيـة</label>
             <select class="form-control select2" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -72,7 +72,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">الصـف الدراسـي</label>
             <select class="form-control select2" name="Class_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -89,7 +89,7 @@
     </div><br>
 
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label >أسـم المعلـم</label>
 
                 <select class="form-control select2" name="teacher_id">

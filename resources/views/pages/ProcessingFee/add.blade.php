@@ -42,7 +42,7 @@
 <div class="box-body">
     <div class="row">
 
-        <div class="col-xs-3"> 
+        <div class="col-md-3"> 
             <div class="form-group">
             <label> المبلغ</label>
             <input  type="hidden" name="student_id"  value="{{$Student->id}}" class="form-control">
@@ -54,11 +54,11 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label>رصيد الطالب </label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($Student->student_account->sum('Debit_feeInvoice') - $Student->student_account->sum('credit_receipt')) }}" type="text" readonly>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label for="inputEmail4">البيان</label>
             <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="2">{{ old('description') }}</textarea>
             @error('description')

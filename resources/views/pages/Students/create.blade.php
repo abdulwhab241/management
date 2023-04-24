@@ -41,9 +41,8 @@
 <div class="box-body">
     
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الطـالـب</h5>
-    {{-- <div class="container"> --}}
         <div class="row">
-            <div class="col-xs-4"> 
+            <div class="col-md-4"> 
                 <label for="inputEmail4">أسم الطـالـب</label>
                 <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
                 @error('Name')
@@ -53,7 +52,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <label for="inputEmail4">تاريخ الميلاد</label>
                 <input type="text" value="{{ old('Date_Birth') }}" placeholder="2023-03-05" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
                 @error('Date_Birth')
@@ -63,7 +62,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-4">
+            <div class="col-md-4">
                 <label for="inputEmail4">النوع</label>
                 <select class="form-control select2" name="Gender_id">
                     <option selected disabled>أختـر من القائمة...</option>
@@ -82,7 +81,7 @@
 
         <div class="row">
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputState">المرحلة الدراسية</label>
                 <select class="form-control select2" name="Grade_id">
                     <option selected>أختـر من القائمة...</option>
@@ -97,7 +96,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputZip">الصـف الدراسي</label>
                 <select class="form-control select2" name="Classroom_id">
                     <option selected>أختـر من القائمة...</option>
@@ -112,7 +111,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputZip">الشـعبة</label>
                 <select class="form-control select2" name="Section_id">
                     <option selected>أختـر من القائمة...</option>
@@ -127,7 +126,7 @@
                 @enderror
             </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="title">السنة الدراسية</label>
             <select class="form-control select2" name="academic_year">
                 <option selected>أختـر من القائمة...</option>
@@ -151,7 +150,7 @@
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="Father_Name">أسم الاب</label>
             <input type="text" value="{{ old('Father_Name') }}" name="Father_Name"  class="form-control">
             @error('Father_Name')
@@ -161,7 +160,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">جهة العمل</label>
             <input type="text" value="{{ old('Employer') }}" name="Employer" class="form-control" >
             @error('Employer')
@@ -171,7 +170,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الوظيفة</label>
             <input type="text" value="{{ old('Father_Job') }}" name="Father_Job" class="form-control" >
             @error('Father_Job')
@@ -185,7 +184,7 @@
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الهاتف الشخصي</label>
             <input type="text" value="{{ old('Father_Phone') }}" name="Father_Phone" class="form-control" >
             @error('Father_Phone')
@@ -194,7 +193,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">هاتف العمل</label>
             <input type="text" value="{{ old('Job_Phone') }}" name="Job_Phone" class="form-control">
             @error('Job_Phone')
@@ -203,7 +202,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">هاتف المنزل</label>
             <input type="text" value="{{ old('Home_Phone') }}" name="Home_Phone" class="form-control">
             @error('Home_Phone')
@@ -227,7 +226,7 @@
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">أسم الام</label>
             <input type="text" value="{{ old('Mother_Name') }}" name="Mother_Name" class="form-control">
             @error('Mother_Name')
@@ -236,7 +235,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الوظيفة</label>
             <input type="text" value="{{ old('Mother_Job') }}" name="Mother_Job" class="form-control">
             @error('Mother_Job')
@@ -245,7 +244,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="title">الهاتف</label>
             <input type="text" value="{{ old('Mother_Phone') }}" name="Mother_Phone" class="form-control">
             @error('Mother_Phone')

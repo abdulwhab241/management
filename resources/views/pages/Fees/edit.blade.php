@@ -23,7 +23,7 @@
 <section class="content">
 <!-- row -->
 <div class="row">
-<div class="col-md-12 mb-30">
+<div class="col-xs-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
 
@@ -42,18 +42,18 @@
     @csrf
     <div class="box-body">
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">أسم الرسوم</label>
             <input type="text" value="{{$fee->title }}" name="title" class="form-control">
             <input type="hidden" value="{{$fee->id}}" name="id" class="form-control">
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputEmail4">المبلغ</label>
             <input type="number" value="{{$fee->amount}}" name="amount" class="form-control">
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputState">المرحلة الدراسية</label>
             <select class="form-control select2" name="Grade_id">
                 @foreach($Grades as $Grade)
@@ -62,7 +62,7 @@
             </select>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputZip">الصف الدراسي</label>
             <select class="form-control select2" name="Classroom_id">
                 <option value="{{$fee->classroom_id}}">{{$fee->classroom->name_class}}</option>
@@ -75,7 +75,7 @@
     <div class="row">
 
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputZip">السنة الدراسية</label>
             <select class="form-control select2" name="year">
                 @php
@@ -87,7 +87,7 @@
             </select>
         </div>
 
-        <div class="col-xs-3">
+        <div class="col-md-3">
             <label for="inputZip">نـوع الرسـوم</label>
             <select class="form-control select2" name="Fee_type">
                 <option >{{$fee->fee_type}}</option>
@@ -97,7 +97,7 @@
             
         </div>
     
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <label for="inputAddress">ملاحظات</label>
             <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
                         rows="3">{{$fee->description}}</textarea>

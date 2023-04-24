@@ -105,7 +105,7 @@
                 <div class="box-body">
                     <div class="row">
 
-                        <div class="col-xs-6"> 
+                        <div class="col-md-6"> 
                             <div class="form-group">
                             <label>الصـف الدراسي</label>
                             <input id="id" type="hidden" name="id" class="form-control"
@@ -128,7 +128,7 @@
                             @enderror
                         </div>
                 
-                        <div class="col-xs-6"> 
+                        <div class="col-md-6"> 
                             <div class="form-group">
                             <label>المـادة</label>
                             <select class="form-control select2" name="Subject_id">
@@ -152,7 +152,7 @@
                 
                 <div class="row">
                 
-                    <div class="col-xs-6"> 
+                    <div class="col-md-6"> 
                         <div class="form-group">
                         <label>الأستـاذ</label>
                         <select class="form-control select2" name="Teacher_id">
@@ -173,7 +173,7 @@
                         @enderror
                     </div>
                 
-                    <div class="col-xs-6">
+                    <div class="col-md-6">
                         <label for="inputEmail4">الـدرجـة</label>
                         <input type="number" value="{{ $Exam->total_marks }}" name="Total" class="form-control">
                         @error('Total')
@@ -222,10 +222,10 @@
                 disabled>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left"
+                <button type="button" class="btn btn-default"
                         data-dismiss="modal">إغلاق</button>
                 <button type="submit"
-                        class="btn btn-outline">حذف البيانات</button>
+                        class="btn btn-danger">حذف البيانات</button>
             </div>
         </div>
         </form>
@@ -258,7 +258,7 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-xs-6"> 
+        <div class="col-md-6"> 
             <label>الصـف الدراسي</label>
             <select class="form-control select2" name="Classroom_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -273,7 +273,7 @@ aria-hidden="true">
             @enderror
         </div>
 
-        <div class="col-xs-6"> 
+        <div class="col-md-6"> 
             <label>المـادة</label>
             <select class="form-control select2" name="Subject_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -291,7 +291,7 @@ aria-hidden="true">
 
 <div class="row">
 
-    <div class="col-xs-6"> 
+    <div class="col-md-6"> 
         <label>الأستـاذ</label>
         <select class="form-control select2" name="Teacher_id">
             <option  selected disabled>أختـر من القائمة...</option>
@@ -306,7 +306,7 @@ aria-hidden="true">
         @enderror
     </div>
 
-    <div class="col-xs-6">
+    <div class="col-md-6">
         <label for="inputEmail4">الـدرجـة</label>
         <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
         @error('Total')

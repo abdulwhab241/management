@@ -39,8 +39,8 @@
 {{method_field('patch')}}
 @csrf
 <div class="box-body">
-    <div class="form-row">
-        <div class="col-6">
+    <div class="row">
+        <div class="col-md-6">
             <label for="inputEmail4">أسم المعلـم</label>
             <input type="text" value="{{ $Teachers->name }}" name="Name" class="form-control">
             <input type="hidden" name="id" value="{{$Teachers->id}}">
@@ -50,10 +50,8 @@
             </div>
             @enderror
         </div>
-        <br>
 
-
-        <div class="col-6">
+        <div class="col-md-6">
             <label for="inputEmail4">رقـم الهاتـف</label>
             <input type="text" value="{{ $Teachers->phone_number}}" name="Phone_Number" class="form-control">
             @error('Phone_Number')
@@ -66,11 +64,10 @@
     </div>
     <br>
 
-    <div class="form-row">
-        <div class="col-6">
+    <div class="row">
+        <div class="col-md-4">
             <label for="inputEmail4">التخصـص</label>
             <select class="form-control select2" name="Specialization_id">
-                {{-- <option selected disabled>حـدد التخصـص...</option> --}}
                 <option value="{{$Teachers->specialization_id}}">{{$Teachers->specializations->name}}</option>
                 @foreach($specializations as $specialization)
                     <option value="{{$specialization->id}}">{{$specialization->name}}</option>
@@ -82,13 +79,10 @@
             </div>
             @enderror
         </div>
-        <br>
 
-
-        <div class="col-6">
+        <div class="col-md-4">
             <label for="inputEmail4">النـوع</label>
             <select class="form-control select2" name="Gender_id">
-                {{-- <option selected disabled>حـدد النـوع...</option> --}}
                 <option value="{{$Teachers->gender_id}}">{{$Teachers->genders->name}}</option>
                 @foreach($genders as $gender)
                     <option value="{{$gender->id}}">{{$gender->name}}</option>
@@ -101,20 +95,17 @@
             @enderror
         </div>
 
-    </div>   
-    <br>
-        <div class="form-group">
+        <div class="col-md-4">
             <label >تاريخ التعيين</label>
-            <div class='input-group'>
                 <input  class="form-control timepicker" type="text" value="{{$Teachers->joining_date}}" id="reservation" name="Joining_Date" >
-            </div>
             @error('Joining_Date')
             <div class="alert alert-danger">
             <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
             </div>
             @enderror
         </div>
-        <br>
+
+    </div>   
         <div class="form-group">
             <label for="exampleFormControlTextarea1">العنوان</label>
             <textarea class="form-control" name="Address"
@@ -125,9 +116,9 @@
             </div>
             @enderror
             
-        </div>
+        </div><br>
 
-    <div class="col-md-3">
+    <div class="col">
         <div class="form-group">
             <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للمعلم: </label>
             <input type="file" accept="image/*" name="Photo">

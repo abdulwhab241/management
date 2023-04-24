@@ -40,7 +40,7 @@
 <div class="box-body">
     <div class="row">
 
-            <div class="col-xs-6" >
+            <div class="col-md-6" >
                 <label for="inputEmail4">أسم المعلـم</label>
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
         
@@ -52,7 +52,7 @@
             
     </div>
 
-            <div class="col-xs-6">
+            <div class="col-md-6">
             <label for="inputEmail4">رقـم الهاتـف</label>
             <input type="text" value="{{ old('Phone_Number') }}" name="Phone_Number" class="form-control ">
             @error('Phone_Number')
@@ -65,7 +65,7 @@
         <br>
 
     <div class="row">
-        <div class=" col-xs-4">
+        <div class=" col-md-4">
             <label for="inputEmail4">التخصـص</label>
             <select class="form-control select2" name="Specialization_id">
                 <option selected disabled>حـدد التخصـص...</option>
@@ -80,7 +80,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label for="inputEmail4">النـوع</label>
             <select class="form-control select2" name="Gender_id">
                 <option selected disabled>حـدد النـوع...</option>
@@ -95,7 +95,7 @@
             @enderror
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >تاريخ التعيين</label>
             <div class='input-group'>
                 <input  class="form-control timepicker" type="text" value="{{ old('Joining_Date') }}" id="reservation" name="Joining_Date" >

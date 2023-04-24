@@ -1,8 +1,8 @@
-<footer class="bg-white p-4"  style="font-family: 'Cairo', sans-serif">
+<footer class="bg-white p-4"  style="font-family: 'Cairo', sans-serif; padding: 10px; background-color: white; ">
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6" >
         <div class="text-center text-md-right">
-            <p class="mb-0"> &copy; جميع الحقوق محفوظة<span id="copyright">
+            <p class="mb-0" style="text-align: center;"> &copy; جميع الحقوق محفوظة<span id="copyright">
                     <script>
                         document.getElementById('copyright').appendChild(document
                             .createTextNode(new Date().getFullYear()))

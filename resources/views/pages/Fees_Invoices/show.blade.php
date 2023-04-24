@@ -41,7 +41,7 @@
     @csrf
     <div class="box-body">
         <div class="row">
-            <div class="col-xs-3"> 
+            <div class="col-md-3"> 
                 <div class="form-group">
                 <label>أسم الطـالـب</label>
                 <select class="form-control select2" name="Student_id">
@@ -55,7 +55,7 @@
                 @enderror
             </div>
 
-            <div class="col-xs-3"> 
+            <div class="col-md-3"> 
                 <div class="form-group">
                 <label>نـوع الرسـوم </label>
                 <select class="form-control select2" name="Fee_id">
@@ -71,7 +71,7 @@
                 </div>
                 @enderror
             </div>
-            <div class="col-xs-3"> 
+            <div class="col-md-3"> 
                 <div class="form-group">
                 <label> المبلغ</label>
                 <input type="hidden" name="Grade_id" value="{{$student->grade_id}}">
@@ -89,7 +89,7 @@
                 </div>
                 @enderror
             </div>
-            <div class="col-xs-3">
+            <div class="col-md-3">
                 <label for="inputEmail4">البيان</label>
                 <input type="text" value="{{ old('description') }}" name="description" class="form-control">
                 @error('description')

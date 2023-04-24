@@ -107,7 +107,7 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >المرحـلة الدراسيـة</label>
             <select name="Grade_id"
             class="form-control select2"
@@ -126,7 +126,7 @@ aria-hidden="true">
         </select>
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >الصــف الدراسـي</label>
             <select name="Class_id"
             class="form-control select2">
@@ -143,7 +143,7 @@ aria-hidden="true">
             </select>
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >القسـم</label>
             <select class="form-control select2" name="Name_Section">
                 <option >{{$list_Sections->name_section}}</option>
@@ -252,7 +252,7 @@ id="exampleModalLabel">
 
     <div class="row">
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >المرحـلة الدراسيـة</label>
             <select name="Grade_id" class="form-control select2"
             onchange="console.log($(this).val())">
@@ -265,7 +265,7 @@ id="exampleModalLabel">
         </select>
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >الصــف الدراسـي</label>
             <select name="Class_id" class="form-control select2">
             <!--placeholder-->
@@ -277,7 +277,7 @@ id="exampleModalLabel">
         </select>
         </div>
 
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <label >القسـم</label>
 
             <select class="form-control select2" name="Name_Section">
@@ -292,10 +292,6 @@ id="exampleModalLabel">
 
 </div>
 
-
-
-
-
 <div class="modal-footer">
     <button type="button" class="btn btn-danger"
     data-dismiss="modal">إغلاق</button>
@@ -303,7 +299,7 @@ id="exampleModalLabel">
     class="btn btn-success">حفظ البيانات</button>
     </div>
 
-{{-- </div> --}}
+
 </form>
 
 </div>
