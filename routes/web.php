@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,27 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
+// Route::view('/', 'auth.selections');
+
+// Route::get('/', function () {
+//     return view('auth.selections');
+// });
+
+// Route::get('', function () {
+//     return view('welcome');
+// });
+// Route::get('/', 'HomeController@index')->name('selection');
+
+
+// Route::group(['namespace' => 'App\Http\Controllers'], function () {
+
+//     Route::get('/login/{type}',[LoginController::class,'loginForm'])->middleware('guest')->name('login.show');
+    
+//     Route::post('/login',[LoginController::class,'login'])->name('login');
+
+//     Route::get('/logout/{type}', [LoginController::class,'logout']);
+    
+// });
 
 Route::group(
     [
@@ -61,13 +83,7 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Teachers', TeacherController::class);
         });
-        // //==============================parents============================
 
-        // Route::view('add_parent','livewire.show_Form')->name('add_parent');
-
-        // //==============================Students============================
-
-        // Route::view('add_student','livewire.show_Form')->name('add_student');
 
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
@@ -115,28 +131,13 @@ Route::group(
           //==============================Setting============================
         Route::resource('Settings', SettingController::class);
 
-    //  //==============================Promotion Students ============================
-    //     Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    //         Route::resource('Promotion', 'PromotionController');
-    // });
-
-
-
-
-
-
-
-
-
-
-
 
     });
 
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

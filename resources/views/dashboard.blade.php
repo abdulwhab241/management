@@ -111,7 +111,7 @@
     </div><!-- /.nav-tabs-custom -->
 
     <!-- Chat box -->
-    <div class="box box-success">
+    {{-- <div class="box box-success">
     <div class="box-header">
         <i class="fa fa-comments-o"></i>
         <h3 class="box-title">Chat</h3>
@@ -180,10 +180,10 @@
         </div>
         </div>
     </div>
-    </div><!-- /.box (chat box) -->
+    </div><!-- /.box (chat box) --> --}}
 
     <!-- TO DO List -->
-    <div class="box box-primary">
+    {{-- <div class="box box-primary">
     <div class="box-header">
         <i class="ion ion-clipboard"></i>
         <h3 class="box-title">To Do List</h3>
@@ -287,10 +287,10 @@
     <div class="box-footer clearfix no-border">
         <button class="btn btn-default pull-left"><i class="fa fa-plus"></i> Add item</button>
     </div>
-    </div><!-- /.box -->
+    </div><!-- /.box --> --}}
 
     <!-- quick email widget -->
-    <div class="box box-info">
+    {{-- <div class="box box-info">
     <div class="box-header">
         <i class="fa fa-envelope"></i>
         <h3 class="box-title">Quick Email</h3>
@@ -315,14 +315,14 @@
     <div class="box-footer clearfix">
         <button class="pull-left btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-left"></i></button>
     </div>
-    </div>
+    </div> --}}
 
 </section><!-- /.Left col -->
 <!-- right col (We are only adding the ID to make the widgets sortable)-->
 <section class="col-lg-5 connectedSortable">
 
     <!-- Map box -->
-    <div class="box box-solid bg-light-blue-gradient">
+    {{-- <div class="box box-solid bg-light-blue-gradient">
     <div class="box-header">
         <!-- tools box -->
         <div class="pull-left box-tools">
@@ -355,7 +355,7 @@
         </div><!-- /.row -->
     </div>
     </div>
-    <!-- /.box -->
+    <!-- /.box --> --}}
 
     <!-- solid sales graph -->
     <div class="box box-solid bg-teal-gradient">
@@ -388,7 +388,7 @@
     </div><!-- /.box-footer -->
     </div><!-- /.box -->
 
-    <!-- Calendar -->
+    {{-- <!-- Calendar -->
     <div class="box box-solid bg-green-gradient">
     <div class="box-header">
         <i class="fa fa-calendar"></i>
@@ -452,7 +452,7 @@
         </div><!-- /.col -->
         </div><!-- /.row -->
     </div>
-    </div><!-- /.box -->
+    </div><!-- /.box --> --}}
 
 </section><!-- right col -->
 </div><!-- /.row (main row) -->

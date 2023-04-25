@@ -11,8 +11,9 @@ use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Student extends Model
+class Student extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
@@ -46,10 +47,10 @@ class Student extends Model
 
   // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
 
-  public function section()
-  {
-      return $this->belongsTo(Section::class, 'section_id');
-  }
+    public function section()
+    {
+        return $this->belongsTo(Section::class, 'section_id');
+    }
 
 //   // علاقة بين الطلاب والصور لجلب اسم الصور  في جدول الطلاب
 //     public function images()

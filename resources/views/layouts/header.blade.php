@@ -1,4 +1,3 @@
-<div class="wrapper">
 <header class="main-header"  style="font-family: 'Cairo', sans-serif">
 <!-- Logo -->
 <a href="#" class="logo">
@@ -253,4 +252,3 @@
 </nav>
 
 </header>
-</div>
