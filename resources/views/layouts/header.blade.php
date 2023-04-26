@@ -217,6 +217,7 @@
                 <small>{{auth()->user()->email}}</small>
             </p>
             </li>
+            @endif
             <!-- Menu Body -->
             <li class="user-body">
             <div class="col-xs-4 text-center">
@@ -235,15 +236,19 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
             </div>
             <div class="pull-left">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-            <a class="btn btn-default btn-flat" href="{{ route('logout') }}" onclick="event.preventDefault();
-            this.closest('form').submit();">تسجيـل خـروج</a>
+            @if(auth('student')->check())
+            <form method="POST" action="{{ route('logout','student') }}">
+            @elseif(auth('teacher')->check())
+            <form method="POST" action="{{ route('logout','teacher') }}">
+            @else
+            <form method="POST" action="{{ route('logout','web') }}">
+            @endif
+
+            @csrf
+            <a class="btn btn-default btn-flat" href="#" onclick="event.preventDefault();this.closest('form').submit();">تسجيل الخروج</a>
             </form>
-                {{-- <a href="#" class="btn btn-default btn-flat">تسجيـل خـروج</a> --}}
             </div>
             </li>
-            @endif
         </ul>
         </li>
     </ul>

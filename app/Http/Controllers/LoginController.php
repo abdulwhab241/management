@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // use AuthTrait;
+    use AuthTrait;
 
     public function __construct()
     {
@@ -23,9 +23,10 @@ class LoginController extends Controller
     }
 
     public function login(Request $request){
-        if (Auth::guard($this->checkGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard($this->checkGuard($request))->attempt(['name' => strip_tags($request->name), 'password' => strip_tags($request->password)])) {
             return $this->redirect($request);
         }
+
     }
 
     public function logout(Request $request,$type)

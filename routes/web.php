@@ -29,27 +29,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-// Route::view('/', 'auth.selections');
 
-// Route::get('/', function () {
-//     return view('auth.selections');
-// });
-
-// Route::get('', function () {
-//     return view('welcome');
-// });
-// Route::get('/', 'HomeController@index')->name('selection');
-
-
-// Route::group(['namespace' => 'App\Http\Controllers'], function () {
-
-//     Route::get('/login/{type}',[LoginController::class,'loginForm'])->middleware('guest')->name('login.show');
-    
-//     Route::post('/login',[LoginController::class,'login'])->name('login');
-
-//     Route::get('/logout/{type}', [LoginController::class,'logout']);
-    
-// });
 
 Route::group(
     [
@@ -58,7 +38,7 @@ Route::group(
     ], function(){ 
         
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-        Route::get('/', [HomeController::class, 'dashboard']) -> name('dashboard');
+        Route::get('/dashboard', [HomeController::class, 'dashboard']) -> name('dashboard');
 
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Grades', GradeController::class);
@@ -135,9 +115,7 @@ Route::group(
     });
 
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

@@ -39,13 +39,13 @@ href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,
                 <div class="login-fancy pb-40 clearfix">
                     <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">حدد طريقة الدخول</h3>
                     <div class="form-inline">
-                        <a class="btn btn-default col-lg-4" title="طالب" href="#">
+                        <a class="btn btn-default col-lg-4" title="طالب" href="{{route('login.show','student')}}">
                             <img alt="user-img" width="100px;" src="{{URL::asset('/images/student.png')}}">
                         </a>
-                        <a class="btn btn-default col-lg-4" title="معلم" href="#">
+                        <a class="btn btn-default col-lg-4" title="معلم" href="{{route('login.show','teacher')}}">
                             <img alt="user-img" width="100px;" src="{{URL::asset('/images/teacher.png')}}">
                         </a>
-                        <a class="btn btn-default col-lg-4" title="ادمن" href="{{route('login')}}">
+                        <a class="btn btn-default col-lg-4" title="ادمن" href="{{route('login.show','admin')}}">
                             <img alt="user-img" width="100px;" src="{{URL::asset('/images/admin.png')}}">
                         </a>
                     </div>
@@ -61,10 +61,8 @@ login-->
 
 </div>
 <!-- jquery -->
-{{-- <script src="{{ URL::asset('/js/jquery-3.3.1.min.js') }}"></script> --}}
 <script src="/js/jquery-3.3.1.min.js"></script>
 <!-- plugins-jquery -->
-{{-- <script src="{{ URL::asset('/js/plugins-jquery.js') }}"></script> --}}
 <script src="/js/plugins-jquery.js"></script>
 <!-- plugin_path -->
 <script>
@@ -75,7 +73,6 @@ var plugin_path = 'js/';
 <!-- toastr -->
 @yield('js')
 <!-- custom -->
-{{-- <script src="{{ URL::asset('/js/custom.js') }}"></script> --}}
 <script src="/js/custom.js"></script>
 
 

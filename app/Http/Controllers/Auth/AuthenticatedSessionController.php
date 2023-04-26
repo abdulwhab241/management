@@ -18,12 +18,17 @@ class AuthenticatedSessionController extends Controller
 
     public function show()
     {
-        return view('auth.selection');
+        return view('selection');
     }
 
-    public function create(): View
-    {
-        return view('auth.login');
+    // public function create(): View
+    // {
+    //     return view('auth.login');
+    // }
+
+    public function loginForm($type){
+
+        return view('login',compact('type'));
     }
 
     /**

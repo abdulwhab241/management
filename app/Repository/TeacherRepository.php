@@ -39,7 +39,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
             $Teachers = new Teacher();
             $Teachers->name = $request->Name;
             $Teachers->image = $file_name;
-            $Teachers->phone_number = $request->Phone_Number;
+            $Teachers->password = $request->Phone_Number;
             $Teachers->specialization_id = $request->Specialization_id;
             $Teachers->gender_id = $request->Gender_id;
             $Teachers->joining_date = $request->Joining_Date;
