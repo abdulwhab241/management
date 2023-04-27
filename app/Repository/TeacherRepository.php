@@ -37,13 +37,13 @@ class TeacherRepository implements TeacherRepositoryInterFace
 
         try {
             $Teachers = new Teacher();
-            $Teachers->name = $request->Name;
+            $Teachers->name = strip_tags($request->Name);
             $Teachers->image = $file_name;
-            $Teachers->password = $request->Phone_Number;
-            $Teachers->specialization_id = $request->Specialization_id;
-            $Teachers->gender_id = $request->Gender_id;
-            $Teachers->joining_date = $request->Joining_Date;
-            $Teachers->address = $request->Address;
+            $Teachers->password = Hash::make(strip_tags($request->Phone_Number));
+            $Teachers->specialization_id = strip_tags($request->Specialization_id);
+            $Teachers->gender_id = strip_tags($request->Gender_id);
+            $Teachers->joining_date = strip_tags($request->Joining_Date);
+            $Teachers->address = strip_tags($request->Address);
             $Teachers->create_by = auth()->user()->name;
 
             $Teachers->save();
@@ -68,13 +68,13 @@ class TeacherRepository implements TeacherRepositoryInterFace
         try {
             $Teachers = Teacher::findOrFail($request->id);
     
-            $Teachers->name = $request->Name;
+            $Teachers->name = strip_tags($request->Name);
             $Teachers->image = $file_name;
-            $Teachers->phone_number = $request->Phone_Number;
-            $Teachers->specialization_id = $request->Specialization_id;
-            $Teachers->gender_id = $request->Gender_id;
-            $Teachers->joining_date = $request->Joining_Date;
-            $Teachers->address = $request->Address;
+            $Teachers->password = Hash::make(strip_tags($request->Phone_Number));
+            $Teachers->specialization_id = strip_tags($request->Specialization_id);
+            $Teachers->gender_id = strip_tags($request->Gender_id);
+            $Teachers->joining_date = strip_tags($request->Joining_Date);
+            $Teachers->address = strip_tags($request->Address);
             $Teachers->create_by = auth()->user()->name;
             $Teachers->save();
             toastr()->success('تم تعديل معلومـات المعلم بنجاح');

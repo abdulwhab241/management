@@ -22,10 +22,12 @@ class LoginController extends Controller
         return view('login',compact('type'));
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         if (Auth::guard($this->checkGuard($request))->attempt(['name' => strip_tags($request->name), 'password' => strip_tags($request->password)])) {
             return $this->redirect($request);
         }
+        return redirect('/login')->with('message', 'لـيس مخـول لـك بالـدخـول');
 
     }
 

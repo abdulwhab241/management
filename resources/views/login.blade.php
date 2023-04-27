@@ -44,7 +44,16 @@ login-->
 
 <section class="height-100vh d-flex align-items-center page-section-ptb login"
 style="background-image: url('{{ asset('/images/sativa.png')}}');">
+
+
+
+
 <div class="container">
+    @if (Session::has('message'))
+<div class="alert alert-danger">
+    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{Session::get('message')}}</h3></span>
+</div>
+@endif
 <div class="row justify-content-center no-gutters vertical-align">
 <div class="col-lg-4 col-md-6 login-fancy-bg bg"
     style="background-image: url('{{ asset('/images/login-inner-bg.jpg')}}');">

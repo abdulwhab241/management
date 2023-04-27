@@ -82,9 +82,6 @@
                 <td>{{$Student->mother_job}}</td>
             </tr>
         </tbody>
-        {{-- <tbody>
-
-        </tbody> --}}
         </table>
     </div>
 </div>

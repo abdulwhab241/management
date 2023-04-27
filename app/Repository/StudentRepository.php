@@ -81,7 +81,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->father_name = strip_tags($request->Father_Name);
             $students->employer = strip_tags($request->Employer);
             $students->father_job = strip_tags($request->Father_Job);
-            $students->password = strip_tags($request->Father_Phone);
+            $students->password = Hash::make(strip_tags($request->Father_Phone));
             $students->job_phone = strip_tags($request->Job_Phone);
             $students->home_phone = strip_tags($request->Home_Phone);
             $students->address = strip_tags($request->Address);
@@ -146,7 +146,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->father_name = strip_tags($request->Father_Name);
             $Edit_Students->employer = strip_tags($request->Employer);
             $Edit_Students->father_job = strip_tags($request->Father_Job);
-            $Edit_Students->password = strip_tags($request->Father_Phone);
+            $Edit_Students->password = Hash::make(strip_tags($request->Father_Phone));
             $Edit_Students->job_phone = strip_tags($request->Job_Phone);
             $Edit_Students->home_phone = strip_tags($request->Home_Phone);
             $Edit_Students->address = strip_tags($request->Address);

@@ -214,7 +214,7 @@
             <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             <p>
                 {{auth()->user()->name}}
-                <small>{{auth()->user()->email}}</small>
+                {{-- <small>{{auth()->user()->email}}</small> --}}
             </p>
             </li>
             @endif
