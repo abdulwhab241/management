@@ -29,7 +29,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1  style="font-family: 'Cairo', sans-serif">
-    الأسـم: {{auth()->user()->name}}
+    الأسـم: {{auth()->user()->name}}     |     <span> الصـف الدراسـي:  {{ auth()->user()->classroom->name_class }}</span>
 </h1>
 
 </section>
@@ -50,56 +50,73 @@
             <table class="table" data-page-length="50">
                 <tbody>
                     <tr>
-                        <th style="text-align: center; width: 50%;"  class="alert-info">أسـم الطـالـب</th>
-                        <td style="text-align: center; width: 50%;" >{{ auth()->user()->name }}</td>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;"  >أسـم الطـالـب</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->name }}</td>
                     </tr>
                     <tr>
-                        <th style="text-align: center; width: 50%;"  class="alert-info">الجنـس</th>
-                        <td style="text-align: center; width: 50%;" >{{ auth()->user()->gender->name }}</td>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الجنـس</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->gender->name }}</td>
                     </tr>
-
-                <tr>
-                    {{-- <th scope="row" style="text-align: center;" class="alert-default">أسـم الطـالـب</th>
-                    <td>{{ auth()->user()->name }}</td> --}}
-                    {{-- <th scope="row" style="text-align: center;" class="alert-default">الجنـس</th>
-                    <td>{{auth()->user()->gender->name}}</td> --}}
-                    <th scope="row" style="text-align: center;" class="alert-default">تـاريـخ الميـلاد</th>
-                    <td>{{auth()->user()->birth_date}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">المـرحلـة الدراسيـة</th>
-                    <td>{{auth()->user()->grade->name}}</td>
-                </tr>
-                <tr>
-                    <th scope="row" style="text-align: center;" class="alert-default">الصـف الدراسـي</th>
-                    <td>{{ auth()->user()->classroom->name_class }}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">الشعبـة</th>
-                    <td style="font-weight: bolder;">{{ auth()->user()->section->name_section }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" style="text-align: center; " class="alert-default">أسـم الأب</th>
-                    <td>{{auth()->user()->father_name}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">جهـة العمـل</th>
-                    <td>{{auth()->user()->employer}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">الوظيـفة</th>
-                    <td>{{auth()->user()->father_job}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default"> هـاتف الأب </th>
-                    <td>{{ auth()->user()->father_phone }}</td>
-                </tr>
-                <tr>
-                    <th scope="row" style="text-align: center;" class="alert-default">هـاتـف العمـل</th>
-                    <td>{{auth()->user()->job_phone}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">هـاتـف المنـزل</th>
-                    <td>{{auth()->user()->home_phone}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">العنـوان</th>
-                    <td>{{auth()->user()->address}}</td>
-                </tr>
-                <tr>
-                    <th scope="row" style="text-align: center;" class="alert-default"> أسـم الأم </th>
-                    <td>{{ auth()->user()->mother_name }}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">هـاتـف الأم</th>
-                    <td>{{auth()->user()->mother_phone}}</td>
-                    <th scope="row" style="text-align: center;" class="alert-default">الوظيفـة</th>
-                    <td>{{auth()->user()->mother_job}}</td>
-                </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تـاريـخ الميـلاد</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->birth_date }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >المـرحلـة الدراسيـة</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->grade->name }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الصـف الدراسـي</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->classroom->name_class }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الشعبـة</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->section->name_section }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >أسـم الأب</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->father_name }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >جهـة العمـل</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->employer }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الوظيـفة</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->father_job }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >هـاتـف العمـل</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->job_phone }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >هـاتـف المنـزل</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->home_phone }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >العنـوان</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->address }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >أسـم الأم</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_name }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >هـاتـف الأم</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_phone }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >وظيفـة الأم</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_job }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تاريخ التسجيل</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->created_at }}</td>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >السنـة الدراسيـة</th>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->academic_year }}</td>
+                    </tr>
             </tbody>
             </table>
         </div>
@@ -110,86 +127,6 @@
 
 
 
-{{-- <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-aqua">
-    <div class="inner">
-        <h3>۱۵۰</h3>
-        <p>سفارش جدید</p>
-    </div>
-    <div class="icon">
-        <i class="ion ion-bag"></i>
-    </div>
-    <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-green">
-    <div class="inner">
-        <h3>۵۳<sup style="font-size: 20px">%</sup></h3>
-        <p>افزایش آمار</p>
-    </div>
-    <div class="icon">
-        <i class="ion ion-stats-bars"></i>
-    </div>
-    <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-yellow">
-    <div class="inner">
-        <h3>۴۴</h3>
-        <p>کاربر ثبت نام کرده</p>
-    </div>
-    <div class="icon">
-        <i class="ion ion-person-add"></i>
-    </div>
-    <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-red">
-    <div class="inner">
-        <h3>۶۵</h3>
-        <p>بازدید کننده یکتا</p>
-    </div>
-    <div class="icon">
-        <i class="ion ion-pie-graph"></i>
-    </div>
-    <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col --> --}}
-</div><!-- /.row -->
-<!-- Main row -->
-{{-- <div class="row"> --}}
-<!-- Left col -->
-{{-- <section class="col-lg-7 connectedSortable">
-    <!-- Custom tabs (Charts with tabs)-->
-    <div class="nav-tabs-custom">
-    <!-- Tabs within a box -->
-    <ul class="nav nav-tabs pull-right">
-        <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-        <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-        <li class="pull-left header"><i class="fa fa-inbox"></i> Sales</li>
-    </ul>
-    <div class="tab-content no-padding">
-        <!-- Morris chart - Sales -->
-        <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-        <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-    </div>
-    </div><!-- /.nav-tabs-custom -->
-
-
-
-</section><!-- /.Left col --> --}}
-<!-- right col (We are only adding the ID to make the widgets sortable)-->
-{{-- <section class="col-lg-5 connectedSortable">
-
-</section><!-- right col --> --}}
-{{-- </div><!-- /.row (main row) --> --}}
 
 </section><!-- /.content -->
 

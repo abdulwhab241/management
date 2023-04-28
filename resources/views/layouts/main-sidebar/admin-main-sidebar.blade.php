@@ -73,25 +73,25 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Students.index')}}"><i class="fa fa-users"></i> قائمة الطـلاب</a></li>
+    <li><a href="{{route('Students.index')}}"><i class="fa fa-circle-o"></i> قائمة الطـلاب</a></li>
     <li class="treeview">
         <a href="#">
-        <i class="fa fa-refresh"></i>
+        <i class="fa fa-retweet" aria-hidden="true"></i>
         <span> تـرقيـة الطـلاب </span>
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
-        <li><a href="{{route('Upgrades.index')}}"><i class="fa fa-refresh"></i> قائمة تـرقيـة الطـلاب</a></li>
+        <li><a href="{{route('Upgrades.index')}}"><i class="fa fa-circle-o"></i> قائمة تـرقيـة الطـلاب</a></li>
         </ul>
     </li>
     <li class="treeview">
         <a href="#">
-        <i class="fas fa-user-graduate"></i>
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
         <span> الطـلاب المتخـرجيـن </span>
         <i class="fa fa-angle-left pull-left"></i>
         </a>
         <ul class="treeview-menu">
-        <li><a href="{{route('Graduated.index')}}"><i class="fas fa-user-graduate"></i> قائمة الطـلاب المتخـرجيـن</a></li>
+        <li><a href="{{route('Graduated.index')}}"><i class="fa fa-circle-o"></i> قائمة الطـلاب المتخـرجيـن</a></li>
         </ul>
     </li>
     </ul>
@@ -103,22 +103,21 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Teachers.index')}}"><i class="fa fa-users"></i> قائمة المعلمين</a></li>
+    <li><a href="{{route('Teachers.index')}}"><i class="fa fa-circle-o"></i> قائمة المعلمين</a></li>
     </ul>
 </li>
 <li class="treeview">
     <a href="#">
     <i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> <!-- this -->
-    {{-- fa-money --}}
     <span>الحسابـات</span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> الرسـوم الدراسيـة</a></li>
-    <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-dollar"></i> سندات القبض (تسـديـد رسـوم)</a></li>
-    <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-list"></i> الفـواتيـر الدراسيـة</a></li>
-    <li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-user-times"></i> أستبـعاد رسـوم طـالـب </a></li>
-    <li><a href="{{route('Payments.index')}}"><i class="fas fa-donate"></i> سـندات الصـرف </a></li>
+    <li><a href="{{route('Fees.index')}}"><i class="fa fa-circle-o"></i> الرسـوم الدراسيـة</a></li>
+    <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-circle-o"></i> سندات القبض (تسـديـد رسـوم)</a></li>
+    <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-circle-o"></i> الفـواتيـر الدراسيـة</a></li>
+    <li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-circle-o"></i> أستبـعاد رسـوم طـالـب </a></li>
+    <li><a href="{{route('Payments.index')}}"><i class="fa fa-circle-o"></i> سـندات الصـرف </a></li>
     </ul>
 </li>
 <li class="treeview">
@@ -128,7 +127,7 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمة المواد الدراسية</a></li>
+    <li><a href="{{route('Subjects.index')}}"><i class="fa fa-circle-o"></i> قائمة المواد الدراسية</a></li>
 
     </ul>
 </li>
@@ -139,7 +138,7 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Exams.index')}}"><i class="fas fa-book-open"></i> قائمة الأختبأرات</a></li>
+    <li><a href="{{route('Exams.index')}}"><i class="fa fa-circle-o"></i> قائمة الأختبأرات</a></li>
 
     </ul>
 </li> <!-- this -->
@@ -162,7 +161,7 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Classes.index')}}"><i class="fa fa-book"></i> قائمة الحصـص الدراسية</a></li>
+    <li><a href="{{route('Classes.index')}}"><i class="fa fa-circle-o"></i> قائمة الحصـص الدراسية</a></li>
     </ul>
 </li>
 

@@ -34,7 +34,7 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Show_Student($id)
     {
         $Student = Student::findOrFail($id);
-        $Student_Account = StudentAccount::findOrFail($id);
+        $Student_Account = StudentAccount::select('*')->where('student_id','=',$id)->get();
         $Payment = PaymentStudent::select('*')->where('student_id','=',$id)->get();
         $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id)->get();
         $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',$id)->get();

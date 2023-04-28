@@ -59,27 +59,11 @@ class Student extends Authenticatable
 //     }
 
 
-  // // علاقة بين الطلاب والاباء لجلب اسم الاب في جدول الاباء
-
-  // public function myparent()
-  // {
-  //     return $this->belongsTo(My_Parent::class, 'parent_id');
-  // }
-
     // علاقة بين جدول سدادت الطلاب وجدول الطلاب لجلب اجمالي المدفوعات والمتبقي
     public function student_account()
     {
         return $this->hasMany(StudentAccount::class, 'student_id');
     }
 
-  //     // علاقة بين جدول الطلاب وجدول الحضور والغياب
-  // public function attendance()
-  // {
-  //     return $this->hasMany(Attendance::class, 'student_id');
-  // }
 
-  // public function feeInvoice()
-  // {
-  //     return $this->belongsTo(FeeInvoice::class, 'student_id');
-  // }
 }

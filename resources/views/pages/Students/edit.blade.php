@@ -195,7 +195,7 @@
 
         <div class="col-md-4">
             <label for="title">الهاتف الشخصي</label>
-            <input type="text" value="{{ $Students->father_phone }}" name="Father_Phone" class="form-control" >
+            <input type="text"  name="Father_Phone" class="form-control" >
             @error('Father_Phone')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
