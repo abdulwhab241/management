@@ -39,13 +39,15 @@
     @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-md-3"> 
+        <div class="col-md-2"> 
             <label >الـيوم</label>
             <select class="form-control select2" name="Day_id">
                 <option selected disabled>أختـر من القائمة...</option>
-            @foreach ($Days as $Day)
-            <option value="{{ $Day->id }}">{{ $Day->name }}</option>
-            @endforeach
+                <option value="السبت">السبت</option>
+                <option value="الاحد">الاحد</option>
+                <option value="الاثنين">الاثنين</option>
+                <option value="الثلاثاء">الثلاثاء</option>
+                <option value="الاربعاء">الاربعاء</option>
             </select>
             @error('Day_id')
             <div class=" alert-danger">
@@ -53,7 +55,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label >المرحلـة الدراسيـة</label>
             <select class="form-control select2" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -67,7 +69,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label >الصـف الدراسـي</label>
             <select class="form-control select2" name="Classroom_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -81,7 +83,7 @@
             </div>
             @enderror
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label >الشعبـة</label>
             <select class="form-control select2" name="Section_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -95,25 +97,207 @@
             </div>
             @enderror
         </div>
-    </div><br>
-
-    <div class="row">
-        <div class="col-md-4">
-            <label >الحصـة</label>
-            <select class="form-control select2" name="School_id">
+        <div class="col-md-2">
+            <label >الحصـة الاولى</label>
+            <select class="form-control select2" name="First">
                 <option selected disabled>أختـر من القائمة...</option>
-                @foreach ($Schools as $School)
-                    <option value="{{ $School->id }}" required>{{ $School->name }}</option>
-                @endforeach
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
             </select>
-            @error('School_id')
+            @error('First')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
+            <label >الحصـة الـثانيـة</label>
+            <select class="form-control select2" name="Second">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
+            </select>
+            @error('Second')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+    </div><br>
+
+    <div class="row">
+ 
+
+        <div class="col-md-2">
+            <label >الحصـة الثـالثـة</label>
+            <select class="form-control select2" name="Third">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
+            </select>
+            @error('Third')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-md-2">
+            <label >الحصـة الرابعـة</label>
+            <select class="form-control select2" name="Fourth">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
+            </select>
+            @error('Fourth')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-md-2">
+            <label >الحصـة الخـامسـة</label>
+            <select class="form-control select2" name="Fifth">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
+            </select>
+            @error('Fifth')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-md-2">
+            <label >الحصـة السـادسـة</label>
+            <select class="form-control select2" name="Sixth">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
+            </select>
+            @error('Sixth')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        <div class="col-md-2">
+            <label >الحصـة السـابعـة</label>
+            <select class="form-control select2" name="Seventh">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="القرأن الكريم">القرأن الكريم</option>
+                <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
+                <option value="اللغه العربيه">اللغه العربيه</option>
+                <option value="اللغه الانجليزيه">اللغه الانجليزيه</option>
+                <option value="المجتمع المدني">المجتمع المدني</option>
+                <option value="الكيمياء">الكيمياء</option>
+                <option value="الفيزياء">الفيزياء</option>
+                <option value="الاحياء">الاحياء</option>
+                <option value="التاريخ">التاريخ</option>
+                <option value="الجغرافيه">الجغرافيه</option>
+                <option value="حاسوب">حاسوب</option>
+                <option value="العلوم">العلوم</option>
+                <option value="الرياضيات">الرياضيات</option>
+                <option value="رياضة">رياضة</option>
+                <option value="فنية">فنية</option>
+                <option value="مكتبة">مكتبة</option>
+            </select>
+            @error('Seventh')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
+
+        {{-- <div class="col-md-4">
             <label >المـادة</label>
             <select class="form-control select2" name="Subject_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -140,7 +324,7 @@
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
-        </div>
+        </div> --}}
     </div>
         <br>
 

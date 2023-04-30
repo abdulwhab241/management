@@ -99,7 +99,7 @@
         </div>
         <div class="modal-body">
             <!-- add_form -->
-            <form class="form-horizontal"  action="{{ route('Exams.update', 'test') }}" method="post">
+            <form class="form-horizontal"  action="{{ route('Quizzes.update', 'test') }}" method="post">
                 {{ method_field('patch') }}
                 @csrf
                 <div class="box-body">
@@ -203,7 +203,7 @@
 <!-- Delete modal -->
 <div class="modal fade" id="delete_Exam{{$Exam->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-danger" role="document">
-        <form action="{{route('Exams.destroy','test')}}" method="post">
+        <form action="{{route('Quizzes.destroy','test')}}" method="post">
             {{method_field('delete')}}
             {{csrf_field()}}
         <div class="modal-content">
@@ -252,7 +252,7 @@ aria-hidden="true">
 </div>
 <div class="modal-body">
 
-<form class="form-horizontal" action="{{ route('Exams.store') }}" method="POST">
+<form class="form-horizontal" action="{{ route('Quizzes.store') }}" method="POST">
 @csrf
 
 <div class="box-body">

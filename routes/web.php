@@ -1,20 +1,22 @@
 <?php
 
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ExamController;
+use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GradeController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GraduatedController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
+use App\Http\Controllers\ProcessingFeeController;
 use App\Http\Controllers\ReceiptStudentsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -45,7 +47,6 @@ Route::group(
         });
 
          //==============================Classrooms============================
-        // Route::resource('Grades', GradeController::class);
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Classrooms', ClassroomController::class);
             Route::post('delete_all', [ClassroomController::class,'delete_all'])->name('delete_all');
@@ -88,9 +89,9 @@ Route::group(
             Route::resource('Subjects', SubjectController::class);
         });
 
-         //==============================Exams============================
+         //==============================Quizzes============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Exams', ExamController::class);
+            Route::resource('Quizzes', QuizController::class);
         });
 
         //==============================Results============================
@@ -98,7 +99,7 @@ Route::group(
             Route::resource('Results', ResultController::class);
         });
 
-        //==============================StudentClasss============================
+        //==============================StudentClasses============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Classes', StudentClassController::class);
         });

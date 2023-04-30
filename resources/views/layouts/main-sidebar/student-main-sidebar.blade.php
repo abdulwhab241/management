@@ -43,19 +43,13 @@
 </li>
 
 <li class="treeview">
-    <a href="#">
-        <i class="fas fa-light fa-percent" ></i>
-    <span>النتـائـج</span>
-    <i class="fa fa-angle-left pull-left"></i>
-    </a>
-    <ul class="treeview-menu">
-    <li><a href="{{route('Sections.index')}}"><i class="fa fa-circle-o"></i> بيـانـات المـواظبـة</a></li>
-    <li><a href="{{route('Sections.index')}}"><i class="fa fa-circle-o"></i> النتـائـج النهـائيـة </a></li>
-    </ul>
+    <li><a href="{{ route('Result.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
 </li>
 <li class="treeview">
-    <li><a href="#"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
+    <li><a href="{{ route('Class.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
 </li>
+
+
 
 </ul>
 </section>

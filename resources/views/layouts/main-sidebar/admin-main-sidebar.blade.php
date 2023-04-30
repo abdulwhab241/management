@@ -138,7 +138,7 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Exams.index')}}"><i class="fa fa-circle-o"></i> قائمة الأختبأرات</a></li>
+    <li><a href="{{route('Quizzes.index')}}"><i class="fa fa-circle-o"></i> قائمة الأختبأرات</a></li>
 
     </ul>
 </li> <!-- this -->

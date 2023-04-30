@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ClassController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentInformationController;
+use App\Http\Controllers\StudentResultController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -35,6 +37,12 @@ Route::group(
     })->name('dashboard.Students');
 
     Route::resource('Information', StudentInformationController::class);
+
+    Route::resource('Class', ClassController::class);
+
+    Route::resource('Result', StudentResultController::class);
+
+    // Route::get('/lass', [StudentInformationController::class, 'student_class']);
 
     Route::get('/student/information', function () {
         return view('pages.Students.information.index');

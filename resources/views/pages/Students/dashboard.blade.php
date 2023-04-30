@@ -42,12 +42,13 @@
         <div class="box">
 
     <div class="tab-pane active" id="tab_1">
-        <div class="box-title" style="background-color: #99E2FE; font-weight: bolder; margin: 5px; padding:5px;" >
-            <i class="fas fa-user-tie"></i>
-            <span > البيـانـات الشخصيـة  </span>
-        </div>
+
         <div class="box-body table-responsive no-padding">
             <table class="table" data-page-length="50">
+                <caption style="background-color: #99E2FE; font-weight: bolder; color:black; text-align:center; margin: 5px; padding:5px;">
+                    <i class="fas fa-user-tie"></i>
+                    <span > البيـانـات الشخصيـة  </span>
+                </caption>
                 <tbody>
                     <tr>
                         <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;"  >أسـم الطـالـب</th>
@@ -111,7 +112,7 @@
                     </tr>
                     <tr>
                         <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تاريخ التسجيل</th>
-                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->created_at }}</td>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->created_at->diffForHumans() }}</td>
                     </tr>
                     <tr>
                         <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >السنـة الدراسيـة</th>

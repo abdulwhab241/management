@@ -23,12 +23,15 @@ class ClassRequest extends FormRequest
     {
         return [
             'Grade_id' => 'required|integer',
-            'Day_id' => 'required|integer',
-            'Section_id' => 'required|integer',
-            'Teacher_id' => 'required|integer',
-            'Subject_id' => 'required|integer',
-            'School_id' => 'required|integer',
             'Classroom_id' => 'required|integer',
+            'Section_id' => 'required|integer',
+            'Day_id' => 'required',
+            'First' => 'required',
+            'Second' => 'required',
+            'Third' => 'required',
+            'Fourth' => 'required',
+            'Fifth' => 'required',
+            'Sixth' => 'required',
     
         ];
     }

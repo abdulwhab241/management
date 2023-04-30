@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('student_classes', function (Blueprint $table) {
             $table->id();
-            // Days  اليوم   جدول الحصص
-            $table->bigInteger('day_id')->unsigned();
-            $table->foreign('day_id')->references('id')->on('days')->onDelete('cascade');
             // Grades  المرحلة
             $table->bigInteger('grade_id')->unsigned();
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('cascade');
@@ -25,15 +22,17 @@ return new class extends Migration
             // Sections الشعبة
             $table->bigInteger('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            // SchoolClass الحصة
-            $table->bigInteger('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('school_classes')->onDelete('cascade');
-            // Subject المادة
-            $table->bigInteger('subject_id')->unsigned();
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
-            // Teachers الاستاذ
-            $table->bigInteger('teacher_id')->unsigned();
-            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            
+            $table->string('day');
+            $table->string('first');
+            $table->string('second');
+            $table->string('third');
+            $table->string('fourth');
+            $table->string('fifth');
+            $table->string('sixth');
+            $table->string('seventh')->nullable();
+        
+
 
 
             $table->string('create_by')->nullable();

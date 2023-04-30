@@ -7,9 +7,9 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
-use App\Http\Requests\ExamRequest;
+use App\Http\Requests\QuizRequest;
 
-class ExamController extends Controller
+class QuizController extends Controller
 {
     public function index()
     {
@@ -18,10 +18,10 @@ class ExamController extends Controller
         $Subjects = Subject::all();
         $Classrooms = Classroom::all();
         
-        return view('pages.Exams.index', compact('Exams','Teachers','Subjects','Classrooms'));
+        return view('pages.Quizzes.index', compact('Exams','Teachers','Subjects','Classrooms'));
     }
 
-    public function store(ExamRequest $request)
+    public function store(QuizRequest $request)
     {
         try
         {
@@ -36,7 +36,7 @@ class ExamController extends Controller
 
             $Exam->save();
             toastr()->success('تم حفظ الأختبـار بنجاح');
-            return redirect()->route('Exams.index');
+            return redirect()->route('Quizzes.index');
         }
         catch(\Exception $e)
         {
@@ -44,7 +44,7 @@ class ExamController extends Controller
         }
     }
 
-    public function update(ExamRequest $request)
+    public function update(QuizRequest $request)
     {
         try
         {
@@ -58,7 +58,7 @@ class ExamController extends Controller
             $Exam->save();
             
             toastr()->success('تم تعديل الأختبـار بنجاح');
-            return redirect()->route('Exams.index');
+            return redirect()->route('Quizzes.index');
         }
         catch(\Exception $e)
         {
@@ -70,7 +70,7 @@ class ExamController extends Controller
     {
         Exam::findOrFail($request->id)->delete(); 
         toastr()->error('تم حذف الأختبـار بنجاح');
-        return redirect()->route('Exams.index');
+        return redirect()->route('Quizzes.index');
     }
 
     

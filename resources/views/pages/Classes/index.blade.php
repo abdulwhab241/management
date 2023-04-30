@@ -59,9 +59,13 @@ aria-pressed="true">اضافة جدول الحصـص</a>
     <th style="text-align: center;" class="alert-info"> المرحلة الدراسية</th>
     <th style="text-align: center;" class="alert-info">الصـف</th>
     <th style="text-align: center;" class="alert-info">الشعبـة</th>
-    <th style="text-align: center;" class="alert-info">الحصـة</th>
-    <th style="text-align: center;" class="alert-info"> المـادة</th>
-    <th style="text-align: center;" class="alert-info"> الأستـاذ</th>
+    <th style="text-align: center;" class="alert-info">الحصـة الأولـى</th>
+    <th style="text-align: center;" class="alert-info">الحصـة الثـانيـة</th>
+    <th style="text-align: center;" class="alert-info">الحصـة الثـالثـة</th>
+    <th style="text-align: center;" class="alert-info">الحصـة الرابعـة</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة الخـامسـة</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة السـادسـة</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة السـابعـة</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -80,13 +84,17 @@ aria-pressed="true">اضافة جدول الحصـص</a>
     @foreach ($List_Classes as $StudentClass)
         <tr>
         
-            <td>{{ $StudentClass->day->name }}</td>
+            <td>{{ $StudentClass->day }}</td>
             <td>{{ $StudentClass->grade->name }}</td>
             <td>{{ $StudentClass->classroom->name_class }}</td>
             <td>{{ $StudentClass->section->name_section }}</td>
-            <td>{{ $StudentClass->schoolClass->name }}</td>
-            <td>{{ $StudentClass->subject->name }}</td>
-            <td> أ. {{ $StudentClass->teacher->name }}</td>
+            <td>{{ $StudentClass->first }}</td>
+            <td>{{ $StudentClass->second }}</td>
+            <td>{{ $StudentClass->third }}</td>
+            <td>{{ $StudentClass->fourth }}</td>
+            <td>{{ $StudentClass->fifth }}</td>
+            <td>{{ $StudentClass->sixth }}</td>
+            <td>{{ $StudentClass->seventh }}</td>
             <td>{{ $StudentClass->create_by }}</td>
             <td>
                 <a href="{{route('Classes.edit',$StudentClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>

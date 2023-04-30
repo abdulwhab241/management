@@ -38,7 +38,7 @@ class StudentSeeder extends Seeder
         ]);
 
         DB::table('students')->insert([
-            'name' => 'Aymen ',
+            'name' => 'علي صالح محمد ',
             'gender_id' => Gender::all()->unique()->random()->id,
             'birth_date' => '2000-02-02',
             'grade_id' => Grade::all()->unique()->random()->id,

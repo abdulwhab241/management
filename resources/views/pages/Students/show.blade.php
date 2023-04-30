@@ -40,45 +40,45 @@
         <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
             <tbody>
             <tr>
-                <th scope="row" style="text-align: center;" class="alert-default">أسـم الطـالـب</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">أسـم الطـالـب</th>
                 <td>{{ $Student->name }}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">الجنـس</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الجنـس</th>
                 <td>{{$Student->gender->name}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">تـاريـخ الميـلاد</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">تـاريـخ الميـلاد</th>
                 <td>{{$Student->birth_date}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">المـرحلـة الدراسيـة</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">المـرحلـة الدراسيـة</th>
                 <td>{{$Student->grade->name}}</td>
             </tr>
             <tr>
-                <th scope="row" style="text-align: center;" class="alert-default">الصـف الدراسـي</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الصـف الدراسـي</th>
                 <td>{{ $Student->classroom->name_class }}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">الشعبـة</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الشعبـة</th>
                 <td style="font-weight: bolder;">{{ $Student->section->name_section }}</td>
             </tr>
             <tr>
-                <th scope="row" style="text-align: center; " class="alert-default">أسـم الأب</th>
+                <th scope="row" style="text-align: center;  background-color: #D0DEF6;" class="alert-default">أسـم الأب</th>
                 <td>{{$Student->father_name}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">جهـة العمـل</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">جهـة العمـل</th>
                 <td>{{$Student->employer}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">الوظيـفة</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الوظيـفة</th>
                 <td>{{$Student->father_job}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default"> هـاتف الأب </th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default"> هـاتف الأب </th>
                 <td>{{ $Student->father_phone }}</td>
             </tr>
             <tr>
-                <th scope="row" style="text-align: center;" class="alert-default">هـاتـف العمـل</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">هـاتـف العمـل</th>
                 <td>{{$Student->job_phone}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">هـاتـف المنـزل</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">هـاتـف المنـزل</th>
                 <td>{{$Student->home_phone}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">العنـوان</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">العنـوان</th>
                 <td>{{$Student->address}}</td>
             </tr>
             <tr>
-                <th scope="row" style="text-align: center;" class="alert-default"> أسـم الأم </th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default"> أسـم الأم </th>
                 <td>{{ $Student->mother_name }}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">هـاتـف الأم</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">هـاتـف الأم</th>
                 <td>{{$Student->mother_phone}}</td>
-                <th scope="row" style="text-align: center;" class="alert-default">الوظيفـة</th>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الوظيفـة</th>
                 <td>{{$Student->mother_job}}</td>
             </tr>
         </tbody>
