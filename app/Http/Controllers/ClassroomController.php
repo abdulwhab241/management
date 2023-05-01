@@ -58,7 +58,7 @@ class ClassroomController extends Controller
         }
     }
 
-    public function destroy(ClassroomRequest $request)
+    public function destroy(Request $request)
     {
         $Classrooms = Classroom::findOrFail($request->id)->delete(); 
         toastr()->error('تم حذف الـصـف بنجاح');

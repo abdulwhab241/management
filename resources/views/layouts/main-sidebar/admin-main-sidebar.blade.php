@@ -122,6 +122,17 @@
 </li>
 <li class="treeview">
     <a href="#">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    <span>الحضـور والغيـاب</span>
+    <i class="fa fa-angle-left pull-left"></i>
+    </a>
+    <ul class="treeview-menu">
+    <li><a href="{{route('Attendance.index')}}"><i class="fa fa-circle-o"></i> قائمة الحضـور والغيـاب</a></li>
+
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
     <i class="fa fa-book"></i>
     <span>المواد الدراسية</span>
     <i class="fa fa-angle-left pull-left"></i>

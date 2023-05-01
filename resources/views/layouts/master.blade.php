@@ -45,11 +45,12 @@
             <!--=================================
  footer -->
 
-            @include('layouts.footer')
         </div><!-- main content wrapper end-->
+        
+        @include('layouts.footer')
     </div>
-    </div>
-    </div>
+    {{-- </div>
+    </div> --}}
 
     <!--=================================
  footer -->

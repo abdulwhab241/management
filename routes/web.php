@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\PaymentController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GraduatedController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\ProcessingFeeController;

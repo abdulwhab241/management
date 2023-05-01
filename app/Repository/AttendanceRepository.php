@@ -4,61 +4,55 @@
 namespace App\Repository;
 
 
-use App\Models\Attendance;
 use App\Models\Grade;
+use App\Models\Section;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Classroom;
+use App\Models\Attendance;
 
 class AttendanceRepository implements AttendanceRepositoryInterface
 {
 
     public function index()
     {
-        $Grades = Grade::with(['Sections'])->get();
-        $list_Grades = Grade::all();
-        $teachers = Teacher::all();
-        return view('pages.Attendance.Sections',compact('Grades','list_Grades','teachers'));
+        $Attendances = Attendance::all();
+        $Classrooms = Classroom::all();
+        $Students = Student::all();
+        $Teachers = Teacher::all();
+        $Sections = Section::all();
+        return view('pages.Attendance.index',compact('Classrooms','Students','Teachers','Sections','Attendances'));
     }
 
-    public function show($id)
-    {
-        $students = Student::with('attendance')->where('section_id',$id)->get();
-        return view('pages.Attendance.index',compact('students'));
-    }
+    // public function show($id)
+    // {
+    //     // $students = Student::with('attendance')->where('section_id',$id)->get();
+    //     // return view('pages.Attendance.index',compact('students'));
+    // }
 
     public function store($request)
     {
         try {
 
-            foreach ($request->attendences as $studentid => $attendence) {
+            $Attendances = new Attendance();
+            $Attendances->student_id = strip_tags($request->Student_id);
+            $Attendances->classroom_id = strip_tags($request->Classroom_id);
+            $Attendances->section_id = strip_tags($request->Section_id);
+            $Attendances->teacher_id = strip_tags($request->Teacher_id);
+            $Attendances->attendance_date = date('Y-m-d');
+            $Attendances->subject = strip_tags($request->Subject);
+            $Attendances->attendance_status = strip_tags($request->Attendance);
+            $Attendances->create_by = auth()->user()->name;
+            $Attendances->save();
 
-                if( $attendence == 'presence' ) {
-                    $attendence_status = true;
-                } else if( $attendence == 'absent' ){
-                    $attendence_status = false;
-                }
-
-                Attendance::create([
-                    'student_id'=> $studentid,
-                    'grade_id'=> $request->grade_id,
-                    'classroom_id'=> $request->classroom_id,
-                    'section_id'=> $request->section_id,
-                    'teacher_id'=> 1,
-                    'attendance_date'=> date('Y-m-d'),
-                    'attendance_status'=> $attendence_status
-                ]);
-
-            }
-
-            toastr()->success(trans('messages.success'));
-            return redirect()->back();
-
-        }
-
-        catch (\Exception $e){
+            toastr()->success('تـم إضـافـة الحضـور والغيـاب بنجـاح');
+            return redirect()->route('Attendance.index');
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-    }
+
+        }
+
 
     public function update($request)
     {
@@ -67,6 +61,14 @@ class AttendanceRepository implements AttendanceRepositoryInterface
 
     public function destroy($request)
     {
-       
+        try {
+            Attendance::destroy($request->id);
+            toastr()->error('تـم حـذف الحضـور والغيـاب بنجـاح');
+            return redirect()->back();
+        }
+
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

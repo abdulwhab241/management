@@ -39,32 +39,14 @@
     <th style="text-align: center; background-color: #D0DEF6;" >المـادة</th>
     <th style="text-align: center; background-color: #D0DEF6;" > الـدرجـة</th>
     <th style="text-align: center; background-color: #D0DEF6;" >التقـديـر</th>
-    {{-- <th style="text-align: center; background-color: #D0DEF6;" >الأستـاذ</th> --}}
-    {{-- <th style="text-align: center; background-color: #D0DEF6;" >الحصـة الثـالثـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" >الحصـة الرابعـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة الخـامسـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة السـادسـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة السـابعـة</th> --}}
-
-
 </tr>
 </thead>
 <tbody>
         @foreach ($Result as $Student)
         <tr>
-
-            
-            {{-- <td>{{ $Student->day }}</td>
-            <td>{{ $Student->first }}</td>
-            <td>{{ $Student->second }}</td>
-            <td>{{ $Student->third }}</td> --}}
             <td>{{ $Student->exam->subject->name }}</td>
             <td>{{$Student->marks_obtained}}</td>
             <td>{{$Student->appreciation}}</td>
-            {{-- <td>{{ $Student->fourth }}</td>
-            <td>{{ $Student->fifth }}</td>
-            <td>{{ $Student->sixth }}</td>
-            <td>{{ $Student->seventh }}</td> --}}
         </tr>
 
 @endforeach

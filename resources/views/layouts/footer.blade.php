@@ -1,4 +1,4 @@
-<footer class="bg-white p-4"  style="font-family: 'Cairo', sans-serif; padding: 10px; background-color: white; ">
+<footer class="main-footer"  style="font-family: 'Cairo', sans-serif; padding: 10px; background-color: white; ">
 <div class="row">
     <div class="col-md-6" >
         <div class="text-center text-md-right">
