@@ -105,10 +105,6 @@ Route::group(
             Route::resource('Classes', StudentClassController::class);
         });
 
-          //==============================questions============================
-        Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Questions', QuestionController::class);
-        });
 
           //==============================Setting============================
         Route::resource('Settings', SettingController::class);
