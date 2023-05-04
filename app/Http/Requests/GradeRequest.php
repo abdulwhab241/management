@@ -22,7 +22,7 @@ class GradeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Name'=>'required|unique:grades,name,'.$this->id,
+            'Name'=>'required'
         ];
     }
 

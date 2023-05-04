@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Requests\SectionRequest;
@@ -12,10 +13,12 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $Sections = Section::all();
+        $Grades = Grade::with(['Sections'])->get();
         $Classrooms = Classroom::all();
-        $Grades = Grade::all();
-        return view('pages.Sections.index',compact('Sections','Grades','Classrooms'));
+        $list_Grades = Grade::all();
+        $teachers = Teacher::all();
+    
+        return view('pages.Sections.index',compact('Grades','list_Grades','Classrooms','teachers'));
     }
 
     public function store(SectionRequest $request)
@@ -30,6 +33,7 @@ class SectionController extends Controller
             $Sections->class_id = $request->Class_id;
             $Sections->create_by = auth()->user()->name;
             $Sections->save();
+            $Sections->teachers()->attach($request->teacher_id);
             toastr()->success('تم حفظ القسم بنجاح');
             return redirect()->route('Sections.index');
         }
@@ -50,6 +54,13 @@ class SectionController extends Controller
         $Sections->grade_id = $request->Grade_id;
         $Sections->class_id = $request->Class_id;
         $Sections->create_by = auth()->user()->name;
+
+        if (isset($request->teacher_id)) {
+            $Sections->teachers()->sync($request->teacher_id);
+        } else {
+            $Sections->teachers()->sync(array());
+        }
+
         $Sections->save();
         toastr()->success('تم تعديل القسم بنجاح');
 
@@ -68,7 +79,7 @@ class SectionController extends Controller
         return redirect()->route('Sections.index');
     }
 
-    public function get_classes($id)
+    public function getclasses($id)
     {
         $list_classes = Classroom::where("grade_id", $id)->pluck("name_class", "id");
 

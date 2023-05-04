@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Grade;
+use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -23,11 +24,11 @@ class Section extends Model
         return $this->belongsTo(Classroom::class, 'class_id');
     }
 
-    //   // علاقة الاقسام مع المعلمين
-    // public function teachers()
-    // {
-    //     return $this->belongsToMany(Teacher::class,'teacher_section');
-    // }
+      // علاقة الاقسام مع المعلمين
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class,'teacher_section');
+    }
 
     public function Grades()
     {

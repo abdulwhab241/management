@@ -58,7 +58,8 @@ Route::group(
          //==============================Sections============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Sections', SectionController::class);
-            Route::get('/classes/{id}', [SectionController::class, 'get_classes']);
+            Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
+            
         });
 
            //==============================Teachers============================

@@ -22,8 +22,8 @@ class ClassroomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'List_Classes.*.Name'=>'required|unique:classrooms,name_class',
-            'List_Classes.*.Grade_id'=>'required',
+            'Name'=>'required|unique:classrooms,name_class',
+            'Grade_id'=>'required|integer',
         ];
     }
 

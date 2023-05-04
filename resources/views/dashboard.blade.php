@@ -170,7 +170,7 @@
                   <tr>
                       <td>{{$loop->iteration}}</td>
                       <td>{{$teacher->name}}</td>
-                      <td>{{$teacher->gender->name}}</td>
+                      <td>{{$teacher->genders->name}}</td>
                       <td>{{$teacher->specializations->name}}</td>
                       <td>{{$teacher->Joining_Date}}</td>
                       <td style="background-color: #C9CFDF;">{{$teacher->created_at}}</td>
