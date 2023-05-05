@@ -192,7 +192,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             <input id="id" type="hidden" name="id" class="form-control"
                 value="{{ $My_Class->id }}">
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left"
+                    <button type="button" class="btn btn-outline "
                             data-dismiss="modal">إغلاق</button>
                     <button type="submit"
                             class="btn btn-outline">حذف البيانات</button>
@@ -248,16 +248,12 @@ aria-hidden="true">
 
         <div class="col-md-6">
             <label >أسـم الصـف</label>
-            <input  type="text" name="Name" class="form-control" id="inputEmail2" required>
+            <input  type="text" name="Name" class="form-control"  required>
         </div>
     
     </div><br>
 </div>
-<div>
-    <a   onclick="console.log($(this).val(0))" style="margin: 10px" class="btn btn-info addRow">إدراج سجـل</a>
-    <a href="javascript:void(0)" style="margin: 10px" class="btn btn-danger deleteRow">حـذف</a>
-    
-</div><br>
+<br>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger"
     data-dismiss="modal">إغلاق</button>
@@ -331,27 +327,5 @@ $(function() {
 });
 </script>
 
-<script>
-    $('div').click(function(){
-        var div = 
-            ' <div class="col-md-6">' +
-                '<label >أسـم المرحلـة</label>' +
-            ' <select class="form-control select2" name="Grade_id">' +
-                    '<option  selected disabled>أختـر من القائمة...</option>' +
-                '  @foreach ($Grades as $Grade)
-                        <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
-                    @endforeach' +
-                '</select>' +
-            <'/div>' +
-
-            '<div class="col-md-6">' +
-            ' <label >أسـم الصـف</label>' +
-            '   <input  type="text" name="Name" class="form-control" id="inputEmail2" required>' +
-            '</div>' +
-        
-        '</div>' + '<br>'
-        $('div').append('div');
-    });
-</script>
 
 @endsection

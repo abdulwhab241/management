@@ -17,7 +17,7 @@
                     value="{{ $ProcessingFee->student->name }}" style="text-align: center; font-weight: bolder;"
                     disabled>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left"
+                        <button type="button" class="btn btn-outline"
                                 data-dismiss="modal" >إغلاق</button>
                         <button type="submit"
                                 class="btn btn-outline">حذف البيانات</button>

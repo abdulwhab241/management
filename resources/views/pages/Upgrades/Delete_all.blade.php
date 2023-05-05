@@ -14,8 +14,8 @@
                     <input type="hidden" name="page_id" value="1">
                     <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاك من عملية تراجع كافة الطلاب ؟</h5>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">إغـلاق</button>
-                        <button  class="btn btn-danger">تأكيـد</button>
+                        <button type="button" class="btn btn-outline" data-dismiss="modal">إغـلاق</button>
+                        <button  class="btn btn-outline">تأكيـد</button>
                     </div>
                 </form>
             </div>

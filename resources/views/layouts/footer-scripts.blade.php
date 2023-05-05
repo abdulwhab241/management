@@ -10,6 +10,19 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- Bootstrap 3.3.4 -->
 <!-- Bootstrap 3.3.4 -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Select2 -->
+<script src="/plugins/select2/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- bootstrap color picker -->
+<script src="/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/plugins/iCheck/icheck.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="/plugins/morris/morris.min.js"></script>
@@ -37,6 +50,10 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
+
+{{-- <script src="/date/datepicker.js"></script> --}}
+
+
 
 
 <script>
@@ -175,7 +192,7 @@ $(function () {
     $(".select2").select2();
 
     //Datemask dd/mm/yyyy
-    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    $("#datemask").inputmask("yyyy-mm-dd", {"placeholder": "yyyy-mm-dd"});
     //Datemask2 mm/dd/yyyy
     $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
     //Money Euro
@@ -231,4 +248,5 @@ $(function () {
     });
 });
 </script>
+
 

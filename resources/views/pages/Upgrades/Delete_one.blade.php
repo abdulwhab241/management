@@ -19,8 +19,8 @@
                     value="{{ $promotion->student->name }}"
                     disabled>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">إغـلاق</button>
-                        <button  class="btn btn-danger">تاكيـد</button>
+                        <button type="button" class="btn btn-outline" data-dismiss="modal">إغـلاق</button>
+                        <button  class="btn btn-outline">تاكيـد</button>
                     </div>
                 </form>
             </div>

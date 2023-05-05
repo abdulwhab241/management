@@ -217,7 +217,7 @@
                             <input id="id" type="hidden" name="id" class="form-control"
                                 value="{{ $list_Sections->id }}">
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default"
+                                    <button type="button" class="btn btn-outline"
                                             data-dismiss="modal">إغلاق</button>
                                     <button type="submit"
                                             class="btn btn-outline">حذف البيانات</button>

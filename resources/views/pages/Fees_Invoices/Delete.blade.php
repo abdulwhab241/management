@@ -20,7 +20,7 @@
                     value="{{ $Fee_invoice->student->name }}" style="font-weight: bolder; text-align: center; font-size:20px;"
                     disabled>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">إغـلاق</button>
+                        <button type="button" class="btn btn-outline" data-dismiss="modal">إغـلاق</button>
                         <button  class="btn btn-outline">حـذف البيانـات</button>
                     </div>
                 </form>

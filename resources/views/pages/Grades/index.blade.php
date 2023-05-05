@@ -153,7 +153,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
                 <input id="id" type="hidden" name="id" class="form-control"
                         value="{{ $grade->id }}">
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left"
+                    <button type="button" class="btn btn-outline"
                             data-dismiss="modal">إغلاق</button>
                     <button type="submit"
                             class="btn btn-outline">حذف البيانات</button>
