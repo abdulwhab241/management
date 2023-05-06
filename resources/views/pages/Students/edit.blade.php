@@ -267,7 +267,7 @@
     <br>
     <div class="col">
         <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
-        <input type="file" accept="image/*" name="Photo">
+        <input type="file" accept="image/*" name="photos[]" multiple>
     </div>
 
 </div>

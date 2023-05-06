@@ -25,17 +25,18 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box"><br>
-@if(count($FeeInvoices) > 0)
+{{-- @if(count($FeeInvoices) > 0) --}}
 {{-- <ul> --}}
 
 <div class="row">
     <div class="col-md-6">
         <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+                    
                     <thead>
                     <tr>
-                        <th style="text-align: center;" class="alert-info">الـرسـوم الدراسيـة</th>
-                        <th style="text-align: center;" class="alert-info">المبـلغ</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >الـرسـوم الدراسيـة</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >المبـلغ</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,9 +59,9 @@
             <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
             <thead>
                 <tr>
-                    <th style="text-align: center;" class="alert-success"> الرسـوم المـدفوعـة</th>
-                    <th style="text-align: center;" class="alert-success">المبـلغ</th>
-                    <th style="text-align: center;" class="alert-success">تاريـخ السـداد</th>
+                    <th style="text-align: center; background-color: #E7EEFB;" > الرسـوم المـدفوعـة</th>
+                    <th style="text-align: center; background-color: #E7EEFB;" >المبـلغ</th>
+                    <th style="text-align: center; background-color: #E7EEFB;" >تاريـخ السـداد</th>
                 </tr>
             </thead>
             <tbody>
@@ -86,9 +87,9 @@
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
                     <tr>
-                        <th style="text-align: center;" class="alert-warning"> الرسـوم المستبعـدة</th>
-                        <th style="text-align: center;" class="alert-warning">المبـلغ</th>
-                        <th style="text-align: center;" class="alert-warning">تاريـخ الإستبـعاد</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" > الرسـوم المستبعـدة</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >المبـلغ</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >تاريـخ الإستبـعاد</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,9 +112,9 @@
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
                     <tr>
-                        <th style="text-align: center;" class="alert-danger">سنـدات الصـرف</th>
-                        <th style="text-align: center;" class="alert-danger">المبـلغ</th>
-                        <th style="text-align: center;" class="alert-danger">تاريـخ الصـرف</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >سنـدات الصـرف</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >المبـلغ</th>
+                        <th style="text-align: center; background-color: #E7EEFB;" >تاريـخ الصـرف</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,15 +161,22 @@
 <br>
 <div class="row">
         <div class="col-md-4">
-            <label style="text-align: center;" for="inputEmail2">إجمالـي الرصـيد المتبـقي على الطـالـب</label>
+            <label style="text-align: center;" for="inputEmail2">إجمالـي الـرسـوم المتبـقي على الطـالـب</label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px; text-align: center; color:blue;" value="{{ number_format( auth()->user()->student_account->sum('Debit_feeInvoice') - auth()->user()->student_account->sum('credit_receipt') ) }} ريال " type="text" readonly>
         </div>
     </div>
 
         </div>
-        @else
-        <h2 style="margin: 10px; font-weight: bold; text-align: center; color:blue;">لا يوجد بيـانـات لعرضها</h2>
-        @endif
+        {{-- @else
+        <h2 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; color:white;">لا يوجد بيـانـات لعرضها</h2>
+        <h1 style="color: blue; font-weight: bold; font-size:larger; background-color:#F1F6F7; text-align:center; margin-top: 10px;">
+            <marquee direction="right">
+                <p style="font-weight: bold; font-size:larger; color:black; margin-top: 25px;">
+                    لا يوجد بيـانـات لعرضها
+                </p>
+            </marquee>
+            </h1>
+        @endif --}}
 
 </div>
 </div>

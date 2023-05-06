@@ -121,7 +121,7 @@
     <div class="col">
         <div class="form-group">
             <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للمعلم: </label>
-            <input type="file" accept="image/*" name="Photo">
+            <input type="file" accept="image/*" name="photos[]" multiple>
         </div>
     </div>
 

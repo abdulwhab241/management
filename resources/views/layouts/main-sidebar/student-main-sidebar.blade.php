@@ -39,14 +39,17 @@
     <li><a href="{{ route('Students.information') }}"><i class="fa fa-user" aria-hidden="true"></i> البيـانـات الشخصيـة</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('Information.index') }}"><i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> بيـانـات الـرسـوم</a></li>
+    <li><a href="{{ route('Accounts.index') }}"><i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> بيـانـات الـرسـوم</a></li>
 </li>
 
 <li class="treeview">
     <li><a href="{{ route('Result.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('Class.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
+    <li><a href="{{ route('StudentTable.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
+</li>
+<li class="treeview">
+    <li><a href="{{ route('StudentAttendance.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i> بيـانـات المـواظبـة</a></li>
 </li>
 
 

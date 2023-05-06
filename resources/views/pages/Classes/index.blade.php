@@ -59,13 +59,13 @@ aria-pressed="true">اضافة جدول الحصـص</a>
     <th style="text-align: center;" class="alert-info"> المرحلة الدراسية</th>
     <th style="text-align: center;" class="alert-info">الصـف</th>
     <th style="text-align: center;" class="alert-info">الشعبـة</th>
-    <th style="text-align: center;" class="alert-info">الحصـة الأولـى</th>
-    <th style="text-align: center;" class="alert-info">الحصـة الثـانيـة</th>
-    <th style="text-align: center;" class="alert-info">الحصـة الثـالثـة</th>
-    <th style="text-align: center;" class="alert-info">الحصـة الرابعـة</th>
-    <th style="text-align: center;" class="alert-info"> الحصـة الخـامسـة</th>
-    <th style="text-align: center;" class="alert-info"> الحصـة السـادسـة</th>
-    <th style="text-align: center;" class="alert-info"> الحصـة السـابعـة</th>
+    <th style="text-align: center;" class="alert-info"> الأولـى</th>
+    <th style="text-align: center;" class="alert-info"> الثـانيـة</th>
+    <th style="text-align: center;" class="alert-info"> الثـالثـة</th>
+    <th style="text-align: center;" class="alert-info"> الرابعـة</th>
+    <th style="text-align: center;" class="alert-info">  الخـامسـة</th>
+    <th style="text-align: center;" class="alert-info">  السـادسـة</th>
+    <th style="text-align: center;" class="alert-info">  السـابعـة</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>

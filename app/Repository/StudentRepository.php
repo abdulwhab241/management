@@ -58,18 +58,18 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Store_Student($request){
 
-            // Save Images
-            $file_extension = $request->Photo->getClientOriginalExtension();
-            $file_name = $request->Name . '.' . $file_extension;
-            $path = 'attachments/Students';
-            $request->Photo->move($path, $file_name);
+            // // Save Images
+            // $file_extension = $request->Photo->getClientOriginalExtension();
+            // $file_name = $request->Name . '.' . $file_extension;
+            // $path = 'attachments/Students';
+            // $request->Photo->move($path, $file_name);
 
         try {
             $students = new Student();
 
             // insert student information
             $students->name = strip_tags($request->Name);
-            $students->image = $file_name;
+            // $students->image = $file_name;
             $students->gender_id = strip_tags($request->Gender_id);
             $students->grade_id = strip_tags($request->Grade_id);
             $students->classroom_id = strip_tags($request->Classroom_id);
@@ -91,6 +91,18 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->mother_phone = strip_tags($request->Mother_Phone);
             $students->mother_job = strip_tags($request->Mother_Job);
             $students->create_by = auth()->user()->name;
+
+                // insert img
+                if($request->hasfile('photos'))
+                {
+                    foreach($request->file('photos') as $file)
+                    {
+                        $name = $file->getClientOriginalName();
+                        $file->storeAs('attachments/Students/'.$students->name, $file->getClientOriginalName(),'upload_attachments');
+
+                        $students->image=$name;
+                    }
+                }
 
             $students->save();
 
@@ -123,18 +135,13 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Update_Student($request)
     {
-        // Save Images
-        $file_extension = $request->Photo->getClientOriginalExtension();
-        $file_name = $request->Name . '.' . $file_extension;
-        $path = 'attachments/Students';
-        $request->Photo->move($path, $file_name);
+
 
         try {
             $Edit_Students = Student::findOrFail($request->id);
 
             // insert student information
             $Edit_Students->name = strip_tags($request->Name);
-            $Edit_Students->image = $file_name;
             $Edit_Students->gender_id = strip_tags($request->Gender_id);
             $Edit_Students->grade_id = strip_tags($request->Grade_id);
             $Edit_Students->classroom_id = strip_tags($request->Classroom_id);
@@ -156,6 +163,18 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->mother_phone = strip_tags($request->Mother_Phone);
             $Edit_Students->mother_job = strip_tags($request->Mother_Job);
             $Edit_Students->create_by = auth()->user()->name;
+
+            // insert img
+            if($request->hasfile('photos'))
+            {
+                foreach($request->file('photos') as $file)
+                {
+                    $name = $file->getClientOriginalName();
+                    $file->storeAs('attachments/Students/'.$Edit_Students->name, $file->getClientOriginalName(),'upload_attachments');
+
+                    $Edit_Students->image=$name;
+                }
+            }
 
     
             $Edit_Students->save();

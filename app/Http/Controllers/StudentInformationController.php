@@ -19,7 +19,7 @@ class StudentInformationController extends Controller
         $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',auth()->user()->id)->get();
         $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',auth()->user()->id)->get();
         $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',auth()->user()->id)->get();
-        return view('pages.Students.Information.show',compact('Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
+        return view('pages.Students.Accounts.index',compact('Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
     }
 
 

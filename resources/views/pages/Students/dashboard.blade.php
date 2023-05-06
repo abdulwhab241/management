@@ -18,7 +18,7 @@
 
 <body class="skin-blue sidebar-mini">
 
-    
+    <div class="wrapper">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -40,7 +40,15 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-
+            <div class="box-header">
+                <h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+                    <marquee direction="right">
+                        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+                            الـرسـوم المتبقيـة  {{ number_format( auth()->user()->student_account->sum('Debit_feeInvoice') - auth()->user()->student_account->sum('credit_receipt') ) }} ريال 
+                        </b>
+                    </marquee>
+                    </h1>
+            </div>
     <div class="tab-pane active" id="tab_1">
 
         <div class="box-body table-responsive no-padding">
@@ -130,7 +138,7 @@
 
 
 </section><!-- /.content -->
-
+</div>
 @include('layouts.footer')
 </div><!-- /.content-wrapper -->
 

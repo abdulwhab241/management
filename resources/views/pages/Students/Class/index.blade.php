@@ -27,23 +27,28 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-
+    @if(count($StudentClass) > 0)
 <div class="box-header">
 
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
-<thead>
+    <caption style="background-color: #99E2FE; font-weight: bolder; color:red; margin: 5px; padding:5px;">
+        <p>
+            الصـف الدراسـي : {{auth()->user()->classroom->name_class}}     |     <span> الشـعبـة :  {{ auth()->user()->section->name_section }}</span>
+        </p>
+    </caption>
+    <thead>
 <tr>
 
     <th style="text-align: center; background-color: #D0DEF6;" >اليوم</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة الأولـى</th>
-    <th style="text-align: center; background-color: #D0DEF6;" >الحصـة الثـانيـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" >الحصـة الثـالثـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" >الحصـة الرابعـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة الخـامسـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة السـادسـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الحصـة السـابعـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >  الأولـى</th>
+    <th style="text-align: center; background-color: #D0DEF6;" > الثـانيـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" > الثـالثـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" > الرابعـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >  الخـامسـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >  السـادسـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >  السـابعـة</th>
 
 
 </tr>
@@ -67,6 +72,16 @@
 </tbody>
 </table>
 </div>
+@else
+
+<h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+    <marquee direction="right">
+        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+            عـذراً لـم يتـم تنـزيـل الجـدول بعـد 
+        </b>
+    </marquee>
+    </h1>
+@endif
 </div>
 </div>
 </div>

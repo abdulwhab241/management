@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-النـتائـج
+بيـانـات المـواظبـة
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-النـتائـج
+بيـانـات المـواظبـة
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">النـتائـج</li>
+<li class="active">بيـانـات المـواظبـة</li>
 </ol>
 </section>
 
@@ -27,7 +27,7 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-    @if(count($Result) > 0)
+    @if(count($Attendances) > 0)
 <div class="box-header">
 
 </div><!-- /.box-header -->
@@ -41,17 +41,19 @@
 <thead>
 <tr>
 
-    <th style="text-align: center; background-color: #D0DEF6;" >المـادة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" > الـدرجـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;" >التقـديـر</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >اليوم</th>
+    <th style="text-align: center; background-color: #D0DEF6;" > الحـالـة</th>
+
+
 </tr>
 </thead>
 <tbody>
-        @foreach ($Result as $Student)
+        @foreach ($Attendances as $Student)
         <tr>
-            <td>{{ $Student->exam->subject->name }}</td>
-            <td>{{$Student->marks_obtained}}</td>
-            <td>{{$Student->appreciation}}</td>
+
+            
+            <td>{{ $Student->day }}</td>
+            <td>{{ $Student->attendance_status }}</td>
         </tr>
 
 @endforeach
@@ -63,7 +65,7 @@
 <h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
     <marquee direction="right">
         <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
-            لا يـوجـد نتـائـج لعـرضـها 
+            عـذراً لـم يتـم تنـزيـل الجـدول بعـد 
         </b>
     </marquee>
     </h1>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ClassController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\StudentInformationController;
 use App\Http\Controllers\StudentResultController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -36,10 +37,16 @@ Route::group(
         return view('pages.Students.dashboard');
     })->name('dashboard.Students');
 
-    Route::resource('Information', StudentInformationController::class);
+    //==============================Student Accounts============================
+    Route::resource('Accounts', StudentInformationController::class);
 
-    Route::resource('Class', ClassController::class);
+    //==============================Student Class============================
+    Route::resource('StudentTable', ClassController::class);
 
+    //==============================Student Attendance============================
+    Route::resource('StudentAttendance', StudentAttendanceController::class);
+
+    //==============================Student Result============================
     Route::resource('Result', StudentResultController::class);
 
     // Route::get('/lass', [StudentInformationController::class, 'student_class']);
