@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Section;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +33,7 @@ Route::group(
         $data['count_sections']= $ids->count();
         $data['count_students']= \App\Models\Student::whereIn('section_id',$ids)->count();
 
-//        $ids = DB::table('teacher_section')->where('teacher_id',auth()->user()->id)->pluck('section_id');
-//        $count_sections =  $ids->count();
-//        $count_students = DB::table('students')->whereIn('section_id',$ids)->count();
+
         return view('pages.Teachers.dashboard.dashboard',$data);
     });
 
@@ -54,5 +53,7 @@ Route::group(
         Route::get('profile', 'TeacherProfileController@index')->name('profile.show');
         Route::post('profile/{id}', 'TeacherProfileController@update')->name('profile.update');
     });
+
+
 
 });

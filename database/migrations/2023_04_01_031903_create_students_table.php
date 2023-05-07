@@ -31,6 +31,7 @@ return new class extends Migration
              $table->string('father_name'); // اسم الاب
              $table->string('employer')->nullable(); // جهة العمل
              $table->string('father_job'); // الوظيفة
+            $table->string('father_phone');
              $table->string('password'); // هاتف الاب
              $table->string('job_phone')->nullable(); // هاتف العمل
              $table->string('home_phone')->nullable(); // هاتف المنزل

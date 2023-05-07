@@ -1,35 +1,32 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+    
 @section('title')
-قائمة الحضور والغياب للطلاب
+    قائمة الطـلاب
 @stop
 @endsection
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">قائمة الحضور والغياب للطلاب</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active">قائمة الحضور والغياب للطلاب</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-قائمة الحضور والغياب للطلاب
-@stop
-<!-- breadcrumb -->
-@endsection
-@section('content')
-<!-- row -->
 
-@if ($errors->any())
+@section('content')
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+    قائمة الطـلاب
+</h1>
+<ol class="breadcrumb">
+<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+
+<li class="active">قائمة الطـلاب</li>
+</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+    @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
         @foreach ($errors->all() as $error)
@@ -46,73 +43,122 @@
     </ul>
 </div>
 @endif
+<div class="box-header">
+    
+    <h4 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h4>
+</div>
 
-<h5 style="font-family: 'Cairo', sans-serif;color: red"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-<form method="post" action="{{ route('attendance') }}" autocomplete="off">
+<div class="box-body table-responsive no-padding">
+<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+<thead>
+<tr>
 
-@csrf
-<table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
-        style="text-align: center">
-    <thead>
-    <tr>
-        <th class="alert-success">#</th>
-        <th class="alert-success">{{ trans('Students_trans.name') }}</th>
-        <th class="alert-success">{{ trans('Students_trans.email') }}</th>
-        <th class="alert-success">{{ trans('Students_trans.gender') }}</th>
-        <th class="alert-success">{{ trans('Students_trans.Grade') }}</th>
-        <th class="alert-success">{{ trans('Students_trans.classrooms') }}</th>
-        <th class="alert-success">{{ trans('Students_trans.section') }}</th>
-        <th class="alert-success">الحضور والغياب</th>
-    </tr>
-    </thead>
-    <tbody>
+    <th style="text-align: center;" class="alert-info">#</th>
+    <th style="text-align: center;" class="alert-info">أسم الطالب</th>
+    <th style="text-align: center;" class="alert-info"> النوع</th>
+    <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
+    <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
+    <th style="text-align: center;" class="alert-info"> الشعـبة</th>
+    <th style="text-align: center;" class="alert-success"> العمليـات</th>
+
+</tr>
+</thead>
+<tbody>
+    <?php $i = 0; ?>
     @foreach ($students as $student)
         <tr>
-            <td>{{ $loop->index + 1 }}</td>
+            <?php $i++; ?>
+            <td>{{ $i }}</td>
             <td>{{ $student->name }}</td>
-            <td>{{ $student->email }}</td>
             <td>{{ $student->gender->name }}</td>
-            <td>{{ $student->grade->Name }}</td>
-            <td>{{ $student->classroom->Name_Class }}</td>
-            <td>{{ $student->section->Name_Section }}</td>
+            <td>{{$student->grade->name}}</td>
+            <td>{{$student->classroom->name_class}}</td>
+            <td style="font-weight: bolder;">{{$student->section->name_section}}</td>
             <td>
-            <label class="block text-gray-500 font-semibold sm:border-r sm:pr-4">
-            <input name="attendances[{{ $student->id }}]"
-                @foreach($student->attendance()->where('attendance_date',date('Y-m-d'))->get() as $attendance)
-                {{ $attendance->attendance_status == 1 ? 'checked' : '' }}
-                @endforeach
-                class="leading-tight" type="radio"
-                value="presence">
-                <span class="text-success">حضور</span>
-                </label>
-
-                <label class="ml-4 block text-gray-500 font-semibold">
-                <input name="attendances[{{ $student->id }}]"
-                @foreach($student->attendance()->where('attendance_date',date('Y-m-d'))->get() as $attendance)
-                {{ $attendance->attendance_status == 0 ? 'checked' : '' }}
-                @endforeach
-                class="leading-tight" type="radio"
-                value="absent">
-                <span class="text-danger">غياب</span>
-                </label>
-
-                <input type="hidden" name="grade_id" value="{{ $student->Grade_id }}">
-                <input type="hidden" name="classroom_id" value="{{ $student->Classroom_id }}">
-                <input type="hidden" name="section_id" value="{{ $student->section_id }}">
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#attendance{{ $student->id }}" title="تحضـير"><i class="fa fa-pencil-square-o"></i></button>    
             </td>
+        </tr>
 
-            </tr>
-            @endforeach
-            </tbody>
+
+<!-- add_modal_class -->
+<div class="modal fade" id="attendance{{$student->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-primary" role="document">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+    تحضـير الطـالـب
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('attendance') }}" method="POST">
+@csrf
+
+<div class="box-body">
+    <div class="row">
+        <div class="col-md-4"> 
+            <label for="inputEmail4">اليـوم</label>
+            <select class="form-control select2" name="Day_id">
+                <option selected disabled>أختـر من القائمة...</option>
+                <option value="السبت">السبت</option>
+                <option value="الاحد">الاحد</option>
+                <option value="الاثنين">الاثنين</option>
+                <option value="الثلاثاء">الثلاثاء</option>
+                <option value="الاربعاء">الاربعاء</option>
+            </select>
+        </div>
+        <div class="col-md-4"> 
+            <label for="inputEmail4">أسـم الطـالـب</label>
+            <input  type="text" class="form-control"  value="{{$student->name}}" disabled>
+        </div>
+        <div class="col-md-4">
+            <label >الـحالـة</label>
+            <select class="form-control select2" name="Attendance">
+                <option  selected disabled>أختـر من القائمة...</option>
+                <option value="حـاضـر" required>حـاضـر</option>
+                <option value="غـايـب">غـائـب</option>
+            </select>
+        </div>
+        <input type="hidden" name="student_id" value="{{ $student->id }}">
+        <input type="hidden" name="classroom_id" value="{{ $student->classroom_id }}">
+        <input type="hidden" name="section_id" value="{{ $student->section_id }}">
+
+    </div><br>
+    
+</div>
+
+<div class="modal-footer">
+
+    <button type="submit"
+    class="btn btn-info btn-block">تـأكيـد</button>
+    </div>
+
+</form>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+@endforeach
+</tbody>
 </table>
-<P>
-    <button class="btn btn-success" type="submit">{{ trans('Students_trans.submit') }}</button>
-</P>
-</form><br>
+
+</div>
+</div>
+</div>
+</div>
+
 <!-- row closed -->
+</section>
+
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+    @toastr_js
+    @toastr_render
 @endsection
-

@@ -24,11 +24,6 @@ class AttendanceRepository implements AttendanceRepositoryInterface
         return view('pages.Attendance.index',compact('Classrooms','Students','Teachers','Sections','Attendances'));
     }
 
-    // public function show($id)
-    // {
-    //     // $students = Student::with('attendance')->where('section_id',$id)->get();
-    //     // return view('pages.Attendance.index',compact('students'));
-    // }
 
     public function store($request)
     {

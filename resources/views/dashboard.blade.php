@@ -172,7 +172,7 @@
                       <td>{{$teacher->name}}</td>
                       <td>{{$teacher->genders->name}}</td>
                       <td>{{$teacher->specializations->name}}</td>
-                      <td>{{$teacher->Joining_Date}}</td>
+                      <td>{{$teacher->joining_date}}</td>
                       <td style="background-color: #C9CFDF;">{{$teacher->created_at}}</td>
                       @empty
                           <td style="background-color: #DDD8EF; font-weight:bolder;" colspan="6">لاتوجد بيانات</td>

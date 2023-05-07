@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('password');
+            $table->string('phone_number');
             $table->bigInteger('specialization_id')->unsigned();
             $table->foreign('specialization_id')->references('id')->on('specializations')->onDelete('cascade');
             $table->bigInteger('gender_id')->unsigned();

@@ -291,7 +291,7 @@ aria-hidden="true">
             <select class="form-control select2" name="Attendance">
                 <option  selected disabled>أختـر من القائمة...</option>
                 <option value="حـاضـر" required>حـاضـر</option>
-                <option value="غـائـب">غـائـب</option>
+                <option value="غـايـب">غـائـب</option>
             </select>
         </div>
 

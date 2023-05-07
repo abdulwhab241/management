@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Gender;
+use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\Specialization;
 use Illuminate\Database\Eloquent\Model;
@@ -32,9 +33,9 @@ class Teacher extends Authenticatable
     //     return $this->morphMany(Image::class, 'imageable');
     // }
 
-    // // علاقة المعلمين مع الاقسام
-    // public function SectionsWith()
-    // {
-    //     return $this->belongsToMany(Section::class,'teacher_section');
-    // }
+    // علاقة المعلمين مع الاقسام
+    public function SectionsWith()
+    {
+        return $this->belongsToMany(Section::class,'teacher_section');
+    }
 }
