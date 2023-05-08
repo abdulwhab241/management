@@ -89,7 +89,6 @@ aria-pressed="true">اضافة طـالـب</a>
                     <li><a href="{{ route('ProcessingFee.show',$Student->id) }}">استبعـاد رسـوم</a></li>
                     <li><a href="{{ route('Payments.show',$Student->id) }}">سنـد صـرف</a></li>
                     <li><a href="{{route('Students.edit',$Student->id)}}">تـعديـل</a></li>
-                    {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}" title="حذف"><i class="fa fa-trash"></i></button> --}}
                     <li><a data-toggle="modal" data-target="#delete_Student{{ $Student->id }}">حـذف</a></li>
                 </ul>
                 </div><!-- /btn-group -->

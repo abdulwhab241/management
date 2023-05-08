@@ -1,118 +1,107 @@
 @extends('layouts.master')
 @section('css')
-@toastr_css
+    
 @section('title')
     تقرير الحضور والغياب
 @stop
 @endsection
-@section('page-header')
-<!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> تقرير الحضور والغياب</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active">تقرير الحضور والغياب</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    تقارير الحضور والغياب
-@stop
-<!-- breadcrumb -->
-@endsection
+
 @section('content')
-<!-- row -->
-<div class="row">
-<div class="col-md-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
 
-    @if ($errors->any())
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        تقرير الحضور والغياب
+    </h1>
+    <ol class="breadcrumb">
+    <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    
+    <li class="active">تقرير الحضور والغياب</li>
+    </ol>
+    </section>
+    
+    <!-- Main content -->
+    <section class="content">
+    
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box">
+        @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+        <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+        </ul>
         </div>
-    @endif
-
-    <form method="post"  action="{{ route('attendance.search') }}" autocomplete="off">
-        @csrf
-        <h6 style="font-family: 'Cairo', sans-serif;color: blue">معلومات البحث</h6><br>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="student">الطلاب</label>
-                    <select class="custom-select mr-sm-2" name="student_id">
-                        <option value="0">الكل</option>
-                        @foreach($students as $student)
-                            <option value="{{ $student->id }}">{{ $student->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+        @endif
+        <div class="box-header">
+        <form  action="{{route('attendance.search')}}"  method="POST" >
+            @csrf
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4"> 
+                        <div class="form-group">
+                        <label>أسم الطـالـب</label>
+                        <select class="form-control select2" name="student_id">
+                            <option selected disabled>أختـر من القائمة...</option>
+                            @foreach($students as $student)
+                                <option value="{{ $student->id }}">{{ $student->name }}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>مـن تـاريـخ</label>
+                        <input type="date" required data-date-format="yyyy-mm-dd" name="from" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label>إلـى تـاريـخ</label>
+                        <input type="date" required data-date-format="yyyy-mm-dd" name="to" class="form-control">
+                    </div>
+                </div><br>
+            
             </div>
-
-            <div class="card-body datepicker-form">
-                <div class="input-group" data-date-format="yyyy-mm-dd">
-                    <input type="text"  class="form-control range-from date-picker-default" placeholder="تاريخ البداية" required name="from">
-                    <span class="input-group-addon">الي تاريخ</span>
-                    <input class="form-control range-to date-picker-default"  placeholder="تاريخ النهاية" type="text" required name="to">
-                </div>
+            <div class="modal-footer">
+            <button type="submit"
+                class="btn btn-success btn-block">تـأكيـد</button>
             </div>
-
+            
+            </form>
         </div>
-        <button class="btn btn-outline-success btn-sm nextBtn btn-lg pull-rigth" 
-        style="margin: 5px; padding: 5px;" type="submit">{{trans('Students_trans.submit')}}</button>
-    </form>
     @isset($Students)
-    <div class="table-responsive">
-        <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
-                style="text-align: center">
-            <thead>
-            <tr>
-                <th class="alert-success">#</th>
-                <th class="alert-success">{{trans('Students_trans.name')}}</th>
-                <th class="alert-success">{{trans('Students_trans.Grade')}}</th>
-                <th class="alert-success">{{trans('Students_trans.section')}}</th>
-                <th class="alert-success">التاريخ</th>
-                <th class="alert-warning">الحالة</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($Students as $student)
-                <tr>
-                    <td>{{ $loop->index+1 }}</td>
-                    <td>{{$student->students->name}}</td>
-                    <td>{{$student->grade->Name}}</td>
-                    <td>{{$student->section->Name_Section}}</td>
-                    <td>{{$student->attendance_date}}</td>
-                    <td>
-
-                        @if($student->attendance_status == 0)
-                            <span class="btn-danger">غياب</span>
-                        @else
-                            <span class="btn-success">حضور</span>
-                        @endif
-                    </td>
-                </tr>
-            @include('pages.Students.Delete')
-            @endforeach
-        </table>
+    <div class="box-body table-responsive no-padding">
+    <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <thead>
+        <tr>
+            <th style="text-align: center; background-color: #D0DEF6;" >اليـوم</th>
+            <th style="text-align: center; background-color: #D0DEF6;" >أسـم الطـالـب</th>
+            <th style="text-align: center; background-color: #D0DEF6;" >الصـف الـدراسـي </th>
+            <th style="text-align: center; background-color: #D0DEF6;" >الشٌـعبـة</th>
+            <th style="text-align: center; background-color: #D0DEF6;" >التـاريـخ</th>
+            <th style="text-align: center;" class="alert-info">الحـالـة</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($Students as $student)
+        <tr>
+            <td>{{$student->day}}</td>
+            <td>{{$student->students->name}}</td>
+            <td>{{$student->classroom->name_class}}</td>
+            <td>{{$student->section->name_section}}</td>
+            <td>{{$student->attendance_date}}</td>
+            <td>{{$student->attendance_status}}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
     </div>
     @endisset
-
-</div>
-</div>
-</div>
-</div>
-<!-- row closed -->
+    </div>
+    </div>
+    </div>
+    </section>
 @endsection
 @section('js')
 @toastr_js

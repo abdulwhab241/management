@@ -1,122 +1,262 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+    
 @section('title')
-    قائمة الاختبارات
+    قائمة الأختبـارات
 @stop
 @endsection
-@section('page-header')
- <!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0"> قائمة الاختبارات</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">{{ trans('main_trans.sid') }}</a></li>
-                <li class="breadcrumb-item active">قائمة الاختبارات</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!-- breadcrumb -->
-@section('PageTitle')
-    قائمة الاختبارات
-@stop
-<!-- breadcrumb -->
-@endsection
-@section('content')
-<!-- row -->
-<div class="row">
-<div class="col-md-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
-    <div class="col-xl-12 mb-30">
-        <div class="card card-statistics h-100">
-            <div class="card-body">
-                <a href="{{route('Exams.create')}}" class="btn btn-outline-success btn-sm" role="button"
-                    aria-pressed="true">اضافة اختبار جديد</a><br><br>
-                <div class="table-responsive">
-                    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
-                            data-page-length="50"
-                            style="text-align: center">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>اسم الاختبار</th>
-                            <th>اسم المعلم</th>
-                            <th>المرحلة الدراسية</th>
-                            <th>الصف الدراسي</th>
-                            <th>القسم</th>
-                            <th>العمليات</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($exams as $exam)
-                            <tr>
-                                <td>{{ $loop->iteration}}</td>
-                                <td>{{$exam->name}}</td>
-                                <td>{{$exam->teacher->Name}}</td>
-                                <td>{{$exam->grade->Name}}</td>
-                                <td>{{$exam->classroom->Name_Class}}</td>
-                                <td>{{$exam->section->Name_Section}}</td>
-                                <td>
-                                    <a href="{{route('Exams.edit',$exam->id)}}"
-                                        class="btn btn-info btn-sm" role="button" aria-pressed="true"><i
-                                            class="fa fa-edit"></i></a>
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                            data-toggle="modal"
-                                            data-target="#delete_exam{{ $exam->id }}" title="حذف"><i
-                                            class="fa fa-trash"></i></button>
-                                    <a href="{{route('Exams.show',$exam->id)}}"
-                                        class="btn btn-warning btn-sm" title="عرض الاسئلة" role="button" aria-pressed="true"><i
-                                                class="fa fa-binoculars"></i></a>
-                                </td>
-                            </tr>
 
-                            <div class="modal fade" id="delete_exam{{$exam->id}}" tabindex="-1"
-                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <form action="{{route('Exams.destroy',$exam->id)}}" method="post">
-                                        {{method_field('delete')}}
-                                        {{csrf_field()}}
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 style="font-family: 'Cairo', sans-serif;"
-                                                    class="modal-title" id="exampleModalLabel">حذف اختبار</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p> {{ trans('My_Classes_trans.Warning_Grade') }} {{$exam->name}}</p>
-                                                <input type="hidden" name="id" value="{{$exam->id}}">
-                                            </div>
-                                            <div class="modal-footer">
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">{{ trans('My_Classes_trans.Close') }}</button>
-                                                    <button type="submit"
-                                                            class="btn btn-danger">{{ trans('My_Classes_trans.submit') }}</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
+@section('content')
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+    قائمة الأختبـارات
+</h1>
+<ol class="breadcrumb">
+<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+
+<li class="active">قائمة الأختبـارات</li>
+</ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+@if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+</div>
+@endif
+<div class="box-header">
+
+<button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+    اضافة إختبـار
+    </button>
+<br><br>
+<div class="box-tools">
+<div class="input-group" style="width: 150px;">
+<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+<div class="input-group-btn">
+<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+</div>
+</div>
+</div>
+</div><!-- /.box-header -->
+<div class="box-body table-responsive no-padding">
+<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+<thead>
+<tr>
+
+    <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
+    <th style="text-align: center;  background-color: #D0DEF6;" >الصـف الدراسـي </th>
+    <th style="text-align: center;  background-color: #D0DEF6;" >الأستـاذ </th>
+    <th style="text-align: center; background-color: #D0DEF6;">الـدرجـة</th>
+    <th style="text-align: center;" class="alert-warning">العمليـات</th>
+
+</tr>
+</thead>
+<tbody>
+
+    @foreach($exams as $exam)
+        <tr>
+            <td>{{$exam->subject->name}}</td>
+            <td>{{$exam->classroom->name_class}}</td>
+            <td>{{$exam->teacher->name}}</td>
+            <td>{{$exam->total_marks}}</td>
+            <td>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                data-target="#edit{{ $exam->id }}"
+                title="تعديل"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+
+        
+        <!-- edit_modal_Grade -->
+<div class="modal fade" id="edit{{ $exam->id }}" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-primary" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+id="exampleModalLabel">
+تعديل إختبـار {{$exam->subject->name}}
+</h5>
+</div>
+<div class="modal-body">
+<!-- add_form -->
+<form class="form-horizontal"  action="{{ route('Exams.update', 'test') }}" method="post">
+{{ method_field('patch') }}
+@csrf
+<div class="box-body">
+    <div class="row">
+
+        <div class="col-md-4"> 
+            <label>الصـف الدراسي</label>
+            <input id="id" type="hidden" name="id" class="form-control"
+            value="{{ $exam->id }}">
+            <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
+            <select class="form-control select2" name="Classroom_id">
+                <option value="{{ $exam->classroom->id }}">
+                    {{ $exam->classroom->name_class }}
+                </option>
+                @foreach ($Classrooms as $Classroom)
+                    <option value="{{  $Classroom->My_Classes->id }}">
+                        {{  $Classroom->My_Classes->name_class }}
+                    </option>
+                @endforeach
+            </select>
         </div>
+
+        <div class="col-md-4"> 
+            <label>المـادة</label>
+            <select class="form-control select2" name="Subject_id">
+                <option value="{{ $exam->subject->id }}">
+                    {{ $exam->subject->name }}
+                </option>
+                @foreach ($subjects as $subject)
+                    <option value="{{ $subject->id }}">
+                        {{ $subject->name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputEmail4">الـدرجـة</label>
+            <input type="number" value="{{ $exam->total_marks }}" name="Total" class="form-control">
+        </div>
+</div><br>
+
+</div>
+<div class="modal-footer">
+    <button type="submit"
+    class="btn btn-info btn-block">تـعديـل البيانات</button>
+    </div>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="delete_Exam{{$exam->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-danger" role="document">
+<form action="{{route('Exams.destroy',$exam->id)}}" method="post">
+    {{method_field('delete')}}
+    {{csrf_field()}}
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف إختبـار</h5>
+    
+    </div>
+    <div class="modal-body">
+        <p> هل انت متاكد من عملية حذف إختبـار مـادة </p>
+        <input type="hidden" name="id"  value="{{$exam->id}}">
+        <input  type="text" style="font-weight: bolder; font-size:20px;"
+        name="Name_Section"
+        class="form-control"
+        value="{{$exam->subject->name}}"
+        disabled>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline"
+                data-dismiss="modal">إغلاق</button>
+        <button type="submit"
+                class="btn btn-outline">حذف البيانات</button>
     </div>
 </div>
+</form>
 </div>
 </div>
+
+@endforeach
+</tbody>
+</table>
+
 </div>
+</div>
+
+<!-- add_modal_class -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-primary" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+    اضافة إختبـار
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('Exams.store') }}" method="POST">
+@csrf
+
+<div class="box-body">
+    <div class="row">
+
+        <div class="col-md-4"> 
+            <label>الصـف الدراسي</label>
+            <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
+            <select class="form-control select2" name="Classroom_id">
+                <option  selected disabled>أختـر من القائمة...</option>
+                @foreach ($Classrooms as $Classroom)
+                    <option  value="{{ $Classroom->My_Classes->id }}" required>{{ $Classroom->My_Classes->name_class }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="col-md-4"> 
+            <label>المـادة</label>
+            <select class="form-control select2" name="Subject_id">
+                <option  selected disabled>حدد المادة الدراسية...</option>
+                @foreach ($subjects as $subject)
+                    <option  value="{{ $subject->id }}" required>{{ $subject->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="inputEmail4">الـدرجـة</label>
+            <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
+        </div>
+</div><br>
+
+</div>
+
+    <div class="modal-footer">
+        <button type="submit"
+        class="btn btn-info btn-block">حفظ البيانات</button>
+        </div>
+
+
+</form>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
 <!-- row closed -->
+</section>
+
 @endsection
 @section('js')
     @toastr_js

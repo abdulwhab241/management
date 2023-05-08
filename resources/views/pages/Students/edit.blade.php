@@ -59,7 +59,7 @@
 
             <div class="col-md-4">
                 <label for="inputEmail4">تاريخ الميلاد</label>
-                <input type="text" value="{{ $Students->birth_date }}" placeholder="2023-03-05" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
+                <input type="date" value="{{ $Students->birth_date }}" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
                 @error('Date_Birth')
                 <div class=" alert-danger">
                 <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>

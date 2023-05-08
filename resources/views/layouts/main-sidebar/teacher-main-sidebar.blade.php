@@ -39,7 +39,7 @@
         </ul>
         </li>
 
-        <!-- sections-->
+        <!-- sections-->س
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections-menu">
                 <div class="pull-left"><i class="fas fa-chalkboard"></i><span
@@ -101,22 +101,24 @@
 <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
 <li class="treeview">
-    <li><a href="{{ route('Students.information') }}"><i class="fa fa-user" aria-hidden="true"></i> البيـانـات الشخصيـة</a></li>
+    <li><a href="{{ route('student.index') }}"><i class="fa fa-user" aria-hidden="true"></i> الطـلاب</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('Accounts.index') }}"><i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> بيـانـات الـرسـوم</a></li>
+    <li><a href="{{ route('sections') }}"><i class="fas fa-chalkboard" aria-hidden="true"></i> الأقسـام</a></li>
 </li>
 
 <li class="treeview">
-    <li><a href="{{ route('Result.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
+    <li><a href="{{ route('Exams.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> الإختبـارات</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('StudentTable.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
+    <li><a href="{{ route('attendance.report') }}"><i class="fa fa-table" aria-hidden="true"></i> تقرير الحضور والغياب</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('StudentAttendance.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i> بيـانـات المـواظبـة</a></li>
+    <li><a href="#"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
 </li>
-
+<li class="treeview">
+    <li><a href="#"><i class="fas fa-id-card-alt" aria-hidden="true"></i> الملـف الشخصـي</a></li>
+</li>
 
 
 </ul>

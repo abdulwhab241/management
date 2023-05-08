@@ -27,7 +27,6 @@ Route::group(
 
     //==============================dashboard============================
     Route::get('/teacher/dashboard', function () {
-        // return view('pages.Teachers.dashboard.dashboard');
 
         $ids = Teacher::findOrFail(auth()->user()->id)->SectionsWith()->pluck('section_id');
         $data['count_sections']= $ids->count();
@@ -37,8 +36,8 @@ Route::group(
         return view('pages.Teachers.dashboard.dashboard',$data);
     });
 
+    //==============================students============================
     Route::group(['namespace' => 'App\Http\Controllers'], function () {
-        //==============================students============================
         Route::get('student','TeacherStudentController@index')->name('student.index');
         Route::get('sections','TeacherStudentController@sections')->name('sections');
         Route::post('attendance','TeacherStudentController@attendance')->name('attendance');
@@ -57,3 +56,11 @@ Route::group(
 
 
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

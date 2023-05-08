@@ -25,8 +25,6 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box"><br>
-{{-- @if(count($FeeInvoices) > 0) --}}
-{{-- <ul> --}}
 
 <div class="row">
     <div class="col-md-6">
@@ -167,16 +165,7 @@
     </div>
 
         </div>
-        {{-- @else
-        <h2 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; color:white;">لا يوجد بيـانـات لعرضها</h2>
-        <h1 style="color: blue; font-weight: bold; font-size:larger; background-color:#F1F6F7; text-align:center; margin-top: 10px;">
-            <marquee direction="right">
-                <p style="font-weight: bold; font-size:larger; color:black; margin-top: 25px;">
-                    لا يوجد بيـانـات لعرضها
-                </p>
-            </marquee>
-            </h1>
-        @endif --}}
+
 
 </div>
 </div>
@@ -186,6 +175,5 @@
 
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection

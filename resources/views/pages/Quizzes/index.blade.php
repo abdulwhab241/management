@@ -106,7 +106,6 @@
                     <div class="row">
 
                         <div class="col-md-6"> 
-                            <div class="form-group">
                             <label>الصـف الدراسي</label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Exam->id }}">
@@ -120,16 +119,9 @@
                                     </option>
                                 @endforeach
                             </select>
-                            </div>
-                            @error('Classroom_id')
-                            <div class=" alert-danger">
-                            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                            </div>
-                            @enderror
                         </div>
                 
                         <div class="col-md-6"> 
-                            <div class="form-group">
                             <label>المـادة</label>
                             <select class="form-control select2" name="Subject_id">
                                 <option value="{{ $Exam->subject->id }}">
@@ -141,19 +133,12 @@
                                     </option>
                                 @endforeach
                             </select>
-                            </div>
-                            @error('Subject_id')
-                            <div class=" alert-danger">
-                            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                            </div>
-                            @enderror
                         </div>
                 </div><br>
                 
                 <div class="row">
                 
-                    <div class="col-md-6"> 
-                        <div class="form-group">
+                    <div class="col-md-6">
                         <label>الأستـاذ</label>
                         <select class="form-control select2" name="Teacher_id">
                             <option value="{{ $Exam->teacher->id }}">
@@ -166,24 +151,14 @@
                             @endforeach
                         </select>
                         </div>
-                        @error('Teacher_id')
-                        <div class=" alert-danger">
-                        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                        </div>
-                        @enderror
                     </div>
                 
                     <div class="col-md-6">
                         <label for="inputEmail4">الـدرجـة</label>
                         <input type="number" value="{{ $Exam->total_marks }}" name="Total" class="form-control">
-                        @error('Total')
-                        <div class=" alert-danger">
-                        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                        </div>
-                        @enderror
                     </div>
                 
-                </div>
+                </div><br>
                 
                 </div>
                 <div class="modal-footer">
@@ -220,7 +195,7 @@
                 class="form-control"
                 value="{{$Exam->subject->name}}"
                 disabled>
-            </div>
+            </div><br>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline"
                         data-dismiss="modal">إغلاق</button>
@@ -266,11 +241,6 @@ aria-hidden="true">
                     <option  value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
                 @endforeach
             </select>
-            @error('Classroom_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
         </div>
 
         <div class="col-md-6"> 
@@ -281,11 +251,6 @@ aria-hidden="true">
                     <option  value="{{ $Subject->id }}" required>{{ $Subject->name }}</option>
                 @endforeach
             </select>
-            @error('Subject_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
         </div>
 </div><br>
 
@@ -299,24 +264,14 @@ aria-hidden="true">
                 <option  value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
             @endforeach
         </select>
-        @error('Teacher_id')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
     </div>
 
     <div class="col-md-6">
         <label for="inputEmail4">الـدرجـة</label>
         <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
-        @error('Total')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
     </div>
 
-</div>
+</div><br>
 
 </div>
 
