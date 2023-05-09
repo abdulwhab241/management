@@ -46,6 +46,8 @@ Route::group(
         Route::post('attendance_report','TeacherStudentController@attendanceSearch')->name('attendance.search');
 
         Route::resource('Exams', 'TeacherExamController');
+
+        Route::resource('Result', 'TeacherResultController');
         
         Route::resource('Questions', 'TeacherQuestionController');
 

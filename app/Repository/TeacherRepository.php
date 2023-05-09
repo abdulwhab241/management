@@ -34,6 +34,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
             $Teachers = new Teacher();
             $Teachers->name = strip_tags($request->Name);
             $Teachers->password = Hash::make(strip_tags($request->Phone_Number));
+            $Teachers->phone_number = strip_tags($request->Phone_Number);
             $Teachers->specialization_id = strip_tags($request->Specialization_id);
             $Teachers->gender_id = strip_tags($request->Gender_id);
             $Teachers->joining_date = strip_tags($request->Joining_Date);
@@ -72,6 +73,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
     
             $Teachers->name = strip_tags($request->Name);
             $Teachers->password = Hash::make(strip_tags($request->Phone_Number));
+            $Teachers->phone_number = strip_tags($request->Phone_Number);
             $Teachers->specialization_id = strip_tags($request->Specialization_id);
             $Teachers->gender_id = strip_tags($request->Gender_id);
             $Teachers->joining_date = strip_tags($request->Joining_Date);

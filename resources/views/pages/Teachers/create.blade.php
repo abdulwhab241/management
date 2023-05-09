@@ -98,7 +98,7 @@
         <div class="col-md-4">
             <label >تاريخ التعيين</label>
             <div class='input-group'>
-                <input  class="form-control timepicker" type="text" value="{{ old('Joining_Date') }}" id="reservation" name="Joining_Date" >
+                <input  class="form-control" type="date" value="{{ old('Joining_Date') }}" id="reservation" name="Joining_Date" >
             </div>
             @error('Joining_Date')
             <div class=" alert-danger">

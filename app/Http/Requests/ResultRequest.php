@@ -26,6 +26,7 @@ class ResultRequest extends FormRequest
             'Student_id' => 'required|integer',
             'Marks' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:1|max:3',
             'Appreciation' => 'required',
+            'Result_name' => 'required',
         ];
     }
 }

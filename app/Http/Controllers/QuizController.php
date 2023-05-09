@@ -30,6 +30,7 @@ class QuizController extends Controller
             $Exam->classroom_id = strip_tags($request->Classroom_id);
             $Exam->teacher_id = strip_tags($request->Teacher_id);
             $Exam->subject_id = strip_tags($request->Subject_id);
+            // $Exam->exam_name = strip_tags($request->Exam_name);
             $Exam->exam_date = date('Y-m-d');
             $Exam->total_marks = strip_tags($request->Total);
             $Exam->create_by = auth()->user()->name;
@@ -52,6 +53,7 @@ class QuizController extends Controller
             $Exam->classroom_id = strip_tags($request->Classroom_id);
             $Exam->teacher_id = strip_tags($request->Teacher_id);
             $Exam->subject_id = strip_tags($request->Subject_id);
+            // // $Exam->exam_name = strip_tags($request->Exam_name);
             $Exam->exam_date = date('Y-m-d');
             $Exam->total_marks = strip_tags($request->Total);
             $Exam->create_by = auth()->user()->name;

@@ -31,12 +31,13 @@ class TeacherExamController extends Controller
             $exams->classroom_id = strip_tags($request->Classroom_id);
             $exams->teacher_id = auth()->user()->id;
             $exams->subject_id = strip_tags($request->Subject_id);
+            // $exams->exam_name = strip_tags($request->Exam_name);
             $exams->exam_date = date('Y-m-d');
             $exams->total_marks = strip_tags($request->Total);
             $exams->create_by = auth()->user()->name;
             $exams->save();
             toastr()->success('تـم إضـافـة الإختبـار بنجـاح');
-            return redirect()->route('Exams.index');
+            return redirect()->back();
         }
         catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -50,12 +51,13 @@ class TeacherExamController extends Controller
             $exam->classroom_id = strip_tags($request->Classroom_id);
             $exam->teacher_id = auth()->user()->id;
             $exam->subject_id = strip_tags($request->Subject_id);
+            // // $exam->exam_name = strip_tags($request->Exam_name);
             $exam->exam_date = date('Y-m-d');
             $exam->total_marks = strip_tags($request->Total);
             $exam->create_by = auth()->user()->name;
             $exam->save();
             toastr()->success('تـم تعـديـل الإختبـار بنجـاح');
-            return redirect()->route('Exams.index');
+            return redirect()->back();
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }

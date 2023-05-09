@@ -60,7 +60,7 @@
     <th style="text-align: center;" class="alert-info"> المـادة</th>
     <th style="text-align: center;" class="alert-info">الأستـاذ </th>
     <th style="text-align: center;" class="alert-info">الـدرجـة</th>
-    <th style="text-align: center;" class="alert-info"> تـاريخ الإضـافـة</th>
+    {{-- <th style="text-align: center;" class="alert-info"> إختبـار شهـر</th> --}}
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -75,7 +75,7 @@
             <td>{{ $Exam->subject->name }}</td>
             <td>{{$Exam->teacher->name}}</td>
             <td>{{$Exam->total_marks}}</td>
-            <td>{{$Exam->created_at->diffForHumans()}}</td>
+            {{-- <td>{{$Exam->exam_name}}</td> --}}
             <td>{{ $Exam->create_by }}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -134,6 +134,7 @@
                                 @endforeach
                             </select>
                         </div>
+                      
                 </div><br>
                 
                 <div class="row">
@@ -154,7 +155,7 @@
                     </div>
                 
                     <div class="col-md-6">
-                        <label for="inputEmail4">الـدرجـة</label>
+                        <label >الـدرجـة</label>
                         <input type="number" value="{{ $Exam->total_marks }}" name="Total" class="form-control">
                     </div>
                 
@@ -252,6 +253,10 @@ aria-hidden="true">
                 @endforeach
             </select>
         </div>
+        {{-- <div class="col-md-4">
+            <label >إختبـار شهـر</label>
+            <input type="text" value="{{ old('Exam_name') }}" name="Exam_name" class="form-control">
+        </div> --}}
 </div><br>
 
 <div class="row">
@@ -267,7 +272,7 @@ aria-hidden="true">
     </div>
 
     <div class="col-md-6">
-        <label for="inputEmail4">الـدرجـة</label>
+        <label >الـدرجـة</label>
         <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
     </div>
 

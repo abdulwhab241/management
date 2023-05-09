@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use App\Models\Result;
-use Illuminate\Http\Request;
-use App\Http\Requests\ResultRequest;
 use App\Models\Student;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ResultRequest;
 
-class ResultController extends Controller
+class TeacherResultController extends Controller
 {
     public function index()
     {
-        $Exams = Exam::all();
-        $Results = Result::all();
-        $Students = Student::all();
-        
-        return view('pages.Results.index', compact('Exams','Results','Students'));
+        $exams = Exam::where('teacher_id',auth()->user()->id)->get();
+        $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id', $ids)->get();
+        $results = Result::whereIn('exam_id', $ids)->get();
+        // $results = Result::all();
+
+        return view('pages.Teachers.dashboard.Result.index', compact('exams','results','students'));
     }
 
     public function store(ResultRequest $request)
@@ -34,7 +37,7 @@ class ResultController extends Controller
 
             $Exam->save();
             toastr()->success('تم حفظ نتيجـة الطـالـب بنجاح');
-            return redirect()->route('Results.index');
+            return redirect()->route('Result.index');
         }
         catch(\Exception $e)
         {
@@ -44,6 +47,7 @@ class ResultController extends Controller
 
     public function update(ResultRequest $request)
     {
+        // dd($request);
         try
         {
             $Exam = Result::findOrFail($request->id);
@@ -56,7 +60,7 @@ class ResultController extends Controller
             $Exam->save();
             
             toastr()->success('تم تعديل نتيجـة الطـالـب بنجاح');
-            return redirect()->route('Results.index');
+            return redirect()->route('Result.index');
         }
         catch(\Exception $e)
         {
@@ -68,6 +72,7 @@ class ResultController extends Controller
     {
         Result::findOrFail($request->id)->delete(); 
         toastr()->error('تم حذف نتيجـة الطـالـب بنجاح');
-        return redirect()->route('Results.index');
+        return redirect()->back();
     }
+
 }

@@ -97,7 +97,7 @@
 
         <div class="col-md-4">
             <label >تاريخ التعيين</label>
-                <input  class="form-control timepicker" type="text" value="{{$Teachers->joining_date}}" id="reservation" name="Joining_Date" >
+                <input  class="form-control" type="date" value="{{$Teachers->joining_date}}" id="reservation" name="Joining_Date" >
             @error('Joining_Date')
             <div class="alert alert-danger">
             <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>

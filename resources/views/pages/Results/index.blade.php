@@ -60,7 +60,7 @@
     <th style="text-align: center;" class="alert-info"> المـادة</th>
     <th style="text-align: center;" class="alert-info">الدرجـة التي حصـل عليـها </th>
     <th style="text-align: center;" class="alert-info">التقـديـر</th>
-    <th style="text-align: center;" class="alert-info"> تـاريخ النتيجـة</th>
+    <th style="text-align: center;" class="alert-info"> إختبـار شهـر</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -75,7 +75,7 @@
             <td>{{ $Result->exam->subject->name }}</td>
             <td>{{$Result->marks_obtained}}</td>
             <td>{{$Result->appreciation}}</td>
-            <td>{{$Result->created_at->diffForHumans()}}</td>
+            <td>{{$Result->result_name}}</td>
             <td>{{ $Result->create_by }}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -105,7 +105,7 @@
                 <div class="box-body">
                     <div class="row">
 
-                        <div class="col-md-6"> 
+                        <div class="col-md-4"> 
                             <label>أسـم الطـالـب </label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Result->id }}">
@@ -115,25 +115,19 @@
                                 </option>
             
                             </select>
-                            @error('Student_id')
-                            <div class=" alert-danger">
-                            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                            </div>
-                            @enderror
                         </div>
                 
-                        <div class="col-md-6"> 
+                        <div class="col-md-4"> 
                             <label>المـادة</label>
                             <select class="form-control select2" name="Exam_id">
                                 <option value="{{ $Result->exam->subject->id }}">
                                     {{ $Result->exam->subject->name }}
                                 </option>
                             </select>
-                            @error('Exam_id')
-                            <div class=" alert-danger">
-                            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                            </div>
-                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <label >إختبـار شهـر</label>
+                            <input type="text" value="{{ $Result->result_name }}" name="Result_name" class="form-control">
                         </div>
                 </div><br>
                 
@@ -142,15 +136,10 @@
                     <div class="col-md-6">
                     <label>الدرجـة التي حصـل عليـها</label>
                     <input type="number" value="{{ $Result->marks_obtained }}" name="Marks" class="form-control">
-                    @error('Marks')
-                    <div class=" alert-danger">
-                    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                    </div>
-                    @enderror
                     </div>
                     
                     <div class="col-md-6">
-                        <label for="inputEmail4">التقـديـر</label>
+                        <label >التقـديـر</label>
                         <select class="form-control select2" name="Appreciation">
                             <option >{{$Result->appreciation }}</option>
                             <option value="ممـتـاز">ممـتـاز</option>
@@ -159,11 +148,6 @@
                             <option value="مقبـول">مقبـول</option>
                             <option value="ضعيـف">ضعيـف</option>
                         </select>  
-                        @error('Appreciation')
-                        <div class=" alert-danger">
-                        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                        </div>
-                        @enderror
                     </div>
                 
                 </div>
@@ -174,8 +158,8 @@
                     data-dismiss="modal">إغلاق</button>
                     <button type="submit"
                     class="btn btn-success">تـعديـل البيانات</button>
-                    </div>
-                   
+                </div>
+                
             </form>
     
         </div>
@@ -241,7 +225,7 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-md-6"> 
+        <div class="col-md-4"> 
             <label>أسـم الطـالـب</label>
             <select class="form-control select2" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -251,14 +235,9 @@ aria-hidden="true">
                     </option>
                 @endforeach
             </select>
-            @error('Student_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
         </div>
 
-        <div class="col-md-6"> 
+        <div class="col-md-4"> 
             <label>المـادة</label>
             <select class="form-control select2" name="Exam_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -268,11 +247,10 @@ aria-hidden="true">
                     </option>
                 @endforeach
             </select>
-            @error('Exam_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
+        </div>
+        <div class="col-md-4">
+            <label >إختبـار شهـر</label>
+            <input type="text" value="{{ old('Result_name') }}" name="Result_name" class="form-control">
         </div>
 </div><br>
 
@@ -281,15 +259,10 @@ aria-hidden="true">
     <div class="col-md-6"> 
         <label>الدرجـة التي حصـل عليـها</label>
         <input type="number" value="{{ old('Marks') }}" name="Marks" class="form-control">
-        @error('Marks')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
     </div>
 
     <div class="col-md-6">
-        <label for="inputEmail4">التقـديـر</label>
+        <label >التقـديـر</label>
         <select class="form-control select2" name="Appreciation">
             <option  selected disabled>أختـر من القائمة...</option>
             <option value="ممـتـاز">ممـتـاز</option>
@@ -298,11 +271,6 @@ aria-hidden="true">
             <option value="مقبـول">مقبـول</option>
             <option value="ضعيـف">ضعيـف</option>
         </select>  
-        @error('Appreciation')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
     </div>
 
 </div>
