@@ -40,8 +40,7 @@ Route::group(
     Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('student','TeacherStudentController@index')->name('student.index');
         Route::get('sections','TeacherStudentController@sections')->name('sections');
-        Route::post('attendance','TeacherStudentController@attendance')->name('attendance');
-        Route::post('edit_attendance','TeacherStudentController@editAttendance')->name('attendance.edit');
+        Route::post('editAttendance','TeacherStudentController@editAttendance')->name('editAttendance');
         Route::get('attendance_report','TeacherStudentController@attendanceReport')->name('attendance.report');
         Route::post('attendance_report','TeacherStudentController@attendanceSearch')->name('attendance.search');
 
@@ -49,7 +48,7 @@ Route::group(
 
         Route::resource('Result', 'TeacherResultController');
         
-        Route::resource('Questions', 'TeacherQuestionController');
+        Route::resource('Attendances', 'TeacherAttendanceController');
 
         Route::get('profile', 'TeacherProfileController@index')->name('profile.show');
         Route::post('profile/{id}', 'TeacherProfileController@update')->name('profile.update');

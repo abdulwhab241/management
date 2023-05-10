@@ -106,18 +106,20 @@
 <li class="treeview">
     <li><a href="{{ route('sections') }}"><i class="fas fa-chalkboard" aria-hidden="true"></i> الأقسـام</a></li>
 </li>
-
 <li class="treeview">
-    <li><a href="{{ route('Exams.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> الإختبـارات</a></li>
+    <li><a href="{{ route('Attendances.index') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> الحضـور والغيـاب</a></li>
 </li>
 <li class="treeview">
     <li><a href="{{ route('attendance.report') }}"><i class="fa fa-table" aria-hidden="true"></i> تقرير الحضور والغياب</a></li>
 </li>
 <li class="treeview">
+    <li><a href="{{ route('Exams.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> الإختبـارات</a></li>
+</li>
+<li class="treeview">
     <li><a href="{{ route('Result.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
 </li>
 <li class="treeview">
-    <li><a href="#"><i class="fas fa-id-card-alt" aria-hidden="true"></i> الملـف الشخصـي</a></li>
+    <li><a href="{{route('profile.show')}}"><i class="fas fa-id-card-alt" aria-hidden="true"></i> الملـف الشخصـي</a></li>
 </li>
 
 

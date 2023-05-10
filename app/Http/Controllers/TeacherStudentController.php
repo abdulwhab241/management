@@ -22,50 +22,10 @@ class TeacherStudentController extends Controller
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $sections = Section::whereIn('id', $ids)->get();
-        return view('pages.Teachers.dashboard.sections.index', compact('sections'));
+        $Attendances = Attendance::all();
+        return view('pages.Teachers.dashboard.sections.index', compact('sections','Attendances'));
     }
-
-    public function attendance(AttendanceRequest $request)
-    {
-
-        try {
-            Attendance::updateOrCreate(
-                [
-                'day' => strip_tags($request->Day_id),
-                'student_id' => strip_tags($request->student_id),
-                'classroom_id' => strip_tags($request->classroom_id),
-                'section_id' => strip_tags($request->section_id),
-                'attendance_date' => date('Y-m-d'),
-                'attendance_status' => strip_tags($request->Attendance),
-                'create_by' => auth()->user()->name
-            ]);
-
-            toastr()->success('تـم إضـافـة التحضيـر بنجـاح');
-            return redirect()->back();
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
-    }
-
-    // public function editAttendance(Request $request)
-    // {
-    //     try {
-    //         $date = date('Y-m-d');
-    //         $student_id = Attendance::where('attendance_date', $date)->where('student_id', $request->id)->first();
-    //         if ($request->attendances == 'presence') {
-    //             $attendance_status = 'حـاضـر';
-    //         } else if ($request->attendances == 'absent') {
-    //             $attendance_status = 'غـائـب';
-    //         }
-    //         $student_id->update([
-    //             'attendance_status' => $attendance_status
-    //         ]);
-    //         toastr()->success(trans('messages.success'));
-    //         return redirect()->back();
-    //     } catch (\Exception $e) {
-    //         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    //     }
-    // }
+    
 
     public function attendanceReport()
     {

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+{{-- @extends('layouts.master')
 @section('css')
     @toastr_css
     @section('title')
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <hr>
-                    {{-- <div class="row">
+                    <div class="row">
                         <div class="col-sm-3">
                             <p class="mb-0">اسم المستخدم باللغة الانجليزية</p>
                         </div>
@@ -76,7 +76,7 @@
                                         class="form-control">
                             </p>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="row">
                         <div class="col-sm-3">
                             <p class="mb-0">كلمة المرور</p>
@@ -114,4 +114,145 @@
         }
     }
 </script>
+@endsection
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="..." alt="...">
+        <div class="caption">
+          <h3>Thumbnail label</h3>
+          <p>...</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+  </div> --}}
+
+@extends('layouts.master')
+@section('css')
+
+@section('title')
+الملـف الشـخـصـي
+@stop
+@endsection
+
+@section('content')
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+الملـف الشـخـصـي
+</h1>
+<ol class="breadcrumb">
+<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+
+<li class="active">الملـف الشـخـصـي</li>
+</ol>
+</section>
+
+<!-- Main content -->
+<section class="content" >
+
+<div class="row">
+<div class="col-xs-12">
+<div class="box">
+
+<div class="col-md-4">
+<div class="box box-info">
+<div class="box-header with-border">
+<div class="box-body">
+    <div class="card-body text-center">
+        <img src="{{URL::asset('assets/images/teacher.png')}}"
+                alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+        <h5 style="font-family: Cairo" class="my-3">{{$information->name}}</h5>
+        <p class="margin">معلم</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+   <div class="col-md-8">
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+        {{-- <div class="box-body"> --}}
+            <div class="card-body">
+                <form class="form-horizontal" action="{{route('profile.update',$information->id)}}" method="post">
+                    @csrf
+                    <div class="box-body">
+                    <div class="row">
+
+                        <div class="col-md-4"> 
+                            <label>أسـم المستخدم </label>
+                            <input type="text" value="{{ $information->name }}" name="Name" class="form-control">
+                        </div>
+
+                        <div class="col-md-4"> 
+                            <label>كلمة المرور </label>
+                            <input type="password" id="password" value="{{ old('password') }}" name="password" class="form-control">
+                        </div>
+                        <div class="col-md-4"> 
+                            <label>اظهار كلمة المرور </label>
+                            <input class="checkbox" type="checkbox" id="exampleCheck1" onclick="myFunction()">
+                        </div>
+
+                    </div><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit"
+                    class="btn btn-info btn-block">تـعديـل البيانات</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {{-- </div> --}}
+   </div>
+
+    </div>
+
+{{-- <div class="row">
+<div class="col-sm-12 col-md-12">
+    <div class="thumbnail">
+    <img src="/dist/img/user2-160x160.jpg" alt="...">
+    <div class="caption">
+        <h3>Thumbnail label</h3>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Full name">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+    </div>
+    </div>
+</div>
+</div>  --}}
+
+
+
+</div>
+</div>
+</div>
+
+<!-- row closed -->
+</section>
+
+@endsection
+@section('js')
+@toastr_js
+@toastr_render
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+
 @endsection

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->bigInteger('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
-            $table->string('exam_name');
+            // $table->string('exam_name');
             $table->date('exam_date');
             $table->integer('total_marks');
 

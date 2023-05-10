@@ -58,7 +58,6 @@
     <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
     <th style="text-align: center;  background-color: #D0DEF6;" >الصـف الدراسـي </th>
     <th style="text-align: center;  background-color: #D0DEF6;" >الأستـاذ </th>
-    {{-- <th style="text-align: center;  background-color: #D0DEF6;" >إختبـار شهـر </th> --}}
     <th style="text-align: center; background-color: #D0DEF6;">الـدرجـة</th>
     <th style="text-align: center;" class="alert-warning">العمليـات</th>
 
@@ -71,7 +70,6 @@
             <td>{{$exam->subject->name}}</td>
             <td>{{$exam->classroom->name_class}}</td>
             <td>{{$exam->teacher->name}}</td>
-            {{-- <td>{{$exam->exam_name}}</td> --}}
             <td>{{$exam->total_marks}}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -102,7 +100,7 @@ id="exampleModalLabel">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-md-3"> 
+        <div class="col-md-4"> 
             <label>الصـف الدراسي</label>
             <input id="id" type="hidden" name="id" class="form-control"
             value="{{ $exam->id }}">
@@ -119,7 +117,7 @@ id="exampleModalLabel">
             </select>
         </div>
 
-        <div class="col-md-3"> 
+        <div class="col-md-4"> 
             <label>المـادة</label>
             <select class="form-control select2" name="Subject_id">
                 <option value="{{ $exam->subject->id }}">
@@ -132,11 +130,7 @@ id="exampleModalLabel">
                 @endforeach
             </select>
         </div>
-        <div class="col-md-3">
-            <label >إختبـار شهـر</label>
-            <input type="text" value="{{ $exam->exam_name }}" name="Exam_name" class="form-control">
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <label for="inputEmail4">الـدرجـة</label>
             <input type="number" value="{{ $exam->total_marks }}" name="Total" class="form-control">
         </div>
@@ -213,7 +207,7 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
 
-        <div class="col-md-3"> 
+        <div class="col-md-4"> 
             <label>الصـف الدراسي</label>
             <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
             <select class="form-control select2" name="Classroom_id">
@@ -224,7 +218,7 @@ aria-hidden="true">
             </select>
         </div>
 
-        <div class="col-md-3"> 
+        <div class="col-md-4"> 
             <label>المـادة</label>
             <select class="form-control select2" name="Subject_id">
                 <option  selected disabled>حدد المادة الدراسية...</option>
@@ -233,11 +227,7 @@ aria-hidden="true">
                 @endforeach
             </select>
         </div>
-        <div class="col-md-3">
-            <label >إختبـار شهـر</label>
-            <input type="text" value="{{ old('Exam_name') }}" name="Exam_name" class="form-control">
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <label for="inputEmail4">الـدرجـة</label>
             <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
         </div>

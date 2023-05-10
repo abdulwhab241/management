@@ -32,9 +32,6 @@
 </div>
 @endif
 <div class="box-header">
-
-{{-- <a href="{{route('Attendances.create')}}" class="btn btn-success btn-flat" role="button"
-style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جديدة</a> --}}
 <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 <button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
     تحضيـر 
@@ -77,7 +74,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
             <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
             data-target="#edit{{ $Attendance->id }}"
             title="تعديل"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $Attendance->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $Attendance->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
         </td>
     </tr>
 
@@ -186,7 +183,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
             <form action="{{ route('Attendance.destroy', 'test') }}" method="post">
                 {{ method_field('Delete') }}
                 @csrf
-                هل انت متاكد من عملية حـذف تحضيـر الطـالـب ؟
+                <h5 style="font-family: 'Cairo', sans-serif;"> هل انت متاكد من عملية حـذف تحضيـر الطـالـب ؟ </h5>
                 <input id="Name" type="text" name="Name"
                 class="form-control"
                 value="{{ $Attendance->students->name }}"
