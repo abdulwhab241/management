@@ -38,20 +38,20 @@ Route::group(
 
     //==============================students============================
     Route::group(['namespace' => 'App\Http\Controllers'], function () {
-        Route::get('student','TeacherStudentController@index')->name('student.index');
-        Route::get('sections','TeacherStudentController@sections')->name('sections');
+        Route::get('TeacherStudent','TeacherStudentController@index')->name('student.index');
+        Route::get('TeacherSections','TeacherStudentController@sections')->name('sections');
         Route::post('editAttendance','TeacherStudentController@editAttendance')->name('editAttendance');
         Route::get('attendance_report','TeacherStudentController@attendanceReport')->name('attendance.report');
         Route::post('attendance_report','TeacherStudentController@attendanceSearch')->name('attendance.search');
 
-        Route::resource('Exams', 'TeacherExamController');
+        Route::resource('TeacherExams', 'TeacherExamController');
 
-        Route::resource('Result', 'TeacherResultController');
+        Route::resource('TeacherResult', 'TeacherResultController');
         
-        Route::resource('Attendances', 'TeacherAttendanceController');
+        Route::resource('TeacherAttendance', 'TeacherAttendanceController');
 
-        Route::get('profile', 'TeacherProfileController@index')->name('profile.show');
-        Route::post('profile/{id}', 'TeacherProfileController@update')->name('profile.update');
+        Route::get('TeacherProfile', 'TeacherProfileController@index')->name('TeacherProfile.show');
+        Route::post('TeacherProfile/{id}', 'TeacherProfileController@update')->name('TeacherProfile.update');
     });
 
 

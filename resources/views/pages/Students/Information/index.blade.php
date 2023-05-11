@@ -27,7 +27,7 @@
 <div class="box">
 
 <div class="box-body table-responsive no-padding">
-    <table class="table" data-page-length="50">
+    <table class="table" data-page-length="50" style="font-family: 'Cairo', sans-serif">
         <tbody>
             <tr>
                 <th style="text-align: center; width: 30%; background-color: #D0DEF6;"  >أسـم الطـالـب</th>
@@ -91,7 +91,7 @@
             </tr>
             <tr>
                 <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تاريخ التسجيل</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->created_at->diffForHumans() }}</td>
+                <td style="text-align: center; width: 70%; background-color: #D0DEF6; color:black;" >{{ auth()->user()->created_at->diffForHumans() }}</td>
             </tr>
             <tr>
                 <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >السنـة الدراسيـة</th>

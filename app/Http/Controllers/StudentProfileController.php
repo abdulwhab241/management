@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class TeacherProfileController extends Controller
+class StudentProfileController extends Controller
 {
     public function index()
     {
 
-        $information = Teacher::findOrFail(auth()->user()->id);
-        return view('pages.Teachers.dashboard.profile', compact('information'));
+        $information = Student::findOrFail(auth()->user()->id);
+        return view('pages.Students.profile', compact('information'));
 
     }
 
@@ -22,7 +22,7 @@ class TeacherProfileController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        $information = Teacher::findOrFail($id);
+        $information = Student::findOrFail($id);
 
         if (!empty($request->password)) {
             // $information->name =  $request->Name;
@@ -37,5 +37,4 @@ class TeacherProfileController extends Controller
         return redirect()->back();
 
     }
-    
 }

@@ -98,7 +98,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 <div class="modal-body">
 <!-- add_form -->
-<form class="form-horizontal"  action="{{ route('Attendances.update', 'test') }}" method="post">
+<form class="form-horizontal"  action="{{ route('TeacherAttendance.update', 'test') }}" method="post">
     {{ method_field('patch') }}
     @csrf
     <div class="box-body">
@@ -157,7 +157,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     
 </div>
 <div class="modal-body">
-    <form action="{{ route('Attendances.destroy', 'test') }}" method="post">
+    <form action="{{ route('TeacherAttendance.destroy', 'test') }}" method="post">
         {{ method_field('Delete') }}
         @csrf
         <h5 style="font-family: 'Cairo', sans-serif;"> هل انت متاكد من عملية حـذف تحضيـر الطـالـب ؟ </h5>
@@ -202,7 +202,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     </div>
     <div class="modal-body">
     
-    <form class="form-horizontal" action="{{ route('Attendances.store') }}" method="POST">
+    <form class="form-horizontal" action="{{ route('TeacherAttendance.store') }}" method="POST">
     @csrf
     
     <div class="box-body">

@@ -27,7 +27,7 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-    @if(count($Attendances) > 0)
+    {{-- @if(count($Attendances) > 0) --}}
 <div class="box-header">
 
 </div><!-- /.box-header -->
@@ -41,8 +41,9 @@
 <thead>
 <tr>
 
-    <th style="text-align: center; background-color: #D0DEF6;" >اليوم</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >اليـوم</th>
     <th style="text-align: center; background-color: #D0DEF6;" > الحـالـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" > التـاريـخ</th>
 
 
 </tr>
@@ -54,22 +55,14 @@
             
             <td>{{ $Student->day }}</td>
             <td>{{ $Student->attendance_status }}</td>
+            <td>{{ $Student->attendance_date }}</td>
         </tr>
 
 @endforeach
 </tbody>
 </table>
 </div>
-@else
 
-<h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
-    <marquee direction="right">
-        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
-            عـذراً لـم يتـم تنـزيـل الجـدول بعـد 
-        </b>
-    </marquee>
-    </h1>
-@endif
 </div>
 </div>
 </div>

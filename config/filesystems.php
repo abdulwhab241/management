@@ -60,6 +60,14 @@ return [
             'throw' => false,
         ],
 
+        'ProfileStudents' => [
+            'driver' => 'local',
+            'root' => storage_path('public/attachments/ProfileStudents/'),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'upload_attachments' => [
             'driver' => 'local',
             'root' => public_path('/'),

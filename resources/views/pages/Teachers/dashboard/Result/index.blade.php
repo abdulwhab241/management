@@ -97,7 +97,7 @@ id="exampleModalLabel">
 </div>
 <div class="modal-body">
 <!-- add_form -->
-<form class="form-horizontal"  action="{{ route('Result.update', $result->id ) }}" method="post">
+<form class="form-horizontal"  action="{{ route('TeacherResult.update', $result->id ) }}" method="post">
 {{ method_field('patch') }}
 @csrf
 <div class="box-body">
@@ -151,43 +151,6 @@ id="exampleModalLabel">
 
 </div><br>
 
-    {{-- <div class="row">
-
-        <div class="col-md-4"> 
-            <label>الصـف الدراسي</label>
-            <input id="id" type="hidden" name="id" class="form-control"
-            value="{{ $exam->id }}">
-            <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
-            <select class="form-control select2" name="Classroom_id">
-                <option value="{{ $exam->classroom->id }}">
-                    {{ $exam->classroom->name_class }}
-                </option>
-                @foreach ($Classrooms as $Classroom)
-                    <option value="{{  $Classroom->My_Classes->id }}">
-                        {{  $Classroom->My_Classes->name_class }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="col-md-4"> 
-            <label>المـادة</label>
-            <select class="form-control select2" name="Subject_id">
-                <option value="{{ $exam->subject->id }}">
-                    {{ $exam->subject->name }}
-                </option>
-                @foreach ($subjects as $subject)
-                    <option value="{{ $subject->id }}">
-                        {{ $subject->name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="inputEmail4">الـدرجـة</label>
-            <input type="number" value="{{ $exam->total_marks }}" name="Total" class="form-control">
-        </div>
-</div><br> --}}
 
 </div>
 <div class="modal-footer">
@@ -205,7 +168,7 @@ id="exampleModalLabel">
 <!-- Delete modal -->
 <div class="modal fade" id="delete_result{{$result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
-<form action="{{route('Result.destroy',$result->id)}}" method="post">
+<form action="{{route('TeacherResult.destroy',$result->id)}}" method="post">
     {{method_field('delete')}}
     {{csrf_field()}}
 <div class="modal-content">
@@ -254,7 +217,7 @@ aria-hidden="true">
 </div>
 <div class="modal-body">
 
-<form class="form-horizontal" action="{{ route('Result.store') }}" method="POST">
+<form class="form-horizontal" action="{{ route('TeacherResult.store') }}" method="POST">
 @csrf
 
 <div class="box-body">
@@ -309,32 +272,6 @@ aria-hidden="true">
     </div>
 
 </div><br>
-
-        {{-- <div class="col-md-4"> 
-            <label>الصـف الدراسي</label>
-            <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
-            <select class="form-control select2" name="Classroom_id">
-                <option  selected disabled>أختـر من القائمة...</option>
-                @foreach ($Classrooms as $Classroom)
-                    <option  value="{{ $Classroom->My_Classes->id }}" required>{{ $Classroom->My_Classes->name_class }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="col-md-4"> 
-            <label>المـادة</label>
-            <select class="form-control select2" name="Subject_id">
-                <option  selected disabled>حدد المادة الدراسية...</option>
-                @foreach ($subjects as $subject)
-                    <option  value="{{ $subject->id }}" required>{{ $subject->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="inputEmail4">الـدرجـة</label>
-            <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
-        </div> --}}
-{{-- </div> --}}
 
 </div>
 

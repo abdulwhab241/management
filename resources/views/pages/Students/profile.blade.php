@@ -32,12 +32,12 @@
 <div class="box-header with-border">
 <div class="box-body">
 <div class="card-body text-center">
-    <img src="{{URL::asset('assets/images/teacher.png')}}"
+    <img src="{{URL::asset('assets/images/student.png')}}"
             alt="avatar"
             class="rounded-circle img-fluid" style="width: 150px;">
     <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{$information->name}}</h4>
-    <h5 style="font-family: 'Cairo', sans-serif" class="margin"> مـدرس {{$information->specializations->name}} </h5>
-    {{-- <p class="margin">معلم</p> --}}
+    <h5 style="font-family: 'Cairo', sans-serif" class="margin">  {{ $information->classroom->name_class }} </h5>
+    <p class="margin"> الشعبـة :  {{ $information->section->name_section }}  </p>
 </div>
 </div>
 </div>
@@ -48,7 +48,7 @@
 
 <div class="box box-info">
 <div class="box-header with-border">
-<form class="form-horizontal" action="{{route('TeacherProfile.update',$information->id)}}" method="post">
+<form class="form-horizontal" action="{{route('StudentProfile.update',$information->id)}}" method="post">
     @csrf
     <div class="box-body">
 

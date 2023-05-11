@@ -120,7 +120,7 @@
                     </tr>
                     <tr>
                         <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تاريخ التسجيل</th>
-                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->created_at->diffForHumans() }}</td>
+                        <td style="text-align: center; width: 70%;" >{{ auth()->user()->created_at }}</td>
                     </tr>
                     <tr>
                         <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >السنـة الدراسيـة</th>

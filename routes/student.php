@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\StudentInformationController;
 use App\Http\Controllers\StudentResultController;
+use App\Models\Student;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -33,12 +34,22 @@ Route::group(
     //     return view('pages.Students.dashboard');
     // });
 
+     //==============================Student Dashboard============================
     Route::get('/student/dashboard', function () {
-        return view('pages.Students.dashboard');
+        $Image = Student::findOrFail(auth()->user()->id)->get();
+        return view('pages.Students.dashboard', compact('Image'));
     })->name('dashboard.Students');
 
+    //==============================Student Information============================~
+    Route::get('/student/information', function () {
+        return view('pages.Students.information.index');
+    })->name('Students.information');
+
+    //==============================Student Group============================
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+
     //==============================Student Accounts============================
-    Route::resource('Accounts', StudentInformationController::class);
+    Route::resource('StudentAccounts', StudentInformationController::class);
 
     //==============================Student Class============================
     Route::resource('StudentTable', ClassController::class);
@@ -47,17 +58,16 @@ Route::group(
     Route::resource('StudentAttendance', StudentAttendanceController::class);
 
     //==============================Student Result============================
-    Route::resource('Result', StudentResultController::class);
+    Route::resource('StudentResult', StudentResultController::class);
 
-    // Route::get('/lass', [StudentInformationController::class, 'student_class']);
+        //==============================Student Profile============================
+    Route::get('StudentProfile', 'StudentProfileController@index')->name('StudentProfile.show');
+    Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.update');
 
-    Route::get('/student/information', function () {
-        return view('pages.Students.information.index');
-    })->name('Students.information');
+});
 
-    // Route::get('/student/fee', function () {
-    //     return view('pages.Students.information.show');
-    // })->name('Students.fee');
+
+   
 
 });
 
