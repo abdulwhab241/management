@@ -30,16 +30,36 @@
 <div class="col-md-6">
 <div class="box box-info">
 <div class="box-header with-border">
+<form class="form-horizontal" action="{{route('TeacherImage.editImage',$information->id)}}" method="post" enctype="multipart/form-data">
+    @csrf
 <div class="box-body">
 <div class="card-body text-center">
-    <img src="{{URL::asset('assets/images/teacher.png')}}"
-            alt="avatar"
+    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}"
+    alt="{{ Auth::user()->name }}" 
             class="rounded-circle img-fluid" style="width: 150px;">
     <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{$information->name}}</h4>
-    <h5 style="font-family: 'Cairo', sans-serif" class="margin"> مـدرس {{$information->specializations->name}} </h5>
-    {{-- <p class="margin">معلم</p> --}}
+    <h5 style="font-family: 'Cairo', sans-serif" class="margin"> أ. {{$information->specializations->name}} </h5>
 </div>
 </div>
+
+<div class="row">
+<div class="form-group">
+    <label class="col-sm-4 control-label" style="font-weight:bold; color:blue;">إختر صورة: </label>
+    <input type="hidden" name="Name" value="{{ $information->name  }}">
+    <div class="col-sm-8">
+        <input type="hidden" name="id" value="{{ $information->id }}">
+    <input type="file" accept="image/*" required name="photos" >
+    </div>
+</div>
+</div>
+    <div class="box-footer">
+        <div class="col-sm-8">
+        <button type="submit" class="btn btn-info pull-left">تعـديـل الصـورة</button>
+        </div>
+    </div><!-- /.box-footer -->
+
+</form>
+
 </div>
 </div>
 </div>
@@ -54,8 +74,9 @@
 
         
     <div class="form-group">
-        <label class="col-sm-4 control-label">أسـم المستخدم</label>
+        <label class="col-sm-4 control-label">أسـم المعلـم</label>
         <div class="col-sm-8">
+            <input type="hidden" name="id" value="{{ $information->id }}">
             <input type="text" style="text-align: center; font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" disabled class="form-control" id="inputEmail3" name="Name" value="{{ $information->name }}">
         </div>
         </div>

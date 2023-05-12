@@ -50,6 +50,7 @@ Route::group(
         
         Route::resource('TeacherAttendance', 'TeacherAttendanceController');
 
+        Route::post('TeacherImage/{id}', 'TeacherProfileController@editImage')->name('TeacherImage.editImage');
         Route::get('TeacherProfile', 'TeacherProfileController@index')->name('TeacherProfile.show');
         Route::post('TeacherProfile/{id}', 'TeacherProfileController@update')->name('TeacherProfile.update');
     });

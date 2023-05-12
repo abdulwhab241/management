@@ -16,23 +16,41 @@ class TeacherProfileController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function editImage(Request $request)
+    {
+        // dd($request);
+        $file_extension = $request->photos->getClientOriginalExtension();
+        $file_name = time(). '.' . $request->Name . '.' . $file_extension;
+        $path = 'attachments/Profile';
+        $request->photos->move($path, $file_name);
+
+        try
+        {
+            $information = Teacher::findOrFail($request->id);
+            $information->image = $file_name;
+            $information->save();
+    
+            toastr()->success('تم تعـديـل الصـورة بنجـاح');
+            return redirect()->back();
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function update(Request $request)
     {
         $request->validate([
             'password' => ['required', 'string'],
         ]);
 
-        $information = Teacher::findOrFail($id);
+        $information = Teacher::findOrFail($request->id);
 
         if (!empty($request->password)) {
-            // $information->name =  $request->Name;
             $information->password = Hash::make(strip_tags($request->password));
             $information->save();
         } 
-        // else {
-        //     $information->Name =  $request->Name;
-        //     $information->save();
-        // }
         toastr()->success('تم تعـديـل كلمـة السـر بنجـاح');
         return redirect()->back();
 

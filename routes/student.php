@@ -61,8 +61,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::resource('StudentResult', StudentResultController::class);
 
         //==============================Student Profile============================
+    Route::post('StudentImage/{id}', 'StudentProfileController@editImage')->name('StudentImage.editImage');
     Route::get('StudentProfile', 'StudentProfileController@index')->name('StudentProfile.show');
     Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.update');
+    // Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.editImage');
 
 });
 

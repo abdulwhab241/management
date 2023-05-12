@@ -205,18 +205,15 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ asset('/attachments/Students/' . Auth::user()->image ) }}" class="user-image" >
-            {{-- <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> --}}
+            <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="user-image" alt="{{ Auth::user()->name }}" >
             <span class="hidden-xs">{{auth()->user()->name}}</span>
         </a>
         <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-                <img src="{{ asset('/attachments/Students/' . Auth::user()->image ) }}" class="img-circle" >
-            {{-- <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> --}}
+                <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}">
             <p>
                 {{auth()->user()->name}}
-                {{-- <small>{{auth()->user()->email}}</small> --}}
             </p>
             </li>
             @endif
@@ -247,7 +244,7 @@
             @endif
 
             @csrf
-            <a class="btn btn-default btn-flat" href="#" onclick="event.preventDefault();this.closest('form').submit();">تسجيل الخروج</a>
+            <a class="btn btn-info  btn-flat" href="#" onclick="event.preventDefault();this.closest('form').submit();">تسجيل الخروج</a>
             </form>
             </div>
             </li>

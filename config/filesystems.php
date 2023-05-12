@@ -60,9 +60,9 @@ return [
             'throw' => false,
         ],
 
-        'ProfileStudents' => [
+        'Profile' => [
             'driver' => 'local',
-            'root' => storage_path('public/attachments/ProfileStudents/'),
+            'root' => storage_path('public/attachments/Profile/'),
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
             'throw' => false,
