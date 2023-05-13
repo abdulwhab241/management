@@ -175,6 +175,9 @@
     <li><a href="{{route('Classes.index')}}"><i class="fa fa-circle-o"></i> قائمة الحصـص الدراسية</a></li>
     </ul>
 </li>
+<li class="treeview">
+    <li><a href="{{route('box')}}"><i class="fa fa-university" aria-hidden="true"></i>الصنـدوق</a></li>
+</li>
 
 </ul>
 </section>

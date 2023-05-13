@@ -67,10 +67,10 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
                 $fund_accounts = new FundAccount();
                 $fund_accounts->date = date('Y-m-d');
                 $fund_accounts->student_id = strip_tags($request->Student_id);
-                $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
+                $fund_accounts->fee_invoice = strip_tags($Fees->description);
                 $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
-                $fund_accounts->credit_feeInvoice = 0.00; 
-                $fund_accounts->description = strip_tags($request->description);
+                // $fund_accounts->credit_feeInvoice = 0.00; 
+                // $fund_accounts->description = strip_tags($request->description);
                 $fund_accounts->create_by = auth()->user()->name;
                 $fund_accounts->save();
                 
@@ -115,10 +115,14 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->Student_id);
-            $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
-            $fund_accounts->Debit_feeInvoice = 0.00;
-            $fund_accounts->credit_feeInvoice = strip_tags($request->amount);
-            $fund_accounts->description = strip_tags($request->description);
+            $fund_accounts->fee_invoice = strip_tags($Fees->description);
+            $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
+            // $fund_accounts->date = date('Y-m-d');
+            // $fund_accounts->student_id = strip_tags($request->Student_id);
+            // $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
+            // $fund_accounts->Debit_feeInvoice = 0.00;
+            // $fund_accounts->credit_feeInvoice = strip_tags($request->amount);
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 

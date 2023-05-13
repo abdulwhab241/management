@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- Ionicons 2.0.0 -->
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- DataTables -->
+<link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -51,6 +53,8 @@
 <link rel="stylesheet" href="/dist/fonts/fonts-fa.css">
 
 <link rel="stylesheet" href="/dist/css/bootstrap-rtl.min.css">
+
+
 
 
 

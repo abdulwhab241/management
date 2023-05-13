@@ -49,10 +49,10 @@ class PaymentRepository implements PaymentRepositoryInterface
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
-            $fund_accounts->payment_id = strip_tags($payment_students->id);
+            $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
-            $fund_accounts->credit_payment = 0.00; 
-            $fund_accounts->description = strip_tags($request->description);
+            // $fund_accounts->credit_payment = 0.00; 
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -96,10 +96,10 @@ class PaymentRepository implements PaymentRepositoryInterface
             $fund_accounts = FundAccount::where('payment_id',$payment_students->id)->first();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
-            $fund_accounts->payment_id = strip_tags($payment_students->id);
+            $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
-            $fund_accounts->credit_payment = 0.00;
-            $fund_accounts->description = strip_tags($request->description);
+            // $fund_accounts->credit_payment = 0.00;
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 

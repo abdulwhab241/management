@@ -43,6 +43,8 @@ Route::group(
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
         Route::get('/dashboard', [HomeController::class, 'dashboard']) -> name('dashboard');
 
+        Route::get('/box', [HomeController::class, 'box']) -> name('box');
+
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Grades', GradeController::class);
         });
@@ -65,12 +67,15 @@ Route::group(
            //==============================Teachers============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Teachers', TeacherController::class);
+            Route::post('Filter_Teachers', [TeacherController::class,'Filter_Teachers'])->name('Filter_Teachers');
+            
         });
 
 
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Students', StudentController::class);
+            Route::post('Filter_Students', [StudentController::class,'Filter_Students'])->name('Filter_Students');
             Route::resource('Graduated', GraduatedController::class);
             Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);

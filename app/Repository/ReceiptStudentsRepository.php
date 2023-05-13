@@ -62,10 +62,10 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->Student_id);
-            $fund_accounts->receipt_id = strip_tags($receipt_students->id);
-            $fund_accounts->Debit_receipt = 0.00;
+            $fund_accounts->receipt = strip_tags($receipt_students->description);
+            // $fund_accounts->Debit_receipt = 0.00;
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
-            $fund_accounts->description = strip_tags($request->description);
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -111,10 +111,10 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts = FundAccount::where('receipt_id',$request->id)->first();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->Student_id);
-            $fund_accounts->receipt_id = strip_tags($receipt_students->id);
-            $fund_accounts->Debit_receipt = 0.00;
+            $fund_accounts->receipt = strip_tags($receipt_students->description);
+            // $fund_accounts->Debit_receipt = 0.00;
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
-            $fund_accounts->description = strip_tags($request->description);
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 

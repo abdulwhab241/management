@@ -39,13 +39,15 @@
     <div class="box-header">
     <a class="btn btn-success btn-flat" style="padding:5px; margin: 5px;" href="{{route('Teachers.create')}}">
         إضافة معلم</a>
-    <br><br>
+    <br>
     <div class="box-tools">
     <div class="input-group" style="width: 150px;">
-    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-    <div class="input-group-btn">
-    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+    <form action="{{ route('Filter_Teachers') }}" method="post">
+        {{ csrf_field() }}
+    <div class="box-body">
+    <input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
     </div>
+    </form>
     </div>
     </div>
     </div><!-- /.box-header -->
@@ -65,8 +67,15 @@
     </tr>
     </thead>
     <tbody>
+    @if (isset($details))
+
+    <?php $List_Teachers = $details; ?>
+    @else
+
+    <?php $List_Teachers = $Teachers; ?>
+    @endif
     <?php $i = 0; ?>
-    @foreach($Teachers as $Teacher)
+    @foreach($List_Teachers as $Teacher)
         <tr>
         <?php $i++; ?>
         <td>{{ $i }}</td>

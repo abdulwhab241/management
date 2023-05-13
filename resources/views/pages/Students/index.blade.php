@@ -38,18 +38,20 @@
 <div class="box-header">
 <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
 aria-pressed="true">اضافة طـالـب</a>
-<br><br>
+<br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
-<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-<div class="input-group-btn">
-<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+<form action="{{ route('Filter_Students') }}" method="post">
+    {{ csrf_field() }}
+<div class="box-body">
+<input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم الطـالـب">
 </div>
+</form>
 </div>
 </div>
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+<table id="example2" class="table table-bordered table-hover" style="text-align: center" >
 <thead>
 <tr>
 
@@ -66,8 +68,17 @@ aria-pressed="true">اضافة طـالـب</a>
 </tr>
 </thead>
 <tbody>
+
+@if (isset($details))
+
+<?php $List_Students = $details; ?>
+@else
+
+<?php $List_Students = $Students; ?>
+@endif
+
     <?php $i = 0; ?>
-    @foreach ($Students as $Student)
+    @foreach ($List_Students as $Student)
         <tr>
             <?php $i++; ?>
             <td>{{ $i }}</td>
@@ -138,6 +149,7 @@ aria-pressed="true">اضافة طـالـب</a>
 
 <!-- row closed -->
 </section>
+
 
 @endsection
 @section('js')

@@ -5,7 +5,7 @@
 <!-- Sidebar user panel -->
 <div class="user-panel">
 <div class="pull-right image">
-    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+    {{-- <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> --}}
     @if (isset(Auth::user()->name))
     <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
 </div>

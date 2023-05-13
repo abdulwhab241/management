@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Requests\TeacherRequest;
 use App\Repository\TeacherRepositoryInterFace;
@@ -50,5 +51,14 @@ class TeacherController extends Controller
     public function destroy(Request $request)
     {
         return $this->Teacher->deleteTeachers($request);
+    }
+
+    public function Filter_Teachers(Request $request)
+    {
+        
+        $Teachers = Teacher::all();
+        $Search = Teacher::where('name', 'LIKE', '%'. strip_tags($request->Search ).'%')->latest()->get();
+
+        return view('pages.Teachers.index',compact('Teachers'))->withDetails($Search);
     }
 }

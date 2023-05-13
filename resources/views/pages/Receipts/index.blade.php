@@ -39,7 +39,7 @@
     <div class="box-header">
     <a href="{{route('Receipts.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
     aria-pressed="true">اضافة سنـد تسديـد </a>
-    <br><br>
+    <br>
     <div class="box-tools">
     <div class="input-group" style="width: 150px;">
     <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
@@ -54,7 +54,7 @@
     <thead>
         <tr>
             <th style="text-align: center;" class="alert-info">#</th>
-            <th style="text-align: center;" class="alert-info">الاسم</th>
+            <th style="text-align: center;" class="alert-info">أسـم الطـالـب</th>
             <th style="text-align: center;" class="alert-info">المبلغ</th>
             <th style="text-align: center;" class="alert-info">البيان</th>
             <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>

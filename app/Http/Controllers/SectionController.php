@@ -28,12 +28,12 @@ class SectionController extends Controller
             $validated = $request->validated();
             $Sections = new Section();
     
-            $Sections->name_section = $request->Name_Section;
-            $Sections->grade_id = $request->Grade_id;
-            $Sections->class_id = $request->Class_id;
+            $Sections->name_section = strip_tags($request->Name_Section);
+            $Sections->grade_id = strip_tags($request->Grade_id);
+            $Sections->class_id = strip_tags($request->Class_id);
             $Sections->create_by = auth()->user()->name;
             $Sections->save();
-            $Sections->teachers()->attach($request->teacher_id);
+            $Sections->teachers()->attach(strip_tags($request->teacher_id));
             toastr()->success('تم حفظ القسم بنجاح');
             return redirect()->route('Sections.index');
         }
@@ -48,15 +48,15 @@ class SectionController extends Controller
         
     try {
         $validated = $request->validated();
-        $Sections = Section::findOrFail($request->id);
+        $Sections = Section::findOrFail(strip_tags($request->id));
 
-        $Sections->name_section = $request->Name_Section;
-        $Sections->grade_id = $request->Grade_id;
-        $Sections->class_id = $request->Class_id;
+        $Sections->name_section = strip_tags($request->Name_Section);
+        $Sections->grade_id = strip_tags($request->Grade_id);
+        $Sections->class_id = strip_tags($request->Class_id);
         $Sections->create_by = auth()->user()->name;
 
         if (isset($request->teacher_id)) {
-            $Sections->teachers()->sync($request->teacher_id);
+            $Sections->teachers()->sync(strip_tags($request->teacher_id));
         } else {
             $Sections->teachers()->sync(array());
         }

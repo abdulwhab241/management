@@ -62,10 +62,10 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
-            $fund_accounts->processing_id = strip_tags($ProcessingFee->id);
-            $fund_accounts->Debit_processing = 0.00;
+            $fund_accounts->processing = strip_tags($ProcessingFee->description);
+            // $fund_accounts->Debit_processing = 0.00;
             $fund_accounts->credit_processing = strip_tags($request->Debit);
-            $fund_accounts->description = strip_tags($request->description);
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -108,10 +108,10 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $fund_accounts = FundAccount::where('processing_id',$request->id)->first();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
-            $fund_accounts->processing_id = strip_tags($ProcessingFee->id);
-            $fund_accounts->Debit_processing = 0.00;
+            $fund_accounts->processing = strip_tags($ProcessingFee->description);
+            // $fund_accounts->Debit_processing = 0.00;
             $fund_accounts->credit_processing = strip_tags($request->Debit);
-            $fund_accounts->description = strip_tags($request->description);
+            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 

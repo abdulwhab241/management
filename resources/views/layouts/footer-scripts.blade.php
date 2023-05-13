@@ -10,6 +10,9 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- Bootstrap 3.3.4 -->
 <!-- Bootstrap 3.3.4 -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 <!-- Select2 -->
 <script src="/plugins/select2/select2.full.min.js"></script>
@@ -52,6 +55,22 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="/dist/js/demo.js"></script>
 
 {{-- <script src="/date/datepicker.js"></script> --}}
+
+<!-- page script -->
+<script>
+$(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+    "paging": true,
+    "lengthChange": false,
+    "searching": false,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false
+    });
+});
+</script>
+
 
 
 
