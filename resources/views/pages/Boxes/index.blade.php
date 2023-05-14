@@ -42,7 +42,7 @@
 <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
-<form action="{{ route('Filter_Teachers') }}" method="post">
+<form action="{{ route('Filter_Boxes') }}" method="post">
     {{ csrf_field() }}
 <div class="box-body">
 <input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
@@ -52,7 +52,7 @@
 </div>
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+<table class="table table-striped table-bordered" style="width:100%; text-align: center;">
 <thead>
 <tr>
     <th style="text-align: center; background-color: #86B9D4;" >#</th>
@@ -70,21 +70,38 @@
 </tr>
 </thead>
 <tbody>
+    @if (isset($details))
+
+    <?php $List_Students = $details; ?>
+    @else
+    
+    <?php $List_Students = $Boxes; ?>
+    @endif
+
     <?php $i = 0; ?>
-@foreach($Boxes as $box)
+@foreach($List_Students as $box)
     <tr>
     <?php $i++; ?>
     <td>{{ $i }}</td>
     <td>{{$box->student->name}}</td>
-    {{-- <td>{{$box->fee_invoice->fees->title}}</td> --}}
-    {{-- <td>{{$box->genders->name}}</td>
-    <td>{{$box->joining_date}}</td>
-    <td>{{$box->specializations->name}}</td>
-    <td>{{$box->created_at->diffForHumans()}}</td>
-    <td>{{ $box->create_by }}</td> --}}
+    <td>{{$box->fee_invoice}}</td>
+    <td>{{ number_format($box->Debit_feeInvoice) }} ريال </td>
+    <td>{{$box->receipt}}</td>
+    <td>{{ number_format($box->credit_receipt) }} ريال </td>
+    <td>{{$box->processing}}</td>
+    <td>{{ number_format($box->credit_processing) }} ريال </td>
+    <td>{{$box->payment}}</td>
+    <td>{{ number_format($box->Debit_payment) }} ريال </td>
+    <td>{{$box->date}}</td>
+    <td>{{ $box->create_by }}</td>
 
 @endforeach
 </table>
+{{-- <div class="d-flex justify-content-center">
+{{ $Boxes->links() }}
+</div> --}}
+
+
 </div>
 </div>
 </div>

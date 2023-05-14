@@ -96,7 +96,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function update($request)
     {
         try {
-            $Fees = FeeInvoice::findOrFail($request->id);
+            $Fees = FeeInvoice::findOrFail(strip_tags($request->id));
             $Fees->fee_id = strip_tags($request->Fee_id);
             $Fees->amount = strip_tags($request->amount);
             $Fees->description = strip_tags($request->description);
@@ -104,7 +104,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $Fees->save();
 
             // تعديل البيانات في جدول حسابات الطلاب
-            $StudentAccount = StudentAccount::where('fee_invoice_id',$request->id)->first();
+            $StudentAccount = StudentAccount::where('fee_invoice_id',strip_tags($request->id))->first();
             $StudentAccount->type = 'تعديل فـاتـورة دراسية (مـديـن)';
             $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
             $StudentAccount->description = strip_tags($request->description);
@@ -139,7 +139,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             // dd($request);
             FeeInvoice::destroy($request->id);
             FundAccount::destroy($request->id);
-            StudentAccount::destroy($request->id);
+            // StudentAccount::destroy($request->id);
             toastr()->error('تـم حـذف الفـاتـورة بنجـاح');
             return redirect()->back();
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProcessingRequest;
 use Illuminate\Http\Request;
 use App\Repository\ProcessingFeeRepositoryInterface;
 
@@ -20,13 +21,7 @@ class ProcessingFeeController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
+    public function store(ProcessingRequest $request)
     {
         return $this->Processing->store($request);
     }
@@ -44,7 +39,7 @@ class ProcessingFeeController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update(ProcessingRequest $request)
     {
         return $this->Processing->update($request);
     }

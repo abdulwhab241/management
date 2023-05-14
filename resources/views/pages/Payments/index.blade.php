@@ -37,18 +37,21 @@
     </div>
     @endif
     <div class="box-header">
-    <br>
+        <br>
+        <br>
     <div class="box-tools">
     <div class="input-group" style="width: 150px;">
-    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-    <div class="input-group-btn">
-    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-    </div>
+        <form action="{{ route('Filter_Payment') }}" method="post">
+            {{ csrf_field() }}
+        <div class="box-body">
+        <input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
+        </div>
+        </form>
     </div>
     </div>
     </div><!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
-    <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <table class="table table-striped table-bordered" style="width:100%; text-align: center;" data-page-length="50">
     <thead>
         <tr>
             <th style="text-align: center;" class="alert-info">#</th>
@@ -60,7 +63,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($payment_students as $payment_student)
+        @if (isset($details))
+
+        <?php $List_Students = $details; ?>
+        @else
+        
+        <?php $List_Students = $payment_students; ?>
+        @endif
+        @foreach($List_Students as $payment_student)
         <tr>
         <td>{{ $loop->iteration }}</td>
         <td>{{$payment_student->student->name}}</td>

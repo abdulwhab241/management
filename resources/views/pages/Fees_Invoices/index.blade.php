@@ -38,10 +38,12 @@
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـورة جديدة</a><br><br>
 <div class="box-tools">
     <div class="input-group" style="width: 150px;">
-    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-    <div class="input-group-btn">
-        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+    <form action="{{ route('Filter_Fee') }}" method="post">
+        {{ csrf_field() }}
+    <div class="box-body">
+    <input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
     </div>
+    </form>
     </div>
 </div>
 </div><!-- /.box-header -->
@@ -61,7 +63,14 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
     </tr>
 </thead>
 <tbody>
-    @foreach($Fee_invoices as $Fee_invoice)
+    @if (isset($details))
+
+    <?php $List_Students = $details; ?>
+    @else
+    
+    <?php $List_Students = $Fee_invoices; ?>
+    @endif
+    @foreach($List_Students as $Fee_invoice)
     <tr>
     <td>{{ $loop->iteration }}</td>
     <td>{{$Fee_invoice->student->name}}</td>

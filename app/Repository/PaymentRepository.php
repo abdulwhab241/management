@@ -83,7 +83,7 @@ class PaymentRepository implements PaymentRepositoryInterface
         try {
 
             // تعديل البيانات في جدول سندات الصرف
-            $payment_students = PaymentStudent::findOrFail($request->id);
+            $payment_students = PaymentStudent::findOrFail(strip_tags($request->id));
             $payment_students->date = date('Y-m-d');
             $payment_students->student_id = strip_tags($request->student_id);
             $payment_students->amount = strip_tags($request->Debit);
@@ -93,7 +93,7 @@ class PaymentRepository implements PaymentRepositoryInterface
 
 
             // حفظ البيانات في جدول الصندوق
-            $fund_accounts = FundAccount::where('payment_id',$payment_students->id)->first();
+            $fund_accounts = FundAccount::where('payment_id',strip_tags($payment_students->id))->first();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
@@ -105,7 +105,7 @@ class PaymentRepository implements PaymentRepositoryInterface
 
 
             // حفظ البيانات في جدول حساب الطلاب
-            $students_accounts = StudentAccount::where('payment_id',$request->id)->first();
+            $students_accounts = StudentAccount::where('payment_id',strip_tags($request->id))->first();
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'تعديل سند الصرف';
             $students_accounts->student_id = strip_tags($request->student_id);
@@ -127,9 +127,9 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function destroy($request)
     {
         try {
-            PaymentStudent::destroy($request->id);
-            StudentAccount::destroy($request->id);
-            FundAccount::destroy($request->id);
+            PaymentStudent::destroy(strip_tags($request->id));
+            StudentAccount::destroy(strip_tags($request->id));
+            // FundAccount::destroy(strip_tags($request->id));
             toastr()->error('تـم حـذف سـند الصـرف  بنجـاح');
             return redirect()->back();
         }

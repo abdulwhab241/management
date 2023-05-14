@@ -43,7 +43,9 @@ Route::group(
         /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
         Route::get('/dashboard', [HomeController::class, 'dashboard']) -> name('dashboard');
 
+        // define('PAGINATION_COUNT', 2);
         Route::get('/box', [HomeController::class, 'box']) -> name('box');
+        Route::post('Filter_Boxes', [HomeController::class,'Filter_Boxes'])->name('Filter_Boxes');
 
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Grades', GradeController::class);
@@ -79,10 +81,12 @@ Route::group(
             Route::resource('Graduated', GraduatedController::class);
             Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
+            Route::post('Filter_Fee', [FeeInvoiceController::class,'Filter_Fee'])->name('Filter_Fee');
             Route::resource('Fees',  FeeController::class);
             Route::resource('Receipts', ReceiptStudentsController::class);
             Route::resource('ProcessingFee', ProcessingFeeController::class);
             Route::resource('Payments', PaymentController::class);
+            Route::post('Filter_Payment', [PaymentController::class,'Filter_Payment'])->name('Filter_Payment');
             Route::resource('Attendance', AttendanceController::class);
             Route::get('/Get_classrooms/{id}', [StudentController::class,'Get_classrooms']);
             Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);

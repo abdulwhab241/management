@@ -9,10 +9,10 @@
 <!-- Font -->
     {{-- <link href="{{ URL::asset('css/wizard.css') }}" rel="stylesheet" id="bootstrap-css"> --}}
     @yield('css')
-<!--- Style css -->
+{{-- <!--- Style css -->
 <link rel="stylesheet" href="/style.css">
 
-<link rel="stylesheet" href="/wizard.css">
+<link rel="stylesheet" href="/wizard.css"> --}}
 
 
 <!-- Bootstrap 3.3.4 -->

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\PaymentStudent;
+use App\Http\Requests\PaymentRequest;
 use App\Repository\PaymentRepositoryInterface;
 
 class PaymentController extends Controller
@@ -20,13 +23,7 @@ class PaymentController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(Request $request)
+    public function store(PaymentRequest $request)
     {
         return $this->Payment->store($request);
     }
@@ -44,7 +41,7 @@ class PaymentController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update(PaymentRequest $request)
     {
         return $this->Payment->update($request);
     }
@@ -53,5 +50,14 @@ class PaymentController extends Controller
     public function destroy(Request $request)
     {
         return $this->Payment->destroy($request);
+    }
+
+    public function Filter_Payment(Request $request)
+    {
+        
+        $payment_students = PaymentStudent::all();
+        $Search = Student::where('name', 'LIKE', '%'. strip_tags($request->Search ).'%')->latest()->get();
+
+        return view('pages.Payments.index',compact('payment_students'))->withDetails($Search);
     }
 }
