@@ -36,23 +36,10 @@
 </ul>
 </div>
 @endif
-<div class="box-header">
-
-    <br>
 <br>
-<div class="box-tools">
-<div class="input-group" style="width: 150px;">
-<form action="{{ route('Filter_Boxes') }}" method="post">
-    {{ csrf_field() }}
-<div class="box-body">
-<input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
-</div>
-</form>
-</div>
-</div>
-</div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-striped table-bordered" style="width:100%; text-align: center;">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
+{{-- <table class="table table-striped table-bordered" style="width:100%; text-align: center;"> --}}
 <thead>
 <tr>
     <th style="text-align: center; background-color: #86B9D4;" >#</th>
@@ -70,16 +57,8 @@
 </tr>
 </thead>
 <tbody>
-    @if (isset($details))
-
-    <?php $List_Students = $details; ?>
-    @else
-    
-    <?php $List_Students = $Boxes; ?>
-    @endif
-
     <?php $i = 0; ?>
-@foreach($List_Students as $box)
+@foreach($Boxes as $box)
     <tr>
     <?php $i++; ?>
     <td>{{ $i }}</td>
@@ -112,4 +91,17 @@
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
 @endsection

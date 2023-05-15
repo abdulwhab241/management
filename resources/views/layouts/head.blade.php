@@ -35,8 +35,7 @@
 <!-- jvectormap -->
 <link rel="stylesheet" href="/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 <!-- Date Picker -->
-{{-- <link rel="stylesheet" href="/plugins/datepicker/datepicker3.css"> --}}
-<link rel="stylesheet" href="/date/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/plugins/datepicker/datepicker3.css">
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="/plugins/iCheck/all.css">
 <!-- Bootstrap Color Picker -->
