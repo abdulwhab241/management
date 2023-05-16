@@ -41,17 +41,12 @@
         <br>
     <div class="box-tools">
     <div class="input-group" style="width: 150px;">
-        <form action="{{ route('Filter_Payment') }}" method="post">
-            {{ csrf_field() }}
-        <div class="box-body">
-        <input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
-        </div>
-        </form>
+        <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
     </div>
     </div>
     </div><!-- /.box-header -->
     <div class="box-body table-responsive no-padding">
-    <table class="table table-striped table-bordered" style="width:100%; text-align: center;" data-page-length="50">
+        <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
         <tr>
             <th style="text-align: center;" class="alert-info">#</th>
@@ -63,14 +58,8 @@
         </tr>
     </thead>
     <tbody>
-        @if (isset($details))
 
-        <?php $List_Students = $details; ?>
-        @else
-        
-        <?php $List_Students = $payment_students; ?>
-        @endif
-        @foreach($List_Students as $payment_student)
+        @foreach($payment_students as $payment_student)
         <tr>
         <td>{{ $loop->iteration }}</td>
         <td>{{$payment_student->student->name}}</td>

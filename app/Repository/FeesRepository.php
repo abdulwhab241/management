@@ -29,8 +29,9 @@ class FeesRepository implements FeesRepositoryInterface
     public function edit($id){
 
         $fee = Fee::findOrFail($id);
+        $Classrooms = Classroom::all();
         $Grades = Grade::all();
-        return view('pages.Fees.edit',compact('fee','Grades'));
+        return view('pages.Fees.edit',compact('fee','Grades','Classrooms'));
 
     }
 

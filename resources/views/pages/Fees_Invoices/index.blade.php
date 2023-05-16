@@ -38,17 +38,12 @@
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـورة جديدة</a><br><br>
 <div class="box-tools">
     <div class="input-group" style="width: 150px;">
-    <form action="{{ route('Filter_Fee') }}" method="post">
-        {{ csrf_field() }}
-    <div class="box-body">
-    <input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم المعلـم">
-    </div>
-    </form>
+        <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
     </div>
 </div>
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
@@ -63,16 +58,10 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
     </tr>
 </thead>
 <tbody>
-    @if (isset($details))
 
-    <?php $List_Students = $details; ?>
-    @else
-    
-    <?php $List_Students = $Fee_invoices; ?>
-    @endif
-    @foreach($List_Students as $Fee_invoice)
+    @foreach($Fee_invoices as $Fee_invoice)
     <tr>
-    <td>{{ $loop->iteration }}</td>
+        <td>{{ $loop->iteration }}</td>
     <td>{{$Fee_invoice->student->name}}</td>
     <td>{{$Fee_invoice->fees->title}}</td>
     <td>{{ number_format($Fee_invoice->amount) }} ريال </td>
@@ -85,22 +74,14 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>                        </td>
     </tr>
     @include('pages.Fees_Invoices.Delete')
-</tbody>
 
 @endforeach
+</tbody>
+
 </table>
 
 </div><!-- /.box-body -->
 
-{{-- <div class="box-footer clearfix">
-<ul class="pagination pagination-sm no-margin pull-right">
-    <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">&raquo;</a></li>
-</ul>
-</div> --}}
 </div><!-- /.box -->
 </div>
 

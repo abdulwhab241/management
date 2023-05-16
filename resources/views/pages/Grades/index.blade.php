@@ -40,17 +40,10 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 إضافة مرحلة
 </button>
 <br><br>
-<div class="box-tools">
-<div class="input-group" style="width: 150px;">
-<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-<div class="input-group-btn">
-<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-</div>
-</div>
-</div>
+
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
 <th style="text-align: center;" class="alert-info">#</th>
@@ -105,7 +98,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 
         <div class="col-md-6">
             <label >أسـم المرحلـة</label>
-            <input  type="text" name="Name"  value="{{$grade->name }}" required class="form-control" id="inputEmail3">
+            <input  type="text" name="Name"  value="{{$grade->name }}" required class="form-control">
         </div>
 
         <div class="col-md-6">
@@ -171,15 +164,6 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 
 </div><!-- /.box-body -->
 
-<div class="box-footer clearfix">
-<ul class="pagination pagination-sm no-margin pull-right">
-<li><a href="#">&laquo;</a></li>
-<li><a href="#">1</a></li>
-<li><a href="#">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">&raquo;</a></li>
-</ul>
-</div>
 </div><!-- /.box -->
 </div>
 
@@ -203,7 +187,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             <div class="col-md-6">
                 <label >أسـم المرحلـة</label>
-                <input  type="text" name="Name" value="{{ old('Name') }}" class="form-control" id="inputEmail3">
+                <input  type="text" name="Name" value="{{ old('Name') }}" class="form-control">
             </div>
 
             <div class="col-md-6">

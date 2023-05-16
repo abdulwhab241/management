@@ -13,7 +13,7 @@
     @include('layouts.head')
 </head>
 
-<body  class="skin-blue sidebar-mini"  style="font-family: 'Cairo', sans-serif">
+<body  class="skin-blue sidebar-mini"  style="font-family: 'Cairo', sans-serif" dir="rtl">
 
     <div class="wrapper">
 

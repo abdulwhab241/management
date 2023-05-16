@@ -17,7 +17,7 @@
 </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 
 <div class="row">
 <div class="col-xs-12">
@@ -32,22 +32,18 @@
 </div>
 @endif
 <div class="box-header">
-<h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 <button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
     تحضيـر 
 </button>
 <br><br>
 <div class="box-tools">
     <div class="input-group" style="width: 150px;">
-    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-    <div class="input-group-btn">
-        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-    </div>
+        <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
     </div>
 </div>
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
@@ -98,8 +94,9 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-4"> 
+                            <div class="form-group">
                             <label >الـيوم</label>
-                            <select class="form-control select2" name="Day_id">
+                            <select class="form-control select2" style="width: 100%;" name="Day_id">
                                 <option >{{$Attendance->day}}</option>
                                 <option value="السبت">السبت</option>
                                 <option value="الاحد">الاحد</option>
@@ -107,46 +104,55 @@
                                 <option value="الثلاثاء">الثلاثاء</option>
                                 <option value="الاربعاء">الاربعاء</option>
                             </select>
+                            </div>
                         </div>
 
                         <div class="col-md-4">
+                            <div class="form-group">
                             <label >أسـم الطـالـب</label>
-                            <select class="form-control select2" name="Student_id">
+                            <select class="form-control select2" style="width: 100%;" name="Student_id">
                                 <option value="{{ $Attendance->students->id }}">
                                     {{ $Attendance->students->name }}
                                 </option>
                             </select>
+                            </div>
                         </div>
 
                         <div class="col-md-4">
+                            <div class="form-group">
                             <label >الصـف الـدراسـي</label>
-                            <select class="form-control select2" name="Classroom_id">
+                            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
                                 <option value="{{ $Attendance->classroom->id }}">
                                     {{ $Attendance->classroom->name_class }}
                                 </option>>
                             </select>
+                            </div>
                         </div>
                         
                     </div><br>
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="form-group">
                             <label >الـشعبـة</label>
-                            <select class="form-control select2" name="Section_id">
+                            <select class="form-control select2" style="width: 100%;" name="Section_id">
                                 <option value="{{ $Attendance->section->id }}">
                                     {{ $Attendance->section->name_section }}
                                 </option>>
                             </select>
+                            </div>
                         </div>
                 
                         <div class="col-md-6">
+                            <div class="form-group">
                             <label >الـحالـة</label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Attendance->id }}">
-                            <select class="form-control select2" name="Attendance">
+                            <select class="form-control select2" style="width: 100%;" name="Attendance">
                                 <option >{{$Attendance->attendance_status}}</option>
                                 <option value="حـاضـر" required>حـاضـر</option>
                                 <option value="غـائـب">غـائـب</option>
                             </select>
+                            </div>
                         </div>
     
                     </div><br>
@@ -208,22 +214,13 @@
 
 </div><!-- /.box-body -->
 
-<div class="box-footer clearfix">
-<ul class="pagination pagination-sm no-margin pull-right">
-    <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">&raquo;</a></li>
-</ul>
-</div>
 </div><!-- /.box -->
 
 
 <!-- add_modal_class -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
-<div class="modal-dialog modal-success" role="document">
+<div class="modal-dialog modal-success"  role="document">
 <div class="modal-content">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -239,8 +236,9 @@ aria-hidden="true">
 <div class="box-body">
     <div class="row">
         <div class="col-md-4"> 
+            <div class="form-group">
             <label >الـيوم</label>
-            <select class="form-control select2" name="Day_id">
+            <select class="form-control select2" style="width: 100%;" name="Day_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="السبت">السبت</option>
                 <option value="الاحد">الاحد</option>
@@ -248,48 +246,54 @@ aria-hidden="true">
                 <option value="الثلاثاء">الثلاثاء</option>
                 <option value="الاربعاء">الاربعاء</option>
             </select>
+            </div>
         </div>
 
         <div class="col-md-4">
+            <div class="form-group">
             <label >أسـم الطـالـب</label>
-            <select class="form-control select2" name="Student_id">
+            <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Students as $Student)
                     <option value="{{ $Student->id }}" required>{{ $Student->name }}</option>
                 @endforeach
             </select>
+            </div>
         </div>
 
         <div class="col-md-4">
+            <div class="form-group">
             <label >الصـف الـدراسـي</label>
-            <select class="form-control select2" name="Classroom_id">
-                <option  selected disabled>أختـر من القائمة...</option>
+            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+                {{-- <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Classrooms as $Classroom)
                     <option value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
+            </div>
         </div>
 
     </div><br>
     <div class="row">
 
         <div class="col-md-6">
+            <div class="form-group">
             <label >الـشعبـة</label>
-            <select class="form-control select2" name="Section_id">
-                <option  selected disabled>أختـر من القائمة...</option>
-                @foreach ($Sections as $Section)
-                    <option value="{{ $Section->id }}" required>{{ $Section->name_section }}</option>
-                @endforeach
+            <select class="form-control select2" style="width: 100%;" name="Section_id">
+            
             </select>
+            </div>
         </div>
 
         <div class="col-md-6">
+            <div class="form-group">
             <label >الـحالـة</label>
-            <select class="form-control select2" name="Attendance">
+            <select class="form-control select2" style="width: 100%;" name="Attendance">
                 <option  selected disabled>أختـر من القائمة...</option>
                 <option value="حـاضـر" required>حـاضـر</option>
                 <option value="غـايـب">غـائـب</option>
             </select>
+            </div>
         </div>
 
     </div><br>

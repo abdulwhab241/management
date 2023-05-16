@@ -43,15 +43,12 @@
 <br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
-<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-<div class="input-group-btn">
-<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-</div>
+    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 </div>
 </div>
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
 

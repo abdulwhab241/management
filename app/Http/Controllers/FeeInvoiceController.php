@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
-use App\Models\FeeInvoice;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\FeeInvoiceRequest;
 use App\Repository\FeeInvoicesRepositoryInterface;
@@ -56,12 +55,4 @@ class FeeInvoiceController extends Controller
         return $this->Fees_Invoices->destroy($request);
     }
 
-    public function Filter_Fee(Request $request)
-    {
-        
-        $Fee_invoices = FeeInvoice::all();
-        $Search = Student::where('name', 'LIKE', '%'. strip_tags($request->Search ).'%')->latest()->get();
-
-        return view('pages.Fees_Invoices.index',compact('Fee_invoices'))->withDetails($Search);
-    }
 }

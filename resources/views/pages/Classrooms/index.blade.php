@@ -20,7 +20,7 @@
 </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 
 <div class="row">
 <div class="col-xs-12">
@@ -40,35 +40,12 @@
 اضافة صف
 </button>
 
-<button type="button" class="btn btn-danger btn-flat" style="margin: 5px; padding: 5px;" id="btn_delete_all">
-حذف الصفوف المختارة
-</button>
 <br><br>
 
-<form action="{{ route('Filter_Classes') }}" method="POST">
-{{ csrf_field() }}
-<select class="selectpicker" style="margin-bottom: 5px; padding:5px; background-color: #F1F6F7;" data-style="btn-info" name="Grade_id" required
-        onchange="this.form.submit()">
-    <option value="" selected disabled>بحث باسم المرحلة</option>
-    @foreach ($Grades as $Grade)
-        <option value="{{ $Grade->id }}">{{ $Grade->name }}</option>
-    @endforeach
-</select>
-</form>
-<div class="box-tools">
-<div class="input-group" style="width: 150px;">
-<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-<div class="input-group-btn">
-    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-</div>
-</div>
-</div>
-</div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover " style="text-align: center">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
-    <th style="text-align: center;" class="alert-info"><input name="select_all" id="example-select-all" type="checkbox" onclick="CheckAll('box1', this)" /></th>
 
     <th style="text-align: center;" class="alert-info">#</th>
     <th style="text-align: center;" class="alert-info">اسم الصف</th>
@@ -78,20 +55,12 @@
 </tr>
 </thead>
 <tbody>
-@if (isset($details))
-
-<?php $List_Classes = $details; ?>
-@else
-
-<?php $List_Classes = $My_Classes; ?>
-@endif
 
 <?php $i = 0; ?>
 
-@foreach ($List_Classes as $My_Class)
+@foreach ($My_Classes as $My_Class)
     <tr>
         <?php $i++; ?>
-        <td><input type="checkbox"  value="{{ $My_Class->id }}" class="box1" ></td>
         <td>{{ $i }}</td>
         <td>{{ $My_Class->name_class }}</td>
         <td>{{ $My_Class->Grades->name }}</td>
@@ -127,8 +96,9 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-6"> 
+                        <div class="form-group">
                         <label >اسـم المرحلـة</label>
-                        <select class="form-control select2" name="Grade_id" id="exampleFormControlSelect1">
+                        <select class="form-control select2" style="width: 100%;" name="Grade_id">
                             <option value="{{ $My_Class->Grades->id }}">
                                 {{ $My_Class->Grades->name }}
                             </option>
@@ -138,6 +108,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 </option>
                             @endforeach
                         </select>
+                        </div>
                     </div>
 
                     <div class="col-md-6"> 
@@ -205,15 +176,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 @endforeach
 </table>
 
-<div class="box-footer clearfix">
-<ul class="pagination pagination-sm no-margin pull-right">
-<li><a href="#">&laquo;</a></li>
-<li><a href="#">1</a></li>
-<li><a href="#">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">&raquo;</a></li>
-</ul>
-</div>
 </div><!-- /.box -->
 </div>
 
@@ -238,12 +200,14 @@ aria-hidden="true">
 
         <div class="col-md-6">
             <label >أسـم المرحلـة</label>
-            <select class="form-control select2" name="Grade_id">
+            <div class="form-group">
+            <select class="form-control select2" style="width: 100%;" name="Grade_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Grades as $Grade)
                     <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
                 @endforeach
             </select>
+            </div>
         </div>
 
         <div class="col-md-6">

@@ -21,7 +21,7 @@
 <!-- Main content -->
 
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 
 <div class="row">
 <div class="col-xs-12">
@@ -42,28 +42,33 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-3">
-                <label for="inputEmail4">أسم الرسوم</label>
+                <div class="form-group">
+                <label>أسم الرسوم</label>
                 <input type="text" value="{{ old('title') }}" name="title" class="form-control">
                 @error('title')
                 <div class=" alert-danger">
                     <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
+                </div>
             </div>
 
             <div class="col-md-3">
-                <label for="inputEmail4">المبلـغ</label>
+                <div class="form-group">
+                <label>المبلـغ</label>
                 <input type="number" value="{{ old('amount') }}" name="amount" class="form-control">
                 @error('amount')
                 <div class=" alert-danger">
                     <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
+                </div>
             </div>
 
             <div class="col-md-3">
-                <label for="inputEmail4">المرحلـة الدراسيـة</label>
-                <select class="form-control select2" name="Grade_id">
+                <div class="form-group">
+                <label>المرحلـة الدراسيـة</label>
+                <select class="form-control select2" style="width: 100%;" name="Grade_id">
                     <option selected disabled>حـدد المرحـلة...</option>
                     @foreach($Grades as $Grade)
                         <option value="{{ $Grade->id }}">{{ $Grade->name }}</option>
@@ -74,21 +79,22 @@
                     <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
+                </div>
             </div>
 
             <div class="col-md-3">
-                <label for="inputEmail4">الصـف الدراسـي</label>
-                <select class="form-control select2" name="Classroom_id">
-                    <option selected disabled>حـدد المرحـلة...</option>
-                    @foreach($Classrooms as $Classroom)
-                        <option value="{{ $Classroom->id }}">{{ $Classroom->name_class }}</option>
-                    @endforeach
+                <div class="form-group">
+                <label>الصـف الدراسـي</label>
+                <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+                    <option selected disabled>حـدد الـصـف...</option>
+                
                 </select>                       
                 @error('Classroom_id')
                 <div class=" alert-danger">
                     <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
                 @enderror
+            </div>
             </div>
 
         </div>
@@ -97,8 +103,9 @@
         <div class="row">
     
             <div class="col-md-3">
-                <label for="inputEmail4">السنـة الدراسيـة</label>
-                <select class="form-control select2" name="year">
+                <div class="form-group">
+                <label>السنـة الدراسيـة</label>
+                <select class="form-control select2" style="width: 100%;" name="year">
                     <option selected disabled>حـدد السنـة...</option>
                     @php
                         $current_year = date("Y")
@@ -112,11 +119,13 @@
                         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                     </div>
                     @enderror
+                </div>
             </div>
 
             <div class="col-md-3">
-                <label for="inputEmail4">نـوع الرسـوم</label>
-                <select class="form-control select2" name="Fee_type">
+                <div class="form-group">
+                <label>نـوع الرسـوم</label>
+                <select class="form-control select2" style="width: 100%;" name="Fee_type">
                     <option value="رسوم دراسية">رسوم دراسية</option>
                     <option value="رسوم باص">رسوم باص</option>
                 </select>                       
@@ -126,10 +135,13 @@
                 </div>
                 @enderror
             </div>
+            </div>
 
             <div class="col-md-6">
-                <label for="inputAddress">ملاحظات</label>
-                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{ old('description') }}</textarea>
+                <div class="form-group">
+                <label>ملاحظات</label>
+                <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
+                </div>
             </div>
 
         </div>   

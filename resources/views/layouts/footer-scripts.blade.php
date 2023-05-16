@@ -71,23 +71,6 @@ $(function () {
 </script>
 
 
-
-
-
-<script>
-$(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false
-    });
-});
-</script>
-
 <script>
     function CheckAll(className, elem) {
         var elements = document.getElementsByClassName(className);
@@ -104,6 +87,111 @@ $(function () {
     }
 </script>
 
+<!-- Get Classrooms for Students -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Student_id"]').on('change', function () {
+            var Student_id = $(this).val();
+            if (Student_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_studentsClass') }}/" + Student_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Classroom_id"]').empty();
+                        $('select[name="Classroom_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+{{-- <!-- Get Classrooms for Grades -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Classroom_id"]').on('change', function () {
+            var Classroom_id = $(this).val();
+            if (Classroom_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_price') }}/" + Classroom_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Fee_id"]').empty();
+                        $('select[name="Fee_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Fee_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script> --}}
+
+<!-- Get Title for Classrooms -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Classroom_id"]').on('change', function () {
+            var Classroom_id = $(this).val();
+            if (Classroom_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_title') }}/" + Classroom_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Fee_id"]').empty();
+                        $('select[name="Fee_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Fee_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+<!-- Get Prices for Classrooms -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Fee_id"]').on('change', function () {
+            var Fee_id = $(this).val();
+            if (Fee_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_prices') }}/" + Fee_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="amount"]').empty();
+                        $('select[name="amount"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="amount"]').append('<option value="' + value + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+<!-- Get Classrooms for Grades -->
 <script>
     $(document).ready(function () {
         $('select[name="Grade_id"]').on('change', function () {
@@ -117,7 +205,7 @@ $(function () {
                         $('select[name="Classroom_id"]').empty();
                         $('select[name="Classroom_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
                         $.each(data, function (key, value) {
-                            $('select[name="classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },
                 });
@@ -130,6 +218,7 @@ $(function () {
 </script>
 
 
+<!-- Get Sections for Classrooms -->
 <script>
     $(document).ready(function () {
         $('select[name="Classroom_id"]').on('change', function () {
@@ -140,9 +229,10 @@ $(function () {
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('select[name="section_id"]').empty();
+                        $('select[name="Section_id"]').empty();
+                        $('select[name="Section_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
                         $.each(data, function (key, value) {
-                            $('select[name="section_id"]').append('<option value="' + key + '">' + value + '</option>');
+                            $('select[name="Section_id"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },
                 });

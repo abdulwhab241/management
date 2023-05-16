@@ -39,7 +39,6 @@
 <br>
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
-{{-- <table class="table table-striped table-bordered" style="width:100%; text-align: center;"> --}}
 <thead>
 <tr>
     <th style="text-align: center; background-color: #86B9D4;" >#</th>
@@ -73,12 +72,11 @@
     <td>{{ number_format($box->Debit_payment) }} ريال </td>
     <td>{{$box->date}}</td>
     <td>{{ $box->create_by }}</td>
+    </tr>
 
 @endforeach
+</tbody>
 </table>
-{{-- <div class="d-flex justify-content-center">
-{{ $Boxes->links() }}
-</div> --}}
 
 
 </div>
@@ -91,17 +89,4 @@
 @section('js')
 @toastr_js
 @toastr_render
-<script>
-    $(function () {
-      $("#example1").DataTable();
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
-      });
-    });
-  </script>
 @endsection

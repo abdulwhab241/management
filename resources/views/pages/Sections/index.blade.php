@@ -52,7 +52,7 @@
         <div class="panel-body">
 
             <div class="box-body table-responsive no-padding">
-                <table class="table table-bordered table-hover" style="text-align: center">
+                <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
                 <thead>
                 <tr>
                 <th style="text-align: center;" class="alert-info">#</th>
@@ -230,6 +230,7 @@
                 <!-- end -->
                 
                 @endforeach
+                </tbody>
                 </table>
                 
                 </div><!-- /.box-body -->

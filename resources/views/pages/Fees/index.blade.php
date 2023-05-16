@@ -35,17 +35,10 @@
 
 <a href="{{route('Fees.create')}}" class="btn btn-success btn-flat" role="button"
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جديدة</a><br><br>
-<div class="box-tools">
-    <div class="input-group" style="width: 150px;">
-    <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
-    <div class="input-group-btn">
-        <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-    </div>
-    </div>
-</div>
+
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
@@ -79,25 +72,17 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
 @include('pages.Fees.Delete')
 
 @endforeach
+</tbody>
 </table>
 
 </div><!-- /.box-body -->
 
-<div class="box-footer clearfix">
-<ul class="pagination pagination-sm no-margin pull-right">
-    <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">&raquo;</a></li>
-</ul>
-</div>
 </div><!-- /.box -->
 </div>
 
 </div>
 </section><!-- /.content -->
-<!-- end -->
+
 @endsection
 @section('js')
 @toastr_js

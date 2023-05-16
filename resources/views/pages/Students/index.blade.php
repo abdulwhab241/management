@@ -41,17 +41,12 @@ aria-pressed="true">اضافة طـالـب</a>
 <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
-<form action="{{ route('Filter_Students') }}" method="post">
-    {{ csrf_field() }}
-<div class="box-body">
-<input type="text" style="background-color: #D0DEF6; font-weight: bolder; padding:5px; margin:5px;" name="Search" class="form-control input-sm pull-right" placeholder="بحـث بـأسـم الطـالـب">
-</div>
-</form>
+    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 </div>
 </div>
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table  class="table table-striped table-bordered" style="text-align: center; width:100%" >
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
 
@@ -69,16 +64,8 @@ aria-pressed="true">اضافة طـالـب</a>
 </thead>
 <tbody>
 
-@if (isset($details))
-
-<?php $List_Students = $details; ?>
-@else
-
-<?php $List_Students = $Students; ?>
-@endif
-
     <?php $i = 0; ?>
-    @foreach ($List_Students as $Student)
+    @foreach ($Students as $Student)
         <tr>
             <?php $i++; ?>
             <td>{{ $i }}</td>

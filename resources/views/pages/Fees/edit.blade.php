@@ -20,7 +20,7 @@
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 <!-- row -->
 <div class="row">
 <div class="col-xs-12 mb-30">
@@ -43,30 +43,42 @@
     <div class="box-body">
     <div class="row">
         <div class="col-md-3">
-            <label for="inputEmail4">أسم الرسوم</label>
+            <div class="form-group">
+            <label>أسم الرسوم</label>
             <input type="text" value="{{$fee->title }}" name="title" class="form-control">
             <input type="hidden" value="{{$fee->id}}" name="id" class="form-control">
+            </div>
         </div>
 
         <div class="col-md-3">
-            <label for="inputEmail4">المبلغ</label>
+            <div class="form-group">
+            <label>المبلغ</label>
             <input type="number" value="{{$fee->amount}}" name="amount" class="form-control">
         </div>
+        </div>
 
         <div class="col-md-3">
-            <label for="inputState">المرحلة الدراسية</label>
-            <select class="form-control select2" name="Grade_id">
+            <div class="form-group">
+            <label >المرحلة الدراسية</label>
+            <select class="form-control select2" style="width: 100%;" name="Grade_id">
                 @foreach($Grades as $Grade)
                     <option value="{{ $Grade->id }}" {{$Grade->id == $fee->grade_id ? 'selected' : ""}}>{{ $Grade->name }}</option>
                 @endforeach
             </select>
+            </div>
         </div>
 
         <div class="col-md-3">
-            <label for="inputZip">الصف الدراسي</label>
-            <select class="form-control select2" name="Classroom_id">
+            <div class="form-group">
+            <label>الصف الدراسي</label>
+            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
                 <option value="{{$fee->classroom_id}}">{{$fee->classroom->name_class}}</option>
+                @foreach($Classrooms as $Classroom)
+                <option value="{{ $Classroom->id }}">{{ $Classroom->name_class }}</option>
+                @endforeach
+
             </select>
+            </div>
         </div>
 
     </div><br>
@@ -76,8 +88,9 @@
 
 
         <div class="col-md-3">
-            <label for="inputZip">السنة الدراسية</label>
-            <select class="form-control select2" name="year">
+            <div class="form-group">
+            <label>السنة الدراسية</label>
+            <select class="form-control select2" style="width: 100%;" name="year">
                 @php
                     $current_year = date("Y")
                 @endphp
@@ -85,22 +98,25 @@
                     <option value="{{ $year}}" {{$year == $fee->year ? 'selected' : ' '}}>{{ $year }}</option>
                 @endfor
             </select>
+            </div>
         </div>
 
         <div class="col-md-3">
-            <label for="inputZip">نـوع الرسـوم</label>
-            <select class="form-control select2" name="Fee_type">
+            <div class="form-group">
+            <label>نـوع الرسـوم</label>
+            <select class="form-control select2" style="width: 100%;" name="Fee_type">
                 <option >{{$fee->fee_type}}</option>
                     <option value="رسوم دراسية">رسوم دراسية</option>
                         <option value="رسوم باص">رسوم باص</option>
             </select>
-            
+            </div>
         </div>
     
         <div class="col-md-6">
-            <label for="inputAddress">ملاحظات</label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
-                        rows="3">{{$fee->description}}</textarea>
+            <div class="form-group">
+            <label>ملاحظات</label>
+            <textarea class="form-control" name="description" rows="3">{{$fee->description}}</textarea>
+            </div>
         </div>
 
     </div>
@@ -111,8 +127,6 @@
                 class="btn btn-success btn-block">تأكيـد</button>
             </div>
     </div>
-
-    {{-- <button type="submit" class="btn btn-primary btn-block">تاكيد</button> --}}
 
 </form>
 

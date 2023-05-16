@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentRequest;
 use App\Repository\StudentRepositoryInterface;
@@ -55,14 +54,6 @@ class StudentController extends Controller
         return $this->Student->Get_Sections($id);
     }
 
-    public function Filter_Students(Request $request)
-    {
-        
-        $Students = Student::all();
-        $Search = Student::where('name', 'LIKE', '%'. strip_tags($request->Search ).'%')->latest()->get();
-
-        return view('pages.Students.index',compact('Students'))->withDetails($Search);
-    }
 
     // public function Upload_attachment(Request $request)
     // {

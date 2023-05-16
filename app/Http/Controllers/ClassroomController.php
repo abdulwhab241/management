@@ -58,24 +58,24 @@ class ClassroomController extends Controller
 
     public function destroy(Request $request)
     {
-        $Classrooms = Classroom::findOrFail(strip_tags($request->id))->delete(); 
+        Classroom::findOrFail(strip_tags($request->id))->delete(); 
         toastr()->error('تم حذف الـصـف بنجاح');
         return redirect()->route('Classrooms.index');
     }
 
-    public function delete_all(Request $request)
-    {
-        $delete_all_id = explode(",", $request->delete_all_id);
+    // public function delete_all(Request $request)
+    // {
+    //     $delete_all_id = explode(",", $request->delete_all_id);
 
-        Classroom::whereIn('id', $delete_all_id)->Delete();
-        toastr()->warning('تم حذف الصفوف بنجاح');
-        return redirect()->route('Classrooms.index');
-    }
+    //     Classroom::whereIn('id', $delete_all_id)->Delete();
+    //     toastr()->warning('تم حذف الصفوف بنجاح');
+    //     return redirect()->route('Classrooms.index');
+    // }
 
-    public function Filter_Classes(Request $request)
-    {
-        $Grades = Grade::all();
-        $Search = Classroom::select('*')->where('grade_id','=',strip_tags($request->Grade_id))->get();
-        return view('pages.Classrooms.index',compact('Grades'))->withDetails($Search);
-    }
+    // public function Filter_Classes(Request $request)
+    // {
+    //     $Grades = Grade::all();
+    //     $Search = Classroom::select('*')->where('grade_id','=',strip_tags($request->Grade_id))->get();
+    //     return view('pages.Classrooms.index',compact('Grades'))->withDetails($Search);
+    // }
 }

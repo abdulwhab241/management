@@ -45,7 +45,7 @@
         <div class="col-md-3"> 
             <div class="form-group">
             <label>أسم الطـالـب</label>
-            <select class="form-control select2" name="Student_id">
+            <select class="form-control select2"  name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Students as $Student)
                     <option  value="{{ $Student->id }}" required>{{ $Student->name }}</option>
@@ -61,7 +61,7 @@
         <div class="col-md-3"> 
             <div class="form-group">
             <label>المرحلة الدراسية</label>
-            <select class="form-control select2" name="Grade_id">
+            <select class="form-control select2"  name="Grade_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Grades as $Grade)
                     <option  value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
@@ -78,10 +78,10 @@
             <div class="form-group">
             <label>الصـف الدراسي</label>
             <select class="form-control select2" name="Classroom_id">
-                <option  selected disabled>أختـر من القائمة...</option>
+                {{-- <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Classrooms as $Classroom)
                     <option  value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             </div>
             @error('Classroom_id')
@@ -94,10 +94,10 @@
             <div class="form-group">
             <label>نـوع الرسـوم </label>
             <select class="form-control select2" name="Fee_id">
-                <option  selected disabled>أختـر من القائمة...</option>
+                {{-- <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Fees as $Fee)
                     <option  value="{{ $Fee->id }}" required>{{ $Fee->title }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             </div>
             @error('Fee_id')
@@ -112,10 +112,10 @@
             <div class="form-group">
             <label> المبلغ</label>
             <select class="form-control select2" name="amount">
-                <option  selected disabled>أختـر من القائمة...</option>
+                {{-- <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Fees as $Fee)
                     <option  value="{{ $Fee->amount }}" required>{{ number_format($Fee->amount) }}</option>
-                @endforeach
+                @endforeach --}}
             </select>
             </div>
             @error('amount')
@@ -152,5 +152,8 @@
 @section('js')
 @toastr_js
 @toastr_render
+
+
+
 
 @endsection

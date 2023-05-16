@@ -20,7 +20,7 @@
 </ol>
 </section>
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 
 <div class="row">
 <div class="col-xs-12">
@@ -40,8 +40,9 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-2"> 
+            <div class="form-group">
             <label >الـيوم</label>
-            <select class="form-control select2" name="Day_id">
+            <select class="form-control select2" style="width: 100%;" name="Day_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="السبت">السبت</option>
                 <option value="الاحد">الاحد</option>
@@ -55,9 +56,11 @@
             </div>
             @enderror
         </div>
+        </div>
         <div class="col-md-2">
+            <div class="form-group">
             <label >المرحلـة الدراسيـة</label>
-            <select class="form-control select2" name="Grade_id">
+            <select class="form-control select2" style="width: 100%;" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach ($Grades as $Grade)
                     <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
@@ -69,13 +72,12 @@
             </div>
             @enderror
         </div>
+        </div>
         <div class="col-md-2">
+            <div class="form-group">
             <label >الصـف الدراسـي</label>
-            <select class="form-control select2" name="Classroom_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach ($Classrooms as $Classroom)
-                    <option value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
-                @endforeach
+            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+
             </select>                        
             @error('Classroom_id')
             <div class=" alert-danger">
@@ -83,13 +85,12 @@
             </div>
             @enderror
         </div>
+        </div>
         <div class="col-md-2">
+            <div class="form-group">
             <label >الشعبـة</label>
-            <select class="form-control select2" name="Section_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach ($Sections as $Section)
-                    <option value="{{ $Section->id }}" required>{{ $Section->name_section }}</option>
-                @endforeach
+            <select class="form-control select2" style="width: 100%;" name="Section_id">
+            
             </select>
             @error('Section_id')
             <div class=" alert-danger">
@@ -97,9 +98,11 @@
             </div>
             @enderror
         </div>
+        </div>
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة الاولى</label>
-            <select class="form-control select2" name="First">
+            <select class="form-control select2" style="width: 100%;" name="First">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -124,10 +127,12 @@
             </div>
             @enderror
         </div>
+        </div>
 
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة الـثانيـة</label>
-            <select class="form-control select2" name="Second">
+            <select class="form-control select2" style="width: 100%;" name="Second">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -152,14 +157,15 @@
             </div>
             @enderror
         </div>
+        </div>
     </div><br>
 
     <div class="row">
- 
 
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة الثـالثـة</label>
-            <select class="form-control select2" name="Third">
+            <select class="form-control select2" style="width: 100%;" name="Third">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -184,10 +190,12 @@
             </div>
             @enderror
         </div>
+        </div>
 
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة الرابعـة</label>
-            <select class="form-control select2" name="Fourth">
+            <select class="form-control select2" style="width: 100%;" name="Fourth">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -212,10 +220,12 @@
             </div>
             @enderror
         </div>
+        </div>
 
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة الخـامسـة</label>
-            <select class="form-control select2" name="Fifth">
+            <select class="form-control select2" style="width: 100%;" name="Fifth">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -240,10 +250,12 @@
             </div>
             @enderror
         </div>
+        </div>
 
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة السـادسـة</label>
-            <select class="form-control select2" name="Sixth">
+            <select class="form-control select2" style="width: 100%;" name="Sixth">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -268,10 +280,12 @@
             </div>
             @enderror
         </div>
+        </div>
 
         <div class="col-md-2">
+            <div class="form-group">
             <label >الحصـة السـابعـة</label>
-            <select class="form-control select2" name="Seventh">
+            <select class="form-control select2" style="width: 100%;" name="Seventh">
                 <option selected disabled>أختـر من القائمة...</option>
                 <option value="القرأن الكريم">القرأن الكريم</option>
                 <option value="التربيــة الإسلاميــة">التربيــة الإسلاميــة</option>
@@ -296,35 +310,7 @@
             </div>
             @enderror
         </div>
-
-        {{-- <div class="col-md-4">
-            <label >المـادة</label>
-            <select class="form-control select2" name="Subject_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach ($Subjects as $Subject)
-                    <option value="{{ $Subject->id }}">{{ $Subject->name }}</option>
-                @endforeach
-            </select>
-            @error('Subject_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
         </div>
-        <div class="col-md-4">
-            <label >الأسـتاذ</label>
-            <select class="form-control select2" name="Teacher_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach ($Teachers as $Teacher)
-                    <option value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
-                @endforeach
-            </select>
-            @error('Teacher_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div> --}}
     </div>
         <br>
 

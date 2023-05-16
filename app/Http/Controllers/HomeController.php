@@ -25,12 +25,4 @@ class HomeController extends Controller
         return view('pages.Boxes.index',compact('Boxes'));
     }
 
-    public function Filter_Boxes(Request $request)
-    {
-        
-        $Boxes = FundAccount::all();
-        $Search = Student::where('name', 'LIKE', '%'. strip_tags($request->Search ).'%')->latest()->get();
-
-        return view('pages.Boxes.index',compact('Boxes'))->withDetails($Search);
-    }
 }
