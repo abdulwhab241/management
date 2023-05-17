@@ -19,16 +19,13 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function index()
     {
         $Fee_invoices = FeeInvoice::all();
-        $Grades = Grade::all();
-        return view('pages.Fees_Invoices.index',compact('Fee_invoices','Grades'));
+        return view('pages.Fees_Invoices.index',compact('Fee_invoices'));
     }
     public function create()
     {
-        $Fees =Fee::all();
         $Students = Student::all();
         $Grades = Grade::all();
-        $Classrooms =Classroom::all();
-        return view('pages.Fees_Invoices.add',compact('Students','Fees','Grades','Classrooms'));
+        return view('pages.Fees_Invoices.add',compact('Students','Grades'));
     }
 
     public function show($id)
@@ -42,8 +39,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     {
         $fee_invoices = FeeInvoice::findOrFail($id);
         $fees = Fee::where('classroom_id',$fee_invoices->classroom_id)->get();
-        $student = Student::all();
-        return view('pages.Fees_Invoices.edit',compact('fee_invoices','fees','student'));
+        return view('pages.Fees_Invoices.edit',compact('fee_invoices','fees'));
     }
 
     public function store($request)
@@ -69,8 +65,6 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
                 $fund_accounts->student_id = strip_tags($request->Student_id);
                 $fund_accounts->fee_invoice = strip_tags($Fees->description);
                 $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
-                // $fund_accounts->credit_feeInvoice = 0.00; 
-                // $fund_accounts->description = strip_tags($request->description);
                 $fund_accounts->create_by = auth()->user()->name;
                 $fund_accounts->save();
                 
@@ -117,12 +111,6 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->fee_invoice = strip_tags($Fees->description);
             $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
-            // $fund_accounts->date = date('Y-m-d');
-            // $fund_accounts->student_id = strip_tags($request->Student_id);
-            // $fund_accounts->fee_invoice_id = strip_tags($Fees->id);
-            // $fund_accounts->Debit_feeInvoice = 0.00;
-            // $fund_accounts->credit_feeInvoice = strip_tags($request->amount);
-            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -136,10 +124,8 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function destroy($request)
     {
         try {
-            // dd($request);
             FeeInvoice::destroy($request->id);
             FundAccount::destroy($request->id);
-            // StudentAccount::destroy($request->id);
             toastr()->error('تـم حـذف الفـاتـورة بنجـاح');
             return redirect()->back();
         }

@@ -18,5 +18,5 @@ Route::group(['middleware' => 'auth:teacher,web'], function () {
         Route::get('/Get_Sections/{id}', [AjaxController::class,'Get_Sections']);
         Route::get('/Get_title/{id}', [AjaxController::class,'Get_Title']);
         Route::get('/Get_prices/{id}', [AjaxController::class,'Get_Prices']);
-        Route::get('/Get_studentsClass/{id}', [AjaxController::class,'Get_StudentsClass']);
+        // Route::get('/Get_studentsClass/{id}', [AjaxController::class,'Get_StudentsClass']);
 });

@@ -22,8 +22,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     {
         $grades = Grade::get();
         $teachers = Teacher::get();
-        $classrooms = Classroom::get();
-        return view('pages.Subjects.create',compact('grades','teachers','classrooms'));
+        return view('pages.Subjects.create',compact('grades','teachers'));
     }
 
 
@@ -34,7 +33,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->name = strip_tags($request->Name);
             $subjects->degree = strip_tags($request->Degree);
             $subjects->grade_id = strip_tags($request->Grade_id);
-            $subjects->classroom_id = strip_tags($request->Class_id);
+            $subjects->classroom_id = strip_tags($request->Classroom_id);
             $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
@@ -64,7 +63,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->name = strip_tags($request->Name);
             $subjects->degree = strip_tags($request->Degree);
             $subjects->grade_id = strip_tags($request->Grade_id);
-            $subjects->classroom_id = strip_tags($request->Class_id);
+            $subjects->classroom_id = strip_tags($request->Classroom_id);
             $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->create_by = auth()->user()->name;
             $subjects->save();

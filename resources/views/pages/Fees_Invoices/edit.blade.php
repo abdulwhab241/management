@@ -42,12 +42,27 @@
 @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-md-3"> 
+        {{-- <div class="col-md-3"> 
             <div class="form-group">
             <label>أسم الطـالـب</label>
             <input type="text" value="{{$fee_invoices->student->name}}" readonly name="Student_id" class="form-control">
             <input type="hidden" value="{{$fee_invoices->id}}" name="id" class="form-control">
 
+            </div>
+            @error('Student_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div> --}}
+
+        <div class="col-md-3"> 
+            <div class="form-group">
+            <label>أسم الطـالـب</label>
+            <input type="hidden" value="{{$fee_invoices->id}}" name="id" class="form-control">
+            <select class="form-control select2" style="width: 100%;" name="Student_id">
+                <option value="{{ $fee_invoices->student->id }}">{{ $fee_invoices->student->name }}</option>
+            </select>
             </div>
             @error('Student_id')
             <div class=" alert-danger">
@@ -74,7 +89,12 @@
         <div class="col-md-3"> 
             <div class="form-group">
             <label> المبلغ</label>
-            <input type="text" value="{{ $fee_invoices->amount }}" name="amount" class="form-control">
+            <select class="form-control select2" style="width: 100%;" name="amount">
+                <option value="{{ $fee_invoices->amount }}"> {{ number_format($fee_invoices->amount) }} </option>
+                @foreach($fees as $fee)
+                <option value="{{ $fee->amount }}">{{ number_format($fee->amount) }}</option>
+                @endforeach
+            </select>
             </div>
             @error('amount')
             <div class=" alert-danger">
@@ -83,9 +103,9 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">البيان</label>
-            <input type="hidden" name="Grade_id" value="{{$fee_invoices->grade->grade_id}}">
-            <input type="hidden" name="Classroom_id" value="{{$fee_invoices->classroom->classroom_id}}">
+            <label>البيان</label>
+            <input type="hidden" name="Grade_id" value="{{$fee_invoices->grade_id}}">
+            <input type="hidden" name="Classroom_id" value="{{$fee_invoices->classroom_id}}">
             <input type="text" value="{{ $fee_invoices->description }}" name="description" class="form-control">
             @error('description')
             <div class=" alert-danger">

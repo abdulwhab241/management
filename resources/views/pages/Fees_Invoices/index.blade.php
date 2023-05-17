@@ -53,6 +53,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
         <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
         <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
+        <th style="text-align: center;" class="alert-info">تاريخ الفاتورة</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
     </tr>
@@ -68,6 +69,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
     <td>{{$Fee_invoice->grade->name}}</td>
     <td>{{$Fee_invoice->classroom->name_class}}</td>
     <td>{{$Fee_invoice->description}}</td>
+    <td>{{$Fee_invoice->invoice_date}}</td>
     <td>{{ $Fee_invoice->create_by }}</td>
         <td>
             <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

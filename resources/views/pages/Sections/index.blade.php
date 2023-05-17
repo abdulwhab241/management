@@ -38,8 +38,9 @@
         <a class="btn btn-success btn-flat" style="padding:5px; margin: 5px;" href="#" data-toggle="modal" data-target="#exampleModal">
         اضافة قسـم</a>
     </div>
-    @foreach ($Grades as $Grade)
+    
 <div class="panel-group" id="accordion"  aria-multiselectable="true" >
+    @foreach ($Grades as $Grade)
     <div class="panel panel-info">
         <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title">
@@ -111,42 +112,33 @@
                     <div class="row">
                 
                         <div class="col-md-4">
+                            <div class="form-group">
                             <label >المرحـلة الدراسيـة</label>
-                            <select name="Grade_id"
-                            class="form-control select2">
-                        <option
-                        value="{{ $Grade->id }}">
-                        {{ $Grade->name }}
-                    </option>
+                            <select name="Grade_id" class="form-control select2" style="width: 100%;">
+                        <option value="{{ $Grade->id }}"> {{ $Grade->name }} </option>
                     @foreach ($list_Grades as $list_Grade)
-                        <option
-                            value="{{ $list_Grade->id }}">
-                            {{ $list_Grade->name }}
-                        </option>
+                        <option value="{{ $list_Grade->id }}">{{ $list_Grade->name }}</option>
                     @endforeach    
                     </select>
                         </div>
+                    </div>
                 
                         <div class="col-md-4">
+                            <div class="form-group">
                             <label >الصــف الدراسـي</label>
-                            <select name="Class_id"
-                            class="form-control select2">
-                            <option
-                                value="{{ $list_Sections->My_Classes->id }}">
+                            <select name="Classroom_id" class="form-control select2" style="width: 100%;">
+                            <option value="{{ $list_Sections->My_Classes->id }}">
                                 {{ $list_Sections->My_Classes->name_class }}
                             </option>
-                            @foreach ($Classrooms as $list_Classroom)
-                            <option
-                                value="{{ $list_Classroom->id }}">
-                                {{ $list_Classroom->name_class }}
-                            </option>
-                            @endforeach
+                    
                             </select>
                         </div>
+                    </div>
                 
                         <div class="col-md-4">
+                            <div class="form-group">
                             <label >القسـم</label>
-                            <select class="form-control select2" name="Name_Section">
+                            <select class="form-control select2" style="width: 100%;" name="Name_Section">
                                 <option >{{$list_Sections->name_section}}</option>
                                 <option value="أ">أ</option>
                                 <option value="ب">ب</option>
@@ -159,12 +151,13 @@
                             class="form-control"
                             value="{{ $list_Sections->id }}">
                         </div>
+                    </div>
                     </div><br>
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="form-group">
                             <label >المعلـم</label>
-                            <select multiple name="teacher_id[]" 
-                            class="form-control select2">
+                            <select name="teacher_id[]" class="form-control select2" multiple="multiple" style="width: 100%;">
                             @foreach($list_Sections->teachers as $teacher)
                             <option selected value="{{$teacher['id']}}">{{$teacher['name']}}</option>
                         @endforeach
@@ -174,6 +167,7 @@
                         @endforeach
                             </select>
                         </div>
+                    </div>
                     </div><br>
                 
                 
@@ -238,11 +232,10 @@
 
         </div>
         </div>
+        @endforeach
+    </div>
     </div>
 
-    </div>
-    @endforeach
-        </div>
         <!--اضافة قسم جديد -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel"
@@ -265,9 +258,9 @@ id="exampleModalLabel">
     <div class="row">
 
         <div class="col-md-4">
+            <div class="form-group">
             <label >المرحـلة الدراسيـة</label>
-            <select name="Grade_id" class="form-control select2">
-            <!--placeholder-->
+            <select name="Grade_id" class="form-control select2" style="width: 100%;">
             <option selected disabled>اختـر من القائمة...</option>
             @foreach ($Grades as $list_Grade)
                 <option value="{{ $list_Grade->id }}"> {{ $list_Grade->name }}
@@ -275,41 +268,41 @@ id="exampleModalLabel">
             @endforeach
         </select>
         </div>
+    </div>
 
         <div class="col-md-4">
+            <div class="form-group">
             <label >الصــف الدراسـي</label>
-            <select name="Class_id" class="form-control select2">
-            <!--placeholder-->
-            <option selected disabled>اختـر من القائمة...</option>
-            @foreach ($Classrooms as $Classroom)
-                <option value="{{ $Classroom->id }}"> {{ $Classroom->name_class }}
-                </option>
-            @endforeach
+            <select name="Classroom_id" class="form-control select2" style="width: 100%;">
+
         </select>
         </div>
+    </div>
 
         <div class="col-md-4">
+            <div class="form-group">
             <label >القسـم</label>
-
-            <select class="form-control select2" name="Name_Section">
+            <select class="form-control select2" style="width: 100%;" name="Name_Section">
                 <option selected disabled>اختـر من القائمة...</option>
                 <option value="أ">أ</option>
                 <option value="ب">ب</option>
                 <option value="ج">ج</option>
             </select>
         </div>
+    </div>
 
     </div><br>
     <div class="row">
         <div class="col-md-6">
+            <div class="form-group">
             <label >المعلـم</label>
-            <select multiple name="teacher_id[]" 
-            class="form-control select2">
+            <select name="teacher_id[]" class="form-control select2" multiple="multiple" style="width: 100%;">
             @foreach ($teachers as $teacher)
             <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
             @endforeach
             </select>
         </div>
+    </div>
     </div><br>
 
 </div>
@@ -331,6 +324,7 @@ id="exampleModalLabel">
 </div>
         </div>
     </div>
+    
 
     
 </section>

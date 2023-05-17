@@ -24,13 +24,7 @@ class StudentClassController extends Controller
     public function create()
     {
         $Grades = Grade::all();
-        // $Days = Day::all();
-        $Classrooms = Classroom::all();
-        $Sections = Section::all();
-        // $Teachers = Teacher::all();
-        // $Schools = SchoolClass::all();
-        // $Subjects = Subject::all();
-        return view('pages.Classes.add',  compact('Grades','Classrooms','Sections'));
+        return view('pages.Classes.add',  compact('Grades'));
     }
 
     public function store(ClassRequest $request)
@@ -67,13 +61,8 @@ class StudentClassController extends Controller
     {
         $StudentClasses = StudentClass::findOrFail($id);
         $Grades = Grade::all();
-        // $Days = Day::all();
         $Classrooms = Classroom::all();
-        $Sections = Section::all();
-        // $Teachers = Teacher::all();
-        // $Schools = SchoolClass::all();
-        // $Subjects = Subject::all();
-        return view('pages.Classes.edit',compact('StudentClasses','Grades','Classrooms','Sections'));
+        return view('pages.Classes.edit',compact('StudentClasses','Grades','Classrooms'));
     }
 
     public function update(ClassRequest $request)

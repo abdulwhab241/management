@@ -41,7 +41,7 @@
         <div class="col-md-3"> 
             <div class="form-group">
             <label>أسم الطـالـب</label>
-            <select class="form-control select2" name="Student_id">
+            <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($student as $Student)
                     <option  value="{{ $Student->id }}" required>{{ $Student->name }}</option>
@@ -55,22 +55,26 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">المبـلغ</label>
+            <div class="form-group">
+            <label>المبـلغ</label>
             <input type="number" value="{{ old('Debit') }}" name="Debit" class="form-control">
             @error('Debit')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
+            </div>
         </div>
         <div class="col-md-6">
-            <label for="exampleFormControlTextarea1">البيـان</label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="1">{{ old('description') }}</textarea>
+            <div class="form-group">
+            <label >البيـان</label>
+            <textarea class="form-control" name="description" rows="1">{{ old('description') }}</textarea>
             @error('description')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
+            </div>
         </div>
     </div><br>
 

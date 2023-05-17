@@ -211,6 +211,9 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 
 </div>
+</div>
+</div>
+
 </section><!-- /.content -->
 @endsection
 @section('js')

@@ -17,9 +17,7 @@ class AttendanceController extends Controller
         $Attendances = Attendance::all();
         $Classrooms = Classroom::all();
         $Students = Student::all();
-        $Teachers = Teacher::all();
-        $Sections = Section::all();
-        return view('pages.Attendance.index',compact('Classrooms','Students','Teachers','Sections','Attendances'));
+        return view('pages.Attendance.index',compact('Classrooms','Students','Attendances'));
     }
 
     public function store(AttendanceRequest $request)
@@ -46,6 +44,7 @@ class AttendanceController extends Controller
     public function update(AttendanceRequest $request)
     {
         try {
+            // dd($request);
 
             $Attendances = Attendance::findOrFail($request->id);
             $Attendances->day = strip_tags($request->Day_id);

@@ -53,6 +53,7 @@
             <th style="text-align: center;" class="alert-info">الاسم</th>
             <th style="text-align: center;" class="alert-info">المبلغ</th>
             <th style="text-align: center;" class="alert-info">البيان</th>
+            <th style="text-align: center;" class="alert-info">تاريخ الصرف</th>
             <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
             <th style="text-align: center;" class="alert-warning">العمليات</th>
         </tr>
@@ -65,6 +66,7 @@
         <td>{{$payment_student->student->name}}</td>
         <td>{{ number_format($payment_student->amount) }} ريال </td>
         <td>{{$payment_student->description}}</td>
+        <td>{{$payment_student->date}}</td>
         <td>{{$payment_student->create_by}}</td>
             <td>
                 <a href="{{route('Payments.edit',$payment_student->id)}}" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

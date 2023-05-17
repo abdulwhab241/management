@@ -46,8 +46,7 @@
         <div class="col-md-3"> 
             <div class="form-group">
             <label> المبلغ</label>
-            {{-- <input  type="hidden" name="student_id"  value="{{$Student->id}}" class="form-control"> --}}
-            <input  class="form-control" name="Debit" value="{{$ProcessingFee->amount}}" type="number" >
+            <input  class="form-control" name="Debit" value="{{ $ProcessingFee->amount}}" type="number" >
             <input  type="hidden" name="student_id" value="{{$ProcessingFee->student->id}}" class="form-control">
             <input  type="hidden" name="id"  value="{{$ProcessingFee->id}}" class="form-control">
         </div>
@@ -62,8 +61,8 @@
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($ProcessingFee->student_account->sum('Debit') - $ProcessingFee->student_account->sum('credit')) }}" type="text" readonly>
         </div>
         <div class="col-md-6">
-            <label for="inputEmail4">البيان</label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="2">{{$ProcessingFee->description}}</textarea>
+            <label>البيان</label>
+            <textarea class="form-control" name="description" rows="2">{{$ProcessingFee->description}}</textarea>
             @error('description')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -82,6 +81,7 @@
 </form>
 
 
+</div>
 </div>
 </section><!-- /.content -->
 

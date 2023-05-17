@@ -41,7 +41,7 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-3"> 
-            <label for="inputEmail4">أسم المادة</label>
+            <label>أسم المادة</label>
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
             @error('Name')
             <div class=" alert-danger">
@@ -50,7 +50,7 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">الدرجـة</label>
+            <label>الدرجـة</label>
             <input type="number" value="{{ old('Degree') }}" name="Degree" class="form-control">
             @error('Degree')
             <div class=" alert-danger">
@@ -59,7 +59,8 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">المرحلـة الدراسيـة</label>
+            <div class="form-group">
+            <label>المرحلـة الدراسيـة</label>
             <select class="form-control select2" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($grades as $grade)
@@ -72,26 +73,29 @@
             </div>
             @enderror
         </div>
+    </div>
         <div class="col-md-3">
-            <label for="inputEmail4">الصـف الدراسـي</label>
-            <select class="form-control select2" name="Class_id">
-                <option selected disabled>أختـر من القائمة...</option>
+            <div class="form-group">
+            <label>الصـف الدراسـي</label>
+            <select class="form-control select2" name="Classroom_id">
+                {{-- <option selected disabled>أختـر من القائمة...</option>
                 @foreach($classrooms as $classroom)
                 <option value="{{$classroom->id}}">{{$classroom->name_class}}</option>
-                @endforeach
+                @endforeach --}}
             </select>                       
-            @error('Class_id')
+            @error('Classroom_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
+    </div>
     </div><br>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <div class="form-group">
             <label >أسـم المعلـم</label>
-
                 <select class="form-control select2" name="teacher_id">
                     <option selected disabled>أختـر من القائمة...</option>
                     @foreach($teachers as $teacher)
@@ -105,6 +109,7 @@
             </div>
             @enderror
         </div>
+    </div>
     </div>
         <br>
 

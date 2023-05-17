@@ -109,6 +109,8 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
+                                <input type="hidden" name="Classroom_id" value="{{$Attendance->classroom_id}}">
+                                <input type="hidden" name="Section_id" value="{{$Attendance->section_id}}">
                             <label >أسـم الطـالـب</label>
                             <select class="form-control select2" style="width: 100%;" name="Student_id">
                                 <option value="{{ $Attendance->students->id }}">
@@ -120,30 +122,6 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                            <label >الصـف الـدراسـي</label>
-                            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                                <option value="{{ $Attendance->classroom->id }}">
-                                    {{ $Attendance->classroom->name_class }}
-                                </option>>
-                            </select>
-                            </div>
-                        </div>
-                        
-                    </div><br>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                            <label >الـشعبـة</label>
-                            <select class="form-control select2" style="width: 100%;" name="Section_id">
-                                <option value="{{ $Attendance->section->id }}">
-                                    {{ $Attendance->section->name_section }}
-                                </option>>
-                            </select>
-                            </div>
-                        </div>
-                
-                        <div class="col-md-6">
-                            <div class="form-group">
                             <label >الـحالـة</label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Attendance->id }}">
@@ -154,9 +132,8 @@
                             </select>
                             </div>
                         </div>
-    
                     </div><br>
-    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"
@@ -265,10 +242,10 @@ aria-hidden="true">
             <div class="form-group">
             <label >الصـف الـدراسـي</label>
             <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                {{-- <option  selected disabled>أختـر من القائمة...</option>
+                <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Classrooms as $Classroom)
                     <option value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
-                @endforeach --}}
+                @endforeach
             </select>
             </div>
         </div>

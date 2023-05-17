@@ -41,9 +41,10 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-3"> 
-            <label for="inputEmail4">أسم الطـالـب</label>
+            <div class="form-group">
+            <label>أسم الطـالـب</label>
             <input type="hidden" value="{{$receipt_student->id}}" name="id" class="form-control">
-            <select class="form-control select2" name="Student_id">
+            <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option value="{{ $receipt_student->student->id }}">
                     {{ $receipt_student->student->name }}
                 </option>
@@ -58,24 +59,29 @@
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
+            </div>
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">المبـلغ</label>
+            <div class="form-group">
+            <label>المبـلغ</label>
             <input type="number" value="{{ $receipt_student->Debit}}" name="Debit" class="form-control">
             @error('Debit')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
+            </div>
         </div>
         <div class="col-md-6">
-            <label for="exampleFormControlTextarea1">البيـان</label>
-            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="1">{{$receipt_student->description}}</textarea>
+            <div class="form-group">
+            <label>البيـان</label>
+            <textarea class="form-control" name="description" rows="1">{{$receipt_student->description}}</textarea>
             @error('description')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
+            </div>
         </div>
     </div><br>
 
@@ -89,6 +95,8 @@
 
 
 </div>
+</div>
+
 </section><!-- /.content -->
 
 @endsection

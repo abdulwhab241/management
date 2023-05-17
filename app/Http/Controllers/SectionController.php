@@ -29,7 +29,7 @@ class SectionController extends Controller
     
             $Sections->name_section = strip_tags($request->Name_Section);
             $Sections->grade_id = strip_tags($request->Grade_id);
-            $Sections->class_id = strip_tags($request->Class_id);
+            $Sections->class_id = strip_tags($request->Classroom_id);
             $Sections->create_by = auth()->user()->name;
             $Sections->save();
             $Sections->teachers()->attach(($request->teacher_id));
@@ -50,7 +50,7 @@ class SectionController extends Controller
 
         $Sections->name_section = strip_tags($request->Name_Section);
         $Sections->grade_id = strip_tags($request->Grade_id);
-        $Sections->class_id = strip_tags($request->Class_id);
+        $Sections->class_id = strip_tags($request->Classroom_id);
         $Sections->create_by = auth()->user()->name;
 
         if (isset($request->teacher_id)) {

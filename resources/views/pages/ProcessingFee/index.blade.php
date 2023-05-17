@@ -51,6 +51,7 @@
             <th style="text-align: center;" class="alert-info">الاسم</th>
             <th style="text-align: center;" class="alert-info">المبلغ</th>
             <th style="text-align: center;" class="alert-info">البيان</th>
+            <th style="text-align: center;" class="alert-info">تاريخ المعالجة</th>
             <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
             <th style="text-align: center;" class="alert-warning">العمليات</th>
         </tr>
@@ -63,6 +64,7 @@
     <td>{{$ProcessingFee->student->name}}</td>
     <td>{{ number_format($ProcessingFee->amount) }} ريال </td>
     <td>{{$ProcessingFee->description}}</td>
+    <td>{{$ProcessingFee->date}}</td>
     <td>{{$ProcessingFee->create_by}}</td>
         <td>
             <a href="{{route('ProcessingFee.edit',$ProcessingFee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

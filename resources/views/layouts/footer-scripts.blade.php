@@ -86,7 +86,7 @@ $(function () {
         }
     }
 </script>
-
+{{-- 
 <!-- Get Classrooms for Students -->
 <script>
     $(document).ready(function () {
@@ -111,7 +111,7 @@ $(function () {
             }
         });
     });
-</script>
+</script> --}}
 
 {{-- <!-- Get Classrooms for Grades -->
 <script>

@@ -43,7 +43,7 @@
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الطـالـب</h5>
         <div class="row">
             <div class="col-md-4"> 
-                <label for="inputEmail4">أسم الطـالـب</label>
+                <label>أسم الطـالـب</label>
                 <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
                 @error('Name')
                 <div class=" alert-danger">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-md-4">
-                <label for="inputEmail4">تاريخ الميلاد</label>
+                <label>تاريخ الميلاد</label>
                 <input type="date" value="{{ old('Date_Birth') }}" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
                 @error('Date_Birth')
                 <div class=" alert-danger">
@@ -63,8 +63,9 @@
             </div>
 
             <div class="col-md-4">
-                <label for="inputEmail4">النوع</label>
-                <select class="form-control select2" name="Gender_id">
+               
+                <label>النوع</label>
+                <select class="form-control select2" style="width: 100%;" name="Gender_id">
                     <option selected disabled>أختـر من القائمة...</option>
                     @foreach($Genders as $Gender)
                     <option value="{{$Gender->id}}">{{$Gender->name}}</option>
@@ -76,14 +77,16 @@
                 </div>
                 @enderror
             </div>
+        {{-- </div> --}}
     
         </div><br>
 
         <div class="row">
 
             <div class="col-md-3">
-                <label for="inputState">المرحلة الدراسية</label>
-                <select class="form-control select2" name="Grade_id">
+               
+                <label>المرحلة الدراسية</label>
+                <select class="form-control select2" style="width: 100%;" name="Grade_id">
                     <option selected>أختـر من القائمة...</option>
                     @foreach($Grades as $Grade)
                         <option value="{{$Grade->id}}">{{$Grade->name}}</option>
@@ -95,14 +98,16 @@
                 </div>
                 @enderror
             </div>
+        {{-- </div> --}}
 
             <div class="col-md-3">
-                <label for="inputZip">الصـف الدراسي</label>
-                <select class="form-control select2" name="Classroom_id">
-                    <option selected>أختـر من القائمة...</option>
+               
+                <label>الصـف الدراسي</label>
+                <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+                    {{-- <option selected>أختـر من القائمة...</option>
                     @foreach($Classrooms as $Classroom)
                         <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
                 @error('Classroom_id')
                 <div class=" alert-danger">
@@ -110,14 +115,16 @@
                 </div>
                 @enderror
             </div>
+        {{-- </div> --}}
 
             <div class="col-md-3">
-                <label for="inputZip">الشـعبة</label>
-                <select class="form-control select2" name="Section_id">
-                    <option selected>أختـر من القائمة...</option>
+               
+                <label>الشـعبة</label>
+                <select class="form-control select2" style="width: 100%;" name="Section_id">
+                    {{-- <option selected>أختـر من القائمة...</option>
                     @foreach($Sections as $Section)
                         <option value="{{$Section->id}}">{{$Section->name_section}}</option>
-                    @endforeach
+                    @endforeach --}}
                 </select>
                 @error('Section_id')
                 <div class=" alert-danger">
@@ -125,10 +132,12 @@
                 </div>
                 @enderror
             </div>
+        {{-- </div> --}}
 
         <div class="col-md-3">
-            <label for="title">السنة الدراسية</label>
-            <select class="form-control select2" name="academic_year">
+           
+            <label>السنة الدراسية</label>
+            <select class="form-control select2" style="width: 100%;" name="academic_year">
                 <option selected>أختـر من القائمة...</option>
             @php
             $current_year = date("Y");
@@ -142,7 +151,8 @@
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
-        </div>
+        {{-- </div> --}}
+    </div>
 
     </div><br>
 
@@ -151,7 +161,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <label for="Father_Name">أسم الاب</label>
+            <label>أسم الاب</label>
             <input type="text" value="{{ old('Father_Name') }}" name="Father_Name"  class="form-control">
             @error('Father_Name')
             <div class=" alert-danger">
@@ -161,7 +171,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="title">جهة العمل</label>
+            <label>جهة العمل</label>
             <input type="text" value="{{ old('Employer') }}" name="Employer" class="form-control" >
             @error('Employer')
             <div class=" alert-danger">
@@ -171,7 +181,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="title">الوظيفة</label>
+            <label>الوظيفة</label>
             <input type="text" value="{{ old('Father_Job') }}" name="Father_Job" class="form-control" >
             @error('Father_Job')
             <div class=" alert-danger">
@@ -185,7 +195,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <label for="title">الهاتف الشخصي</label>
+            <label>الهاتف الشخصي</label>
             <input type="text" value="{{ old('Father_Phone') }}" name="Father_Phone" class="form-control" >
             @error('Father_Phone')
             <div class=" alert-danger">
@@ -194,7 +204,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">هاتف العمل</label>
+            <label>هاتف العمل</label>
             <input type="text" value="{{ old('Job_Phone') }}" name="Job_Phone" class="form-control">
             @error('Job_Phone')
             <div class=" alert-danger">
@@ -203,7 +213,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">هاتف المنزل</label>
+            <label>هاتف المنزل</label>
             <input type="text" value="{{ old('Home_Phone') }}" name="Home_Phone" class="form-control">
             @error('Home_Phone')
             <div class=" alert-danger">
@@ -213,9 +223,9 @@
         </div>
 
     </div><br>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">العنوان</label>
-        <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4"></textarea>
+   
+        <label >العنوان</label>
+        <textarea class="form-control" name="Address" rows="4">{{ old('Address') }}</textarea>
         @error('Address')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -227,7 +237,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <label for="title">أسم الام</label>
+            <label>أسم الام</label>
             <input type="text" value="{{ old('Mother_Name') }}" name="Mother_Name" class="form-control">
             @error('Mother_Name')
             <div class=" alert-danger">
@@ -236,7 +246,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">الوظيفة</label>
+            <label>الوظيفة</label>
             <input type="text" value="{{ old('Mother_Job') }}" name="Mother_Job" class="form-control">
             @error('Mother_Job')
             <div class=" alert-danger">
@@ -245,7 +255,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">الهاتف</label>
+            <label>الهاتف</label>
             <input type="text" value="{{ old('Mother_Phone') }}" name="Mother_Phone" class="form-control">
             @error('Mother_Phone')
             <div class=" alert-danger">

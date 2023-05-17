@@ -60,8 +60,8 @@
             </div>
 
             <div class="col-md-6">
-                <label for="inputEmail4">البيان</label>
-                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="2">{{$payment_student->description}}</textarea>
+                <label >البيان</label>
+                <textarea class="form-control" name="description" rows="2">{{$payment_student->description}}</textarea>
                 @error('description')
                 <div class=" alert-danger">
                 <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>

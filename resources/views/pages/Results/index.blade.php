@@ -103,24 +103,28 @@
                     <div class="row">
 
                         <div class="col-md-4"> 
+                            <div class="form-group">
                             <label>أسـم الطـالـب </label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Result->id }}">
-                            <select class="form-control select2" name="Student_id">
+                            <select class="form-control select2" style="width: 100%;" name="Student_id">
                                 <option value="{{ $Result->student->id }}">
                                     {{ $Result->student->name }}
                                 </option>
             
                             </select>
                         </div>
+                        </div>
                 
                         <div class="col-md-4"> 
+                            <div class="form-group">
                             <label>المـادة</label>
-                            <select class="form-control select2" name="Exam_id">
+                            <select class="form-control select2" style="width: 100%;" name="Exam_id">
                                 <option value="{{ $Result->exam->subject->id }}">
                                     {{ $Result->exam->subject->name }}
                                 </option>
                             </select>
+                        </div>
                         </div>
                         <div class="col-md-4">
                             <label >إختبـار شهـر</label>
@@ -136,15 +140,17 @@
                     </div>
                     
                     <div class="col-md-6">
+                        <div class="form-group">
                         <label >التقـديـر</label>
-                        <select class="form-control select2" name="Appreciation">
+                        <select class="form-control select2" style="width: 100%;" name="Appreciation">
                             <option >{{$Result->appreciation }}</option>
                             <option value="ممـتـاز">ممـتـاز</option>
                             <option value="جيـد جـداً">جيـد جـداً</option>
                             <option value="جيـد">جيـد</option>
                             <option value="مقبـول">مقبـول</option>
                             <option value="ضعيـف">ضعيـف</option>
-                        </select>  
+                        </select> 
+                    </div> 
                     </div>
                 
                 </div>
@@ -223,8 +229,9 @@ aria-hidden="true">
     <div class="row">
 
         <div class="col-md-4"> 
+            <div class="form-group">
             <label>أسـم الطـالـب</label>
-            <select class="form-control select2" name="Student_id">
+            <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Students as $Student)
                     <option value="{{ $Student->id }}">
@@ -233,10 +240,12 @@ aria-hidden="true">
                 @endforeach
             </select>
         </div>
+        </div>
 
         <div class="col-md-4"> 
+            <div class="form-group">
             <label>المـادة</label>
-            <select class="form-control select2" name="Exam_id">
+            <select class="form-control select2" style="width: 100%;" name="Exam_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Exams as $Exam)
                     <option value="{{ $Exam->id }}">
@@ -245,22 +254,28 @@ aria-hidden="true">
                 @endforeach
             </select>
         </div>
+        </div>
         <div class="col-md-4">
+            
             <label >إختبـار شهـر</label>
             <input type="text" value="{{ old('Result_name') }}" name="Result_name" class="form-control">
+        
         </div>
 </div><br>
 
 <div class="row">
 
     <div class="col-md-6"> 
+        
         <label>الدرجـة التي حصـل عليـها</label>
         <input type="number" value="{{ old('Marks') }}" name="Marks" class="form-control">
+    
     </div>
 
     <div class="col-md-6">
+        <div class="form-group">
         <label >التقـديـر</label>
-        <select class="form-control select2" name="Appreciation">
+        <select class="form-control select2" style="width: 100%;" name="Appreciation">
             <option  selected disabled>أختـر من القائمة...</option>
             <option value="ممـتـاز">ممـتـاز</option>
             <option value="جيـد جـداً">جيـد جـداً</option>
@@ -268,6 +283,7 @@ aria-hidden="true">
             <option value="مقبـول">مقبـول</option>
             <option value="ضعيـف">ضعيـف</option>
         </select>  
+    </div>
     </div>
 
 </div>

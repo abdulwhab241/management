@@ -34,10 +34,10 @@ class AjaxController extends Controller
         return $list_price;
     }
 
-    public function Get_StudentsClass($id){
+    // public function Get_StudentsClass($id){
 
-        $list_student = Student::where("id", $id)->pluck("name_class", "classroom_id");
-        return $list_student;
-    }
+    //     $list_student = Student::where("classroom_id", $id)->pluck("name_class", "id");
+    //     return $list_student;
+    // }
 
 }

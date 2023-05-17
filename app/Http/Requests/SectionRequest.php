@@ -24,7 +24,7 @@ class SectionRequest extends FormRequest
         return [
             'Name_Section' => 'required',
             'Grade_id' => 'required|integer',
-            'Class_id' => 'required|integer',
+            'Classroom_id' => 'required|integer',
         ];
     }
 }
