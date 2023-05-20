@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api;
 
 trait ApiResponseTrait
 {
-public function apiResponse($data= null,$message = null,$status = null){
+public function apiResponse($data= null,$message = null,$status = null)
+{
 
     $array = [
         'data'=>$data,
@@ -13,6 +14,6 @@ public function apiResponse($data= null,$message = null,$status = null){
     ];
 
     return response($array,$status);
-
 }
+
 }

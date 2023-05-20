@@ -98,6 +98,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 
         <div class="col-md-6">
             <label >أسـم المرحلـة</label>
+            <input  type="hidden" name="id"  value="{{$grade->id }}" class="form-control">
             <input  type="text" name="Name"  value="{{$grade->name }}" required class="form-control">
         </div>
 
@@ -141,8 +142,9 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
                 {{method_field('Delete')}}
                 @csrf
                 هل انت متأكد من عملية الحذف ؟
-                <input id="id" type="test" name="Name" class="form-control"
+                <input  type="text" class="form-control"
                         value="{{ $grade->name }}" disabled>
+                        <input  type="hidden" name="name"  value="{{$grade->name }}" class="form-control">
                 <input id="id" type="hidden" name="id" class="form-control"
                         value="{{ $grade->id }}">
                 <div class="modal-footer">

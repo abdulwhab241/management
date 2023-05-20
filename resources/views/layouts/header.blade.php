@@ -17,84 +17,73 @@
         <!-- Messages: style can be found in dropdown.less-->
         <li class="dropdown messages-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-envelope-o"></i>
-            <span class="label label-success">4</span>
+            <i class="fa fa-bell-o"></i>
+            <span class="label label-info">{{ Auth::User()->unreadNotifications->count() }}</span>
         </a>
         <ul class="dropdown-menu">
-            <li class="header">You have 4 messages</li>
+            <li class="header">لـديـك {{ Auth::User()->unreadNotifications->count() }} إشـعـارات</li>
             <li>
             <!-- inner menu: contains the actual data -->
+
             <ul class="menu">
+                @foreach (Auth::User()->unreadNotifications as $Notification)
                 <li><!-- start message -->
+                    @isset($Notification->data['title'])
                 <a href="#">
-                    <div class="pull-right">
-                    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                    </div>
+                    {{-- <div class="pull-right">
+                    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
+                    </div> --}}
                     <h4>
-                    Support Team
-                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                    {{$Notification->data['create_by']}}
+
                     </h4>
-                    <p>Why not buy a new awesome theme?</p>
+                    <h5 style="font-weight: bolder;"> تـم إضـافـة {{ $Notification->data['title'] }} </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
+                @endisset
+
+                    @isset($Notification->data['update'])
+                    <a href="#">
+                        {{-- <div class="pull-right">
+                            <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
+                            </div> --}}
+                            <h4>
+                            {{$Notification->data['create_by']}}
+        
+                            </h4>
+                            <h5 style="font-weight: bolder;"> تـم تعـديـل {{ $Notification->data['update'] }} </h5>
+                            <small><i class="fa fa-clock-o"></i>{{$Notification->updated_at->diffForHumans()}}</small>
+                    </a>
+                    @endisset
+
+                    @isset($Notification->data['delete'])
+                    <a href="#">
+                        {{-- <div class="pull-right">
+                            <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
+                            </div> --}}
+                            <h4>
+                            {{$Notification->data['create_by']}}
+        
+                            </h4>
+                            <h5 style="font-weight: bolder;"> تـم حـذف {{ $Notification->data['delete'] }} </h5>
+                            <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                    </a>
+                    @endisset
+
+
                 </li><!-- end message -->
-                <li>
-                <a href="#">
-                    <div class="pull-right">
-                    <img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <h4>
-                    AdminLTE Design Team
-                    <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                    </h4>
-                    <p>Why not buy a new awesome theme?</p>
-                </a>
-                </li>
-                <li>
-                <a href="#">
-                    <div class="pull-right">
-                    <img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <h4>
-                    Developers
-                    <small><i class="fa fa-clock-o"></i> Today</small>
-                    </h4>
-                    <p>Why not buy a new awesome theme?</p>
-                </a>
-                </li>
-                <li>
-                <a href="#">
-                    <div class="pull-right">
-                    <img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <h4>
-                    Sales Department
-                    <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                    </h4>
-                    <p>Why not buy a new awesome theme?</p>
-                </a>
-                </li>
-                <li>
-                <a href="#">
-                    <div class="pull-right">
-                    <img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                    </div>
-                    <h4>
-                    Reviewers
-                    <small><i class="fa fa-clock-o"></i> 2 days</small>
-                    </h4>
-                    <p>Why not buy a new awesome theme?</p>
-                </a>
-                </li>
+                @endforeach
+
             </ul>
             </li>
             <li class="footer"><a href="#">See All Messages</a></li>
         </ul>
         </li>
         <!-- Notifications: style can be found in dropdown.less -->
-        <li class="dropdown notifications-menu">
+        {{-- <li class="dropdown notifications-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">۱۰</span>
+            <span class="label label-warning">{{ Auth::user()->unreadNotifications->count() }}</span>
         </a>
         <ul class="dropdown-menu">
             <li class="header">You have 10 notifications</li>
@@ -130,9 +119,9 @@
             </li>
             <li class="footer"><a href="#">View all</a></li>
         </ul>
-        </li>
+        </li> --}}
         <!-- Tasks: style can be found in dropdown.less -->
-        <li class="dropdown tasks-menu">
+        {{-- <li class="dropdown tasks-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-flag-o"></i>
             <span class="label label-danger">۹</span>
@@ -200,7 +189,7 @@
             <a href="#">View all tasks</a>
             </li>
         </ul>
-        </li>
+        </li> --}}
         @if (isset(Auth::user()->name))
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
