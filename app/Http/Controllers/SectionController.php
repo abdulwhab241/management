@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Grade;
 use App\Models\Section;
 use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SectionRequest;
+use App\Notifications\SectionNotification;
+use Illuminate\Support\Facades\Notification;
 
 class SectionController extends Controller
 {
@@ -19,6 +23,14 @@ class SectionController extends Controller
         $teachers = Teacher::all();
     
         return view('pages.Sections.index',compact('Grades','list_Grades','Classrooms','teachers'));
+    }
+
+    public function show($id)
+    {
+        $Sections = Section::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->section_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Sections.notification', compact('Sections'));
     }
 
     public function store(SectionRequest $request)
@@ -33,6 +45,13 @@ class SectionController extends Controller
             $Sections->create_by = auth()->user()->name;
             $Sections->save();
             $Sections->teachers()->attach(($request->teacher_id));
+
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new SectionNotification($Sections->id,$create_by,$Sections->name_section));
+            
             toastr()->success('تم حفظ القسم بنجاح');
             return redirect()->route('Sections.index');
         }

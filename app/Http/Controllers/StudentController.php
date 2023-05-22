@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StudentRequest;
 use App\Repository\StudentRepositoryInterface;
 
@@ -52,6 +54,14 @@ class StudentController extends Controller
     public function Get_Sections($id)
     {
         return $this->Student->Get_Sections($id);
+    }
+
+    public function show_notification($id)
+    {
+        $Students = Student::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->student_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Students.notification', compact('Students'));
     }
 
 

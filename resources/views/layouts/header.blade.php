@@ -28,47 +28,77 @@
             <ul class="menu">
                 @foreach (Auth::User()->unreadNotifications as $Notification)
                 <li><!-- start message -->
-                    @isset($Notification->data['title'])
-                <a href="#">
-                    {{-- <div class="pull-right">
-                    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
-                    </div> --}}
+                    @isset($Notification->data['grade_name'])
+                <a href="{{ route('Grades.show',$Notification->data['Grade_id']) }}">
                     <h4>
-                    {{$Notification->data['create_by']}}
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
 
                     </h4>
-                    <h5 style="font-weight: bolder;"> تـم إضـافـة {{ $Notification->data['title'] }} </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة  {{ $Notification->data['grade_name'] }} الى المراحل الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
 
-                    @isset($Notification->data['update'])
-                    <a href="#">
-                        {{-- <div class="pull-right">
+                @isset($Notification->data['name_class'])
+                <a href="{{ route('Classrooms.show',$Notification->data['classroom_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة  {{ $Notification->data['name_class'] }} الى الصـفـوف الدراسية </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['name_section'])
+                <a href="{{ route('Sections.show',$Notification->data['section_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة القسـم  {{ $Notification->data['name_section'] }} الى الأقسـام الدراسية </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['student_name'])
+                <a href="{{ route('Notification.show',$Notification->data['student_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة الطـالـب  {{ $Notification->data['student_name'] }}  </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                    {{-- @isset($Notification->data['update'])
+                    <a href="{{ route('Grades.show',$Notification->data['Grade_id']) }}">
+                        <div class="pull-right">
                             <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
-                            </div> --}}
+                            </div>
                             <h4>
-                            {{$Notification->data['create_by']}}
+                                تـم بـواسطـة  {{$Notification->data['create_by']}} 
         
                             </h4>
-                            <h5 style="font-weight: bolder;"> تـم تعـديـل {{ $Notification->data['update'] }} </h5>
+                            <h5 style="font-weight: bolder;">   تعـديـل  {{ $Notification->data['update'] }} من المراحل الدراسية </h5>
                             <small><i class="fa fa-clock-o"></i>{{$Notification->updated_at->diffForHumans()}}</small>
                     </a>
                     @endisset
 
                     @isset($Notification->data['delete'])
-                    <a href="#">
-                        {{-- <div class="pull-right">
+                    <a href="{{ route('Grades.show',$Notification->data['Grade_id']) }}">
+                        <div class="pull-right">
                             <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
-                            </div> --}}
+                            </div>
                             <h4>
-                            {{$Notification->data['create_by']}}
+                                تـم بـواسطـة  {{$Notification->data['create_by']}} 
         
                             </h4>
-                            <h5 style="font-weight: bolder;"> تـم حـذف {{ $Notification->data['delete'] }} </h5>
+                            <h5 style="font-weight: bolder;" class="text-danger">   حـذف  {{ $Notification->data['delete'] }} من المراحل الدراسية </h5>
                             <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                     </a>
-                    @endisset
+                    @endisset --}}
 
 
                 </li><!-- end message -->
@@ -76,7 +106,7 @@
 
             </ul>
             </li>
-            <li class="footer"><a href="#">See All Messages</a></li>
+            <li class="footer"><a href="{{ route('Notification.Read') }}">قـرائـة جميـع الإشعـارات</a></li>
         </ul>
         </li>
         <!-- Notifications: style can be found in dropdown.less -->

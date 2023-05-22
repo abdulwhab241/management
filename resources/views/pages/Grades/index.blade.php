@@ -161,6 +161,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 
 
 @endforeach
+</tbody>
 </table>
 
 

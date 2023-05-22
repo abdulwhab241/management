@@ -7,19 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class GradeNotification extends Notification
+class ClassroomNotification extends Notification
 {
     use Queueable;
 
-    private $Grade_id;
+    private $classroom_id;
     private $create_by;
-    private $grade_name;
+    private $name_class;
 
-    public function __construct($Grade_id,$create_by,$grade_name)
+    public function __construct($classroom_id,$create_by,$name_class)
     {
-        $this->Grade_id = $Grade_id;
+        $this->classroom_id = $classroom_id;
         $this->create_by = $create_by;
-        $this->grade_name = $grade_name;
+        $this->name_class = $name_class;
     }
 
 
@@ -33,9 +33,9 @@ class GradeNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'Grade_id' =>  $this->Grade_id,
+            'classroom_id' =>  $this->classroom_id,
             'create_by' =>  $this->create_by,
-            'grade_name' =>  $this->grade_name,
+            'name_class' =>  $this->name_class,
         ];
     }
 }

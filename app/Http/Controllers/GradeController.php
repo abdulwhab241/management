@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Grade;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\GradeRequest;
 use App\Notifications\GradeNotification;
 use Illuminate\Support\Facades\Notification;
@@ -29,10 +30,11 @@ class GradeController extends Controller
             $Grade->create_by = auth()->user()->name;
 
             $Grade->save();
+            // $users = User::all();
             $users = User::where('id', '!=', auth()->user()->id)->get();
             $create_by = auth()->user()->name;
 
-            Notification::send($users, new GradeNotification($Grade->id,$create_by,$Grade->name,null,null));
+            Notification::send($users, new GradeNotification($Grade->id,$create_by,$Grade->name));
 
             toastr()->success('تم حفظ المرحلة بنجاح');
             return redirect()->route('Grades.index');
@@ -54,10 +56,7 @@ class GradeController extends Controller
                 $Grade->notes = strip_tags($request->Notes),
                 $Grade->create_by = auth()->user()->name,
             ]);
-            $users = User::where('id', '!=', auth()->user()->id)->get();
-            $create_by = auth()->user()->name;
 
-            Notification::send($users, new GradeNotification($Grade->id,$create_by,null,$Grade->name,null));
             toastr()->success('تم تعديل المرحلة بنجاح');
             return redirect()->route('Grades.index');
         }
@@ -65,6 +64,23 @@ class GradeController extends Controller
         {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function show($id)
+    {
+        $Grades = Grade::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->Grade_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Grades.notification', compact('Grades'));
+    }
+
+    public function markAsRead()
+    {
+        $user = User::find(auth()->user()->id);
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
+        return redirect()->back();
     }
 
     public function destroy(Request $request)
@@ -75,11 +91,6 @@ class GradeController extends Controller
         if($MyClass_id->count() == 0){
 
             $Grades = Grade::findOrFail($request->id)->delete();
-            $users = User::where('id', '!=', auth()->user()->id)->get();
-
-            $create_by = auth()->user()->name;
-
-            Notification::send($users, new GradeNotification($request->id,$create_by,null,null,$request->name));
             toastr()->error('تم حذف المرحلة بنجاح');
             return redirect()->route('Grades.index');
         }

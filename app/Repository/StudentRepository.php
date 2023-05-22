@@ -2,21 +2,24 @@
 
 namespace App\Repository;
 use App\Models\Fee;
+use App\Models\User;
 use App\Models\Grade;
 use App\Models\Image;
 use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
-use App\Models\FeeInvoice;
 // use Illuminate\Support\Facades\DB;
 use App\Models\My_Parent;
-use App\Models\PaymentStudent;
+use App\Models\FeeInvoice;
 use App\Models\ProcessingFee;
+use App\Models\PaymentStudent;
 use App\Models\ReceiptStudent;
 use App\Models\StudentAccount;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\StudentNotification;
+use Illuminate\Support\Facades\Notification;
 
 
 class StudentRepository implements StudentRepositoryInterface{
@@ -60,18 +63,11 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Store_Student($request){
 
-            // // Save Images
-            // $file_extension = $request->Photo->getClientOriginalExtension();
-            // $file_name = $request->Name . '.' . $file_extension;
-            // $path = 'attachments/Students';
-            // $request->Photo->move($path, $file_name);
-
         try {
             $students = new Student();
 
             // insert student information
             $students->name = strip_tags($request->Name);
-            // $students->image = $file_name;
             $students->gender_id = strip_tags($request->Gender_id);
             $students->grade_id = strip_tags($request->Grade_id);
             $students->classroom_id = strip_tags($request->Classroom_id);
@@ -108,6 +104,12 @@ class StudentRepository implements StudentRepositoryInterface{
                 }
 
             $students->save();
+
+            $users = User::all();
+            // $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new StudentNotification($students->id,$create_by,$students->name));
 
     
             toastr()->success('تم إضـافـة معلومـات الطـالـب بنجاح');

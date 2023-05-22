@@ -77,7 +77,6 @@
     @include('pages.Payments.Delete')
 @endforeach
     </tbody>
-    </tbody>
 </table>
 </div>
 </div>

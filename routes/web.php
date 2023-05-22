@@ -48,6 +48,7 @@ Route::group(
 
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Grades', GradeController::class);
+            Route::get('Notification/markAsRead', [GradeController::class, 'markAsRead']) -> name('Notification.Read');
         });
 
          //==============================Classrooms============================
@@ -72,6 +73,7 @@ Route::group(
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Students', StudentController::class);
+            Route::get('/show_notification/{id}', [StudentController::class, 'show_notification']) -> name('Notification.show');
             Route::resource('Graduated', GraduatedController::class);
             Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
