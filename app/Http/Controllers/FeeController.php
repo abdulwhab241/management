@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fee;
 use Illuminate\Http\Request;
 use App\Http\Requests\FeeRequest;
+use Illuminate\Support\Facades\DB;
 use App\Repository\FeesRepositoryInterface;
 
 class FeeController extends Controller
@@ -46,5 +48,13 @@ class FeeController extends Controller
     public function destroy(Request $request)
     {
         return $this->Fees->destroy($request);
+    }
+
+    public function show($id)
+    {
+        $Fees = Fee::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->fee_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Fees.notification', compact('Fees'));
     }
 }

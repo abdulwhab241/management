@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\User;
 use App\Models\Image;
 use App\Models\Gender;
 use App\Models\Teacher;
@@ -9,6 +10,8 @@ use App\Models\Specialization;
 use App\Models\TeacherAttachment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\TeacherNotification;
+use Illuminate\Support\Facades\Notification;
 
 class TeacherRepository implements TeacherRepositoryInterFace
 {
@@ -54,6 +57,13 @@ class TeacherRepository implements TeacherRepositoryInterFace
             }
 
             $Teachers->save();
+
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new TeacherNotification($Teachers->id,$create_by,$Teachers->name));
+        
 
             toastr()->success('تم إضـافـة معلومـات المعلم بنجاح');
     

@@ -4,9 +4,11 @@
 namespace App\Repository;
 
 use App\Models\Fee;
+use App\Models\User;
 use App\Models\Grade;
-use App\Models\Classroom;
+use App\Notifications\FeeNotification;
 use App\Repository\FeesRepositoryInterface;
+use Illuminate\Support\Facades\Notification;
 
 class FeesRepository implements FeesRepositoryInterface
 {
@@ -22,16 +24,14 @@ class FeesRepository implements FeesRepositoryInterface
     public function create(){
 
         $Grades = Grade::all();
-        $Classrooms = Classroom::all();
-        return view('pages.Fees.add',compact('Grades','Classrooms'));
+        return view('pages.Fees.add',compact('Grades'));
     }
 
     public function edit($id){
 
         $fee = Fee::findOrFail($id);
-        $Classrooms = Classroom::all();
         $Grades = Grade::all();
-        return view('pages.Fees.edit',compact('fee','Grades','Classrooms'));
+        return view('pages.Fees.edit',compact('fee','Grades'));
 
     }
 
@@ -50,6 +50,13 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->fee_type  =$request->Fee_type;
             $fees->create_by = auth()->user()->name;
             $fees->save();
+
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new FeeNotification($fees->id,$create_by,$fees->title));
+        
             toastr()->success('تم حفظ الرسوم بنجاح');
             return redirect()->route('Fees.create');
 

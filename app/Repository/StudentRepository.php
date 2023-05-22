@@ -105,8 +105,7 @@ class StudentRepository implements StudentRepositoryInterface{
 
             $students->save();
 
-            $users = User::all();
-            // $users = User::where('id', '!=', auth()->user()->id)->get();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
             $create_by = auth()->user()->name;
 
             Notification::send($users, new StudentNotification($students->id,$create_by,$students->name));

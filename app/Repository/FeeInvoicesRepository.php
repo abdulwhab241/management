@@ -5,12 +5,15 @@ namespace App\Repository;
 
 
 use App\Models\Fee;
+use App\Models\User;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\FeeInvoice;
 use App\Models\FundAccount;
 use App\Models\StudentAccount;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\FeeInvoiceNotification;
 
 
 class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
@@ -47,38 +50,44 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
 
         try {
 
-                // حفظ البيانات في جدول فواتير الرسوم الدراسية
-                $Fees = new FeeInvoice();
-                $Fees->invoice_date = date('Y-m-d');
-                $Fees->student_id = strip_tags($request->Student_id);
-                $Fees->grade_id = strip_tags($request->Grade_id);
-                $Fees->classroom_id = strip_tags($request->Classroom_id);
-                $Fees->fee_id = strip_tags($request->Fee_id);
-                $Fees->amount = strip_tags($request->amount);
-                $Fees->description = strip_tags($request->description);
-                $Fees->create_by = auth()->user()->name;
-                $Fees->save();
+            // حفظ البيانات في جدول فواتير الرسوم الدراسية
+            $Fees = new FeeInvoice();
+            $Fees->invoice_date = date('Y-m-d');
+            $Fees->student_id = strip_tags($request->Student_id);
+            $Fees->grade_id = strip_tags($request->Grade_id);
+            $Fees->classroom_id = strip_tags($request->Classroom_id);
+            $Fees->fee_id = strip_tags($request->Fee_id);
+            $Fees->amount = strip_tags($request->amount);
+            $Fees->description = strip_tags($request->description);
+            $Fees->create_by = auth()->user()->name;
+            $Fees->save();
 
-                      // حفظ البيانات في جدول الصندوق
-                $fund_accounts = new FundAccount();
-                $fund_accounts->date = date('Y-m-d');
-                $fund_accounts->student_id = strip_tags($request->Student_id);
-                $fund_accounts->fee_invoice = strip_tags($Fees->description);
-                $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
-                $fund_accounts->create_by = auth()->user()->name;
-                $fund_accounts->save();
-                
-                // حفظ البيانات في جدول حسابات الطلاب
-                $StudentAccount = new StudentAccount();
-                $StudentAccount->student_id = strip_tags($request->Student_id);
-                $StudentAccount->date = date('Y-m-d');
-                $StudentAccount->type = 'فـاتـورة دراسية (مـديـن)';
-                $StudentAccount->fee_invoice_id = strip_tags($Fees->id);
-                $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
-                $StudentAccount->credit_feeInvoice = 0.00;
-                $StudentAccount->description = strip_tags($request->description);
-                $StudentAccount->create_by = auth()->user()->name;
-                $StudentAccount->save();
+                    // حفظ البيانات في جدول الصندوق
+            $fund_accounts = new FundAccount();
+            $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->student_id = strip_tags($request->Student_id);
+            $fund_accounts->fee_invoice = strip_tags($Fees->description);
+            $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
+            $fund_accounts->create_by = auth()->user()->name;
+            $fund_accounts->save();
+            
+            // حفظ البيانات في جدول حسابات الطلاب
+            $StudentAccount = new StudentAccount();
+            $StudentAccount->student_id = strip_tags($request->Student_id);
+            $StudentAccount->date = date('Y-m-d');
+            $StudentAccount->type = 'فـاتـورة دراسية (مـديـن)';
+            $StudentAccount->fee_invoice_id = strip_tags($Fees->id);
+            $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
+            $StudentAccount->credit_feeInvoice = 0.00;
+            $StudentAccount->description = strip_tags($request->description);
+            $StudentAccount->create_by = auth()->user()->name;
+            $StudentAccount->save();
+
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new FeeInvoiceNotification($Fees->id,$create_by,$Fees->amount));
 
             toastr()->success('تـم إضافـة الفـاتـورة بنجـاح');
             return redirect()->route('Fees_Invoices.index');

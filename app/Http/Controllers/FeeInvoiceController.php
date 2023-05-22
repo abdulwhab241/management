@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\FeeInvoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FeeInvoiceRequest;
 use App\Repository\FeeInvoicesRepositoryInterface;
 
@@ -35,6 +37,14 @@ class FeeInvoiceController extends Controller
     public function show($id)
     {
         return $this->Fees_Invoices->show($id);
+    }
+
+    public function show_notification($id)
+    {
+        $FeeInvoices = FeeInvoice::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->fee_invoice_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Fees_Invoices.notification', compact('FeeInvoices'));
     }
 
 

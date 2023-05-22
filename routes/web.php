@@ -77,6 +77,7 @@ Route::group(
             Route::resource('Graduated', GraduatedController::class);
             Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
+            Route::get('/show_notification/{id}', [FeeInvoiceController::class, 'show_notification']) -> name('Notification.show');
             Route::resource('Fees',  FeeController::class);
             Route::resource('Receipts', ReceiptStudentsController::class);
             Route::resource('ProcessingFee', ProcessingFeeController::class);

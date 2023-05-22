@@ -32,7 +32,6 @@
                 <a href="{{ route('Grades.show',$Notification->data['Grade_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
-
                     </h4>
                     <h5 style="font-weight: bolder;">  إضـافـة  {{ $Notification->data['grade_name'] }} الى المراحل الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
@@ -43,7 +42,6 @@
                 <a href="{{ route('Classrooms.show',$Notification->data['classroom_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
-
                     </h4>
                     <h5 style="font-weight: bolder;">  إضـافـة  {{ $Notification->data['name_class'] }} الى الصـفـوف الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
@@ -54,7 +52,6 @@
                 <a href="{{ route('Sections.show',$Notification->data['section_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
-
                     </h4>
                     <h5 style="font-weight: bolder;">  إضـافـة القسـم  {{ $Notification->data['name_section'] }} الى الأقسـام الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
@@ -65,9 +62,38 @@
                 <a href="{{ route('Notification.show',$Notification->data['student_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
-
                     </h4>
                     <h5 style="font-weight: bolder;">  إضـافـة الطـالـب  {{ $Notification->data['student_name'] }}  </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['teacher_name'])
+                <a href="{{ route('Teachers.show',$Notification->data['teacher_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة الأستـاذ  {{ $Notification->data['teacher_name'] }}  </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['fee_name'])
+                <a href="{{ route('Fees.show',$Notification->data['fee_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة   {{ $Notification->data['fee_name'] }}  </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['fee_invoice_name'])
+                <a href="{{ route('Notification.show',$Notification->data['fee_invoice_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة فـاتـورة دراسيـة بقيمـة  {{ $Notification->data['fee_invoice_name'] }}  </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
