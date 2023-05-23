@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ClassController;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResultController;
+use App\Http\Controllers\StudentResultController;
 use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\StudentInformationController;
-use App\Http\Controllers\StudentResultController;
-use App\Models\Student;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
@@ -60,11 +61,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     //==============================Student Result============================
     Route::resource('StudentResult', StudentResultController::class);
 
-        //==============================Student Profile============================
+    //==============================Student Profile============================
     Route::post('StudentImage/{id}', 'StudentProfileController@editImage')->name('StudentImage.editImage');
     Route::get('StudentProfile', 'StudentProfileController@index')->name('StudentProfile.show');
     Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.update');
     // Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.editImage');
+
+    Route::get('Notification/markAsRead', [StudentResultController::class, 'markAsRead']) -> name('Notification.Read');
+
 
 });
 

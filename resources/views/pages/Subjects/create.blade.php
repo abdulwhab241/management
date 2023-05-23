@@ -36,7 +36,7 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Subjects.store')}}"  method="POST" >
+<form  action="{{route('Subjects.store','test')}}"  method="POST" >
 @csrf
 <div class="box-body">
     <div class="row">

@@ -1,4 +1,4 @@
-{{-- <header class="main-header"  style="font-family: 'Cairo', sans-serif">
+<header class="main-header"  style="font-family: 'Cairo', sans-serif">
 <!-- Logo -->
 <a href="#" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -126,9 +126,9 @@
 
                 @isset($Notification->data['processing_name'])
                 <a href="{{ route('Notification.show',$Notification->data['processing_id']) }}">
-                    <div class="pull-right">
+                    {{-- <div class="pull-right">
                         <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
-                    </div>
+                    </div> --}}
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
@@ -147,6 +147,43 @@
                     <h5 style="font-weight: bolder;">  صـرف مبلـغ بقيمـة  
                         <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['payment_name'] }} ريال</span>
                     </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['subject_name'])
+                <a href="{{ route('Subjects.show',$Notification->data['subject_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إضـافـة مـادة  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['subject_name'] }}</span>
+                        الى المـواد الدراسية </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                
+                @isset($Notification->data['quiz_name'])
+                <a href="{{ route('Quizzes.show',$Notification->data['quiz_id']) }}">
+                    {{-- <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4> --}}
+                    <h5 style="font-weight: bolder;">     
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['quiz_name'] }}</span>
+                        اضـاف إختبـار </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['result_name'])
+                <a href="{{ route('Results.show',$Notification->data['result_id']) }}">
+                    {{-- <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4> --}}
+                    <h5 style="font-weight: bolder;">     
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['result_name'] }}</span>
+                        اضـاف نتيجـة الإختبـار </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -193,16 +230,10 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
             </div>
             <div class="pull-left">
-            @if(auth('student')->check())
-            <form method="POST" action="{{ route('logout','student') }}">
-            @elseif(auth('teacher')->check())
-            <form method="POST" action="{{ route('logout','teacher') }}">
-            @else
-            <form method="POST" action="{{ route('logout','web') }}">
-            @endif
 
+            <form method="POST" action="{{ route('logout','web') }}">
             @csrf
-            <a class="btn btn-info  btn-flat" href="#" onclick="event.preventDefault();this.closest('form').submit();">تسجيل الخروج</a>
+            <a class="btn btn-info  btn-flat" onclick="event.preventDefault();this.closest('form').submit();">تسجيل الخروج</a>
             </form>
             </div>
             </li>
@@ -213,16 +244,4 @@
     
 </nav>
 
-</header> --}}
-
-@if (auth('web')->check())
-@include('layouts.main-header.admin-header')
-@endif
-
-@if (auth('student')->check())
-@include('layouts.main-header.student-header')
-@endif
-
-@if (auth('teacher')->check())
-@include('layouts.main-header.teacher-header')
-@endif
+</header>

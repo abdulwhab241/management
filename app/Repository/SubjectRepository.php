@@ -4,10 +4,14 @@
 namespace App\Repository;
 
 
+use App\Models\User;
 use App\Models\Grade;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Classroom;
+use Illuminate\Support\Facades\DB;
+use App\Notifications\SubjectNotification;
+use Illuminate\Support\Facades\Notification;
 
 class SubjectRepository implements SubjectRepositoryInterface
 {
@@ -26,6 +30,8 @@ class SubjectRepository implements SubjectRepositoryInterface
     }
 
 
+
+
     public function store($request)
     {
         try {
@@ -37,6 +43,13 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
+
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new SubjectNotification($subjects->id,$create_by,$subjects->name));
+
             toastr()->success('تم حفظ المادة بنجاح');
             return redirect()->route('Subjects.create');
         }
