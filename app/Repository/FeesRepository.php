@@ -55,7 +55,7 @@ class FeesRepository implements FeesRepositoryInterface
             $users = User::where('id', '!=', auth()->user()->id)->get();
             $create_by = auth()->user()->name;
 
-            Notification::send($users, new FeeNotification($fees->id,$create_by,$fees->title));
+            Notification::send($users, new FeeNotification($fees->id,$create_by,$fees->amount));
         
             toastr()->success('تم حفظ الرسوم بنجاح');
             return redirect()->route('Fees.create');

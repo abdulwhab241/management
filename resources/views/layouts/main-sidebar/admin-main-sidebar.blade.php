@@ -161,7 +161,7 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    <li><a href="{{route('Results.index')}}"><i class="fa fa-check-circle-o"></i> قائمة النتـائـج</a></li>
+    <li><a href="{{route('Results.index')}}"><i class="fa fa-circle-o"></i> قائمة النتـائـج</a></li>
 
     </ul>
 </li>
@@ -176,8 +176,20 @@
     </ul>
 </li>
 <li class="treeview">
+    <a href="#">
+    <i class="fa fa-users" aria-hidden="true"></i>
+    <span>المستخدمين </span>
+    <i class="fa fa-angle-left pull-left"></i>
+    </a>
+    <ul class="treeview-menu">
+    <li><a href="#"><i class="fa fa-circle-o"></i> قائمة المستخدمين</a></li>
+
+    </ul>
+</li>
+<li class="treeview">
     <li><a href="{{route('box')}}"><i class="fa fa-university" aria-hidden="true"></i>الصنـدوق</a></li>
 </li>
+
 
 </ul>
 </section>

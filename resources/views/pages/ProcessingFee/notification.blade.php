@@ -33,27 +33,21 @@
                 <tr>
 
                     <th style="text-align: center; background-color: #D0DEF6;" >أسم الطـالـب</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" > المرحلة الدراسية</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >الصف الدراسي</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >نوع الرسوم</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >المبلغ</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >البيان</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" > تاريخ الفاتورة</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >انشـئ بواسطـة</th>
+                    <th style="text-align: center; background-color: #D0DEF6;" > تاريخ المعالجة</th>
+                    <th style="text-align: center; background-color: #D0DEF6;" >استبعد بواسطـة</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >تاريخ الإنشاء</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $FeeInvoices->student->name }}</td>
-                    <td>{{$FeeInvoices->grade->name}}</td>
-                    <td>{{$FeeInvoices->classroom->name_class}}</td>
-                    <td>{{$FeeInvoices->fees->title}}</td>
-                    <td>{{ number_format($FeeInvoices->amount) }} ريال </td>
-                    <td>{{$FeeInvoices->description}}</td>
-                    <td>{{$FeeInvoices->invoice_date}}</td>
-                    <td>{{$FeeInvoices->create_by}}</td>
-                    <td>{{$FeeInvoices->created_at->diffForHumans()}}</td>
+                    <td>{{ $ProcessingFees->student->name }}</td>
+                    <td>{{ number_format($ProcessingFees->amount) }} ريال </td>
+                    <td>{{$ProcessingFees->description}}</td>
+                    <td>{{$ProcessingFees->date}}</td>
+                    <td>{{$ProcessingFees->create_by}}</td>
+                    <td>{{$ProcessingFees->created_at->diffForHumans()}}</td>
                     
                 </tr>
             </tbody>

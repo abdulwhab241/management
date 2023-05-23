@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProcessingRequest;
 use Illuminate\Http\Request;
+use App\Models\ProcessingFee;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ProcessingRequest;
 use App\Repository\ProcessingFeeRepositoryInterface;
 
 class ProcessingFeeController extends Controller
@@ -42,6 +44,14 @@ class ProcessingFeeController extends Controller
     public function update(ProcessingRequest $request)
     {
         return $this->Processing->update($request);
+    }
+
+    public function show_notification($id)
+    {
+        $ProcessingFees = ProcessingFee::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->processing_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.ProcessingFee.notification', compact('ProcessingFees'));
     }
 
 

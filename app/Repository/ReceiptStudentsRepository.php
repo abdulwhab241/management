@@ -5,12 +5,15 @@ namespace App\Repository;
 
 
 use App\Models\Fee;
+use App\Models\User;
 use App\Models\Student;
 use App\Models\FundAccount;
 use App\Models\ReceiptStudent;
 use App\Models\StudentAccount;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\ReceiptNotification;
+use Illuminate\Support\Facades\Notification;
 
 class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 {
@@ -47,8 +50,6 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
         try {
 
-            // $Fee = Student::select('*')->where('fee_id','=',$request->Student_id)->get();
-            // $The_Rest = $request->Debit- $Fee ; 
             // حفظ البيانات في جدول سندات القبض
             $receipt_students = new ReceiptStudent();
             $receipt_students->date = date('Y-m-d');
@@ -63,9 +64,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->receipt = strip_tags($receipt_students->description);
-            // $fund_accounts->Debit_receipt = 0.00;
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
-            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -74,13 +73,18 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $student_accounts->date = date('Y-m-d');
             $student_accounts->type = 'تسديـد رسـوم  (دائن)';
             $student_accounts->receipt_id = strip_tags($receipt_students->id);
-            // $student_accounts->fee_id = strip_tags($receipt_students->fee_id);
             $student_accounts->student_id = strip_tags($request->Student_id);
             $student_accounts->Debit_receipt =  0.00;
             $student_accounts->credit_receipt = strip_tags($request->Debit);
             $student_accounts->description = strip_tags($request->description);
             $student_accounts->create_by = auth()->user()->name;
             $student_accounts->save();
+
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new ReceiptNotification($receipt_students->id,$create_by,$receipt_students->Debit));
 
             toastr()->success('تـم إضافـة سنـد القبـض بنجـاح');
             return redirect()->route('Receipts.index');

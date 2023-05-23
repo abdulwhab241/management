@@ -80,8 +80,11 @@ Route::group(
             Route::get('/show_notification/{id}', [FeeInvoiceController::class, 'show_notification']) -> name('Notification.show');
             Route::resource('Fees',  FeeController::class);
             Route::resource('Receipts', ReceiptStudentsController::class);
+            Route::get('/show_notification/{id}', [ReceiptStudentsController::class, 'show_notification']) -> name('Notification.show');
             Route::resource('ProcessingFee', ProcessingFeeController::class);
+            Route::get('/show_notification/{id}', [ProcessingFeeController::class, 'show_notification']) -> name('Notification.show');
             Route::resource('Payments', PaymentController::class);
+            Route::get('/show_notification/{id}', [PaymentController::class, 'show_notification']) -> name('Notification.show');
             Route::resource('Attendance', AttendanceController::class);
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');

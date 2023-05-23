@@ -3,12 +3,15 @@
 
 namespace App\Repository;
 
+use App\Models\User;
+use App\Models\Student;
 use App\Models\FundAccount;
 use App\Models\PaymentStudent;
-use App\Models\Student;
 use App\Models\StudentAccount;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use App\Notifications\PaymentNotification;
+use Illuminate\Support\Facades\Notification;
 
 class PaymentRepository implements PaymentRepositoryInterface
 {
@@ -51,8 +54,6 @@ class PaymentRepository implements PaymentRepositoryInterface
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
-            // $fund_accounts->credit_payment = 0.00; 
-            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -69,11 +70,16 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
 
-            // DB::commit();
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            // $student = Student::where('id', '=', $ProcessingFee->student_id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($users, new PaymentNotification($payment_students->id,$create_by,$payment_students->amount));
+
             toastr()->success('تـم إضـافـة سـند الصـرف  بنجـاح');
             return redirect()->route('Payments.index');
         } catch (\Exception $e) {
-            // DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }

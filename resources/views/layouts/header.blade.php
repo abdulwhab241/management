@@ -33,7 +33,9 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة  {{ $Notification->data['grade_name'] }} الى المراحل الدراسية </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة  
+\                        <span> {{ $Notification->data['grade_name'] }}</span>
+                        الى المراحل الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -43,7 +45,9 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة  {{ $Notification->data['name_class'] }} الى الصـفـوف الدراسية </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['name_class'] }}</span>
+                        الى الصـفـوف الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -53,7 +57,9 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة القسـم  {{ $Notification->data['name_section'] }} الى الأقسـام الدراسية </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة القسـم  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['name_section'] }}</span>
+                        الى الأقسـام الدراسية </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -63,7 +69,9 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة الطـالـب  {{ $Notification->data['student_name'] }}  </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة الطـالـب  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['student_name'] }}</span>
+                    </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -73,7 +81,9 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة الأستـاذ  {{ $Notification->data['teacher_name'] }}  </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة الأستـاذ  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['teacher_name'] }}</span>
+                    </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -83,7 +93,9 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة   {{ $Notification->data['fee_name'] }}  </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة رسـوم دراسيـة بقيمـة   
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['fee_name'] }}</span>
+                    </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset
@@ -93,7 +105,45 @@
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
-                    <h5 style="font-weight: bolder;">  إضـافـة فـاتـورة دراسيـة بقيمـة  {{ $Notification->data['fee_invoice_name'] }}  </h5>
+                    <h5 style="font-weight: bolder;">  إضـافـة فـاتـورة دراسيـة بقيمـة  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['fee_invoice_name'] }} ريال</span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['receipt_name'])
+                <a href="{{ route('Notification.show',$Notification->data['receipt_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  تسـديـد رسـوم دراسيـة بقيمـة  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['receipt_name'] }} ريال</span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['processing_name'])
+                <a href="{{ route('Notification.show',$Notification->data['processing_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  إستبـعاد رسـوم بقيمـة  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['processing_name'] }} ريال</span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['payment_name'])
+                <a href="{{ route('Notification.show',$Notification->data['payment_id']) }}">
+                    <h4>
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  صـرف مبلـغ بقيمـة  
+                        <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['payment_name'] }} ريال</span>
+                    </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
                 @endisset

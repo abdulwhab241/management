@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReceiptRequest;
 use Illuminate\Http\Request;
+use App\Models\ReceiptStudent;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ReceiptRequest;
 use App\Repository\ReceiptStudentsRepositoryInterface;
 
 class ReceiptStudentsController extends Controller
@@ -45,6 +47,14 @@ class ReceiptStudentsController extends Controller
     public function update(ReceiptRequest $request)
     {
         return $this->Receipt->update($request);
+    }
+
+    public function show_notification($id)
+    {
+        $Receipts = ReceiptStudent::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->receipt_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Receipts.notification', compact('Receipts'));
     }
 
 

@@ -4,12 +4,15 @@
 namespace App\Repository;
 
 
+use App\Models\User;
 use App\Models\Student;
 use App\Models\FundAccount;
 use App\Models\ProcessingFee;
 use App\Models\StudentAccount;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ProcessingNotification;
 
 class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
 {
@@ -29,7 +32,6 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
     public function edit($id)
     {
         $ProcessingFee = ProcessingFee::findOrFail($id);
-        // $Student = Student::findOrFail($id);
         return view('pages.ProcessingFee.edit',compact('ProcessingFee'));
     }
 
@@ -63,14 +65,17 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->student_id);
             $fund_accounts->processing = strip_tags($ProcessingFee->description);
-            // $fund_accounts->Debit_processing = 0.00;
             $fund_accounts->credit_processing = strip_tags($request->Debit);
-            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
+            // $student = Student::where('id', '=', $ProcessingFee->student_id)->get();
+            $create_by = auth()->user()->name;
 
-            // DB::commit();
+            Notification::send($users, new ProcessingNotification($ProcessingFee->id,$create_by,$ProcessingFee->amount));
+
             toastr()->success('تـم إضـافـة إستبـاعد رسـوم الطـالـب  بنجـاح');
             return redirect()->route('ProcessingFee.index');
         } catch (\Exception $e) {
@@ -80,7 +85,6 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
 
     public function update($request)
     {
-        // DB::beginTransaction();
 
         try {
             // تعديل البيانات في جدول معالجة الرسوم
