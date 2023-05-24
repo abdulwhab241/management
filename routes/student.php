@@ -52,6 +52,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     //==============================Student Accounts============================
     Route::resource('StudentAccounts', StudentInformationController::class);
 
+    //==============================Student Receipt============================
+    Route::get('/receipt/{id}', [StudentInformationController::class, 'receipt']) -> name('receipt');
+
     //==============================Student Class============================
     Route::resource('StudentTable', ClassController::class);
 
@@ -65,15 +68,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('StudentImage/{id}', 'StudentProfileController@editImage')->name('StudentImage.editImage');
     Route::get('StudentProfile', 'StudentProfileController@index')->name('StudentProfile.show');
     Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.update');
-    // Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.editImage');
 
-    Route::get('Notification/markAsRead', [StudentResultController::class, 'markAsRead']) -> name('Notification.Read');
+    //==============================Notifications Red All============================
+    Route::get('Notification/ReadAll', [StudentInformationController::class, 'ReadAll']) -> name('ReadAll');
 
-
+    //==============================Student Logout============================
+    Route::post('/destroy/{type}', [LoginController::class,'destroy'])->name('destroy');
 });
 
 
-   
 
 });
 

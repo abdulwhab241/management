@@ -11,11 +11,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-نتيجـة الأختبـار 
+نتيجـة إختبـار  <label style="color: #5686E0">{{$Results->exam->subject->name}}</label>
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li class="active">نتيجـة الأختبـار</li>
+<li class="active">نتيجـة الإختبـار</li>
 </ol>
 </section>
 
@@ -32,24 +32,20 @@
             <thead>
                 <tr>
             
-                    <th style="text-align: center; background-color: #D0DEF6;" >أسـم الطـالـب</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >المـادة</th>
+                    <th style="text-align: center; background-color: #D0DEF6;" > إختبـار شهـر</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها</th>
                     <th style="text-align: center; background-color: #D0DEF6;" > التقـديـر</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" > إختبـار شهـر</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >تم بواسطـة</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >تاريخ الإنشاء</th>
+                    <th style="text-align: center; background-color: #D0DEF6;" >الأستاذ</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $Results->student->name }}</td>
                     <td>{{ $Results->exam->subject->name }}</td>
+                    <td>{{$Results->result_name}}</td>
                     <td>{{$Results->marks_obtained}}</td>
                     <td>{{$Results->appreciation}}</td>
-                    <td>{{$Results->result_name}}</td>
                     <td>{{$Results->create_by}}</td>
-                    <td>{{$Results->created_at->diffForHumans()}}</td>
                     
                 </tr>
             </tbody>

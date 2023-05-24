@@ -46,7 +46,7 @@ class PaymentController extends Controller
         return $this->Payment->update($request);
     }
 
-    public function show_notification($id)
+    public function show_payment($id)
     {
         $Payments = PaymentStudent::findOrFail($id);
         $get_id = DB::table('notifications')->where('data->payment_id',$id)->pluck('id');

@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Notifications\Student;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class StudentResultNotification extends Notification
+class StudentReceiptNotification extends Notification
 {
     use Queueable;
 
-    private $student_result_id;
+    private $student_receipt_id;
     private $create_by;
-    private $student_result_name;
+    private $student_receipt_name;
 
-    public function __construct($student_result_id,$create_by,$student_result_name)
+    public function __construct($student_receipt_id,$create_by,$student_receipt_name)
     {
-        $this->student_result_id = $student_result_id;
+        $this->student_receipt_id = $student_receipt_id;
         $this->create_by = $create_by;
-        $this->student_result_name = $student_result_name;
+        $this->student_receipt_name = $student_receipt_name;
     }
 
 
@@ -33,9 +33,9 @@ class StudentResultNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'student_result_id' =>  $this->student_result_id,
+            'student_receipt_id' =>  $this->student_receipt_id,
             'create_by' =>  $this->create_by,
-            'student_result_name' =>  $this->student_result_name,
+            'student_receipt_name' =>  $this->student_receipt_name,
         ];
     }
 }

@@ -39,7 +39,7 @@ class FeeInvoiceController extends Controller
         return $this->Fees_Invoices->show($id);
     }
 
-    public function show_notification($id)
+    public function show_fee_invoice($id)
     {
         $FeeInvoices = FeeInvoice::findOrFail($id);
         $get_id = DB::table('notifications')->where('data->fee_invoice_id',$id)->pluck('id');

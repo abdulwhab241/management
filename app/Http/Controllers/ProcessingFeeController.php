@@ -46,7 +46,7 @@ class ProcessingFeeController extends Controller
         return $this->Processing->update($request);
     }
 
-    public function show_notification($id)
+    public function show_processing($id)
     {
         $ProcessingFees = ProcessingFee::findOrFail($id);
         $get_id = DB::table('notifications')->where('data->processing_id',$id)->pluck('id');

@@ -65,7 +65,7 @@
                 @endisset
 
                 @isset($Notification->data['student_name'])
-                <a href="{{ route('Notification.show',$Notification->data['student_id']) }}">
+                <a href="{{ route('show_student',$Notification->data['student_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
@@ -101,7 +101,7 @@
                 @endisset
 
                 @isset($Notification->data['fee_invoice_name'])
-                <a href="{{ route('Notification.show',$Notification->data['fee_invoice_id']) }}">
+                <a href="{{ route('show_fee_invoice',$Notification->data['fee_invoice_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
@@ -113,7 +113,7 @@
                 @endisset
 
                 @isset($Notification->data['receipt_name'])
-                <a href="{{ route('Notification.show',$Notification->data['receipt_id']) }}">
+                <a href="{{ route('show_receipt',$Notification->data['receipt_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
@@ -125,7 +125,7 @@
                 @endisset
 
                 @isset($Notification->data['processing_name'])
-                <a href="{{ route('Notification.show',$Notification->data['processing_id']) }}">
+                <a href="{{ route('show_processing',$Notification->data['processing_id']) }}">
                     {{-- <div class="pull-right">
                         <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
                     </div> --}}
@@ -140,7 +140,7 @@
                 @endisset
 
                 @isset($Notification->data['payment_name'])
-                <a href="{{ route('Notification.show',$Notification->data['payment_id']) }}">
+                <a href="{{ route('show_payment',$Notification->data['payment_id']) }}">
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>

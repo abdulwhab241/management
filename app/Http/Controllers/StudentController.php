@@ -56,7 +56,7 @@ class StudentController extends Controller
         return $this->Student->Get_Sections($id);
     }
 
-    public function show_notification($id)
+    public function show_student($id)
     {
         $Students = Student::findOrFail($id);
         $get_id = DB::table('notifications')->where('data->student_id',$id)->pluck('id');

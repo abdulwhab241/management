@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Traits\AuthTrait;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -31,9 +32,9 @@ class LoginController extends Controller
 
     }
 
-    public function logout(Request $request,$type)
+    public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard($type)->logout();
+        Auth::guard('student')->logout();
 
         $request->session()->invalidate();
 
@@ -41,4 +42,15 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+    // public function destroy(Request $request)
+    // {
+    //     Auth::guard('student')->logout();
+
+    //     $request->session()->invalidate();
+
+    //     $request->session()->regenerateToken();
+
+    //     return redirect('/');
+    // }
 }

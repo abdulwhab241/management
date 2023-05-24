@@ -69,8 +69,8 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
-            // $users = User::all();
-            $users = User::where('id', '!=', auth()->user()->id)->get();
+            $users = User::all();
+            // $users = User::where('id', '!=', auth()->user()->id)->get();
             // $student = Student::where('id', '=', $ProcessingFee->student_id)->get();
             $create_by = auth()->user()->name;
 

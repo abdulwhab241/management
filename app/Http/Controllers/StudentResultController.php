@@ -19,17 +19,9 @@ class StudentResultController extends Controller
     public function show($id)
     {
         $Results = Result::findOrFail($id);
-        $get_id = DB::table('notifications')->where('data->result_id',$id)->pluck('id');
+        $get_id = DB::table('notifications')->where('data->student_result_id',$id)->pluck('id');
         DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
-        return view('pages.Results.notification', compact('Results'));
+        return view('pages.Students.information.result', compact('Results'));
     }
 
-    public function markAsRead()
-    {
-        $user = Student::find(auth()->user()->id);
-        foreach ($user->unreadNotifications as $notification) {
-            $notification->markAsRead();
-        }
-        return redirect()->back();
-    }
 }

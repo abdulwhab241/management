@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ResultRequest;
 use App\Notifications\ResultNotification;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\StudentResultNotification;
+use App\Notifications\Student\StudentResultNotification;
 
 class ResultController extends Controller
 {
@@ -46,8 +46,8 @@ class ResultController extends Controller
             $Exam->create_by = auth()->user()->name;
             $Exam->save();
 
-            $users = User::all();
-            // $users = User::where('id', '!=', auth()->user()->id)->get();
+            // $users = User::all();
+            $users = User::where('id', '!=', auth()->user()->id)->get();
             $create_by = auth()->user()->name;
 
             Notification::send($users, new ResultNotification($Exam->id,$create_by,$Exam->create_by));

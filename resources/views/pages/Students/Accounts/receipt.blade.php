@@ -36,8 +36,7 @@
                     <th style="text-align: center; background-color: #D0DEF6;" >المبلغ</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >البيان</th>
                     <th style="text-align: center; background-color: #D0DEF6;" > تاريخ السداد</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >سدد بواسطـة</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >تاريخ الإنشاء</th>
+                    <th style="text-align: center; background-color: #D0DEF6;" >الرصيد المتبقي</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,8 +45,7 @@
                     <td>{{ number_format($Receipts->Debit) }} ريال </td>
                     <td>{{$Receipts->description}}</td>
                     <td>{{$Receipts->date}}</td>
-                    <td>{{$Receipts->create_by}}</td>
-                    <td>{{$Receipts->created_at->diffForHumans()}}</td>
+                    <td>{{ number_format( auth()->user()->student_account->sum('Debit_feeInvoice') - auth()->user()->student_account->sum('credit_receipt') ) }} ريال </td>
                     
                 </tr>
             </tbody>

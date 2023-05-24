@@ -73,18 +73,18 @@ Route::group(
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Students', StudentController::class);
-            Route::get('/show_notification/{id}', [StudentController::class, 'show_notification']) -> name('Notification.show');
+            Route::get('/show_student/{id}', [StudentController::class, 'show_student']) -> name('show_student');
             Route::resource('Graduated', GraduatedController::class);
             Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
-            Route::get('/show_notification/{id}', [FeeInvoiceController::class, 'show_notification']) -> name('Notification.show');
+            Route::get('/show_fee_invoice/{id}', [FeeInvoiceController::class, 'show_fee_invoice']) -> name('show_fee_invoice');
             Route::resource('Fees',  FeeController::class);
             Route::resource('Receipts', ReceiptStudentsController::class);
-            Route::get('/show_notification/{id}', [ReceiptStudentsController::class, 'show_notification']) -> name('Notification.show');
+            Route::get('/show_receipt/{id}', [ReceiptStudentsController::class, 'show_receipt']) -> name('show_receipt');
             Route::resource('ProcessingFee', ProcessingFeeController::class);
-            Route::get('/show_notification/{id}', [ProcessingFeeController::class, 'show_notification']) -> name('Notification.show');
+            Route::get('/show_processing/{id}', [ProcessingFeeController::class, 'show_processing']) -> name('show_processing');
             Route::resource('Payments', PaymentController::class);
-            Route::get('/show_notification/{id}', [PaymentController::class, 'show_notification']) -> name('Notification.show');
+            Route::get('/show_payment/{id}', [PaymentController::class, 'show_payment']) -> name('show_payment');
             Route::resource('Attendance', AttendanceController::class);
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');

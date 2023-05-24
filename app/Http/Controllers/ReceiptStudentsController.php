@@ -49,7 +49,7 @@ class ReceiptStudentsController extends Controller
         return $this->Receipt->update($request);
     }
 
-    public function show_notification($id)
+    public function show_receipt($id)
     {
         $Receipts = ReceiptStudent::findOrFail($id);
         $get_id = DB::table('notifications')->where('data->receipt_id',$id)->pluck('id');

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Notifications\ReceiptNotification;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\Student\StudentReceiptNotification;
 
 class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 {
@@ -86,6 +87,8 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
             Notification::send($users, new ReceiptNotification($receipt_students->id,$create_by,$receipt_students->Debit));
 
+            $student = Student::where('id', '=', $receipt_students->student_id)->get();
+            Notification::send($student, new StudentReceiptNotification($receipt_students->id,$create_by,$receipt_students->Debit));
             toastr()->success('تـم إضافـة سنـد القبـض بنجـاح');
             return redirect()->route('Receipts.index');
 
