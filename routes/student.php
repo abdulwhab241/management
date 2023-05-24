@@ -73,19 +73,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('Notification/ReadAll', [StudentInformationController::class, 'ReadAll']) -> name('ReadAll');
 
     //==============================Student Logout============================
-    Route::post('/destroy/{type}', [LoginController::class,'destroy'])->name('destroy');
-});
-
-
+    Route::post('/logout/{type}', [LoginController::class,'logout'])->name('logout_student');
 
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-// Route::get('/logout/{type}', [LoginController::class,'logout']);
 
-require __DIR__.'/auth.php';
+});
+

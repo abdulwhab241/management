@@ -233,7 +233,7 @@
 
             <form method="POST" action="{{ route('logout','web') }}">
             @csrf
-            <a class="btn btn-info  btn-flat" onclick="event.preventDefault();this.closest('form').submit();">تسجيل الخروج</a>
+            <button class="btn btn-info  btn-flat">تسجيل الخروج</button>
             </form>
             </div>
             </li>

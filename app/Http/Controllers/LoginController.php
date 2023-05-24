@@ -28,13 +28,13 @@ class LoginController extends Controller
         if (Auth::guard($this->checkGuard($request))->attempt(['name' => strip_tags($request->name), 'password' => strip_tags($request->password)])) {
             return $this->redirect($request);
         }
-        return redirect('/login')->with('message', 'لـيس مخـول لـك بالـدخـول');
+        return redirect()->back()->with('message', 'لـيس مخـول لـك بالـدخـول');
 
     }
 
-    public function destroy(Request $request): RedirectResponse
+    public function logout(Request $request,$type)
     {
-        Auth::guard('student')->logout();
+        Auth::guard($type)->logout();
 
         $request->session()->invalidate();
 
@@ -43,14 +43,5 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    // public function destroy(Request $request)
-    // {
-    //     Auth::guard('student')->logout();
 
-    //     $request->session()->invalidate();
-
-    //     $request->session()->regenerateToken();
-
-    //     return redirect('/');
-    // }
 }

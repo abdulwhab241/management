@@ -5,6 +5,7 @@ use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -110,6 +111,9 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Classes', StudentClassController::class);
         });
+
+        //==============================User Logout============================
+        Route::post('/logout/{type}', [LoginController::class,'logout'])->name('logout');
 
 
           //==============================Setting============================

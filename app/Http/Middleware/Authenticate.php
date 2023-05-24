@@ -19,14 +19,14 @@ class Authenticate extends Middleware
     {
         if (!$request->expectsJson()) {
             if (Request::is(app()->getLocale() . '/student/dashboard')) {
-                return route('login');
+                return route('selection');
             }
             elseif(Request::is(app()->getLocale() . '/teacher/dashboard')) {
-                return route('login');
+                return route('selection');
             }
 
             else {
-                return route('login');
+                return route('selection');
             }
         }
 
