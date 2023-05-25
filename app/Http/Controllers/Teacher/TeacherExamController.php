@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Teacher;
 
 use App\Models\Exam;
-use App\Models\Grade;
 use App\Models\Section;
 use App\Models\Subject;
-use App\Models\Question;
-use App\Models\Classroom;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\QuizRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -25,13 +22,11 @@ class TeacherExamController extends Controller
 
     public function store(QuizRequest $request)
     {
-        // dd($request);
         try {
             $exams = new Exam();
             $exams->classroom_id = strip_tags($request->Classroom_id);
             $exams->teacher_id = auth()->user()->id;
             $exams->subject_id = strip_tags($request->Subject_id);
-            // $exams->exam_name = strip_tags($request->Exam_name);
             $exams->exam_date = date('Y-m-d');
             $exams->total_marks = strip_tags($request->Total);
             $exams->create_by = auth()->user()->name;

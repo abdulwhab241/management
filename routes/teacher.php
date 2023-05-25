@@ -37,7 +37,7 @@ Route::group(
     });
 
     //==============================students============================
-    Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::group(['namespace' => 'App\Http\Controllers\Teacher'], function () {
         Route::get('TeacherStudent','TeacherStudentController@index')->name('student.index');
         Route::get('TeacherSections','TeacherStudentController@sections')->name('sections');
         Route::post('editAttendance','TeacherStudentController@editAttendance')->name('editAttendance');

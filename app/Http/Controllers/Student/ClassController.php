@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
-use App\Models\Day;
-use App\Models\SchoolClass;
+
 use App\Models\StudentClass;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class ClassController extends Controller
 {

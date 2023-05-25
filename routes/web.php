@@ -20,6 +20,7 @@ use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\ProcessingFeeController;
 use App\Http\Controllers\ReceiptStudentsController;
+use App\Http\Controllers\TeacherClassesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -65,9 +66,14 @@ Route::group(
             Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
         });
 
-           //==============================Teachers============================
+        //==============================Teachers============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Teachers', TeacherController::class);            
+        });
+
+        //==============================Teacher Classes============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Teacher_Classes', TeacherClassesController::class);            
         });
 
 

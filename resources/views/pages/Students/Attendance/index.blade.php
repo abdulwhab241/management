@@ -32,12 +32,8 @@
 
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
-<caption style="background-color: #99E2FE; font-weight: bolder; color:red; margin: 5px; padding:5px;">
-    <p>
-        الصـف الدراسـي : {{auth()->user()->classroom->name_class}}     |     <span> الشـعبـة :  {{ auth()->user()->section->name_section }}</span>
-    </p>
-</caption>
+<table class="table table-bordered table-hover" style="text-align: center">
+
 <thead>
 <tr>
 

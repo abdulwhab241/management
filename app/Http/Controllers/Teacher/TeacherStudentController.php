@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\teacher;
 
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Attendance;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\AttendanceRequest;
 
 class TeacherStudentController extends Controller
 {

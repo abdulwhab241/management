@@ -52,8 +52,8 @@ class ResultController extends Controller
 
             Notification::send($users, new ResultNotification($Exam->id,$create_by,$Exam->create_by));
 
-            $student = Student::where('id', '=', $Exam->student_id)->get();
-            Notification::send($student, new StudentResultNotification($Exam->id,$create_by,$Exam->create_by));
+            // $student = Student::where('id', '=', $Exam->student_id)->get();
+            // Notification::send($student, new StudentResultNotification($Exam->id,$create_by,$Exam->create_by));
 
             toastr()->success('تم حفظ نتيجـة الطـالـب بنجاح');
             return redirect()->route('Results.index');

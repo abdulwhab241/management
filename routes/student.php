@@ -3,13 +3,13 @@
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ResultController;
-use App\Http\Controllers\StudentResultController;
-use App\Http\Controllers\StudentAttendanceController;
-use App\Http\Controllers\StudentInformationController;
+use App\Http\Controllers\Student\ClassController;
+use App\Http\Controllers\Student\StudentResultController;
+use App\Http\Controllers\Student\StudentProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Student\StudentAttendanceController;
+use App\Http\Controllers\Student\StudentInformationController;
 
 
 /*
@@ -30,10 +30,6 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:student']
     ], function () {
 
-    //==============================dashboard============================
-    // Route::get('/student/dashboard', function () {
-    //     return view('pages.Students.dashboard');
-    // });
 
      //==============================Student Dashboard============================
     Route::get('/student/dashboard', function () {
@@ -65,9 +61,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::resource('StudentResult', StudentResultController::class);
 
     //==============================Student Profile============================
-    Route::post('StudentImage/{id}', 'StudentProfileController@editImage')->name('StudentImage.editImage');
-    Route::get('StudentProfile', 'StudentProfileController@index')->name('StudentProfile.show');
-    Route::post('StudentProfile/{id}', 'StudentProfileController@update')->name('StudentProfile.update');
+    Route::post('StudentImage/{id}', [StudentProfileController::class,'editImage'])->name('StudentImage.editImage');
+    Route::get('StudentProfile', [StudentProfileController::class,'index'])->name('StudentProfile.show');
+    Route::post('StudentProfile/{id}', [StudentProfileController::class,'update'])->name('StudentProfile.update');
 
     //==============================Notifications Red All============================
     Route::get('Notification/ReadAll', [StudentInformationController::class, 'ReadAll']) -> name('ReadAll');
