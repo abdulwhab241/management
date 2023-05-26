@@ -209,7 +209,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="row">
             <div class="col-md-4"> 
                 <label for="inputEmail4">اليـوم</label>
-                <select class="form-control select2" name="Day_id">
+                <select class="form-control select2" style="width: 100%" name="Day_id">
                     <option selected disabled>أختـر من القائمة...</option>
                     <option value="السبت">السبت</option>
                     <option value="الاحد">الاحد</option>
@@ -220,7 +220,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             </div>
             <div class="col-md-4"> 
                 <label for="inputEmail4">أسـم الطـالـب</label>
-                <select class="form-control select2" name="Student_id">
+                <select class="form-control select2" style="width: 100%" name="Student_id">
                     <option  selected disabled>أختـر من القائمة...</option>
                     @foreach ($students as $Student)
                         <option value="{{ $Student->id }}" required>{{ $Student->name }}</option>
@@ -229,7 +229,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             </div>
             <div class="col-md-4">
                 <label >الـحالـة</label>
-                <select class="form-control select2" name="Attendance">
+                <select class="form-control select2" style="width: 100%" name="Attendance">
                     <option  selected disabled>أختـر من القائمة...</option>
                     <option value="حـاضـر" required>حـاضـر</option>
                     <option value="غـايـب">غـائـب</option>

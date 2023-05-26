@@ -108,7 +108,7 @@ aria-pressed="true">اضافة جدول الحصـص</a>
                 <input  type="text" style="font-weight: bolder; font-size:20px;"
                 name="Name_Section"
                 class="form-control"
-                value="{{$StudentClass->name}}"
+                value="{{$StudentClass->day}}"
                 disabled>
             </div>
             <div class="modal-footer">

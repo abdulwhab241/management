@@ -72,14 +72,14 @@
             <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="user-image" alt="{{ Auth::user()->name }}" >
-                <span class="hidden-xs">{{auth()->user()->name}}</span>
+                <span class="hidden-xs"> أ. {{auth()->user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
                     <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}">
                 <p>
-                    {{auth()->user()->name}}
+                    أ. {{auth()->user()->name}} 
                     {{-- <small>الصـف الدراسـي:  {{ auth()->user()->classroom->name_class }}</small>
                     <small>الشعبـة:  {{ auth()->user()->section->name_section }}</small> --}}
                 </p>
@@ -92,7 +92,7 @@
                 <div class="col-xs-6 text-center">
                     <small>الشعبـة:  {{ auth()->user()->section->name_section }}</small>
                 </div>
-                <div class="col-xs-4 text-center">
+                <div class="col-xs-4 text-center"> 
                     <a href="#">Friends</a>
                 </div>
                 </li> --}}

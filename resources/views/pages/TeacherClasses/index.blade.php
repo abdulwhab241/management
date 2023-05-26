@@ -37,7 +37,7 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Classes.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+<a href="{{route('Teacher_Classes.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
 aria-pressed="true">اضافة جدول حصـص المعلمين</a>
 
 <br><br>
@@ -53,13 +53,13 @@ aria-pressed="true">اضافة جدول حصـص المعلمين</a>
 <tr>
     <th style="text-align: center;" class="alert-info">اليوم</th>
     <th style="text-align: center;" class="alert-info">الأستاذ</th>
-    <th style="text-align: center;" class="alert-info"> الأولـى</th>
-    <th style="text-align: center;" class="alert-info"> الثـانيـة</th>
-    <th style="text-align: center;" class="alert-info"> الثـالثـة</th>
-    <th style="text-align: center;" class="alert-info"> الرابعـة</th>
-    <th style="text-align: center;" class="alert-info">  الخـامسـة</th>
-    <th style="text-align: center;" class="alert-info">  السـادسـة</th>
-    <th style="text-align: center;" class="alert-info">  السـابعـة</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة الأولـى</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة الثـانيـة</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة الثـالثـة</th>
+    <th style="text-align: center;" class="alert-info"> الحصـة الرابعـة</th>
+    <th style="text-align: center;" class="alert-info">  الحصـة الخـامسـة</th>
+    <th style="text-align: center;" class="alert-info">  الحصـة السـادسـة</th>
+    <th style="text-align: center;" class="alert-info">  الحصـة السـابعـة</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -69,9 +69,7 @@ aria-pressed="true">اضافة جدول حصـص المعلمين</a>
         <tr>
         
             <td>{{ $TeacherClass->day }}</td>
-            <td>{{ $TeacherClass->grade->name }}</td>
-            <td>{{ $TeacherClass->classroom->name_class }}</td>
-            <td>{{ $TeacherClass->section->name_section }}</td>
+            <td>{{ $TeacherClass->teacher->name }}</td>
             <td>{{ $TeacherClass->first }}</td>
             <td>{{ $TeacherClass->second }}</td>
             <td>{{ $TeacherClass->third }}</td>
@@ -81,31 +79,30 @@ aria-pressed="true">اضافة جدول حصـص المعلمين</a>
             <td>{{ $TeacherClass->seventh }}</td>
             <td>{{ $TeacherClass->create_by }}</td>
             <td>
-                <a href="{{route('Classes.edit',$TeacherClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                <a href="{{route('Teacher_Classes.edit',$TeacherClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $TeacherClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-
             </td>
         </tr>
 
 
 <div class="modal fade" id="delete{{$TeacherClass->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-danger" role="document">
-        <form action="{{route('Classes.destroy','test')}}" method="post">
+        <form action="{{route('Teacher_Classes.destroy','test')}}" method="post">
             {{method_field('delete')}}
             {{csrf_field()}}
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف جدول حصـص المعلـم</h5>
             
             </div>
             <div class="modal-body">
-                <p>  هل انت متاكد من عملية حذف بيانـات جدول يـوم  </p>
+                <p>  هل انت متاكد من عملية حذف بيانـات جدول حصـص الأستاذ  </p>
                 <input type="hidden" name="id"  value="{{$TeacherClass->id}}">
                 <input  type="text" style="font-weight: bolder; font-size:20px;"
                 name="Name_Section"
                 class="form-control"
-                value="{{$TeacherClass->name}}"
+                value="{{$TeacherClass->teacher->name}}"
                 disabled>
             </div>
             <div class="modal-footer">

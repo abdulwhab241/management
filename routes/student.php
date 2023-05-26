@@ -56,6 +56,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     //==============================Student Attendance============================
     Route::resource('StudentAttendance', StudentAttendanceController::class);
+    // Route::get('/attendance/{id}', [StudentAttendanceController::class, 'attendance']) -> name('attendance');
 
     //==============================Student Result============================
     Route::resource('StudentResult', StudentResultController::class);

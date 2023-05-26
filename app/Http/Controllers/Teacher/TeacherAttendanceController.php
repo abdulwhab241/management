@@ -4,26 +4,29 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Models\Student;
 use App\Models\Attendance;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AttendanceRequest;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\Student\StudentAttendanceNotification;
 
 class TeacherAttendanceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students = Student::whereIn('section_id', $ids)->get();
         $attendances = Attendance::whereIn('section_id', $ids)->get();
-        return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances'));
+    
+        return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances','find'));
     }
 
     public function store(AttendanceRequest $request)
     {
-
+dd($request);
         try {
-            Attendance::updateOrCreate(
+            $Attendances = Attendance::updateOrCreate(
                 [
                 'day' => strip_tags($request->Day_id),
                 'student_id' => strip_tags($request->Student_id),
@@ -33,6 +36,11 @@ class TeacherAttendanceController extends Controller
                 'attendance_status' => strip_tags($request->Attendance),
                 'create_by' => auth()->user()->name
             ]);
+
+            $student = Student::where('id', '=', $Attendances->student_id)->get();
+            $create_by = auth()->user()->name;
+
+            Notification::send($student, new StudentAttendanceNotification($Attendances->id,$create_by,$Attendances->day));
 
             toastr()->success('تـم إضـافـة التحضيـر بنجـاح');
             return redirect()->back();

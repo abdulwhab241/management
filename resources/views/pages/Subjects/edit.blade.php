@@ -42,7 +42,7 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-3"> 
-            <label for="inputEmail4">أسم المادة</label>
+            <label>أسم المادة</label>
             <input type="text" value="{{$subject->name}}" name="Name" class="form-control">
             <input type="hidden" name="id" value="{{$subject->id}}">
             @error('Name')
@@ -52,7 +52,7 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">الدرجـة</label>
+            <label>الدرجـة</label>
             <input type="number" value="{{ $subject->degree }}" name="Degree" class="form-control">
             @error('Degree')
             <div class=" alert-danger">
@@ -61,7 +61,7 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">المرحلـة الدراسيـة</label>
+            <label>المرحلـة الدراسيـة</label>
             <select class="form-control select2" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($grades as $grade)
@@ -76,7 +76,7 @@
             @enderror
         </div>
         <div class="col-md-3">
-            <label for="inputEmail4">الصـف الدراسـي</label>
+            <label>الصـف الدراسـي</label>
             <select class="form-control select2" name="Class_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($classrooms as $classroom)

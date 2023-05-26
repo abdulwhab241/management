@@ -53,6 +53,18 @@
                 </a>
                 @endisset
 
+                @isset($Notification->data['student_attendance_name'])
+                <a href="{{ route('StudentAttendance.show',$Notification->data['student_attendance_id']) }}">
+                    <h4>
+                        قـام الأستـاذ   {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 >     بالتحضـير ليـوم  
+                        <span style="font-weight: bolder; padding:5px;">  {{ $Notification->data['student_attendance_name'] }}  </span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
             
 
                 </li><!-- end message -->

@@ -10,7 +10,7 @@
     <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
 </div>
 <div class="pull-left info">
-    <p>{{auth()->user()->name}}</p>
+    <p> أ. {{auth()->user()->name}}</p>
 
 
 </div>
