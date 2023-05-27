@@ -10,7 +10,7 @@ class TeacherClassesController extends Controller
 {
     public function index()
     {
-        $Teacher_Classes = TeacherClass::where('id','=', auth()->user()->id);
+        $Teacher_Classes = TeacherClass::select('*')->where('teacher_id', auth()->user()->id)->get();
         return view('pages.Teachers.Classes.index', compact('Teacher_Classes'));
     }
 }

@@ -13,6 +13,13 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- DataTables -->
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
+{{-- <script src="/DataTable/dataTables.buttons.min.js"></script>
+<script src="/DataTable/jszip.min.js"></script> <!-- Excel -->
+<script src="/DataTable/buttons.html5.min.js"></script>
+<script src="/DataTable/buttons.print.min.js"></script> --}}
+
+{{-- <script src="/DataTable/pdfmake.min.js"></script> --}}
+{{-- <script src="/DataTable/vfs_fonts.js"></script> --}}
 
 <!-- Select2 -->
 <script src="/plugins/select2/select2.full.min.js"></script>
@@ -56,6 +63,16 @@ $.widget.bridge('uibutton', $.ui.button);
 
 
 <!-- page script -->
+{{-- <script>
+    $(document).ready(function() {
+    $('#example1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'print'
+        ]
+    } );
+} );
+</script> --}}
 <script>
 $(function () {
     $("#example1").DataTable();

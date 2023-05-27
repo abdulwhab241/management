@@ -26,7 +26,7 @@
 </div>
 </form>
 <!-- /.search form -->
-<!-- sidebar menu: : style can be found in sidebar.less    -->
+<!-- sidebar menu: : style can be found in sidebar.less     -->
 <ul class="sidebar-menu">
 <li class="header">برنامـج عبدالوهـاب لإدارة المدارس</li>
 <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
@@ -36,6 +36,9 @@
 </li>
 <li class="treeview">
     <li><a href="{{ route('sections') }}"><i class="fas fa-chalkboard" aria-hidden="true"></i> الأقسـام</a></li>
+</li>
+<li class="treeview">
+    <li><a href="{{ route('Teacher_Classes.index') }}"><i class="fas fa-books" aria-hidden="true"></i> الحصـص الدراسية</a></li>
 </li>
 <li class="treeview">
     <li><a href="{{ route('TeacherAttendance.index') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> الحضـور والغيـاب</a></li>

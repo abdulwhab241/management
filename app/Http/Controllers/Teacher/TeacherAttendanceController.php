@@ -19,12 +19,12 @@ class TeacherAttendanceController extends Controller
         $students = Student::whereIn('section_id', $ids)->get();
         $attendances = Attendance::whereIn('section_id', $ids)->get();
     
-        return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances','find'));
+        return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances'));
     }
 
     public function store(AttendanceRequest $request)
     {
-dd($request);
+// dd($request);
         try {
             $Attendances = Attendance::updateOrCreate(
                 [

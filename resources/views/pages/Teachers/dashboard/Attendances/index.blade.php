@@ -21,7 +21,7 @@
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 
 <div class="row">
 <div class="col-xs-12">
@@ -44,15 +44,11 @@
 </div>
 @endif
 <div class="modal-header">
-    {{-- <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5> --}}
-    <button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
-        تحضيـر   
-    </button>
     <span><h4 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h4> </span>
 </div>
 
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
+<table id="example1" class="table table-bordered table-striped" style="text-align: center">
 <thead>
 <tr>
 
@@ -188,76 +184,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 </div>
 
-
-<!-- add_modal_class -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-primary" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-        تحضـير الطـلاب 
-    </h5>
-    </div>
-    <div class="modal-body">
-    
-    <form class="form-horizontal" action="{{ route('TeacherAttendance.store') }}" method="POST">
-    @csrf
-    
-    <div class="box-body">
-        <div class="row">
-            <div class="col-md-4"> 
-                <label for="inputEmail4">اليـوم</label>
-                <select class="form-control select2" style="width: 100%" name="Day_id">
-                    <option selected disabled>أختـر من القائمة...</option>
-                    <option value="السبت">السبت</option>
-                    <option value="الاحد">الاحد</option>
-                    <option value="الاثنين">الاثنين</option>
-                    <option value="الثلاثاء">الثلاثاء</option>
-                    <option value="الاربعاء">الاربعاء</option>
-                </select>
-            </div>
-            <div class="col-md-4"> 
-                <label for="inputEmail4">أسـم الطـالـب</label>
-                <select class="form-control select2" style="width: 100%" name="Student_id">
-                    <option  selected disabled>أختـر من القائمة...</option>
-                    @foreach ($students as $Student)
-                        <option value="{{ $Student->id }}" required>{{ $Student->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label >الـحالـة</label>
-                <select class="form-control select2" style="width: 100%" name="Attendance">
-                    <option  selected disabled>أختـر من القائمة...</option>
-                    <option value="حـاضـر" required>حـاضـر</option>
-                    <option value="غـايـب">غـائـب</option>
-                </select>
-            </div>
-            <input type="hidden" name="Student_id" value="{{ $student->id }}">
-            <input type="hidden" name="Classroom_id" value="{{ $student->classroom_id }}">
-            <input type="hidden" name="Section_id" value="{{ $student->section_id }}">
-    
-        </div><br>
-        
-    </div>
-    
-    <div class="modal-footer">
-    
-        <button type="submit"
-        class="btn btn-info btn-block">تـأكيـد</button>
-        </div>
-    
-    </form>
-    </div>
-    
-    
-    </div>
-    
-    </div>
-    
-    </div>
 
 </div>
 </div>

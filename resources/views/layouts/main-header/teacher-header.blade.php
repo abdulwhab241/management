@@ -80,30 +80,17 @@
                     <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}">
                 <p>
                     أ. {{auth()->user()->name}} 
-                    {{-- <small>الصـف الدراسـي:  {{ auth()->user()->classroom->name_class }}</small>
-                    <small>الشعبـة:  {{ auth()->user()->section->name_section }}</small> --}}
+
                 </p>
                 </li>
-                <!-- Menu Body -->
-                {{-- <li class="user-body">
-                <div class="col-xs-6 text-center">
-                    <small>الصـف الدراسـي:  {{ auth()->user()->classroom->name_class }}</small>
-                </div>
-                <div class="col-xs-6 text-center">
-                    <small>الشعبـة:  {{ auth()->user()->section->name_section }}</small>
-                </div>
-                <div class="col-xs-4 text-center"> 
-                    <a href="#">Friends</a>
-                </div>
-                </li> --}}
                 <!-- Menu Footer-->
                 <li class="user-footer">
                 <div class="pull-right">
-                    <a href="{{route('StudentProfile.show')}}" class="btn btn-info btn-flat">Profile</a>
+                    <a href="{{route('TeacherProfile.show')}}" class="btn btn-info btn-flat">Profile</a>
                 </div>
                 <div class="pull-left">
     
-                <form method="POST" action="{{ route('logout_student','student') }}">
+                <form method="POST" action="{{ route('logout_teacher','teacher') }}">
                 @csrf
                 <button class="btn btn-info btn-flat" >تسجيل الخروج</button>
                 </form>

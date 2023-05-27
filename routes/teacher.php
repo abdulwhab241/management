@@ -5,6 +5,8 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Teacher\TeacherClassesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -50,19 +52,16 @@ Route::group(
         
         Route::resource('TeacherAttendance', 'TeacherAttendanceController');
 
+        Route::resource('Teacher_Classes', TeacherClassesController::class);
+
         Route::post('TeacherImage/{id}', 'TeacherProfileController@editImage')->name('TeacherImage.editImage');
         Route::get('TeacherProfile', 'TeacherProfileController@index')->name('TeacherProfile.show');
         Route::post('TeacherProfile/{id}', 'TeacherProfileController@update')->name('TeacherProfile.update');
+
+        //==============================Teacher Logout============================
+        Route::post('/logout/{type}', [LoginController::class,'logout'])->name('logout_teacher');
     });
 
 
 
 });
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Student;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\FeeInvoice;
 use App\Models\ProcessingFee;
 use App\Models\PaymentStudent;
 use App\Models\ReceiptStudent;
+use App\Models\Student;
 use App\Models\StudentAccount;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +33,7 @@ class StudentInformationController extends Controller
 
     public function ReadAll()
     {
-        $user = User::find(auth()->user()->id);
+        $user = Student::find(auth()->user()->id);
         foreach ($user->unreadNotifications as $notification) {
             $notification->markAsRead();
         }

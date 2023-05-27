@@ -44,7 +44,7 @@
                     <div class="col-md-4"> 
                         <div class="form-group">
                         <label>أسم الطـالـب</label>
-                        <select class="form-control select2" name="student_id">
+                        <select class="form-control select2" style="width: 100%;" name="student_id">
                             <option selected disabled>أختـر من القائمة...</option>
                             @foreach($students as $student)
                                 <option value="{{ $student->id }}">{{ $student->name }}</option>
