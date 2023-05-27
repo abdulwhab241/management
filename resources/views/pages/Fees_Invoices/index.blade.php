@@ -41,7 +41,8 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
         <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
     </div>
 </div>
-</div><!-- /.box-header -->
+</div>
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
@@ -79,16 +80,14 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
 
 @endforeach
 </tbody>
-
 </table>
-
-</div><!-- /.box-body -->
-
-</div><!-- /.box -->
+</div>
 </div>
 
 </div>
-</section><!-- /.content -->
+</div>
+</div>
+</section>
 
 
 @endsection

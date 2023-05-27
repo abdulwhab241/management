@@ -46,7 +46,8 @@ aria-pressed="true">اضافة جدول الحصـص</a>
     <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 </div>
 </div>
-</div><!-- /.box-header -->
+</div>
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
@@ -126,10 +127,11 @@ aria-pressed="true">اضافة جدول الحصـص</a>
 </table>
 </div>
 </div>
-</div>
-</div>
 
-<!-- row closed -->
+
+</div>
+</div>
+</div>
 </section>
 
 @endsection

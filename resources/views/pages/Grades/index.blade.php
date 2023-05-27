@@ -42,6 +42,7 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <br><br>
 
 </div><!-- /.box-header -->
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
@@ -119,8 +120,8 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 </div>
 </form>
 
-        </div>
-    </div>
+</div>
+</div>
 </div>
 </div>
 
@@ -163,12 +164,9 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 @endforeach
 </tbody>
 </table>
-
-
-</div><!-- /.box-body -->
-
-</div><!-- /.box -->
 </div>
+</div>
+
 
 <!-- add_modal_Grade -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -208,15 +206,16 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     </div>
 
 </form>
-
 </div>
 </div>
-</div>
-
 </div>
 </div>
 </div>
 
+
+</div>
+</div>
+</div>
 </section><!-- /.content -->
 @endsection
 @section('js')

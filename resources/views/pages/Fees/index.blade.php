@@ -36,7 +36,8 @@
 <a href="{{route('Fees.create')}}" class="btn btn-success btn-flat" role="button"
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جديدة</a><br><br>
 
-</div><!-- /.box-header -->
+</div>
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
@@ -74,14 +75,13 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
 @endforeach
 </tbody>
 </table>
-
-</div><!-- /.box-body -->
-
-</div><!-- /.box -->
+</div>
 </div>
 
 </div>
-</section><!-- /.content -->
+</div>
+</div>
+</section>
 
 @endsection
 @section('js')

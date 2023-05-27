@@ -115,7 +115,7 @@
             </div>
             <div class="pull-left">
 
-            <form method="POST" action="{{ route('logout_student','student') }}">
+            <form method="POST" action="{{ route('student_logout','student') }}">
             @csrf
             <button class="btn btn-info btn-flat" >تسجيل الخروج</button>
             </form>

@@ -47,6 +47,7 @@ aria-pressed="true">اضافة جدول حصـص المعلمين</a>
 </div>
 </div>
 </div><!-- /.box-header -->
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
@@ -119,6 +120,8 @@ aria-pressed="true">اضافة جدول حصـص المعلمين</a>
 </tbody>
 </table>
 </div>
+</div>
+
 </div>
 </div>
 </div>

@@ -42,6 +42,7 @@
 
 <br><br>
 
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
@@ -132,7 +133,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             </div>
 
         </form>
-
     </div>
 </div>
 </div>
@@ -173,10 +173,10 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 </div>
 </div>
+
 @endforeach
 </table>
-
-</div><!-- /.box -->
+</div>
 </div>
 
 <!-- add_modal_class -->
@@ -227,49 +227,14 @@ aria-hidden="true">
 
 </form>
 </div>
-
-
 </div>
-
+</div>
 </div>
 
 </div>
-
-
 </div>
 </div>
-
-<!-- حذف مجموعة صفوف -->
-<div class="modal fade" id="delete_all" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-    حذف صف
-</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
-</div>
-
-<form action="{{ route('delete_all') }}" method="POST">
-{{ csrf_field('Delete') }}
-<div class="modal-body">
-    هل انت متأكد من عملية الحذف ؟
-    <input class="text" type="hidden" id="delete_all_id" name="delete_all_id" value=''>
-</div>
-
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary"
-            data-dismiss="modal">إغلاق</button>
-    <button type="submit" class="btn btn-danger">حذف البيانات</button>
-</div>
-</form>
-</div>
-</div>
-</div>
-</section><!-- /.content -->
+</section>
 
 @endsection
 @section('js')

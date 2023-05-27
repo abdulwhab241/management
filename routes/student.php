@@ -43,7 +43,7 @@ Route::group(
     })->name('Students.information');
 
     //==============================Student Group============================
-Route::group(['namespace' => 'App\Http\Controllers'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Student'], function () {
 
     //==============================Student Accounts============================
     Route::resource('StudentAccounts', StudentInformationController::class);
@@ -70,7 +70,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('Notification/ReadAll', [StudentInformationController::class, 'ReadAll']) -> name('ReadAll');
 
     //==============================Student Logout============================
-    Route::post('/logout/{type}', [LoginController::class,'logout'])->name('logout_student');
+    Route::post('/logout_student/{type}', [LoginController::class,'logout'])->name('student_logout');
 
 });
 

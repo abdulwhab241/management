@@ -47,6 +47,7 @@
 </div>
 </div>
 </div><!-- /.box-header -->
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
 <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
@@ -173,11 +174,8 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <button type="submit"
                 class="btn btn-success">تـعديـل البيانات</button>
                 </div>
-
         </form>
-
     </div>
-</div>
 </div>
 </div>
 
@@ -212,10 +210,10 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     </form>
 </div>
 </div>
+
 @endforeach
 </tbody>
 </table>
-
 </div>
 </div>
 
@@ -299,22 +297,16 @@ aria-hidden="true">
     <button type="submit"
     class="btn btn-success">حفظ البيانات</button>
     </div>
-
-
 </form>
 </div>
-
-
 </div>
-
-</div>
-
-</div>
-
 </div>
 </div>
 
-<!-- row closed -->
+
+</div>
+</div>
+</div>
 </section>
 
 @endsection
