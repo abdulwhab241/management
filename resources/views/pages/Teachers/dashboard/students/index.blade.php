@@ -27,12 +27,12 @@
 <div class="col-xs-12">
 <div class="box">
 <div class="box-header">
-    
     <h4 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h4>
 </div>
 
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
-<table  id="example1" class="table table-bordered table-striped" style="text-align: center">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
 
@@ -57,7 +57,7 @@
             <td>{{$student->classroom->name_class}}</td>
             <td style="font-weight: bolder;">{{$student->section->name_section}}</td>
             <td>
-                <button type="button" class="btn btn-defualt btn-sm" data-toggle="modal"
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                 data-target="#attendance{{ $student->id }}"
                 title="تحضـير">تحضـير</button>
             </td>
@@ -122,14 +122,13 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 @endforeach
 </tbody>
 </table>
-
-</div>
-
-</div>
 </div>
 </div>
 
-<!-- row closed -->
+
+</div>
+</div>
+</div>
 </section>
 
 @endsection

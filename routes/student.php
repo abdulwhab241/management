@@ -48,6 +48,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Student'], function () {
     //==============================Student Accounts============================
     Route::resource('StudentAccounts', StudentInformationController::class);
 
+    //==============================Student Graduated============================
+    Route::get('student_graduated', [StudentInformationController::class,'StudentGraduated'])->name('student_graduated');
+
     //==============================Student Receipt============================
     Route::get('/receipt/{id}', [StudentInformationController::class, 'receipt']) -> name('receipt');
 

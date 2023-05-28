@@ -89,10 +89,10 @@
                 <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >وظيفـة الأم</th>
                 <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_job }}</td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تاريخ التسجيل</th>
                 <td style="text-align: center; width: 70%; background-color: #D0DEF6; color:black;" >{{ auth()->user()->created_at->diffForHumans() }}</td>
-            </tr>
+            </tr> --}}
             <tr>
                 <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >السنـة الدراسيـة</th>
                 <td style="text-align: center; width: 70%;" >{{ auth()->user()->academic_year }}</td>

@@ -40,5 +40,11 @@ class StudentInformationController extends Controller
         return redirect()->back();
     }
 
+    public function StudentGraduated()
+    {
+        $students = Student::onlyTrashed()->where('id',auth()->user()->id)->first();
+        return view('pages.Students.information.graduated', compact('students'));
+    }
+
 
 }

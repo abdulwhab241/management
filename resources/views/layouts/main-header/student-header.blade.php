@@ -96,18 +96,7 @@
                 <small>الشعبـة:  {{ auth()->user()->section->name_section }}</small>
             </p>
             </li>
-            <!-- Menu Body -->
-            {{-- <li class="user-body">
-            <div class="col-xs-6 text-center">
-                <small>الصـف الدراسـي:  {{ auth()->user()->classroom->name_class }}</small>
-            </div>
-            <div class="col-xs-6 text-center">
-                <small>الشعبـة:  {{ auth()->user()->section->name_section }}</small>
-            </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Friends</a>
-            </div>
-            </li> --}}
+
             <!-- Menu Footer-->
             <li class="user-footer">
             <div class="pull-right">

@@ -38,9 +38,6 @@
 <div class="box-header">
 <a class="btn btn-success btn-flat md-4" style="padding:5px; margin: 5px;" href="{{route('Upgrades.create')}}">
     إضافة ترقيـة </a>
-<button type="button" class="btn btn-danger md-4 btn-flat" data-toggle="modal" data-target="#Delete_all">
-إرجـاع الكل
-</button>
 
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -48,23 +45,23 @@
 
 </div>
 </div>
-</div><!-- /.box-header -->
+</div>
+
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
-
-
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
-    <th style="text-align: center;" class="alert-info">#</th>
-    <th style="text-align: center;" class="alert-info">أسـم الطالـب</th>
-    <th style="text-align: center;" class="alert-danger">المرحلة الدراسية السابقة</th>
-    <th style="text-align: center;" class="alert-danger">السنة الدراسية</th>
-    <th style="text-align: center;" class="alert-danger">الصف الدراسي السابق</th>
-    <th style="text-align: center;" class="alert-success">المرحلة الدراسية الحالي</th>
-    <th style="text-align: center;" class="alert-success">السنة الدراسية الحالية</th>
-    <th style="text-align: center;" class="alert-success">الصف الدراسي الحالي</th>
-    <th style="text-align: center;" class="alert-success"> تـم الترقيـة بواسطـة</th>
-    <th style="text-align: center;" class="alert-warning">العمليات</th>
+    <th style="text-align: center; background-color: #A8DBFA;" >#</th>
+    <th style="text-align: center; background-color: #A8DBFA;" >أسـم الطالـب</th>
+    <th style="text-align: center; background-color: #A8DBFA;" >المرحلة الدراسية السابقة</th>
+    <th style="text-align: center; background-color: #A8DBFA;" >السنة الدراسية</th>
+    <th style="text-align: center; background-color: #A8DBFA;" >الصف الدراسي السابق</th>
+    <th style="text-align: center; background-color: #E7EEFB;">المرحلة الدراسية الحالي</th>
+    <th style="text-align: center; background-color: #E7EEFB;">السنة الدراسية الحالية</th>
+    <th style="text-align: center; background-color: #E7EEFB;">الصف الدراسي الحالي</th>
+    <th style="text-align: center; background-color: #E7EEFB;"> تـم الترقيـة بواسطـة</th>
+    <th style="text-align: center; background-color: #FEC868;">العمليات</th>
 </tr>
 </thead>
 <tbody>
@@ -84,11 +81,7 @@
     <td>{{$promotion->create_by}}</td>
     <td>
 
-
-
-
-        {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="Delete_all" title="إرجـاع الكل"><i class="fa fa-users"></i></button> --}}
-        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#Delete_one{{ $promotion->id }}" title="إرجاع الطالب"><i class="fa fa-user"></i></button>
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Delete_one{{ $promotion->id }}" title="إرجاع الطالب"><i class="fa fa-user"></i></button>
 
     </td>
 </tr>
@@ -99,14 +92,23 @@
 </tbody>
 </tbody>
 </table>
+@isset($promotion)
+<div class="footer">
+<button type="button" 
+class="btn btn-warning md-4 btn-block"
+style="margin: 10px; padding:5px;" data-toggle="modal" data-target="#Delete_all">
+    إرجـاع الكل
+</button>
+</div>
+@endisset
 
-    </div>
+</div>
+</div>
 
 
 </div>
 </div>
 </div>
-
 </section>
 
 @endsection

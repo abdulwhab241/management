@@ -13,10 +13,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
     @include('layouts.head')
-    {{-- @livewireStyles --}}
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini" dir="rtl" style="font-family: 'Cairo', sans-serif">
 
     <div class="wrapper">
 <!-- Content Wrapper. Contains page content -->
@@ -29,7 +28,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1  style="font-family: 'Cairo', sans-serif">
-    الأسـم: {{auth()->user()->name}}     |     <span> الصـف الدراسـي:  {{ auth()->user()->classroom->name_class }}</span>
+ <label style="color: #5686E0"> {{auth()->user()->name}} </label>   
 </h1>
 
 </section>
@@ -40,15 +39,7 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
-            <div class="box-header">
-                <h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
-                    <marquee direction="right">
-                        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
-                            الـرسـوم المتبقيـة  {{ number_format( auth()->user()->student_account->sum('Debit_feeInvoice') - auth()->user()->student_account->sum('credit_receipt') ) }} ريال 
-                        </b>
-                    </marquee>
-                    </h1>
-            </div>
+
     <div class="tab-pane active" id="tab_1">
 
         <div class="box-body table-responsive no-padding">

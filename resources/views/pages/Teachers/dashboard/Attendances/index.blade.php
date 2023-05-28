@@ -43,12 +43,12 @@
     </ul>
 </div>
 @endif
-<div class="modal-header">
-    <span><h4 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h4> </span>
+<div class="box-header">
+    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 </div>
-
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
-<table id="example1" class="table table-bordered table-striped" style="text-align: center">
+    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
 
@@ -63,22 +63,22 @@
 </tr>
 </thead>
 <tbody>
-    @foreach ($attendances as $student)
-        <tr>
+@foreach ($attendances as $student)
+<tr>
 
-            <td>{{$student->day}}</td>
-            <td>{{$student->students->name}}</td>
-            <td>{{$student->classroom->name_class}}</td>
-            <td>{{$student->section->name_section}}</td>
-            <td>{{$student->attendance_date}}</td>
-            <td>{{$student->attendance_status}}</td>
-            <td>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                data-target="#edit{{ $student->id }}"
-                title="تعديل"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $student->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
-            </td>
-        </tr>
+    <td>{{$student->day}}</td>
+    <td>{{$student->students->name}}</td>
+    <td>{{$student->classroom->name_class}}</td>
+    <td>{{$student->section->name_section}}</td>
+    <td>{{$student->attendance_date}}</td>
+    <td>{{$student->attendance_status}}</td>
+    <td>
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+        data-target="#edit{{ $student->id }}"
+        title="تعديل"><i class="fa fa-edit"></i></button>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $student->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
+    </td>
+</tr>
 
 <!-- edit_modal_Attendance -->
 <div class="modal fade" id="edit{{ $student->id }}" tabindex="-1" role="dialog"
@@ -181,15 +181,13 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 @endforeach
 </tbody>
 </table>
-
-</div>
-
-
-</div>
 </div>
 </div>
 
-<!-- row closed -->
+
+</div>
+</div>
+</div>
 </section>
 
 @endsection

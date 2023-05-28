@@ -28,48 +28,45 @@
 <div class="box">
 @if(session()->has('error'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>{{ session()->get('error') }}</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+<strong>{{ session()->get('error') }}</strong>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
 </div>
 @endif
 </div><!-- /.box-header -->
 
 <form class="form-horizontal" action="{{ route('Graduated.store') }}" method="POST">
-    @csrf
-    
-    <div class="box-body">
-        <div class="row">
-    
-            <div class="col-md-6">
-                <label > المرحلـة الدراسيـة</label>
-                <select class="form-control select2" name="Grade_id">
-                    <option  selected disabled>أختـر من القائمة...</option>
-                    @foreach ($Grades as $Grade)
-                        <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-    
-            <div class="col-md-6">
-                <label > الصـف الدراسـي</label>
-                <select class="form-control select2" name="Classroom_id">
-                    <option selected>أختـر من القائمة...</option>
-                    @foreach($Classrooms as $Classroom)
-                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div><br>
+@csrf
+
+<div class="box-body">
+<div class="row">
+
+    <div class="col-md-6">
+        <label > المرحلـة الدراسيـة</label>
+        <select class="form-control select2" style="width: 100%;" name="Grade_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Grades as $Grade)
+                <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
+            @endforeach
+        </select>
     </div>
-    
-    <div class="modal-footer">
-        <button type="submit"
-        class="btn btn-primary btn-block">حفظ البيانات</button>
-        </div>
-    
-    </form>
+
+    <div class="col-md-6">
+        <label > الصـف الدراسـي</label>
+        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+
+        </select>
+    </div>
+</div><br>
+</div>
+
+<div class="modal-footer">
+<button type="submit"
+class="btn btn-primary btn-block">تـأكيـد</button>
+</div>
+
+</form>
 
 </div>
 </div>

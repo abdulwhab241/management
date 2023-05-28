@@ -9,7 +9,7 @@
 @section('content')
 
 <!-- Content Header (Page header) -->
-<section class="content-header">
+<section class="content-header" >
 <h1>
 النـتائـج
 </h1>
@@ -32,15 +32,15 @@
 
 </div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
-<table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
-<caption style="background-color: #99E2FE; font-weight: bolder; color:red; margin: 5px; padding:5px;">
-    <p>
-        الصـف الدراسـي : {{auth()->user()->classroom->name_class}}     |     <span> الشـعبـة :  {{ auth()->user()->section->name_section }}</span>
-    </p>
+<table class="table border-2" style="width:100%; text-align: center">
+<caption style="font-weight: bolder; text-align: center; margin: 5px; padding:5px; color:black;">
+    <i class="fas fa-light fa-percent"></i>
+    <span > النتـائـج  </span>
+     
 </caption>
 <thead>
 <tr>
-
+    <th style="text-align: center; background-color: #D0DEF6;" >الأستاذ</th>
     <th style="text-align: center; background-color: #D0DEF6;" >المـادة</th>
     <th style="text-align: center; background-color: #D0DEF6;" > الـدرجـة</th>
     <th style="text-align: center; background-color: #D0DEF6;" >التقـديـر</th>
@@ -49,6 +49,7 @@
 <tbody>
         @foreach ($Result as $Student)
         <tr>
+            <td>{{ $Student->create_by }}</td>
             <td>{{ $Student->exam->subject->name }}</td>
             <td>{{$Student->marks_obtained}}</td>
             <td>{{$Student->appreciation}}</td>

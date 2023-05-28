@@ -37,6 +37,7 @@
 </div>
 @endif
 <br>
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
@@ -77,13 +78,13 @@
 @endforeach
 </tbody>
 </table>
-
-
-</div>
-</div>
 </div>
 </div>
 
+
+</div>
+</div>
+</div>
 </section>
 @endsection
 @section('js')

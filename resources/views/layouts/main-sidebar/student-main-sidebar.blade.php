@@ -36,9 +36,11 @@
 <li class="treeview">
     <li><a href="{{ route('StudentAccounts.index') }}"><i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> بيـانـات الـرسـوم</a></li>
 </li>
-
 <li class="treeview">
     <li><a href="{{ route('StudentResult.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
+</li>
+<li class="treeview">
+    <li><a href="{{ route('student_graduated') }}"><i class="fa fa-graduation-cap" aria-hidden="true"></i> معلـومـات التخـرج</a></li>
 </li>
 <li class="treeview">
     <li><a href="{{ route('StudentTable.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>

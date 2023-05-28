@@ -39,9 +39,9 @@
     <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 <br><br>
 
-</div><!-- /.box-header -->
+</div>
 <div class="box-body table-responsive no-padding">
-    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
+    <table class="table " style="width:100%; text-align: center;">
 <thead>
 <tr>
     <th style="text-align: center; background-color: #D0DEF6;">اليوم</th>

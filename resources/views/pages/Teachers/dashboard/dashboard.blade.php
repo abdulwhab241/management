@@ -18,7 +18,7 @@
     {{-- @livewireStyles --}}
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini" dir="rtl">
 
     <div class="wrapper">
 
@@ -32,7 +32,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header" style="font-family: 'Cairo', sans-serif">
 <h1  style="font-family: 'Cairo', sans-serif">
-    مـرحبـاً بـكـ :        <span>   {{ auth()->user()->name }}</span>
+    مـرحبـاً بالأستـاذ :        <span>   {{ auth()->user()->name }}</span>
 </h1>
 
 </section>

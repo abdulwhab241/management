@@ -18,10 +18,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     public function create()
     {
         $Grades = Grade::all();
-        $Classrooms = Classroom::all();
-        $Sections = Section::all();
         
-        return view('pages.Upgrades.create',compact('Grades','Classrooms','Sections'));
+        return view('pages.Upgrades.create',compact('Grades'));
     }
 
     public function index()
@@ -34,7 +32,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     {
         try {
 
-            $students = student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('academic_year',$request->academic_year)->get();
+            $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('academic_year',$request->academic_year)->get();
 
             if($students->count() < 1){
                 return redirect()->back()->with('error_promotions', __('لاتوجد بيانات في جدول الطلاب'));
@@ -44,7 +42,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
             foreach ($students as $student){
 
                 $ids = explode(',',$student->id);
-                student::whereIn('id', $ids)
+                Student::whereIn('id', $ids)
                     ->update([
                         'grade_id'=>$request->Grade_id_new,
                         'classroom_id'=>$request->Classroom_id_new,
@@ -67,13 +65,12 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
             }
 
             toastr()->success('تم ترقيـة الطـلاب بنجاح');
-            return redirect()->route('Upgrades.management');
+            return redirect()->route('Upgrades.index');
 
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
-        // dd($request);
     }
 
         public function destroy($request)
@@ -89,7 +86,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
                     //التحديث في جدول الطلاب
                     $ids = explode(',',$Promotion->student_id);
-                    student::whereIn('id', $ids)
+                    Student::whereIn('id', $ids)
                     ->update([
                     'grade_id'=>$Promotion->from_grade,
                     'classroom_id'=>$Promotion->from_Classroom,
@@ -100,22 +97,21 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     Promotion::truncate();
 
                 }
-                toastr()->error('تم إرجـاع جميـع الطـلاب بنجاح');
+                toastr()->warning('تم إرجـاع جميـع الطـلاب بنجاح');
                 return redirect()->back();
             }
             else
             {
                 $Promotion = Promotion::findOrFail($request->id);
-                student::where('id', $request->student_id)
+                Student::where('id', $Promotion->student_id)
                 ->update([
                 'grade_id'=>$Promotion->from_grade,
                 'classroom_id'=>$Promotion->from_Classroom,
-                'academic_year'=>$Promotion->academic_year,
+                // 'academic_year'=>$Promotion->academic_year,
             ]);
 
             Promotion::destroy($request->id);
-            // DB::commit();
-            toastr()->error('تم إرجاع الطالـب بنجاح');
+            toastr()->warning('تم إرجاع الطالـب بنجاح');
             return redirect()->back();
 
             }
