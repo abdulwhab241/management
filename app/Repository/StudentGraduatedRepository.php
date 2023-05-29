@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Models\Grade;
+use App\Models\Graduation;
 use App\Models\Student;
 
 class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
@@ -12,7 +13,7 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function index()
     {
-        $students = Student::onlyTrashed()->get();
+        $students = Graduation::all();
         return view('pages.Students.Graduated.index',compact('students'));
     }
 
@@ -24,7 +25,7 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function SoftDelete($request)
     {
-        $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->get();
+        $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->get();
 
         if($students->count() < 1){
             return redirect()->back()->with('error_Graduated', __('لاتوجد بيانات في جدول الطلاب'));
@@ -32,7 +33,15 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
         foreach ($students as $student){
             $ids = explode(',',$student->id);
-            Student::whereIn('id', $ids)->Delete();
+
+            Graduation::updateOrCreate([
+                'student_id' => $student->id,
+                'grade_id' => $request->Grade_id,
+                'classroom_id' => $request->Classroom_id,
+                'section_id' => $request->Section_id,
+                'date' => date('Y-m-d'),
+                'create_by' =>auth()->user()->name,
+            ]);
         }
 
         toastr()->success('تـم إضـافة الطـلاب المتخـرجيـن بنجـاح');

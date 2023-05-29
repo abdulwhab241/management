@@ -13,14 +13,14 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach(range(1,200) as $i){
+        // foreach(range(1,200) as $i){
         
-            Grade::create(
-                [
-                    "name"=>fake()->name
+        //     Grade::create(
+        //         [
+        //             "name"=>fake()->name
                 
-                ]
-                );
-        }
+        //         ]
+        //         );
+        // }
     }
 }

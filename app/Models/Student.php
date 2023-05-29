@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Fee;
 use App\Models\Grade;
 use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\Attendance;
-use App\Models\FeeInvoice;
 use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -36,17 +34,13 @@ class Student extends Authenticatable
         return $this->belongsTo(Grade::class, 'grade_id');
     }
 
-
     // علاقة بين الطلاب الصفوف الدراسية لجلب اسم الصف في جدول الطلاب
 
     public function classroom()
     {
         return $this->belongsTo(Classroom::class, 'classroom_id');
     }
-    public function fee()
-    {
-        return $this->belongsTo(Fee::class, 'fee_id');
-    }
+
 
   // علاقة بين الطلاب الاقسام الدراسية لجلب اسم القسم  في جدول الطلاب
 
@@ -74,9 +68,5 @@ class Student extends Authenticatable
         return $this->hasMany(Attendance::class, 'student_id');
     }
 
-    public function feeInvoice()
-    {
-        return $this->belongsTo(FeeInvoice::class, 'student_id');
-    }
 
 }

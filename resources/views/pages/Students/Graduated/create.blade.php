@@ -42,7 +42,7 @@
 <div class="box-body">
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label > المرحلـة الدراسيـة</label>
         <select class="form-control select2" style="width: 100%;" name="Grade_id">
             <option  selected disabled>أختـر من القائمة...</option>
@@ -52,9 +52,16 @@
         </select>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label > الصـف الدراسـي</label>
         <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+
+        </select>
+    </div>
+
+    <div class="col-md-4">
+        <label > الشعبـة</label>
+        <select class="form-control select2" style="width: 100%;" name="Section_id">
 
         </select>
     </div>

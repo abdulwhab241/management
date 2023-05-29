@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\FeeInvoice;
+use App\Models\Graduation;
 use App\Models\ProcessingFee;
 use App\Models\PaymentStudent;
 use App\Models\ReceiptStudent;
@@ -42,7 +43,7 @@ class StudentInformationController extends Controller
 
     public function StudentGraduated()
     {
-        $students = Student::onlyTrashed()->where('id',auth()->user()->id)->first();
+        $students = Graduation::where('id',auth()->user()->id)->first();
         return view('pages.Students.information.graduated', compact('students'));
     }
 

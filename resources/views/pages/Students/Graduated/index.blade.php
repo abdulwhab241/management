@@ -53,9 +53,9 @@ aria-pressed="true">اضافة تخرج جديـد </a>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
         <th style="text-align: center;" class="alert-info">أسـم الطـالـب</th>
-        <th style="text-align: center;" class="alert-info">النـوع</th>
         <th style="text-align: center;" class="alert-info">المرحلـة الدراسيـة</th>
         <th style="text-align: center;" class="alert-info">الصـف الدراسـي</th>
+        <th style="text-align: center;" class="alert-info">الشعـبة</th>
         <th style="text-align: center;" class="alert-success"> تـاريـخ التـخرج</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
@@ -66,12 +66,12 @@ aria-pressed="true">اضافة تخرج جديـد </a>
     @foreach($students as $student)
     <tr>
     <td>{{ $loop->index+1 }}</td>
-    <td>{{$student->name}}</td>
+    <td>{{$student->student->name}}</td>
 
-    <td>{{$student->gender->name}}</td>
     <td>{{$student->grade->name}}</td>
     <td>{{$student->classroom->name_class}}</td>
-    <td>{{$student->deleted_at->diffForHumans()}}</td>
+    <td>{{$student->section->name_section}}</td>
+    <td>{{$student->date }}</td>
     <td>{{ $student->create_by }}</td>
         <td>
             <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#Return_Student{{ $student->id }}" title="ارجاع الطالب">ارجاع الطالب</button>

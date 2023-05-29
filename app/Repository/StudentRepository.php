@@ -9,7 +9,6 @@ use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
-// use Illuminate\Support\Facades\DB;
 use App\Models\My_Parent;
 use App\Models\FeeInvoice;
 use App\Models\ProcessingFee;

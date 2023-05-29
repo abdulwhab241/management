@@ -34,24 +34,20 @@
 <thead>
     <tr>
         <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب</th>
-        <th style="text-align: center; background-color: #D0DEF6;">الجنـس</th>
         <th style="text-align: center; background-color: #D0DEF6;">المرحلـة الدراسيـة</th>
         <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسـي</th>
         <th style="text-align: center; background-color: #D0DEF6;">الشعـبة</th>
-        <th style="text-align: center; background-color: #D0DEF6;">السنة</th>
         <th style="text-align: center; background-color: #D0DEF6;"> تـاريـخ التـخرج</th>
     </tr>
 </thead>
 <tbody>
 
     <tr>
-    <td>{{$students->name}}</td>
-    <td>{{$students->gender->name}}</td>
-    <td>{{$students->grade->name}}</td>
-    <td>{{$students->classroom->name_class}}</td>
-    <td style="font-weight: bolder;">{{$students->section->name_section}}</td>
-    <td>{{$students->academic_year}}</td>
-    <td>{{$students->deleted_at}}</td>
+        <td>{{$students->student->name}}</td>
+        <td>{{$students->grade->name}}</td>
+        <td>{{$students->classroom->name_class}}</td>
+        <td style="font-weight: bolder;">{{$students->section->name_section}}</td>
+        <td>{{$students->date }}</td>
     
     </tr>
 
