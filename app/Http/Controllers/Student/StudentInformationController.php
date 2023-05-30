@@ -43,8 +43,8 @@ class StudentInformationController extends Controller
 
     public function StudentGraduated()
     {
-        $students = Graduation::where('id',auth()->user()->id)->first();
-        return view('pages.Students.information.graduated', compact('students'));
+        $Graduations = Graduation::select('*')->where('student_id',auth()->user()->id)->get();
+        return view('pages.Students.information.graduated', compact('Graduations'));
     }
 
 

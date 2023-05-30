@@ -61,7 +61,7 @@
                 </ul>
                 </li>
                 @if(Auth::User()->unreadNotifications->count() > 0)
-                <li class="footer"><a href="{{ route('ReadAll') }}">قـرائـة جميـع الإشعـارات</a></li>
+                <li class="footer"><a href="{{ route('Read') }}">قـرائـة جميـع الإشعـارات</a></li>
                 @else
                 <li class="footer" style="text-align: center;">لا يوجد إشعـارات لقـرائتـها </li>
                 @endif

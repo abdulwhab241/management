@@ -130,6 +130,13 @@ aria-pressed="true">اضافة طـالـب</a>
 @endforeach
 </tbody>
 </table>
+
+<div class="footer">
+    <a href="{{ route('print') }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+</div>
+
+
 </div>
 </div>
 

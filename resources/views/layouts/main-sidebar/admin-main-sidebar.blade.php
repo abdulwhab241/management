@@ -173,7 +173,7 @@
     </a>
     <ul class="treeview-menu">
     <li><a href="{{route('Classes.index')}}"><i class="fa fa-circle-o"></i> قائمة الحصـص الدراسية</a></li>
-    <li><a href="{{ route('Teacher_Classes.index') }}"><i class="fa fa-circle-o"></i> قائمة حصـص المعلمين</a></li>
+    <li><a href="{{ route('TeacherClasses.index') }}"><i class="fa fa-circle-o"></i> قائمة حصـص المعلمين</a></li>
     </ul>
 </li>
 <li class="treeview">

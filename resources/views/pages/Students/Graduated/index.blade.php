@@ -74,13 +74,12 @@ aria-pressed="true">اضافة تخرج جديـد </a>
     <td>{{$student->date }}</td>
     <td>{{ $student->create_by }}</td>
         <td>
-            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#Return_Student{{ $student->id }}" title="ارجاع الطالب">ارجاع الطالب</button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="حذف الطالب المتخرج">حذف الطالب</button>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Return_Student{{ $student->id }}" title="إلـغاء تخـرج الطالب">إلـغاء تخـرج الطالب</button>
+            {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="حذف الطالب المتخرج">حذف الطالب</button> --}}
 
         </td>
     </tr>
 @include('pages.Students.Graduated.return')
-@include('pages.Students.Graduated.Delete')
 @endforeach
 </tbody>
 </table>

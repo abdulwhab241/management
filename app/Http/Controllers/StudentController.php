@@ -64,6 +64,11 @@ class StudentController extends Controller
         return view('pages.Students.notification', compact('Students'));
     }
 
+    public function print()
+    {
+        $Student = Student::all();
+        return view('pages.Students.print', compact('Student'));
+    }
 
     // public function Upload_attachment(Request $request)
     // {

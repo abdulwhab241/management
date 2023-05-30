@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Teacher\TeacherClassesController;
+use App\Http\Controllers\Teacher\TeacherProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -27,39 +28,51 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:teacher']
     ], function () {
 
-    //==============================dashboard============================
+    //==============================Teacher dashboard============================
     Route::get('/teacher/dashboard', function () {
 
         $ids = Teacher::findOrFail(auth()->user()->id)->SectionsWith()->pluck('section_id');
         $data['count_sections']= $ids->count();
         $data['count_students']= \App\Models\Student::whereIn('section_id',$ids)->count();
 
-
         return view('pages.Teachers.dashboard.dashboard',$data);
+
     });
 
     //==============================students============================
     Route::group(['namespace' => 'App\Http\Controllers\Teacher'], function () {
+
+        //==============================Teacher Students============================
         Route::get('TeacherStudent','TeacherStudentController@index')->name('student.index');
         Route::get('TeacherSections','TeacherStudentController@sections')->name('sections');
         Route::post('editAttendance','TeacherStudentController@editAttendance')->name('editAttendance');
         Route::get('attendance_report','TeacherStudentController@attendanceReport')->name('attendance.report');
         Route::post('attendance_report','TeacherStudentController@attendanceSearch')->name('attendance.search');
 
+        //==============================Teacher Exam============================
         Route::resource('TeacherExams', 'TeacherExamController');
 
+        //==============================Teacher Result============================
         Route::resource('TeacherResult', 'TeacherResultController');
         
+        //==============================Teacher Attendance============================
         Route::resource('TeacherAttendance', 'TeacherAttendanceController');
 
+        //==============================Teacher Classes============================
         Route::resource('Teacher_Classes', TeacherClassesController::class);
 
+        //==============================Notifications Red All============================
+        Route::get('Notification/Read', [TeacherProfileController::class, 'Read']) -> name('Read');
+
+        //==============================Teacher Profile============================
         Route::post('TeacherImage/{id}', 'TeacherProfileController@editImage')->name('TeacherImage.editImage');
         Route::get('TeacherProfile', 'TeacherProfileController@index')->name('TeacherProfile.show');
         Route::post('TeacherProfile/{id}', 'TeacherProfileController@update')->name('TeacherProfile.update');
 
         //==============================Teacher Logout============================
         Route::post('/logout/{type}', [LoginController::class,'logout'])->name('logout_teacher');
+
+
     });
 
 

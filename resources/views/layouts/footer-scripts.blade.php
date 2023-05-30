@@ -61,6 +61,17 @@ $.widget.bridge('uibutton', $.ui.button);
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="/dist/js/demo.js"></script> --}}
 
+<script type="text/javascript">
+    function printDiv() {
+        var printContents = document.getElementById('print').innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        location.reload();
+    }
+
+</script>
 
 <!-- page script -->
 {{-- <script>

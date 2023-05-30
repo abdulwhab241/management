@@ -74,7 +74,7 @@
     <td>{{$Teacher->genders->name}}</td>
     <td>{{$Teacher->joining_date}}</td>
     <td>{{$Teacher->specializations->name}}</td>
-    <td>{{$Teacher->created_at->diffForHumans()}}</td>
+    <td>{{$Teacher->created_at}}</td>
     <td>{{ $Teacher->create_by }}</td>
         <td>
             <a href="{{route('Teachers.edit',$Teacher->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>

@@ -30,11 +30,6 @@ class GraduatedController extends Controller
         return $this->Graduated->SoftDelete($request);
     }
 
-    public function update(Request $request)
-    {
-        return $this->Graduated->ReturnData($request);
-    }
-
     public function destroy(Request $request)
     {
         return $this->Graduated->destroy($request);

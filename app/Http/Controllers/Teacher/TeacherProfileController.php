@@ -56,5 +56,14 @@ class TeacherProfileController extends Controller
         return redirect()->back();
 
     }
+
+    public function Read()
+    {
+        $user = Teacher::find(auth()->user()->id);
+        foreach ($user->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
+        return redirect()->back();
+    }
     
 }

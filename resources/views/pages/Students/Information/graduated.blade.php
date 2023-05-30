@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-قـائمـة المتخـرجيـن
+معلـومـات التخـرج
 @stop
 @endsection
 
@@ -12,12 +12,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-    قـائمـة المتخـرجيـن  <i class="fas fa-user-graduate"></i>
+      <i class="fa fa-graduation-cap" aria-hidden="true"></i> معلـومـات التخـرج
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">قـائمـة المتخـرجيـن</li>
+<li class="active">معلـومـات التخـرج</li>
 </ol>
 </section>
 
@@ -27,7 +27,7 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-    @if($students > 0)
+    @if($Graduations->count() > 0)
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table class="table" style="width:100%; text-align: center;">
@@ -41,16 +41,18 @@
     </tr>
 </thead>
 <tbody>
+@foreach ($Graduations as $graduated)
+    
 
     <tr>
-        <td>{{$students->student->name}}</td>
-        <td>{{$students->grade->name}}</td>
-        <td>{{$students->classroom->name_class}}</td>
-        <td style="font-weight: bolder;">{{$students->section->name_section}}</td>
-        <td>{{$students->date }}</td>
+        <td>{{$graduated->student->name}}</td>
+        <td>{{$graduated->grade->name}}</td>
+        <td>{{$graduated->classroom->name_class}}</td>
+        <td style="font-weight: bolder;">{{$graduated->section->name_section}}</td>
+        <td>{{$graduated->date }}</td>
     
     </tr>
-
+    @endforeach
 </tbody>
 </table>
 </div>

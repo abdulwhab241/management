@@ -73,7 +73,8 @@ Route::group(
 
         //==============================Teacher Classes============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('Teacher_Classes', TeacherClassesController::class);            
+            Route::resource('TeacherClasses', TeacherClassesController::class);    
+            Route::get('/print_teacher/', [TeacherClassesController::class, 'print']) -> name('TeacherClasses.print');        
         });
 
 
@@ -81,6 +82,7 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Students', StudentController::class);
             Route::get('/show_student/{id}', [StudentController::class, 'show_student']) -> name('show_student');
+            Route::get('/print_student/', [StudentController::class, 'print']) -> name('print');
             Route::resource('Graduated', GraduatedController::class);
             Route::resource('Upgrades',  PromotionController::class);
             Route::resource('Fees_Invoices', FeeInvoiceController::class);

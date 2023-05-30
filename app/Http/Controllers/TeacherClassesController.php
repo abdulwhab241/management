@@ -28,6 +28,12 @@ class TeacherClassesController extends Controller
         return view('pages.TeacherClasses.edit', compact('Teachers','TeacherClasses'));
     }
 
+    public function print()
+    {
+        $TeacherClasses = TeacherClass::all();
+        return view('pages.TeacherClasses.print', compact('TeacherClasses'));
+    }
+
     public function store(TeacherClassesRequest $request)
     {
         try {
