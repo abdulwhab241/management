@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-3">
             <label>المرحلـة الدراسيـة</label>
-            <select class="form-control select2" name="Grade_id">
+            <select class="form-control select2" style="width: 100%;" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($grades as $grade)
                 <option
@@ -77,7 +77,7 @@
         </div>
         <div class="col-md-3">
             <label>الصـف الدراسـي</label>
-            <select class="form-control select2" name="Class_id">
+            <select class="form-control select2" style="width: 100%;" name="Class_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($classrooms as $classroom)
                 <option
@@ -96,7 +96,7 @@
         <div class="col-md-6">
             <label >أسـم المعلـم</label>
 
-                <select class="form-control select2" name="teacher_id">
+                <select class="form-control select2" style="width: 100%;" name="teacher_id">
                     <option selected disabled>أختـر من القائمة...</option>
                     @foreach($teachers as $teacher)
                     <option

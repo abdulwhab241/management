@@ -161,8 +161,8 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
+    <li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-circle-o"></i> كشـف دراجات الطـلاب</a></li>
     <li><a href="{{route('Results.index')}}"><i class="fa fa-circle-o"></i> قائمة النتـائـج</a></li>
-
     </ul>
 </li>
 <li class="treeview">

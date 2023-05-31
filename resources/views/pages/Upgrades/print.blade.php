@@ -15,7 +15,7 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Students.index')}}"><i class="fa fa-users"></i> قائمـة الطـلاب </a></li>
+<li><a href="{{route('Upgrades.index')}}"><i class="fa fa-refresh"></i> قائمـة الترقيـات </a></li>
 <li class="active">طبـاعـة</li>
 </ol>
 </section>
@@ -28,7 +28,7 @@
 <div class="box">
 
 {{-- <div class="box-header">
-<a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+<a href="{{route('Promotions.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
 aria-pressed="true">اضافة طـالـب</a>
 <br>
 <div class="box-tools">
@@ -44,36 +44,31 @@ aria-pressed="true">اضافة طـالـب</a>
 <tr>
 
     <th style="text-align: center;">#</th>
-    <th style="text-align: center;">اليوم</th>
-    <th style="text-align: center;"> الأستاذ</th>
-    <th style="text-align: center;">الحصـة الأولـى</th>
-    <th style="text-align: center;">الحصـة الثـانيـة</th>
-    <th style="text-align: center;"> الحصـة الثـالثـة</th>
-    <th style="text-align: center;">الحصـة الرابعـة </th>
-    <th style="text-align: center;"> الحصـة الخـامسـة</th>
-    <th style="text-align: center;"> الحصـة السـادسـة</th>
-    <th style="text-align: center;"> الحصـة السـابعـة</th>
-
+    <th style="text-align: center;">أسـم الطالـب</th>
+    <th style="text-align: center;"> المرحلة الدراسية السابقة</th>
+    <th style="text-align: center;">الصف الدراسي السابق</th>
+    <th style="text-align: center;">السنة الدراسية السابقة</th>
+    <th style="text-align: center;"> المرحلة الدراسية الحالية</th>
+    <th style="text-align: center;">الصف الدراسي الحالي </th>
+    <th style="text-align: center;"> السنة الدراسية الحالية</th>
 </tr>
 </thead>
 <tbody>
 
     <?php $i = 0; ?>
-    @foreach ($TeacherClasses as $Student)
+    @foreach ($Promotions as $Promotion)
         <tr>
             <?php $i++; ?>
             <td>{{ $i }}</td>
-            <td>{{ $Student->day }}</td>
-            <td>{{ $Student->teacher->name }}</td>
-            <td>{{$Student->first}}</td>
-            <td>{{$Student->second}}</td>
-            <td>{{$Student->third}}</td>
-            <td>{{ $Student->fourth }}</td>
-            <td>{{ $Student->fifth }}</td>
-            <td > {{ $Student->sixth }}</td>
-            <td > {{ $Student->seventh }}</td>
+            <td scope="row">{{$Promotion->student->name}}</td>
+            <td scope="row">{{$Promotion->f_grade->name}}</td>
+            <td scope="row">{{$Promotion->academic_year}}</td>
+            <td scope="row">{{$Promotion->f_classroom->name_class}}</td>
+        
+            <td>{{$Promotion->t_grade->name}}</td>
+            <td>{{$Promotion->academic_year_new}}</td>
+            <td>{{$Promotion->t_classroom->name_class}}</td>
         </tr>
-
 
 @endforeach
 </tbody>

@@ -103,6 +103,12 @@ style="margin: 10px; padding:5px;" data-toggle="modal" data-target="#Delete_all"
 @endisset
 
 </div>
+
+<div class="footer">
+    <a href="{{ route('promotion.print') }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+</div>
+
 </div>
 
 

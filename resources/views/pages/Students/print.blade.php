@@ -81,7 +81,7 @@ aria-pressed="true">اضافة طـالـب</a>
 </div>
 
 <div class="footer">
-    <button class="btn btn-primary  pull-left" id="print_Button" onclick="printDiv()"> 
+    <button class="btn .btn.bg-navy  pull-left" id="print_Button" onclick="printDiv()"> 
     <i class="fa fa-print" aria-hidden="true"></i> طباعة  </button>
 </div>
 

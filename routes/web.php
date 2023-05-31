@@ -20,6 +20,7 @@ use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\ProcessingFeeController;
 use App\Http\Controllers\ReceiptStudentsController;
+use App\Http\Controllers\StudentGradeController;
 use App\Http\Controllers\TeacherClassesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -53,14 +54,14 @@ Route::group(
             Route::get('Notification/markAsRead', [GradeController::class, 'markAsRead']) -> name('Notification.Read');
         });
 
-         //==============================Classrooms============================
+        //==============================Classrooms============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Classrooms', ClassroomController::class);
             Route::post('delete_all', [ClassroomController::class,'delete_all'])->name('delete_all');
         });
 
 
-         //==============================Sections============================
+        //==============================Sections============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Sections', SectionController::class);
             Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
@@ -80,24 +81,49 @@ Route::group(
 
          //==============================Students============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            //==============================Students============================
             Route::resource('Students', StudentController::class);
-            Route::get('/show_student/{id}', [StudentController::class, 'show_student']) -> name('show_student');
-            Route::get('/print_student/', [StudentController::class, 'print']) -> name('print');
-            Route::resource('Graduated', GraduatedController::class);
-            Route::resource('Upgrades',  PromotionController::class);
-            Route::resource('Fees_Invoices', FeeInvoiceController::class);
-            Route::get('/show_fee_invoice/{id}', [FeeInvoiceController::class, 'show_fee_invoice']) -> name('show_fee_invoice');
-            Route::resource('Fees',  FeeController::class);
-            Route::resource('Receipts', ReceiptStudentsController::class);
-            Route::get('/show_receipt/{id}', [ReceiptStudentsController::class, 'show_receipt']) -> name('show_receipt');
-            Route::resource('ProcessingFee', ProcessingFeeController::class);
-            Route::get('/show_processing/{id}', [ProcessingFeeController::class, 'show_processing']) -> name('show_processing');
-            Route::resource('Payments', PaymentController::class);
-            Route::get('/show_payment/{id}', [PaymentController::class, 'show_payment']) -> name('show_payment');
-            Route::resource('Attendance', AttendanceController::class);
+
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
             Route::post('Delete_attachment', [StudentController::class,'Delete_attachment'])->name('Delete_attachment');
+
+            Route::get('/show_student/{id}', [StudentController::class, 'show_student']) -> name('show_student');
+            Route::get('/print_student/', [StudentController::class, 'print']) -> name('print');
+
+            //==============================Students Graduated============================
+            Route::resource('Graduated', GraduatedController::class);
+
+            //==============================Students Promotion============================
+            Route::resource('Upgrades',  PromotionController::class);
+            Route::get('/print_promotion/', [PromotionController::class, 'print']) -> name('promotion.print');
+
+            //==============================Students FeeInvoice============================
+            Route::resource('Fees_Invoices', FeeInvoiceController::class);
+            Route::get('/show_fee_invoice/{id}', [FeeInvoiceController::class, 'show_fee_invoice']) -> name('show_fee_invoice');
+
+            //==============================Fees============================
+            Route::resource('Fees',  FeeController::class);
+
+            //==============================Students Receipt============================
+            Route::resource('Receipts', ReceiptStudentsController::class);
+            Route::get('/show_receipt/{id}', [ReceiptStudentsController::class, 'show_receipt']) -> name('show_receipt');
+
+            //==============================Students Processing Fee============================
+            Route::resource('ProcessingFee', ProcessingFeeController::class);
+            Route::get('/show_processing/{id}', [ProcessingFeeController::class, 'show_processing']) -> name('show_processing');
+
+            //==============================Students Payment============================
+            Route::resource('Payments', PaymentController::class);
+            Route::get('/show_payment/{id}', [PaymentController::class, 'show_payment']) -> name('show_payment');
+
+            //==============================Students Attendance============================
+            Route::resource('Attendance', AttendanceController::class);
+
+            //==============================Students Grades============================
+            Route::resource('Student_Grades', StudentGradeController::class);
+
+
     });
 
         //==============================Subjects============================

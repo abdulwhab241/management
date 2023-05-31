@@ -61,7 +61,7 @@
         <div class="col-md-3">
             <div class="form-group">
             <label>المرحلـة الدراسيـة</label>
-            <select class="form-control select2" name="Grade_id">
+            <select class="form-control select2" style="width: 100%;" name="Grade_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($grades as $grade)
                     <option value="{{$grade->id}}">{{$grade->name}}</option>
@@ -77,7 +77,7 @@
         <div class="col-md-3">
             <div class="form-group">
             <label>الصـف الدراسـي</label>
-            <select class="form-control select2" name="Classroom_id">
+            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
                 {{-- <option selected disabled>أختـر من القائمة...</option>
                 @foreach($classrooms as $classroom)
                 <option value="{{$classroom->id}}">{{$classroom->name_class}}</option>
@@ -96,7 +96,7 @@
         <div class="col-md-3">
             <div class="form-group">
             <label >أسـم المعلـم</label>
-                <select class="form-control select2" name="teacher_id">
+                <select class="form-control select2" style="width: 100%;" name="teacher_id">
                     <option selected disabled>أختـر من القائمة...</option>
                     @foreach($teachers as $teacher)
                         <option value="{{$teacher->id}}">{{$teacher->name}}</option>
