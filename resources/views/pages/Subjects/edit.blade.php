@@ -77,14 +77,14 @@
         </div>
         <div class="col-md-3">
             <label>الصـف الدراسـي</label>
-            <select class="form-control select2" style="width: 100%;" name="Class_id">
+            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($classrooms as $classroom)
                 <option
                 value="{{$classroom->id}}" {{$classroom->id == $subject->classroom_id ?'selected':''}}>{{$classroom->name_class}}</option>
         @endforeach
             </select>                       
-            @error('Class_id')
+            @error('Classroom_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>

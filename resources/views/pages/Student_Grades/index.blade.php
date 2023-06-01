@@ -54,13 +54,13 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <th style="text-align: center;" class="alert-info">#</th>
 <th style="text-align: center;" class="alert-info">الفـصل</th>
 <th style="text-align: center;" class="alert-info">الأستـاذ</th>
-<th style="text-align: center;" class="alert-info">أسـم الطـالـب</th>
+<th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center;" class="alert-info">واجبـات</th>
 <th style="text-align: center;" class="alert-info">شفهـي</th>
 <th style="text-align: center;" class="alert-info">مـواظبـة</th>
 <th style="text-align: center;" class="alert-info">تحريري</th>
-<th style="text-align: center;" class="alert-info">مجمـوع المحصـلة</th>
-<th style="text-align: center;" class="alert-info">شهـر</th>
+<th style="text-align: center;" class="alert-info"> المحصـلة</th>
+<th style="text-align: center; background-color: yellow; font-weight:bolder;" >محصـلـة شهـر</th>
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
@@ -75,20 +75,20 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <td>{{$Student_Grade->homework }}</td>
 <td>{{$Student_Grade->verbal}}</td>
 <td>{{ $Student_Grade->attendance }}</td>
-<td>{{ $Student_Grade->editorial }}</td>
-<td>{{ $Student_Grade->total }}</td>
-<td>{{ $Student_Grade->month }}</td>
+<td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
+<td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
+<td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
 
 <td>
-    <a href="{{route('Subjects.edit',$subject->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_subject{{ $subject->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+    <a href="{{route('Student_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student_Grades{{ $Student_Grade->id }}" title="حذف"><i class="fa fa-trash"></i></button>
 </td>
 </tr>
 
 
-<div class="modal fade" id="delete_subject{{$subject->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete_Student_Grades{{$Student_Grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
-    <form action="{{route('Subjects.destroy','test')}}" method="post">
+    <form action="{{route('Student_Grades.destroy','test')}}" method="post">
         {{method_field('delete')}}
         {{csrf_field()}}
     <div class="modal-content">
@@ -98,19 +98,19 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
         
         </div>
         <div class="modal-body">
-            <p> هل انت متاكد من عملية حذف المـادة </p>
-            <input type="hidden" name="id"  value="{{$subject->id}}">
+            <p> هل انت متاكد من عملية حذف محصلـة الطـالـب </p>
+            <input type="hidden" name="id"  value="{{$Student_Grade->id}}">
             <input  type="text" style="font-weight: bolder; font-size:20px;"
             name="Name_Section"
             class="form-control"
-            value="{{$subject->name}}"
+            value="{{$Student_Grade->student->name}}"
             disabled>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline"
                     data-dismiss="modal">إغلاق</button>
             <button type="submit"
-                    class="btn btn-outline">حذف البيانات</button>
+                    class="btn btn-outline">حـذف</button>
         </div>
     </div>
     </form>

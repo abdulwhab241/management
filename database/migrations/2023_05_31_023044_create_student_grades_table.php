@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('attendance');
             $table->string('editorial');
             $table->string('total');
-            $table->longText('month');
+            $table->string('month');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();
