@@ -58,8 +58,8 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <th style="text-align: center;" class="alert-info">واجبـات</th>
 <th style="text-align: center;" class="alert-info">شفهـي</th>
 <th style="text-align: center;" class="alert-info">مـواظبـة</th>
-<th style="text-align: center;" class="alert-info">تحريري</th>
-<th style="text-align: center;" class="alert-info"> المحصـلة</th>
+<th style="text-align: center; background-color: #E7EEFB; font-weight:bolder;">تحريري</th>
+<th style="text-align: center; background-color: #FFC0D6; font-weight:bolder;"> المحصـلة</th>
 <th style="text-align: center; background-color: yellow; font-weight:bolder;" >محصـلـة شهـر</th>
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -94,7 +94,7 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
+            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف محصـلـة الطـالـب</h5>
         
         </div>
         <div class="modal-body">
@@ -119,6 +119,12 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 @endforeach
 </tbody>
 </table>
+
+<div class="footer">
+    <a href="{{ route('StudentGrades.print') }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+</div>
+
 </div>
 </div>
 

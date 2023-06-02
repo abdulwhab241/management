@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Teacher\StudentGradeController;
 use App\Http\Controllers\Teacher\TeacherClassesController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -54,6 +55,9 @@ Route::group(
 
         //==============================Teacher Result============================
         Route::resource('TeacherResult', 'TeacherResultController');
+
+        //==============================Teacher Classes============================
+        Route::resource('Teacher_Grades', StudentGradeController::class);
         
         //==============================Teacher Attendance============================
         Route::resource('TeacherAttendance', 'TeacherAttendanceController');

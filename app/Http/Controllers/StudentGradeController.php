@@ -31,6 +31,14 @@ class StudentGradeController extends Controller
         return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters'));
     }
 
+    
+    public function print()
+    {
+        $StudentGrade = StudentGrade::all();
+        return view('pages.Student_Grades.print', compact('StudentGrade'));
+    }
+
+
     public function store(StudentGradeRequest $request)
     {
         try

@@ -50,6 +50,9 @@
     <li><a href="{{ route('TeacherExams.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> الإختبـارات</a></li>
 </li>
 <li class="treeview">
+    <li><a href="{{ route('Teacher_Grades.index') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> كشـف درجـات الطـلاب</a></li>
+</li>
+<li class="treeview">
     <li><a href="{{ route('TeacherResult.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج</a></li>
 </li>
 <li class="treeview">
