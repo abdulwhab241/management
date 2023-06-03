@@ -14,7 +14,7 @@
 اضافة كشـف الـدرجـات
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 <li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-book"></i> قائمـة كشـف الـدرجـات </a></li>
 <li class="active">اضافة كشـف الـدرجـات</li>
 </ol>
@@ -36,7 +36,7 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Student_Grades.store','test')}}"  method="POST" >
+<form  action="{{route('Teacher_Grades.store','test')}}"  method="POST" >
 @csrf
 <div class="box-body">
 <div class="row">
@@ -60,7 +60,7 @@
         <label>أسـم الطـالـب</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option selected disabled>أختـر من القائمة...</option>
-            @foreach($Students as $Student)
+            @foreach($students as $Student)
                 <option value="{{$Student->id}}">{{$Student->name}}</option>
             @endforeach
         </select>                        
@@ -72,6 +72,7 @@
     </div>
 
 </div>
+
     <div class="col-md-3">
         <label>الواجبـات</label>
         <input type="number" value="{{ old('Homework') }}" name="Homework" class="form-control">

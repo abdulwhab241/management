@@ -36,9 +36,8 @@
 </div>
 @endif
 <div class="box-header">
-<button type="button" class="btn btn-primary btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
-اضافة كشـف الـدرجـات
-</button>
+<a class="btn btn-primary btn-flat" style="padding:5px; margin: 5px;" href="{{route('Teacher_Grades.create')}}">
+    اضافة كشـف الـدرجـات</a>
 <br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -46,6 +45,7 @@
 </div>
 </div>
 </div>
+
 
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
@@ -78,216 +78,17 @@
         <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
         <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
         <td>
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-            data-target="#edit{{ $Student_Grade->id }}"
-            title="تعديل"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student_Grade{{ $Student_Grade->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
         </td>
     </tr>
 
-    
-{{-- <!-- edit_modal_Grade -->
-<div class="modal fade" id="edit{{ $Student_Grade->id }}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-primary" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-id="exampleModalLabel">
-تعديل نتيجـة الطـالـب {{$Student_Grade->student->name}}
-</h5>
-</div>
-<div class="modal-body">
-<!-- add_form -->
-<form class="form-horizontal"  action="{{ route('TeacherResult.update', $Student_Grade->id ) }}" method="post">
-{{ method_field('patch') }}
-@csrf
-<div class="box-body">
 
-<div class="row">
-
-    <div class="col-md-4"> 
-        <label>أسـم الطـالـب </label>
-        <input id="id" type="hidden" name="id" class="form-control"
-        value="{{ $Student_Grade->id }}">
-        <select class="form-control select2" name="Student_id">
-            <option value="{{ $Student_Grade->student->id }}">
-                {{ $Student_Grade->student->name }}
-            </option>
-
-        </select>
-    </div>
-
-    <div class="col-md-4"> 
-        <label>المـادة</label>
-        <select class="form-control select2" name="Exam_id">
-            <option value="{{ $Student_Grade->exam->subject->id }}">
-                {{ $Student_Grade->exam->subject->name }}
-            </option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label >إختبـار شهـر</label>
-        <input type="text" value="{{ $Student_Grade->result_name }}" name="Result_name" class="form-control">
-    </div>
-</div><br>
-
-<div class="row">
-
-<div class="col-md-6">
-<label>الدرجـة التي حصـل عليـها</label>
-<input type="number" value="{{ $Student_Grade->marks_obtained }}" name="Marks" class="form-control">
-</div>
-
-<div class="col-md-6">
-    <label >التقـديـر</label>
-    <select class="form-control select2" name="Appreciation">
-        <option >{{$result->appreciation }}</option>
-        <option value="ممـتـاز">ممـتـاز</option>
-        <option value="جيـد جـداً">جيـد جـداً</option>
-        <option value="جيـد">جيـد</option>
-        <option value="مقبـول">مقبـول</option>
-        <option value="ضعيـف">ضعيـف</option>
-    </select>  
-</div>
-
-</div><br>
-
-
-</div>
-<div class="modal-footer">
-<button type="submit"
-class="btn btn-info btn-block">تـعديـل البيانات</button>
-</div>
-
-</form>
-
-</div>
-</div>
-</div>
-</div> --}}
-
-{{-- <!-- Delete modal -->
-<div class="modal fade" id="delete_Student_Grade{{$Student_Grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-danger" role="document">
-<form action="{{route('TeacherResult.destroy',$result->id)}}" method="post">
-{{method_field('delete')}}
-{{csrf_field()}}
-<div class="modal-content">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف إختبـار</h5>
-
-</div>
-<div class="modal-body">
-    <p> هل انت متاكد من عملية حذف نتيجـة الطـالـب  </p>
-    <input type="hidden" name="id"  value="{{$Student_Grade->id}}">
-    <input  type="text" style="font-weight: bolder; font-size:20px;"
-    name="Name_Section"
-    class="form-control"
-    value="{{$Student_Grade->student->name}}"
-    disabled>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-outline"
-            data-dismiss="modal">إغلاق</button>
-    <button type="submit"
-            class="btn btn-outline">حذف البيانات</button>
-</div>
-</div>
-</form>
-</div>
-</div> --}}
 
 @endforeach
 </tbody>
 </table>
 </div>
 </div>
-
-{{-- <!-- add_modal_class -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-primary" role="document">
-<div class="modal-content">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-اضافة نتيجـة
-</h5>
-</div>
-<div class="modal-body">
-
-<form class="form-horizontal" action="{{ route('TeacherResult.store') }}" method="POST">
-@csrf
-
-<div class="box-body">
-<div class="row">
-
-    <div class="col-md-4"> 
-        <label>أسـم الطـالـب</label>
-        <select class="form-control select2" name="Student_id">
-            <option  selected disabled>أختـر من القائمة...</option>
-            @foreach ($students as $Student)
-                <option value="{{ $Student->id }}">
-                    {{ $Student->name }}
-                </option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="col-md-4"> 
-        <label>المـادة</label>
-        <select class="form-control select2" name="Exam_id">
-            <option  selected disabled>أختـر من القائمة...</option>
-            @foreach ($exams as $Exam)
-                <option value="{{ $Exam->id }}">
-                    {{ $Exam->subject->name }}
-                </option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label >إختبـار شهـر</label>
-        <input type="text" value="{{ old('Result_name') }}" name="Result_name" class="form-control">
-    </div>
-</div><br>
-
-<div class="row">
-
-<div class="col-md-6"> 
-    <label>الدرجـة التي حصـل عليـها</label>
-    <input type="number" value="{{ old('Marks') }}" name="Marks" class="form-control">
-</div>
-
-<div class="col-md-6">
-    <label >التقـديـر</label>
-    <select class="form-control select2" name="Appreciation">
-        <option  selected disabled>أختـر من القائمة...</option>
-        <option value="ممـتـاز">ممـتـاز</option>
-        <option value="جيـد جـداً">جيـد جـداً</option>
-        <option value="جيـد">جيـد</option>
-        <option value="مقبـول">مقبـول</option>
-        <option value="ضعيـف">ضعيـف</option>
-    </select>  
-</div>
-
-</div><br>
-
-</div>
-
-<div class="modal-footer">
-    <button type="submit"
-    class="btn btn-info btn-block">حفظ البيانات</button>
-    </div>
-
-
-</form>
-</div>
-</div>
-</div>
-</div> --}}
 
 
 </div>

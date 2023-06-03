@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-اضافة كشـف الـدرجـات
+تعـديـل كشـف الـدرجـات
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-اضافة كشـف الـدرجـات
+تعـديـل كشـف درجـات الطـالـب  <label style="color: #5686E0">{{$StudentGrade->student->name}}</label>
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 <li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-book"></i> قائمـة كشـف الـدرجـات </a></li>
-<li class="active">اضافة كشـف الـدرجـات</li>
+<li class="active">تعـديـل كشـف الـدرجـات</li>
 </ol>
 </section>
 
@@ -36,14 +36,16 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Student_Grades.store','test')}}"  method="POST" >
-@csrf
+<form  action="{{route('Teacher_Grades.update','test')}}"  method="POST" >
+    @method('PUT')
+    @csrf
 <div class="box-body">
 <div class="row">
     <div class="col-md-3"> 
+        <input  type="hidden" name="id"  value="{{$StudentGrade->id}}" class="form-control">
         <label>الفصـل</label>
         <select class="form-control select2" style="width: 100%;" name="Semester_id">
-            <option selected disabled>أختـر من القائمة...</option>
+            <option value="{{$StudentGrade->semester_id}}">{{$StudentGrade->semester->name}}</option>
             @foreach($Semesters as $Semester)
                 <option value="{{$Semester->id}}">{{$Semester->name}}</option>
             @endforeach
@@ -59,7 +61,7 @@
         <div class="form-group">
         <label>أسـم الطـالـب</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
-            <option selected disabled>أختـر من القائمة...</option>
+            <option value="{{$StudentGrade->student_id}}">{{$StudentGrade->student->name}}</option>
             @foreach($Students as $Student)
                 <option value="{{$Student->id}}">{{$Student->name}}</option>
             @endforeach
@@ -74,7 +76,7 @@
 </div>
     <div class="col-md-3">
         <label>الواجبـات</label>
-        <input type="number" value="{{ old('Homework') }}" name="Homework" class="form-control">
+        <input type="number" value="{{ $StudentGrade->homework }}" name="Homework" class="form-control">
         @error('Homework')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -83,7 +85,7 @@
     </div>
     <div class="col-md-3">
         <label>شفهـي</label>
-        <input type="number" value="{{ old('Verbal') }}" name="Verbal" class="form-control">
+        <input type="number" value="{{ $StudentGrade->verbal }}" name="Verbal" class="form-control">
         @error('Verbal')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -96,7 +98,7 @@
 <div class="row">
     <div class="col-md-3">
         <label>مـواظبـة</label>
-        <input type="number" value="{{ old('Attendance') }}" name="Attendance" class="form-control">
+        <input type="number" value="{{ $StudentGrade->attendance }}" name="Attendance" class="form-control">
         @error('Attendance')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -106,7 +108,7 @@
 
     <div class="col-md-3">
         <label>تحريري</label>
-        <input type="number" value="{{ old('Editorial') }}" name="Editorial" class="form-control">
+        <input type="number" value="{{ $StudentGrade->editorial }}" name="Editorial" class="form-control">
         @error('Editorial')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -116,7 +118,7 @@
 
     <div class="col-md-3">
         <label>المحـصلـة</label>
-        <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
+        <input type="number" value="{{ $StudentGrade->total }}" name="Total" class="form-control">
         @error('Total')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -128,7 +130,7 @@
         <div class="form-group">
         <label>محصـلـة شـهـر</label>
         <select class="form-control select2" style="width: 100%;" name="Month">
-            <option selected disabled>أختـر من القائمة...</option>
+            <option >{{ $StudentGrade->month }}</option>
             <option value="فبراير">فبراير</option>
             <option value="مارس">مارس</option>
             <option value="ابريل">ابريل</option>
@@ -142,7 +144,7 @@
         </div>
         @enderror
     </div>
-    </div>
+
 </div>
     <br>
 

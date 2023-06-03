@@ -201,11 +201,10 @@ aria-hidden="true">
 
     <div class="col-md-4"> 
         <label>الصـف الدراسي</label>
-        <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
         <select class="form-control select2" name="Classroom_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Classrooms as $Classroom)
-                <option  value="{{ $Classroom->My_Classes->id }}" required>{{ $Classroom->My_Classes->name_class }}</option>
+                <option  value="{{ $Classroom->My_Classes->id }}" >{{ $Classroom->My_Classes->name_class }}</option>
             @endforeach
         </select>
     </div>
@@ -215,7 +214,7 @@ aria-hidden="true">
         <select class="form-control select2" name="Subject_id">
             <option  selected disabled>حدد المادة الدراسية...</option>
             @foreach ($subjects as $subject)
-                <option  value="{{ $subject->id }}" required>{{ $subject->name }}</option>
+                <option  value="{{ $subject->id }}" >{{ $subject->name }}</option>
             @endforeach
         </select>
     </div>

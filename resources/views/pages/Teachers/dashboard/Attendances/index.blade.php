@@ -44,7 +44,14 @@
 </div>
 @endif
 <div class="box-header">
-    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+            data-target="#attendance">إضـافـة تحضـير</button>
+<br>
+<div class="box-tools">
+<div class="input-group" style="width: 150px;">
+<h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
+</div>
+</div>
 </div>
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
@@ -63,25 +70,25 @@
 </tr>
 </thead>
 <tbody>
-@foreach ($attendances as $student)
+@foreach ($attendances as $Attendance)
 <tr>
 
-    <td>{{$student->day}}</td>
-    <td>{{$student->students->name}}</td>
-    <td>{{$student->classroom->name_class}}</td>
-    <td>{{$student->section->name_section}}</td>
-    <td>{{$student->attendance_date}}</td>
-    <td>{{$student->attendance_status}}</td>
+    <td>{{$Attendance->day}}</td>
+    <td>{{$Attendance->students->name}}</td>
+    <td>{{$Attendance->classroom->name_class}}</td>
+    <td>{{$Attendance->section->name_section}}</td>
+    <td>{{$Attendance->attendance_date}}</td>
+    <td>{{$Attendance->attendance_status}}</td>
     <td>
         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-        data-target="#edit{{ $student->id }}"
+        data-target="#edit{{ $Attendance->id }}"
         title="تعديل"><i class="fa fa-edit"></i></button>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $student->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $Attendance->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
     </td>
 </tr>
 
 <!-- edit_modal_Attendance -->
-<div class="modal fade" id="edit{{ $student->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="edit{{ $Attendance->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-primary" role="document">
 <div class="modal-content">
@@ -89,7 +96,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
     id="exampleModalLabel">
-    تعديل تحضـير الطـالـب <label style="color: rgb(15, 1, 1); font-size:15px; font-weight: bolder;"> {{$student->students->name}}</label>
+    تعديل تحضـير الطـالـب <label style="color: rgb(15, 1, 1); font-size:15px; font-weight: bolder;"> {{$Attendance->students->name}}</label>
 </h5>
 </div>
 <div class="modal-body">
@@ -99,13 +106,17 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     @csrf
     <div class="box-body">
         <div class="row">
-            <div class="col-md-6"> 
-                <input type="hidden" name="Student_id" value="{{ $student->id }}">
-                <input type="hidden" name="Classroom_id" value="{{ $student->classroom_id }}">
-                <input type="hidden" name="Section_id" value="{{ $student->section_id }}">
-                <label >الـيوم</label>
-                <select class="form-control select2" name="Day_id">
-                    <option >{{$student->day}}</option>
+            <div class="col-md-4"> 
+                <label >أسـم الطـالـب</label>
+                <select class="form-control select2" style="width: 100%;" name="Student_id">
+                    <option value="{{ $Attendance->student_id }}">
+                        {{ $Attendance->students->name }}
+                    </option>
+                    @foreach ($students as $student)
+                        <option value="{{  $student->id }}">
+                            {{  $student->name }}
+                        </option>
+                    @endforeach
                     <option value="السبت">السبت</option>
                     <option value="الاحد">الاحد</option>
                     <option value="الاثنين">الاثنين</option>
@@ -113,12 +124,23 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <option value="الاربعاء">الاربعاء</option>
                 </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4"> 
+                <label >الـيوم</label>
+                <select class="form-control select2" style="width: 100%;" name="Day_id">
+                    <option >{{$Attendance->day}}</option>
+                    <option value="السبت">السبت</option>
+                    <option value="الاحد">الاحد</option>
+                    <option value="الاثنين">الاثنين</option>
+                    <option value="الثلاثاء">الثلاثاء</option>
+                    <option value="الاربعاء">الاربعاء</option>
+                </select>
+            </div>
+            <div class="col-md-4">
                 <label >الـحالـة</label>
                 <input id="id" type="hidden" name="id" class="form-control"
-                value="{{ $student->id }}">
-                <select class="form-control select2" name="Attendance">
-                    <option >{{$student->attendance_status}}</option>
+                value="{{ $Attendance->id }}">
+                <select class="form-control select2" style="width: 100%;" name="Attendance">
+                    <option >{{$Attendance->attendance_status}}</option>
                     <option value="حـاضـر" required>حـاضـر</option>
                     <option value="غـائـب">غـائـب</option>
                 </select>
@@ -140,7 +162,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 
 <!-- delete_modal_Attendance -->
-<div class="modal fade" id="Delete_Attendance{{ $student->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="Delete_Attendance{{ $Attendance->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
 <div class="modal-content">
@@ -159,10 +181,10 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
         <h5 style="font-family: 'Cairo', sans-serif;"> هل انت متاكد من عملية حـذف تحضيـر الطـالـب ؟ </h5>
         <input id="Name" type="text" name="Name"
         class="form-control"
-        value="{{ $student->students->name }}"
+        value="{{ $Attendance->students->name }}"
         disabled>
         <input id="id" type="hidden" name="id" class="form-control"
-            value="{{ $student->id }}">
+            value="{{ $Attendance->id }}">
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline "
                         data-dismiss="modal">إغلاق</button>
@@ -181,6 +203,68 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 @endforeach
 </tbody>
 </table>
+</div>
+</div>
+
+<!-- add_modal_Attendance -->
+<div class="modal fade" id="attendance" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-primary" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+    id="exampleModalLabel">
+        تحضـير الطـلاب
+</h5>
+</div>
+<div class="modal-body">
+<!-- add_form -->
+<form class="form-horizontal"  action="{{ route('TeacherAttendance.store') }}" method="post">
+    @csrf
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-4"> 
+                <label >أسـم الطـالـب</label>
+                <select class="form-control select2" style="width: 100%;" name="Student_id">
+                    <option selected disabled>أختـر من القائمة...</option>
+                @foreach ($students as $student)
+                <option value="{{$student->id}}">{{$student->name}}</option>
+                @endforeach
+                </select>
+            </div>
+            <div class="col-md-4"> 
+                <label >الـيوم</label>
+                <select class="form-control select2" style="width: 100%;" name="Day_id">
+                    <option selected disabled>أختـر من القائمة...</option>
+                    <option value="السبت">السبت</option>
+                    <option value="الاحد">الاحد</option>
+                    <option value="الاثنين">الاثنين</option>
+                    <option value="الثلاثاء">الثلاثاء</option>
+                    <option value="الاربعاء">الاربعاء</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label >الـحالـة</label>
+                <select class="form-control select2" style="width: 100%;" name="Attendance">
+                    <option selected disabled>أختـر من القائمة...</option>
+                    <option value="حـاضـر" required>حـاضـر</option>
+                    <option value="غـائـب">غـائـب</option>
+                </select>
+            </div>
+
+        </div><br>
+
+    </div>
+    <div class="modal-footer">
+        <button type="submit"
+            class="btn btn-info btn-block">تـأكيـد</button>
+    </div>
+
+</form>
+
+</div>
+</div>
 </div>
 </div>
 

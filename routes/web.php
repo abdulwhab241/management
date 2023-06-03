@@ -123,6 +123,7 @@ Route::group(
             //==============================Students Grades============================
             Route::resource('Student_Grades', StudentGradeController::class);
             Route::get('/print_studentGrades/', [StudentGradeController::class, 'print']) -> name('StudentGrades.print');
+            Route::get('/edit_student_grade/{id}', [StudentGradeController::class, 'edit_notification']) -> name('edit_notification');
 
 
     });

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreignId('semester_id')->references('id')->on('semesters')->onDelete('cascade');
 
             $table->string('homework');

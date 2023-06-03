@@ -56,7 +56,7 @@ Route::group(
         //==============================Teacher Result============================
         Route::resource('TeacherResult', 'TeacherResultController');
 
-        //==============================Teacher Classes============================
+        //==============================Teacher Student Grades============================
         Route::resource('Teacher_Grades', StudentGradeController::class);
         
         //==============================Teacher Attendance============================

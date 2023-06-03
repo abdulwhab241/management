@@ -188,6 +188,31 @@
                 </a>
                 @endisset
 
+                @isset($Notification->data['add_student_grade_name'])
+                <a href="{{ route('Student_Grades.show',$Notification->data['add_student_grade_id']) }}">
+                    <h4 style="padding: 5px;">
+                        قـام الأستـاذ  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  بـإضـافـة محصـلة الطـالـب  
+                        <span> {{ $Notification->data['add_student_grade_name'] }}</span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['edit_student_grade_name'])
+                <a href="{{ route('edit_notification',$Notification->data['edit_student_grade_id']) }}">
+                    <h4 style="padding: 5px;">
+                        قـام الأستـاذ  {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 style="font-weight: bolder;">  بـتعـديـل محصـلة الطـالـب  
+                        <span> {{ $Notification->data['edit_student_grade_name'] }}</span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+        
                 </li><!-- end message -->
                 @endforeach
 

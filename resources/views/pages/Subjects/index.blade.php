@@ -73,7 +73,7 @@ aria-pressed="true">اضافة مادة جديدة</a>
 <td>{{$subject->teacher->name}}</td>
 <td>{{ $subject->create_by }}</td>
     <td>
-        <a href="{{route('Subjects.edit',$subject->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+        <a href="{{route('Subjects.edit',$subject->id)}}" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_subject{{ $subject->id }}" title="حذف"><i class="fa fa-trash"></i></button>
     </td>
 </tr>

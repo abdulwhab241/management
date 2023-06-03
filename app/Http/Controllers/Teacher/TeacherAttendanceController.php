@@ -7,7 +7,6 @@ use App\Models\Attendance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AttendanceRequest;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Student\StudentAttendanceNotification;
 
@@ -22,20 +21,37 @@ class TeacherAttendanceController extends Controller
         return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances'));
     }
 
-    public function store(AttendanceRequest $request)
+    public function store(Request $request)
     {
-// dd($request);
+        $request->validate([
+            'Student_id' => 'required|integer',
+            'Day_id' => 'required',
+            'Attendance' => 'required'
+        ]);
         try {
-            $Attendances = Attendance::updateOrCreate(
-                [
-                'day' => strip_tags($request->Day_id),
-                'student_id' => strip_tags($request->Student_id),
-                'classroom_id' => strip_tags($request->Classroom_id),
-                'section_id' => strip_tags($request->Section_id),
-                'attendance_date' => date('Y-m-d'),
-                'attendance_status' => strip_tags($request->Attendance),
-                'create_by' => auth()->user()->name
-            ]);
+
+            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
+
+            $Attendances = new Attendance();
+            $Attendances->day = strip_tags($request->Day_id);
+            $Attendances->student_id = strip_tags($request->Student_id);
+
+            foreach($classrooms as $classroom)
+            {
+                $Attendances->classroom_id = $classroom;
+            }
+
+            foreach($sections as $section)
+            {
+                $Attendances->section_id = $section;
+            }
+
+            $Attendances->attendance_date = date('Y-m-d');
+            $Attendances->attendance_status = strip_tags($request->Attendance);
+            $Attendances->create_by = auth()->user()->name;
+            $Attendances->save();
+
 
             $student = Student::where('id', '=', $Attendances->student_id)->get();
             $create_by = auth()->user()->name;
@@ -49,15 +65,30 @@ class TeacherAttendanceController extends Controller
         }
     }
 
-    public function update(AttendanceRequest $request)
+    public function update(Request $request)
     {
+        $request->validate([
+            'Student_id' => 'required|integer',
+            'Day_id' => 'required',
+            'Attendance' => 'required'
+        ]);
         try {
+            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
 
             $Attendances = Attendance::findOrFail($request->id);
             $Attendances->day = strip_tags($request->Day_id);
             $Attendances->student_id = strip_tags($request->Student_id);
-            $Attendances->classroom_id = strip_tags($request->Classroom_id);
-            $Attendances->section_id = strip_tags($request->Section_id);
+            foreach($classrooms as $classroom)
+            {
+                $Attendances->classroom_id = $classroom;
+            }
+
+            foreach($sections as $section)
+            {
+                $Attendances->section_id = $section;
+            }
+            
             $Attendances->attendance_date = date('Y-m-d');
             $Attendances->attendance_status = strip_tags($request->Attendance);
             $Attendances->create_by = auth()->user()->name;

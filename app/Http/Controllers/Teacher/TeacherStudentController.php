@@ -22,8 +22,7 @@ class TeacherStudentController extends Controller
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $sections = Section::whereIn('id', $ids)->get();
-        $Attendances = Attendance::all();
-        return view('pages.Teachers.dashboard.sections.index', compact('sections','Attendances'));
+        return view('pages.Teachers.dashboard.sections.index', compact('sections'));
     }
     
 

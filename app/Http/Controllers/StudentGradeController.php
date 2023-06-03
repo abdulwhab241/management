@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\Semester;
 use App\Models\StudentGrade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StudentGradeRequest;
 
 class StudentGradeController extends Controller
@@ -29,6 +30,22 @@ class StudentGradeController extends Controller
         $Students = Student::all();
         $Semesters = Semester::all();
         return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters'));
+    }
+
+    public function show($id)
+    {
+        $StudentGrade = StudentGrade::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->add_student_grade_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Student_Grades.notification', compact('StudentGrade'));
+    }
+
+    public function edit_notification($id)
+    {
+        $StudentGrade = StudentGrade::findOrFail($id);
+        $get_id = DB::table('notifications')->where('data->edit_student_grade_id',$id)->pluck('id');
+        DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
+        return view('pages.Student_Grades.edit_notification', compact('StudentGrade'));
     }
 
     

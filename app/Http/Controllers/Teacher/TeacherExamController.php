@@ -6,7 +6,7 @@ use App\Models\Exam;
 use App\Models\Section;
 use App\Models\Subject;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\QuizRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TeacherExamController extends Controller
@@ -20,8 +20,13 @@ class TeacherExamController extends Controller
         return view('pages.Teachers.dashboard.Exams.index', compact('exams','subjects','Classrooms'));
     }
 
-    public function store(QuizRequest $request)
+    public function store(Request $request)
     {
+        $request->validate([
+            'Classroom_id' => 'required|integer',
+            'Subject_id' => 'required|integer',
+            'Total' => 'required'
+        ]);
         try {
             $exams = new Exam();
             $exams->classroom_id = strip_tags($request->Classroom_id);
@@ -39,14 +44,18 @@ class TeacherExamController extends Controller
         }
     }
 
-    public function update(QuizRequest $request)
+    public function update(Request $request)
     {
+        $request->validate([
+            'Classroom_id' => 'required|integer',
+            'Subject_id' => 'required|integer',
+            'Total' => 'required'
+        ]);
         try {
             $exam = Exam::findOrFail($request->id);
             $exam->classroom_id = strip_tags($request->Classroom_id);
             $exam->teacher_id = auth()->user()->id;
             $exam->subject_id = strip_tags($request->Subject_id);
-            // // $exam->exam_name = strip_tags($request->Exam_name);
             $exam->exam_date = date('Y-m-d');
             $exam->total_marks = strip_tags($request->Total);
             $exam->create_by = auth()->user()->name;

@@ -73,7 +73,7 @@
                 @foreach($Genders as $Gender)
                 <option
                     value="{{$Gender->id}}" {{$Gender->id == $Students->gender_id ?'selected':''}}>{{$Gender->name }}</option>
-            @endforeach
+                @endforeach
                 </select>                        
                 @error('Gender_id')
                 <div class=" alert-danger">
