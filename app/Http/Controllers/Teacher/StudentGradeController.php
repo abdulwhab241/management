@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Models\User;
+use App\Models\Section;
 use App\Models\Student;
 use App\Models\Semester;
 use App\Models\StudentGrade;
@@ -19,8 +20,8 @@ class StudentGradeController extends Controller
     public function index()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $Student_Grades = StudentGrade::whereIn('section_id', $ids)->get();
-        return view('pages.Teachers.dashboard.StudentGrades.index',compact('Student_Grades'));
+        $Classrooms = Section::with(['StudentGrades'])->whereIn('id', $ids)->get();
+        return view('pages.Teachers.dashboard.StudentGrades.index',compact('Classrooms'));
 
 
     }
@@ -43,20 +44,32 @@ class StudentGradeController extends Controller
         return view('pages.Teachers.dashboard.StudentGrades.edit', compact('Students','StudentGrade','Semesters'));
     }
 
+    public function print($id)
+    {
+        $Classrooms = Section::with(['StudentGrades'])->findOrFail( $id);
+        return view('pages.Teachers.dashboard.StudentGrades.print', compact('Classrooms'));
+    }
+
     
     public function store(StudentGradeRequest $request)
     {
         try
         {
             $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
 
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
             $StudentGrade->semester_id = strip_tags($request->Semester_id);
 
-            foreach ($sections as $student){
-            $StudentGrade->section_id = $student;
+            foreach ($sections as $section){
+                $StudentGrade->section_id = $section;
             }
+
+            // foreach ($classrooms as $classroom){
+            //     $StudentGrade->classroom_id = $classroom;
+            // }
+    
 
             $StudentGrade->homework = strip_tags($request->Homework);
             $StudentGrade->verbal = strip_tags($request->Verbal);
@@ -91,15 +104,21 @@ class StudentGradeController extends Controller
         
     try {
         $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+        // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
 
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
         $StudentGrade->student_id = strip_tags($request->Student_id);
         $StudentGrade->semester_id = strip_tags($request->Semester_id);
 
-        foreach ($sections as $student){
-            $StudentGrade->section_id = $student;
-            }
+        foreach ($sections as $section){
+            $StudentGrade->section_id = $section;
+        }
+
+        // foreach ($classrooms as $classroom){
+        //     $StudentGrade->classroom_id = $classroom;
+        // }
+
 
         $StudentGrade->homework = strip_tags($request->Homework);
         $StudentGrade->verbal = strip_tags($request->Verbal);

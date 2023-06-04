@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Grade;
 use App\Models\Teacher;
 use App\Models\Classroom;
+use App\Models\StudentGrade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,5 +34,10 @@ class Section extends Model
     public function Grades()
     {
         return $this->belongsTo(Grade::class,'grade_id');
+    }
+
+    public function StudentGrades()
+    {
+        return $this->hasMany(StudentGrade::class, 'section_id');
     }
 }

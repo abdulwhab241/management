@@ -58,6 +58,7 @@ Route::group(
 
         //==============================Teacher Student Grades============================
         Route::resource('Teacher_Grades', StudentGradeController::class);
+        Route::get('/print_Teacher_Grades/{id}', [StudentGradeController::class, 'print']) -> name('Teacher_Grades.print');
         
         //==============================Teacher Attendance============================
         Route::resource('TeacherAttendance', 'TeacherAttendanceController');

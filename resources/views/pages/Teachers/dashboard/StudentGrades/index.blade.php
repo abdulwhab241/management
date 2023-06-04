@@ -48,47 +48,81 @@
 
 
 <div class="box-body">
-<div class="box-body table-responsive no-padding">
-<table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
-<thead>
-<tr>
-    <th style="text-align: center; background-color: yellow;" >محصـلـة شهـر</th>
-    <th style="text-align: center; background-color: #D0DEF6;">الفـصل</th>
-    <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;">واجبـات</th>
-    <th style="text-align: center; background-color: #D0DEF6;">شفهـي</th>
-    <th style="text-align: center; background-color: #D0DEF6;">مـواظبـة</th>
-    <th style="text-align: center; background-color: #E7EEFB;">تحريري</th>
-    <th style="text-align: center; background-color: #FFC0D6;"> المحصـلة</th>
-    <th style="text-align: center;" class="alert-warning">العمليات</th>
+<div class="row">
+<div class="card-body">
 
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+@foreach ($Classrooms as $Classroom)
 
-</tr>
-</thead>
-<tbody>
+<div class="panel panel-info">
 
-@foreach($Student_Grades as $Student_Grade)
-    <tr>
-        <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
-        <td>{{$Student_Grade->semester->name}}</td>
-        <td>{{$Student_Grade->student->name}}</td>
-        <td>{{$Student_Grade->homework }}</td>
-        <td>{{$Student_Grade->verbal}}</td>
-        <td>{{ $Student_Grade->attendance }}</td>
-        <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
-        <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
-        <td>
-            <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
-        </td>
-    </tr>
+<div class="panel-heading" role="tab" id="heading">
+<h4 class="panel-title">
+    <a class="collapsed " role="button" data-toggle="collapse"  data-parent="#selector" href="#collapse" aria-expanded="false" aria-controls="collapse">
+        {{ $Classroom->My_Classes->name_class }} , الـشـعبـة: {{ $Classroom->name_section }} 
+    </a>
+</h4>
+</div>
+<div id="collapse" class="panel-collapse collapse in" role="tab" aria-labelledby="heading">
+<div class="panel-body">
 
+    <div class="box-body">
+        <div class="box-body table-responsive no-padding">
+        <table  class="table" style="width:100%; text-align: center;">
+        <thead>
+        <tr>
+            <th style="text-align: center; background-color: yellow;" >محصـلـة شهـر</th>
+            <th style="text-align: center; background-color: #D0DEF6;">الفـصل</th>
+            <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
+            <th style="text-align: center; background-color: #D0DEF6;">واجبـات</th>
+            <th style="text-align: center; background-color: #D0DEF6;">شفهـي</th>
+            <th style="text-align: center; background-color: #D0DEF6;">مـواظبـة</th>
+            <th style="text-align: center; background-color: #E7EEFB;">تحريري</th>
+            <th style="text-align: center; background-color: #FFC0D6;"> المحصـلة</th>
+            <th style="text-align: center;" class="alert-warning">العمليات</th>
+        
+        
+        </tr>
+        </thead>
+        <tbody>
+        
+        @foreach($Classroom->StudentGrades as $Student_Grade)
+            <tr>
+                <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
+                <td>{{$Student_Grade->semester->name}}</td>
+                <td>{{$Student_Grade->student->name}}</td>
+                <td>{{$Student_Grade->homework }}</td>
+                <td>{{$Student_Grade->verbal}}</td>
+                <td>{{ $Student_Grade->attendance }}</td>
+                <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
+                <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
+                <td>
+                    <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                </td>
+            </tr>
+        
+        
+        
+        @endforeach
+        </tbody>
+        </table>
 
+        <div class="footer">
+            <a href="{{ route('Teacher_Grades.print',$Classroom->id) }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+                <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+        </div>
 
+        </div>
+        </div>
+
+    </div>
+    </div>
+</div>
 @endforeach
-</tbody>
-</table>
 </div>
 </div>
+</div>
+</div><!--box -->
 
 
 </div>

@@ -60,8 +60,20 @@ class StudentGradeController extends Controller
     {
         try
         {
+            // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
+            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
+
+            foreach ($sections as $section){
+                $StudentGrade->section_id = $section;
+            }
+
+            // foreach ($classrooms as $classroom){
+            //     $StudentGrade->classroom_id = $classroom;
+            // }
+
             $StudentGrade->semester_id = strip_tags($request->Semester_id);
             $StudentGrade->homework = strip_tags($request->Homework);
             $StudentGrade->verbal = strip_tags($request->Verbal);
@@ -86,9 +98,21 @@ class StudentGradeController extends Controller
     {
         
     try {
+        // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
+        $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+        
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
         $StudentGrade->student_id = strip_tags($request->Student_id);
+
+        foreach ($sections as $section){
+            $StudentGrade->section_id = $section;
+        }
+
+        // foreach ($classrooms as $classroom){
+        //     $StudentGrade->classroom_id = $classroom;
+        // }
+
         $StudentGrade->semester_id = strip_tags($request->Semester_id);
         $StudentGrade->homework = strip_tags($request->Homework);
         $StudentGrade->verbal = strip_tags($request->Verbal);

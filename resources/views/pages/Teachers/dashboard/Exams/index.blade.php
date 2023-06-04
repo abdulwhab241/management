@@ -97,14 +97,13 @@ id="exampleModalLabel">
         <label>الصـف الدراسي</label>
         <input id="id" type="hidden" name="id" class="form-control"
         value="{{ $exam->id }}">
-        <input type="hidden" name="Teacher_id" value="{{ auth()->user()->id }}">
-        <select class="form-control select2" name="Classroom_id">
+        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
             <option value="{{ $exam->classroom->id }}">
                 {{ $exam->classroom->name_class }}
             </option>
             @foreach ($Classrooms as $Classroom)
                 <option value="{{  $Classroom->My_Classes->id }}">
-                    {{  $Classroom->My_Classes->name_class }}
+                    {{  $Classroom->My_Classes->name_class }} , {{ $Classroom->name_section }}
                 </option>
             @endforeach
         </select>
@@ -112,7 +111,7 @@ id="exampleModalLabel">
 
     <div class="col-md-4"> 
         <label>المـادة</label>
-        <select class="form-control select2" name="Subject_id">
+        <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option value="{{ $exam->subject->id }}">
                 {{ $exam->subject->name }}
             </option>
@@ -124,7 +123,7 @@ id="exampleModalLabel">
         </select>
     </div>
     <div class="col-md-4">
-        <label for="inputEmail4">الـدرجـة</label>
+        <label>الـدرجـة</label>
         <input type="number" value="{{ $exam->total_marks }}" name="Total" class="form-control">
     </div>
 </div><br>
@@ -201,17 +200,17 @@ aria-hidden="true">
 
     <div class="col-md-4"> 
         <label>الصـف الدراسي</label>
-        <select class="form-control select2" name="Classroom_id">
+        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Classrooms as $Classroom)
-                <option  value="{{ $Classroom->My_Classes->id }}" >{{ $Classroom->My_Classes->name_class }}</option>
+                <option  value="{{ $Classroom->My_Classes->id }}" >{{ $Classroom->My_Classes->name_class }} , {{ $Classroom->name_section }}</option>
             @endforeach
         </select>
     </div>
 
     <div class="col-md-4"> 
         <label>المـادة</label>
-        <select class="form-control select2" name="Subject_id">
+        <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option  selected disabled>حدد المادة الدراسية...</option>
             @foreach ($subjects as $subject)
                 <option  value="{{ $subject->id }}" >{{ $subject->name }}</option>
@@ -219,7 +218,7 @@ aria-hidden="true">
         </select>
     </div>
     <div class="col-md-4">
-        <label for="inputEmail4">الـدرجـة</label>
+        <label>الـدرجـة</label>
         <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
     </div>
 </div><br>
@@ -227,9 +226,8 @@ aria-hidden="true">
 </div>
 
 <div class="modal-footer">
-    <button type="submit"
-    class="btn btn-info btn-block">حفظ البيانات</button>
-    </div>
+<button type="submit" class="btn btn-info btn-block">حفظ البيانات</button>
+</div>
 
 
 </form>
