@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Models\Section;
 use App\Models\Student;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
@@ -16,9 +17,16 @@ class TeacherAttendanceController extends Controller
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students = Student::whereIn('section_id', $ids)->get();
-        $attendances = Attendance::whereIn('section_id', $ids)->get();
+        $attendances = Section::with(['StudentAttendances'])->whereIn('id', $ids)->get();
     
         return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances'));
+    }
+
+    public function create()
+    {
+        $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
+        $students = Student::whereIn('section_id', $ids)->get();
+        return view('pages.Teachers.dashboard.Attendances.add', compact('students'));
     }
 
     public function store(Request $request)
@@ -59,7 +67,7 @@ class TeacherAttendanceController extends Controller
             Notification::send($student, new StudentAttendanceNotification($Attendances->id,$create_by,$Attendances->day));
 
             toastr()->success('تـم إضـافـة التحضيـر بنجـاح');
-            return redirect()->back();
+            return redirect()->route('TeacherAttendance.create');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }

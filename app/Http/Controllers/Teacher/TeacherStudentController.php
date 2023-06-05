@@ -14,7 +14,7 @@ class TeacherStudentController extends Controller
     public function index()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students = Section::with(['Students'])->whereIn('id', $ids)->get();
         return view('pages.Teachers.dashboard.students.index', compact('students'));
     }
 

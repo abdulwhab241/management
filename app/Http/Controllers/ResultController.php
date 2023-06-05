@@ -36,10 +36,16 @@ class ResultController extends Controller
     {
         try
         {
+            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
 
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
+
+            foreach ($sections as $section){
+                $Exam->section_id = $section;
+            }
+
             $Exam->result_name = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
@@ -68,9 +74,17 @@ class ResultController extends Controller
     {
         try
         {
+            // dd($request);
+            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            
             $Exam = Result::findOrFail($request->id);
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
+
+            foreach ($sections as $section){
+                $Exam->section_id = $section;
+            }
+
             $Exam->result_name = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);

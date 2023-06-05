@@ -104,7 +104,6 @@
                     <div class="row">
 
                         <div class="col-md-4"> 
-                            <div class="form-group">
                             <label>أسـم الطـالـب </label>
                             <input id="id" type="hidden" name="id" class="form-control"
                             value="{{ $Result->id }}">
@@ -112,13 +111,10 @@
                                 <option value="{{ $Result->student->id }}">
                                     {{ $Result->student->name }}
                                 </option>
-            
                             </select>
-                        </div>
                         </div>
                 
                         <div class="col-md-4"> 
-                            <div class="form-group">
                             <label>المـادة</label>
                             <select class="form-control select2" style="width: 100%;" name="Exam_id">
                                 <option value="{{ $Result->exam->subject->id }}">
@@ -126,10 +122,17 @@
                                 </option>
                             </select>
                         </div>
-                        </div>
                         <div class="col-md-4">
                             <label >إختبـار شهـر</label>
-                            <input type="text" value="{{ $Result->result_name }}" name="Result_name" class="form-control">
+                            <select class="form-control select2" style="width: 100%;" name="Result_name">
+                                <option> {{ $Result->result_name }} </option>
+                                <option value="فبراير">فبراير</option>
+                                <option value="مارس">مارس</option>
+                                <option value="ابريل">ابريل</option>
+                                <option value="اكتوبر">اكتوبر</option>
+                                <option value="نوفمبر">نوفمبر</option>
+                                <option value="ديسمبر">ديسمبر</option>
+                            </select>
                         </div>
                 </div><br>
                 
@@ -141,7 +144,6 @@
                     </div>
                     
                     <div class="col-md-6">
-                        <div class="form-group">
                         <label >التقـديـر</label>
                         <select class="form-control select2" style="width: 100%;" name="Appreciation">
                             <option >{{$Result->appreciation }}</option>
@@ -151,12 +153,11 @@
                             <option value="مقبـول">مقبـول</option>
                             <option value="ضعيـف">ضعيـف</option>
                         </select> 
-                    </div> 
                     </div>
                 
                 </div>
                 
-                </div>
+                </div><br>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger"
                     data-dismiss="modal">إغلاق</button>
@@ -229,7 +230,6 @@ aria-hidden="true">
     <div class="row">
 
         <div class="col-md-4"> 
-            <div class="form-group">
             <label>أسـم الطـالـب</label>
             <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -240,10 +240,8 @@ aria-hidden="true">
                 @endforeach
             </select>
         </div>
-        </div>
 
         <div class="col-md-4"> 
-            <div class="form-group">
             <label>المـادة</label>
             <select class="form-control select2" style="width: 100%;" name="Exam_id">
                 <option  selected disabled>أختـر من القائمة...</option>
@@ -254,12 +252,18 @@ aria-hidden="true">
                 @endforeach
             </select>
         </div>
-        </div>
         <div class="col-md-4">
             
             <label >إختبـار شهـر</label>
-            <input type="text" value="{{ old('Result_name') }}" name="Result_name" class="form-control">
-        
+            <select class="form-control select2" style="width: 100%;" name="Result_name">
+                <option  selected disabled>أختـر من القائمة...</option>
+                <option value="فبراير">فبراير</option>
+                <option value="مارس">مارس</option>
+                <option value="ابريل">ابريل</option>
+                <option value="اكتوبر">اكتوبر</option>
+                <option value="نوفمبر">نوفمبر</option>
+                <option value="ديسمبر">ديسمبر</option>
+            </select>        
         </div>
 </div><br>
 
@@ -288,7 +292,7 @@ aria-hidden="true">
 
 </div>
 
-</div>
+</div><br>
 <div class="modal-footer">
     <button type="button" class="btn btn-danger"
     data-dismiss="modal">إغلاق</button>

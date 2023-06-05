@@ -56,7 +56,7 @@
 
 <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب </th>
 <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
-<th style="text-align: center;  background-color: #D0DEF6;" >إختبـار شهـر </th>
+<th style="text-align: center;  background-color: yellow; font-weight:bolder;" >نتيـجـة إختبـار شهـر </th>
 <th style="text-align: center;  background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها </th>
 <th style="text-align: center;  background-color: #D0DEF6;" >التقـديـر </th>
 <th style="text-align: center;" class="alert-warning">العمليـات</th>
@@ -69,7 +69,7 @@
     <tr>
         <td>{{$result->student->name}}</td>
         <td>{{$result->exam->subject->name}}</td>
-        <td>{{$result->result_name}}</td>
+        <td style="background-color: yellow; font-weight:bolder;">{{$result->result_name}}</td>
         <td>{{$result->marks_obtained}}</td>
         <td>{{$result->appreciation}}</td>
         <td>

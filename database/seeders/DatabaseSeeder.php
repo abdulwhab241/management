@@ -22,11 +22,14 @@ class DatabaseSeeder extends Seeder
         $this->call(GenderSeeder::class);
         $this->call(SpecializationSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(SemesterSeeder::class);
         $this->call(GradeSeeder::class);
         $this->call(ClassroomSeeder::class);
         $this->call(SectionSeeder::class);
         $this->call(FeeSeeder::class);
         $this->call(StudentSeeder::class);
         $this->call(TeacherSeeder::class);
+        $this->call(SubjectSeeder::class);
+        $this->call(TestSeeder::class);
     }
 }

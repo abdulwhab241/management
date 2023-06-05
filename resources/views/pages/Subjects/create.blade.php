@@ -34,7 +34,6 @@
     </button>
 </div>
 @endif
-</div><!-- /.box-header -->
 
 <form  action="{{route('Subjects.store','test')}}"  method="POST" >
 @csrf
@@ -122,6 +121,8 @@
 </form>
 
 
+</div>
+</div>
 </div>
 </section><!-- /.content -->
 

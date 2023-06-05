@@ -25,14 +25,15 @@ class TeacherExamController extends Controller
         $request->validate([
             'Classroom_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'Total' => 'required'
+            'Total' => 'required',
+            'Exam_Date' => 'required',
         ]);
         try {
             $exams = new Exam();
             $exams->classroom_id = strip_tags($request->Classroom_id);
             $exams->teacher_id = auth()->user()->id;
             $exams->subject_id = strip_tags($request->Subject_id);
-            $exams->exam_date = date('Y-m-d');
+            $exams->exam_date = strip_tags($request->Exam_Date);
             $exams->total_marks = strip_tags($request->Total);
             $exams->create_by = auth()->user()->name;
             $exams->save();
@@ -49,14 +50,15 @@ class TeacherExamController extends Controller
         $request->validate([
             'Classroom_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'Total' => 'required'
+            'Total' => 'required',
+            'Exam_Date' => 'required',
         ]);
         try {
             $exam = Exam::findOrFail($request->id);
             $exam->classroom_id = strip_tags($request->Classroom_id);
             $exam->teacher_id = auth()->user()->id;
             $exam->subject_id = strip_tags($request->Subject_id);
-            $exam->exam_date = date('Y-m-d');
+            $exam->exam_date = strip_tags($request->Exam_Date);
             $exam->total_marks = strip_tags($request->Total);
             $exam->create_by = auth()->user()->name;
             $exam->save();

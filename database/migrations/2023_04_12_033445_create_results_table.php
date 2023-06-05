@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');
             $table->bigInteger('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
+
             $table->string('result_name');
             $table->integer('marks_obtained');
             $table->string('appreciation');

@@ -3,8 +3,11 @@
 namespace App\Models;
 
 use App\Models\Grade;
+use App\Models\Result;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Classroom;
+use App\Models\Attendance;
 use App\Models\StudentGrade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -39,5 +42,20 @@ class Section extends Model
     public function StudentGrades()
     {
         return $this->hasMany(StudentGrade::class, 'section_id');
+    }
+
+    public function Results()
+    {
+        return $this->hasMany(Result::class, 'section_id');
+    }
+
+    public function Students()
+    {
+        return $this->hasMany(Student::class, 'section_id');
+    }
+
+    public function StudentAttendances()
+    {
+        return $this->hasMany(Attendance::class, 'section_id');
     }
 }
