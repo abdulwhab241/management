@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Teacher\StudentGradeController;
+use App\Http\Controllers\Teacher\TeacherResultController;
 use App\Http\Controllers\Teacher\TeacherClassesController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -55,6 +56,7 @@ Route::group(
 
         //==============================Teacher Result============================
         Route::resource('TeacherResult', 'TeacherResultController');
+        Route::get('/print_Teacher_Results/{id}', [TeacherResultController::class, 'print']) -> name('TeacherResult.print');
 
         //==============================Teacher Student Grades============================
         Route::resource('Teacher_Grades', StudentGradeController::class);

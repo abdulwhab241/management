@@ -18,7 +18,7 @@ class StudentResultController extends Controller
     public function show($id)
     {
         $Results = Result::findOrFail($id);
-        $get_id = DB::table('notifications')->where('data->student_result_id',$id)->pluck('id');
+        $get_id = DB::table('notifications')->where('data->teacher_result_id',$id)->pluck('id');
         DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
         return view('pages.Students.information.result', compact('Results'));
     }

@@ -14,7 +14,7 @@
 نتيجـة إختبـار  <label style="color: #5686E0">{{$Results->exam->subject->name}}</label>
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 <li class="active">نتيجـة الإختبـار</li>
 </ol>
 </section>

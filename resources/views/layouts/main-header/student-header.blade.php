@@ -29,17 +29,17 @@
                 @foreach (Auth::User()->unreadNotifications as $Notification)
                 <li><!-- start message -->
 
-                @isset($Notification->data['student_result_name'])
+                {{-- @isset($Notification->data['student_result_name'])
                 <a href="{{ route('StudentResult.show',$Notification->data['student_result_id']) }}">
                     <h4>
-                        {{-- تـم بـواسطـة  {{$Notification->data['create_by']}}  --}}
+                        تـم بـواسطـة  {{$Notification->data['create_by']}} 
                     </h4>
                     <h5 style="font-weight: bolder;">     اضـاف
                         <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['student_result_name'] }}</span>
                             نتيجـة الإختبـار </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
-                @endisset
+                @endisset --}}
 
                 @isset($Notification->data['student_receipt_name'])
                 <a href="{{ route('receipt',$Notification->data['student_receipt_id']) }}">
@@ -60,6 +60,18 @@
                     </h4>
                     <h5 >     بالتحضـير ليـوم  
                         <span style="font-weight: bolder; padding:5px;">  {{ $Notification->data['student_attendance_name'] }}  </span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['teacher_result_name'])
+                <a href="{{ route('StudentResult.show',$Notification->data['teacher_result_id']) }}">
+                    <h4>
+                        قـام الأستـاذ   {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 >     بـإضـأفـة نتيـجـتك لشـهر  
+                        <span style="font-weight: bolder; padding:5px;">  {{ $Notification->data['teacher_result_month'] }}  </span>
                     </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>

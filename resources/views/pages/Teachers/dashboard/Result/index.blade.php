@@ -20,25 +20,18 @@
 </ol>
 </section>
 
+
 <!-- Main content -->
-<section class="content">
+<section class="content" dir="rtl">
 
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-@if ($errors->any())
-<div class="alert alert-danger">
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-</div>
-@endif
+
 <div class="box-header">
-<button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
-اضافة نتيجـة
-</button>
+
+<a class="btn btn-primary btn-flat" style="padding:5px; margin: 5px;" href="{{route('TeacherResult.create')}}">
+    اضافة نتيجـة</a>
 <br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -47,42 +40,63 @@
 </div>
 </div>
 
+
 <div class="box-body">
-<div class="box-body table-responsive no-padding">
-<table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
-<thead>
-<tr>
+<div class="row">
+<div class="card-body">
 
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+@foreach ($results as $result)
 
-<th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب </th>
-<th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
-<th style="text-align: center;  background-color: yellow; font-weight:bolder;" >نتيـجـة إختبـار شهـر </th>
-<th style="text-align: center;  background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها </th>
-<th style="text-align: center;  background-color: #D0DEF6;" >التقـديـر </th>
-<th style="text-align: center;" class="alert-warning">العمليـات</th>
+<div class="panel panel-info">
 
-</tr>
-</thead>
-<tbody>
+<div class="panel-heading" role="tab" id="heading">
+<h4 class="panel-title" style="font-weight: bolder;">
+<a class="collapsed " role="button" data-toggle="collapse"  data-parent="#selector" href="#collapse" aria-expanded="false" aria-controls="collapse">
+    {{ $result->My_Classes->name_class }} , الـشـعبـة: {{ $result->name_section }} 
+</a>
+</h4>
+</div>
+<div id="collapse" class="panel-collapse collapse in" role="tab" aria-labelledby="heading">
+<div class="panel-body">
 
-@foreach($results as $result)
+<div class="box-body">
+    <div class="box-body table-responsive no-padding">
+    <table  class="table" style="width:100%; text-align: center;">
+        <caption style="font-weight: bolder; text-align:center; color:black; background-color: #E7EEFB;">
+            {{ $result->My_Classes->name_class }} , الـشـعبـة: {{ $result->name_section }} 
+        </caption>
+    <thead>
     <tr>
-        <td>{{$result->student->name}}</td>
-        <td>{{$result->exam->subject->name}}</td>
-        <td style="background-color: yellow; font-weight:bolder;">{{$result->result_name}}</td>
-        <td>{{$result->marks_obtained}}</td>
-        <td>{{$result->appreciation}}</td>
-        <td>
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-            data-target="#edit{{ $result->id }}"
-            title="تعديل"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $result->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-        </td>
-    </tr>
-
+        <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة </th>
+        <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
+        <th style="text-align: center;  background-color: yellow; font-weight:bolder;" >نتيـجـة إختبـار شهـر </th>
+        <th style="text-align: center;  background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها </th>
+        <th style="text-align: center;  background-color: #D0DEF6;" >التقـديـر </th>
+        <th style="text-align: center;" class="alert-warning">العمليـات</th>
     
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($result->Results as $Result)
+        <tr>
+
+            <td>{{$Result->student->name}}</td>
+            <td>{{$Result->exam->subject->name}}</td>
+            <td style="background-color: yellow; font-weight:bolder;">{{$Result->result_name}}</td>
+            <td>{{$Result->marks_obtained}}</td>
+            <td style="font-weight: bolder; background-color: #D0DEF6;">{{$Result->appreciation}}</td>
+            <td>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                data-target="#edit{{ $Result->id }}"
+                title="تعديل"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Result->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+
+            
 <!-- edit_modal_Grade -->
-<div class="modal fade" id="edit{{ $result->id }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="edit{{ $Result->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-primary" role="document">
 <div class="modal-content">
@@ -90,12 +104,12 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
 id="exampleModalLabel">
-تعديل نتيجـة الطـالـب {{$result->student->name}}
+تعديل نتيجـة الطـالـب {{$Result->student->name}}
 </h5>
 </div>
 <div class="modal-body">
 <!-- add_form -->
-<form class="form-horizontal"  action="{{ route('TeacherResult.update', $result->id ) }}" method="post">
+<form class="form-horizontal"  action="{{ route('TeacherResult.update','test' ) }}" method="post">
 {{ method_field('patch') }}
 @csrf
 <div class="box-body">
@@ -103,12 +117,12 @@ id="exampleModalLabel">
 <div class="row">
 
     <div class="col-md-4"> 
-        <label>أسـم الطـالـب </label>
+        <label>أسـم الطـالـب \ الطـالبـة </label>
         <input id="id" type="hidden" name="id" class="form-control"
-        value="{{ $result->id }}">
-        <select class="form-control select2" name="Student_id">
-            <option value="{{ $result->student->id }}">
-                {{ $result->student->name }}
+        value="{{ $Result->id }}">
+        <select class="form-control select2" style="width: 100%;" name="Student_id">
+            <option value="{{ $Result->student->id }}">
+                {{ $Result->student->name }}
             </option>
 
         </select>
@@ -116,15 +130,28 @@ id="exampleModalLabel">
 
     <div class="col-md-4"> 
         <label>المـادة</label>
-        <select class="form-control select2" name="Exam_id">
-            <option value="{{ $result->exam->subject->id }}">
-                {{ $result->exam->subject->name }}
+        <select class="form-control select2" style="width: 100%;" name="Exam_id">
+            <option value="{{ $Result->exam->subject->id }}">
+                {{ $Result->exam->subject->name }}
             </option>
+            @foreach ($exams as $Exam)
+            <option value="{{ $Exam->id }}">
+                {{ $Exam->subject->name }}
+            </option>
+        @endforeach
         </select>
     </div>
     <div class="col-md-4">
         <label >إختبـار شهـر</label>
-        <input type="text" value="{{ $result->result_name }}" name="Result_name" class="form-control">
+        <select class="form-control select2" style="width: 100%;" name="Result_name">
+            <option> {{ $Result->result_name }} </option>
+            <option value="فبراير">فبراير</option>
+            <option value="مارس">مارس</option>
+            <option value="ابريل">ابريل</option>
+            <option value="اكتوبر">اكتوبر</option>
+            <option value="نوفمبر">نوفمبر</option>
+            <option value="ديسمبر">ديسمبر</option>
+        </select>
     </div>
 </div><br>
 
@@ -132,13 +159,13 @@ id="exampleModalLabel">
 
 <div class="col-md-6">
 <label>الدرجـة التي حصـل عليـها</label>
-<input type="number" value="{{ $result->marks_obtained }}" name="Marks" class="form-control">
+<input type="number" value="{{ $Result->marks_obtained }}" name="Marks" class="form-control">
 </div>
 
 <div class="col-md-6">
     <label >التقـديـر</label>
-    <select class="form-control select2" name="Appreciation">
-        <option >{{$result->appreciation }}</option>
+    <select class="form-control select2" style="width: 100%;" name="Appreciation">
+        <option >{{$Result->appreciation }}</option>
         <option value="ممـتـاز">ممـتـاز</option>
         <option value="جيـد جـداً">جيـد جـداً</option>
         <option value="جيـد">جيـد</option>
@@ -164,24 +191,24 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 </div>
 
 <!-- Delete modal -->
-<div class="modal fade" id="delete_result{{$result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete_result{{$Result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
-<form action="{{route('TeacherResult.destroy',$result->id)}}" method="post">
+<form action="{{route('TeacherResult.destroy',$Result->id)}}" method="post">
 {{method_field('delete')}}
 {{csrf_field()}}
 <div class="modal-content">
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف إختبـار</h5>
+    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف نتيجـة</h5>
 
 </div>
 <div class="modal-body">
     <p> هل انت متاكد من عملية حذف نتيجـة الطـالـب  </p>
-    <input type="hidden" name="id"  value="{{$result->id}}">
+    <input type="hidden" name="id"  value="{{$Result->id}}">
     <input  type="text" style="font-weight: bolder; font-size:20px;"
     name="Name_Section"
     class="form-control"
-    value="{{$result->student->name}}"
+    value="{{$Result->student->name}}"
     disabled>
 </div>
 <div class="modal-footer">
@@ -194,101 +221,36 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 </form>
 </div>
 </div>
-
-@endforeach
+    
+    
+    
+@endforeach 
 </tbody>
 </table>
+
+<div class="footer">
+    <a href="{{ route('TeacherResult.print',$result->id) }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+</div>
+
 </div>
 </div>
 
-<!-- add_modal_class -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog modal-primary" role="document">
-<div class="modal-content">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-اضافة نتيجـة
-</h5>
-</div>
-<div class="modal-body">
-
-<form class="form-horizontal" action="{{ route('TeacherResult.store') }}" method="POST">
-@csrf
-
-<div class="box-body">
-<div class="row">
-
-    <div class="col-md-4"> 
-        <label>أسـم الطـالـب</label>
-        <select class="form-control select2" name="Student_id">
-            <option  selected disabled>أختـر من القائمة...</option>
-            @foreach ($students as $Student)
-                <option value="{{ $Student->id }}">
-                    {{ $Student->name }}
-                </option>
-            @endforeach
-        </select>
-    </div>
-
-    <div class="col-md-4"> 
-        <label>المـادة</label>
-        <select class="form-control select2" name="Exam_id">
-            <option  selected disabled>أختـر من القائمة...</option>
-            @foreach ($exams as $Exam)
-                <option value="{{ $Exam->id }}">
-                    {{ $Exam->subject->name }}
-                </option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label >إختبـار شهـر</label>
-        <input type="text" value="{{ old('Result_name') }}" name="Result_name" class="form-control">
-    </div>
-</div><br>
-
-<div class="row">
-
-<div class="col-md-6"> 
-    <label>الدرجـة التي حصـل عليـها</label>
-    <input type="number" value="{{ old('Marks') }}" name="Marks" class="form-control">
-</div>
-
-<div class="col-md-6">
-    <label >التقـديـر</label>
-    <select class="form-control select2" name="Appreciation">
-        <option  selected disabled>أختـر من القائمة...</option>
-        <option value="ممـتـاز">ممـتـاز</option>
-        <option value="جيـد جـداً">جيـد جـداً</option>
-        <option value="جيـد">جيـد</option>
-        <option value="مقبـول">مقبـول</option>
-        <option value="ضعيـف">ضعيـف</option>
-    </select>  
-</div>
-
-</div><br>
-
-</div>
-
-<div class="modal-footer">
-    <button type="submit"
-    class="btn btn-info btn-block">حفظ البيانات</button>
-    </div>
-
-
-</form>
 </div>
 </div>
 </div>
+@endforeach
 </div>
+</div>
+</div>
+</div><!--box -->
 
 
 </div>
 </div>
 </div>
 </section>
+
 
 @endsection
 @section('js')

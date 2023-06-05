@@ -28,8 +28,15 @@ Test
 <div class="box">
 
 <div class="box-header">
-    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-<br>
+
+<a class="btn btn-primary btn-flat" style="padding:5px; margin: 5px;" href="{{route('TeacherResult.create')}}">
+    اضافة نتيجـة</a>
+<br><br>
+<div class="box-tools">
+<div class="input-group" style="width: 150px;">
+<h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
+</div>
+</div>
 </div>
 
 
@@ -55,7 +62,7 @@ Test
 <div class="box-body">
     <div class="box-body table-responsive no-padding">
     <table  class="table" style="width:100%; text-align: center;">
-        <caption style="font-weight: bolder; text-align:center; color:black;">
+        <caption style="font-weight: bolder; text-align:center; color:black; background-color: #E7EEFB;">
             {{ $result->My_Classes->name_class }} , الـشـعبـة: {{ $result->name_section }} 
         </caption>
     <thead>
@@ -77,7 +84,7 @@ Test
             <td>{{$Result->exam->subject->name}}</td>
             <td style="background-color: yellow; font-weight:bolder;">{{$Result->result_name}}</td>
             <td>{{$Result->marks_obtained}}</td>
-            <td>{{$Result->appreciation}}</td>
+            <td style="font-weight: bolder; background-color: #D0DEF6;">{{$Result->appreciation}}</td>
             <td>
                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                 data-target="#edit{{ $Result->id }}"
@@ -109,7 +116,7 @@ id="exampleModalLabel">
 <div class="row">
 
     <div class="col-md-4"> 
-        <label>أسـم الطـالـب </label>
+        <label>أسـم الطـالـب \ الطـالبـة </label>
         <input id="id" type="hidden" name="id" class="form-control"
         value="{{ $Result->id }}">
         <select class="form-control select2" style="width: 100%;" name="Student_id">
@@ -126,11 +133,15 @@ id="exampleModalLabel">
             <option value="{{ $Result->exam->subject->id }}">
                 {{ $Result->exam->subject->name }}
             </option>
+            @foreach ($exams as $Exam)
+            <option value="{{ $Exam->id }}">
+                {{ $Exam->subject->name }}
+            </option>
+        @endforeach
         </select>
     </div>
     <div class="col-md-4">
         <label >إختبـار شهـر</label>
-        {{-- <input type="text" value="{{ $Result->result_name }}" name="Result_name" class="form-control"> --}}
         <select class="form-control select2" style="width: 100%;" name="Result_name">
             <option> {{ $Result->result_name }} </option>
             <option value="فبراير">فبراير</option>
@@ -177,14 +188,52 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 </div>
 </div>
 </div>
+
+<!-- Delete modal -->
+<div class="modal fade" id="delete_result{{$Result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-danger" role="document">
+<form action="{{route('TeacherResult.destroy',$Result->id)}}" method="post">
+{{method_field('delete')}}
+{{csrf_field()}}
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف نتيجـة</h5>
+
+</div>
+<div class="modal-body">
+    <p> هل انت متاكد من عملية حذف نتيجـة الطـالـب  </p>
+    <input type="hidden" name="id"  value="{{$Result->id}}">
+    <input  type="text" style="font-weight: bolder; font-size:20px;"
+    name="Name_Section"
+    class="form-control"
+    value="{{$Result->student->name}}"
+    disabled>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline"
+            data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+            class="btn btn-outline">حذف البيانات</button>
+</div>
+</div>
+</form>
+</div>
+</div>
     
     
     
-    @endforeach 
-    </tbody>
-    </table>
-    </div>
-    </div>
+@endforeach 
+</tbody>
+</table>
+
+<div class="footer">
+    <a href="#" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+</div>
+
+</div>
+</div>
 
 </div>
 </div>

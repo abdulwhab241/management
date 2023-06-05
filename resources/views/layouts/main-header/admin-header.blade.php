@@ -176,17 +176,17 @@
                 </a>
                 @endisset
 
-                @isset($Notification->data['result_name'])
+                {{-- @isset($Notification->data['result_name'])
                 <a href="{{ route('Results.show',$Notification->data['result_id']) }}">
-                    {{-- <h4>
+                    <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
-                    </h4> --}}
+                    </h4>
                     <h5 style="font-weight: bolder;">     
                         <span style="font-weight: bolder; padding:5px;"> {{ $Notification->data['result_name'] }}</span>
                         اضـاف نتيجـة الإختبـار </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
-                @endisset
+                @endisset --}}
 
                 @isset($Notification->data['add_student_grade_name'])
                 <a href="{{ route('Student_Grades.show',$Notification->data['add_student_grade_id']) }}">
@@ -207,6 +207,18 @@
                     </h4>
                     <h5 style="font-weight: bolder;">  بـتعـديـل محصـلة الطـالـب  
                         <span> {{ $Notification->data['edit_student_grade_name'] }}</span>
+                    </h5>
+                    <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
+                </a>
+                @endisset
+
+                @isset($Notification->data['result_name'])
+                <a href="{{ route('Results.show',$Notification->data['result_id']) }}">
+                    <h4>
+                        قـام الأستـاذ   {{$Notification->data['create_by']}} 
+                    </h4>
+                    <h5 >     بـإضـأفـة نتيجـة الطـالـب   
+                        <span style="font-weight: bolder; padding:5px;">  {{ $Notification->data['result_name'] }} , لشـهر {{ $Notification->data['result_month'] }} </span>
                     </h5>
                     <small><i class="fa fa-clock-o"></i>{{$Notification->created_at->diffForHumans()}}</small>
                 </a>
