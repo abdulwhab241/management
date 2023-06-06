@@ -83,6 +83,7 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             //==============================Students============================
             Route::resource('Students', StudentController::class);
+            Route::get('export_students', [StudentController::class, 'export'])->name('export_students');
 
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');

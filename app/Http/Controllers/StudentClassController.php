@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Day;
 use App\Models\Grade;
-use App\Models\Section;
-use App\Models\Subject;
-use App\Models\Teacher;
 use App\Models\Classroom;
-use App\Models\SchoolClass;
 use App\Models\StudentClass;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassRequest;

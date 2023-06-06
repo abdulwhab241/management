@@ -29,14 +29,6 @@ class ResultController extends Controller
         return view('pages.Results.notification', compact('Results'));
     }
 
-    // public function show_TeacherResult($id)
-    // {
-    //     $Results = Result::findOrFail($id);
-    //     $get_id = DB::table('notifications')->where('data->teacher_result_id',$id)->pluck('id');
-    //     DB::table('notifications')->where('id',$get_id)->update(['read_at'=>now()]);
-    //     return view('pages.Results.teacher_notification', compact('Results'));
-    // }
-
     public function store(ResultRequest $request)
     {
         try

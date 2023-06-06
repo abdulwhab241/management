@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Exports\StudentsExport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StudentRequest;
 use App\Repository\StudentRepositoryInterface;
 
@@ -68,6 +70,11 @@ class StudentController extends Controller
     {
         $Student = Student::all();
         return view('pages.Students.print', compact('Student'));
+    }
+
+    public function export() 
+    {
+        return Excel::download(new StudentsExport, 'الطلاب.xlsx');
     }
 
     // public function Upload_attachment(Request $request)

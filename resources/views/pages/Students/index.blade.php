@@ -36,8 +36,15 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">اضافة طـالـب</a>
+    <div class="box-body">
+        <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+        aria-pressed="true">اضافة طـالـب</a>
+        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_students') }}">
+            <i class="fas fa-file-download"></i> تصـديـر 
+        </a>
+    </div>
+{{-- <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+aria-pressed="true">اضافة طـالـب</a> --}}
 <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
