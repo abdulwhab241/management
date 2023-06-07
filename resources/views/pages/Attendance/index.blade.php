@@ -49,7 +49,7 @@
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
         <th style="text-align: center;" class="alert-info">اليـوم</th>
-        <th style="text-align: center;" class="alert-info">أسـم الطـالـب</th>
+        <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">الصـف الـدراسـي</th>
         <th style="text-align: center;" class="alert-info">الشـعبـة</th>
         <th style="text-align: center;" class="alert-info">الحـالـة</th>

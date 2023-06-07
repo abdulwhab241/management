@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ReceiptStudent;
+use App\Exports\ReceiptsExport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\ReceiptRequest;
 use App\Repository\ReceiptStudentsRepositoryInterface;
 
@@ -57,6 +59,11 @@ class ReceiptStudentsController extends Controller
         return view('pages.Receipts.notification', compact('Receipts'));
     }
 
+
+    public function export() 
+    {
+        return Excel::download(new ReceiptsExport, 'سندات القبض.xlsx');
+    }
 
     public function destroy(Request $request)
     {

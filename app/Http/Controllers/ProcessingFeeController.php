@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProcessingFee;
+use App\Exports\ProcessingExport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\ProcessingRequest;
 use App\Repository\ProcessingFeeRepositoryInterface;
 
@@ -54,6 +56,10 @@ class ProcessingFeeController extends Controller
         return view('pages.ProcessingFee.notification', compact('ProcessingFees'));
     }
 
+    public function export() 
+    {
+        return Excel::download(new ProcessingExport, 'معالجات الرسوم الدراسية.xlsx');
+    }
 
     public function destroy(Request $request)
     {

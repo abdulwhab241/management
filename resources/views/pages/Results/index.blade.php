@@ -37,10 +37,15 @@
 @endif
 <div class="box-header">
 
-<button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
-    اضافة نتيـجـة
-</button>
-<br><br>
+    <div class="box-body">
+        <button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+            اضافة نتيـجـة
+        </button>
+        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_results') }}">
+            <i class="fas fa-file-download"></i>  
+        </a>
+    </div>
+<br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
     <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
@@ -54,7 +59,7 @@
 <tr>
 
     <th style="text-align: center;" class="alert-info">#</th>
-    <th style="text-align: center;" class="alert-info">أسـم الطـالـب </th>
+    <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة </th>
     <th style="text-align: center;" class="alert-info"> المـادة</th>
     <th style="text-align: center;" class="alert-info">الدرجـة التي حصـل عليـها </th>
     <th style="text-align: center;" class="alert-info">التقـديـر</th>

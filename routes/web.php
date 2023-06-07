@@ -102,6 +102,7 @@ Route::group(
             //==============================Students FeeInvoice============================
             Route::resource('Fees_Invoices', FeeInvoiceController::class);
             Route::get('/show_fee_invoice/{id}', [FeeInvoiceController::class, 'show_fee_invoice']) -> name('show_fee_invoice');
+            Route::get('export_fee_invoices', [FeeInvoiceController::class, 'export'])->name('export_fee_invoices');
 
             //==============================Fees============================
             Route::resource('Fees',  FeeController::class);
@@ -109,20 +110,24 @@ Route::group(
             //==============================Students Receipt============================
             Route::resource('Receipts', ReceiptStudentsController::class);
             Route::get('/show_receipt/{id}', [ReceiptStudentsController::class, 'show_receipt']) -> name('show_receipt');
+            Route::get('export_receipts', [ReceiptStudentsController::class, 'export'])->name('export_receipts');
 
             //==============================Students Processing Fee============================
             Route::resource('ProcessingFee', ProcessingFeeController::class);
             Route::get('/show_processing/{id}', [ProcessingFeeController::class, 'show_processing']) -> name('show_processing');
+            Route::get('export_process', [ProcessingFeeController::class, 'export'])->name('export_process');
 
             //==============================Students Payment============================
             Route::resource('Payments', PaymentController::class);
             Route::get('/show_payment/{id}', [PaymentController::class, 'show_payment']) -> name('show_payment');
+            Route::get('export_payments', [PaymentController::class, 'export'])->name('export_payments');
 
             //==============================Students Attendance============================
             Route::resource('Attendance', AttendanceController::class);
 
             //==============================Students Grades============================
             Route::resource('Student_Grades', StudentGradeController::class);
+            Route::get('export_student_grades', [StudentGradeController::class, 'export'])->name('export_student_grades');
             Route::get('/print_studentGrades/', [StudentGradeController::class, 'print']) -> name('StudentGrades.print');
             Route::get('/edit_student_grade/{id}', [StudentGradeController::class, 'edit_notification']) -> name('edit_notification');
 
@@ -142,11 +147,13 @@ Route::group(
         //==============================Results============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Results', ResultController::class);
+            Route::get('export_results', [ResultController::class, 'export'])->name('export_results');
         });
 
         //==============================StudentClasses============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Classes', StudentClassController::class);
+            Route::get('export_student_classes', [StudentClassController::class, 'export'])->name('export_student_classes');
         });
 
         //==============================User Logout============================

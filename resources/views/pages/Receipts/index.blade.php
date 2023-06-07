@@ -37,8 +37,15 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Receipts.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">اضافة سنـد تسديـد </a>
+
+
+<div class="box-body">
+    <a href="{{route('Receipts.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    aria-pressed="true">اضافة سنـد تسديـد </a>
+    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_receipts') }}">
+        <i class="fas fa-file-download"></i>  
+    </a>
+</div>
 <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -52,7 +59,7 @@ aria-pressed="true">اضافة سنـد تسديـد </a>
 <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
-        <th style="text-align: center;" class="alert-info">أسـم الطـالـب</th>
+        <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
         <th style="text-align: center;" class="alert-info">تاريخ السداد</th>

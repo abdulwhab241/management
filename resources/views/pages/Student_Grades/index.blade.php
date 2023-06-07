@@ -36,9 +36,15 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Student_Grades.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+
+<div class="box-body">
+    <a href="{{route('Student_Grades.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
 aria-pressed="true">اضافة كشـف الـدرجـات</a>
-<br><br>
+    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_student_grades') }}">
+        <i class="fas fa-file-download"></i>  
+    </a>
+</div>
+<br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
 <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
@@ -52,7 +58,7 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <tr>
 
 <th style="text-align: center;" class="alert-info">#</th>
-<th style="text-align: center;" class="alert-info">الفـصل</th>
+<th style="text-align: center;" class="alert-info">الفـصل الدراسي</th>
 <th style="text-align: center;" class="alert-info">الأستـاذ</th>
 <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center;" class="alert-info">واجبـات</th>

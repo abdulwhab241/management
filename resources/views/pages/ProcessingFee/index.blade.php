@@ -36,7 +36,12 @@
 </div>
 @endif
 <div class="box-header">
-<br>
+    <div class="box-body">
+        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_process') }}">
+            <i class="fas fa-file-download"></i>  
+        </a>
+    </div>
+    <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
     <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
@@ -49,7 +54,7 @@
 <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
-        <th style="text-align: center;" class="alert-info">الاسم</th>
+        <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
         <th style="text-align: center;" class="alert-info">تاريخ المعالجة</th>

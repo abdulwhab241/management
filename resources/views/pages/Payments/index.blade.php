@@ -37,7 +37,11 @@
 </div>
 @endif
 <div class="box-header">
-    <br>
+    <div class="box-body">
+        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_payments') }}">
+            <i class="fas fa-file-download"></i>  
+        </a>
+    </div>
     <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -51,7 +55,7 @@
 <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
-        <th style="text-align: center;" class="alert-info">الاسم</th>
+        <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
         <th style="text-align: center;" class="alert-info">تاريخ الصرف</th>

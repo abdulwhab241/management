@@ -37,10 +37,15 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Classes.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">اضافة جدول الحصـص</a>
+    <div class="box-body">
+        <a href="{{route('Classes.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+        aria-pressed="true">اضافة جدول الحصـص</a>
+        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_student_classes') }}">
+            <i class="fas fa-file-download"></i>  
+        </a>
+    </div>
+<br>
 
-<br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
     <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
@@ -55,7 +60,7 @@ aria-pressed="true">اضافة جدول الحصـص</a>
 
     <th style="text-align: center;" class="alert-info">اليوم</th>
     <th style="text-align: center;" class="alert-info"> المرحلة الدراسية</th>
-    <th style="text-align: center;" class="alert-info">الصـف</th>
+    <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
     <th style="text-align: center;" class="alert-info">الشعبـة</th>
     <th style="text-align: center;" class="alert-info"> الأولـى</th>
     <th style="text-align: center;" class="alert-info"> الثـانيـة</th>
@@ -85,9 +90,10 @@ aria-pressed="true">اضافة جدول الحصـص</a>
             <td>{{ $StudentClass->seventh }}</td>
             <td>{{ $StudentClass->create_by }}</td>
             <td>
+                <div class="btn-group">
                 <a href="{{route('Classes.edit',$StudentClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $StudentClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-
+                </div>
             </td>
         </tr>
 

@@ -7,6 +7,8 @@ use App\Models\Classroom;
 use App\Models\StudentClass;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassRequest;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StudentClassesExport;
 
 class StudentClassController extends Controller
 {
@@ -20,6 +22,11 @@ class StudentClassController extends Controller
     {
         $Grades = Grade::all();
         return view('pages.Classes.add',  compact('Grades'));
+    }
+
+    public function export() 
+    {
+        return Excel::download(new StudentClassesExport, 'جدول الحصص الدراسية.xlsx');
     }
 
     public function store(ClassRequest $request)

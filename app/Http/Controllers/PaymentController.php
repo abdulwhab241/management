@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PaymentStudent;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\PaymentRequest;
+use App\Exports\PaymentStudentsExport;
 use App\Repository\PaymentRepositoryInterface;
 
 class PaymentController extends Controller
@@ -54,7 +56,11 @@ class PaymentController extends Controller
         return view('pages.Payments.notification', compact('Payments'));
     }
 
-
+    public function export() 
+    {
+        return Excel::download(new PaymentStudentsExport, 'سندات الصرف.xlsx');
+    }
+    
     public function destroy(Request $request)
     {
         return $this->Payment->destroy($request);

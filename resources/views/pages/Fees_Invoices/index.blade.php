@@ -34,21 +34,27 @@
 @endif
 <div class="box-header">
 
-<a href="{{route('Fees_Invoices.create')}}" class="btn btn-success btn-flat" role="button"
-style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـورة جديدة</a><br><br>
-<div class="box-tools">
-    <div class="input-group" style="width: 150px;">
-        <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
+    <div class="box-body">
+        <a href="{{route('Fees_Invoices.create')}}" class="btn btn-success btn-flat" role="button"
+        style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـورة جديدة</a>
+        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_fee_invoices') }}">
+            <i class="fas fa-file-download"></i>  
+        </a>
     </div>
+<br>
+<div class="box-tools">
+<div class="input-group" style="width: 150px;">
+    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 </div>
 </div>
+</div><!-- /.box-header -->
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
     <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
     <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
-        <th style="text-align: center;" class="alert-info">أسم الطـالـب</th>
+        <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">نوع الرسوم</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
         <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
@@ -73,8 +79,10 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـور
     <td>{{$Fee_invoice->invoice_date}}</td>
     <td>{{ $Fee_invoice->create_by }}</td>
         <td>
+            <div class="btn-group">
             <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>                        </td>
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>
+            </div>                        </td>
     </tr>
     @include('pages.Fees_Invoices.Delete')
 

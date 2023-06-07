@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\FeeInvoice;
 use Illuminate\Http\Request;
+use App\Exports\FeeInvoicesExport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\FeeInvoiceRequest;
 use App\Repository\FeeInvoicesRepositoryInterface;
 
@@ -47,6 +49,10 @@ class FeeInvoiceController extends Controller
         return view('pages.Fees_Invoices.notification', compact('FeeInvoices'));
     }
 
+    public function export() 
+    {
+        return Excel::download(new FeeInvoicesExport, 'الفواتير الدراسية.xlsx');
+    }
 
     public function edit($id)
     {

@@ -40,11 +40,9 @@
         <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
         aria-pressed="true">اضافة طـالـب</a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_students') }}">
-            <i class="fas fa-file-download"></i> تصـديـر 
+            <i class="fas fa-file-download"></i>  
         </a>
     </div>
-{{-- <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">اضافة طـالـب</a> --}}
 <br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -59,7 +57,7 @@ aria-pressed="true">اضافة طـالـب</a> --}}
 <tr>
 
     <th style="text-align: center;" class="alert-info">#</th>
-    <th style="text-align: center;" class="alert-info">أسم الطالب</th>
+    <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
     <th style="text-align: center;" class="alert-info"> النوع</th>
     <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
     <th style="text-align: center;" class="alert-info">الصف الدراسي</th>

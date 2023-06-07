@@ -7,6 +7,8 @@ use App\Models\Semester;
 use App\Models\StudentGrade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\StudentGradesExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StudentGradeRequest;
 
 class StudentGradeController extends Controller
@@ -48,6 +50,10 @@ class StudentGradeController extends Controller
         return view('pages.Student_Grades.edit_notification', compact('StudentGrade'));
     }
 
+    public function export() 
+    {
+        return Excel::download(new StudentGradesExport, 'كشف دراجات الطلاب.xlsx');
+    }
     
     public function print()
     {

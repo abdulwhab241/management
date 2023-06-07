@@ -2,17 +2,17 @@
 
 namespace App\Exports;
 
-use App\Models\Student;
+use App\Models\Result;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class StudentsExport implements FromView
+class ResultsExport implements FromView
 {
+
     public function view(): View
     {
-        return view('pages.Students.StudentExcel', [
-            'Students' => Student::all()
+        return view('pages.Results.ResultExcel', [
+            'Results' => Result::all()
         ]);
     }
-
 }
