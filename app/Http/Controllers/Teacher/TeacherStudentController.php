@@ -6,6 +6,7 @@ use App\Models\Section;
 use App\Models\Student;
 use App\Models\Attendance;
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class TeacherStudentController extends Controller
     public function index()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Section::with(['Students'])->whereIn('id', $ids)->get();
+        $students = Section::with(['Enrollments'])->whereIn('id', $ids)->get();
         return view('pages.Teachers.dashboard.students.index', compact('students'));
     }
 
@@ -30,7 +31,7 @@ class TeacherStudentController extends Controller
     {
 
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
 
     }
@@ -49,7 +50,7 @@ class TeacherStudentController extends Controller
 
 
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
 
         if ($request->student_id == 0) 
         {

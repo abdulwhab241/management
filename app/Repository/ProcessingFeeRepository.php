@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Enrollment;
 use App\Models\FundAccount;
 use App\Models\ProcessingFee;
 use App\Models\StudentAccount;
@@ -25,7 +26,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
 
     public function show($id)
     {
-        $Student = Student::findOrFail($id);
+        $Student = Enrollment::findOrFail($id);
         return view('pages.ProcessingFee.add',compact('Student'));
     }
 

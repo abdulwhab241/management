@@ -63,7 +63,7 @@
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option value="{{$StudentGrade->student_id}}">{{$StudentGrade->student->name}}</option>
             @foreach($Students as $Student)
-                <option value="{{$Student->id}}">{{$Student->name}}</option>
+                <option value="{{$Student->student_id}}">{{$Student->student->name}}</option>
             @endforeach
         </select>                        
         @error('Student_id')

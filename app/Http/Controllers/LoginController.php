@@ -28,7 +28,8 @@ class LoginController extends Controller
         if (Auth::guard($this->checkGuard($request))->attempt(['name' => strip_tags($request->name), 'password' => strip_tags($request->password)])) {
             return $this->redirect($request);
         }
-        return redirect()->back()->with('message', 'لـيس مخـول لـك بالـدخـول');
+        toastr()->error('عـذراً أسم المستخدم او كلمة المرور غير صحيحة يرجى التاكد من صحة البيانات المدخلة ');
+        return redirect()->back();
 
     }
 

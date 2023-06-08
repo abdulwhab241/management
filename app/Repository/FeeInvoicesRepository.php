@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Grade;
 use App\Models\Student;
 use App\Models\Classroom;
+use App\Models\Enrollment;
 use App\Models\FeeInvoice;
 use App\Models\FundAccount;
 use App\Models\StudentAccount;
@@ -26,14 +27,14 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     }
     public function create()
     {
-        $Students = Student::all();
+        $Students = Enrollment::all();
         $Grades = Grade::all();
         return view('pages.Fees_Invoices.add',compact('Students','Grades'));
     }
 
     public function show($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Enrollment::findOrFail($id);
         $fees = Fee::where('classroom_id',$student->classroom_id)->get();
         return view('pages.Fees_Invoices.show',compact('student','fees'));
     }

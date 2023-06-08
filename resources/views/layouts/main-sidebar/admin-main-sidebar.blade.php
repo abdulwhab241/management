@@ -97,6 +97,9 @@
     </ul>
 </li>
 <li class="treeview">
+    <li><a href="{{ route('Enrollments.index') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> تسـجيـل الطـلاب</a></li>
+</li>
+<li class="treeview">
     <a href="#">
     <i class="fas fa-chalkboard-teacher"></i>
     <span>المعلمين</span>

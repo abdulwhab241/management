@@ -49,8 +49,8 @@
                     {{ $receipt_student->student->name }}
                 </option>
                 @foreach ($Students as $Student)
-                    <option value="{{ $Student->id }}" disabled>
-                        {{ $Student->name }}
+                    <option value="{{ $Student->student_id }}" disabled>
+                        {{ $Student->student->name }}
                     </option>
                 @endforeach
             </select>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Attendance;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,7 @@ class TeacherAttendanceController extends Controller
     public function index(Request $request)
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $attendances = Section::with(['StudentAttendances'])->whereIn('id', $ids)->get();
     
         return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances'));
@@ -25,7 +26,7 @@ class TeacherAttendanceController extends Controller
     public function create()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         return view('pages.Teachers.dashboard.Attendances.add', compact('students'));
     }
 

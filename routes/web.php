@@ -16,12 +16,13 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GraduatedController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\StudentClassController;
-use App\Http\Controllers\ProcessingFeeController;
-use App\Http\Controllers\ReceiptStudentsController;
 use App\Http\Controllers\StudentGradeController;
+use App\Http\Controllers\ProcessingFeeController;
 use App\Http\Controllers\TeacherClassesController;
+use App\Http\Controllers\ReceiptStudentsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -84,6 +85,9 @@ Route::group(
             //==============================Students============================
             Route::resource('Students', StudentController::class);
             Route::get('export_students', [StudentController::class, 'export'])->name('export_students');
+
+            //==============================Enrollment Students============================
+            Route::resource('Enrollments', EnrollmentController::class);
 
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');

@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Classroom;
 use App\Models\Attendance;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Http\Requests\AttendanceRequest;
 
@@ -16,7 +17,7 @@ class AttendanceController extends Controller
     {
         $Attendances = Attendance::all();
         $Classrooms = Classroom::all();
-        $Students = Student::all();
+        $Students = Enrollment::where('year', date("Y"))->get();
         return view('pages.Attendance.index',compact('Classrooms','Students','Attendances'));
     }
 

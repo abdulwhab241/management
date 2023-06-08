@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use App\Models\Result;
 use App\Models\Student;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Exports\ResultsExport;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class ResultController extends Controller
     {
         $Exams = Exam::all();
         $Results = Result::all();
-        $Students = Student::all();
+        $Students = Enrollment::where('year', date("Y"))->get();
         
         return view('pages.Results.index', compact('Exams','Results','Students'));
     }

@@ -50,6 +50,11 @@
                 <option value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
             @endforeach
         </select>
+            @error('Grade_id')
+    <div class=" alert-danger">
+    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+    </div>
+    @enderror
     </div>
 
     <div class="col-md-4">
@@ -57,6 +62,11 @@
         <select class="form-control select2" style="width: 100%;" name="Classroom_id">
 
         </select>
+            @error('Classroom_id')
+    <div class=" alert-danger">
+    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+    </div>
+    @enderror
     </div>
 
     <div class="col-md-4">
@@ -64,6 +74,11 @@
         <select class="form-control select2" style="width: 100%;" name="Section_id">
 
         </select>
+            @error('Section_id')
+    <div class=" alert-danger">
+    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+    </div>
+    @enderror
     </div>
 </div><br>
 </div>

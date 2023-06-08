@@ -66,11 +66,11 @@
 </thead>
 <tbody>
     <?php $i = 0; ?>
-@foreach($student->Students as $Student)
+@foreach($student->Enrollments as $Student)
     <tr>
         <?php $i++; ?>
         <td>{{ $i }}</td>
-        <td>{{$Student->name}}</td>
+        <td>{{$Student->student->name}}</td>
     </tr>
 
 

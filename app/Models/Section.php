@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Classroom;
 use App\Models\Attendance;
+use App\Models\Enrollment;
 use App\Models\StudentGrade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -57,5 +58,10 @@ class Section extends Model
     public function StudentAttendances()
     {
         return $this->hasMany(Attendance::class, 'section_id');
+    }
+
+    public function Enrollments()
+    {
+        return $this->hasMany(Enrollment::class,'section_id');
     }
 }

@@ -77,7 +77,7 @@
                 </div>
                 @enderror
             </div>
-        {{-- </div> --}}
+    
     
         </div><br>
 
@@ -98,16 +98,13 @@
                 </div>
                 @enderror
             </div>
-        {{-- </div> --}}
+    
 
             <div class="col-md-3">
-               
+            
                 <label>الصـف الدراسي</label>
                 <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                    {{-- <option selected>أختـر من القائمة...</option>
-                    @foreach($Classrooms as $Classroom)
-                        <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
-                    @endforeach --}}
+
                 </select>
                 @error('Classroom_id')
                 <div class=" alert-danger">
@@ -115,16 +112,13 @@
                 </div>
                 @enderror
             </div>
-        {{-- </div> --}}
+    
 
             <div class="col-md-3">
-               
+            
                 <label>الشـعبة</label>
                 <select class="form-control select2" style="width: 100%;" name="Section_id">
-                    {{-- <option selected>أختـر من القائمة...</option>
-                    @foreach($Sections as $Section)
-                        <option value="{{$Section->id}}">{{$Section->name_section}}</option>
-                    @endforeach --}}
+                    
                 </select>
                 @error('Section_id')
                 <div class=" alert-danger">
@@ -132,13 +126,13 @@
                 </div>
                 @enderror
             </div>
-        {{-- </div> --}}
+    
 
         <div class="col-md-3">
-           
+    
             <label>السنة الدراسية</label>
             <select class="form-control select2" style="width: 100%;" name="academic_year">
-                <option selected>أختـر من القائمة...</option>
+            <option selected>أختـر من القائمة...</option>
             @php
             $current_year = date("Y");
             @endphp
@@ -151,7 +145,7 @@
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
-        {{-- </div> --}}
+    
     </div>
 
     </div><br>

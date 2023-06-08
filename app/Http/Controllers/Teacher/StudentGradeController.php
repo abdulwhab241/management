@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Semester;
+use App\Models\Enrollment;
 use App\Models\StudentGrade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class StudentGradeController extends Controller
     public function create()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
         return view('pages.Teachers.dashboard.StudentGrades.add', compact('students','Semesters'));
     }
@@ -39,7 +40,7 @@ class StudentGradeController extends Controller
     {
         $StudentGrade = StudentGrade::findOrFail($id);
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $Students = Student::whereIn('section_id', $ids)->get();
+        $Students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
         return view('pages.Teachers.dashboard.StudentGrades.edit', compact('Students','StudentGrade','Semesters'));
     }

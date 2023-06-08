@@ -13,7 +13,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-تسديـد رسـوم الطالـب <label style="color: #5686E0">{{$student->name}}</label>
+تسديـد رسـوم الطالـب <label style="color: #5686E0">{{$student->student->name}}</label>
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>

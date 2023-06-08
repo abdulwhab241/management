@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Semester;
+use App\Models\Enrollment;
 use App\Models\StudentGrade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class StudentGradeController extends Controller
 
     public function create()
     {
-        $Students = Student::all();
+        $Students = Enrollment::all();
         $Semesters = Semester::all();
         return view('pages.Student_Grades.add', compact('Students','Semesters'));
     }
@@ -29,7 +30,7 @@ class StudentGradeController extends Controller
     public function edit($id)
     {
         $StudentGrade = StudentGrade::findOrFail($id);
-        $Students = Student::all();
+        $Students = Enrollment::all();
         $Semesters = Semester::all();
         return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters'));
     }

@@ -45,7 +45,7 @@
                 <select class="form-control select2" style="width: 100%;" name="Student_id">
                     <option selected disabled>أختـر من القائمة...</option>
                 @foreach ($students as $student)
-                <option value="{{$student->id}}">{{$student->name}}</option>
+                <option value="{{$student->student_id}}">{{$student->student->name}}</option>
                 @endforeach
                 </select>
             </div>

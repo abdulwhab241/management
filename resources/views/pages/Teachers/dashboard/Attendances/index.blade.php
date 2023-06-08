@@ -115,9 +115,7 @@ id="exampleModalLabel">
                     {{ $attendance->students->name }}
                 </option>
                 @foreach ($students as $student)
-                    <option value="{{  $student->id }}">
-                        {{  $student->name }}
-                    </option>
+                <option value="{{$student->student_id}}">{{$student->student->name}}</option>
                 @endforeach
                 <option value="السبت">السبت</option>
                 <option value="الاحد">الاحد</option>

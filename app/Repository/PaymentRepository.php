@@ -5,6 +5,7 @@ namespace App\Repository;
 
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Enrollment;
 use App\Models\FundAccount;
 use App\Models\PaymentStudent;
 use App\Models\StudentAccount;
@@ -24,7 +25,7 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function show($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Enrollment::findOrFail($id);
         return view('pages.Payments.add',compact('student'));
     }
 

@@ -11,7 +11,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h3 class="col-md-6">
-اضافة فاتورة رسوم للطالب  <label  style="color: #5686E0">{{$student->name}}</label>
+اضافة فاتورة رسوم للطالب  <label  style="color: #5686E0">{{$student->student->name}}</label>
 </h3>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
@@ -43,7 +43,7 @@
             <div class="form-group">
             <label>أسم الطـالـب</label>
             <select class="form-control select2" style="width: 100%;" name="Student_id">
-                <option value="{{ $student->id }}">{{ $student->name }}</option>
+                <option value="{{ $student->student_id }}">{{ $student->student->name }}</option>
             </select>
             </div>
             @error('Student_id')

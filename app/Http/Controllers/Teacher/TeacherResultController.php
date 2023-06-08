@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Result;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,7 @@ class TeacherResultController extends Controller
     {
         $exams = Exam::where('teacher_id',auth()->user()->id)->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Student::whereIn('section_id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
 
         return view('pages.Teachers.dashboard.Result.add', compact('exams','students'));
     }

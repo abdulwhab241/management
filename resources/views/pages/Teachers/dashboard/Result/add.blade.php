@@ -47,8 +47,8 @@
         <select class="form-control select2" name="Student_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($students as $Student)
-                <option value="{{ $Student->id }}">
-                    {{ $Student->name }}
+                <option value="{{ $Student->student_id }}">
+                    {{ $Student->student->name }}
                 </option>
             @endforeach
         </select>

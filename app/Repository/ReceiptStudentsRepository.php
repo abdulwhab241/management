@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\Models\Fee;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Enrollment;
 use App\Models\FundAccount;
 use App\Models\ReceiptStudent;
 use App\Models\StudentAccount;
@@ -29,20 +30,20 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     public function create()
     {
         $fee =Fee::all();
-        $student = Student::all();
+        $student = Enrollment::all();
         return view('pages.Receipts.add',compact('student','fee'));
     }
 
     public function show($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Enrollment::findOrFail($id);
         return view('pages.Receipts.show',compact('student'));
     }
 
     public function edit($id)
     {
         $receipt_student = ReceiptStudent::findOrFail($id);
-        $Students = Student::all();
+        $Students = Enrollment::all();
         return view('pages.Receipts.edit',compact('receipt_student','Students'));
     }
 

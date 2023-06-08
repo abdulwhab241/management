@@ -41,7 +41,7 @@
 <div class="box-body">
 <div class="row">
     <div class="col-md-3"> 
-        <label>الفصـل</label>
+        <label>الفصـل الدراسي</label>
         <select class="form-control select2" style="width: 100%;" name="Semester_id">
             <option selected disabled>أختـر من القائمة...</option>
             @foreach($Semesters as $Semester)
@@ -61,7 +61,7 @@
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option selected disabled>أختـر من القائمة...</option>
             @foreach($students as $Student)
-                <option value="{{$Student->id}}">{{$Student->name}}</option>
+                <option value="{{$Student->student_id}}">{{$Student->student->name}}</option>
             @endforeach
         </select>                        
         @error('Student_id')

@@ -12,7 +12,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-استبعاد رسوم الطـالـب  <label style="color: #5686E0">{{$Student->name}}</label>
+استبعاد رسوم الطـالـب  <label style="color: #5686E0">{{$Student->student->name}}</label>
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
