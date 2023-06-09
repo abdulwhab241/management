@@ -30,20 +30,20 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     public function create()
     {
         $fee =Fee::all();
-        $student = Enrollment::all();
+        $student = Enrollment::where('year', date("Y"))->get();;
         return view('pages.Receipts.add',compact('student','fee'));
     }
 
     public function show($id)
     {
-        $student = Enrollment::findOrFail($id);
+        $student = Enrollment::findOrFail($id)->where('year', date("Y"))->get();;
         return view('pages.Receipts.show',compact('student'));
     }
 
     public function edit($id)
     {
         $receipt_student = ReceiptStudent::findOrFail($id);
-        $Students = Enrollment::all();
+        $Students = Enrollment::where('year', date("Y"))->get();
         return view('pages.Receipts.edit',compact('receipt_student','Students'));
     }
 

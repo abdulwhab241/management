@@ -32,45 +32,28 @@
 </div>
 
 
-<div class="box-body">
-<div class="row">
-<div class="card-body">
-
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-@foreach ($students as $student)
-
-<div class="panel panel-info">
-
-<div class="panel-heading" role="tab" id="heading">
-<h4 class="panel-title" style="font-weight: bolder;">
-<a class="collapsed " role="button" data-toggle="collapse"  data-parent="#selector" href="#collapse" aria-expanded="false" aria-controls="collapse">
-{{ $student->My_Classes->name_class }} , الـشـعبـة: {{ $student->name_section }} 
-</a>
-</h4>
-</div>
-<div id="collapse" class="panel-collapse collapse in" role="tab" aria-labelledby="heading">
-<div class="panel-body">
 
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
-<table  class="table" style="width:100%; text-align: center;">
-    <caption style="font-weight: bolder; text-align:center; color:blue;">
-        {{ $student->My_Classes->name_class }} , الـشـعبـة: {{ $student->name_section }} 
-    </caption>
+<table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
     <th style="text-align: center; background-color: #D0DEF6;">#</th>
     <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th>
+    <th style="text-align: center; background-color: #D0DEF6;">الشعبـة</th>
 
 </tr>
 </thead>
 <tbody>
     <?php $i = 0; ?>
-@foreach($student->Enrollments as $Student)
+@foreach($students as $Student)
     <tr>
         <?php $i++; ?>
         <td>{{ $i }}</td>
         <td>{{$Student->student->name}}</td>
+        <td>{{$Student->classroom->name_class}}</td>
+        <td>{{$Student->section->name_section}}</td>
     </tr>
 
 
@@ -80,15 +63,6 @@
 </table>
 </div>
 </div>
-
-</div>
-</div>
-</div>
-@endforeach
-</div>
-</div>
-</div>
-</div><!--box -->
 
 
 </div>

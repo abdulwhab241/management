@@ -15,9 +15,11 @@ class TeacherStudentController extends Controller
     public function index()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $students = Section::with(['Enrollments'])->whereIn('id', $ids)->get();
+        // $students = Section::with(['Enrollments'])->whereIn('id', $ids)->get();
+        $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         return view('pages.Teachers.dashboard.students.index', compact('students'));
     }
+
 
     public function sections()
     {
@@ -35,6 +37,7 @@ class TeacherStudentController extends Controller
         return view('pages.Teachers.dashboard.students.attendance_report', compact('students'));
 
     }
+
 
     public function attendanceSearch(Request $request)
     {

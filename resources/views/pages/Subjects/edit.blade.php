@@ -63,7 +63,6 @@
         <div class="col-md-3">
             <label>المرحلـة الدراسيـة</label>
             <select class="form-control select2" style="width: 100%;" name="Grade_id">
-                <option selected disabled>أختـر من القائمة...</option>
                 @foreach($grades as $grade)
                 <option
                     value="{{$grade->id}}" {{$grade->id == $subject->grade_id ?'selected':''}}>{{$grade->name }}</option>
@@ -78,11 +77,10 @@
         <div class="col-md-3">
             <label>الصـف الدراسـي</label>
             <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                <option selected disabled>أختـر من القائمة...</option>
                 @foreach($classrooms as $classroom)
                 <option
                 value="{{$classroom->id}}" {{$classroom->id == $subject->classroom_id ?'selected':''}}>{{$classroom->name_class}}</option>
-        @endforeach
+                @endforeach
             </select>                       
             @error('Classroom_id')
             <div class=" alert-danger">
@@ -97,7 +95,7 @@
             <label >أسـم المعلـم</label>
 
                 <select class="form-control select2" style="width: 100%;" name="teacher_id">
-                    <option selected disabled>أختـر من القائمة...</option>
+
                     @foreach($teachers as $teacher)
                     <option
                         value="{{$teacher->id}}" {{$teacher->id == $subject->teacher_id ?'selected':''}}>{{$teacher->name}}</option>

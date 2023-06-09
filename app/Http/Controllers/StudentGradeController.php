@@ -22,7 +22,7 @@ class StudentGradeController extends Controller
 
     public function create()
     {
-        $Students = Enrollment::all();
+        $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
         return view('pages.Student_Grades.add', compact('Students','Semesters'));
     }
@@ -30,7 +30,7 @@ class StudentGradeController extends Controller
     public function edit($id)
     {
         $StudentGrade = StudentGrade::findOrFail($id);
-        $Students = Enrollment::all();
+        $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
         return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters'));
     }

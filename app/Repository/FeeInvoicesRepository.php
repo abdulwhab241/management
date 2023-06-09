@@ -27,7 +27,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     }
     public function create()
     {
-        $Students = Enrollment::all();
+        $Students = Enrollment::where('year', date("Y"))->get();
         $Grades = Grade::all();
         return view('pages.Fees_Invoices.add',compact('Students','Grades'));
     }
