@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('semester_id')->references('id')->on('semesters')->onDelete('cascade');
+            // $table->foreignId('semester_id')->references('id')->on('semesters')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('date');
 
             $table->string('create_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

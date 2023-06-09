@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Student;
-use App\Models\Semester;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Http\Requests\EnrollmentRequest;
@@ -13,17 +12,52 @@ class EnrollmentController extends Controller
 {
     public function index()
     {
-        $Enrollments = Enrollment::all();
-        return view('pages.Enrollments.index',compact('Enrollments'));
+        $Enrollments = Enrollment::where('year', date("Y"))->get();
+        $Students = Student::all();
+        return view('pages.Enrollments.index',compact('Enrollments','Students'));
     }
 
     public function create()
     {
-        $Semesters = Semester::all();
         $Grades = Grade::all();
-        return view('pages.Enrollments.add',compact('Grades','Semesters'));
+        return view('pages.Enrollments.add',compact('Grades'));
     }
 
+    public function add_student(Request $request)
+    {
+        
+    try {
+        // $grades = Student::where('id',$request->Student_id)->pluck('grade_id');
+        // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
+        // $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+        
+        // $Enrollment = new Enrollment();
+
+        // $Enrollment->student_id = strip_tags($request->Student_id);
+
+        // foreach ($grades as $grade){
+        //     $Enrollment->grade_id = $grade;
+        // }
+
+        // foreach ($sections as $section){
+        //     $Enrollment->section_id = $section;
+        // }
+
+        // foreach ($classrooms as $classroom){
+        //     $Enrollment->classroom_id = $classroom;
+        // }
+
+        // $Enrollment->save();
+
+        Enrollment::onlyTrashed()->where('student_id', $request->Student_id)->first()->restore();
+
+        toastr()->success('تم تسجـيـل الطـالـب بنجاح');
+        return redirect()->back();
+    }
+    catch (\Exception $e) {
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+    }
     public function store(EnrollmentRequest $request)
     {
         $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->get();
@@ -38,7 +72,6 @@ class EnrollmentController extends Controller
 
             Enrollment::updateOrCreate([
                 'student_id' => $student->id,
-                'semester_id' => strip_tags($request->Semester_id),
                 'grade_id' => strip_tags($request->Grade_id),
                 'classroom_id' => strip_tags($request->Classroom_id),
                 'section_id' => strip_tags($request->Section_id),

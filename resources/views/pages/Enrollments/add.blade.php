@@ -42,22 +42,7 @@
 <div class="box-body">
 <div class="row">
 
-<div class="col-md-6">
-    <label > الفصـل الدراسي</label>
-    <select class="form-control select2" style="width: 100%;" name="Semester_id">
-        <option  selected disabled>أختـر من القائمة...</option>
-        @foreach ($Semesters as $Semester)
-            <option value="{{ $Semester->id }}" required>{{ $Semester->name }}</option>
-        @endforeach
-    </select>
-    @error('Semester_id')
-    <div class=" alert-danger">
-    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-    </div>
-    @enderror
-</div>
-
-<div class="col-md-6">
+<div class="col-md-3">
     <label > المرحلـة الدراسيـة</label>
     <select class="form-control select2" style="width: 100%;" name="Grade_id">
         <option  selected disabled>أختـر من القائمة...</option>
@@ -71,9 +56,8 @@
     </div>
     @enderror
 </div>
-</div><br>
-<div class="row">
-<div class="col-md-4">
+
+<div class="col-md-3">
     <label > الصـف الدراسـي</label>
     <select class="form-control select2" style="width: 100%;" name="Classroom_id">
 
@@ -85,7 +69,7 @@
     @enderror
 </div>
 
-<div class="col-md-4">
+<div class="col-md-3">
     <label > الشعبـة</label>
     <select class="form-control select2" style="width: 100%;" name="Section_id">
 
@@ -96,7 +80,7 @@
     </div>
     @enderror
 </div>
-<div class="col-md-4">
+<div class="col-md-3">
     <label > السنة الدراسية</label>
     <select class="form-control select2" style="width: 100%;" name="Year">
     <option selected>أختـر من القائمة...</option>
@@ -115,6 +99,7 @@
 </div>
 
 </div><br>
+
 </div>
 
 <div class="modal-footer">

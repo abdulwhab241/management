@@ -86,9 +86,6 @@ Route::group(
             Route::resource('Students', StudentController::class);
             Route::get('export_students', [StudentController::class, 'export'])->name('export_students');
 
-            //==============================Enrollment Students============================
-            Route::resource('Enrollments', EnrollmentController::class);
-
             Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
             Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
             Route::post('Delete_attachment', [StudentController::class,'Delete_attachment'])->name('Delete_attachment');
@@ -98,6 +95,10 @@ Route::group(
 
             //==============================Students Graduated============================
             Route::resource('Graduated', GraduatedController::class);
+
+            //==============================Enrollment Students============================
+            Route::resource('Enrollments', EnrollmentController::class);
+            Route::post('add_student', [EnrollmentController::class,'add_student'])->name('add_student_enrollment');
 
             //==============================Students Promotion============================
             Route::resource('Upgrades',  PromotionController::class);

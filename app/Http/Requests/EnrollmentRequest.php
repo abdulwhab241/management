@@ -22,7 +22,6 @@ class EnrollmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Semester_id' => 'required|integer',
             'Grade_id' => 'required|integer',
             'Classroom_id' => 'required|integer',
             'Section_id' => 'required|integer',

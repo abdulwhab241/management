@@ -37,9 +37,17 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Enrollments.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">تسـجيـل الطـلاب </a>
-<br><br>
+
+    <div class="box-body">
+        <a href="{{route('Enrollments.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+        aria-pressed="true">تسـجيـل الطـلاب </a>
+        <button type="button" class="btn btn-info btn-flat" title="تسجيل طالب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+    </div>
+
+
+<br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
     <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
@@ -53,7 +61,6 @@ aria-pressed="true">تسـجيـل الطـلاب </a>
 <tr>
     <th style="text-align: center;" class="alert-info">#</th>
     <th style="text-align: center;" class="alert-info">السنة الدراسية</th>
-    <th style="text-align: center;" class="alert-info">الفصل الدراسي</th>
     <th style="text-align: center;" class="alert-info">أسـم الطـالـب</th>
     <th style="text-align: center;" class="alert-info">المرحلـة الدراسيـة</th>
     <th style="text-align: center;" class="alert-info">الصـف الدراسـي</th>
@@ -69,7 +76,6 @@ aria-pressed="true">تسـجيـل الطـلاب </a>
 <tr>
 <td>{{ $loop->index+1 }}</td>
 <td>{{$Enrollment->year }}</td>
-<td>{{$Enrollment->semester->name}}</td>
 <td>{{$Enrollment->student->name}}</td>
 
 <td>{{$Enrollment->grade->name}}</td>
@@ -78,7 +84,7 @@ aria-pressed="true">تسـجيـل الطـلاب </a>
 <td>{{$Enrollment->date }}</td>
 <td>{{ $Enrollment->create_by }}</td>
     <td>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $Enrollment->id }}" title="إلـغاء تسجيـل الطالب">إلـغاء تسجيـل الطالب</button>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $Enrollment->id }}" title="إلـغاء تسجيـل الطالب">إلـغاء </button>
         {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="حذف الطالب المتخرج">حذف الطالب</button> --}}
 
     </td>
@@ -112,10 +118,54 @@ aria-pressed="true">تسـجيـل الطـلاب </a>
 </div>
 </div>
 
-{{-- @include('pages.Enrollments.return') --}}
 @endforeach
 </tbody>
 </table>
+</div>
+</div>
+
+<!-- add_modal_class -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-primary"  role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+تسجـيل طـالـب    <i class="fa fa-user-plus" aria-hidden="true"></i>
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('add_student_enrollment') }}" method="POST">
+@csrf
+
+<div class="box-body">
+
+
+
+        <div class="form-group">
+        <label >أسـم الطـالـب</label>
+        <select class="form-control select2" style="width: 100%;" name="Student_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Students as $Student)
+            <option value="{{$Student->id}}">{{$Student->name}}</option>
+            @endforeach
+        </select>
+        </div>
+
+<br>
+
+</div>
+
+<div class="modal-footer">
+<button type="submit"
+class="btn btn-info btn-block">تـأكيـد </button>
+</div>
+
+</form>
+</div>
+</div>
 </div>
 </div>
 
