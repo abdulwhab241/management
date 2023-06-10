@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('editorial');
             $table->string('total');
             $table->string('month');
+            $table->string('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

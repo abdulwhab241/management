@@ -22,6 +22,7 @@ return new class extends Migration
             // $table->string('exam_name');
             $table->string('exam_date');
             $table->integer('total_marks');
+            $table->string('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

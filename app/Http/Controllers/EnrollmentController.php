@@ -13,7 +13,7 @@ class EnrollmentController extends Controller
     public function index()
     {
         $Enrollments = Enrollment::where('year', date("Y"))->get();
-        $Students = Student::all();
+        $Students = Enrollment::onlyTrashed()->get();
         return view('pages.Enrollments.index',compact('Enrollments','Students'));
     }
 
@@ -27,32 +27,17 @@ class EnrollmentController extends Controller
     {
         
     try {
-        // $grades = Student::where('id',$request->Student_id)->pluck('grade_id');
-        // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
-        // $sections = Student::where('id',$request->Student_id)->pluck('section_id');
-        
-        // $Enrollment = new Enrollment();
 
-        // $Enrollment->student_id = strip_tags($request->Student_id);
-
-        // foreach ($grades as $grade){
-        //     $Enrollment->grade_id = $grade;
-        // }
-
-        // foreach ($sections as $section){
-        //     $Enrollment->section_id = $section;
-        // }
-
-        // foreach ($classrooms as $classroom){
-        //     $Enrollment->classroom_id = $classroom;
-        // }
-
-        // $Enrollment->save();
+        if($request->Student_id === null)
+        {
+            // toastr()->success('تم تسجـيـل الطـالـب بنجاح');
+            return redirect()->back();
+        }
 
         Enrollment::onlyTrashed()->where('student_id', $request->Student_id)->first()->restore();
-
-        toastr()->success('تم تسجـيـل الطـالـب بنجاح');
+        toastr()->success('تم إعـادة تسجـيـل الطـالـب بنجاح');
         return redirect()->back();
+
     }
     catch (\Exception $e) {
         return redirect()->back()->withErrors(['error' => $e->getMessage()]);

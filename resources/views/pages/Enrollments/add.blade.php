@@ -87,9 +87,9 @@
     @php
     $current_year = date("Y");
     @endphp
-    @for($year=$current_year; $year<=$current_year +1 ;$year++)
-        <option value="{{ $year}}">{{ $year }}</option>
-    @endfor
+    {{-- @for($year=$current_year; $year<=$current_year +1 ;$year++) --}}
+        <option value="{{ $current_year}}">{{ $current_year }}</option>
+    {{-- @endfor --}}
     </select>
     @error('Year')
     <div class=" alert-danger">

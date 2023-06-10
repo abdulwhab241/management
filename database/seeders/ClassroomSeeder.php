@@ -18,6 +18,7 @@ class ClassroomSeeder extends Seeder
         DB::table('classrooms')->delete();
         $classrooms = [
                 'الصف الاول',
+                'الصف الثاني',
         ];
 
         foreach ($classrooms as $classroom) {

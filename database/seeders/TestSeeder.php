@@ -18,7 +18,7 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach(range(1,150) as $i){
+        foreach(range(1,200) as $i){
         
             Student::create(
                 [
@@ -38,7 +38,8 @@ class TestSeeder extends Seeder
                     "address"=>fake()->name,
                     "mother_name"=>fake()->name,
                     "mother_phone"=>fake()->phoneNumber(),
-                    "mother_job"=>fake()->phoneNumber()
+                    "mother_job"=>fake()->phoneNumber(),
+                    'year' => '2023'
                 
                 ]
                 );

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->decimal('amount',50,2);
             $table->string('description');
+            $table->string('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

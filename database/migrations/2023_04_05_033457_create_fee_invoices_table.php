@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('fee_id')->references('id')->on('fees')->onDelete('cascade');
             $table->decimal('amount',50,2);
             $table->string('description');
+            $table->string('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

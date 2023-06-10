@@ -38,9 +38,10 @@ Route::group(
     })->name('dashboard.Students');
 
     //==============================Student Information============================~
-    Route::get('/student/information', function () {
-        return view('pages.Students.information.index');
-    })->name('Students.information');
+    Route::get('student_information', [StudentInformationController::class,'student_information'])->name('Students.information');
+    // Route::get('/student/information', function () {
+    //     return view('pages.Students.information.index');
+    // })->name('Students.information');
 
     //==============================Student Group============================
 Route::group(['namespace' => 'App\Http\Controllers\Student'], function () {

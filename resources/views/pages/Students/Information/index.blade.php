@@ -14,9 +14,13 @@
 <h1>
     البيـانـات الشخصيـة
 </h1>
+
 <ol class="breadcrumb">
-<li class="active">البيـانـات الشخصيـة</li>
+    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+
+    <li class="active">البيـانـات الشخصيـة</li>
 </ol>
+
 </section>
 
 <!-- Main content -->
@@ -25,81 +29,47 @@
 <div class="row">
 <div class="col-xs-12">
 <div class="box">
-
+    
+@if(count($Enrollments) > 0)
+<div class="box-body">
 <div class="box-body table-responsive no-padding">
-    <table class="table" data-page-length="50" style="font-family: 'Cairo', sans-serif">
-        <tbody>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6;"  >أسـم الطـالـب</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->name }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الجنـس</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->gender->name }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تـاريـخ الميـلاد</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->birth_date }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >المـرحلـة الدراسيـة</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->grade->name }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الصـف الدراسـي</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->classroom->name_class }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الشعبـة</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->section->name_section }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >أسـم الأب</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->father_name }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >جهـة العمـل</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->employer }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >الوظيـفة</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->father_job }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >هـاتـف العمـل</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->job_phone }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >هـاتـف المنـزل</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->home_phone }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >العنـوان</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->address }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >أسـم الأم</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_name }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >هـاتـف الأم</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_phone }}</td>
-            </tr>
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >وظيفـة الأم</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->mother_job }}</td>
-            </tr>
-            {{-- <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >تاريخ التسجيل</th>
-                <td style="text-align: center; width: 70%; background-color: #D0DEF6; color:black;" >{{ auth()->user()->created_at->diffForHumans() }}</td>
-            </tr> --}}
-            <tr>
-                <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;" >السنـة الدراسيـة</th>
-                <td style="text-align: center; width: 70%;" >{{ auth()->user()->academic_year }}</td>
-            </tr>
-    </tbody>
-    </table>
+    <table  class="table table-bordered" style="width:100%; text-align: center;">
+<thead>
+    <tr>
+        <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
+        <th style="text-align: center; background-color: #D0DEF6;">المرحلة الدراسية</th>
+        <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th>
+        <th style="text-align: center; background-color: #D0DEF6;">الشعبـة</th>
+        <th style="text-align: center; background-color: #D0DEF6;">السنة الدراسية</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach ($Enrollments as $Enrollment)
+    <tr>
+        <td>{{$Enrollment->student->name}}</td>
+        <td>{{$Enrollment->grade->name}}</td>
+        <td>{{$Enrollment->classroom->name_class}}</td>
+        <td>{{$Enrollment->section->name_section}}</td>
+        <td>{{$Enrollment->year }}</td>
+    </tr>
+    @endforeach
+
+
+</tbody>
+</table>
 </div>
+@else
+<h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+    <marquee direction="right">
+        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+            عـذراً لـم يتـم تسجيـلك لـهذي السـنة الـدراسيـة راجـع الإدارة 
+        </b>
+    </marquee>
+    </h1>
+@endif
+
+</div>
+
 </div>
 </div>
 </div>

@@ -36,6 +36,7 @@ class StudentSeeder extends Seeder
             'mother_name' => 'فاطمة علي الصنعاني',
             'mother_phone' => '777666555',
             'mother_job' => 'ربة منزل',
+            'year' => '2023',
         ]);
 
         DB::table('students')->insert([
@@ -56,6 +57,7 @@ class StudentSeeder extends Seeder
             'mother_name' => 'فاطمة علي الصنعاني',
             'mother_phone' => '777666555',
             'mother_job' => 'ربة منزل',
+            'year' => '2023',
         ]);
     }
 }

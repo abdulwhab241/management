@@ -41,7 +41,7 @@
     <div class="box-body">
         <a href="{{route('Enrollments.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
         aria-pressed="true">تسـجيـل الطـلاب </a>
-        <button type="button" class="btn btn-info btn-flat" title="تسجيل طالب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-info btn-flat" title="تسجيل الطالب الذي تم إلغاء تسجيله" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-user-plus" aria-hidden="true"></i>
         </button>
     </div>
@@ -132,7 +132,7 @@ aria-hidden="true">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-تسجـيل طـالـب    <i class="fa fa-user-plus" aria-hidden="true"></i>
+    تسجيل الطالب الذي تم إلغاء تسجيله    <i class="fa fa-user-plus" aria-hidden="true"></i>
 </h5>
 </div>
 <div class="modal-body">
@@ -142,14 +142,12 @@ aria-hidden="true">
 
 <div class="box-body">
 
-
-
         <div class="form-group">
         <label >أسـم الطـالـب</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Students as $Student)
-            <option value="{{$Student->id}}">{{$Student->name}}</option>
+            <option value="{{$Student->id}}" >{{$Student->name}}</option>
             @endforeach
         </select>
         </div>

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Student;
 
-use App\Http\Controllers\Controller;
+use App\Models\Student;
+use App\Models\Enrollment;
 use App\Models\FeeInvoice;
 use App\Models\Graduation;
 use App\Models\ProcessingFee;
 use App\Models\PaymentStudent;
 use App\Models\ReceiptStudent;
-use App\Models\Student;
 use App\Models\StudentAccount;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class StudentInformationController extends Controller
 {
@@ -45,6 +46,12 @@ class StudentInformationController extends Controller
     {
         $Graduations = Graduation::select('*')->where('student_id',auth()->user()->id)->get();
         return view('pages.Students.information.graduated', compact('Graduations'));
+    }
+
+    public function student_information()
+    {
+        $Enrollments = Enrollment::where('student_id',auth()->user()->id)->where('year', date("Y"))->get();
+        return view('pages.Students.information.index', compact('Enrollments'));
     }
 
 

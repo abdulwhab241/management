@@ -23,8 +23,6 @@ class StudentGradeController extends Controller
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $Classrooms = Section::with(['StudentGrades'])->whereIn('id', $ids)->get();
         return view('pages.Teachers.dashboard.StudentGrades.index',compact('Classrooms'));
-
-
     }
 
     

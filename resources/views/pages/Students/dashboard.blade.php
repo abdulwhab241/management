@@ -50,7 +50,7 @@
                 </caption>
                 <tbody>
                     <tr>
-                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;"  >أسـم الطـالـب</th>
+                        <th style="text-align: center; width: 30%; background-color: #D0DEF6; color:black;"  >أسـم الطـالـب \ الطـالبـة</th>
                         <td style="text-align: center; width: 70%;" >{{ auth()->user()->name }}</td>
                     </tr>
                     <tr>

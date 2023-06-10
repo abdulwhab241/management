@@ -21,7 +21,6 @@ class SectionSeeder extends Seeder
         $Sections = [
             'أ',
             'ب',
-            'ج',
         ];
 
         foreach ($Sections as $section) {

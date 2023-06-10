@@ -36,6 +36,7 @@ return new class extends Migration
 
 
             $table->string('description')->nullable();
+            $table->string('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

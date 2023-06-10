@@ -14,11 +14,11 @@ class SemesterSeeder extends Seeder
     public function run(): void
     {
         DB::table('semesters')->insert([
-            'name' => 'الفصل الاول ',
+            'name' => ' الاول ',
         ]);
 
         DB::table('semesters')->insert([
-            'name' => 'الفصل الثاني ',
+            'name' => ' الثاني ',
         ]);
     }
 }
