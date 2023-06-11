@@ -21,22 +21,45 @@ class AttendanceController extends Controller
         return view('pages.Attendance.index',compact('Classrooms','Students','Attendances'));
     }
 
+    public function create()
+    {
+        $Students = Enrollment::where('year', date("Y"))->get();
+        return view('pages.Attendance.add',compact('Students'));
+    }
+
+    public function edit($id)
+    {
+        $Attendance = Attendance::findOrFail($id);
+        $Students = Enrollment::where('year', date("Y"))->get();
+        return view('pages.Attendance.edit',compact('Students','Attendance'));
+    }
+
     public function store(AttendanceRequest $request)
     {
         try {
+            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Attendances = new Attendance();
             $Attendances->day = strip_tags($request->Day_id);
             $Attendances->student_id = strip_tags($request->Student_id);
-            $Attendances->classroom_id = strip_tags($request->Classroom_id);
-            $Attendances->section_id = strip_tags($request->Section_id);
+
+            foreach ($sections as $section){
+                $Attendances->section_id = $section;
+            }
+    
+            foreach ($classrooms as $classroom){
+                $Attendances->classroom_id = $classroom;
+            }
+
             $Attendances->attendance_date = date('Y-m-d');
             $Attendances->attendance_status = strip_tags($request->Attendance);
+            $Attendances->year = date('Y');
             $Attendances->create_by = auth()->user()->name;
             $Attendances->save();
 
-            toastr()->success('تـم إضـافـة التحضيـر بنجـاح');
-            return redirect()->route('Attendance.index');
+            toastr()->success('تـم إضـافـة تحضـير الطـالـب بنجـاح');
+            return redirect()->route('Attendance.create');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -46,14 +69,25 @@ class AttendanceController extends Controller
     {
         try {
             // dd($request);
+            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Attendances = Attendance::findOrFail($request->id);
             $Attendances->day = strip_tags($request->Day_id);
             $Attendances->student_id = strip_tags($request->Student_id);
-            $Attendances->classroom_id = strip_tags($request->Classroom_id);
-            $Attendances->section_id = strip_tags($request->Section_id);
+
+            
+            foreach ($sections as $section){
+                $Attendances->section_id = $section;
+            }
+    
+            foreach ($classrooms as $classroom){
+                $Attendances->classroom_id = $classroom;
+            }
+
             $Attendances->attendance_date = date('Y-m-d');
             $Attendances->attendance_status = strip_tags($request->Attendance);
+            $Attendances->year = date('Y');
             $Attendances->create_by = auth()->user()->name;
             $Attendances->save();
 

@@ -53,7 +53,7 @@
 <thead>
 <tr>
     <th style="text-align: center; background-color: #A8DBFA;" >#</th>
-    <th style="text-align: center; background-color: #A8DBFA;" >أسـم الطالـب</th>
+    <th style="text-align: center; background-color: #A8DBFA;" >أسـم الطـالـب \ الطـالبـة</th>
     <th style="text-align: center; background-color: #A8DBFA;" >المرحلة الدراسية السابقة</th>
     <th style="text-align: center; background-color: #A8DBFA;" >السنة الدراسية</th>
     <th style="text-align: center; background-color: #A8DBFA;" >الصف الدراسي السابق</th>

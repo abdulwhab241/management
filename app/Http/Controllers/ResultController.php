@@ -24,6 +24,22 @@ class ResultController extends Controller
         return view('pages.Results.index', compact('Exams','Results','Students'));
     }
 
+    public function create()
+    {
+        $Exams = Exam::where('year', date("Y"))->get();
+        $Students = Enrollment::where('year', date("Y"))->get();
+        return view('pages.Results.add',compact('Students','Exams'));
+    }
+
+    public function edit($id)
+    {
+        $Exams = Exam::where('year', date("Y"))->get();
+        $Students = Enrollment::where('year', date("Y"))->get();
+        $Result = Result::findOrFail($id);
+        return view('pages.Results.edit',compact('Students','Exams','Result'));
+    }
+
+
     public function show($id)
     {
         $Results = Result::findOrFail($id);
@@ -54,13 +70,14 @@ class ResultController extends Controller
             $Exam->result_name = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
+            $Exam->year = date('Y');
             $Exam->create_by = auth()->user()->name;
             $Exam->save();
 
 
 
-            toastr()->success('تم حفظ نتيجـة الطـالـب بنجاح');
-            return redirect()->route('Results.index');
+            toastr()->success('تم إضـافـة نتيجـة الطـالـب بنجاح');
+            return redirect()->route('Results.create');
         }
         catch(\Exception $e)
         {
@@ -86,6 +103,7 @@ class ResultController extends Controller
             $Exam->result_name = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
+            $Exam->year = date('Y');
             $Exam->create_by = auth()->user()->name;
             $Exam->save();
             

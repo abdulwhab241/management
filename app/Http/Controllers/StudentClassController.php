@@ -46,6 +46,7 @@ class StudentClassController extends Controller
                 $StudentClasses->fifth = strip_tags($request->Fifth);
                 $StudentClasses->sixth = strip_tags($request->Sixth);
                 $StudentClasses->seventh = strip_tags($request->Seventh);
+                $StudentClasses->year = date('Y');
                 $StudentClasses->create_by = auth()->user()->name;
 
                 $StudentClasses->save();
@@ -85,6 +86,7 @@ class StudentClassController extends Controller
             $StudentClass->fifth = strip_tags($request->Fifth);
             $StudentClass->sixth = strip_tags($request->Sixth);
             $StudentClass->seventh = strip_tags($request->Seventh);
+            $StudentClass->year = date('Y');
             $StudentClass->create_by = auth()->user()->name;
             $StudentClass->save();
 

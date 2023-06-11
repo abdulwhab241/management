@@ -88,6 +88,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $students->mother_name = strip_tags($request->Mother_Name);
             $students->mother_phone = strip_tags($request->Mother_Phone);
             $students->mother_job = strip_tags($request->Mother_Job);
+            $students->year = date('Y');
             $students->create_by = auth()->user()->name;
 
                 // insert img
@@ -166,6 +167,7 @@ class StudentRepository implements StudentRepositoryInterface{
             $Edit_Students->mother_name = strip_tags($request->Mother_Name);
             $Edit_Students->mother_phone = strip_tags($request->Mother_Phone);
             $Edit_Students->mother_job = strip_tags($request->Mother_Job);
+            $Edit_Students->year = date('Y');
             $Edit_Students->create_by = auth()->user()->name;
 
             // insert img

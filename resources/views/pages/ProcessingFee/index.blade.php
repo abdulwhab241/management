@@ -36,7 +36,10 @@
 </div>
 @endif
 <div class="box-header">
+
     <div class="box-body">
+        <a href="{{route('ProcessingFee.create')}}" class="btn btn-success btn-flat" role="button"
+        style="margin: 5px; padding: 5px;" aria-pressed="true">إضـافـة سـند  </a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_process') }}">
             <i class="fas fa-file-download"></i>  
         </a>

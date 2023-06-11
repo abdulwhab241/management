@@ -24,7 +24,7 @@ class ResultRequest extends FormRequest
         return [
             'Exam_id' => 'required|integer',
             'Student_id' => 'required|integer',
-            'Marks' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:1|max:3',
+            'Marks' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:1|max:2',
             'Appreciation' => 'required',
             'Result_name' => 'required',
         ];

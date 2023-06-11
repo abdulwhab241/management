@@ -23,7 +23,7 @@ class ProcessingRequest extends FormRequest
     {
         return [
             'Debit' => 'required|integer',
-            'student_id' => 'required|integer',
+            'Student_id' => 'required|integer',
             'description' => 'required',
         ];
     }

@@ -10,7 +10,7 @@ interface ProcessingFeeRepositoryInterface
 
     // public function create();
 
-    public function show($id);
+    public function create();
 
     public function edit($id);
 

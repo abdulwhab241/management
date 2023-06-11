@@ -41,13 +41,13 @@ class FeesRepository implements FeesRepositoryInterface
         try {
 
             $fees = new Fee();
-            $fees->title = $request->title;
-            $fees->amount  =$request->amount;
-            $fees->grade_id  =$request->Grade_id;
-            $fees->classroom_id  =$request->Classroom_id;
-            $fees->description  =$request->description;
-            $fees->year  =$request->year;
-            $fees->fee_type  =$request->Fee_type;
+            $fees->title =  strip_tags($request->title);
+            $fees->amount  = strip_tags($request->amount);
+            $fees->grade_id  = strip_tags($request->Grade_id);
+            $fees->classroom_id  = strip_tags($request->Classroom_id);
+            $fees->description  = strip_tags($request->description);
+            $fees->year  = strip_tags($request->year);
+            $fees->fee_type  = strip_tags($request->Fee_type);
             $fees->create_by = auth()->user()->name;
             $fees->save();
 
@@ -70,14 +70,14 @@ class FeesRepository implements FeesRepositoryInterface
     public function update($request)
     {
         try {
-            $fees = Fee::findOrFail($request->id);
-            $fees->title = $request->title;
-            $fees->amount  =$request->amount;
-            $fees->grade_id  =$request->Grade_id;
-            $fees->classroom_id  =$request->Classroom_id;
-            $fees->description  =$request->description;
-            $fees->year  =$request->year;
-            $fees->fee_type  =$request->Fee_type;
+            $fees = Fee::findOrFail(strip_tags($request->id));
+            $fees->title =  strip_tags($request->title);
+            $fees->amount  = strip_tags($request->amount);
+            $fees->grade_id  = strip_tags($request->Grade_id);
+            $fees->classroom_id  = strip_tags($request->Classroom_id);
+            $fees->description  = strip_tags($request->description);
+            $fees->year  = strip_tags($request->year);
+            $fees->fee_type  = strip_tags($request->Fee_type);
             $fees->create_by = auth()->user()->name;
             $fees->save();
             toastr()->success('تم تعديل الرسوم بنجاح');

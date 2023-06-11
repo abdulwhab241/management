@@ -23,8 +23,6 @@ class AttendanceRequest extends FormRequest
     {
         return [
             'Student_id' => 'required|integer',
-            'Classroom_id' => 'required|integer',
-            'Section_id' => 'required|integer',
             'Day_id' => 'required',
             'Attendance' => 'required',
         ];

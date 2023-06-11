@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Models\PaymentStudent;
 use Illuminate\Support\Facades\DB;
@@ -24,16 +25,16 @@ class PaymentController extends Controller
         return $this->Payment->index();
     }
 
+    public function create()
+    {
+        $Enrollments = Enrollment::where('year', date("Y"))->get();
+        return view('pages.Payments.add',compact('Enrollments'));
+    }
+
 
     public function store(PaymentRequest $request)
     {
         return $this->Payment->store($request);
-    }
-
-
-    public function show($id)
-    {
-        return $this->Payment->show($id);
     }
 
 

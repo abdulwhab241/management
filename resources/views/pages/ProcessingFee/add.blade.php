@@ -12,7 +12,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-استبعاد رسوم الطـالـب  <label style="color: #5686E0">{{$Student->student->name}}</label>
+استبعاد رسوم الطـالـب 
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
@@ -35,30 +35,42 @@
     </button>
 </div>
 @endif
-</div><!-- /.box-header -->
+
 
 <form  action="{{route('ProcessingFee.store')}}"  method="POST" >
 @csrf
 <div class="box-body">
     <div class="row">
+        <div class="col-md-4">
+            <label >أسـم الطـالـب</label>
+            <select class="form-control select2" style="width: 100%;" name="Student_id">
+                <option  selected disabled>أختـر من القائمة...</option>
+                @foreach ($Enrollments as $Student)
+                <option value="{{$Student->student_id}}">{{$Student->student->name}}</option>
+                @endforeach
+            </select>
+            @error('Student_id')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
+        </div>
 
-        <div class="col-md-3"> 
-            <div class="form-group">
+        <div class="col-md-4"> 
             <label> المبلغ</label>
             <input  type="hidden" name="student_id"  value="{{$Student->id}}" class="form-control">
             <input  class="form-control" value="{{ old('Debit') }}" name="Debit" type="number" class="form-control">
-            </div>
             @error('Debit')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-        <div class="col-md-3">
+        {{-- <div class="col-md-3">
             <label>رصيد الطالب </label>
             <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($Student->student_account->sum('Debit_feeInvoice') - $Student->student_account->sum('credit_receipt')) }}" type="text" readonly>
-        </div>
-        <div class="col-md-6">
+        </div> --}}
+        <div class="col-md-4">
             <label>البيان</label>
             <textarea class="form-control" name="description" rows="2">{{ old('description') }}</textarea>
             @error('description')
@@ -78,7 +90,8 @@
 
 </form>
 
-
+</div><!-- /.box-header -->
+</div>
 </div>
 </section><!-- /.content -->
 

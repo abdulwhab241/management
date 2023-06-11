@@ -4,8 +4,6 @@
 namespace App\Repository;
 
 use App\Models\User;
-use App\Models\Student;
-use App\Models\Enrollment;
 use App\Models\FundAccount;
 use App\Models\PaymentStudent;
 use App\Models\StudentAccount;
@@ -23,11 +21,11 @@ class PaymentRepository implements PaymentRepositoryInterface
         return view('pages.Payments.index',compact('payment_students'));
     }
 
-    public function show($id)
-    {
-        $student = Enrollment::findOrFail($id);
-        return view('pages.Payments.add',compact('student'));
-    }
+    // public function show($id)
+    // {
+    //     $student = Enrollment::findOrFail($id);
+    //     return view('pages.Payments.add',compact('student'));
+    // }
 
     public function edit($id)
     {
@@ -42,9 +40,10 @@ class PaymentRepository implements PaymentRepositoryInterface
             // حفظ البيانات في جدول سندات الصرف
             $payment_students = new PaymentStudent();
             $payment_students->date = date('Y-m-d');
-            $payment_students->student_id = strip_tags($request->student_id);
+            $payment_students->student_id = strip_tags($request->Student_id);
             $payment_students->amount = strip_tags($request->Debit);
             $payment_students->description = strip_tags($request->description);
+            $payment_students->year = date('Y');
             $payment_students->create_by = auth()->user()->name;
             $payment_students->save();
 
@@ -52,9 +51,10 @@ class PaymentRepository implements PaymentRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->student_id = strip_tags($request->student_id);
+            $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
+            $fund_accounts->year = date('Y');
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -63,11 +63,12 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts = new StudentAccount();
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'سند صرف';
-            $students_accounts->student_id = strip_tags($request->student_id);
+            $students_accounts->student_id = strip_tags($request->Student_id);
             $students_accounts->payment_id = strip_tags($payment_students->id);
             $students_accounts->Debit_payment = strip_tags($request->Debit);
             $students_accounts->credit_payment = 0.00; 
             $students_accounts->description = strip_tags($request->description);
+            $students_accounts->year = date('Y');
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
 
@@ -92,9 +93,10 @@ class PaymentRepository implements PaymentRepositoryInterface
             // تعديل البيانات في جدول سندات الصرف
             $payment_students = PaymentStudent::findOrFail(strip_tags($request->id));
             $payment_students->date = date('Y-m-d');
-            $payment_students->student_id = strip_tags($request->student_id);
+            $payment_students->student_id = strip_tags($request->Student_id);
             $payment_students->amount = strip_tags($request->Debit);
             $payment_students->description = strip_tags($request->description);
+            $payment_students->year = date('Y');
             $payment_students->create_by = auth()->user()->name;
             $payment_students->save();
 
@@ -102,9 +104,10 @@ class PaymentRepository implements PaymentRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = FundAccount::where('payment_id',strip_tags($payment_students->id))->first();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->student_id = strip_tags($request->student_id);
+            $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
+            $fund_accounts->year = date('Y');
             // $fund_accounts->credit_payment = 0.00;
             // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
@@ -115,11 +118,12 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts = StudentAccount::where('payment_id',strip_tags($request->id))->first();
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'تعديل سند الصرف';
-            $students_accounts->student_id = strip_tags($request->student_id);
+            $students_accounts->student_id = strip_tags($request->Student_id);
             $students_accounts->payment_id = strip_tags($payment_students->id);
             $students_accounts->Debit_payment = strip_tags($request->Debit);
             $students_accounts->credit_payment = 0.00; 
             $students_accounts->description = strip_tags($request->description);
+            $students_accounts->year = date('Y');
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
 

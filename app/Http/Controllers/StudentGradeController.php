@@ -88,6 +88,7 @@ class StudentGradeController extends Controller
             $StudentGrade->editorial = strip_tags($request->Editorial);
             $StudentGrade->total = strip_tags($request->Total);
             $StudentGrade->month = strip_tags($request->Month);
+            $StudentGrade->year = date('Y');
             $StudentGrade->create_by = auth()->user()->name;
             $StudentGrade->save();
 
@@ -127,6 +128,7 @@ class StudentGradeController extends Controller
         $StudentGrade->editorial = strip_tags($request->Editorial);
         $StudentGrade->total = strip_tags($request->Total);
         $StudentGrade->month = strip_tags($request->Month);
+        $StudentGrade->year = date('Y');
         $StudentGrade->create_by = auth()->user()->name;
         $StudentGrade->save();
 

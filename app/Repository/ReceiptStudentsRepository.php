@@ -30,13 +30,13 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     public function create()
     {
         $fee =Fee::all();
-        $student = Enrollment::where('year', date("Y"))->get();;
+        $student = Enrollment::where('year', date("Y"))->get();
         return view('pages.Receipts.add',compact('student','fee'));
     }
 
     public function show($id)
     {
-        $student = Enrollment::findOrFail($id)->where('year', date("Y"))->get();;
+        $student = Enrollment::findOrFail($id)->where('year', date("Y"))->get();
         return view('pages.Receipts.show',compact('student'));
     }
 
@@ -58,6 +58,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $receipt_students->student_id = strip_tags($request->Student_id);
             $receipt_students->Debit = strip_tags($request->Debit);
             $receipt_students->description = strip_tags($request->description);
+            $receipt_students->year = date('Y');
             $receipt_students->create_by = auth()->user()->name;
             $receipt_students->save();
 
@@ -67,6 +68,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->receipt = strip_tags($receipt_students->description);
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
+            $fund_accounts->year = date('Y');
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -79,6 +81,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $student_accounts->Debit_receipt =  0.00;
             $student_accounts->credit_receipt = strip_tags($request->Debit);
             $student_accounts->description = strip_tags($request->description);
+            $student_accounts->year = date('Y');
             $student_accounts->create_by = auth()->user()->name;
             $student_accounts->save();
 
@@ -112,6 +115,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $receipt_students->student_id = strip_tags($request->Student_id);
             $receipt_students->Debit = strip_tags($request->Debit);
             $receipt_students->description = strip_tags($request->description);
+            $receipt_students->year = date('Y');
             $receipt_students->create_by = auth()->user()->name;
             $receipt_students->save();
 
@@ -122,6 +126,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $fund_accounts->receipt = strip_tags($receipt_students->description);
             // $fund_accounts->Debit_receipt = 0.00;
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
+            $fund_accounts->year = date('Y');
             // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
@@ -136,6 +141,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $student_accounts->Debit_receipt =  0.00;
             $student_accounts->credit_receipt = strip_tags($request->Debit);
             $student_accounts->description = strip_tags($request->description);
+            $student_accounts->year = date('Y');
             $student_accounts->create_by = auth()->user()->name;
             $student_accounts->save();
 

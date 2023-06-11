@@ -47,6 +47,7 @@ class TeacherClassesController extends Controller
             $TeacherClasses->fifth = strip_tags($request->Fifth);
             $TeacherClasses->sixth = strip_tags($request->Sixth);
             $TeacherClasses->seventh = strip_tags($request->Seventh);
+            $TeacherClasses->year = date('Y');
             $TeacherClasses->create_by = auth()->user()->name;
             $TeacherClasses->save();
             toastr()->success('تـم إضـافـة جـدول حصـص المعلميـن بنجـاح');
@@ -72,6 +73,7 @@ class TeacherClassesController extends Controller
             $TeacherClasses->fifth = strip_tags($request->Fifth);
             $TeacherClasses->sixth = strip_tags($request->Sixth);
             $TeacherClasses->seventh = strip_tags($request->Seventh);
+            $TeacherClasses->year = date('Y');
             $TeacherClasses->create_by = auth()->user()->name;
             $TeacherClasses->save();
 

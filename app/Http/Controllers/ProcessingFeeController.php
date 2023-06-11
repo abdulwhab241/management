@@ -31,9 +31,9 @@ class ProcessingFeeController extends Controller
     }
 
 
-    public function show($id)
+    public function create()
     {
-        return $this->Processing->show($id);
+        return $this->Processing->create();
     }
 
 

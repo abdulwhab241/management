@@ -9,6 +9,7 @@ use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
 use App\Models\Promotion;
+use App\Models\Enrollment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,33 +33,36 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     {
         try {
 
-            $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('academic_year',$request->academic_year)->get();
+            $students = Enrollment::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('year',$request->academic_year)->get();
 
             if($students->count() < 1){
-                return redirect()->back()->with('error_promotions', __('لاتوجد بيانات في جدول الطلاب'));
+                toastr()->error('لاتوجد بيانات في جدول تسـجيـل الطلاب');
+                return redirect()->back();
             }
 
             // update in table student
             foreach ($students as $student){
 
-                $ids = explode(',',$student->id);
+                $ids = explode(',',$student->student_id);
                 Student::whereIn('id', $ids)
                     ->update([
-                        'grade_id'=>$request->Grade_id_new,
-                        'classroom_id'=>$request->Classroom_id_new,
-                        'academic_year'=>$request->academic_year_new,
+                        'grade_id'=>strip_tags($request->Grade_id_new),
+                        'classroom_id'=> strip_tags($request->Classroom_id_new),
+                        'academic_year'=> strip_tags($request->academic_year_new),
+                        'year'=>strip_tags($request->academic_year_new),
                         'create_by' =>auth()->user()->name,
                     ]);
 
                 // insert in to promotions
                 Promotion::updateOrCreate([
                     'student_id'=>$student->id,
-                    'from_grade'=>$request->Grade_id,
-                    'from_Classroom'=>$request->Classroom_id,
-                    'to_grade'=>$request->Grade_id_new,
-                    'to_Classroom'=>$request->Classroom_id_new,
-                    'academic_year'=>$request->academic_year,
-                    'academic_year_new'=>$request->academic_year_new,
+                    'from_grade'=> strip_tags($request->Grade_id),
+                    'from_Classroom'=> strip_tags($request->Classroom_id),
+                    'to_grade'=> strip_tags($request->Grade_id_new),
+                    'to_Classroom'=> strip_tags($request->Classroom_id_new),
+                    'academic_year'=> strip_tags($request->academic_year),
+                    'academic_year_new'=> strip_tags($request->academic_year_new),
+                    'year' => date('Y'),
                     'create_by' =>auth()->user()->name,
                 ]);
 

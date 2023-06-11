@@ -24,10 +24,10 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
         return view('pages.ProcessingFee.index',compact('ProcessingFees'));
     }
 
-    public function show($id)
+    public function create()
     {
-        $Student = Enrollment::findOrFail($id);
-        return view('pages.ProcessingFee.add',compact('Student'));
+        $Enrollments = Enrollment::where('year', date("Y"))->get();
+        return view('pages.ProcessingFee.add',compact('Enrollments'));
     }
 
     public function edit($id)
@@ -42,9 +42,10 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             // حفظ البيانات في جدول معالجة الرسوم
             $ProcessingFee = new ProcessingFee();
             $ProcessingFee->date = date('Y-m-d');
-            $ProcessingFee->student_id = strip_tags($request->student_id);
+            $ProcessingFee->student_id = strip_tags($request->Student_id);
             $ProcessingFee->amount = strip_tags($request->Debit);
             $ProcessingFee->description = strip_tags($request->description);
+            $ProcessingFee->year = date('Y');
             $ProcessingFee->create_by = auth()->user()->name;
             $ProcessingFee->save();
 
@@ -53,20 +54,22 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts = new StudentAccount();
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'إستبعاد رسوم دراسية (مدين)';
-            $students_accounts->student_id = strip_tags($request->student_id);
+            $students_accounts->student_id = strip_tags($request->Student_id);
             $students_accounts->processing_id = strip_tags($ProcessingFee->id);
             $students_accounts->Debit_processing = 0.00;
             $students_accounts->credit_processing = strip_tags($request->Debit);
             $students_accounts->description = strip_tags($request->description);
+            $students_accounts->year = date('Y');
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
 
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->student_id = strip_tags($request->student_id);
+            $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->processing = strip_tags($ProcessingFee->description);
             $fund_accounts->credit_processing = strip_tags($request->Debit);
+            $fund_accounts->year = date('Y');
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -91,9 +94,10 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             // تعديل البيانات في جدول معالجة الرسوم
             $ProcessingFee = ProcessingFee::findOrFail(strip_tags($request->id));;
             $ProcessingFee->date = date('Y-m-d');
-            $ProcessingFee->student_id = strip_tags($request->student_id);
+            $ProcessingFee->student_id = strip_tags($request->Student_id);
             $ProcessingFee->amount = strip_tags($request->Debit);
             $ProcessingFee->description = strip_tags($request->description);
+            $ProcessingFee->year = date('Y');
             $ProcessingFee->create_by = auth()->user()->name;
             $ProcessingFee->save();
 
@@ -101,21 +105,23 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts = StudentAccount::where('processing_id',strip_tags($request->id))->first();;
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'تعديل إستبعاد رسوم دراسية (مدين)';
-            $students_accounts->student_id = strip_tags($request->student_id);
+            $students_accounts->student_id = strip_tags($request->Student_id);
             $students_accounts->processing_id = strip_tags($ProcessingFee->id);
             $students_accounts->Debit_processing = 0.00;
             $students_accounts->credit_processing = strip_tags($request->Debit);
             $students_accounts->description = strip_tags($request->description);
+            $students_accounts->year = date('Y');
             $students_accounts->create_by = auth()->user()->name;
             $students_accounts->save();
 
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = FundAccount::where('processing_id',strip_tags($request->id))->first();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->student_id = strip_tags($request->student_id);
+            $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->processing = strip_tags($ProcessingFee->description);
             // $fund_accounts->Debit_processing = 0.00;
             $fund_accounts->credit_processing = strip_tags($request->Debit);
+            $fund_accounts->year = date('Y');
             // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();

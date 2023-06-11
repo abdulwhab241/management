@@ -38,6 +38,8 @@
 @endif
 <div class="box-header">
     <div class="box-body">
+        <a href="{{route('Payments.create')}}" class="btn btn-success btn-flat" role="button"
+        style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة سنـد صـرف</a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_payments') }}">
             <i class="fas fa-file-download"></i>  
         </a>
@@ -58,6 +60,7 @@
         <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
+        <th style="text-align: center;" class="alert-info">رصـيد الطـالـب</th>
         <th style="text-align: center;" class="alert-info">تاريخ الصرف</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
@@ -71,6 +74,7 @@
     <td>{{$payment_student->student->name}}</td>
     <td>{{ number_format($payment_student->amount) }} ريال </td>
     <td>{{$payment_student->description}}</td>
+    <td style="font-weight: bolder; background-color: #D0DEF6;">{{ number_format($payment_student->student_account->sum('Debit_feeInvoice') - $payment_student->student_account->sum('credit_receipt') - $payment_student->student_account->sum('Debit_payment')) }} ريال </td>
     <td>{{$payment_student->date}}</td>
     <td>{{$payment_student->create_by}}</td>
         <td>
