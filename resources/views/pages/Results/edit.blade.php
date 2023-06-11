@@ -40,68 +40,95 @@
 {{ method_field('patch') }}
 @csrf
 <div class="box-body">
-    <div class="row">
-
-        <div class="col-md-4"> 
-            <label>أسـم الطـالـب </label>
-            <input id="id" type="hidden" name="id" class="form-control"
-            value="{{ $Result->id }}">
-            <select class="form-control select2" style="width: 100%;" name="Student_id">
-                <option value="{{ $Result->student->id }}">
-                    {{ $Result->student->name }}
+<div class="row">
+    <div class="col-md-4"> 
+        <label>الفـصل الـدراسـي</label>
+        <select class="form-control select2" style="width: 100%;" name="Semester_id">
+            <option value="{{ $Result->semester->id }}">
+                {{ $Result->semester->name }}
+            </option>
+            @foreach ($Semesters as $Semester)
+                <option value="{{ $Semester->id }}">
+                    {{ $Semester->name }}
                 </option>
-            </select>
+            @endforeach
+        </select>
+        @error('Semester_id')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
+        @enderror
+    </div>
 
-        <div class="col-md-4"> 
-            <label>المـادة</label>
-            <select class="form-control select2" style="width: 100%;" name="Exam_id">
-                <option value="{{ $Result->exam->subject->id }}">
-                    {{ $Result->exam->subject->name }}
-                </option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label >إختبـار شهـر</label>
-            <select class="form-control select2" style="width: 100%;" name="Result_name">
-                <option> {{ $Result->result_name }} </option>
-                <option value="فبراير">فبراير</option>
-                <option value="مارس">مارس</option>
-                <option value="ابريل">ابريل</option>
-                <option value="اكتوبر">اكتوبر</option>
-                <option value="نوفمبر">نوفمبر</option>
-                <option value="ديسمبر">ديسمبر</option>
-            </select>
-        </div>
+    <div class="col-md-4">
+        <label >نتيـجة شهـر</label>
+        <select class="form-control select2" style="width: 100%;" name="Result_name">
+            <option> {{ $Result->result_name }} </option>
+            <option value="فبراير">فبراير</option>
+            <option value="مارس">مارس</option>
+            <option value="ابريل">ابريل</option>
+            <option value="اكتوبر">اكتوبر</option>
+            <option value="نوفمبر">نوفمبر</option>
+            <option value="ديسمبر">ديسمبر</option>
+        </select>
+    </div>
+
+    <div class="col-md-4"> 
+        <label>المـادة</label>
+        <select class="form-control select2" style="width: 100%;" name="Exam_id">
+            <option value="{{ $Result->exam->subject->id }}">
+                {{ $Result->exam->subject->name }}
+            </option>
+            @foreach ($Exams as $Exam)
+            <option value="{{ $Exam->id }}">
+                {{ $Exam->subject->name }}
+            </option>
+        @endforeach
+        </select>
+    </div>
+
 </div><br>
 
 <div class="row">
+<div class="col-md-4"> 
+    <label>أسـم الطـالـب \ الطـالبـة </label>
+    <select class="form-control select2" style="width: 100%;" name="Student_id">
+        <option value="{{ $Result->student->id }}">
+            {{ $Result->student->name }}
+        </option>
+        @foreach ($Students as $Student)
+        <option value="{{ $Student->student_id }}">
+            {{ $Student->student->name }}
+        </option>
+    @endforeach
+    </select>
+</div>
 
-    <div class="col-md-4">
-    <label>الدرجـة التي حصـل عليـها</label>
-    <input type="hidden" name="id" value="{{$Result->id}}">
-    <input type="number" value="{{ $Result->marks_obtained }}" name="Marks" class="form-control">
-    </div>
-    
-    <div class="col-md-4">
-        <label >التقـديـر</label>
-        <select class="form-control select2" style="width: 100%;" name="Appreciation">
-            <option >{{$Result->appreciation }}</option>
-            <option value="ممـتـاز">ممـتـاز</option>
-            <option value="جيـد جـداً">جيـد جـداً</option>
-            <option value="جيـد">جيـد</option>
-            <option value="مقبـول">مقبـول</option>
-            <option value="ضعيـف">ضعيـف</option>
-        </select> 
-    </div>
+<div class="col-md-4">
+<label>الدرجـة التي حصـل عليـها</label>
+<input type="hidden" name="id" value="{{$Result->id}}">
+<input type="number" value="{{ $Result->marks_obtained }}" name="Marks" class="form-control">
+</div>
+
+<div class="col-md-4">
+    <label >التقـديـر</label>
+    <select class="form-control select2" style="width: 100%;" name="Appreciation">
+        <option >{{$Result->appreciation }}</option>
+        <option value="ممـتـاز">ممـتـاز</option>
+        <option value="جيـد جـداً">جيـد جـداً</option>
+        <option value="جيـد">جيـد</option>
+        <option value="مقبـول">مقبـول</option>
+        <option value="ضعيـف">ضعيـف</option>
+    </select> 
+</div>
 
 </div>
 
 </div><br>
 <div class="modal-footer">
 
-    <button type="submit"
-    class="btn btn-success btn-block">تـأكيـد</button>
+<button type="submit"
+class="btn btn-success btn-block">تـأكيـد</button>
 </div>
 
 </form>

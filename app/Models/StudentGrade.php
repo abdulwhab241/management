@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Result;
 use App\Models\Student;
 use App\Models\Semester;
 use Illuminate\Database\Eloquent\Model;
@@ -27,5 +28,10 @@ class StudentGrade extends Model
     public function semester()
     {
         return $this->belongsTo(Semester::class, 'semester_id');
+    }
+
+    public function result()
+    {
+        return $this->belongsTo(Result::class, 'result_id');
     }
 }

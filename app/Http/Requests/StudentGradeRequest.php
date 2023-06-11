@@ -24,10 +24,11 @@ class StudentGradeRequest extends FormRequest
         return [
             'Semester_id' => 'required|integer',
             'Student_id' => 'required|integer',
+            'Result_id' => 'required|integer',
             'Homework' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Verbal' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Attendance' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
-            'Editorial' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
+            // 'Editorial' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Total' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:3',
             'Month' => 'required',
         ];

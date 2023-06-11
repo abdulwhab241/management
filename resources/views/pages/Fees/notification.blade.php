@@ -33,6 +33,7 @@
                 <tr>
                     <th style="text-align: center; background-color: #D0DEF6;" >أسم الرسوم</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >المبلغ</th>
+                    <th style="text-align: center; background-color: #D0DEF6;">التخفيض</th>
                     <th style="text-align: center; background-color: #D0DEF6;" > المرحلة الدراسية</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >الصف الدراسي</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >السنة الدراسية</th>
@@ -45,6 +46,7 @@
                 <tr>
                     <td>{{ $Fees->title }}</td>
                     <td>{{ number_format($Fees->amount) }} ريال </td>
+                    <td>{{$Fees->discount}}</td>
                     <td>{{$Fees->grade->name}}</td>
                     <td>{{$Fees->classroom->name_class}}</td>
                     <td>{{$Fees->year}}</td>

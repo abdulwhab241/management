@@ -44,6 +44,8 @@
                 <td>{{ $Student->name }}</td>
                 <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الجنـس</th>
                 <td>{{$Student->gender->name}}</td>
+                <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">الـمؤهـل</th>
+                <td>{{$Student->qualification}}</td>
                 <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">تـاريـخ الميـلاد</th>
                 <td>{{$Student->birth_date}}</td>
                 <th scope="row" style="text-align: center; background-color: #D0DEF6;" class="alert-default">المـرحلـة الدراسيـة</th>
@@ -127,7 +129,7 @@
                 @foreach ($ReceiptStudent as $Receipt )
                 <td>{{ $Receipt->description }}</td>
                 <td>{{  number_format($Receipt->Debit) }} ريال </td>
-                <td>{{$Receipt->created_at->diffForHumans()}}</td>
+                <td>{{$Receipt->date}}</td>
             </tr>
                 @endforeach
             </tbody>
@@ -155,7 +157,7 @@
                         @foreach ( $ProcessingFee as $Processing )
                         <td>{{ $Processing->description }}</td>
                         <td>{{  number_format($Processing->amount) }} ريال </td>
-                        <td>{{$Processing->created_at->diffForHumans()}}</td>
+                        <td>{{$Processing->date}}</td>
 
                 </tr>
                     @endforeach
@@ -180,7 +182,7 @@
                         @foreach ( $Payment as $P )
                         <td>{{ $P->description }}</td>
                         <td>{{  number_format($P->amount) }} ريال </td>
-                        <td>{{$P->created_at->diffForHumans()}}</td>
+                        <td>{{$P->date}}</td>
                 </tr>
                     @endforeach
                 </tbody>

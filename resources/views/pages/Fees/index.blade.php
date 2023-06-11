@@ -45,6 +45,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
         <th style="text-align: center;" class="alert-info">#</th>
         <th style="text-align: center;" class="alert-info">الاسم</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
+        <th style="text-align: center;" class="alert-info">التخفيض</th>
         <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
         <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
         <th style="text-align: center;" class="alert-info">السنة الدراسية</th>
@@ -59,6 +60,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
     <td>{{ $loop->iteration }}</td>
     <td>{{$fee->title}}</td>
     <td>{{ number_format($fee->amount) }} ريال </td>
+    <td>{{$fee->discount}}</td>
     <td>{{$fee->grade->name}}</td>
     <td>{{$fee->classroom->name_class}}</td>
     <td>{{$fee->year}}</td>

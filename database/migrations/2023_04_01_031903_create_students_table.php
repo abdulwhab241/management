@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->bigInteger('section_id')->unsigned();
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->longText('qualification')->nullable();
             $table->string('academic_year');
 
              //Father information
@@ -35,7 +36,7 @@ return new class extends Migration
              $table->string('password'); // هاتف الاب
              $table->string('job_phone')->nullable(); // هاتف العمل
              $table->string('home_phone')->nullable(); // هاتف المنزل
-             $table->string('address'); // العنوان
+             $table->longText('address'); // العنوان
 
              //Mother information
             $table->string('mother_name');

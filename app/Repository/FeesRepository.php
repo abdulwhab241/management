@@ -48,6 +48,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->description  = strip_tags($request->description);
             $fees->year  = strip_tags($request->year);
             $fees->fee_type  = strip_tags($request->Fee_type);
+            $fees->discount  = strip_tags($request->Discount);
             $fees->create_by = auth()->user()->name;
             $fees->save();
 
@@ -57,7 +58,7 @@ class FeesRepository implements FeesRepositoryInterface
 
             Notification::send($users, new FeeNotification($fees->id,$create_by,$fees->amount));
         
-            toastr()->success('تم حفظ الرسوم بنجاح');
+            toastr()->success('تم إضـافـة الرسوم الـدراسيـة بنجاح');
             return redirect()->route('Fees.create');
 
         }
@@ -78,9 +79,10 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->description  = strip_tags($request->description);
             $fees->year  = strip_tags($request->year);
             $fees->fee_type  = strip_tags($request->Fee_type);
+            $fees->discount  = strip_tags($request->Discount);
             $fees->create_by = auth()->user()->name;
             $fees->save();
-            toastr()->success('تم تعديل الرسوم بنجاح');
+            toastr()->success('تم تعديل الرسوم الـدراسيـة بنجاح');
             return redirect()->route('Fees.index');
         }
 
@@ -93,7 +95,7 @@ class FeesRepository implements FeesRepositoryInterface
     {
         try {
             Fee::destroy($request->id);
-            toastr()->error('تم حذف الرسوم بنجاح');
+            toastr()->error('تم حذف الرسوم الـدراسيـة بنجاح');
             return redirect()->back();
         }
 

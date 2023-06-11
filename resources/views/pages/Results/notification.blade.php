@@ -31,24 +31,23 @@
         <table class="table table-hover" style="width:100%; text-align: center;">
             <thead>
                 <tr>
-            
-                    <th style="text-align: center; background-color: #D0DEF6;" >أسـم الطـالـب</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >المـادة</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" > التقـديـر</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" > إختبـار شهـر</th>
-                    <th style="text-align: center; background-color: #D0DEF6;" >تم بواسطـة</th>
+                    <th style="text-align: center; background-color: #D0DEF6;">الفصـل الدراسي</th>
+                    <th style="text-align: center; background-color: #D0DEF6;"> نتيـجة شهـر</th>
+                    <th style="text-align: center; background-color: #D0DEF6;"> المـادة</th>
+                    <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة </th>
+                    <th style="text-align: center; background-color: #D0DEF6;">الدرجـة التي حصـل عليـها </th>
+                    <th style="text-align: center; background-color: #D0DEF6;">التقـديـر</th>
                     <th style="text-align: center; background-color: #D0DEF6;" >تاريخ الإنشاء</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $Results->student->name }}</td>
+                    <td>{{ $Results->semester->name }}</td>
+                    <td>{{$Results->result_name}}</td>
                     <td>{{ $Results->exam->subject->name }}</td>
+                    <td>{{ $Results->student->name }}</td>
                     <td>{{$Results->marks_obtained}}</td>
                     <td>{{$Results->appreciation}}</td>
-                    <td>{{$Results->result_name}}</td>
-                    <td>{{$Results->create_by}}</td>
                     <td>{{$Results->created_at->diffForHumans()}}</td>
                     
                 </tr>

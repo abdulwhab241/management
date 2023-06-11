@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('year');
             $table->string('fee_type');
+            $table->string('discount')->nullable();
             
             $table->string('create_by')->nullable();
             $table->softDeletes();

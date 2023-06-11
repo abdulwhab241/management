@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Exports\ResultsExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ResultRequest;
+use App\Models\Semester;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -17,18 +18,16 @@ class ResultController extends Controller
 {
     public function index()
     {
-        $Exams = Exam::all();
         $Results = Result::all();
-        $Students = Enrollment::where('year', date("Y"))->get();
-        
-        return view('pages.Results.index', compact('Exams','Results','Students'));
+        return view('pages.Results.index', compact('Results'));
     }
 
     public function create()
     {
         $Exams = Exam::where('year', date("Y"))->get();
+        $Semesters = Semester::all();
         $Students = Enrollment::where('year', date("Y"))->get();
-        return view('pages.Results.add',compact('Students','Exams'));
+        return view('pages.Results.add',compact('Students','Exams','Semesters'));
     }
 
     public function edit($id)
@@ -62,6 +61,7 @@ class ResultController extends Controller
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
+            $Exam->semester_id = strip_tags($request->Semester_id);
 
             foreach ($sections as $section){
                 $Exam->section_id = $section;
@@ -85,7 +85,7 @@ class ResultController extends Controller
         }
     }
 
-    public function update(ResultRequest $request)
+    public function update(Request $request)
     {
         try
         {
@@ -95,6 +95,7 @@ class ResultController extends Controller
             $Exam = Result::findOrFail($request->id);
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
+            $Exam->semester_id = strip_tags($request->Semester_id);
 
             foreach ($sections as $section){
                 $Exam->section_id = $section;

@@ -58,12 +58,12 @@
 
     <th style="text-align: center;" class="alert-info">#</th>
     <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
-    <th style="text-align: center;" class="alert-info"> النوع</th>
+    <th style="text-align: center;" class="alert-info"> الجنـس</th>
+    <th style="text-align: center;" class="alert-info"> الـمؤهـل</th>
     <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
     <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
     <th style="text-align: center;" class="alert-info"> الشعـبة</th>
     <th style="text-align: center;" class="alert-info">أسـم الأب </th>
-    <th style="text-align: center;" class="alert-info"> هاتف الاب</th>
     <th style="text-align: center;" class="alert-warning"> العمليات</th>
     <th style="text-align: center;"  class="alert-success"> انشـئ بواسطـة</th>
 </tr>
@@ -77,11 +77,12 @@
             <td>{{ $i }}</td>
             <td>{{ $Student->name }}</td>
             <td>{{ $Student->gender->name }}</td>
+            <td>{{ $Student->qualification }}</td>
             <td>{{$Student->grade->name}}</td>
             <td>{{$Student->classroom->name_class}}</td>
             <td style="font-weight: bolder;">{{$Student->section->name_section}}</td>
             <td>{{ $Student->father_name }}</td>
-            <td>{{ $Student->father_phone }}</td>
+
 
             <td>
                 <div class="input-group-btn">

@@ -42,7 +42,7 @@
     
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الطـالـب</h5>
         <div class="row">
-            <div class="col-md-4"> 
+            <div class="col-md-3"> 
                 <label>أسم الطـالـب</label>
                 <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
                 @error('Name')
@@ -52,7 +52,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label>تاريخ الميلاد</label>
                 <input type="date" value="{{ old('Date_Birth') }}" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
                 @error('Date_Birth')
@@ -62,9 +62,9 @@
                 @enderror
             </div>
 
-            <div class="col-md-4">
-               
-                <label>النوع</label>
+            <div class="col-md-3">
+    
+                <label>الجـنس</label>
                 <select class="form-control select2" style="width: 100%;" name="Gender_id">
                     <option selected disabled>أختـر من القائمة...</option>
                     @foreach($Genders as $Gender)
@@ -77,6 +77,24 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="col-md-3">
+                <label>السنة الدراسية</label>
+                <select class="form-control select2" style="width: 100%;" name="academic_year">
+                <option selected>أختـر من القائمة...</option>
+                @php
+                $current_year = date("Y");
+                @endphp
+                @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                    <option value="{{ $year}}">{{ $year }}</option>
+                @endfor
+                </select>
+                @error('academic_year')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+        </div>
     
     
         </div><br>
@@ -84,7 +102,7 @@
         <div class="row">
 
             <div class="col-md-3">
-               
+            
                 <label>المرحلة الدراسية</label>
                 <select class="form-control select2" style="width: 100%;" name="Grade_id">
                     <option selected>أختـر من القائمة...</option>
@@ -127,26 +145,17 @@
                 @enderror
             </div>
     
-
-        <div class="col-md-3">
-    
-            <label>السنة الدراسية</label>
-            <select class="form-control select2" style="width: 100%;" name="academic_year">
-            <option selected>أختـر من القائمة...</option>
-            @php
-            $current_year = date("Y");
-            @endphp
-            @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                <option value="{{ $year}}">{{ $year }}</option>
-            @endfor
-            </select>
-            @error('academic_year')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            <div class="col-md-3"> 
+                <label>المـؤهـل</label>
+                <textarea class="form-control" name="Qualification" rows="2">{{ old('Qualification') }}</textarea>
+                @error('Qualification')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
             </div>
-            @enderror
-    
-    </div>
+
+
 
     </div><br>
 
@@ -261,7 +270,7 @@
     </div>
     <br>
     <div class="col">
-        <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
+        <label style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
         <input type="file" accept="image/*" name="photos[]" multiple>
     </div>
 <br>

@@ -17,11 +17,12 @@ return new class extends Migration
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreignId('semester_id')->references('id')->on('semesters')->onDelete('cascade');
+            $table->foreignId('result_id')->references('id')->on('results')->onDelete('cascade');
 
             $table->string('homework');
             $table->string('verbal');
             $table->string('attendance');
-            $table->string('editorial');
+            // $table->string('editorial');
             $table->string('total');
             $table->string('month');
             $table->string('year');

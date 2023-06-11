@@ -45,8 +45,8 @@
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الطـالـب</h5>
 
         <div class="row">
-            <div class="col-md-4"> 
-                <label for="inputEmail4">أسم الطـالـب</label>
+            <div class="col-md-3"> 
+                <label>أسم الطـالـب</label>
                 <input type="text" value="{{ $Students->name }}"
                 class="form-control" name="Name">
                 <input type="hidden" name="id" value="{{$Students->id}}">
@@ -57,8 +57,8 @@
                 @enderror
             </div>
 
-            <div class="col-md-4">
-                <label for="inputEmail4">تاريخ الميلاد</label>
+            <div class="col-md-3">
+                <label>تاريخ الميلاد</label>
                 <input type="date" value="{{ $Students->birth_date }}" data-date-format="yyyy-mm-dd" name="Date_Birth" class="form-control">
                 @error('Date_Birth')
                 <div class=" alert-danger">
@@ -67,8 +67,8 @@
                 @enderror
             </div>
 
-            <div class="col-md-4">
-                <label for="inputEmail4">النوع</label>
+            <div class="col-md-3">
+                <label>النوع</label>
                 <select class="form-control select2" name="Gender_id">
                 @foreach($Genders as $Gender)
                 <option
@@ -76,6 +76,23 @@
                 @endforeach
                 </select>                        
                 @error('Gender_id')
+                <div class=" alert-danger">
+                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+                </div>
+                @enderror
+            </div>
+            <div class="col-md-3">
+                <label>السنة الدراسية</label>
+                <select class="form-control select2" name="academic_year">
+                    @php
+                    $current_year = date("Y");
+                @endphp
+                @for($year=$current_year; $year<=$current_year +1 ;$year++)
+                    <option value="{{ $year}}" {{$year == $Students->academic_year ? 'selected' : ' '}}>{{ $year }}</option>
+                @endfor
+                </select>
+                
+                @error('academic_year')
                 <div class=" alert-danger">
                 <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
                 </div>
@@ -133,26 +150,16 @@
             </div>
             @enderror
         </div>
-        
 
-        <div class="col-md-3">
-            <label for="title">السنة الدراسية</label>
-            <select class="form-control select2" name="academic_year">
-                @php
-                $current_year = date("Y");
-            @endphp
-            @for($year=$current_year; $year<=$current_year +1 ;$year++)
-                <option value="{{ $year}}" {{$year == $Students->academic_year ? 'selected' : ' '}}>{{ $year }}</option>
-            @endfor
-            </select>
-            
-            @error('academic_year')
+        <div class="col-md-3"> 
+            <label>المـؤهـل</label>
+            <textarea class="form-control" name="Qualification" rows="2">{{ $Students->qualification }}</textarea>
+            @error('Qualification')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-
     </div><br>
 
     <h5 style="text-align: center; color:blue; font-weight: bold;"> معلومات الأب</h5>
@@ -160,7 +167,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <label for="Father_Name">أسم الاب</label>
+            <label>أسم الاب</label>
             <input type="text" value="{{ $Students->father_name }}" name="Father_Name"  class="form-control">
             @error('Father_Name')
             <div class=" alert-danger">
@@ -170,7 +177,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="title">جهة العمل</label>
+            <label>جهة العمل</label>
             <input type="text" value="{{ $Students->employer }}" name="Employer" class="form-control" >
             @error('Employer')
             <div class=" alert-danger">
@@ -180,7 +187,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="title">الوظيفة</label>
+            <label>الوظيفة</label>
             <input type="text" value="{{ $Students->father_job }}" name="Father_Job" class="form-control" >
             @error('Father_Job')
             <div class=" alert-danger">
@@ -194,7 +201,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <label for="title">الهاتف الشخصي</label>
+            <label>الهاتف الشخصي</label>
             <input type="text" value="{{ $Students->father_phone }}" name="Father_Phone" class="form-control" >
             @error('Father_Phone')
             <div class=" alert-danger">
@@ -203,7 +210,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">هاتف العمل</label>
+            <label>هاتف العمل</label>
             <input type="text" value="{{ $Students->job_phone }}" name="Job_Phone" class="form-control">
             @error('Job_Phone')
             <div class=" alert-danger">
@@ -212,7 +219,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">هاتف المنزل</label>
+            <label>هاتف المنزل</label>
             <input type="text" value="{{ $Students->home_phone }}" name="Home_Phone" class="form-control">
             @error('Home_Phone')
             <div class=" alert-danger">
@@ -223,8 +230,8 @@
 
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">العنوان</label>
-        <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4">{{ $Students->address }}</textarea>
+        <label>العنوان</label>
+        <textarea class="form-control" name="Address" rows="4">{{ $Students->address }}</textarea>
         @error('Address')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -236,7 +243,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <label for="title">أسم الام</label>
+            <label>أسم الام</label>
             <input type="text" value="{{ $Students->mother_name }}" name="Mother_Name" class="form-control">
             @error('Mother_Name')
             <div class=" alert-danger">
@@ -245,7 +252,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">الوظيفة</label>
+            <label>الوظيفة</label>
             <input type="text" value="{{ $Students->mother_job }}" name="Mother_Job" class="form-control">
             @error('Mother_Job')
             <div class=" alert-danger">
@@ -254,7 +261,7 @@
             @enderror
         </div>
         <div class="col-md-4">
-            <label for="title">الهاتف</label>
+            <label>الهاتف</label>
             <input type="text" value="{{ $Students->mother_phone }}" name="Mother_Phone" class="form-control">
             @error('Mother_Phone')
             <div class=" alert-danger">
@@ -266,7 +273,7 @@
     </div>
     <br>
     <div class="col">
-        <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
+        <label style="font-weight:bold; color:blue;">إختر صورة للطـالـب: </label>
         <input type="file" accept="image/*" name="photos[]" multiple>
     </div>
 

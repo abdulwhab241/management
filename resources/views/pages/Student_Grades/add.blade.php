@@ -56,7 +56,6 @@
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
         <label>أسـم الطـالـب</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option selected disabled>أختـر من القائمة...</option>
@@ -71,7 +70,6 @@
         @enderror
     </div>
 
-</div>
     <div class="col-md-3">
         <label>الواجبـات</label>
         <input type="number" value="{{ old('Homework') }}" name="Homework" class="form-control">
@@ -81,6 +79,7 @@
         </div>
         @enderror
     </div>
+
     <div class="col-md-3">
         <label>شفهـي</label>
         <input type="number" value="{{ old('Verbal') }}" name="Verbal" class="form-control">
@@ -104,10 +103,25 @@
         @enderror
     </div>
 
-    <div class="col-md-3">
+    {{-- <div class="col-md-3">
         <label>تحريري</label>
         <input type="number" value="{{ old('Editorial') }}" name="Editorial" class="form-control">
         @error('Editorial')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+        </div>
+        @enderror
+    </div> --}}
+
+    <div class="col-md-3"> 
+        <label>تحريري</label>
+        <select class="form-control select2" style="width: 100%;" name="Result_id">
+            <option selected disabled>أختـر من القائمة...</option>
+            @foreach($Results as $Result)
+                <option value="{{$Result->id}}">أسـم الطـالـب:  {{$Result->student->name}} | الـدرجة:  {{$Result->marks_obtained}} | لشـهر:  {{$Result->result_name}}</option>
+            @endforeach
+        </select>  
+        @error('Result_id')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
@@ -125,7 +139,6 @@
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
         <label>محصـلـة شـهـر</label>
         <select class="form-control select2" style="width: 100%;" name="Month">
             <option selected disabled>أختـر من القائمة...</option>
@@ -141,7 +154,6 @@
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
         @enderror
-    </div>
     </div>
 </div>
     <br>

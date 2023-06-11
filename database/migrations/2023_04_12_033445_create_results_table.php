@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreignId('semester_id')->nullable()->references('id')->on('semesters')->onDelete('cascade');
 
             $table->string('result_name');
             $table->integer('marks_obtained');

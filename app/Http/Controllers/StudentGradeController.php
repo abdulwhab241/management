@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Result;
 use App\Models\Student;
 use App\Models\Semester;
 use App\Models\Enrollment;
@@ -24,7 +25,8 @@ class StudentGradeController extends Controller
     {
         $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
-        return view('pages.Student_Grades.add', compact('Students','Semesters'));
+        $Results = Result::where('year', date("Y"))->get();
+        return view('pages.Student_Grades.add', compact('Students','Semesters','Results'));
     }
 
     public function edit($id)
@@ -82,10 +84,11 @@ class StudentGradeController extends Controller
             // }
 
             $StudentGrade->semester_id = strip_tags($request->Semester_id);
+            $StudentGrade->result_id = strip_tags($request->Result_id);
             $StudentGrade->homework = strip_tags($request->Homework);
             $StudentGrade->verbal = strip_tags($request->Verbal);
             $StudentGrade->attendance = strip_tags($request->Attendance);
-            $StudentGrade->editorial = strip_tags($request->Editorial);
+            // $StudentGrade->editorial = strip_tags($request->Editorial);
             $StudentGrade->total = strip_tags($request->Total);
             $StudentGrade->month = strip_tags($request->Month);
             $StudentGrade->year = date('Y');
@@ -93,8 +96,8 @@ class StudentGradeController extends Controller
             $StudentGrade->save();
 
 
-            toastr()->success('تم حفظ محصـلـة الطـالـب بنجاح');
-            return redirect()->route('Student_Grades.index');
+            toastr()->success('تم إضـافـة محصـلـة الطـالـب بنجاح');
+            return redirect()->route('Student_Grades.create');
         }
         catch(\Exception $e)
         {
@@ -122,10 +125,11 @@ class StudentGradeController extends Controller
         // }
 
         $StudentGrade->semester_id = strip_tags($request->Semester_id);
+        $StudentGrade->result_id = strip_tags($request->Result_id);
         $StudentGrade->homework = strip_tags($request->Homework);
         $StudentGrade->verbal = strip_tags($request->Verbal);
         $StudentGrade->attendance = strip_tags($request->Attendance);
-        $StudentGrade->editorial = strip_tags($request->Editorial);
+        // $StudentGrade->editorial = strip_tags($request->Editorial);
         $StudentGrade->total = strip_tags($request->Total);
         $StudentGrade->month = strip_tags($request->Month);
         $StudentGrade->year = date('Y');

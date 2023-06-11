@@ -58,11 +58,12 @@
 <tr>
 
 <th style="text-align: center;" class="alert-info">#</th>
-<th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة </th>
+<th style="text-align: center;" class="alert-info">الفصـل الدراسي</th>
+<th style="text-align: center;" class="alert-info"> نتيـجة شهـر</th>
 <th style="text-align: center;" class="alert-info"> المـادة</th>
+<th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة </th>
 <th style="text-align: center;" class="alert-info">الدرجـة التي حصـل عليـها </th>
 <th style="text-align: center;" class="alert-info">التقـديـر</th>
-<th style="text-align: center;" class="alert-info"> إختبـار شهـر</th>
 <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -73,11 +74,12 @@
     <tr>
         <?php $i++; ?>
         <td>{{ $i }}</td>
-        <td>{{ $Result->student->name }}</td>
+        <td>{{ $Result->semester->name }}</td>
+        <td>{{$Result->result_name}}</td>
         <td>{{ $Result->exam->subject->name }}</td>
+        <td>{{ $Result->student->name }}</td>
         <td>{{$Result->marks_obtained}}</td>
         <td>{{$Result->appreciation}}</td>
-        <td>{{$Result->result_name}}</td>
         <td>{{ $Result->create_by }}</td>
         <td>
             <a href="{{route('Results.edit',$Result->id)}}" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
