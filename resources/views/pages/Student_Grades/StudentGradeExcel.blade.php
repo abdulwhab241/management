@@ -2,10 +2,9 @@
 <table dir="rtl">
 <thead>
 <tr>
-
-
 <th>الفـصل الدراسي</th>
 <th>الاستاذ</th>
+<th>المادة</th>
 <th>محصلة شهر</th>
 <th>أسـم الطـالـب \ الطـالبـة</th>
 <th>واجبات</th>
@@ -22,13 +21,14 @@
 <tr>
 
     <td>{{$Student_Grade->semester->name}}</td>
-    <td>{{$Student_Grade->create_by}}</td>
+    <td>{{$Student_Grade->teacher->name}}</td>
+    <td>{{$Student_Grade->subject->name}}</td>
     <td>{{ $Student_Grade->month }}</td>
     <td>{{$Student_Grade->student->name}}</td>
     <td>{{$Student_Grade->homework }}</td>
     <td>{{$Student_Grade->verbal}}</td>
     <td>{{ $Student_Grade->attendance }}</td>
-    <td>{{ $Student_Grade->editorial }}</td>
+    <td>{{ $Student_Grade->result->marks_obtained }}</td>
     <td>{{ $Student_Grade->total }}</td>
 
 

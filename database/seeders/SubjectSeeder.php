@@ -14,7 +14,55 @@ class SubjectSeeder extends Seeder
     public function run(): void
     {
         DB::table('subjects')->insert([
+            'name' => 'القرأن الكريم',
+            'degree' => '100',
+            'grade_id' => '1',
+            'classroom_id' => '1',
+            'teacher_id' => '1',
+        ]);
+
+        DB::table('subjects')->insert([
+            'name' => 'التربيــة الإسلاميــة ',
+            'degree' => '100',
+            'grade_id' => '1',
+            'classroom_id' => '1',
+            'teacher_id' => '1',
+        ]);
+
+        DB::table('subjects')->insert([
             'name' => 'اللغة العربية ',
+            'degree' => '100',
+            'grade_id' => '1',
+            'classroom_id' => '1',
+            'teacher_id' => '1',
+        ]);
+
+        DB::table('subjects')->insert([
+            'name' => 'العلوم ',
+            'degree' => '100',
+            'grade_id' => '1',
+            'classroom_id' => '1',
+            'teacher_id' => '1',
+        ]);
+
+        DB::table('subjects')->insert([
+            'name' => 'الرياضيات ',
+            'degree' => '100',
+            'grade_id' => '1',
+            'classroom_id' => '1',
+            'teacher_id' => '1',
+        ]);
+
+        DB::table('subjects')->insert([
+            'name' => 'اللغة الإنجليزية ',
+            'degree' => '100',
+            'grade_id' => '1',
+            'classroom_id' => '1',
+            'teacher_id' => '1',
+        ]);
+
+        DB::table('subjects')->insert([
+            'name' => 'الإجتماعيات ',
             'degree' => '100',
             'grade_id' => '1',
             'classroom_id' => '1',

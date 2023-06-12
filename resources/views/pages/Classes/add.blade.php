@@ -120,6 +120,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('First')
             <div class=" alert-danger">
@@ -150,6 +151,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('Second')
             <div class=" alert-danger">
@@ -183,6 +185,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('Third')
             <div class=" alert-danger">
@@ -213,6 +216,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('Fourth')
             <div class=" alert-danger">
@@ -243,6 +247,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('Fifth')
             <div class=" alert-danger">
@@ -273,6 +278,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('Sixth')
             <div class=" alert-danger">
@@ -303,6 +309,7 @@
                 <option value="رياضة">رياضة</option>
                 <option value="فنية">فنية</option>
                 <option value="مكتبة">مكتبة</option>
+                <option value="الإجتماعيات">الإجتماعيات</option>
             </select>
             @error('Seventh')
             <div class=" alert-danger">

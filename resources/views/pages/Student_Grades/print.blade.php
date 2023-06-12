@@ -44,14 +44,15 @@ aria-pressed="true">اضافة طـالـب</a>
 <tr>
 
     <th style="text-align: center;">#</th>
-    <th style="text-align: center; background-color: yellow; font-weight:bolder;"> محصـلـة شهـر</th>
-    <th style="text-align: center;">الفـصل</th>
-    <th style="text-align: center;"> الأستـاذ</th>
+    <th style="text-align: center;">الفـصل الدراسي</th>
+    <th style="text-align: center;">الأستـاذ</th>
+    <th style="text-align: center;">المادة</th>
+    <th style="text-align: center; background-color: yellow; font-weight:bolder;" >محصـلـة شهـر</th>
     <th style="text-align: center;">أسـم الطـالـب \ الطـالبـة</th>
     <th style="text-align: center;">واجبـات</th>
-    <th style="text-align: center;"> شفهـي</th>
-    <th style="text-align: center;">مـواظبـة </th>
-    <th style="text-align: center; background-color: #E7EEFB; font-weight:bolder;"> تحريري</th>
+    <th style="text-align: center;">شفهـي</th>
+    <th style="text-align: center;">مـواظبـة</th>
+    <th style="text-align: center; background-color: #E7EEFB; font-weight:bolder;">تحريري</th>
     <th style="text-align: center; background-color: #FFC0D6; font-weight:bolder;"> المحصـلة</th>
 </tr>
 </thead>
@@ -62,14 +63,15 @@ aria-pressed="true">اضافة طـالـب</a>
         <tr>
             <?php $i++; ?>
             <td>{{ $i }}</td>
+            <td>{{$StudentGrade->semester->name}}</td>
+            <td>{{$StudentGrade->teacher->name}}</td>
+            <td>{{$StudentGrade->subject->name}}</td>
             <td style="background-color: yellow; font-weight:bolder;">{{ $StudentGrade->month }}</td>
-            <td>{{ $StudentGrade->semester->name }}</td>
-            <td>{{$StudentGrade->create_by}}</td>
             <td>{{$StudentGrade->student->name}}</td>
-            <td>{{$StudentGrade->homework}}</td>
-            <td>{{ $StudentGrade->verbal }}</td>
+            <td>{{$StudentGrade->homework }}</td>
+            <td>{{$StudentGrade->verbal}}</td>
             <td>{{ $StudentGrade->attendance }}</td>
-            <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->editorial }}</td>
+            <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->result->marks_obtained }}</td>
             <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $StudentGrade->total }}</td>
         </tr>
 

@@ -24,6 +24,8 @@ class StudentGradeRequest extends FormRequest
         return [
             'Semester_id' => 'required|integer',
             'Student_id' => 'required|integer',
+            'Subject_id' => 'required|integer',
+            'Teacher_id' => 'required|integer',
             'Result_id' => 'required|integer',
             'Homework' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Verbal' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',

@@ -32,6 +32,7 @@ class SpecializationSeeder extends Seeder
             'رياضة',
             'فنية',
             'مكتبة',
+            'الإجتماعيات',
         ];
         foreach ($specializations as $S) {
             Specialization::create(['name' => $S]);

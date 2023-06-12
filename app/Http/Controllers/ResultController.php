@@ -34,8 +34,9 @@ class ResultController extends Controller
     {
         $Exams = Exam::where('year', date("Y"))->get();
         $Students = Enrollment::where('year', date("Y"))->get();
+        $Semesters = Semester::all();
         $Result = Result::findOrFail($id);
-        return view('pages.Results.edit',compact('Students','Exams','Result'));
+        return view('pages.Results.edit',compact('Students','Exams','Result','Semesters'));
     }
 
 

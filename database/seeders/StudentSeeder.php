@@ -47,7 +47,7 @@ class StudentSeeder extends Seeder
             'section_id' => Section::all()->unique()->random()->id,
             'classroom_id' => Classroom::all()->unique()->random()->id,
             'academic_year' => '2023',
-            'father_name' => ' عبدالله صالح الهمداني ',
+            'father_name' => ' صالح محمد الهمداني ',
             'employer' => 'ناتكو',
             'father_job' => 'محاسب',
             'father_phone' => '777888999',

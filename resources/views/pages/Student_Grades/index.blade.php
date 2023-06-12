@@ -60,13 +60,15 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <th style="text-align: center;" class="alert-info">#</th>
 <th style="text-align: center;" class="alert-info">الفـصل الدراسي</th>
 <th style="text-align: center;" class="alert-info">الأستـاذ</th>
+<th style="text-align: center;" class="alert-info">المادة</th>
+<th style="text-align: center; background-color: yellow; font-weight:bolder;" >محصـلـة شهـر</th>
 <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center;" class="alert-info">واجبـات</th>
 <th style="text-align: center;" class="alert-info">شفهـي</th>
 <th style="text-align: center;" class="alert-info">مـواظبـة</th>
 <th style="text-align: center; background-color: #E7EEFB; font-weight:bolder;">تحريري</th>
 <th style="text-align: center; background-color: #FFC0D6; font-weight:bolder;"> المحصـلة</th>
-<th style="text-align: center; background-color: yellow; font-weight:bolder;" >محصـلـة شهـر</th>
+
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
@@ -76,14 +78,16 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <tr>
 <td>{{$loop->iteration}}</td>
 <td>{{$Student_Grade->semester->name}}</td>
-<td>{{$Student_Grade->create_by}}</td>
+<td>{{$Student_Grade->teacher->name}}</td>
+<td>{{$Student_Grade->subject->name}}</td>
+<td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
 <td>{{$Student_Grade->student->name}}</td>
 <td>{{$Student_Grade->homework }}</td>
 <td>{{$Student_Grade->verbal}}</td>
 <td>{{ $Student_Grade->attendance }}</td>
-<td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
+<td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result->marks_obtained }}</td>
 <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
-<td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
+
 
 <td>
     <a href="{{route('Student_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

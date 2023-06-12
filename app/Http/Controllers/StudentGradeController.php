@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use App\Models\Student;
+use App\Models\Subject;
+use App\Models\Teacher;
 use App\Models\Semester;
 use App\Models\Enrollment;
 use App\Models\StudentGrade;
@@ -25,8 +27,10 @@ class StudentGradeController extends Controller
     {
         $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
+        $Teachers = Teacher::all();
+        $Subjects = Subject::all();
         $Results = Result::where('year', date("Y"))->get();
-        return view('pages.Student_Grades.add', compact('Students','Semesters','Results'));
+        return view('pages.Student_Grades.add', compact('Students','Semesters','Results','Teachers','Subjects'));
     }
 
     public function edit($id)
@@ -34,7 +38,10 @@ class StudentGradeController extends Controller
         $StudentGrade = StudentGrade::findOrFail($id);
         $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
-        return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters'));
+        $Teachers = Teacher::all();
+        $Subjects = Subject::all();
+        $Results = Result::where('year', date("Y"))->get();
+        return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters','Results','Teachers','Subjects'));
     }
 
     public function show($id)
@@ -74,6 +81,8 @@ class StudentGradeController extends Controller
 
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
+            $StudentGrade->teacher_id = strip_tags($request->Teacher_id);
+            $StudentGrade->subject_id = strip_tags($request->Subject_id);
 
             foreach ($sections as $section){
                 $StudentGrade->section_id = $section;
@@ -115,6 +124,8 @@ class StudentGradeController extends Controller
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
         $StudentGrade->student_id = strip_tags($request->Student_id);
+        $StudentGrade->teacher_id = strip_tags($request->Teacher_id);
+        $StudentGrade->subject_id = strip_tags($request->Subject_id);
 
         foreach ($sections as $section){
             $StudentGrade->section_id = $section;
