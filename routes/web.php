@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FinalResultController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HomeController;
@@ -77,6 +78,11 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('TeacherClasses', TeacherClassesController::class);    
             Route::get('/print_teacher/', [TeacherClassesController::class, 'print']) -> name('TeacherClasses.print');        
+        });
+
+        //==============================Final Results============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Final_Results', FinalResultController::class);            
         });
 
 

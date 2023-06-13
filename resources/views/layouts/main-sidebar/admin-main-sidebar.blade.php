@@ -68,7 +68,7 @@
 </li>
 <li class="treeview">
     <a href="#">
-    <i class="fas fa-user-tie"></i>
+    <i class="fas fa-user-tie fa-fw"></i>
     <span>الطـلاب</span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
@@ -101,7 +101,7 @@
 </li>
 <li class="treeview">
     <a href="#">
-    <i class="fas fa-chalkboard-teacher"></i>
+    <i class="fas fa-chalkboard-teacher fa-fw"></i>
     <span>المعلمين</span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
@@ -147,7 +147,7 @@
 </li>
 <li class="treeview">
     <a href="#">
-    <i class="fas fa-book-open"></i>
+    <i class="fas fa-book-open fa-fw"></i>
     <span>الأختبأرات </span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
@@ -159,7 +159,7 @@
 {{-- fa-hand-paper-o atta --}}
 <li class="treeview">
     <a href="#">
-    <i class="fas fa-percent" aria-hidden="true"></i>
+    <i class="fas fa-percent fa-fw" aria-hidden="true"></i>
     <span>النتـائـج </span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
@@ -167,6 +167,9 @@
     <li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-circle-o"></i> كشـف دراجات الطـلاب</a></li>
     <li><a href="{{route('Results.index')}}"><i class="fa fa-circle-o"></i> قائمة النتـائـج</a></li>
     </ul>
+</li>
+<li class="treeview">
+    <li><a href="{{ route('Final_Results.index') }}"><i class="fas fa-percent fa-fw" aria-hidden="true"></i> قـائمـة نـتائـج الطـلاب النـهائيـة</a></li>
 </li>
 <li class="treeview">
     <a href="#">
