@@ -24,6 +24,14 @@ class FinalResultController extends Controller
         return view('pages.Final_Result.add', compact('Students','Subjects'));
     }
 
+    public function edit($id)
+    {
+        // $Students = Enrollment::where('year', date("Y"))->get();
+        // $Subjects = Subject::all();
+        $Final_Result = FinalResult::findOrFail($id);
+        return view('pages.Final_Result.edit',compact('Final_Result'));
+    }
+
     public function store(FinalRequest $request)
     {
         try {
@@ -49,9 +57,50 @@ class FinalResultController extends Controller
             $Final_Results->save();
 
             toastr()->success('تـم إضـافـة نتيـجة الطـالـب النـهائـية بنجـاح');
-            return redirect()->route('Finals.create');
+            return redirect()->route('Final_Results.create');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
+    }
+
+    public function update(FinalRequest $request)
+    {
+        try
+        {
+            // dd($request);
+            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
+            
+            $Final_Results = FinalResult::findOrFail($request->id);
+            $Final_Results->student_id = strip_tags($request->Student_id);
+            $Final_Results->subject_id = strip_tags($request->Subject_id);
+    
+            foreach ($classrooms as $classroom){
+                $Final_Results->classroom_id = $classroom;
+            }
+
+            $Final_Results->f_total_write = strip_tags($request->F_Write);
+            $Final_Results->f_total_number = strip_tags($request->F_Number);
+            $Final_Results->s_total_write = strip_tags($request->S_Write);
+            $Final_Results->s_total_number = strip_tags($request->S_Number);
+            $Final_Results->total = strip_tags($request->Total);
+            $Final_Results->year = date('Y');
+            $Final_Results->date = date('Y-m-d');
+            $Final_Results->create_by = auth()->user()->name;
+            $Final_Results->save();
+            
+            toastr()->success('تـم تعديل نتيـجة الطـالـب النـهائـية بنجـاح');
+            return redirect()->route('Final_Results.index');
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        FinalResult::findOrFail(strip_tags($request->id))->delete(); 
+        toastr()->error('تـم حـذف الـنتيـجة النـهائـية بنجـاح');
+        return redirect()->route('Final_Results.index');
     }
 }

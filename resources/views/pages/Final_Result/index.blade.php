@@ -45,7 +45,7 @@ aria-pressed="true">اضافة نتيـجة طـالـب</a>
 </div><!-- /.box-header -->
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
-<table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
+<table id="example1" class="table table-bordered " style="width:100%; text-align: center;">
 <thead>
 <tr>
 
@@ -58,7 +58,7 @@ aria-pressed="true">اضافة نتيـجة طـالـب</a>
 <th style="text-align: center; background-color: #D0DEF6;">(كتـابـة) 50%</th>
 <th style="text-align: center; background-color: #D0DEF6;">المـجموع 100</th>
 
-{{-- <th style="text-align: center;" class="alert-warning">العمليات</th> --}}
+<th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
 <tbody>
@@ -75,31 +75,35 @@ aria-pressed="true">اضافة نتيـجة طـالـب</a>
 <td>{{ $Final_Result->total }}</td>
 
 
-{{-- <td>
-    <a href="{{route('Student_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Student_Grades{{ $Student_Grade->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-</td> --}}
+<td>
+    <div class="btn-group">
+    <a href="{{route('Final_Results.edit',$Final_Result->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" title="تعديل" aria-pressed="true"><i class="fa fa-edit"></i></a>
+    <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_Final_Results{{ $Final_Result->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+    </div>
+</td>
 </tr>
 
 
-{{-- <div class="modal fade" id="delete_Student_Grades{{$Student_Grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-danger" role="document">
-    <form action="{{route('Student_Grades.destroy','test')}}" method="post">
+<div class="modal fade" id="delete_Final_Results{{$Final_Result->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-warning" role="document">
+    <form action="{{route('Final_Results.destroy','test')}}" method="post">
         {{method_field('delete')}}
         {{csrf_field()}}
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف محصـلـة الطـالـب</h5>
+            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                حـذف نتيـجـة الطـالـب   <label style="color: black; font-size:20px;">{{$Final_Result->student->name}}</label>
+            </h5>
         
         </div>
         <div class="modal-body">
-            <p> هل انت متاكد من عملية حذف محصلـة الطـالـب </p>
-            <input type="hidden" name="id"  value="{{$Student_Grade->id}}">
+            <p> هل انت متاكد من عملية حذف نتيـجـة  الـمادة </p>
+            <input type="hidden" name="id"  value="{{$Final_Result->id}}">
             <input  type="text" style="font-weight: bolder; font-size:20px;"
             name="Name_Section"
             class="form-control"
-            value="{{$Student_Grade->student->name}}"
+            value="{{$Final_Result->subject->name}}"
             disabled>
         </div>
         <div class="modal-footer">
@@ -111,12 +115,12 @@ aria-pressed="true">اضافة نتيـجة طـالـب</a>
     </div>
     </form>
 </div>
-</div> --}}
+</div>
 @endforeach
 </tbody>
 </table>
 
-@isset($Final_Results)
+{{-- @isset($Final_Results)
 <div class="footer">
 <button type="button" 
 class="btn btn-warning md-4 btn-block"
@@ -124,7 +128,7 @@ style="margin: 10px; padding:5px;" data-toggle="modal" data-target="#Delete_all"
     عـرض نتيـجـة الطـالب
 </button>
 </div>
-@endisset
+@endisset --}}
 
 <div class="footer">
     <a href="{{ route('StudentGrades.print') }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">

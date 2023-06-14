@@ -42,19 +42,6 @@
 @csrf
 <div class="box-body">
     <div class="row">
-        {{-- <div class="col-md-3"> 
-            <div class="form-group">
-            <label>أسم الطـالـب</label>
-            <input type="text" value="{{$fee_invoices->student->name}}" readonly name="Student_id" class="form-control">
-            <input type="hidden" value="{{$fee_invoices->id}}" name="id" class="form-control">
-
-            </div>
-            @error('Student_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div> --}}
 
         <div class="col-md-3"> 
             <div class="form-group">
