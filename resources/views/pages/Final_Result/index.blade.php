@@ -31,17 +31,24 @@
 
 <div class="box-body">
     <a href="{{route('Final_Results.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
-aria-pressed="true">اضافة نتيـجة طـالـب</a>
-    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_student_grades') }}">
+    aria-pressed="true">اضافة نتيـجة طـالـب</a>
+    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_finals') }}">
         <i class="fas fa-file-download"></i>  
     </a>
+    <a href="{{route('Search_Result')}}" title="عـرض نتيـجة طـالـب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    aria-pressed="true">
+    <i class="fa fa-eye" aria-hidden="true"></i>
+    </a>
+    {{-- <button type="button" class="btn btn-info btn-flat" title="عـرض نتيـجة الـطالـب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+    </button> --}}
 </div>
 <br>
-<div class="box-tools">
+{{-- <div class="box-tools">
 <div class="input-group" style="width: 150px;">
 <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
 </div>
-</div>
+</div> --}}
 </div><!-- /.box-header -->
 <div class="box-body">
 <div class="box-body table-responsive no-padding">

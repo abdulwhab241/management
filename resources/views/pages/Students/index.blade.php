@@ -89,10 +89,10 @@
                     <button type="button" class="btn btn-navy dropdown-toggle" data-toggle="dropdown">العمليـات <span class="fa fa-caret-down"></span></button>
                     <ul class="dropdown-menu">
                     <li><a href="{{route('Students.show',$Student->id)}}" >عـرض بيـانـات الطـالب</a></li>
-                    <li><a href="{{route('Receipts.show',$Student->id)}}">سنـد قبـض أو تسـديـد رسـوم</a></li>
+                    {{-- <li><a href="{{route('Receipts.show',$Student->id)}}">سنـد قبـض أو تسـديـد رسـوم</a></li>
                     <li><a href="{{ route('Fees_Invoices.show',$Student->id) }}">اضـافـة فـاتـورة رسـوم</a></li>
                     <li><a href="{{ route('ProcessingFee.show',$Student->id) }}">استبعـاد رسـوم</a></li>
-                    <li><a href="{{ route('Payments.show',$Student->id) }}">سنـد صـرف</a></li>
+                    <li><a href="{{ route('Payments.show',$Student->id) }}">سنـد صـرف</a></li> --}}
                     <li><a href="{{route('Students.edit',$Student->id)}}">تـعديـل</a></li>
                     <li><a data-toggle="modal" data-target="#delete_Student{{ $Student->id }}">حـذف</a></li>
                 </ul>
@@ -110,7 +110,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف طـالـب</h5>
             
             </div>
             <div class="modal-body">

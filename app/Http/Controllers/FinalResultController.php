@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FinalRequest;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Enrollment;
 use App\Models\FinalResult;
 use Illuminate\Http\Request;
+use App\Exports\FinalResultExport;
+use App\Http\Requests\FinalRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FinalResultController extends Controller
 {
@@ -30,6 +32,37 @@ class FinalResultController extends Controller
         // $Subjects = Subject::all();
         $Final_Result = FinalResult::findOrFail($id);
         return view('pages.Final_Result.edit',compact('Final_Result'));
+    }
+
+    public function search_student()
+    {
+        $FinalResult = FinalResult::where('year', date("Y"))->get();
+        return view('pages.Final_Result.Student',compact('FinalResult'));
+    }
+
+    public function FinalSearch(Request $request)
+    {
+        $request->validate([
+            'Student_id'=>'required|integer',
+            'Classroom_id'=>'required|integer',
+        ]);
+
+        $Students = FinalResult::where('student_id', [$request->Student_id, $request->Classroom_id])->get();
+        $FinalResult = FinalResult::where('year', date("Y"))->get();
+
+        if ($request->Student_id == 0) 
+        {
+            toastr()->warning('لا توجد نتيجة لهذا الطالب');
+        }
+        else
+        {
+            return view('pages.Final_Result.Student',compact('Students','FinalResult'));
+        }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new FinalResultExport, 'النتائج النهائية للطلاب.xlsx');
     }
 
     public function store(FinalRequest $request)

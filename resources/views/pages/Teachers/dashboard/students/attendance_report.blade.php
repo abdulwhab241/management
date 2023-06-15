@@ -42,15 +42,13 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-4"> 
-                    <div class="form-group">
-                    <label>أسم الطـالـب</label>
+                    <label>أسـم الطـالـب \ الطـالبـة</label>
                     <select class="form-control select2" style="width: 100%;" name="student_id">
                         <option selected disabled>أختـر من القائمة...</option>
                         @foreach($students as $student)
                             <option value="{{ $student->student_id }}">{{ $student->student->name }}</option>
                         @endforeach
                     </select>
-                    </div>
                 </div>
                 <div class="col-md-4">
                     <label>مـن تـاريـخ</label>
@@ -77,7 +75,7 @@
 <thead>
     <tr>
         <th style="text-align: center; background-color: #D0DEF6;" >اليـوم</th>
-        <th style="text-align: center; background-color: #D0DEF6;" >أسـم الطـالـب</th>
+        <th style="text-align: center; background-color: #D0DEF6;" >أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center; background-color: #D0DEF6;" >الصـف الـدراسـي </th>
         <th style="text-align: center; background-color: #D0DEF6;" >الشٌـعبـة</th>
         <th style="text-align: center; background-color: #D0DEF6;" >التـاريـخ</th>
