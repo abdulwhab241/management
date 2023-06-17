@@ -41,7 +41,7 @@
 <div class="box-body">
     <h5 style="text-align: center; color:blue; font-weight: bold; padding:5px; margin:5px;"> إختـر أسـم الطـالـب \ الطـالبـة </h5>
     <div class="row">
-        <div class="col-md-6"> 
+        {{-- <div class="col-md-6"> 
             <label>الصـف الـدراسـي</label>
             <select class="form-control select2" style="width: 100%;" name="Classroom_id">
                 <option selected disabled>أختـر من القائمة...</option>
@@ -49,12 +49,12 @@
                     <option value="{{ $student->classroom_id }}">{{ $student->classroom->name_class }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> --}}
         <div class="col-md-6"> 
             <label>أسـم الطـالـب \ الطـالبـة</label>
             <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option selected disabled>أختـر من القائمة...</option>
-                @foreach($FinalResult as $student)
+                @foreach($GetStudent as $student)
                     <option value="{{ $student->student_id }}">{{ $student->student->name }}</option>
                 @endforeach
             </select>
@@ -72,7 +72,7 @@
 
 @isset($Students)
 <div class="box-body">
-<div class="box-body table-responsive no-padding">
+<div class="box-body table-responsive no-padding" id="print">
     <table  class="table" style="width:100%; text-align: center;">
 <thead>
     <tr>
@@ -89,71 +89,33 @@
 <tbody>
     @foreach($Students as $student)
     <tr>
-        {{-- <td>{{$student->classroom->name_class}}</td>
-        <td>{{$student->student->name}}</td> --}}
+
         <td>{{$student->subject->name}}</td>
         <td>{{$student->f_total_number }}</td>
         <td>{{ $student->f_total_write }}</td>
         <td>{{ $student->s_total_number }}</td>
         <td>{{$student->s_total_write}}</td>
         <td>{{ $student->total }}</td>
+
     </tr>
 @endforeach
 </tbody>
 
-<tfoot>
-    @php $type = ''; @endphp
-    <tr>
-        <th style="text-align: center; background-color: #D0DEF6;">المجمـوع النـهائـي</th>
-        <th>{{ $student->sum('total') }}</th>
-
-        @if ($student->count('subject_id') == 7)
-        <!-- start if 7 -->
-        @if ($student->sum('total') < 360)
-        @php
-            $type = 'راسب';
-        @endphp
-        @else
-        @php
-            $type = 'ناجح';
-        @endphp
-        @endif
-        <!-- end if 7 -->
-        
-        @else
-
-        @if ($student->count('subject_id') == 11)
-            <!-- start if 11 -->
-            @if ($student->sum('total') < 560)
-            @php
-                $type = 'راسب';
-            @endphp
-            @else
-            @php
-                $type = 'ناجح';
-            @endphp
-            @endif
-            <!-- end if 11 -->
-        @endif
-
-        @endif
-        <th style="text-align: center; background-color: #D0DEF6;">النتيجـة النـهائيـة</th>
-        <th>{{ $type }}</th>
- 
-        <th></th>
-        @php $total = 0; @endphp
-        @php
-            $sub_total = $student->sum('total') / $student->count('subject_id') ;
-            $total += $sub_total;
-        @endphp
-        <th>{{ $sub_total }} %</th>
-    </tr>
-</tfoot>
 
 </table>
 </div>
 </div>
 @endisset
+
+<div class="footer">
+    <a href="{{ route('Final.print',$student->student_id) }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
+</div>
+
+{{-- <div class="footer">
+    <button class="btn .btn.bg-navy  pull-left" id="print_Button" onclick="printDiv()"> 
+    <i class="fa fa-print" aria-hidden="true"></i> طباعة النتيـجة  </button>
+</div> --}}
 
 
 {{-- @if ($student->sum('total') < 350)

@@ -37,26 +37,37 @@ class FinalResultController extends Controller
     public function search_student()
     {
         $FinalResult = FinalResult::where('year', date("Y"))->get();
-        return view('pages.Final_Result.Student',compact('FinalResult'));
+        $GetStudent = Enrollment::where('year', date("Y"))->get();
+        return view('pages.Final_Result.Student',compact('FinalResult','GetStudent'));
+    }
+
+    public function print($id)
+    {
+        $Final_Result = FinalResult::findOrFail($id)->where('student_id',$id)->first();
+        $Results = FinalResult::findOrFail($id)->where('student_id',$id)->get();
+        // return $Final_Result;
+        return view('pages.Final_Result.print',compact('Final_Result','Results'));
     }
 
     public function FinalSearch(Request $request)
     {
         $request->validate([
             'Student_id'=>'required|integer',
-            'Classroom_id'=>'required|integer',
+            // 'Classroom_id'=>'required|integer',
         ]);
 
-        $Students = FinalResult::where('student_id', [$request->Student_id, $request->Classroom_id])->get();
+        $GetStudent = Enrollment::where('year', date("Y"))->get();
+        $Students = FinalResult::where('student_id', $request->Student_id)->get();
         $FinalResult = FinalResult::where('year', date("Y"))->get();
 
         if ($request->Student_id == 0) 
         {
-            toastr()->warning('لا توجد نتيجة لهذا الطالب');
+            toastr()->error('لا توجد نتيجة لهذا الطالب');
+            return redirect()->back();
         }
         else
         {
-            return view('pages.Final_Result.Student',compact('Students','FinalResult'));
+            return view('pages.Final_Result.Student',compact('Students','FinalResult','GetStudent'));
         }
     }
 
