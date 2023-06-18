@@ -41,15 +41,6 @@
 <div class="box-body">
     <h5 style="text-align: center; color:blue; font-weight: bold; padding:5px; margin:5px;"> إختـر أسـم الطـالـب \ الطـالبـة </h5>
     <div class="row">
-        {{-- <div class="col-md-6"> 
-            <label>الصـف الـدراسـي</label>
-            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach($FinalResult as $student)
-                    <option value="{{ $student->classroom_id }}">{{ $student->classroom->name_class }}</option>
-                @endforeach
-            </select>
-        </div> --}}
         <div class="col-md-6"> 
             <label>أسـم الطـالـب \ الطـالبـة</label>
             <select class="form-control select2" style="width: 100%;" name="Student_id">
@@ -111,22 +102,6 @@
     <a href="{{ route('Final.print',$student->student_id) }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
         <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
 </div>
-
-{{-- <div class="footer">
-    <button class="btn .btn.bg-navy  pull-left" id="print_Button" onclick="printDiv()"> 
-    <i class="fa fa-print" aria-hidden="true"></i> طباعة النتيـجة  </button>
-</div> --}}
-
-
-{{-- @if ($student->sum('total') < 350)
-@php
-    $type = 'راسب';
-@endphp
-@else
-@php
-    $type = 'ناجح';
-@endphp
-@endif --}}
 
 
 </div>

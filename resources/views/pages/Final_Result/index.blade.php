@@ -35,28 +35,23 @@
     <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_finals') }}">
         <i class="fas fa-file-download"></i>  
     </a>
-    <a href="{{route('Search_Result')}}" title="عـرض نتيـجة طـالـب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    <a href="{{route('Search_Result')}}" title="عـرض نتـائـج الـطـلاب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
     aria-pressed="true">
     <i class="fa fa-eye" aria-hidden="true"></i>
     </a>
-    {{-- <button type="button" class="btn btn-info btn-flat" title="عـرض نتيـجة الـطالـب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-eye" aria-hidden="true"></i>
-    </button> --}}
+
 </div>
 <br>
-{{-- <div class="box-tools">
-<div class="input-group" style="width: 150px;">
-<h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-</div>
-</div> --}}
+
 </div><!-- /.box-header -->
+
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
 <table id="example1" class="table table-bordered " style="width:100%; text-align: center;">
 <thead>
 <tr>
 
-<th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th>
+{{-- <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th> --}}
 <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
 <th style="text-align: center; background-color: #D0DEF6;">درجات الفصل الاول 50% (رقـماً)</th>
@@ -71,8 +66,7 @@
 <tbody>
 @foreach($Final_Results as $Final_Result)
 <tr>
-{{-- <td>{{$loop->iteration}}</td> --}}
-<td>{{$Final_Result->classroom->name_class}}</td>
+{{-- <td>{{$Final_Result->classroom->name_class}}</td> --}}
 <td>{{$Final_Result->student->name}}</td>
 <td>{{$Final_Result->subject->name}}</td>
 <td>{{$Final_Result->f_total_number }}</td>
@@ -127,28 +121,12 @@
 </tbody>
 </table>
 
-{{-- @isset($Final_Results)
-<div class="footer">
-<button type="button" 
-class="btn btn-warning md-4 btn-block"
-style="margin: 10px; padding:5px;" data-toggle="modal" data-target="#Delete_all">
-    عـرض نتيـجـة الطـالب
-</button>
-</div>
-@endisset --}}
-
-<div class="footer">
-    <a href="{{ route('StudentGrades.print') }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
-        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
-</div>
-
 </div>
 </div>
 
 </div>
 </div>
 </div>
-
 <!-- row closed -->
 </section>
 

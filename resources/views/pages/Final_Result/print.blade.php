@@ -14,7 +14,7 @@
     نتيجـة الطـالـب          {{ $Final_Result->student->name }} 
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{ url('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 <li class="active">طبـاعـة نتيجـة الطـالـب</li>
 </ol>
 </section>
@@ -103,14 +103,12 @@
 <tfoot>
 @php $type = ''; @endphp
 <tr>
-    <th style="text-align: center; background-color: #D0DEF6;">المجمـوع النـهائـي</th>
+    <th style="text-align: center; background-color: #D0DEF6;">المجمـوع النـهائـي</th>    
+        <th style="text-align: center;">{{ $Results->sum('total') }}</th>
 
-    @isset($student->total)
-        <th style="text-align: center;">{{ $student->sum('total') }}</th>
-
-    @if ($student->count('subject_id') == 7)
+    @if ($Results->count('subject_id') == 7)
     <!-- start if 7 -->
-    @if ($student->sum('total') < 360)
+    @if ($Results->sum('total') < 360)
     @php
         $type = 'راسب';
     @endphp
@@ -123,9 +121,9 @@
     
     @else
 
-    @if ($student->count('subject_id') == 11)
+    @if ($Results->count('subject_id') == 11)
         <!-- start if 11 -->
-        @if ($student->sum('total') < 560)
+        @if ($Results->sum('total') < 560)
         @php
             $type = 'راسب';
         @endphp
@@ -144,12 +142,12 @@
     <th></th>
     @php $total = 0; @endphp
     @php
-        $sub_total = $student->sum('total') / $student->count('subject_id') ;
+
+        $sub_total = round($Results->sum('total') / $Results->count('subject_id'),2 );
         $total += $sub_total;
     @endphp
     <th style="text-align: center;">{{ $sub_total }} %</th>
 </tr>
-@endisset
 </tfoot>
 
 </table>

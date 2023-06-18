@@ -28,8 +28,6 @@ class FinalResultController extends Controller
 
     public function edit($id)
     {
-        // $Students = Enrollment::where('year', date("Y"))->get();
-        // $Subjects = Subject::all();
         $Final_Result = FinalResult::findOrFail($id);
         return view('pages.Final_Result.edit',compact('Final_Result'));
     }
@@ -45,7 +43,6 @@ class FinalResultController extends Controller
     {
         $Final_Result = FinalResult::findOrFail($id)->where('student_id',$id)->first();
         $Results = FinalResult::findOrFail($id)->where('student_id',$id)->get();
-        // return $Final_Result;
         return view('pages.Final_Result.print',compact('Final_Result','Results'));
     }
 
@@ -53,7 +50,6 @@ class FinalResultController extends Controller
     {
         $request->validate([
             'Student_id'=>'required|integer',
-            // 'Classroom_id'=>'required|integer',
         ]);
 
         $GetStudent = Enrollment::where('year', date("Y"))->get();
@@ -144,7 +140,7 @@ class FinalResultController extends Controller
     public function destroy(Request $request)
     {
         FinalResult::findOrFail(strip_tags($request->id))->delete(); 
-        toastr()->error('تـم حـذف الـنتيـجة النـهائـية بنجـاح');
+        toastr()->error('تـم حـذف الـنتيـجة النـهائـية للـطالـب بنجـاح');
         return redirect()->route('Final_Results.index');
     }
 }

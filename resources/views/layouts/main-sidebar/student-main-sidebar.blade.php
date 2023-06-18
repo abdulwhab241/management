@@ -46,6 +46,9 @@
     <li><a href="{{ route('StudentTable.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
 </li>
 <li class="treeview">
+    <li><a href="{{ route('StudentFinal.index') }}"><i class="fas fa-percent fa-fw" aria-hidden="true"></i> النـتائـج النـهائيـة</a></li>
+</li>
+<li class="treeview">
     <li><a href="{{ route('StudentAttendance.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i> بيـانـات المـواظبـة</a></li>
 </li>
 <li class="treeview">
