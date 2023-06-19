@@ -15,7 +15,7 @@ class FinalResultController extends Controller
 {
     public function index()
     {
-        $Final_Results = FinalResult::all();
+        $Final_Results = FinalResult::where('year', date('Y'))->get();
         return view('pages.Final_Result.index', compact('Final_Results'));
     }
 
@@ -41,7 +41,7 @@ class FinalResultController extends Controller
 
     public function print($id)
     {
-        $Final_Result = FinalResult::findOrFail($id)->where('student_id',$id)->first();
+        $Final_Result = FinalResult::findOrFail($id)->where('student_id',$id)->where('year', date('Y'))->first();
         $Results = FinalResult::findOrFail($id)->where('student_id',$id)->get();
         return view('pages.Final_Result.print',compact('Final_Result','Results'));
     }
@@ -53,7 +53,7 @@ class FinalResultController extends Controller
         ]);
 
         $GetStudent = Enrollment::where('year', date("Y"))->get();
-        $Students = FinalResult::where('student_id', $request->Student_id)->get();
+        $Students = FinalResult::where('student_id', $request->Student_id)->where('year', date('Y'))->get();
         $FinalResult = FinalResult::where('year', date("Y"))->get();
 
         if ($request->Student_id == 0) 

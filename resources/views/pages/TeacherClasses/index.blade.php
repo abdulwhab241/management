@@ -37,7 +37,7 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Teacher_Classes.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+<a href="{{route('Classes_Teacher.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
 aria-pressed="true">اضافة جدول حصـص المعلمين</a>
 
 <br><br>
@@ -80,15 +80,17 @@ aria-pressed="true">اضافة جدول حصـص المعلمين</a>
             <td>{{ $TeacherClass->seventh }}</td>
             <td>{{ $TeacherClass->create_by }}</td>
             <td>
-                <a href="{{route('Teacher_Classes.edit',$TeacherClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $TeacherClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                <div class="btn-group">
+                    <a href="{{route('Classes_Teacher.edit',$TeacherClass->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" style="margin: 3px;" data-target="#delete{{ $TeacherClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                </div>
             </td>
         </tr>
 
 
 <div class="modal fade" id="delete{{$TeacherClass->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-danger" role="document">
-        <form action="{{route('Teacher_Classes.destroy','test')}}" method="post">
+        <form action="{{route('Classes_Teacher.destroy','test')}}" method="post">
             {{method_field('delete')}}
             {{csrf_field()}}
         <div class="modal-content">

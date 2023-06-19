@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Section;
+
 use App\Models\Student;
-use App\Models\Teacher;
-use App\Models\Classroom;
 use App\Models\Attendance;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
@@ -15,10 +13,9 @@ class AttendanceController extends Controller
 {
     public function index()
     {
-        $Attendances = Attendance::all();
-        $Classrooms = Classroom::all();
+        $Attendances = Attendance::where('year', date('Y'))->get();
         $Students = Enrollment::where('year', date("Y"))->get();
-        return view('pages.Attendance.index',compact('Classrooms','Students','Attendances'));
+        return view('pages.Attendance.index',compact('Students','Attendances'));
     }
 
     public function create()
@@ -100,7 +97,7 @@ class AttendanceController extends Controller
 
     public function destroy(Request $request)
     {
-        Attendance::findOrFail($request->id)->delete(); 
+        Attendance::findOrFail(strip_tags($request->id))->delete(); 
         toastr()->error('تم حذف التحضيـر بنجاح');
         return redirect()->route('Attendance.index');
     }

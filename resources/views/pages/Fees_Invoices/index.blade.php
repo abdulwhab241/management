@@ -80,9 +80,10 @@
     <td>{{ $Fee_invoice->create_by }}</td>
         <td>
             <div class="btn-group">
-            <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>
-            </div>                        </td>
+            <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" style="margin: 3px;" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+            <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" title="حـذف" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>
+            </div>                       
+        </td>
     </tr>
     @include('pages.Fees_Invoices.Delete')
 

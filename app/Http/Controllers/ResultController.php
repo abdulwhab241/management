@@ -18,7 +18,7 @@ class ResultController extends Controller
 {
     public function index()
     {
-        $Results = Result::all();
+        $Results = Result::where('year', date('Y'))->get();
         return view('pages.Results.index', compact('Results'));
     }
 
@@ -57,7 +57,7 @@ class ResultController extends Controller
     {
         try
         {
-            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);
@@ -91,7 +91,7 @@ class ResultController extends Controller
         try
         {
             // dd($request);
-            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
             
             $Exam = Result::findOrFail($request->id);
             $Exam->exam_id = strip_tags($request->Exam_id);
@@ -120,7 +120,7 @@ class ResultController extends Controller
 
     public function destroy(Request $request)
     {
-        Result::findOrFail($request->id)->delete(); 
+        Result::findOrFail(strip_tags($request->id))->delete(); 
         toastr()->error('تم حذف نتيجـة الطـالـب بنجاح');
         return redirect()->route('Results.index');
     }

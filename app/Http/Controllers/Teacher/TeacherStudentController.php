@@ -58,13 +58,15 @@ class TeacherStudentController extends Controller
         if ($request->student_id == 0) 
         {
 
-            $Students = Attendance::whereBetween('attendance_date', [$request->from, $request->to])->get();
+            $Students = Attendance::whereBetween('attendance_date', [$request->from, $request->to])
+                                    ->where('year', date('Y'))->get();
             return view('pages.Teachers.dashboard.students.attendance_report', compact('Students', 'students'));
         } 
         else 
         {
             $Students = Attendance::whereBetween('attendance_date', [$request->from, $request->to])
-                ->where('student_id', $request->student_id)->get();
+                ->where('student_id', $request->student_id)
+                ->where('year', date('Y'))->get();
             return view('pages.Teachers.dashboard.students.attendance_report', compact('Students', 'students'));
         }
     }

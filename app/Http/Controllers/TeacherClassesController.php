@@ -11,7 +11,7 @@ class TeacherClassesController extends Controller
 {
     public function index()
     {
-        $teacher_classes = TeacherClass::all();
+        $teacher_classes = TeacherClass::where('year', date('Y'))->get();
         return view('pages.TeacherClasses.index', compact('teacher_classes'));
     }
 
@@ -30,7 +30,7 @@ class TeacherClassesController extends Controller
 
     public function print()
     {
-        $TeacherClasses = TeacherClass::all();
+        $TeacherClasses = TeacherClass::where('year', date('Y'))->get();
         return view('pages.TeacherClasses.print', compact('TeacherClasses'));
     }
 
@@ -62,7 +62,7 @@ class TeacherClassesController extends Controller
     {
 
         try {
-            $TeacherClasses = TeacherClass::findOrFail($request->id);
+            $TeacherClasses = TeacherClass::findOrFail(strip_tags($request->id));
     
             $TeacherClasses->day = strip_tags($request->Day_id);
             $TeacherClasses->teacher_id = strip_tags($request->Teacher_id);
@@ -79,7 +79,7 @@ class TeacherClassesController extends Controller
 
             toastr()->success('تم تعديـل جـدول حصـص المعلميـن بنجاح');
     
-            return redirect()->route('Teacher_Classes.index');
+            return redirect()->route('Classes_Teacher.index');
         }
     
         catch (\Exception $e){
@@ -89,7 +89,7 @@ class TeacherClassesController extends Controller
 
     public function destroy(Request $request)
     {
-        TeacherClass::findOrFail($request->id)->delete(); 
+        TeacherClass::findOrFail(strip_tags($request->id))->delete(); 
         toastr()->error('تم حذف جـدول حصـص المعلم بنجاح');
         return redirect()->back();
     }

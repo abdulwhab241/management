@@ -14,6 +14,7 @@ class StudentAttendanceController extends Controller
         $Attendances = Attendance::select('*')->where('student_id', auth()->user()->id)
         ->where('classroom_id',auth()->user()->classroom_id)
         ->where('section_id',auth()->user()->section_id)
+        ->where('year', date('Y'))
         ->get();
     
         return view('pages.Students.Attendance.index',compact('Attendances'));

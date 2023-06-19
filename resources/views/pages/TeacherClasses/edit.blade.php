@@ -14,7 +14,7 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Teacher_Classes.index')}}"><i class="fas fa-books"></i> قائمـة جدول حصـص المعلمين </a></li>
+<li><a href="{{route('Classes_Teacher.index')}}"><i class="fas fa-books"></i> قائمـة جدول حصـص المعلمين </a></li>
 <li class="active">تعديل جدول حصـص المعلمين </li>
 </ol>
 </section>
@@ -35,7 +35,7 @@
 @endif
 </div><!-- /.box-header -->
 
-<form  action="{{route('Teacher_Classes.update','test')}}"  method="POST" >
+<form  action="{{route('Classes_Teacher.update','test')}}"  method="POST" >
 {{ method_field('patch') }}
 @csrf
 <div class="box-body">

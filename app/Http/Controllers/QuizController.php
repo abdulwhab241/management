@@ -17,7 +17,7 @@ class QuizController extends Controller
 {
     public function index()
     {
-        $Exams = Exam::all();
+        $Exams = Exam::where('year', date('Y'))->get();
         $Teachers = Teacher::all();
         $Subjects = Subject::all();
         $Classrooms = Classroom::all();
@@ -65,7 +65,7 @@ class QuizController extends Controller
     {
         try
         {
-            $Exam = Exam::findOrFail($request->id);
+            $Exam = Exam::findOrFail(strip_tags($request->id));
             $Exam->classroom_id = strip_tags($request->Classroom_id);
             $Exam->teacher_id = strip_tags($request->Teacher_id);
             $Exam->subject_id = strip_tags($request->Subject_id);
@@ -87,7 +87,7 @@ class QuizController extends Controller
 
     public function destroy(Request $request)
     {
-        Exam::findOrFail($request->id)->delete(); 
+        Exam::findOrFail(strip_tags($request->id))->delete(); 
         toastr()->error('تم حذف الأختبـار بنجاح');
         return redirect()->route('Quizzes.index');
     }

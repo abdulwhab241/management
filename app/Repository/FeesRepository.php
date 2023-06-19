@@ -15,7 +15,7 @@ class FeesRepository implements FeesRepositoryInterface
 
     public function index(){
 
-        $fees = Fee::all();
+        $fees = Fee::where('year', date('Y'))->get();
         $Grades = Grade::all();
         return view('pages.Fees.index',compact('fees','Grades'));
 
@@ -94,7 +94,7 @@ class FeesRepository implements FeesRepositoryInterface
     public function destroy($request)
     {
         try {
-            Fee::destroy($request->id);
+            Fee::destroy(strip_tags($request->id));
             toastr()->error('تم حذف الرسوم الـدراسيـة بنجاح');
             return redirect()->back();
         }

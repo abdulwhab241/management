@@ -13,7 +13,7 @@ class TeacherExamController extends Controller
 {
     public function index()
     {
-        $exams = Exam::where('teacher_id',auth()->user()->id)->get();
+        $exams = Exam::where('teacher_id',auth()->user()->id)->where('year', date('Y'))->get();
         $subjects = Subject::where('teacher_id',auth()->user()->id)->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $Classrooms = Section::whereIn('id', $ids)->get();
@@ -80,30 +80,4 @@ class TeacherExamController extends Controller
         }
     }
 
-
-    // public function create()
-    // {
-    //     $data['grades'] = Grade::all();
-    //     $data['subjects'] = Subject::where('teacher_id',auth()->user()->id)->get();
-    //     return view('pages.Teachers.dashboard.Exams.create', $data);
-    // }
-
-
-
-
-    // public function show($id)
-    // {
-    //     $questions = Question::where('exam_id',$id)->get();
-    //     $exam = Exam::findOrFail($id);
-    //     return view('pages.Teachers.dashboard.Questions.index',compact('exam'));
-    // }
-
-
-    // public function edit($id)
-    // {
-    //     $exam = Exam::findOrFail($id);
-    //     $data['grades'] = Grade::all();
-    //     $data['subjects'] = Subject::where('teacher_id',auth()->user()->id)->get();
-    //     return view('pages.Teachers.dashboard.Exams.edit', $data, compact('exam'));
-    // }
 }

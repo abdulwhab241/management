@@ -76,7 +76,7 @@ Route::group(
 
         //==============================Teacher Classes============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
-            Route::resource('TeacherClasses', TeacherClassesController::class);    
+            Route::resource('Classes_Teacher', TeacherClassesController::class);    
             Route::get('/print_teacher/', [TeacherClassesController::class, 'print']) -> name('TeacherClasses.print');        
         });
 

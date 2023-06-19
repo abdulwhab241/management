@@ -28,19 +28,13 @@
 <div class="col-xs-12">
 <div class="box">
     @if(count($Result) > 0)
-<div class="box-header">
 
-</div><!-- /.box-header -->
 <div class="box-body table-responsive no-padding">
 <table class="table border-2" style="width:100%; text-align: center">
-<caption style="font-weight: bolder; text-align: center; margin: 5px; padding:5px; color:black;">
-    <i class="fas fa-light fa-percent"></i>
-    <span > النتـائـج  </span>
-     
-</caption>
 <thead>
 <tr>
-    <th style="text-align: center; background-color: #D0DEF6;" >الأستاذ</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >إختبـار شهـر</th>
+    {{-- <th style="text-align: center; background-color: #D0DEF6;" >الأستاذ</th> --}}
     <th style="text-align: center; background-color: #D0DEF6;" >المـادة</th>
     <th style="text-align: center; background-color: #D0DEF6;" > الـدرجـة</th>
     <th style="text-align: center; background-color: #D0DEF6;" >التقـديـر</th>
@@ -49,7 +43,8 @@
 <tbody>
         @foreach ($Result as $Student)
         <tr>
-            <td>{{ $Student->create_by }}</td>
+            <td style="background-color: #D0DEF6; font-weight: bolder;">{{ $Student->result_name }}</td>
+            {{-- <td>{{ $Student->create_by }}</td> --}}
             <td>{{ $Student->exam->subject->name }}</td>
             <td>{{$Student->marks_obtained}}</td>
             <td>{{$Student->appreciation}}</td>

@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-طبـاعـة نتيجـة الطـالـب
+النتيـجة النـهائيـة
 @stop
 @endsection
 
@@ -25,7 +25,7 @@
 <div class="col-xs-12">
 <div class="box" >
 
-    @if(count($Student_Name) > 0)
+    @if(count($Final_Results) > 0)
 <div class="box-header">
 
 <div class="row">
@@ -104,11 +104,11 @@
 @php $type = ''; @endphp
 <tr>
 <th style="text-align: center; background-color: #D0DEF6;">المجمـوع النـهائـي</th>    
-    <th style="text-align: center;">{{ $Results->sum('total') }}</th>
+    <th style="text-align: center;">{{ $Final_Results->sum('total') }}</th>
 
-@if ($Results->count('subject_id') == 7)
+@if ($Final_Results->count('subject_id') == 7)
 <!-- start if 7 -->
-@if ($Results->sum('total') < 360)
+@if ($Final_Results->sum('total') < 360)
 @php
     $type = 'راسب';
 @endphp
@@ -121,9 +121,9 @@
 
 @else
 
-@if ($Results->count('subject_id') == 11)
+@if ($Final_Results->count('subject_id') == 11)
     <!-- start if 11 -->
-    @if ($Results->sum('total') < 560)
+    @if ($Final_Results->sum('total') < 560)
     @php
         $type = 'راسب';
     @endphp
@@ -143,7 +143,7 @@
 @php $total = 0; @endphp
 @php
 
-    $sub_total = round($Results->sum('total') / $Results->count('subject_id'),2 );
+    $sub_total = round($Final_Results->sum('total') / $Final_Results->count('subject_id'),2 );
     $total += $sub_total;
 @endphp
 <th style="text-align: center;">{{ $sub_total }} %</th>

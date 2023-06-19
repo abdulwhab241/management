@@ -79,7 +79,7 @@ class StudentGradeController extends Controller
             $StudentGrade->create_by = auth()->user()->name;
             $StudentGrade->save();
 
-            $student_names = Student::where('id',$request->Student_id)->pluck('name');
+            $student_names = Student::where('id',strip_tags($request->Student_id))->pluck('name');
             foreach ($student_names as $name)
             {
                 $users = User::all();

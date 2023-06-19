@@ -14,7 +14,7 @@ class StudentClassController extends Controller
 {
     public function index()
     {
-        $StudentClasses = StudentClass::all();
+        $StudentClasses = StudentClass::where('year', date('Y'))->get();
         return view('pages.Classes.index', compact('StudentClasses'));
     }
 
@@ -73,7 +73,7 @@ class StudentClassController extends Controller
 
         try {
 
-            $StudentClass = StudentClass::findOrFail($request->id);
+            $StudentClass = StudentClass::findOrFail(strip_tags($request->id));
     
             $StudentClass->day = strip_tags($request->Day_id);
             $StudentClass->grade_id = strip_tags($request->Grade_id);
@@ -102,7 +102,7 @@ class StudentClassController extends Controller
 
     public function destroy(Request $request)
     {
-        StudentClass::findOrFail($request->id)->delete();
+        StudentClass::findOrFail(strip_tags($request->id))->delete();
         toastr()->error('تم حذف بيانـات جدول الحصـص بنجاح');
         return redirect()->route('Classes.index');
     }

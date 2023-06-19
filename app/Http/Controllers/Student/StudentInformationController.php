@@ -17,11 +17,16 @@ class StudentInformationController extends Controller
 {
     public function index()
     {
-        $Student_Account = StudentAccount::select('*')->where('student_id', auth()->user()->id)->get();
-        $Payment = PaymentStudent::select('*')->where('student_id','=',auth()->user()->id)->get();
-        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',auth()->user()->id)->get();
-        $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',auth()->user()->id)->get();
-        $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',auth()->user()->id)->get();
+        $Student_Account = StudentAccount::select('*')->where('student_id', auth()->user()->id)
+                                            ->where('year', date('Y'))->get();
+        $Payment = PaymentStudent::select('*')->where('student_id','=',auth()->user()->id)
+                                            ->where('year', date('Y'))->get();
+        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',auth()->user()->id)
+                                            ->where('year', date('Y'))->get();
+        $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',auth()->user()->id)
+                                            ->where('year', date('Y'))->get();
+        $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',auth()->user()->id)
+                                            ->where('year', date('Y'))->get();
         return view('pages.Students.Accounts.index',compact('Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
     }
 

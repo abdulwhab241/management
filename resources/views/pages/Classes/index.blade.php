@@ -91,8 +91,8 @@
             <td>{{ $StudentClass->create_by }}</td>
             <td>
                 <div class="btn-group">
-                <a href="{{route('Classes.edit',$StudentClass->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $StudentClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                <a href="{{route('Classes.edit',$StudentClass->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete{{ $StudentClass->id }}" title="حذف"><i class="fa fa-trash"></i></button>
                 </div>
             </td>
         </tr>

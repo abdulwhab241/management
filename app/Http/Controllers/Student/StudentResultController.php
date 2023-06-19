@@ -10,7 +10,8 @@ class StudentResultController extends Controller
 {
     public function index()
     {
-        $Result = Result::select('*')->where('student_id', auth()->user()->id)->get();
+        $Result = Result::select('*')->where('student_id', auth()->user()->id)
+                        ->where('year', date('Y'))->get();
     
         return view('pages.Students.Result.index',compact('Result'));
     }

@@ -45,13 +45,11 @@
         <div class="row">
     
             <div class="col-md-3"> 
-                <div class="form-group">
-                <label> المبلغ</label>
-                <input  class="form-control" name="Debit" value="{{ number_format($payment_student->amount) }}" type="number" >
-                <input  type="hidden" name="student_id" value="{{$payment_student->student->id}}" class="form-control">
+                <input  type="hidden" name="Student_id" value="{{$payment_student->student->id}}" class="form-control">
                 <input  type="hidden" name="id"  value="{{$payment_student->id}}" class="form-control">
 
-            </div>
+                <label> المبلغ</label>
+                <input type="number"  class="form-control" name="Debit" value="{{ $payment_student->amount }}" >
                 @error('Debit')
                 <div class=" alert-danger">
                 <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>

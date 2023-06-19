@@ -7,8 +7,6 @@ namespace App\Repository;
 use App\Models\Fee;
 use App\Models\User;
 use App\Models\Grade;
-use App\Models\Student;
-use App\Models\Classroom;
 use App\Models\Enrollment;
 use App\Models\FeeInvoice;
 use App\Models\FundAccount;
@@ -22,7 +20,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
 
     public function index()
     {
-        $Fee_invoices = FeeInvoice::all();
+        $Fee_invoices = FeeInvoice::where('year', date('Y'))->get();
         return view('pages.Fees_Invoices.index',compact('Fee_invoices'));
     }
     public function create()
@@ -94,7 +92,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             Notification::send($users, new FeeInvoiceNotification($Fees->id,$create_by,$Fees->amount));
 
             toastr()->success('تـم إضافـة الفـاتـورة بنجـاح');
-            return redirect()->route('Fees_Invoices.index');
+            return redirect()->route('Fees_Invoices.create');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
@@ -140,8 +138,9 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function destroy($request)
     {
         try {
-            FeeInvoice::destroy($request->id);
-            FundAccount::destroy($request->id);
+            FeeInvoice::destroy(strip_tags($request->id));
+            StudentAccount::destroy(strip_tags($request->id));
+            FundAccount::destroy(strip_tags($request->id));
             toastr()->error('تـم حـذف الفـاتـورة بنجـاح');
             return redirect()->back();
         }

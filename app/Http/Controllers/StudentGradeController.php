@@ -19,7 +19,7 @@ class StudentGradeController extends Controller
 {
     public function index()
     {
-        $Student_Grades = StudentGrade::all();
+        $Student_Grades = StudentGrade::where('year', date('Y'))->get();
         return view('pages.Student_Grades.index', compact('Student_Grades'));
     }
 
@@ -67,7 +67,7 @@ class StudentGradeController extends Controller
     
     public function print()
     {
-        $StudentGrade = StudentGrade::all();
+        $StudentGrade = StudentGrade::where('year', date('Y'))->get();
         return view('pages.Student_Grades.print', compact('StudentGrade'));
     }
 
@@ -77,7 +77,7 @@ class StudentGradeController extends Controller
         try
         {
             // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
-            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
 
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
@@ -119,7 +119,7 @@ class StudentGradeController extends Controller
         
     try {
         // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
-        $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+        $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
         
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
@@ -158,7 +158,7 @@ class StudentGradeController extends Controller
 
     public function destroy(Request $request)
     {
-        StudentGrade::findOrFail($request->id)->delete();
+        StudentGrade::findOrFail(strip_tags($request->id))->delete();
         toastr()->error('تم حـذف محصـلـة الطـالـب بنجاح');
         return redirect()->route('Student_Grades.index');
     }

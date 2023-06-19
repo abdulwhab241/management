@@ -17,15 +17,10 @@ class PaymentRepository implements PaymentRepositoryInterface
 
     public function index()
     {
-        $payment_students = PaymentStudent::all();
+        $payment_students = PaymentStudent::where('year', date('Y'))->get();
         return view('pages.Payments.index',compact('payment_students'));
     }
 
-    // public function show($id)
-    // {
-    //     $student = Enrollment::findOrFail($id);
-    //     return view('pages.Payments.add',compact('student'));
-    // }
 
     public function edit($id)
     {
@@ -89,7 +84,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function update($request)
     {
         try {
-
+// dd($request);
             // تعديل البيانات في جدول سندات الصرف
             $payment_students = PaymentStudent::findOrFail(strip_tags($request->id));
             $payment_students->date = date('Y-m-d');
@@ -102,14 +97,13 @@ class PaymentRepository implements PaymentRepositoryInterface
 
 
             // حفظ البيانات في جدول الصندوق
-            $fund_accounts = FundAccount::where('payment_id',strip_tags($payment_students->id))->first();
+            $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
             $fund_accounts->year = date('Y');
-            // $fund_accounts->credit_payment = 0.00;
-            // $fund_accounts->description = strip_tags($request->description);
+
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -119,7 +113,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'تعديل سند الصرف';
             $students_accounts->student_id = strip_tags($request->Student_id);
-            $students_accounts->payment_id = strip_tags($payment_students->id);
+            // $students_accounts->payment_id = strip_tags($payment_students->id);
             $students_accounts->Debit_payment = strip_tags($request->Debit);
             $students_accounts->credit_payment = 0.00; 
             $students_accounts->description = strip_tags($request->description);
