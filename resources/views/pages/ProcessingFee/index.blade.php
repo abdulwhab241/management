@@ -76,8 +76,10 @@
 <td>{{$ProcessingFee->date}}</td>
 <td>{{$ProcessingFee->create_by}}</td>
     <td>
-        <a href="{{route('ProcessingFee.edit',$ProcessingFee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_receipt{{$ProcessingFee->id}}" ><i class="fa fa-trash"></i></button>
+        <div class="btn-group">
+        <a href="{{route('ProcessingFee.edit',$ProcessingFee->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+        <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#Delete_receipt{{$ProcessingFee->id}}" ><i class="fa fa-trash"></i></button>
+        </div>
     </td>
 </tr>
 @include('pages.ProcessingFee.Delete')

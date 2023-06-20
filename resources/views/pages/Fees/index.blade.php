@@ -50,6 +50,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
         <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
         <th style="text-align: center;" class="alert-info">السنة الدراسية</th>
         <th style="text-align: center;" class="alert-info">ملاحظات</th>
+        <th style="text-align: center;" class="alert-info">إجمالي المبـلغ</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
     </tr>
@@ -60,16 +61,18 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جد�
     <td>{{ $loop->iteration }}</td>
     <td>{{$fee->title}}</td>
     <td>{{ number_format($fee->amount) }} ريال </td>
-    <td>{{$fee->discount}}</td>
+    <td>{{$fee->discount}} % </td>
     <td>{{$fee->grade->name}}</td>
     <td>{{$fee->classroom->name_class}}</td>
     <td>{{$fee->year}}</td>
     <td>{{$fee->description}}</td>
+    <td>{{ number_format($fee->total) }} ريال </td>
     <td>{{ $fee->create_by }}</td>
         <td>
-            <a href="{{route('Fees.edit',$fee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>
-
+            <div class="btn-group">
+            <a href="{{route('Fees.edit',$fee->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+            <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Fee{{ $fee->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>
+            </div>
         </td>
     </tr>
 @include('pages.Fees.Delete')

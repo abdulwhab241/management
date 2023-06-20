@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('year');
             $table->string('fee_type');
             $table->string('discount')->nullable();
+            $table->string('total');
             
             $table->string('create_by')->nullable();
             $table->softDeletes();

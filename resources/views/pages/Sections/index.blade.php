@@ -75,14 +75,15 @@
                 <td style="font-weight: bold; font-size: 20px;">{{ $list_Sections->name_section }}</td>
                 <td>{{ $list_Sections->create_by }}</td>
                 <td>
-                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    <div class="btn-group">
+                    <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
                             data-target="#edit{{ $list_Sections->id }}"
                             title="تعديل"><i
                             class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                    <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal"
                             data-target="#delete_section{{ $list_Sections->id }}"
-                            title="حذف"><i
-                                class="fa fa-trash"></i></button>
+                            title="حذف"><i class="fa fa-trash"></i></button>
+                    </div>
                 </td>
                 </tr>
                 

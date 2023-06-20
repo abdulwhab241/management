@@ -67,8 +67,10 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">تحضيـر  </a>
     <td style=" background-color: #D0DEF6; font-weight:bolder;">{{$Attendance->attendance_status}}</td>
     <td>{{ $Attendance->create_by }}</td>
         <td>
-            <a href="{{route('Attendance.edit',$Attendance->id)}}" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Attendance{{ $Attendance->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
+            <div class="btn-group">
+            <a href="{{route('Attendance.edit',$Attendance->id)}}" style="margin: 3px;" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+            <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#Delete_Attendance{{ $Attendance->id }}" title="حـذف"><i class="fa fa-trash"></i></button>
+            </div>
         </td>
     </tr>
 

@@ -78,8 +78,10 @@
     <td>{{$payment_student->date}}</td>
     <td>{{$payment_student->create_by}}</td>
         <td>
-            <a href="{{route('Payments.edit',$payment_student->id)}}" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" title="حذف"  data-toggle="modal" data-target="#Delete_receipt{{$payment_student->id}}" ><i class="fa fa-trash"></i></button>
+            <div class="btn-group">
+            <a href="{{route('Payments.edit',$payment_student->id)}}" style="margin: 3px;" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+            <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" title="حذف"  data-toggle="modal" data-target="#Delete_receipt{{$payment_student->id}}" ><i class="fa fa-trash"></i></button>
+            </div>
         </td>
     </tr>
 

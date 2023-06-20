@@ -115,11 +115,12 @@
 
     <div class="col-md-3">
         <label>نـوع الرسـوم</label>
-        <select class="form-control select2" style="width: 100%;" name="Fee_type">
+        <input type="text" value="{{ old('Fee_type') }}" name="Fee_type" class="form-control">
+        {{-- <select class="form-control select2" style="width: 100%;" name="Fee_type">
             <option selected>أختـر من القائمة...</option>
             <option value="رسوم دراسية">رسوم دراسية</option>
             <option value="رسوم باص">رسوم باص</option>
-        </select>                       
+        </select>                        --}}
         @error('Fee_type')
         <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -130,13 +131,13 @@
     <div class="col-md-3">
         <label>التخـفيـض</label>
         <select class="form-control select2" style="width: 100%;" name="Discount">
-            <option selected>أختـر من القائمة...</option>
-            <option value="5%">5%</option>
-            <option value="10%">10%</option>
-            <option value="15%">15%</option>
-            <option value="20%">20%</option>
-            <option value="25%">25%</option>
-            <option value="30%">30%</option>
+            <option value="">أختـر من القائمة...</option>
+            <option value="5">5%</option>
+            <option value="10">10%</option>
+            <option value="15">15%</option>
+            <option value="20">20%</option>
+            <option value="25">25%</option>
+            <option value="30">30%</option>
         </select>                       
         @error('Discount')
         <div class=" alert-danger">

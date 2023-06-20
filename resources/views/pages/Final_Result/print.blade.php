@@ -29,7 +29,7 @@
 <div class="box-header">
 
     <div class="row">
-        <div class="col-md-4" style="text-align: center;">            
+        <div class="col-md-4 text-center">            
         <p style="font-weight: bolder;">الجمهورية اليمنية</p>
         <p style="font-weight: bolder;">وزارة التربية والتعليم</p>
         <p style="font-weight: bolder;">مكتب التربية والتعليم بالأمانة قطاع التعليم الأهلي</p>

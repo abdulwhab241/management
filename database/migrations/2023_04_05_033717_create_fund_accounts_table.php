@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
         
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->string('type');
             $table->longText('fee_invoice')->nullable();
             $table->longText('receipt')->nullable();
             $table->longText('payment')->nullable();

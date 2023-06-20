@@ -84,9 +84,10 @@
 <td>{{$Enrollment->date }}</td>
 <td>{{ $Enrollment->create_by }}</td>
     <td>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $Enrollment->id }}" title="إلـغاء تسجيـل الطالب">إلـغاء </button>
+        <div class="btn-group">
+        <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $Enrollment->id }}" title="إلـغاء تسجيـل الطالب">إلـغاء </button>
         {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="حذف الطالب المتخرج">حذف الطالب</button> --}}
-
+        </div>
     </td>
 </tr>
 

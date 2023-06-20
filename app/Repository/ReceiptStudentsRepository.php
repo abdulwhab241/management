@@ -22,16 +22,15 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
     public function index()
     {
-        $receipt_students = ReceiptStudent::all();
+        $receipt_students = ReceiptStudent::where('year', date('Y'))->get();
         return view('pages.Receipts.index',compact('receipt_students'));
 
     }
 
     public function create()
     {
-        $fee =Fee::all();
         $student = Enrollment::where('year', date("Y"))->get();
-        return view('pages.Receipts.add',compact('student','fee'));
+        return view('pages.Receipts.add',compact('student'));
     }
 
     public function show($id)
@@ -65,6 +64,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'تسديـد رسـوم  (دائن)';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->receipt = strip_tags($receipt_students->description);
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
@@ -94,7 +94,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $student = Student::where('id', '=', $receipt_students->student_id)->get();
             Notification::send($student, new StudentReceiptNotification($receipt_students->id,$create_by,$receipt_students->Debit));
             toastr()->success('تـم إضافـة سنـد القبـض بنجـاح');
-            return redirect()->route('Receipts.index');
+            return redirect()->route('Receipts.create');
 
         }
 
@@ -119,15 +119,14 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             $receipt_students->create_by = auth()->user()->name;
             $receipt_students->save();
 
-            // تعديل البيانات في جدول الصندوق
-            $fund_accounts = FundAccount::where('receipt_id',$request->id)->first();
+            // حفظ البيانات في جدول الصندوق
+            $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'تعديل تسديـد رسـوم  (دائن)';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->receipt = strip_tags($receipt_students->description);
-            // $fund_accounts->Debit_receipt = 0.00;
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
             $fund_accounts->year = date('Y');
-            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -156,9 +155,9 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     public function destroy($request)
     {
         try {
-            ReceiptStudent::destroy($request->id);
-            StudentAccount::destroy($request->id);
-            FundAccount::destroy($request->id);
+            ReceiptStudent::destroy(strip_tags($request->id));
+            StudentAccount::destroy(strip_tags($request->id));
+            FundAccount::destroy(strip_tags($request->id));
             toastr()->error('تـم حـذف سنـد القبـض بنجـاح');
             return redirect()->back();
         }

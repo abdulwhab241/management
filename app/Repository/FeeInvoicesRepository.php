@@ -65,6 +65,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
                     // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'إضافة فاتورة دراسية (مدين)';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->fee_invoice = strip_tags($Fees->description);
             $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
@@ -121,6 +122,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'تعديل فاتورة دراسية (مدين)';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->fee_invoice = strip_tags($Fees->description);
             $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);

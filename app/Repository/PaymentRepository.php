@@ -46,6 +46,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'إضافة سند صرف';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
@@ -99,6 +100,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'تعديل سند الصرف';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->payment = strip_tags($payment_students->description);
             $fund_accounts->Debit_payment = strip_tags($request->Debit);
@@ -134,7 +136,7 @@ class PaymentRepository implements PaymentRepositoryInterface
         try {
             PaymentStudent::destroy(strip_tags($request->id));
             StudentAccount::destroy(strip_tags($request->id));
-            // FundAccount::destroy(strip_tags($request->id));
+            FundAccount::destroy(strip_tags($request->id));
             toastr()->error('تـم حـذف سـند الصـرف  بنجـاح');
             return redirect()->back();
         }

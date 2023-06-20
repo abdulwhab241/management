@@ -43,7 +43,8 @@
 <thead>
 <tr>
     <th style="text-align: center; background-color: #86B9D4;" >#</th>
-    <th style="text-align: center; background-color: #86B9D4;" >أسم الطالب</th>
+    <th style="text-align: center; background-color: #86B9D4;" >أسـم الطـالـب \ الطـالبـة</th>
+    <th style="text-align: center; background-color: #86B9D4;" >العملـيات</th>
     <th style="text-align: center; background-color: #86B9D4;" >الفواتير الدراسية</th>
     <th style="text-align: center; background-color: #86B9D4;" >المبلغ (مدين)</th>
     <th style="text-align: center; background-color: #86B9D4;" >سندات القبض</th>
@@ -63,6 +64,7 @@
     <?php $i++; ?>
     <td>{{ $i }}</td>
     <td>{{$box->student->name}}</td>
+    <td>{{$box->type}}</td>
     <td>{{$box->fee_invoice}}</td>
     <td>{{ number_format($box->Debit_feeInvoice) }} ريال </td>
     <td>{{$box->receipt}}</td>

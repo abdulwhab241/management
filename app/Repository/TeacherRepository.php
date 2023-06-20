@@ -79,7 +79,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
     {
 
         try {
-            $Teachers = Teacher::findOrFail($request->id);
+            $Teachers = Teacher::findOrFail(strip_tags($request->id));
     
             $Teachers->name = strip_tags($request->Name);
             $Teachers->password = Hash::make(strip_tags($request->Phone_Number));
@@ -120,7 +120,7 @@ class TeacherRepository implements TeacherRepositoryInterFace
 
     public function deleteTeachers($request)
     {
-        Teacher::findOrFail($request->id)->delete();
+        Teacher::findOrFail(strip_tags($request->id))->delete();
         toastr()->error('تم حذف المعلم بنجاح');
         return redirect()->route('Teachers.index');
     }

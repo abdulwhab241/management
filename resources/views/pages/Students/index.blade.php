@@ -64,8 +64,9 @@
     <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
     <th style="text-align: center;" class="alert-info"> الشعـبة</th>
     <th style="text-align: center;" class="alert-info">أسـم الأب </th>
-    <th style="text-align: center;" class="alert-warning"> العمليات</th>
     <th style="text-align: center;"  class="alert-success"> انشـئ بواسطـة</th>
+    <th style="text-align: center;" class="alert-warning"> العمليات</th>
+
 </tr>
 </thead>
 <tbody>
@@ -82,23 +83,17 @@
             <td>{{$Student->classroom->name_class}}</td>
             <td style="font-weight: bolder;">{{$Student->section->name_section}}</td>
             <td>{{ $Student->father_name }}</td>
-
-
+            <td > {{ $Student->create_by }}</td>
             <td>
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-navy dropdown-toggle" data-toggle="dropdown">العمليـات <span class="fa fa-caret-down"></span></button>
                     <ul class="dropdown-menu">
                     <li><a href="{{route('Students.show',$Student->id)}}" >عـرض بيـانـات الطـالب</a></li>
-                    {{-- <li><a href="{{route('Receipts.show',$Student->id)}}">سنـد قبـض أو تسـديـد رسـوم</a></li>
-                    <li><a href="{{ route('Fees_Invoices.show',$Student->id) }}">اضـافـة فـاتـورة رسـوم</a></li>
-                    <li><a href="{{ route('ProcessingFee.show',$Student->id) }}">استبعـاد رسـوم</a></li>
-                    <li><a href="{{ route('Payments.show',$Student->id) }}">سنـد صـرف</a></li> --}}
                     <li><a href="{{route('Students.edit',$Student->id)}}">تـعديـل</a></li>
                     <li><a data-toggle="modal" data-target="#delete_Student{{ $Student->id }}">حـذف</a></li>
                 </ul>
                 </div><!-- /btn-group -->
             </td>
-            <td > {{ $Student->create_by }}</td>
         </tr>
 
 

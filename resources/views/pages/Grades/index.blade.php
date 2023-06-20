@@ -64,14 +64,15 @@ style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal
 <td>{{ $grade->notes }}</td>
 <td>{{ $grade->create_by }}</td>
 <td>
-    <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+    <div class="btn-group">
+    <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
             data-target="#edit{{ $grade->id }}"
             title="تعديل"><i
             class="fa fa-edit"></i></button>
-    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+    <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal"
             data-target="#delete{{ $grade->id }}"
-            title="حذف"><i
-            class="fa fa-trash"></i></button>
+            title="حذف"><i class="fa fa-trash"></i></button>
+    </div>
 </td>
 </tr>
 

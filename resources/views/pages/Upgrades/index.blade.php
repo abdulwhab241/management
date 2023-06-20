@@ -80,9 +80,9 @@
 
     <td>{{$promotion->create_by}}</td>
     <td>
-
-        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#Delete_one{{ $promotion->id }}" title="إرجاع الطالب"><i class="fa fa-user"></i></button>
-
+        <div class="btn-group">
+            <button type="button" class="btn btn-info btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#Delete_one{{ $promotion->id }}" title="إرجاع الطالب"><i class="fa fa-user"></i></button>
+        </div>
     </td>
 </tr>
 @include('pages.Upgrades.Delete_all')

@@ -20,7 +20,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
 
     public function index()
     {
-        $ProcessingFees = ProcessingFee::all();
+        $ProcessingFees = ProcessingFee::where('year', date('Y'))->get();
         return view('pages.ProcessingFee.index',compact('ProcessingFees'));
     }
 
@@ -66,6 +66,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'إستبعاد رسوم دراسية (مدين)';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->processing = strip_tags($ProcessingFee->description);
             $fund_accounts->credit_processing = strip_tags($request->Debit);
@@ -115,14 +116,13 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
             $students_accounts->save();
 
             // حفظ البيانات في جدول الصندوق
-            $fund_accounts = FundAccount::where('processing_id',strip_tags($request->id))->first();
+            $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
+            $fund_accounts->type = 'تعديل إستبعاد رسوم دراسية (مدين)';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->processing = strip_tags($ProcessingFee->description);
-            // $fund_accounts->Debit_processing = 0.00;
             $fund_accounts->credit_processing = strip_tags($request->Debit);
             $fund_accounts->year = date('Y');
-            // $fund_accounts->description = strip_tags($request->description);
             $fund_accounts->create_by = auth()->user()->name;
             $fund_accounts->save();
 
@@ -141,7 +141,7 @@ class ProcessingFeeRepository implements ProcessingFeeRepositoryInterface
         try {
             ProcessingFee::destroy(strip_tags($request->id));
             StudentAccount::destroy(strip_tags($request->id));
-            // FundAccount::destroy(strip_tags($request->id));
+            FundAccount::destroy(strip_tags($request->id));
             toastr()->error('تـم حـذف إستبـاعد رسـوم الطـالـب  بنجـاح');
             return redirect()->back();
         }

@@ -76,10 +76,12 @@
         <td style="background-color: yellow; font-weight:bolder;">{{ $Exam->exam_date }}</td>
         <td>{{ $Exam->create_by }}</td>
         <td>
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+            <div class="btn-group">
+            <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
             data-target="#edit{{ $Exam->id }}"
             title="تعديل"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $Exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $Exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            </div>
         </td>
     </tr>
 

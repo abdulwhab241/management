@@ -51,7 +51,7 @@ class StudentSeeder extends Seeder
             'employer' => 'ناتكو',
             'father_job' => 'محاسب',
             'father_phone' => '777888999',
-            'password' => Hash::make('777888999'),
+            'password' => Hash::make('1234'),
             'home_phone' => '01223344',
             'address' => 'شارع الرباط امام  مكتبة القلم الذهبي',
             'mother_name' => 'فاطمة علي الصنعاني',

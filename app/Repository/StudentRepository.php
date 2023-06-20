@@ -26,8 +26,6 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Create_Student(){
 
         $data['Grades'] = Grade::all();
-        $data['Sections'] = Section::all();
-        $data['Classrooms'] = Classroom::all();
         $data['Genders'] = Gender::all();
         return view('pages.Students.create',$data);
 
@@ -36,11 +34,16 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Show_Student($id)
     {
         $Student = Student::findOrFail($id);
-        $Student_Account = StudentAccount::select('*')->where('student_id','=',$id)->get();
-        $Payment = PaymentStudent::select('*')->where('student_id','=',$id)->get();
-        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id)->get();
-        $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',$id)->get();
-        $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',$id)->get();
+        $Student_Account = StudentAccount::select('*')->where('student_id','=',$id)
+                                            ->where('year', date('Y'))->get();
+        $Payment = PaymentStudent::select('*')->where('student_id','=',$id)
+                                            ->where('year', date('Y'))->get();
+        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id
+                                            ->where('year', date('Y')))->get();
+        $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',$id)
+                                            ->where('year', date('Y'))->get();
+        $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',$id)
+                                            ->where('year', date('Y'))->get();
         return view('pages.Students.show',compact('Student','Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
     }
 
@@ -124,7 +127,7 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Get_Student()
     {
-        $Students = Student::all();
+        $Students = Student::where('year', date('Y'))->get();
         return view('pages.Students.index',compact('Students'));
     }
 
@@ -197,7 +200,7 @@ class StudentRepository implements StudentRepositoryInterface{
     public function Delete_Student($request)
     {
 
-        Student::destroy($request->id);
+        Student::destroy(strip_tags($request->id));
         toastr()->error('تـم حـذف الطـالـب بنـجاح');
         return redirect()->route('Students.index');
     }

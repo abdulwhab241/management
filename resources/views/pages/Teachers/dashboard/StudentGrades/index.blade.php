@@ -97,7 +97,9 @@
                 <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
                 <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
                 <td>
-                    <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                    <div class="btn-group">
+                    <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                    </div>
                 </td>
             </tr>
         

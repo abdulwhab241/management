@@ -87,10 +87,12 @@
             <td>{{$Result->marks_obtained}}</td>
             <td style="font-weight: bolder; background-color: #D0DEF6;">{{$Result->appreciation}}</td>
             <td>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                <div class="btn-group">
+                <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
                 data-target="#edit{{ $Result->id }}"
                 title="تعديل"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Result->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Result->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                </div>
             </td>
         </tr>
 

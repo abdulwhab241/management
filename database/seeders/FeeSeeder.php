@@ -24,6 +24,7 @@ class FeeSeeder extends Seeder
             'classroom_id' => Classroom::all()->unique()->random()->id,
             'year' => '2023',
             'fee_type' => ' رسوم دراسية للصف الاول',
+            'total' => '100000.00',
         ]);
         DB::table('fees')->insert([
             'title' => 'رسوم البـاص',
@@ -32,6 +33,7 @@ class FeeSeeder extends Seeder
             'classroom_id' => Classroom::all()->unique()->random()->id,
             'year' => '2023',
             'fee_type' => ' رسوم بـاص',
+            'total' => '10000.00',
         ]);
     }
 }

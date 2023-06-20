@@ -66,10 +66,12 @@
         <td>{{$exam->teacher->name}}</td>
         <td>{{$exam->total_marks}}</td>
         <td>
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+            <div class="btn-group">
+            <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
             data-target="#edit{{ $exam->id }}"
             title="تعديل"><i class="fa fa-edit"></i></button>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+            </div>
         </td>
     </tr>
 

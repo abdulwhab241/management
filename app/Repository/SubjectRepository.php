@@ -72,7 +72,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     public function update($request)
     {
         try {
-            $subjects =  Subject::findOrFail($request->id);
+            $subjects =  Subject::findOrFail(strip_tags($request->id));
             $subjects->name = strip_tags($request->Name);
             $subjects->degree = strip_tags($request->Degree);
             $subjects->grade_id = strip_tags($request->Grade_id);
@@ -91,7 +91,7 @@ class SubjectRepository implements SubjectRepositoryInterface
     public function destroy($request)
     {
         try {
-            Subject::destroy($request->id);
+            Subject::destroy(strip_tags($request->id));
             toastr()->error('تم حذف المادة بنجاح');
             return redirect()->back();
         }
