@@ -117,8 +117,8 @@
     </a>
     <ul class="treeview-menu">
     <li><a href="{{route('Fees.index')}}"><i class="fa fa-circle-o"></i> الرسـوم الدراسيـة</a></li>
-    <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-circle-o"></i> سندات القبض (تسـديـد رسـوم)</a></li>
     <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-circle-o"></i> الفـواتيـر الدراسيـة</a></li>
+    <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-circle-o"></i> سندات القبض (تسـديـد رسـوم)</a></li>
     <li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-circle-o"></i> أستبـعاد رسـوم طـالـب </a></li>
     <li><a href="{{route('Payments.index')}}"><i class="fa fa-circle-o"></i> سـندات الصـرف </a></li>
     </ul>

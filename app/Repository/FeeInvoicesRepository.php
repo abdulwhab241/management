@@ -62,7 +62,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $Fees->create_by = auth()->user()->name;
             $Fees->save();
 
-                    // حفظ البيانات في جدول الصندوق
+            // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
             $fund_accounts->type = 'إضافة فاتورة دراسية (مدين)';

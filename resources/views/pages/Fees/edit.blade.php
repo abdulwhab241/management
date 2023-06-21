@@ -65,7 +65,9 @@
         <label>الصف الدراسي</label>
         <select class="form-control select2" style="width: 100%;" name="Classroom_id">
             <option value="{{$fee->classroom_id}}">{{$fee->classroom->name_class}}</option>
-
+            @foreach ($Classrooms as $Classroom)
+            <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
+            @endforeach
         </select>
     </div>
 
@@ -89,23 +91,19 @@
 
     <div class="col-md-3">
         <label>نـوع الرسـوم</label>
-        <select class="form-control select2" style="width: 100%;" name="Fee_type">
-            <option >{{$fee->fee_type}}</option>
-                <option value="رسوم دراسية">رسوم دراسية</option>
-                    <option value="رسوم باص">رسوم باص</option>
-        </select>
+        <input type="text" value="{{$fee->fee_type }}" name="Fee_type" class="form-control">
     </div>
 
     <div class="col-md-3">
         <label>التخـفيـض</label>
         <select class="form-control select2" style="width: 100%;" name="Discount">
             <option >{{$fee->discount}}</option>
-            <option value="5%">5%</option>
-            <option value="10%">10%</option>
-            <option value="15%">15%</option>
-            <option value="20%">20%</option>
-            <option value="25%">25%</option>
-            <option value="30%">30%</option>
+            <option value="5">5%</option>
+            <option value="10">10%</option>
+            <option value="15">15%</option>
+            <option value="20">20%</option>
+            <option value="25">25%</option>
+            <option value="30">30%</option>
         </select>                       
         @error('Discount')
         <div class=" alert-danger">

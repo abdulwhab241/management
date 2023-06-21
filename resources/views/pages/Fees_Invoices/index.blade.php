@@ -54,11 +54,11 @@
     <thead>
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
+        <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
+        <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
         <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">نوع الرسوم</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
-        <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
-        <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
         <th style="text-align: center;" class="alert-info">تاريخ الفاتورة</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
@@ -67,25 +67,25 @@
 </thead>
 <tbody>
 
-    @foreach($Fee_invoices as $Fee_invoice)
-    <tr>
-        <td>{{ $loop->iteration }}</td>
-    <td>{{$Fee_invoice->student->name}}</td>
-    <td>{{$Fee_invoice->fees->title}}</td>
-    <td>{{ number_format($Fee_invoice->amount) }} ريال </td>
+@foreach($Fee_invoices as $Fee_invoice)
+<tr>
+    <td>{{ $loop->iteration }}</td>
     <td>{{$Fee_invoice->grade->name}}</td>
     <td>{{$Fee_invoice->classroom->name_class}}</td>
+    <td>{{$Fee_invoice->student->name}}</td>
+    <td>{{$Fee_invoice->fees->fee_type}}</td>
+    <td>{{ number_format($Fee_invoice->amount) }} ريال </td>
     <td>{{$Fee_invoice->description}}</td>
     <td>{{$Fee_invoice->invoice_date}}</td>
     <td>{{ $Fee_invoice->create_by }}</td>
-        <td>
-            <div class="btn-group">
-            <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" style="margin: 3px;" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-            <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" title="حـذف" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>
-            </div>                       
-        </td>
-    </tr>
-    @include('pages.Fees_Invoices.Delete')
+    <td>
+        <div class="btn-group">
+        <a href="{{route('Fees_Invoices.edit',$Fee_invoice->id)}}" style="margin: 3px;" title="تعديل" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+        <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" title="حـذف" data-toggle="modal" data-target="#Delete_Fee_invoice{{$Fee_invoice->id}}" ><i class="fa fa-trash"></i></button>
+        </div>                       
+    </td>
+</tr>
+@include('pages.Fees_Invoices.Delete')
 
 @endforeach
 </tbody>

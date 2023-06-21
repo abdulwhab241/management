@@ -24,13 +24,13 @@ class AjaxController extends Controller
 
     public function Get_Title($id)
     {
-        $list_title = Fee::where("classroom_id", $id)->pluck("title", "id");
+        $list_title = Fee::where("classroom_id", $id)->pluck("fee_type", "id");
         return $list_title;
     }
 
     public function Get_Prices($id){
 
-        $list_price = Fee::where("classroom_id", $id)->pluck("amount", "id");
+        $list_price = Fee::where("id", $id)->pluck("total", "id");
         return $list_price;
     }
 

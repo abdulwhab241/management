@@ -6,6 +6,7 @@ namespace App\Repository;
 use App\Models\Fee;
 use App\Models\User;
 use App\Models\Grade;
+use App\Models\Classroom;
 use App\Notifications\FeeNotification;
 use App\Repository\FeesRepositoryInterface;
 use Illuminate\Support\Facades\Notification;
@@ -31,7 +32,8 @@ class FeesRepository implements FeesRepositoryInterface
 
         $fee = Fee::findOrFail($id);
         $Grades = Grade::all();
-        return view('pages.Fees.edit',compact('fee','Grades'));
+        $Classrooms = Classroom::all();
+        return view('pages.Fees.edit',compact('fee','Grades','Classrooms'));
 
     }
 
@@ -39,29 +41,12 @@ class FeesRepository implements FeesRepositoryInterface
     public function store($request)
     {
         try {
-            // dd($request);
 
-            if(!$request->Discount === null)
-            {
-                $total = 0;
-                $sub_total = strip_tags($request->amount) * strip_tags($request->Discount) / 100;
-                $total += $sub_total;
-                $All = strip_tags($request->amount) - $sub_total;
+            $total = 0;
+            $sub_total = strip_tags($request->amount) * strip_tags($request->Discount) / 100;
+            $total += $sub_total;
+            $All = strip_tags($request->amount) - $sub_total;
 
-                $All = strip_tags($request->amount);
-            }
-            else
-            {
-                $All = strip_tags($request->amount);
-                // $total = 0;
-                // $sub_total = strip_tags($request->amount) * strip_tags($request->Discount) / 100;
-                // $total += $sub_total;
-                // $All = strip_tags($request->amount) - $sub_total;
-            }
-            // $total = 0;
-            // $sub_total = strip_tags($request->amount) * strip_tags($request->Discount) / 100;
-            // $total += $sub_total;
-            // $All = strip_tags($request->amount) - $sub_total;
 
             $fees = new Fee();
             $fees->title =  strip_tags($request->title);
@@ -95,6 +80,13 @@ class FeesRepository implements FeesRepositoryInterface
     public function update($request)
     {
         try {
+
+            $total = 0;
+            $sub_total = strip_tags($request->amount) * strip_tags($request->Discount) / 100;
+            $total += $sub_total;
+            $All = strip_tags($request->amount) - $sub_total;
+
+
             $fees = Fee::findOrFail(strip_tags($request->id));
             $fees->title =  strip_tags($request->title);
             $fees->amount  = strip_tags($request->amount);
@@ -104,6 +96,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->year  = strip_tags($request->year);
             $fees->fee_type  = strip_tags($request->Fee_type);
             $fees->discount  = strip_tags($request->Discount);
+            $fees->total = $All;
             $fees->create_by = auth()->user()->name;
             $fees->save();
             toastr()->success('تم تعديل الرسوم الـدراسيـة بنجاح');
