@@ -5,9 +5,7 @@ namespace App\Repository;
 
 
 use App\Models\Grade;
-use App\Models\Section;
 use App\Models\Student;
-use App\Models\Classroom;
 use App\Models\Promotion;
 use App\Models\Enrollment;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +38,8 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 return redirect()->back();
             }
 
+            // else
+            // {
             // update in table student
             foreach ($students as $student){
 
@@ -55,14 +55,14 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
                 // insert in to promotions
                 Promotion::updateOrCreate([
-                    'student_id'=>$student->id,
+                    'student_id'=>$student->student_id,
                     'from_grade'=> strip_tags($request->Grade_id),
                     'from_Classroom'=> strip_tags($request->Classroom_id),
                     'to_grade'=> strip_tags($request->Grade_id_new),
                     'to_Classroom'=> strip_tags($request->Classroom_id_new),
                     'academic_year'=> strip_tags($request->academic_year),
                     'academic_year_new'=> strip_tags($request->academic_year_new),
-                    'year' => date('Y'),
+                    // 'year' => date('Y'),
                     'create_by' =>auth()->user()->name,
                 ]);
 
@@ -70,6 +70,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
             toastr()->success('تم ترقيـة الطـلاب بنجاح');
             return redirect()->route('Upgrades.index');
+        // }
 
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -101,7 +102,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     Promotion::truncate();
 
                 }
-                toastr()->warning('تم إرجـاع جميـع الطـلاب بنجاح');
+                toastr()->error('تم إرجـاع جميـع الطـلاب بنجاح');
                 return redirect()->back();
             }
             else

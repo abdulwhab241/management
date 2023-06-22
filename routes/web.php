@@ -19,6 +19,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\FeeInvoiceController;
+use App\Http\Controllers\MidResultController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\StudentGradeController;
 use App\Http\Controllers\ProcessingFeeController;
@@ -87,6 +88,11 @@ Route::group(
             Route::get('export_final_results', [FinalResultController::class, 'export'])->name('export_finals');  
             Route::get('search_final_result', [FinalResultController::class, 'search_student'])->name('Search_Result');            
             Route::post('find_result', [FinalResultController::class, 'FinalSearch'])->name('Final.search');            
+        });
+
+        //==============================Mid Results============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('MidResults', MidResultController::class);            
         });
 
 

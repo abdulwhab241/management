@@ -3,7 +3,7 @@
 
 namespace App\Repository;
 
-
+use App\Models\Enrollment;
 use App\Models\Grade;
 use App\Models\Graduation;
 use App\Models\Student;
@@ -25,7 +25,7 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function SoftDelete($request)
     {
-        $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->get();
+        $students = Enrollment::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->get();
 
         if($students->count() < 1){
             toastr()->error('لاتوجد بيانات في جدول الطلاب');
@@ -33,10 +33,10 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
         }
 
         foreach ($students as $student){
-            $ids = explode(',',$student->id);
+            $ids = explode(',',$student->student_id);
 
             Graduation::updateOrCreate([
-                'student_id' => $student->id,
+                'student_id' => $student->student_id,
                 'grade_id' => strip_tags($request->Grade_id),
                 'classroom_id' => strip_tags($request->Classroom_id),
                 'section_id' => strip_tags($request->Section_id),

@@ -166,6 +166,7 @@
     <ul class="treeview-menu">
     <li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-circle-o"></i> كشـف دراجات الطـلاب</a></li>
     <li><a href="{{route('Results.index')}}"><i class="fa fa-circle-o"></i> قائمة النتـائـج</a></li>
+    <li><a href="{{route('MidResults.index')}}"><i class="fa fa-circle-o"></i> قائمة نتـائـج الـترم الاول</a></li>
     </ul>
 </li>
 <li class="treeview">

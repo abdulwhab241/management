@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->foreignId('student_grade_id')->references('id')->on('student_grades')->onDelete('cascade');
 
-            $table->string('f_total_write');
-            $table->string('f_total_number');
+            $table->string('appreciation');
+            $table->string('mid_exam');
+            $table->string('total');
             $table->string('year');
             
             $table->date('date');
