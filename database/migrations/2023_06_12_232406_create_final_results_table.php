@@ -19,12 +19,12 @@ return new class extends Migration
             // $table->string('first');
             // $table->string('second');
             $table->string('f_total_write');
-            $table->string('f_total_number');
+            $table->integer('f_total_number');
             $table->string('s_total_write');
-            $table->string('s_total_number');
-            $table->string('total');
+            $table->integer('s_total_number');
+            $table->integer('total');
             // $table->string('appreciation');
-            $table->string('year');
+            $table->integer('year');
             $table->date('date');
 
             $table->string('create_by')->nullable();

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('result_name');
             $table->integer('marks_obtained');
             $table->string('appreciation');
-            $table->string('year');
+            $table->integer('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

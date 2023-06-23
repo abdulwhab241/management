@@ -30,7 +30,7 @@ return new class extends Migration
 
             $table->decimal('credit_processing',50,2)->nullable(); // Credit
             
-            $table->string('year');
+            $table->integer('year');
             $table->string('create_by')->nullable();
             $table->date('date');
             $table->softDeletes();

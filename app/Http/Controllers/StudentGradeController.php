@@ -88,16 +88,12 @@ class StudentGradeController extends Controller
                 $StudentGrade->section_id = $section;
             }
 
-            // foreach ($classrooms as $classroom){
-            //     $StudentGrade->classroom_id = $classroom;
-            // }
 
             $StudentGrade->semester_id = strip_tags($request->Semester_id);
-            $StudentGrade->result_id = strip_tags($request->Result_id);
+            $StudentGrade->result = strip_tags($request->Result_id);
             $StudentGrade->homework = strip_tags($request->Homework);
             $StudentGrade->verbal = strip_tags($request->Verbal);
             $StudentGrade->attendance = strip_tags($request->Attendance);
-            // $StudentGrade->editorial = strip_tags($request->Editorial);
             $StudentGrade->total = strip_tags($request->Total);
             $StudentGrade->month = strip_tags($request->Month);
             $StudentGrade->year = date('Y');
@@ -131,16 +127,11 @@ class StudentGradeController extends Controller
             $StudentGrade->section_id = $section;
         }
 
-        // foreach ($classrooms as $classroom){
-        //     $StudentGrade->classroom_id = $classroom;
-        // }
-
         $StudentGrade->semester_id = strip_tags($request->Semester_id);
-        $StudentGrade->result_id = strip_tags($request->Result_id);
+        $StudentGrade->result = strip_tags($request->Result_id);
         $StudentGrade->homework = strip_tags($request->Homework);
         $StudentGrade->verbal = strip_tags($request->Verbal);
         $StudentGrade->attendance = strip_tags($request->Attendance);
-        // $StudentGrade->editorial = strip_tags($request->Editorial);
         $StudentGrade->total = strip_tags($request->Total);
         $StudentGrade->month = strip_tags($request->Month);
         $StudentGrade->year = date('Y');

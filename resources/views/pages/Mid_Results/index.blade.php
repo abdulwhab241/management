@@ -56,7 +56,7 @@
 <th style="text-align: center; background-color: #D0DEF6;"> المحـصلـة</th>
 <th style="text-align: center; background-color: #D0DEF6;">إمتحـان نهـايـة الفـصل الاول</th>
 <th style="text-align: center; background-color: #D0DEF6;">التقـديـر </th>
-<th style="text-align: center; background-color: #D0DEF6;">المـجموع </th>
+{{-- <th style="text-align: center; background-color: #D0DEF6;">المـجموع </th> --}}
 
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -67,9 +67,9 @@
 {{-- <td>{{$MidResult->classroom->name_class}}</td> --}}
 <td>{{$MidResult->student->name}}</td>
 <td>{{$MidResult->subject->name}}</td>
-<td>{{$MidResult->degree->total }}</td>
+<td>{{$MidResult->result }}</td>
 <td>{{ $MidResult->mid_exam }}</td>
-<td>{{ $MidResult->appreciation }}</td>
+{{-- <td>{{ $MidResult->appreciation }}</td> --}}
 <td>ds</td>
 {{-- <td>{{ $MidResult->total }}</td> --}}
 

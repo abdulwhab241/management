@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Result;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -32,10 +31,6 @@ class StudentGrade extends Model
         return $this->belongsTo(Semester::class, 'semester_id');
     }
 
-    public function result()
-    {
-        return $this->belongsTo(Result::class, 'result_id');
-    }
 
     public function teacher()
     {

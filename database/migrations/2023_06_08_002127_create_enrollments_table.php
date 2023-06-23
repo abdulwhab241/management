@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->string('year');
+            $table->integer('year');
             $table->date('date');
 
             $table->string('create_by')->nullable();

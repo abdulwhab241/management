@@ -41,7 +41,7 @@ return new class extends Migration
             // $table->string('degree_new')->nullable();
             // $table->string('degree')->nullable();
 
-            $table->string('year');
+            $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

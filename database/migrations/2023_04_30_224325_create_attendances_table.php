@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->date('attendance_date');
             $table->string('attendance_status');
-            $table->string('year');
+            $table->integer('year');
 
             $table->string('create_by')->nullable();
             $table->softDeletes();

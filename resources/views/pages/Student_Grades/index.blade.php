@@ -85,7 +85,7 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <td>{{$Student_Grade->homework }}</td>
 <td>{{$Student_Grade->verbal}}</td>
 <td>{{ $Student_Grade->attendance }}</td>
-<td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result->marks_obtained }}</td>
+<td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result }}</td>
 <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
 
 

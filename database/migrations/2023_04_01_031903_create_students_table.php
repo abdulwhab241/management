@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('mother_name');
             $table->string('mother_phone')->nullable();
             $table->string('mother_job');
-            $table->string('year');
+            $table->integer('year');
             
             $table->string('create_by')->nullable();
             $table->softDeletes();

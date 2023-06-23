@@ -166,7 +166,7 @@
         <select class="form-control select2" style="width: 100%;" name="Result_id">
             <option value="{{$StudentGrade->result_id}}">{{$StudentGrade->student->name}} |   {{$StudentGrade->result->marks_obtained}} |   {{$StudentGrade->result->result_name}}</option>
             @foreach($Results as $Result)
-                <option value="{{$Result->id}}">  {{$Result->student->name}} |   {{$Result->marks_obtained}} |   {{$Result->result_name}}</option>
+            <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->result_name}} | {{ $Result->exam->subject->name }}</option>
             @endforeach
         </select>  
         @error('Result_id')

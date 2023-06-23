@@ -18,7 +18,7 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach(range(1,400) as $i){
+        foreach(range(1,100) as $i){
         
             Student::create(
                 [

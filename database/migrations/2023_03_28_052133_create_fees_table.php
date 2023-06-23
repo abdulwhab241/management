@@ -18,10 +18,10 @@ return new class extends Migration
             $table->foreignId('grade_id')->nullable()->references('id')->on('grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             $table->string('description')->nullable();
-            $table->string('year');
+            $table->integer('year');
             $table->string('fee_type');
-            $table->string('discount')->nullable();
-            $table->string('total');
+            $table->integer('discount')->nullable();
+            $table->integer('total');
             
             $table->string('create_by')->nullable();
             $table->softDeletes();

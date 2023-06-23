@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('fifth');
             $table->string('sixth');
             $table->string('seventh')->nullable();
-            $table->string('year');
+            $table->integer('year');
         
             $table->string('create_by')->nullable();
             $table->softDeletes();

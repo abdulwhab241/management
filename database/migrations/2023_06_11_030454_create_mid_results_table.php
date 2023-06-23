@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreignId('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->foreignId('student_grade_id')->references('id')->on('student_grades')->onDelete('cascade');
+            // $table->foreignId('student_grade_id')->references('id')->on('student_grades')->onDelete('cascade');
 
-            $table->string('appreciation');
-            $table->string('mid_exam');
-            $table->string('total');
-            $table->string('year');
+            $table->integer('result');
+            $table->integer('mid_exam');
+            $table->integer('total');
+            $table->integer('year');
             
             $table->date('date');
             $table->string('create_by')->nullable();
