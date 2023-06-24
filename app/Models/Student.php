@@ -7,6 +7,7 @@ use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Classroom;
 use App\Models\Attendance;
+use App\Models\StudentResult;
 use App\Models\StudentAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -60,6 +61,11 @@ class Student extends Authenticatable
     public function student_account()
     {
         return $this->hasMany(StudentAccount::class, 'student_id');
+    }
+
+    public function student_result()
+    {
+        return $this->hasMany(StudentResult::class, 'student_id');
     }
 
     // علاقة بين جدول الطلاب وجدول الحضور والغياب

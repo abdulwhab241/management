@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-النـتائـج النصـفيـة للطـلاب
+نـتائـج الـترم الأول للطـلاب
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">النـتائـج النصـفيـة للطـلاب</li>
+<li class="active">نـتائـج الـترم الأول للطـلاب</li>
 </ol>
 </section>
 
@@ -55,8 +55,7 @@
 <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
 <th style="text-align: center; background-color: #D0DEF6;"> المحـصلـة</th>
 <th style="text-align: center; background-color: #D0DEF6;">إمتحـان نهـايـة الفـصل الاول</th>
-<th style="text-align: center; background-color: #D0DEF6;">التقـديـر </th>
-{{-- <th style="text-align: center; background-color: #D0DEF6;">المـجموع </th> --}}
+<th style="text-align: center; background-color: #D0DEF6;">المـجموع </th>
 
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -69,15 +68,16 @@
 <td>{{$MidResult->subject->name}}</td>
 <td>{{$MidResult->result }}</td>
 <td>{{ $MidResult->mid_exam }}</td>
-{{-- <td>{{ $MidResult->appreciation }}</td> --}}
-<td>ds</td>
+<td>{{ $MidResult->total }}</td>
+{{-- <td>ds</td> --}}
 {{-- <td>{{ $MidResult->total }}</td> --}}
 
 
 <td>
     <div class="btn-group">
-    <a href="{{route('MidResults.edit',$MidResult->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" title="تعديل" aria-pressed="true"><i class="fa fa-edit"></i></a>
-    <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_MidResults{{ $MidResult->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+        <a href="{{route('MidResults.edit',$MidResult->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" title="تعديل" aria-pressed="true"><i class="fa fa-edit"></i></a>
+        <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_MidResults{{ $MidResult->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+  
     </div>
 </td>
 </tr>

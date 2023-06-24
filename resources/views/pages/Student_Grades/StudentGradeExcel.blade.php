@@ -28,7 +28,7 @@
     <td>{{$Student_Grade->homework }}</td>
     <td>{{$Student_Grade->verbal}}</td>
     <td>{{ $Student_Grade->attendance }}</td>
-    <td>{{ $Student_Grade->result->marks_obtained }}</td>
+    <td>{{ $Student_Grade->result }}</td>
     <td>{{ $Student_Grade->total }}</td>
 
 

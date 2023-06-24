@@ -161,13 +161,13 @@
 <br>
 
 <div class="row">
-    <div class="col-md-6"> 
+    <div class="col-md-3"> 
         <label>تحريري</label>
         <select class="form-control select2" style="width: 100%;" name="Result_id">
-            <option value="{{$StudentGrade->result_id}}">{{$StudentGrade->student->name}} |   {{$StudentGrade->result->marks_obtained}} |   {{$StudentGrade->result->result_name}}</option>
-            @foreach($Results as $Result)
+            <option value="{{$StudentGrade->result}}">   {{$StudentGrade->result}}</option>
+            {{-- @foreach($Results as $Result)
             <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->result_name}} | {{ $Result->exam->subject->name }}</option>
-            @endforeach
+            @endforeach --}}
         </select>  
         @error('Result_id')
         <div class=" alert-danger">
@@ -176,7 +176,7 @@
         @enderror
     </div>
 
-    <div class="col-md-4">
+    {{-- <div class="col-md-4">
         <label>المحـصلـة</label>
         <input type="number" value="{{ $StudentGrade->total }}" name="Total" class="form-control">
         @error('Total')
@@ -184,7 +184,7 @@
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
         @enderror
-    </div>
+    </div> --}}
 
 </div><br>
 

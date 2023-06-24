@@ -70,15 +70,11 @@
     @enderror
 </div>
 
+
 <div class="col-md-3">
-    <label>المحـصلـة</label>
-    <select class="form-control select2" style="width: 100%;" name="Degree_id">
-        <option selected disabled>أختـر من القائمة...</option>
-        @foreach($Student_Grades as $Degree)
-            <option value="{{$Degree->id}}">{{$Degree->student->name}} | {{$Degree->month}} | {{ $Degree->subject->name }} | {{$Degree->total}}</option>
-        @endforeach
-    </select>                        
-    @error('Degree_id')
+    <label>المحصـلة</label>
+    <input type="number" value="{{ old('Result') }}" name="Result" class="form-control">
+    @error('Degree')
     <div class=" alert-danger">
     <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
     </div>
@@ -97,30 +93,6 @@
 
 
 </div><br>
-
-<div class="row">
-
-
-
-    <div class="col-md-3">
-        <label >التقـديـر</label>
-        <select class="form-control select2" style="width: 100%;" name="Appreciation">
-            <option  selected disabled>أختـر من القائمة...</option>
-            <option value="ممـتـاز">ممـتـاز</option>
-            <option value="جيـد جـداً">جيـد جـداً</option>
-            <option value="جيـد">جيـد</option>
-            <option value="مقبـول">مقبـول</option>
-            <option value="ضعيـف">ضعيـف</option>
-        </select>  
-        @error('Appreciation')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
-    </div>
-
-</div>
-<br>
 
 
 </div>

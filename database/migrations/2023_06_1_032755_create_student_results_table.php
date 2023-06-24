@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('student_results', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
-            // $table->foreignId('result_id')->references('id')->on('results')->onDelete('cascade');
+            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreignId('student_grade_id')->references('id')->on('student_grades')->onDelete('cascade');
 
-            // $table->string('name_month');
-
-            // $table->integer('year');
-            // $table->date('date');
-            // $table->string('create_by')->nullable();
-            // $table->softDeletes();
-            // $table->timestamps();
+            $table->integer('degree');
+            $table->integer('year');
+            $table->date('date');
+            $table->string('create_by')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

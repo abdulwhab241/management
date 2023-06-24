@@ -24,9 +24,8 @@ class MidResultRequest extends FormRequest
         return [
             'Student_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'Degree_id' => 'required|integer',
-            'Degree' => 'required|integer',
-            'Appreciation' => 'required',
+            'Result' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
+            'Degree' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
         ];
     }
 }

@@ -51,7 +51,7 @@
                     <td>{{$StudentGrade->homework }}</td>
                     <td>{{$StudentGrade->verbal}}</td>
                     <td>{{ $StudentGrade->attendance }}</td>
-                    <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->editorial }}</td>
+                    <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->result }}</td>
                     <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $StudentGrade->total }}</td>
                     <td>{{ $StudentGrade->create_by }}</td>
                 </tr>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
             // $table->foreignId('student_grade_id')->references('id')->on('student_grades')->onDelete('cascade');
 
-            $table->integer('result');
+            $table->integer('result')->nullable();
             $table->integer('mid_exam');
             $table->integer('total');
             $table->integer('year');

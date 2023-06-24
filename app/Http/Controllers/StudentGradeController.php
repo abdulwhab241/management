@@ -10,6 +10,7 @@ use App\Models\Semester;
 use App\Models\Enrollment;
 use App\Models\StudentGrade;
 use Illuminate\Http\Request;
+use App\Models\StudentResult;
 use Illuminate\Support\Facades\DB;
 use App\Exports\StudentGradesExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -76,6 +77,7 @@ class StudentGradeController extends Controller
     {
         try
         {
+            $Total = strip_tags($request->Result_id) + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
             // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
             $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
 
@@ -88,17 +90,25 @@ class StudentGradeController extends Controller
                 $StudentGrade->section_id = $section;
             }
 
-
             $StudentGrade->semester_id = strip_tags($request->Semester_id);
             $StudentGrade->result = strip_tags($request->Result_id);
             $StudentGrade->homework = strip_tags($request->Homework);
             $StudentGrade->verbal = strip_tags($request->Verbal);
             $StudentGrade->attendance = strip_tags($request->Attendance);
-            $StudentGrade->total = strip_tags($request->Total);
+            $StudentGrade->total = $Total;
             $StudentGrade->month = strip_tags($request->Month);
             $StudentGrade->year = date('Y');
             $StudentGrade->create_by = auth()->user()->name;
             $StudentGrade->save();
+
+            $StudentResult = new StudentResult();
+            $StudentResult->student_id = strip_tags($request->Student_id);
+            $StudentResult->student_grade_id = strip_tags($StudentGrade->id);
+            $StudentResult->degree = $Total;
+            $StudentResult->date = date('Y-m-d');
+            $StudentResult->year = date('Y');
+            $StudentResult->create_by = auth()->user()->name;
+            $StudentResult->save();
 
 
             toastr()->success('تم إضـافـة محصـلـة الطـالـب بنجاح');
@@ -114,6 +124,7 @@ class StudentGradeController extends Controller
     {
         
     try {
+        $Total = strip_tags($request->Result_id) + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
         // $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
         $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
         
@@ -132,11 +143,19 @@ class StudentGradeController extends Controller
         $StudentGrade->homework = strip_tags($request->Homework);
         $StudentGrade->verbal = strip_tags($request->Verbal);
         $StudentGrade->attendance = strip_tags($request->Attendance);
-        $StudentGrade->total = strip_tags($request->Total);
+        $StudentGrade->total = $Total;
         $StudentGrade->month = strip_tags($request->Month);
         $StudentGrade->year = date('Y');
         $StudentGrade->create_by = auth()->user()->name;
         $StudentGrade->save();
+
+
+        $StudentResult = StudentResult::where('student_grade_id',strip_tags($request->id))->first();
+        $StudentResult->degree = $Total;
+        $StudentResult->date = date('Y-m-d');
+        $StudentResult->year = date('Y');
+        $StudentResult->create_by = auth()->user()->name;
+        $StudentResult->save();
 
         toastr()->success('تم تعـديـل محصـلـة الطـالـب بنجاح');
         return redirect()->route('Student_Grades.index');

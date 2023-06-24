@@ -71,7 +71,7 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{$StudentGrade->homework }}</td>
             <td>{{$StudentGrade->verbal}}</td>
             <td>{{ $StudentGrade->attendance }}</td>
-            <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->result->marks_obtained }}</td>
+            <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->result }}</td>
             <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $StudentGrade->total }}</td>
         </tr>
 

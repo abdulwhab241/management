@@ -171,15 +171,6 @@
             @enderror
         </div>
 
-        <div class="col-md-4">
-            <label>المحـصلـة</label>
-            <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
-            @error('Total')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
     
     </div><br>
 
