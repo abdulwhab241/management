@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Teacher;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -17,7 +17,7 @@ class StudentGradeRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
@@ -25,7 +25,6 @@ class StudentGradeRequest extends FormRequest
             'Semester_id' => 'required|integer',
             'Student_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'Teacher_id' => 'required|integer',
             'Result_id' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Homework' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Verbal' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',

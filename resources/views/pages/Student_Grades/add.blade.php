@@ -89,12 +89,9 @@
         <label>محصـلـة شـهـر</label>
         <select class="form-control select2" style="width: 100%;" name="Month">
             <option selected disabled>أختـر من القائمة...</option>
-            <option value="فبراير">فبراير</option>
-            <option value="مارس">مارس</option>
-            <option value="ابريل">ابريل</option>
-            <option value="اكتوبر">اكتوبر</option>
-            <option value="نوفمبر">نوفمبر</option>
-            <option value="ديسمبر">ديسمبر</option>
+            @foreach($Months as $Month)
+                <option value="{{$Month->id}}">{{$Month->name}}</option>
+            @endforeach
         </select>                        
         @error('Month')
         <div class=" alert-danger">
@@ -161,7 +158,7 @@
             <select class="form-control select2" style="width: 100%;" name="Result_id">
                 <option selected disabled>أختـر من القائمة...</option>
                 @foreach($Results as $Result)
-                    <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->result_name}} | {{ $Result->exam->subject->name }}</option>
+                    <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->month->name}} | {{ $Result->exam->subject->name }}</option>
                 @endforeach
             </select>  
             @error('Result_id')

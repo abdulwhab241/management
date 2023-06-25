@@ -17,8 +17,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '1',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 
@@ -26,8 +26,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '2',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 
@@ -35,8 +35,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '3',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 
@@ -44,8 +44,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '4',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 
@@ -53,8 +53,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '5',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 
@@ -62,8 +62,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '6',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 
@@ -71,8 +71,8 @@ class ExamSeeder extends Seeder
             'classroom_id' => '1 ',
             'subject_id' => '7',
             'teacher_id' => '1',
-            'exam_date' => 'فبراير',
-            'total_marks' => '100',
+            'month_id' => '1',
+            'total_marks' => '40',
             'year' => '2023',
         ]);
 

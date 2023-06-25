@@ -17,7 +17,7 @@
 <tr>
 
     <td>{{ $Result->semester->name }}</td>
-    <td>{{$Result->result_name}}</td>
+    <td>{{$Result->month->name}}</td>
     <td>{{ $Result->exam->subject->name }}</td>
     <td>{{ $Result->student->name }}</td>
     <td>{{$Result->marks_obtained}}</td>

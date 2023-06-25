@@ -45,7 +45,7 @@
             <tbody>
         
                 <tr>
-                    <td style="background-color: yellow; font-weight:bolder;">{{ $StudentGrade->month }}</td>
+                    <td style="background-color: yellow; font-weight:bolder;">{{ $StudentGrade->month->name }}</td>
                     <td>{{$StudentGrade->semester->name}}</td>
                     <td>{{$StudentGrade->student->name}}</td>
                     <td>{{$StudentGrade->homework }}</td>
@@ -53,7 +53,7 @@
                     <td>{{ $StudentGrade->attendance }}</td>
                     <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $StudentGrade->result }}</td>
                     <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $StudentGrade->total }}</td>
-                    <td>{{ $StudentGrade->create_by }}</td>
+                    <td>{{ $StudentGrade->teacher->name }}</td>
                 </tr>
             </tbody>
         </table>

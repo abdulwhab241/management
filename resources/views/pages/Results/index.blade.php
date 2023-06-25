@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-قائمة النتـائـج
+قائمة النتـائـج الشـهـريـة
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">قائمة النتـائـج</li>
+<li class="active">قائمة النتـائـج الشـهـريـة</li>
 </ol>
 </section>
 
@@ -75,7 +75,7 @@
         <?php $i++; ?>
         <td>{{ $i }}</td>
         <td>{{ $Result->semester->name }}</td>
-        <td>{{$Result->result_name}}</td>
+        <td>{{$Result->month->name}}</td>
         <td>{{ $Result->exam->subject->name }}</td>
         <td>{{ $Result->student->name }}</td>
         <td>{{$Result->marks_obtained}}</td>

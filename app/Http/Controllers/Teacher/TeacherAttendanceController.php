@@ -57,6 +57,7 @@ class TeacherAttendanceController extends Controller
             }
 
             $Attendances->attendance_date = date('Y-m-d');
+            $Attendances->year = date('Y');
             $Attendances->attendance_status = strip_tags($request->Attendance);
             $Attendances->create_by = auth()->user()->name;
             $Attendances->save();
@@ -99,6 +100,7 @@ class TeacherAttendanceController extends Controller
             }
             
             $Attendances->attendance_date = date('Y-m-d');
+            $Attendances->year = date('Y');
             $Attendances->attendance_status = strip_tags($request->Attendance);
             $Attendances->create_by = auth()->user()->name;
             $Attendances->save();

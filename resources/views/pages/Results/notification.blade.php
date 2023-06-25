@@ -43,7 +43,7 @@
             <tbody>
                 <tr>
                     <td>{{ $Results->semester->name }}</td>
-                    <td>{{$Results->result_name}}</td>
+                    <td>{{$Results->month->name}}</td>
                     <td>{{ $Results->exam->subject->name }}</td>
                     <td>{{ $Results->student->name }}</td>
                     <td>{{$Results->marks_obtained}}</td>

@@ -60,7 +60,7 @@
 
 @foreach($exams as $exam)
     <tr>
-        <td style="background-color: yellow; font-weight:bolder;">{{ $exam->exam_date }}</td>
+        <td style="background-color: yellow; font-weight:bolder;">{{ $exam->month->name }}</td>
         <td>{{$exam->subject->name}}</td>
         <td>{{$exam->classroom->name_class}}</td>
         <td>{{$exam->teacher->name}}</td>
@@ -96,7 +96,7 @@ id="exampleModalLabel">
 <div class="box-body">
 <div class="row">
 
-    <div class="col-md-3"> 
+    <div class="col-md-6"> 
         <label>الصـف الدراسي</label>
         <input id="id" type="hidden" name="id" class="form-control"
         value="{{ $exam->id }}">
@@ -112,7 +112,7 @@ id="exampleModalLabel">
         </select>
     </div>
 
-    <div class="col-md-3"> 
+    <div class="col-md-6"> 
         <label>المـادة</label>
         <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option value="{{ $exam->subject->id }}">
@@ -126,19 +126,22 @@ id="exampleModalLabel">
         </select>
     </div>
 
-    <div class="col-md-3"> 
+</div><br>
+
+<div class="row">
+
+    <div class="col-md-6"> 
         <label>أختـبار شـهر</label>
         <select class="form-control select2" style="width: 100%;" name="Exam_Date">
-            <option> {{ $exam->exam_date }} </option>
-            <option value="فبراير">فبراير</option>
-            <option value="مارس">مارس</option>
-            <option value="ابريل">ابريل</option>
-            <option value="اكتوبر">اكتوبر</option>
-            <option value="نوفمبر">نوفمبر</option>
-            <option value="ديسمبر">ديسمبر</option>
+        <option value="{{ $exam->month_id }}"> {{ $exam->month->name }} </option>
+        @foreach ($Months as $Month)
+            <option value="{{ $Month->id }}">
+            {{ $Month->name }}
+            </option>
+        @endforeach
         </select>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-6">
         <label>الـدرجـة</label>
         <input type="number" value="{{ $exam->total_marks }}" name="Total" class="form-control">
     </div>
@@ -214,7 +217,7 @@ aria-hidden="true">
 <div class="box-body">
 <div class="row">
 
-    <div class="col-md-3"> 
+    <div class="col-md-6"> 
         <label>الصـف الدراسي</label>
         <select class="form-control select2" style="width: 100%;" name="Classroom_id">
             <option  selected disabled>أختـر من القائمة...</option>
@@ -224,7 +227,7 @@ aria-hidden="true">
         </select>
     </div>
 
-    <div class="col-md-3"> 
+    <div class="col-md-6"> 
         <label>المـادة</label>
         <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option  selected disabled>حدد المادة الدراسية...</option>
@@ -234,20 +237,22 @@ aria-hidden="true">
         </select>
     </div>
 
-    <div class="col-md-3"> 
+</div><br>
+
+<div class="row">
+    <div class="col-md-6"> 
         <label>أختـبار شـهر</label>
         <select class="form-control select2" style="width: 100%;" name="Exam_Date">
-            <option  selected disabled>أختـر من القائمة...</option>
-            <option value="فبراير">فبراير</option>
-            <option value="مارس">مارس</option>
-            <option value="ابريل">ابريل</option>
-            <option value="اكتوبر">اكتوبر</option>
-            <option value="نوفمبر">نوفمبر</option>
-            <option value="ديسمبر">ديسمبر</option>
+        <option  selected disabled>أختـر من القائمة...</option>
+        @foreach ($Months as $Month)
+            <option value="{{ $Month->id }}">
+            {{ $Month->name }}
+            </option>
+        @endforeach
         </select>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-6">
         <label>الـدرجـة</label>
         <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
     </div>

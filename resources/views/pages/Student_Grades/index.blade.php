@@ -80,7 +80,7 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <td>{{$Student_Grade->semester->name}}</td>
 <td>{{$Student_Grade->teacher->name}}</td>
 <td>{{$Student_Grade->subject->name}}</td>
-<td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
+<td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
 <td>{{$Student_Grade->student->name}}</td>
 <td>{{$Student_Grade->homework }}</td>
 <td>{{$Student_Grade->verbal}}</td>

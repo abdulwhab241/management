@@ -91,13 +91,10 @@
     <label>محصـلـة شـهـر</label>
     <input type="hidden" name="id" value="{{$StudentGrade->id}}">
     <select class="form-control select2" style="width: 100%;" name="Month">
-        <option >{{ $StudentGrade->month }}</option>
-        <option value="فبراير">فبراير</option>
-        <option value="مارس">مارس</option>
-        <option value="ابريل">ابريل</option>
-        <option value="اكتوبر">اكتوبر</option>
-        <option value="نوفمبر">نوفمبر</option>
-        <option value="ديسمبر">ديسمبر</option>
+        <option value="{{$StudentGrade->month_id}}">{{$StudentGrade->month->name}}</option>
+        @foreach($Months as $Month)
+            <option value="{{$Month->id}}">{{$Month->name}}</option>
+        @endforeach
     </select>                        
     @error('Month')
     <div class=" alert-danger">
@@ -175,16 +172,6 @@
         </div>
         @enderror
     </div>
-
-    {{-- <div class="col-md-4">
-        <label>المحـصلـة</label>
-        <input type="number" value="{{ $StudentGrade->total }}" name="Total" class="form-control">
-        @error('Total')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
-    </div> --}}
 
 </div><br>
 

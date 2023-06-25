@@ -66,7 +66,7 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{$StudentGrade->semester->name}}</td>
             <td>{{$StudentGrade->teacher->name}}</td>
             <td>{{$StudentGrade->subject->name}}</td>
-            <td style="background-color: yellow; font-weight:bolder;">{{ $StudentGrade->month }}</td>
+            <td style="background-color: yellow; font-weight:bolder;">{{ $StudentGrade->month->name }}</td>
             <td>{{$StudentGrade->student->name}}</td>
             <td>{{$StudentGrade->homework }}</td>
             <td>{{$StudentGrade->verbal}}</td>

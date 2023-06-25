@@ -167,15 +167,11 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    {{-- <li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-list-alt"></i> كشـف دراجات الطـلاب</a></li> --}}
     <li><a href="{{route('Results.index')}}"><i class="fa fa-circle-o"></i> قائمة النتـائـج الشـهريـة</a></li>
     <li><a href="{{route('MidResults.index')}}"><i class="fa fa-circle-o"></i> قائمة نتـائـج الـترم الاول</a></li>
     <li><a href="{{ route('Final_Results.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> قـائمـة نـتائـج الطـلاب النـهائيـة</a></li>
     </ul>
 </li>
-{{-- <li class="treeview">
-    <li><a href="{{ route('Final_Results.index') }}"><i class="fas fa-percent fa-fw" aria-hidden="true"></i> قـائمـة نـتائـج الطـلاب النـهائيـة</a></li>
-</li> --}}
 <li class="treeview">
     <a href="#">
     <i class="fas fa-books"></i>

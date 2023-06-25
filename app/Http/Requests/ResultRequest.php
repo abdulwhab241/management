@@ -25,9 +25,9 @@ class ResultRequest extends FormRequest
             'Exam_id' => 'required|integer',
             'Student_id' => 'required|integer',
             'Semester_id' => 'required|integer',
-            'Marks' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:1|max:2',
+            'Marks' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
             'Appreciation' => 'required',
-            'Result_name' => 'required',
+            'Result_name' => 'required|integer',
         ];
     }
 }

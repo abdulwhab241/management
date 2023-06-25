@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Month;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Classroom;
@@ -28,5 +29,10 @@ class Exam extends Model
     public function subject()
     {
         return $this->belongsTo(Subject::class, 'subject_id');
+    }
+
+    public function month()
+    {
+        return $this->belongsTo(Month::class, 'month_id');
     }
 }

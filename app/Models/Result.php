@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Exam;
+use App\Models\Month;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Semester;
@@ -34,5 +35,10 @@ class Result extends Model
     public function subject()
     {
         return $this->hasMany(Subject::class, 'exam_id');
+    }
+
+    public function month()
+    {
+        return $this->belongsTo(Month::class, 'month_id');
     }
 }

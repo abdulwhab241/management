@@ -63,13 +63,14 @@
     <div class="col-md-4">
         <label >نتيـجة شهـر</label>
         <select class="form-control select2" style="width: 100%;" name="Result_name">
-            <option> {{ $Result->result_name }} </option>
-            <option value="فبراير">فبراير</option>
-            <option value="مارس">مارس</option>
-            <option value="ابريل">ابريل</option>
-            <option value="اكتوبر">اكتوبر</option>
-            <option value="نوفمبر">نوفمبر</option>
-            <option value="ديسمبر">ديسمبر</option>
+            <option value="{{ $Result->month->id }}">
+                {{ $Result->month->name }}
+            </option>
+            @foreach ($Months as $Month)
+            <option value="{{ $Month->id }}">
+                {{ $Month->name }}
+            </option>
+        @endforeach
         </select>
     </div>
 

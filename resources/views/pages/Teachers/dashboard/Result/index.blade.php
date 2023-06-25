@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-قائمة النتـائـج
+قائمة النتـائـج الشـهـريـة
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">قائمة النتـائـج</li>
+<li class="active">قائمة النتـائـج الشـهـريـة</li>
 </ol>
 </section>
 
@@ -83,7 +83,7 @@
 
             <td>{{$Result->student->name}}</td>
             <td>{{$Result->exam->subject->name}}</td>
-            <td style="background-color: yellow; font-weight:bolder;">{{$Result->result_name}}</td>
+            <td style="background-color: yellow; font-weight:bolder;">{{$Result->month->name}}</td>
             <td>{{$Result->marks_obtained}}</td>
             <td style="font-weight: bolder; background-color: #D0DEF6;">{{$Result->appreciation}}</td>
             <td>

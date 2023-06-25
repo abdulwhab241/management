@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use App\Models\User;
+use App\Models\Month;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Classroom;
@@ -18,11 +19,29 @@ class QuizController extends Controller
     public function index()
     {
         $Exams = Exam::where('year', date('Y'))->get();
+        
+        return view('pages.Quizzes.index', compact('Exams'));
+    }
+
+    public function create()
+    {
         $Teachers = Teacher::all();
         $Subjects = Subject::all();
         $Classrooms = Classroom::all();
+        $Months = Month::all();
         
-        return view('pages.Quizzes.index', compact('Exams','Teachers','Subjects','Classrooms'));
+        return view('pages.Quizzes.add', compact('Teachers','Subjects','Classrooms','Months'));
+    }
+
+    public function edit($id)
+    {
+        $Exam = Exam::findOrFail($id);
+        $Teachers = Teacher::all();
+        $Subjects = Subject::all();
+        $Classrooms = Classroom::all();
+        $Months = Month::all();
+        
+        return view('pages.Quizzes.edit', compact('Teachers','Subjects','Classrooms','Months','Exam'));
     }
 
     public function show($id)
@@ -41,7 +60,7 @@ class QuizController extends Controller
             $Exam->classroom_id = strip_tags($request->Classroom_id);
             $Exam->teacher_id = strip_tags($request->Teacher_id);
             $Exam->subject_id = strip_tags($request->Subject_id);
-            $Exam->exam_date = strip_tags($request->Exam_Date);
+            $Exam->month_id = strip_tags($request->Exam_Date);
             $Exam->total_marks = strip_tags($request->Total);
             $Exam->year = date('Y');
             $Exam->create_by = auth()->user()->name;
@@ -52,8 +71,8 @@ class QuizController extends Controller
             $create_by = auth()->user()->name;
 
             Notification::send($users, new QuizNotification($Exam->id,$create_by,$Exam->create_by));
-            toastr()->success('تم حفظ الأختبـار بنجاح');
-            return redirect()->route('Quizzes.index');
+            toastr()->success('تم إضـافـة الأختبـار بنجاح');
+            return redirect()->route('Quizzes.create');
         }
         catch(\Exception $e)
         {
@@ -65,12 +84,12 @@ class QuizController extends Controller
     {
         try
         {
+            // dd($request);
             $Exam = Exam::findOrFail(strip_tags($request->id));
             $Exam->classroom_id = strip_tags($request->Classroom_id);
             $Exam->teacher_id = strip_tags($request->Teacher_id);
             $Exam->subject_id = strip_tags($request->Subject_id);
-            // // $Exam->exam_name = strip_tags($request->Exam_name);
-            $Exam->exam_date = strip_tags($request->Exam_Date);
+            $Exam->month_id = strip_tags($request->Exam_Date);
             $Exam->total_marks = strip_tags($request->Total);
             $Exam->year = date('Y');
             $Exam->create_by = auth()->user()->name;

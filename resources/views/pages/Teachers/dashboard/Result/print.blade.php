@@ -62,7 +62,7 @@ aria-pressed="true">اضافة طـالـب</a>
             <td>{{ $i }}</td>
             <td>{{$Result->student->name}}</td>
             <td>{{$Result->exam->subject->name}}</td>
-            <td style="background-color: yellow; font-weight:bolder;">{{$Result->result_name}}</td>
+            <td style="background-color: yellow; font-weight:bolder;">{{$Result->month->name}}</td>
             <td>{{$Result->marks_obtained}}</td>
             <td style="font-weight: bolder; background-color: #D0DEF6;">{{$Result->appreciation}}</td>
         </tr>

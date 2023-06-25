@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Models\Exam;
 use App\Models\User;
+use App\Models\Month;
 use App\Models\Result;
 use App\Models\Section;
 use App\Models\Student;
+use App\Models\Semester;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +21,7 @@ use App\Notifications\Teacher\TeacherResultNotification;
 class TeacherResultController extends Controller
 {
     public function index()
-    {
+    { 
         $exams = Exam::where('teacher_id',auth()->user()->id)->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $results = Section::with(['Results'])->whereIn('id', $ids)->get();
@@ -29,11 +31,13 @@ class TeacherResultController extends Controller
 
     public function create()
     {
-        $exams = Exam::where('teacher_id',auth()->user()->id)->get();
+        $exams = Exam::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
+        $Semesters = Semester::all();
+        $Months = Month::all();
 
-        return view('pages.Teachers.dashboard.Result.add', compact('exams','students'));
+        return view('pages.Teachers.dashboard.Result.add', compact('exams','students','Semesters','Months'));
     }
 
     public function print($id)
@@ -46,21 +50,22 @@ class TeacherResultController extends Controller
     {
         try
         {
-            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
+            $Exam->semester_id = strip_tags($request->Semester_id);
 
             foreach ($sections as $section){
                 $Exam->section_id = $section;
             }
 
-            $Exam->result_name = strip_tags($request->Result_name);
+            $Exam->month_id = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
+            $Exam->year = date('Y');
             $Exam->create_by = auth()->user()->name;
-
             $Exam->save();
 
             $student_names = Student::where('id',$request->Student_id)->pluck('name');
@@ -90,19 +95,21 @@ class TeacherResultController extends Controller
         // dd($request);
         try
         {
-            $sections = Student::where('id',$request->Student_id)->pluck('section_id');
-
+            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            
             $Exam = Result::findOrFail($request->id);
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
+            $Exam->semester_id = strip_tags($request->Semester_id);
 
             foreach ($sections as $section){
                 $Exam->section_id = $section;
             }
 
-            $Exam->result_name = strip_tags($request->Result_name);
+            $Exam->month_id = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
+            $Exam->year = date('Y');
             $Exam->create_by = auth()->user()->name;
             $Exam->save();
             
@@ -117,7 +124,7 @@ class TeacherResultController extends Controller
 
     public function destroy(Request $request)
     {
-        Result::findOrFail($request->id)->delete(); 
+        Result::findOrFail(strip_tags($request->id))->delete(); 
         toastr()->error('تم حذف نتيجـة الطـالـب بنجاح');
         return redirect()->back();
     }

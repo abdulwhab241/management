@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Month;
 use App\Models\Result;
 use App\Models\Student;
 use App\Models\Subject;
@@ -30,8 +31,9 @@ class StudentGradeController extends Controller
         $Semesters = Semester::all();
         $Teachers = Teacher::all();
         $Subjects = Subject::all();
+        $Months = Month::all();
         $Results = Result::where('year', date("Y"))->get();
-        return view('pages.Student_Grades.add', compact('Students','Semesters','Results','Teachers','Subjects'));
+        return view('pages.Student_Grades.add', compact('Students','Semesters','Results','Teachers','Subjects','Months'));
     }
 
     public function edit($id)
@@ -41,8 +43,9 @@ class StudentGradeController extends Controller
         $Semesters = Semester::all();
         $Teachers = Teacher::all();
         $Subjects = Subject::all();
+        $Months = Month::all();
         $Results = Result::where('year', date("Y"))->get();
-        return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters','Results','Teachers','Subjects'));
+        return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters','Results','Teachers','Subjects','Months'));
     }
 
     public function show($id)
@@ -96,7 +99,7 @@ class StudentGradeController extends Controller
             $StudentGrade->verbal = strip_tags($request->Verbal);
             $StudentGrade->attendance = strip_tags($request->Attendance);
             $StudentGrade->total = $Total;
-            $StudentGrade->month = strip_tags($request->Month);
+            $StudentGrade->month_id = strip_tags($request->Month);
             $StudentGrade->year = date('Y');
             $StudentGrade->create_by = auth()->user()->name;
             $StudentGrade->save();
@@ -144,7 +147,7 @@ class StudentGradeController extends Controller
         $StudentGrade->verbal = strip_tags($request->Verbal);
         $StudentGrade->attendance = strip_tags($request->Attendance);
         $StudentGrade->total = $Total;
-        $StudentGrade->month = strip_tags($request->Month);
+        $StudentGrade->month_id = strip_tags($request->Month);
         $StudentGrade->year = date('Y');
         $StudentGrade->create_by = auth()->user()->name;
         $StudentGrade->save();

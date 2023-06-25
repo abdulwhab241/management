@@ -15,7 +15,7 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Student_Grades.index')}}"><i class="fa fa-book"></i> قائمـة كشـف الـدرجـات </a></li>
+<li><a href="{{route('Teacher_Grades.index')}}"><i class="fa fa-book"></i> قائمـة كشـف الـدرجـات </a></li>
 <li class="active">تعـديـل كشـف الـدرجـات</li>
 </ol>
 </section>
@@ -58,7 +58,37 @@
     </div>
 
     <div class="col-md-3">
-        <div class="form-group">
+        <label>المادة</label>
+        <select class="form-control select2" style="width: 100%;" name="Subject_id">
+            <option value="{{$StudentGrade->subject_id}}">{{$StudentGrade->subject->name}}</option>
+            @foreach($Subjects as $Subject)
+                <option value="{{$Subject->id}}">{{$Subject->name}}</option>
+            @endforeach
+        </select>                        
+        @error('Subject_id')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+        </div>
+        @enderror
+    </div>
+
+    <div class="col-md-3">
+        <label>محصـلـة شـهـر</label>
+        <input type="hidden" name="id" value="{{$StudentGrade->id}}">
+        <select class="form-control select2" style="width: 100%;" name="Month">
+            <option value="{{$StudentGrade->month_id}}">{{$StudentGrade->month->name}}</option>
+            @foreach($Months as $Month)
+                <option value="{{$Month->id}}">{{$Month->name}}</option>
+            @endforeach
+        </select>                        
+        @error('Month')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+        </div>
+        @enderror
+    </div>
+
+    <div class="col-md-3">
         <label>أسـم الطـالـب</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option value="{{$StudentGrade->student_id}}">{{$StudentGrade->student->name}}</option>
@@ -73,7 +103,11 @@
         @enderror
     </div>
 
-</div>
+
+</div><br>
+
+<div class="row">
+
     <div class="col-md-3">
         <label>الواجبـات</label>
         <input type="number" value="{{ $StudentGrade->homework }}" name="Homework" class="form-control">
@@ -83,6 +117,7 @@
         </div>
         @enderror
     </div>
+
     <div class="col-md-3">
         <label>شفهـي</label>
         <input type="number" value="{{ $StudentGrade->verbal }}" name="Verbal" class="form-control">
@@ -93,9 +128,6 @@
         @enderror
     </div>
 
-</div><br>
-
-<div class="row">
     <div class="col-md-3">
         <label>مـواظبـة</label>
         <input type="number" value="{{ $StudentGrade->attendance }}" name="Attendance" class="form-control">
@@ -106,47 +138,25 @@
         @enderror
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-3"> 
         <label>تحريري</label>
-        <input type="number" value="{{ $StudentGrade->editorial }}" name="Editorial" class="form-control">
-        @error('Editorial')
+        <select class="form-control select2" style="width: 100%;" name="Result_id">
+            <option value="{{$StudentGrade->result}}">   {{$StudentGrade->result}}</option>
+            {{-- @foreach($Results as $Result)
+            <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->result_name}} | {{ $Result->exam->subject->name }}</option>
+            @endforeach --}}
+        </select>  
+        @error('Result_id')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
         @enderror
     </div>
 
-    <div class="col-md-3">
-        <label>المحـصلـة</label>
-        <input type="number" value="{{ $StudentGrade->total }}" name="Total" class="form-control">
-        @error('Total')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
-    </div>
 
-    <div class="col-md-3">
-        <div class="form-group">
-        <label>محصـلـة شـهـر</label>
-        <select class="form-control select2" style="width: 100%;" name="Month">
-            <option >{{ $StudentGrade->month }}</option>
-            <option value="فبراير">فبراير</option>
-            <option value="مارس">مارس</option>
-            <option value="ابريل">ابريل</option>
-            <option value="اكتوبر">اكتوبر</option>
-            <option value="نوفمبر">نوفمبر</option>
-            <option value="ديسمبر">ديسمبر</option>
-        </select>                        
-        @error('Month')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
-    </div>
+</div><br>
 
-</div>
-    <br>
+
 
 </div>
 <div class="modal-footer">

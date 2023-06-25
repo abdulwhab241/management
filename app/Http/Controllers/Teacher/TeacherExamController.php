@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Models\Exam;
+use App\Models\Month;
 use App\Models\Section;
 use App\Models\Subject;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class TeacherExamController extends Controller
 {
@@ -17,7 +18,8 @@ class TeacherExamController extends Controller
         $subjects = Subject::where('teacher_id',auth()->user()->id)->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $Classrooms = Section::whereIn('id', $ids)->get();
-        return view('pages.Teachers.dashboard.Exams.index', compact('exams','subjects','Classrooms'));
+        $Months = Month::all();
+        return view('pages.Teachers.dashboard.Exams.index', compact('exams','subjects','Classrooms','Months'));
     }
 
     public function store(Request $request)
@@ -25,16 +27,17 @@ class TeacherExamController extends Controller
         $request->validate([
             'Classroom_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'Total' => 'required',
-            'Exam_Date' => 'required',
+            'Total' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:2|max:2',
+            'Exam_Date' => 'required|integer',
         ]);
         try {
-            $exams = new Exam();
+            $exams = new Exam(); 
             $exams->classroom_id = strip_tags($request->Classroom_id);
             $exams->teacher_id = auth()->user()->id;
             $exams->subject_id = strip_tags($request->Subject_id);
-            $exams->exam_date = strip_tags($request->Exam_Date);
+            $exams->month_id = strip_tags($request->Exam_Date);
             $exams->total_marks = strip_tags($request->Total);
+            $exams->year = date('Y');
             $exams->create_by = auth()->user()->name;
             $exams->save();
             toastr()->success('تـم إضـافـة الإختبـار بنجـاح');
@@ -50,16 +53,17 @@ class TeacherExamController extends Controller
         $request->validate([
             'Classroom_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'Total' => 'required',
-            'Exam_Date' => 'required',
+            'Total' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:2|max:2',
+            'Exam_Date' => 'required|integer',
         ]);
         try {
             $exam = Exam::findOrFail($request->id);
             $exam->classroom_id = strip_tags($request->Classroom_id);
             $exam->teacher_id = auth()->user()->id;
             $exam->subject_id = strip_tags($request->Subject_id);
-            $exam->exam_date = strip_tags($request->Exam_Date);
+            $exam->month_id = strip_tags($request->Exam_Date);
             $exam->total_marks = strip_tags($request->Total);
+            $exam->year = date('Y');
             $exam->create_by = auth()->user()->name;
             $exam->save();
             toastr()->success('تـم تعـديـل الإختبـار بنجـاح');

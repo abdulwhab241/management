@@ -37,9 +37,8 @@
 @endif
 <div class="box-header">
 
-<button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
-اضافة إختبـار
-</button>
+<a href="{{route('Quizzes.create')}}" class="btn btn-success btn-flat" role="button"
+style="margin: 5px; padding: 5px;" aria-pressed="true">إضـافـة إختبـار  </a>
 <br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">
@@ -73,119 +72,15 @@
         <td>{{ $Exam->subject->name }}</td>
         <td>{{$Exam->teacher->name}}</td>
         <td>{{$Exam->total_marks}}</td>
-        <td style="background-color: yellow; font-weight:bolder;">{{ $Exam->exam_date }}</td>
+        <td style="background-color: yellow; font-weight:bolder;">{{ $Exam->month->name }}</td>
         <td>{{ $Exam->create_by }}</td>
         <td>
             <div class="btn-group">
-            <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
-            data-target="#edit{{ $Exam->id }}"
-            title="تعديل"><i class="fa fa-edit"></i></button>
+            <a href="{{route('Quizzes.edit',$Exam->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
             <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $Exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
             </div>
         </td>
     </tr>
-
-    <!-- edit_modal_Grade -->
-<div class="modal fade" id="edit{{ $Exam->id }}" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-success" role="document">
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-            id="exampleModalLabel">
-            تعديل الأختبـار
-        </h5>
-    </div>
-    <div class="modal-body">
-        <!-- add_form -->
-        <form class="form-horizontal"  action="{{ route('Quizzes.update', 'test') }}" method="post">
-            {{ method_field('patch') }}
-            @csrf
-            <div class="box-body">
-                <div class="row">
-
-                    <div class="col-md-6"> 
-                        
-                        <label>الصـف الدراسي</label>
-                        <input id="id" type="hidden" name="id" class="form-control"
-                        value="{{ $Exam->id }}">
-                        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                            <option value="{{ $Exam->classroom->id }}">
-                                {{ $Exam->classroom->name_class }}
-                            </option>
-                        @foreach ($Classrooms as $Classroom)
-                                <option value="{{ $Classroom->id }}">
-                                    {{ $Classroom->name_class }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            
-                    <div class="col-md-6"> 
-                        <label>المـادة</label>
-                        <select class="form-control select2" style="width: 100%;" name="Subject_id">
-                            <option value="{{ $Exam->subject->id }}">
-                                {{ $Exam->subject->name }}
-                            </option>
-                            @foreach ($Subjects as $Subject)
-                                <option value="{{ $Subject->id }}">
-                                {{ $Subject->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-            </div><br>
-            
-            <div class="row">
-            
-                <div class="col-md-4">
-                    <label>الأستـاذ</label>
-                    <select class="form-control select2" style="width: 100%;" name="Teacher_id">
-                        <option value="{{ $Exam->teacher->id }}">
-                            {{ $Exam->teacher->name }}
-                        </option>
-                        @foreach ($Teachers as $Teacher)
-                            <option value="{{ $Teacher->id }}">
-                            {{ $Teacher->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    </div>
-                </div>
-            </div>
-            
-                <div class="col-md-4">
-                    <label >الـدرجـة</label>
-                    <input type="number" value="{{ $Exam->total_marks }}" name="Total" class="form-control">
-                </div>
-                <div class="col-md-4"> 
-                    <label>أختـبار شـهر</label>
-                    <select class="form-control select2" style="width: 100%;" name="Exam_Date">
-                        <option> {{ $Exam->exam_date }} </option>
-                        <option value="فبراير">فبراير</option>
-                        <option value="مارس">مارس</option>
-                        <option value="ابريل">ابريل</option>
-                        <option value="اكتوبر">اكتوبر</option>
-                        <option value="نوفمبر">نوفمبر</option>
-                        <option value="ديسمبر">ديسمبر</option>
-                    </select>
-                </div>
-            </div>
-            
-            </div><br>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger"
-                data-dismiss="modal">إغلاق</button>
-                <button type="submit"
-                class="btn btn-success">تـعديـل البيانات</button>
-                </div>
-        </form>
-    </div>
-</div>
-</div>
 
 <!-- Delete modal -->
 <div class="modal fade" id="delete_Exam{{$Exam->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -196,7 +91,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
+            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف إختبـار</h5>
         
         </div>
         <div class="modal-body">
@@ -207,15 +102,16 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
             class="form-control"
             value="{{$Exam->subject->name}}"
             disabled>
-        </div><br>
+        </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-outline"
                     data-dismiss="modal">إغلاق</button>
             <button type="submit"
                     class="btn btn-outline">حذف البيانات</button>
         </div>
-    </div>
+
     </form>
+</div>
 </div>
 </div>
 
@@ -225,103 +121,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 </div>
 
-<!-- add_modal_class -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-{{-- aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
-<div class="modal-dialog modal-success" role="document">
-<div class="modal-content">
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-اضافة إختبـار
-</h5>
-</div>
-<div class="modal-body">
-
-<form class="form-horizontal" action="{{ route('Quizzes.store') }}" method="POST">
-@csrf
-
-<div class="box-body">
-<div class="row">
-
-    <div class="col-md-6"> 
-        
-        
-        <label>الصـف الدراسي</label>
-        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-            <option  selected disabled>أختـر من القائمة...</option>
-            @foreach ($Classrooms as $Classroom)
-                <option  value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
-            @endforeach
-        </select>
-    
-</div>
-
-    <div class="col-md-6"> 
-        
-        
-        <label>المـادة</label>
-        <select class="form-control select2" style="width: 100%;" name="Subject_id">
-            <option  selected disabled>أختـر من القائمة...</option>
-            @foreach ($Subjects as $Subject)
-                <option  value="{{ $Subject->id }}" required>{{ $Subject->name }}</option>
-            @endforeach
-        </select>
-    
-</div>
-</div><br>
-
-<div class="row">
-
-<div class="col-md-4"> 
-    
-    <label>الأستـاذ</label>
-    <select class="form-control select2" style="width: 100%;" name="Teacher_id">
-        <option  selected disabled>أختـر من القائمة...</option>
-        @foreach ($Teachers as $Teacher)
-            <option  value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
-        @endforeach
-    </select>
-
-</div>
-
-<div class="col-md-4">
-    
-    
-    <label >الـدرجـة</label>
-    <input type="number" value="{{ old('Total') }}" name="Total" class="form-control">
-</div>
-
-<div class="col-md-4"> 
-    <label>أختـبار شـهر</label>
-    <select class="form-control select2" style="width: 100%;" name="Exam_Date">
-        <option  selected disabled>أختـر من القائمة...</option>
-        <option value="فبراير">فبراير</option>
-        <option value="مارس">مارس</option>
-        <option value="ابريل">ابريل</option>
-        <option value="اكتوبر">اكتوبر</option>
-        <option value="نوفمبر">نوفمبر</option>
-        <option value="ديسمبر">ديسمبر</option>
-    </select>
-</div>
-</div>
-
-</div><br>
-
-
-
-<div class="modal-footer">
-    <button type="button" class="btn btn-danger"
-    data-dismiss="modal">إغلاق</button>
-    <button type="submit"
-    class="btn btn-success">حفظ البيانات</button>
-    </div>
-</form>
-</div>
-</div>
-</div>
-</div>
 
 
 </div>

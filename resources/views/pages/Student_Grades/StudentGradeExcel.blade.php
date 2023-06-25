@@ -23,7 +23,7 @@
     <td>{{$Student_Grade->semester->name}}</td>
     <td>{{$Student_Grade->teacher->name}}</td>
     <td>{{$Student_Grade->subject->name}}</td>
-    <td>{{ $Student_Grade->month }}</td>
+    <td>{{ $Student_Grade->month->name }}</td>
     <td>{{$Student_Grade->student->name}}</td>
     <td>{{$Student_Grade->homework }}</td>
     <td>{{$Student_Grade->verbal}}</td>

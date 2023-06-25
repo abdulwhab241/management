@@ -88,13 +88,13 @@
         
         @foreach($Classroom->StudentGrades as $Student_Grade)
             <tr>
-                <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month }}</td>
+                <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
                 <td>{{$Student_Grade->semester->name}}</td>
                 <td>{{$Student_Grade->student->name}}</td>
                 <td>{{$Student_Grade->homework }}</td>
                 <td>{{$Student_Grade->verbal}}</td>
                 <td>{{ $Student_Grade->attendance }}</td>
-                <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->editorial }}</td>
+                <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result }}</td>
                 <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
                 <td>
                     <div class="btn-group">

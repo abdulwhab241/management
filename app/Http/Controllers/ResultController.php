@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\Month;
 use App\Models\Result;
 use App\Models\Student;
+use App\Models\Semester;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Exports\ResultsExport;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ResultRequest;
-use App\Models\Semester;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -27,7 +28,8 @@ class ResultController extends Controller
         $Exams = Exam::where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Students = Enrollment::where('year', date("Y"))->get();
-        return view('pages.Results.add',compact('Students','Exams','Semesters'));
+        $Months = Month::all();
+        return view('pages.Results.add',compact('Students','Exams','Semesters','Months'));
     }
 
     public function edit($id)
@@ -36,7 +38,8 @@ class ResultController extends Controller
         $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Result = Result::findOrFail($id);
-        return view('pages.Results.edit',compact('Students','Exams','Result','Semesters'));
+        $Months = Month::all();
+        return view('pages.Results.edit',compact('Students','Exams','Result','Semesters','Months'));
     }
 
 
@@ -50,7 +53,7 @@ class ResultController extends Controller
 
     public function export() 
     {
-        return Excel::download(new ResultsExport, 'النتائج.xlsx');
+        return Excel::download(new ResultsExport, 'النتائج الشهرية.xlsx');
     }
 
     public function store(ResultRequest $request)
@@ -68,7 +71,7 @@ class ResultController extends Controller
                 $Exam->section_id = $section;
             }
 
-            $Exam->result_name = strip_tags($request->Result_name);
+            $Exam->month_id = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
             $Exam->year = date('Y');
@@ -102,7 +105,7 @@ class ResultController extends Controller
                 $Exam->section_id = $section;
             }
 
-            $Exam->result_name = strip_tags($request->Result_name);
+            $Exam->month_id = strip_tags($request->Result_name);
             $Exam->marks_obtained = strip_tags($request->Marks);
             $Exam->appreciation = strip_tags($request->Appreciation);
             $Exam->year = date('Y');
