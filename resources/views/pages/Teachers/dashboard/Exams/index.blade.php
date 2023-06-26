@@ -106,7 +106,7 @@ id="exampleModalLabel">
             </option>
             @foreach ($Classrooms as $Classroom)
                 <option value="{{  $Classroom->My_Classes->id }}">
-                    {{  $Classroom->My_Classes->name_class }} , {{ $Classroom->name_section }}
+                    {{  $Classroom->My_Classes->name_class }}
                 </option>
             @endforeach
         </select>
@@ -222,7 +222,7 @@ aria-hidden="true">
         <select class="form-control select2" style="width: 100%;" name="Classroom_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Classrooms as $Classroom)
-                <option  value="{{ $Classroom->My_Classes->id }}" >{{ $Classroom->My_Classes->name_class }} , {{ $Classroom->name_section }}</option>
+                <option  value="{{ $Classroom->My_Classes->id }}" >{{ $Classroom->My_Classes->name_class }}</option>
             @endforeach
         </select>
     </div>

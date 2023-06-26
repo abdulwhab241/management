@@ -50,7 +50,7 @@ class GradeController extends Controller
         try
         {
 
-            $Grade = Grade::findOrFail($request->id);
+            $Grade = Grade::findOrFail(strip_tags($request->id));
             $Grade->update([
                 $Grade->name = strip_tags($request->Name),
                 $Grade->notes = strip_tags($request->Notes),
@@ -86,11 +86,11 @@ class GradeController extends Controller
     public function destroy(Request $request)
     {
 
-        $MyClass_id = Classroom::where('grade_id',$request->id)->pluck('grade_id');
+        $MyClass_id = Classroom::where('grade_id',strip_tags($request->id))->pluck('grade_id');
 
         if($MyClass_id->count() == 0){
 
-            $Grades = Grade::findOrFail($request->id)->delete();
+            $Grades = Grade::findOrFail(strip_tags($request->id))->delete();
             toastr()->error('تم حذف المرحلة بنجاح');
             return redirect()->route('Grades.index');
         }

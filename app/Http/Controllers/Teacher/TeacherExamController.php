@@ -17,7 +17,7 @@ class TeacherExamController extends Controller
         $exams = Exam::where('teacher_id',auth()->user()->id)->where('year', date('Y'))->get();
         $subjects = Subject::where('teacher_id',auth()->user()->id)->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $Classrooms = Section::whereIn('id', $ids)->get();
+        $Classrooms = Section::distinct()->whereIn('id', $ids)->get(['class_id']);
         $Months = Month::all();
         return view('pages.Teachers.dashboard.Exams.index', compact('exams','subjects','Classrooms','Months'));
     }

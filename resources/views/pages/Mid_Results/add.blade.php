@@ -40,7 +40,7 @@
 @csrf
 <div class="box-body">
 <div class="row">
-<div class="col-md-3"> 
+<div class="col-md-4"> 
     <label>أسـم الطـالـب \ الطـالبـة</label>
     <select class="form-control select2" style="width: 100%;" name="Student_id">
         <option selected disabled>أختـر من القائمة...</option>
@@ -55,7 +55,7 @@
     @enderror
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
     <label>المادة</label>
     <select class="form-control select2" style="width: 100%;" name="Subject_id">
         <option selected disabled>أختـر من القائمة...</option>
@@ -70,18 +70,7 @@
     @enderror
 </div>
 
-
-<div class="col-md-3">
-    <label>المحصـلة</label>
-    <input type="number" value="{{ old('Result') }}" name="Result" class="form-control">
-    @error('Degree')
-    <div class=" alert-danger">
-    <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-    </div>
-    @enderror
-</div>
-
-<div class="col-md-3">
+<div class="col-md-4">
     <label>درجـة الإختبـار</label>
     <input type="number" value="{{ old('Degree') }}" name="Degree" class="form-control">
     @error('Degree')

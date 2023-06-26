@@ -36,7 +36,8 @@ class StudentGradeController extends Controller
         $Semesters = Semester::all();
         $Months = Month::all();
         $Subjects = Subject::where('teacher_id', auth()->user()->id)->get();
-        $Results = Result::where('year', date("Y"))->get();
+        $Results = Result::whereIn('section_id', $ids)->where('year', date("Y"))->get();
+
         return view('pages.Teachers.dashboard.StudentGrades.add', compact('students','Semesters','Months','Subjects','Results'));
     }
 
@@ -48,7 +49,8 @@ class StudentGradeController extends Controller
         $Semesters = Semester::all();
         $Months = Month::all();
         $Subjects = Subject::where('teacher_id', auth()->user()->id)->get();
-        $Results = Result::where('year', date("Y"))->get();
+        $Results = Result::whereIn('section_id', $ids)->where('year', date("Y"))->get();
+
         return view('pages.Teachers.dashboard.StudentGrades.edit', compact('Students','StudentGrade','Semesters','Months','Subjects','Results'));
     }
 

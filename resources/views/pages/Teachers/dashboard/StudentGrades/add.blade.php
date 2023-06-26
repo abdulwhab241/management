@@ -139,7 +139,7 @@
     <div class="col-md-3"> 
         <label>تحريري</label>
         <select class="form-control select2" style="width: 100%;" name="Result_id">
-            <option selected disabled>أختـر من القائمة...</option>
+            <option value="0" selected >أختـر من القائمة...</option>
             @foreach($Results as $Result)
                 <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->month->name}} | {{ $Result->exam->subject->name }}</option>
             @endforeach
