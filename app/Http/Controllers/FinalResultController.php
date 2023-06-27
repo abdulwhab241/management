@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\MidResult;
 use App\Models\Enrollment;
 use App\Models\FinalResult;
 use Illuminate\Http\Request;
+use App\Models\StudentResult;
 use App\Exports\FinalResultExport;
 use App\Http\Requests\FinalRequest;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,12 +18,14 @@ class FinalResultController extends Controller
     public function index()
     {
         $Final_Results = FinalResult::where('year', date('Y'))->get();
-        return view('pages.Final_Result.index', compact('Final_Results'));
+        $Students = FinalResult::distinct()->where('year', date('Y'))->get(['student_id']);
+        return view('pages.Final_Result.index', compact('Final_Results','Students'));
     }
 
     public function create()
     {
-        $Students = Enrollment::where('year', date("Y"))->get();
+        // $Students = Enrollment::where('year', date("Y"))->get();
+        $Students = MidResult::distinct()->where('year', date('Y'))->get(['student_id']);
         $Subjects = Subject::all();
         return view('pages.Final_Result.add', compact('Students','Subjects'));
     }
@@ -29,7 +33,19 @@ class FinalResultController extends Controller
     public function edit($id)
     {
         $Final_Result = FinalResult::findOrFail($id);
-        return view('pages.Final_Result.edit',compact('Final_Result'));
+        $Subjects = Subject::all();
+        return view('pages.Final_Result.edit',compact('Final_Result','Subjects'));
+    }
+
+    public function find_student_final(Request $request)
+    {
+        $request->validate([
+            'Student_id'=>'required|integer',
+        ]);
+
+        $FinalResults = FinalResult::where('mid_id', strip_tags($request->Student_id))->where('year', date('Y'))->get();
+        $Name = FinalResult::where('mid_id', strip_tags($request->Student_id))->where('year', date('Y'))->first();
+        return view('pages.Final_Result.show', compact('FinalResults','Name'));
     }
 
     public function search_student()
@@ -75,22 +91,37 @@ class FinalResultController extends Controller
     public function store(FinalRequest $request)
     {
         try {
+
+            $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id',strip_tags($request->Subject_id))
+            ->where('year', date('Y'))->sum('degree');
+            if($Degree == null)
+            {
+                $Degree = 0 ;
+            }
+
+            $Result = round($Degree / 30);
+
             // dd($request);
-            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('student_id');
+            $Total = $Result + strip_tags($request->Degree);
 
             $Final_Results = new FinalResult();
-            $Final_Results->student_id = strip_tags($request->Student_id);
+            $Final_Results->mid_id = strip_tags($request->Student_id);
             $Final_Results->subject_id = strip_tags($request->Subject_id);
+
+            // foreach ($Students as $student){
+            //     $Final_Results->student_id = $student;
+            // }
     
             foreach ($classrooms as $classroom){
                 $Final_Results->classroom_id = $classroom;
             }
 
-            $Final_Results->f_total_write = strip_tags($request->F_Write);
-            $Final_Results->f_total_number = strip_tags($request->F_Number);
-            $Final_Results->s_total_write = strip_tags($request->S_Write);
-            $Final_Results->s_total_number = strip_tags($request->S_Number);
-            $Final_Results->total = strip_tags($request->Total);
+            $Final_Results->result =  $Result;
+            $Final_Results->final_exam = strip_tags($request->Degree);
+            // $Final_Results->total = $Total;
             $Final_Results->year = date('Y');
             $Final_Results->date = date('Y-m-d');
             $Final_Results->create_by = auth()->user()->name;
@@ -107,22 +138,35 @@ class FinalResultController extends Controller
     {
         try
         {
-            // dd($request);
-            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
-            
+            $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id',strip_tags($request->Subject_id))
+            ->where('year', date('Y'))->sum('degree');
+            if($Degree == null)
+            {
+                $Degree = 0 ;
+            }
+
+            $Result = round($Degree / 30);
+
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('student_id');
+            $Total = $Result + strip_tags($request->Degree);
+
             $Final_Results = FinalResult::findOrFail($request->id);
-            $Final_Results->student_id = strip_tags($request->Student_id);
+            $Final_Results->mid_id = strip_tags($request->Student_id);
             $Final_Results->subject_id = strip_tags($request->Subject_id);
+
+            // foreach ($Students as $student){
+            //     $Final_Results->student_id = $student;
+            // }
     
             foreach ($classrooms as $classroom){
                 $Final_Results->classroom_id = $classroom;
             }
 
-            $Final_Results->f_total_write = strip_tags($request->F_Write);
-            $Final_Results->f_total_number = strip_tags($request->F_Number);
-            $Final_Results->s_total_write = strip_tags($request->S_Write);
-            $Final_Results->s_total_number = strip_tags($request->S_Number);
-            $Final_Results->total = strip_tags($request->Total);
+            $Final_Results->result =  $Result;
+            $Final_Results->final_exam = strip_tags($request->Degree);
+            // $Final_Results->total = $Total;
             $Final_Results->year = date('Y');
             $Final_Results->date = date('Y-m-d');
             $Final_Results->create_by = auth()->user()->name;

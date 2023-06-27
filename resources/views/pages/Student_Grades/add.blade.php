@@ -152,24 +152,6 @@
 </div>
     <br>
 
-    <div class="row">
-        <div class="col-md-6"> 
-            <label>تحريري</label>
-            <select class="form-control select2" style="width: 100%;" name="Result_id">
-                <option value="0" selected>أختـر من القائمة...</option>
-                @foreach($Results as $Result)
-                    <option value="{{$Result->marks_obtained}}">  {{$Result->student->name}} |    {{$Result->month->name}} | {{ $Result->exam->subject->name }}</option>
-                @endforeach
-            </select>  
-            @error('Result_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-
-    
-    </div><br>
 
 </div>
 <div class="modal-footer">

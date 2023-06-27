@@ -32,13 +32,12 @@
 <div class="box-body">
     <a href="{{route('MidResults.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
     aria-pressed="true">اضافة نتيـجة طـالـب</a>
-    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_finals') }}">
+    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_mid') }}">
         <i class="fas fa-file-download"></i>  
     </a>
-    <a href="{{route('Search_Result')}}" title="عـرض نتـائـج الـطـلاب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
-    aria-pressed="true">
-    <i class="fa fa-eye" aria-hidden="true"></i>
-    </a>
+    <button type="button" class="btn btn-info btn-flat" title="عـرض نتـيجـة طـالـب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+    </button>
 
 </div>
 <br>
@@ -51,6 +50,7 @@
 <thead>
 <tr>
 
+<th style="text-align: center; background-color: #D0DEF6;">الصـف الـدراسـي</th>
 <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
 <th style="text-align: center; background-color: #D0DEF6;"> المحـصلـة</th>
@@ -63,7 +63,7 @@
 <tbody>
 @foreach($MidResults as $MidResult)
 <tr>
-{{-- <td>{{$MidResult->classroom->name_class}}</td> --}}
+<td>{{$MidResult->classroom->name_class}}</td>
 <td>{{$MidResult->student->name}}</td>
 <td>{{$MidResult->subject->name}}</td>
 <td>{{$MidResult->result }}</td>
@@ -118,7 +118,49 @@
 @endforeach
 </tbody>
 </table>
+</div>
+</div>
 
+<!-- add_modal_class -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-primary"  role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+    عـرض نتـيجـة طـالـب            
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('find_student_mid') }}" method="POST">
+@csrf
+
+<div class="box-body">
+
+        <div class="form-group">
+        <label >أسـم الطـالـب</label>
+        <select class="form-control select2" style="width: 100%;" name="Student_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Students as $Student)
+            <option value="{{$Student->student_id}}" >{{$Student->student->name}}</option>
+            @endforeach
+        </select>
+        </div>
+
+<br>
+
+</div>
+
+<div class="modal-footer">
+<button type="submit"
+class="btn btn-info btn-block">تـأكيـد </button>
+</div>
+
+</form>
+</div>
+</div>
 </div>
 </div>
 

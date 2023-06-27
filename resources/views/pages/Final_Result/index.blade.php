@@ -35,10 +35,13 @@
     <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_finals') }}">
         <i class="fas fa-file-download"></i>  
     </a>
-    <a href="{{route('Search_Result')}}" title="عـرض نتـائـج الـطـلاب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    {{-- <a href="{{route('Search_Result')}}" title="عـرض نتـائـج الـطـلاب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
     aria-pressed="true">
     <i class="fa fa-eye" aria-hidden="true"></i>
-    </a>
+    </a> --}}
+    <button type="button" class="btn btn-info btn-flat" title="عـرض نتـيجـة طـالـب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+    </button>
 
 </div>
 <br>
@@ -51,29 +54,30 @@
 <thead>
 <tr>
 
-{{-- <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th> --}}
+<th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th>
 <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
-<th style="text-align: center; background-color: #D0DEF6;">درجات الفصل الاول 50% (رقـماً)</th>
-<th style="text-align: center; background-color: #D0DEF6;">(كتـابـة) 50%</th>
-<th style="text-align: center; background-color: #D0DEF6;">درجات الفصل الثـانـي 50% (رقـماً)</th>
-<th style="text-align: center; background-color: #D0DEF6;">(كتـابـة) 50%</th>
-<th style="text-align: center; background-color: #D0DEF6;">المـجموع 100</th>
-
+<th style="text-align: center; background-color: #D0DEF6;" colspan="4">درجات الفصل الاول 50% </th>
+<th style="text-align: center; background-color: #D0DEF6;" colspan="4">درجات الفصل الثـانـي 50% </th>
+{{-- <th style="text-align: center; background-color: #D0DEF6;">المـجموع 100</th> --}}
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
 <tbody>
 @foreach($Final_Results as $Final_Result)
 <tr>
-{{-- <td>{{$Final_Result->classroom->name_class}}</td> --}}
-<td>{{$Final_Result->student->name}}</td>
+<td>{{$Final_Result->classroom->name_class}}</td>
+<td>{{$Final_Result->mid->student->name}}</td>
 <td>{{$Final_Result->subject->name}}</td>
-<td>{{$Final_Result->f_total_number }}</td>
-<td>{{ $Final_Result->f_total_write }}</td>
-<td>{{ $Final_Result->s_total_number }}</td>
-<td>{{$Final_Result->s_total_write}}</td>
-<td>{{ $Final_Result->total }}</td>
+<th>المحصلة</th>
+<td>{{ $Final_Result->mid->result }}</td>
+<th>الاختبار</th>
+<td>{{ $Final_Result->mid->mid_exam }}</td>
+<th>المحصلة</th>
+<td>{{ $Final_Result->result }}</td>
+<th>الاختبار</th>
+<td>{{ $Final_Result->final_exam }}</td>
+{{-- <td>6</td> --}}
 
 
 <td>
@@ -94,7 +98,7 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                حـذف نتيـجـة الطـالـب   <label style="color: black; font-size:20px;">{{$Final_Result->student->name}}</label>
+                حـذف نتيـجـة الطـالـب   <label style="color: black; font-size:20px;">{{$Final_Result->mid->student->name}}</label>
             </h5>
         
         </div>
@@ -104,7 +108,7 @@
             <input  type="text" style="font-weight: bolder; font-size:20px;"
             name="Name_Section"
             class="form-control"
-            value="{{$Final_Result->subject->name}}"
+            value="{{$Final_Result->mid->subject->name}}"
             disabled>
         </div>
         <div class="modal-footer">
@@ -120,9 +124,53 @@
 @endforeach
 </tbody>
 </table>
+</div>
+</div>
+
+<!-- add_modal_class -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-primary"  role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+    عـرض نتـيجـة طـالـب            
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('find_student_final') }}" method="POST">
+@csrf
+
+<div class="box-body">
+
+        <div class="form-group">
+        <label >أسـم الطـالـب</label>
+        <select class="form-control select2" style="width: 100%;" name="Student_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Students as $Student)
+            <option value="{{$Student->student_id}}" >{{$Student->student->name}}</option>
+            @endforeach
+        </select>
+        </div>
+
+<br>
 
 </div>
+
+<div class="modal-footer">
+<button type="submit"
+class="btn btn-info btn-block">تـأكيـد </button>
 </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
 
 </div>
 </div>

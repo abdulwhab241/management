@@ -24,11 +24,7 @@ class FinalRequest extends FormRequest
         return [
             'Student_id' => 'required|integer',
             'Subject_id' => 'required|integer',
-            'F_Number' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
-            'F_Write' => 'required',
-            'S_Number' =>'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
-            'S_Write' => 'required',
-            'Total' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:3',
+            'Degree' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:0|max:2',
         ];
     }
 }

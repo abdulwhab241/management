@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('final_results', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreignId('mid_id')->references('id')->on('mid_results')->onDelete('cascade');
             $table->foreignId('subject_id')->references('id')->on('subjects')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            // $table->string('first');
-            // $table->string('second');
-            $table->string('f_total_write');
-            $table->integer('f_total_number');
-            $table->string('s_total_write');
-            $table->integer('s_total_number');
-            $table->integer('total');
-            // $table->string('appreciation');
+            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+
+            $table->integer('result')->nullable();
+            $table->integer('final_exam');
             $table->integer('year');
             $table->date('date');
 

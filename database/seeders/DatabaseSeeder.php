@@ -33,6 +33,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TestSeeder::class);
         $this->call(MonthSeeder::class);
         $this->call(ExamSeeder::class);
-        $this->call(FinalSeeder::class);
+        // $this->call(FinalSeeder::class);
     }
 }
