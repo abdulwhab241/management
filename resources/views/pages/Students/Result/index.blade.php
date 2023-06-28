@@ -43,8 +43,7 @@
 <tbody>
         @foreach ($Result as $Student)
         <tr>
-            <td style="background-color: #D0DEF6; font-weight: bolder;">{{ $Student->result_name }}</td>
-            {{-- <td>{{ $Student->create_by }}</td> --}}
+            <td style="background-color: #D0DEF6; font-weight: bolder;">{{ $Student->month->name }}</td>
             <td>{{ $Student->exam->subject->name }}</td>
             <td>{{$Student->marks_obtained}}</td>
             <td>{{$Student->appreciation}}</td>

@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
- نتيجـة الطـالـب
+ نتيجـة التـرم الأول
 @stop
 @endsection
 
@@ -11,11 +11,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-    نتيجـة الطـالـب          {{ $Name->student->name }} 
+    نتيجـة الطـالـب للـترم الأول          {{ $Student_Name->student->name }} 
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ url('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li class="active"> نتيجـة الطـالـب</li>
+    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li class="active"> نتيجـة الطـالـب للـترم الأول</li>
 </ol>
 </section>
 
@@ -24,32 +24,9 @@
 
 <div class="row">
 <div class="col-xs-12">
-<div class="box" id="print">
+<div class="box" >
 
-    <style>
-        .col-md-4 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%; }
-        p {
-        margin-top: 0;
-        margin-bottom: 1rem; }
-        .row {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-left: -15px;
-        margin-right: -15px; }
-
-        .img-fluid {
-        max-width: 100%;
-        height: auto; }
-
-    </style>
-
+    @if(count($Mid_Results) > 0)
 <div class="box-header">
 
     <div class="row">
@@ -67,11 +44,11 @@
         </div>
 
         <div class="col-md-4 text-center">
-            <p style="font-weight: bolder;">أسـم الطـالـب: {{ $Name->student->name }} </p>
-            <p style="font-weight: bolder;">المرحلة الدراسية: {{ $Name->student->grade->name }} </p>
-            <p style="font-weight: bolder;">الصـف: {{ $Name->student->classroom->name_class }} </p>
-            <p style="font-weight: bolder;">الشعبـة: {{ $Name->student->section->name_section }} </p>
-            <p style="font-weight: bolder;">تـاريـخ المـيلاد: {{ $Name->student->birth_date }} </p>
+            <p style="font-weight: bolder;">أسـم الطـالـب: {{ $Student_Name->student->name }} </p>
+            <p style="font-weight: bolder;">المرحلة الدراسية: {{ $Student_Name->student->grade->name }} </p>
+            <p style="font-weight: bolder;">الصـف: {{ $Student_Name->student->classroom->name_class }} </p>
+            <p style="font-weight: bolder;">الشعبـة: {{ $Student_Name->student->section->name_section }} </p>
+            <p style="font-weight: bolder;">تـاريـخ المـيلاد: {{ $Student_Name->student->birth_date }} </p>
         </div>
 
     </div><br>
@@ -82,7 +59,7 @@
         </div>
 
         <div class="col-md-4 text-center">
-                <h3>شهادة تقويم أعمال نـصـف السنة الدراسية:   {{ date("Y") }}  </h3>
+                <h4>شهادة تقويم أعمال نـصـف السنة الدراسية:   {{ date("Y") }}  </h4>
         </div>
 
         <div class="col-md-4 text-center">
@@ -108,7 +85,7 @@
 <tbody>
 
 
-@foreach($MidResults as $student)
+@foreach($Mid_Results as $student)
 <tr>
 
     <td>{{$student->subject->name}}</td>
@@ -123,12 +100,11 @@
 <tfoot>
 @php $type = ''; @endphp
 <tr>
-    <th style="text-align: center; background-color: #D0DEF6;" colspan="2">المجمـوع النـهائـي     <label style="color: black; margin:5px;"> {{ $MidResults->sum('total') }}</label>  </th>    
-        {{-- <th style="text-align: center;">{{ $MidResults->sum('total') }}</th> --}}
+    <th style="text-align: center; background-color: #D0DEF6;" colspan="2">المجمـوع النـهائـي     <label style="color: black; margin:5px;"> {{ $Mid_Results->sum('total') }}</label>  </th>    
 
-    @if ($MidResults->count('subject_id') == 7)
+    @if ($Mid_Results->count('subject_id') == 7)
     <!-- start if 7 -->
-    @if ($MidResults->sum('total') < 175)
+    @if ($Mid_Results->sum('total') < 175)
     @php
         $type = 'راسب';
     @endphp
@@ -141,9 +117,9 @@
     
     @else
 
-    @if ($MidResults->count('subject_id') == 11)
+    @if ($Mid_Results->count('subject_id') == 11)
         <!-- start if 11 -->
-        @if ($MidResults->sum('total') < 275)
+        @if ($Mid_Results->sum('total') < 275)
         @php
             $type = 'راسب';
         @endphp
@@ -157,28 +133,28 @@
 
     @endif
     <th style="text-align: center; background-color: #D0DEF6;" colspan="2">النتيجـة النـهائيـة     <label style="color: black; margin:5px;"> {{ $type }} </label>   </th>
-    {{-- <th style="text-align:center;">{{ $type }}</th> --}}
 
 </tr>
 </tfoot>
 
 </table>
-
 </div>
 </div>
 
+@else
+
+<h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+    <marquee direction="right">
+        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+            عـذراً لـم يتـم تسليـم نـتائـج التـرم الأول حـالياً 
+        </b>
+    </marquee>
+    </h1>
+@endif
 
 </div>
-
-<div class="footer">
-    <button class="btn .btn.bg-navy  pull-left" id="print_Button" onclick="printDiv()"> 
-    <i class="fa fa-print" aria-hidden="true"></i> طباعة  </button>
-</div>
-
 </div>
 </div>
-
-<!-- row closed -->
 </section>
 
 

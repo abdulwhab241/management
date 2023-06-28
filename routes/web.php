@@ -85,10 +85,10 @@ Route::group(
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Final_Results', FinalResultController::class);  
             Route::post('find_student_final', [FinalResultController::class,'find_student_final'])->name('find_student_final');             
-            Route::get('/print_Final_Result_Student/{id}', [FinalResultController::class, 'print']) -> name('Final.print');
+            // Route::get('/print_Final_Result_Student/{id}', [FinalResultController::class, 'print']) -> name('Final.print');
             Route::get('export_final_results', [FinalResultController::class, 'export'])->name('export_finals');  
-            Route::get('search_final_result', [FinalResultController::class, 'search_student'])->name('Search_Result');            
-            Route::post('find_result', [FinalResultController::class, 'FinalSearch'])->name('Final.search');            
+            // Route::get('search_final_result', [FinalResultController::class, 'search_student'])->name('Search_Result');            
+            // Route::post('find_result', [FinalResultController::class, 'FinalSearch'])->name('Final.search');            
         });
 
         //==============================Mid Results============================

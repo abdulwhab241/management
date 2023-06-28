@@ -46,7 +46,15 @@
     <li><a href="{{ route('StudentTable.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('StudentFinal.index') }}"><i class="fas fa-percent fa-fw" aria-hidden="true"></i> النـتائـج النـهائيـة</a></li>
+    <a href="#">
+    <i class="fas fa-percent fa-fw" aria-hidden="true"></i>
+    <span>النـتائـج </span>
+    <i class="fa fa-angle-left pull-left"></i>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="{{ route('mid_student') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> نتيجـة التـرم الأول</a></li>
+        <li><a href="{{ route('StudentFinal.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> النتيـجـة النـهائيـة</a></li>
+    </ul>
 </li>
 <li class="treeview">
     <li><a href="{{ route('StudentAttendance.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i> بيـانـات المـواظبـة</a></li>

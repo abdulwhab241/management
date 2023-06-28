@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreignId('student_grade_id')->references('id')->on('student_grades')->onDelete('cascade');
             $table->foreignId('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+            $table->foreignId('month_id')->references('id')->on('months')->onDelete('cascade');
 
             $table->integer('degree');
             $table->integer('year');

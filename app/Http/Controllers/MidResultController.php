@@ -65,6 +65,13 @@ class MidResultController extends Controller
                 $Degree = 0 ;
             }
 
+            // $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
+            // ->where('subject_id',strip_tags($request->Subject_id))
+            // ->where('year', date('Y'))
+            // ->where('month_id',1)
+            // ->where('month_id',2)
+            // ->where('month_id',3)->sum('degree');
+
             $Result = round($Degree / 15);
             
             $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');

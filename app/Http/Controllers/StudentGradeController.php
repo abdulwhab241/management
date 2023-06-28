@@ -31,7 +31,7 @@ class StudentGradeController extends Controller
         $Teachers = Teacher::all();
         $Subjects = Subject::all();
         $Months = Month::all();
-        return view('pages.Student_Grades.add', compact('Students','Semesters','Results','Teachers','Subjects','Months'));
+        return view('pages.Student_Grades.add', compact('Students','Semesters','Teachers','Subjects','Months'));
     }
 
     public function edit($id)
@@ -93,6 +93,7 @@ class StudentGradeController extends Controller
             $StudentGrade->student_id = strip_tags($request->Student_id);
             $StudentGrade->teacher_id = strip_tags($request->Teacher_id);
             $StudentGrade->subject_id = strip_tags($request->Subject_id);
+            $StudentGrade->month_id = strip_tags($request->Month);
 
             foreach ($sections as $section){
                 $StudentGrade->section_id = $section;
@@ -104,7 +105,6 @@ class StudentGradeController extends Controller
             $StudentGrade->verbal = strip_tags($request->Verbal);
             $StudentGrade->attendance = strip_tags($request->Attendance);
             $StudentGrade->total = $Total;
-            $StudentGrade->month_id = strip_tags($request->Month);
             $StudentGrade->year = date('Y');
             $StudentGrade->create_by = auth()->user()->name;
             $StudentGrade->save();
@@ -113,6 +113,7 @@ class StudentGradeController extends Controller
             $StudentResult->student_id = strip_tags($request->Student_id);
             $StudentResult->subject_id = strip_tags($request->Subject_id);
             $StudentResult->student_grade_id = strip_tags($StudentGrade->id);
+            // $StudentResult->month_id = strip_tags($request->Month);
             $StudentResult->degree = $Total;
             $StudentResult->date = date('Y-m-d');
             $StudentResult->year = date('Y');
@@ -151,6 +152,7 @@ class StudentGradeController extends Controller
         $StudentGrade->student_id = strip_tags($request->Student_id);
         $StudentGrade->teacher_id = strip_tags($request->Teacher_id);
         $StudentGrade->subject_id = strip_tags($request->Subject_id);
+        $StudentGrade->month_id = strip_tags($request->Month);
 
         foreach ($sections as $section){
             $StudentGrade->section_id = $section;
@@ -162,7 +164,6 @@ class StudentGradeController extends Controller
         $StudentGrade->verbal = strip_tags($request->Verbal);
         $StudentGrade->attendance = strip_tags($request->Attendance);
         $StudentGrade->total = $Total;
-        $StudentGrade->month_id = strip_tags($request->Month);
         $StudentGrade->year = date('Y');
         $StudentGrade->create_by = auth()->user()->name;
         $StudentGrade->save();
@@ -170,6 +171,7 @@ class StudentGradeController extends Controller
 
         $StudentResult = StudentResult::where('student_grade_id',strip_tags($request->id))->first();
         $StudentResult->subject_id = strip_tags($request->Subject_id);
+        // $StudentResult->month_id = strip_tags($request->Month);
         $StudentResult->degree = $Total;
         $StudentResult->date = date('Y-m-d');
         $StudentResult->year = date('Y');

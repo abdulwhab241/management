@@ -20,6 +20,7 @@ return new class extends Migration
 
             $table->integer('result')->nullable();
             $table->integer('final_exam');
+            $table->integer('total');
             $table->integer('year');
             $table->date('date');
 

@@ -57,9 +57,8 @@
 <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسي</th>
 <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
-<th style="text-align: center; background-color: #D0DEF6;" colspan="4">درجات الفصل الاول 50% </th>
-<th style="text-align: center; background-color: #D0DEF6;" colspan="4">درجات الفصل الثـانـي 50% </th>
-{{-- <th style="text-align: center; background-color: #D0DEF6;">المـجموع 100</th> --}}
+<th style="text-align: center; background-color: #D0DEF6;" colspan="6">درجات الفصل الاول 50% </th>
+<th style="text-align: center; background-color: #D0DEF6;" colspan="6">درجات الفصل الثـانـي 50% </th>
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
 </thead>
@@ -67,17 +66,20 @@
 @foreach($Final_Results as $Final_Result)
 <tr>
 <td>{{$Final_Result->classroom->name_class}}</td>
-<td>{{$Final_Result->mid->student->name}}</td>
+<td>{{$Final_Result->student->name}}</td>
 <td>{{$Final_Result->subject->name}}</td>
 <th>المحصلة</th>
 <td>{{ $Final_Result->mid->result }}</td>
 <th>الاختبار</th>
 <td>{{ $Final_Result->mid->mid_exam }}</td>
+<th>المجموع</th>
+<td>{{ $Final_Result->mid->total }}</td>
 <th>المحصلة</th>
 <td>{{ $Final_Result->result }}</td>
 <th>الاختبار</th>
 <td>{{ $Final_Result->final_exam }}</td>
-{{-- <td>6</td> --}}
+<th>المجموع</th>
+<td>{{ $Final_Result->total }}</td>
 
 
 <td>

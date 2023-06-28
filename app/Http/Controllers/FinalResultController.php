@@ -24,7 +24,6 @@ class FinalResultController extends Controller
 
     public function create()
     {
-        // $Students = Enrollment::where('year', date("Y"))->get();
         $Students = MidResult::distinct()->where('year', date('Y'))->get(['student_id']);
         $Subjects = Subject::all();
         return view('pages.Final_Result.add', compact('Students','Subjects'));
@@ -43,45 +42,12 @@ class FinalResultController extends Controller
             'Student_id'=>'required|integer',
         ]);
 
-        $FinalResults = FinalResult::where('mid_id', strip_tags($request->Student_id))->where('year', date('Y'))->get();
+        $Mid_Results = $FinalResults = MidResult::where('student_id', strip_tags($request->Student_id))->where('year', date('Y'))->get();
+        $FinalResults = FinalResult::where('student_id', strip_tags($request->Student_id))->where('year', date('Y'))->get();
         $Name = FinalResult::where('mid_id', strip_tags($request->Student_id))->where('year', date('Y'))->first();
-        return view('pages.Final_Result.show', compact('FinalResults','Name'));
+        return view('pages.Final_Result.show', compact('FinalResults','Name','Mid_Results'));
     }
 
-    public function search_student()
-    {
-        $FinalResult = FinalResult::where('year', date("Y"))->get();
-        $GetStudent = Enrollment::where('year', date("Y"))->get();
-        return view('pages.Final_Result.Student',compact('FinalResult','GetStudent'));
-    }
-
-    public function print($id)
-    {
-        $Final_Result = FinalResult::findOrFail($id)->where('student_id',$id)->where('year', date('Y'))->first();
-        $Results = FinalResult::findOrFail($id)->where('student_id',$id)->get();
-        return view('pages.Final_Result.print',compact('Final_Result','Results'));
-    }
-
-    public function FinalSearch(Request $request)
-    {
-        $request->validate([
-            'Student_id'=>'required|integer',
-        ]);
-
-        $GetStudent = Enrollment::where('year', date("Y"))->get();
-        $Students = FinalResult::where('student_id', $request->Student_id)->where('year', date('Y'))->get();
-        $FinalResult = FinalResult::where('year', date("Y"))->get();
-
-        if ($request->Student_id == 0) 
-        {
-            toastr()->error('لا توجد نتيجة لهذا الطالب');
-            return redirect()->back();
-        }
-        else
-        {
-            return view('pages.Final_Result.Student',compact('Students','FinalResult','GetStudent'));
-        }
-    }
 
     public function export() 
     {
@@ -102,18 +68,25 @@ class FinalResultController extends Controller
 
             $Result = round($Degree / 30);
 
-            // dd($request);
             $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
+
             $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('student_id');
+
+            $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id', strip_tags($request->Subject_id))->pluck('id');
+
             $Total = $Result + strip_tags($request->Degree);
 
             $Final_Results = new FinalResult();
-            $Final_Results->mid_id = strip_tags($request->Student_id);
             $Final_Results->subject_id = strip_tags($request->Subject_id);
 
-            // foreach ($Students as $student){
-            //     $Final_Results->student_id = $student;
-            // }
+            foreach ($Students as $student){
+                $Final_Results->student_id = $student;
+            }
+
+            foreach ($Mids as $Mid){
+                $Final_Results->mid_id = $Mid;
+            }
     
             foreach ($classrooms as $classroom){
                 $Final_Results->classroom_id = $classroom;
@@ -121,7 +94,7 @@ class FinalResultController extends Controller
 
             $Final_Results->result =  $Result;
             $Final_Results->final_exam = strip_tags($request->Degree);
-            // $Final_Results->total = $Total;
+            $Final_Results->total = $Total;
             $Final_Results->year = date('Y');
             $Final_Results->date = date('Y-m-d');
             $Final_Results->create_by = auth()->user()->name;
@@ -149,16 +122,24 @@ class FinalResultController extends Controller
             $Result = round($Degree / 30);
 
             $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
+
             $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('student_id');
+
+            $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id', strip_tags($request->Subject_id))->pluck('id');
+
             $Total = $Result + strip_tags($request->Degree);
 
             $Final_Results = FinalResult::findOrFail($request->id);
-            $Final_Results->mid_id = strip_tags($request->Student_id);
             $Final_Results->subject_id = strip_tags($request->Subject_id);
 
-            // foreach ($Students as $student){
-            //     $Final_Results->student_id = $student;
-            // }
+            foreach ($Students as $student){
+                $Final_Results->student_id = $student;
+            }
+
+            foreach ($Mids as $Mid){
+                $Final_Results->mid_id = $Mid;
+            }
     
             foreach ($classrooms as $classroom){
                 $Final_Results->classroom_id = $classroom;
@@ -166,7 +147,7 @@ class FinalResultController extends Controller
 
             $Final_Results->result =  $Result;
             $Final_Results->final_exam = strip_tags($request->Degree);
-            // $Final_Results->total = $Total;
+            $Final_Results->total = $Total;
             $Final_Results->year = date('Y');
             $Final_Results->date = date('Y-m-d');
             $Final_Results->create_by = auth()->user()->name;

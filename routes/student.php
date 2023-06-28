@@ -9,6 +9,7 @@ use App\Http\Controllers\Student\StudentResultController;
 use App\Http\Controllers\Student\StudentProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Student\StudentAttendanceController;
+use App\Http\Controllers\Student\StudentFinalResultController;
 use App\Http\Controllers\Student\StudentFinalResutlController;
 use App\Http\Controllers\Student\StudentInformationController;
 
@@ -58,6 +59,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Student'], function () {
 
     //==============================Student Class============================
     Route::resource('StudentTable', ClassController::class);
+
+    //==============================Student Mid Result============================
+    Route::resource('StudentFinal', StudentFinalResultController::class);
+    Route::get('StudentMid', [StudentFinalResultController::class,'mid_result'])->name('mid_student');
 
     //==============================Student Final Result============================
     Route::resource('StudentFinal', StudentFinalResultController::class);
