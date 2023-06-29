@@ -19,15 +19,12 @@ return new class extends Migration
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreignId('semester_id')->references('id')->on('semesters')->onDelete('cascade');
             $table->foreignId('month_id')->references('id')->on('months')->onDelete('cascade');
-            // $table->foreignId('result_id')->references('id')->on('results')->onDelete('cascade');
 
             $table->integer('homework');
             $table->integer('verbal');
             $table->integer('attendance');
             $table->integer('result');
-            // $table->string('editorial');
             $table->integer('total');
-            // $table->string('month');
             $table->integer('year');
 
             $table->string('create_by')->nullable();

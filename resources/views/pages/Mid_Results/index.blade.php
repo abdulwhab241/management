@@ -30,13 +30,16 @@
 <div class="box-header">
 
 <div class="box-body">
-    <a href="{{route('MidResults.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    <a href="{{route('MidResults.create')}}" class="btn btn-success btn-flat" role="button" 
     aria-pressed="true">اضافة نتيـجة طـالـب</a>
     <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_mid') }}">
         <i class="fas fa-file-download"></i>  
     </a>
-    <button type="button" class="btn btn-info btn-flat" title="عـرض نتـيجـة طـالـب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-info btn-flat" title="عـرض نتـيجـة طـالـب"  data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-eye" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-default btn-flat" title="إرسـال نتـائـج التـرم الأول إاـى الـطـلاب"  data-toggle="modal" data-target="#Send_Mid_Result">
+        <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </button>
 
 </div>
@@ -69,15 +72,14 @@
 <td>{{$MidResult->result }}</td>
 <td>{{ $MidResult->mid_exam }}</td>
 <td>{{ $MidResult->total }}</td>
-{{-- <td>ds</td> --}}
-{{-- <td>{{ $MidResult->total }}</td> --}}
+
 
 
 <td>
     <div class="btn-group">
         <a href="{{route('MidResults.edit',$MidResult->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" title="تعديل" aria-pressed="true"><i class="fa fa-edit"></i></a>
         <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_MidResults{{ $MidResult->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-  
+
     </div>
 </td>
 </tr>
@@ -140,7 +142,7 @@ aria-hidden="true">
 <div class="box-body">
 
         <div class="form-group">
-        <label >أسـم الطـالـب</label>
+        <label >أسـم الطـالـب \ الطـالبـة</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Students as $Student)
@@ -163,6 +165,51 @@ class="btn btn-info btn-block">تـأكيـد </button>
 </div>
 </div>
 </div>
+
+
+<!-- add_modal_class -->
+<div class="modal fade" id="Send_Mid_Result" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-info"  role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+    إرسـال نتـائـج التـرم الأول إلـى الـطـلاب            
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('send_mid_result') }}" method="POST">
+@csrf
+
+<div class="box-body">
+
+        <div class="form-group">
+        <label >الـصـف الـدراسـي</label>
+        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Classrooms as $Classroom)
+            <option value="{{$Classroom->id}}" >{{$Classroom->name_class}}</option>
+            @endforeach
+        </select>
+        </div>
+
+<br>
+
+</div>
+
+<div class="modal-footer">
+<button type="submit"
+class="btn btn-primary btn-block">إرسـال </button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
 
 </div>
 </div>

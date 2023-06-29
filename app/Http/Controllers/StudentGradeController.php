@@ -87,7 +87,7 @@ class StudentGradeController extends Controller
             }
 
             $Total = $Results + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
-            $sections = Enrollment::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
 
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
@@ -113,7 +113,7 @@ class StudentGradeController extends Controller
             $StudentResult->student_id = strip_tags($request->Student_id);
             $StudentResult->subject_id = strip_tags($request->Subject_id);
             $StudentResult->student_grade_id = strip_tags($StudentGrade->id);
-            // $StudentResult->month_id = strip_tags($request->Month);
+            $StudentResult->month_id = strip_tags($request->Month);
             $StudentResult->degree = $Total;
             $StudentResult->date = date('Y-m-d');
             $StudentResult->year = date('Y');
@@ -145,7 +145,7 @@ class StudentGradeController extends Controller
         }
 
         $Total =  $Results + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
-        $sections = Enrollment::where('id',strip_tags($request->Student_id))->pluck('section_id');
+        $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
         
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
@@ -171,7 +171,7 @@ class StudentGradeController extends Controller
 
         $StudentResult = StudentResult::where('student_grade_id',strip_tags($request->id))->first();
         $StudentResult->subject_id = strip_tags($request->Subject_id);
-        // $StudentResult->month_id = strip_tags($request->Month);
+        $StudentResult->month_id = strip_tags($request->Month);
         $StudentResult->degree = $Total;
         $StudentResult->date = date('Y-m-d');
         $StudentResult->year = date('Y');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 
 use App\Models\StudentClass;
+use App\Models\StudentGrade;
 use App\Http\Controllers\Controller;
 
 
@@ -18,5 +19,12 @@ class ClassController extends Controller
         ->get();
     
         return view('pages.Students.Class.index',compact('StudentClass'));
+    }
+
+    public function student_grades()
+    {
+        $Student_Grades = StudentGrade::where('year', date('Y'))
+                        ->where('student_id',auth()->user()->id)->get();
+        return view('pages.Students.Student_Final.degree',compact('Student_Grades'));
     }
 }

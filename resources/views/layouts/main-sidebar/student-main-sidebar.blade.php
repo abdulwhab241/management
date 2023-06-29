@@ -37,13 +37,13 @@
     <li><a href="{{ route('StudentAccounts.index') }}"><i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> بيـانـات الـرسـوم</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('StudentResult.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> نتـائـج الإختبـارات الشهـرية</a></li>
-</li>
-<li class="treeview">
-    <li><a href="{{ route('student_graduated') }}"><i class="fa fa-graduation-cap" aria-hidden="true"></i> معلـومـات التخـرج</a></li>
-</li>
-<li class="treeview">
     <li><a href="{{ route('StudentTable.index') }}"><i class="fa fa-table" aria-hidden="true"></i> جـدول الحصـص</a></li>
+</li>
+<li class="treeview">
+    <li><a href="{{ route('StudentAttendance.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i> بيـانـات المـواظبـة</a></li>
+</li>
+<li class="treeview">
+    <li><a href="{{route('Student_List')}}"><i class="fa fa-list-alt"></i> كـشـف الـدراجات </a></li>
 </li>
 <li class="treeview">
     <a href="#">
@@ -52,15 +52,16 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
+        <li><a href="{{ route('StudentResult.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> نتـائـج الإختبـارات الشهـرية</a></li>
         <li><a href="{{ route('mid_student') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> نتيجـة التـرم الأول</a></li>
         <li><a href="{{ route('StudentFinal.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> النتيـجـة النـهائيـة</a></li>
     </ul>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('StudentAttendance.index') }}"><i class="fa fa-check-square" aria-hidden="true"></i> بيـانـات المـواظبـة</a></li>
+    <li><a href="{{route('StudentProfile.show')}}"><i class="fas fa-id-card-alt" aria-hidden="true"></i> الملـف الشخصـي</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{route('StudentProfile.show')}}"><i class="fas fa-id-card-alt" aria-hidden="true"></i> الملـف الشخصـي</a></li>
+    <li><a href="{{ route('student_graduated') }}"><i class="fa fa-graduation-cap" aria-hidden="true"></i> معلـومـات التخـرج</a></li>
 </li>
 
 

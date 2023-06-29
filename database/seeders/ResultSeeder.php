@@ -18,76 +18,76 @@ class ResultSeeder extends Seeder
             'student_id' => '2',
             'section_id' => '1',
             'semester_id' => '1',
-            // 'result_name' => 'فبراير',
+            'month_id' => '1',
             'marks_obtained' => '40',
             'appreciation' => 'ممـتـاز',
             'year' => '2023',
         ]);
 
         DB::table('results')->insert([
-            'exam_id' => '2 ',
+            'exam_id' => '1 ',
             'student_id' => '2',
             'section_id' => '1',
             'semester_id' => '1',
-            // 'result_name' => 'فبراير',
+            'month_id' => '2',
             'marks_obtained' => '40',
             'appreciation' => 'ممـتـاز',
             'year' => '2023',
         ]);
 
         DB::table('results')->insert([
-            'exam_id' => '3 ',
+            'exam_id' => '1 ',
             'student_id' => '2',
             'section_id' => '1',
             'semester_id' => '1',
-            // 'result_name' => 'فبراير',
+            'month_id' => '3',
             'marks_obtained' => '40',
             'appreciation' => 'ممـتـاز',
             'year' => '2023',
         ]);
 
         DB::table('results')->insert([
-            'exam_id' => '4 ',
+            'exam_id' => '1 ',
             'student_id' => '2',
             'section_id' => '1',
             'semester_id' => '1',
-            // 'result_name' => 'فبراير',
+            'month_id' => '4',
             'marks_obtained' => '40',
             'appreciation' => 'ممـتـاز',
             'year' => '2023',
         ]);
 
         DB::table('results')->insert([
-            'exam_id' => '5 ',
+            'exam_id' => '1 ',
             'student_id' => '2',
             'section_id' => '1',
             'semester_id' => '1',
-            // 'result_name' => 'فبراير',
+            'month_id' => '5',
             'marks_obtained' => '40',
             'appreciation' => 'ممـتـاز',
             'year' => '2023',
         ]);
 
         DB::table('results')->insert([
-            'exam_id' => '6 ',
+            'exam_id' => '1 ',
             'student_id' => '2',
             'section_id' => '1',
             'semester_id' => '1',
-            // 'result_name' => 'فبراير',
+            'month_id' => '6',
             'marks_obtained' => '40',
             'appreciation' => 'ممـتـاز',
             'year' => '2023',
         ]);
 
-        DB::table('results')->insert([
-            'exam_id' => '7 ',
-            'student_id' => '2',
-            'section_id' => '1',
-            'semester_id' => '1',
-            // 'result_name' => 'فبراير',
-            'marks_obtained' => '40',
-            'appreciation' => 'ممـتـاز',
-            'year' => '2023',
-        ]);
+        // DB::table('results')->insert([
+        //     'exam_id' => '1 ',
+        //     'student_id' => '2',
+        //     'section_id' => '1',
+        //     'semester_id' => '1',
+        //     'month_id' => '6',
+        //     'marks_obtained' => '40',
+        //     'appreciation' => 'ممـتـاز',
+        //     'year' => '2023',
+        // ]);
     }
 }

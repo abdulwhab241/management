@@ -59,6 +59,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Student'], function () {
 
     //==============================Student Class============================
     Route::resource('StudentTable', ClassController::class);
+    Route::get('StudentDegrees', [ClassController::class,'student_grades'])->name('Student_List');
 
     //==============================Student Mid Result============================
     Route::resource('StudentFinal', StudentFinalResultController::class);

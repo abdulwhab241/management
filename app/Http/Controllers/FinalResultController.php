@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Classroom;
 use App\Models\MidResult;
 use App\Models\Enrollment;
 use App\Models\FinalResult;
@@ -18,8 +19,9 @@ class FinalResultController extends Controller
     public function index()
     {
         $Final_Results = FinalResult::where('year', date('Y'))->get();
+        $Classrooms = Classroom::all();
         $Students = FinalResult::distinct()->where('year', date('Y'))->get(['student_id']);
-        return view('pages.Final_Result.index', compact('Final_Results','Students'));
+        return view('pages.Final_Result.index', compact('Final_Results','Students','Classrooms'));
     }
 
     public function create()
@@ -52,6 +54,43 @@ class FinalResultController extends Controller
     public function export() 
     {
         return Excel::download(new FinalResultExport, 'النتائج النهائية للطلاب.xlsx');
+    }
+
+    public function send_final_result(Request $request)
+    {
+        try
+        {
+
+            $request->validate([
+                'Classroom_id'=>'required|integer',
+            ]);
+
+            $students = FinalResult::where('classroom_id',$request->Classroom_id)->where('year', date('Y'))->get();
+
+            if($students->count() < 1){
+                toastr()->error('لاتوجد بيانات لـهـذا الـصـف في جدول الـنتـائـج النهـائيـة لـلـطـلاب');
+                return redirect()->back();
+            }
+
+            foreach ($students as $student){
+
+                $ids = explode(',',$student->id);
+                FinalResult::whereIn('id', $ids)
+                    ->update([
+                        'final_status'=> 1,
+                        'create_by' =>auth()->user()->name,
+                    ]);
+                }
+        
+            toastr()->success('تم إرسـال نتـائـج الـطـلاب للتـرم الاول بنجاح');
+            return  redirect()->back();
+
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
     }
 
     public function store(FinalRequest $request)
@@ -96,6 +135,7 @@ class FinalResultController extends Controller
             $Final_Results->final_exam = strip_tags($request->Degree);
             $Final_Results->total = $Total;
             $Final_Results->year = date('Y');
+            $Final_Results->final_status = 0;
             $Final_Results->date = date('Y-m-d');
             $Final_Results->create_by = auth()->user()->name;
             $Final_Results->save();
@@ -149,6 +189,7 @@ class FinalResultController extends Controller
             $Final_Results->final_exam = strip_tags($request->Degree);
             $Final_Results->total = $Total;
             $Final_Results->year = date('Y');
+            $Final_Results->final_status = 0;
             $Final_Results->date = date('Y-m-d');
             $Final_Results->create_by = auth()->user()->name;
             $Final_Results->save();

@@ -11,6 +11,7 @@ class StudentResultController extends Controller
     public function index()
     {
         $Result = Result::select('*')->where('student_id', auth()->user()->id)
+                        ->where('section_id', auth()->user()->section_id)
                         ->where('year', date('Y'))->get();
     
         return view('pages.Students.Result.index',compact('Result'));

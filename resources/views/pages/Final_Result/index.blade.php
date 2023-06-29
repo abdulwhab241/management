@@ -30,17 +30,16 @@
 <div class="box-header">
 
 <div class="box-body">
-    <a href="{{route('Final_Results.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    <a href="{{route('Final_Results.create')}}" class="btn btn-success btn-flat" role="button"  
     aria-pressed="true">اضافة نتيـجة طـالـب</a>
     <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_finals') }}">
         <i class="fas fa-file-download"></i>  
     </a>
-    {{-- <a href="{{route('Search_Result')}}" title="عـرض نتـائـج الـطـلاب" class="btn btn-info btn-flat" role="button" style="padding:5px; margin: 5px;" 
-    aria-pressed="true">
-    <i class="fa fa-eye" aria-hidden="true"></i>
-    </a> --}}
-    <button type="button" class="btn btn-info btn-flat" title="عـرض نتـيجـة طـالـب" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-info btn-flat" title="عـرض نتـيجـة طـالـب"  data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-eye" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-default btn-flat" title="إرسـال الـنتـائـج النهـائـية إاـى الـطـلاب"  data-toggle="modal" data-target="#Send_Final_Result">
+        <i class="fa fa-paper-plane"  aria-hidden="true"></i>
     </button>
 
 </div>
@@ -164,6 +163,50 @@ aria-hidden="true">
 <div class="modal-footer">
 <button type="submit"
 class="btn btn-info btn-block">تـأكيـد </button>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- add_modal_class -->
+<div class="modal fade" id="Send_Final_Result" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-info"  role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+    إرسـال الـنتـائـج النهـائـية إاـى الـطـلاب            
+</h5>
+</div>
+<div class="modal-body">
+
+<form class="form-horizontal" action="{{ route('send_final_result') }}" method="POST">
+@csrf
+
+<div class="box-body">
+
+        <div class="form-group">
+        <label >الـصـف الـدراسـي</label>
+        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+            <option  selected disabled>أختـر من القائمة...</option>
+            @foreach ($Classrooms as $Classroom)
+            <option value="{{$Classroom->id}}" >{{$Classroom->name_class}}</option>
+            @endforeach
+        </select>
+        </div>
+
+<br>
+
+</div>
+
+<div class="modal-footer">
+<button type="submit"
+class="btn btn-primary btn-block">إرسـال </button>
 </div>
 
 </form>

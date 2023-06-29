@@ -11,10 +11,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-نتيجـة الطـالـب          {{ $Student_Name->student->name }} 
+نتيجـة الـطـالـب النهـائـيـة          
 </h1>
 <ol class="breadcrumb">
     <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li class="active"> نتيجـة الـطـالـب النهـائـيـة </li>
 </ol>
 </section>
 

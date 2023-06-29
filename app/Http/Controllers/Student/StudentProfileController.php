@@ -26,7 +26,7 @@ class StudentProfileController extends Controller
 
         try
         {
-            $information = Student::findOrFail($request->id);
+            $information = Student::findOrFail(strip_tags($request->id));
             $information->image = $file_name;
             $information->save();
     
@@ -45,7 +45,7 @@ class StudentProfileController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        $information = Student::findOrFail($request->id);
+        $information = Student::findOrFail(strip_tags($request->id));
 
         if (!empty($request->password)) {
             $information->password = Hash::make(strip_tags($request->password));

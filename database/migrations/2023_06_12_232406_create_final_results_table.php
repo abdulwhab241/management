@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('final_exam');
             $table->integer('total');
             $table->integer('year');
+            $table->boolean('final_status');
             $table->date('date');
 
             $table->string('create_by')->nullable();

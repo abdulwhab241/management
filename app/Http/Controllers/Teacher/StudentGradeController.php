@@ -99,6 +99,7 @@ class StudentGradeController extends Controller
             $StudentResult->student_id = strip_tags($request->Student_id);
             $StudentResult->subject_id = strip_tags($request->Subject_id);
             $StudentResult->student_grade_id = strip_tags($StudentGrade->id);
+            $StudentResult->month_id = strip_tags($request->Month);
             $StudentResult->degree = $Total;
             $StudentResult->date = date('Y-m-d');
             $StudentResult->year = date('Y');
@@ -165,6 +166,7 @@ class StudentGradeController extends Controller
 
         $StudentResult = StudentResult::where('student_grade_id',strip_tags($request->id))->first();
         $StudentResult->subject_id = strip_tags($request->Subject_id);
+        $StudentResult->month_id = strip_tags($request->Month);
         $StudentResult->degree = $Total;
         $StudentResult->date = date('Y-m-d');
         $StudentResult->year = date('Y');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Classroom;
 use App\Models\MidResult;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
@@ -17,8 +18,9 @@ class MidResultController extends Controller
     public function index()
     {
         $MidResults = MidResult::where('year', date('Y'))->get();
+        $Classrooms = Classroom::all();
         $Students = MidResult::distinct()->where('year', date('Y'))->get(['student_id']);
-        return view('pages.Mid_Results.index', compact('MidResults','Students'));
+        return view('pages.Mid_Results.index', compact('MidResults','Students','Classrooms'));
     }
 
     public function create()
@@ -52,26 +54,59 @@ class MidResultController extends Controller
         return view('pages.Mid_Results.show', compact('MidResults','Name'));
     }
 
+    public function send_mid_result(Request $request)
+    {
+        try
+        {
+
+            $request->validate([
+                'Classroom_id'=>'required|integer',
+            ]);
+
+            $students = MidResult::where('classroom_id',$request->Classroom_id)->where('year', date('Y'))->get();
+
+            if($students->count() < 1){
+                toastr()->error('لاتوجد بيانات لـهـذا الـصـف في جدول نتـائـج الـترم الاول لـلـطـلاب');
+                return redirect()->back();
+            }
+
+            foreach ($students as $student){
+
+                $ids = explode(',',$student->id);
+                MidResult::whereIn('id', $ids)
+                    ->update([
+                        'mid_status'=> 1,
+                        'create_by' =>auth()->user()->name,
+                    ]);
+                }
+        
+            toastr()->success('تم إرسـال نتـائـج الـطـلاب للتـرم الاول بنجاح');
+            return  redirect()->back();
+
+        }
+        catch(\Exception $e)
+        {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
+    }
+
     public function store(MidResultRequest $request)
     {
         try
         {
 
             $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
-                                    ->where('subject_id',strip_tags($request->Subject_id))
-                                    ->where('year', date('Y'))->sum('degree');
+            ->where('subject_id',strip_tags($request->Subject_id))
+            ->where('year', date('Y'))
+            ->whereIn('month_id',[1,2,3])->sum('degree');
+
             if($Degree == null)
             {
                 $Degree = 0 ;
             }
 
-            // $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
-            // ->where('subject_id',strip_tags($request->Subject_id))
-            // ->where('year', date('Y'))
-            // ->where('month_id',1)
-            // ->where('month_id',2)
-            // ->where('month_id',3)->sum('degree');
-
+    
             $Result = round($Degree / 15);
             
             $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
@@ -92,6 +127,7 @@ class MidResultController extends Controller
             $MidResults->total = $Total;
             $MidResults->year = date('Y');
             $MidResults->date = date('Y-m-d');
+            $MidResults->mid_status = 0;
             $MidResults->create_by = auth()->user()->name;
             $MidResults->save();
 
@@ -110,14 +146,18 @@ class MidResultController extends Controller
         try
         {
 
-            $Degree = StudentResult::where('student_id',$request->Student_id)->where('year', date('Y'))->sum('degree');
+            $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id',strip_tags($request->Subject_id))
+            ->where('year', date('Y'))
+            ->whereIn('month_id',[1,2,3])->sum('degree');
+
             if($Degree == null)
             {
                 $Degree = 0 ;
             }
             $Result = round($Degree / 15);
             
-            $classrooms = Student::where('id',$request->Student_id)->pluck('classroom_id');
+            $classrooms = Enrollment::where('student_id',$request->Student_id)->pluck('classroom_id');
 
             $Total = $Result + strip_tags($request->Degree);
 
@@ -134,6 +174,7 @@ class MidResultController extends Controller
             $MidResults->mid_exam = strip_tags($request->Degree);
             $MidResults->total = $Total;
             $MidResults->year = date('Y');
+            $MidResults->mid_status = 0;
             $MidResults->date = date('Y-m-d');
             $MidResults->create_by = auth()->user()->name;
             $MidResults->save();
