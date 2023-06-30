@@ -71,8 +71,9 @@
         <table  class="table" style="width:100%; text-align: center;">
         <thead>
         <tr>
-            <th style="text-align: center; background-color: yellow;" >محصـلـة شهـر</th>
             <th style="text-align: center; background-color: #D0DEF6;">الفـصل</th>
+            <th style="text-align: center; background-color: yellow;" >محصـلـة شهـر</th>
+            <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
             <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
             <th style="text-align: center; background-color: #D0DEF6;">واجبـات</th>
             <th style="text-align: center; background-color: #D0DEF6;">شفهـي</th>
@@ -88,8 +89,9 @@
         
         @foreach($Classroom->StudentGrades as $Student_Grade)
             <tr>
-                <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
                 <td>{{$Student_Grade->semester->name}}</td>
+                <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
+                <td>{{$Student_Grade->subject->name}}</td>
                 <td>{{$Student_Grade->student->name}}</td>
                 <td>{{$Student_Grade->homework }}</td>
                 <td>{{$Student_Grade->verbal}}</td>

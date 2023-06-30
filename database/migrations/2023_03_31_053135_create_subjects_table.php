@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('degree');
             $table->foreignId('grade_id')->references('id')->on('grades')->onDelete('cascade');
             $table->foreignId('classroom_id')->references('id')->on('classrooms')->onDelete('cascade');
-            $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
+            $table->foreignId('teacher_id')->nullable()->references('id')->on('teachers')->onDelete('cascade');
 
+            $table->integer('year');
             $table->string('create_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

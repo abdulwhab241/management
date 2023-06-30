@@ -15,7 +15,7 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('MidResults.index')}}"><i class="fa fa-book"></i> قائمـة نتـائـج الـترم الاول </a></li>
+<li><a href="{{route('MidResults.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة نتـائـج الـترم الاول </a></li>
 <li class="active">تعـديـل نتيـجـة الـترم الاول</li>
 </ol>
 </section>
@@ -34,7 +34,7 @@
 </button>
 </div>
 @endif
-</div><!-- /.box-header -->
+
 
 <form  action="{{route('MidResults.update','test')}}"  method="POST" >
 @method('PUT')
@@ -95,6 +95,8 @@ class="btn btn-success btn-block">تـأكيـد</button>
 </form>
 
 
+</div>
+</div>
 </div>
 </section><!-- /.content -->
 

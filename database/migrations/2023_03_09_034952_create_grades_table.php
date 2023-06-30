@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('notes')->nullable();
+            $table->integer('year');
             
             $table->string('create_by')->nullable();
             $table->softDeletes();

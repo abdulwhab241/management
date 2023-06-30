@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-اضافة مادة دراسية
+اضافة مسـتخـدم جديد
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-اضافة مادة دراسية
+اضافة مسـتخـدم جديد
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمـة الـمواد الدراسيـة </a></li>
-<li class="active">اضافة مادة دراسية</li>
+<li><a href="{{route('Users.index')}}"><i class="fa fa-users"></i> قائمة المستخدمين</a></li>
+<li class="active">اضافة مسـتخـدم جديد</li>
 </ol>
 </section>
 
@@ -35,12 +35,12 @@
 </div>
 @endif
 
-<form  action="{{route('Subjects.store','test')}}"  method="POST" >
+<form  action="{{route('Users.store','test')}}"  method="POST" enctype="multipart/form-data">
 @csrf
 <div class="box-body">
     <div class="row">
-        <div class="col-md-3"> 
-            <label>أسم المادة</label>
+        <div class="col-md-4"> 
+            <label>أسم المستخدم</label>
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
             @error('Name')
             <div class=" alert-danger">
@@ -48,64 +48,44 @@
             </div>
             @enderror
         </div>
-        <div class="col-md-3">
-            <label>الدرجـة</label>
-            <input type="number" value="{{ old('Degree') }}" name="Degree" class="form-control">
-            @error('Degree')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-            <label>المرحلـة الدراسيـة</label>
-            <select class="form-control select2" style="width: 100%;" name="Grade_id">
-                <option selected disabled>أختـر من القائمة...</option>
-                @foreach($grades as $grade)
-                    <option value="{{$grade->id}}">{{$grade->name}}</option>
-                @endforeach
-            </select>                        
-            @error('Grade_id')
-            <div class=" alert-danger">
-            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-            </div>
-            @enderror
-        </div>
-    </div>
-        <div class="col-md-3">
-            <div class="form-group">
-            <label>الصـف الدراسـي</label>
-            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
 
-            </select>                       
-            @error('Classroom_id')
+        <div class="col-md-4">
+            <label>الوظيفة</label>
+            <input type="text" value="{{ old('Job') }}" name="Job" class="form-control">
+            @error('Job')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
+
+        <div class="col-md-4">
+            <label>رقم الهاتف</label>
+            <input type="text" value="{{ old('Phone_Number') }}" name="Phone_Number" class="form-control">                     
+            @error('Phone_Number')
+            <div class=" alert-danger">
+            <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
+            </div>
+            @enderror
     </div>
+
     </div><br>
 
     <div class="row">
-        <div class="col-md-3">
-            <div class="form-group">
-            <label >أسـم المعلـم</label>
-                <select class="form-control select2" style="width: 100%;" name="teacher_id">
-                    <option selected disabled>أختـر من القائمة...</option>
-                    @foreach($teachers as $teacher)
-                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
-                    @endforeach
-                </select>
-    
+        <div class="col-md-4">
+            <label >العنوان</label>
+            <textarea class="form-control" name="Address" rows="2">{{ old('Address') }}</textarea>
             @error('teacher_id')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
-    </div>
+
+        <div class="col-md-4">
+            <label style="font-weight:bold; color:blue;">إختر صورة للمستخدم: </label>
+            <input type="file" accept="image/*" name="photos[]" multiple>
+        </div>
     </div>
         <br>
 

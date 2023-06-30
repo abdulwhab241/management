@@ -10,7 +10,9 @@ use App\Http\Controllers\Teacher\StudentGradeController;
 use App\Http\Controllers\Teacher\TeacherResultController;
 use App\Http\Controllers\Teacher\TeacherClassesController;
 use App\Http\Controllers\Teacher\TeacherProfileController;
+use App\Http\Controllers\Teacher\StudentMidResultController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Teacher\StudentFinalResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +69,12 @@ Route::group(
 
         //==============================Teacher Classes============================
         Route::resource('Teacher_Classes', TeacherClassesController::class);
+
+        //==============================Student Mid Results============================
+        Route::resource('StudentMidResults', StudentMidResultController::class);
+
+        //==============================Student Final Results============================
+        Route::resource('StudentFinalResults', StudentFinalResultController::class);
 
         //==============================Notifications Red All============================
         Route::get('Notification/Read', [TeacherProfileController::class, 'Read']) -> name('Read');

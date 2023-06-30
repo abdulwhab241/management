@@ -19,6 +19,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
 
         DB::table('subjects')->insert([
@@ -27,6 +28,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
 
         DB::table('subjects')->insert([
@@ -35,6 +37,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
 
         DB::table('subjects')->insert([
@@ -43,6 +46,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
 
         DB::table('subjects')->insert([
@@ -51,6 +55,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
 
         DB::table('subjects')->insert([
@@ -59,6 +64,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
 
         DB::table('subjects')->insert([
@@ -67,6 +73,7 @@ class SubjectSeeder extends Seeder
             'grade_id' => '1',
             'classroom_id' => '1',
             'teacher_id' => '1',
+            'year' => 2023,
         ]);
     }
 }

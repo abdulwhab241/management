@@ -79,6 +79,7 @@ class StudentGradeController extends Controller
         {
             $Results = Result::where('student_id', strip_tags($request->Student_id))
                                 ->where('month_id', strip_tags($request->Month))
+                                ->where('exam_id', strip_tags($request->Subject_id))
                                 ->where('year', date("Y"))->sum('marks_obtained');
             
             if($Results == null)
@@ -137,6 +138,7 @@ class StudentGradeController extends Controller
 
         $Results = Result::where('student_id', strip_tags($request->Student_id))
                             ->where('month_id', strip_tags($request->Month))
+                            ->where('exam_id', strip_tags($request->Subject_id))
                             ->where('year', date("Y"))->sum('marks_obtained');
 
         if($Results == null)

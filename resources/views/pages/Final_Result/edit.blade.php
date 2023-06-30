@@ -34,7 +34,7 @@
 </button>
 </div>
 @endif
-</div><!-- /.box-header -->
+
 
 <form  action="{{route('Final_Results.update','test')}}"  method="POST" >
 @method('PUT')
@@ -92,6 +92,8 @@ class="btn btn-success btn-block">تـأكيـد</button>
 </form>
 
 
+</div>
+</div>
 </div>
 </section><!-- /.content -->
 

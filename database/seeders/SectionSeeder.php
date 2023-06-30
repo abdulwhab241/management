@@ -27,7 +27,8 @@ class SectionSeeder extends Seeder
             Section::create([
                 'name_section' => $section,
                 'grade_id' => Grade::all()->unique()->random()->id,
-                'class_id' => Classroom::all()->unique()->random()->id
+                'class_id' => Classroom::all()->unique()->random()->id,
+                'year' => 2023
             ]);
         }
     }

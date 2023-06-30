@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-اضافة النـتائـج النـهائـية للطـلاب
+تعـديـل نتيـجة إختـبار الـترم الثـانـي
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-اضافة النـتائـج النـهائـية للطـلاب
+تعـديـل نتيـجة إختـبار الـترم الثـانـي  
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Final_Results.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة النـتائـج النـهائـية للطـلاب </a></li>
-<li class="active">اضافة النـتائـج النـهائـية للطـلاب</li>
+    <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{route('StudentFinalResults.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة نـتائـج إختبـارات الـترم الثـانـي </a></li>
+    <li class="active">تعـديـل النتيـجـة النـهائـية </li>
 </ol>
 </section>
 
@@ -36,17 +36,16 @@
 @endif
 
 
-<form  action="{{route('Final_Results.store')}}"  method="POST" >
+<form  action="{{route('StudentFinalResults.update','test')}}"  method="POST" >
+@method('PUT')
 @csrf
 <div class="box-body">
 <div class="row">
     <div class="col-md-4">
         <label>أسـم الطـالـب \ الطـالبـة</label>
         <select class="form-control select2" style="width: 100%;" name="Student_id">
-            <option selected disabled>أختـر من القائمة...</option>
-            @foreach($Students as $Student)
-                <option value="{{$Student->student_id}}">{{$Student->student->name}}</option>
-            @endforeach
+            <option value="{{$Final_Result->student_id}}">{{$Final_Result->student->name}}</option>
+
         </select>                        
         @error('Student_id')
         <div class=" alert-danger">
@@ -58,10 +57,8 @@
     <div class="col-md-4">
         <label>المادة</label>
         <select class="form-control select2" style="width: 100%;" name="Subject_id">
-            <option selected disabled>أختـر من القائمة...</option>
-            @foreach($Subjects as $Subject)
-                <option value="{{$Subject->id}}">{{$Subject->name}}</option>
-            @endforeach
+            <option value="{{$Final_Result->subject_id}}">{{$Final_Result->subject->name}}</option>
+
         </select>                        
         @error('Subject_id')
         <div class=" alert-danger">
@@ -72,7 +69,8 @@
 
     <div class="col-md-4">
         <label>درجـة الإختبـار</label>
-        <input type="number" value="{{ old('Degree') }}" name="Degree" class="form-control">
+        <input type="hidden" name="id" value="{{ $Final_Result->id }}">
+        <input type="number" value="{{ $Final_Result->final_exam }}" name="Degree" class="form-control">
         @error('Degree')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>

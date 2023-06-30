@@ -50,7 +50,16 @@
     <li><a href="{{ route('TeacherExams.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> الإختبـارات</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{ route('TeacherResult.index') }}"><i class="fas fa-light fa-percent" aria-hidden="true"></i> النتـائـج الشـهـريـة</a></li>
+    <a href="#">
+    <i class="fas fa-percent fa-fw" aria-hidden="true"></i>
+    <span>النتـائـج </span>
+    <i class="fa fa-angle-left pull-left"></i>
+    </a>
+    <ul class="treeview-menu">
+    <li><a href="{{ route('TeacherResult.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> النتـائـج الشـهـريـة</a></li>
+    <li><a href="{{route('StudentMidResults.index')}}"><i class="fa fa-circle-o"></i>  نتـائـج إختبـارات الـترم الاول</a></li>
+    <li><a href="{{ route('StudentFinalResults.index') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> نتـائـج إختبـارات الـترم الـثانـي</a></li>
+    </ul>
 </li>
 <li class="treeview">
     <li><a href="{{ route('Teacher_Grades.index') }}"><i class="fa fa-list-alt" aria-hidden="true"></i> كشـف درجـات الطـلاب</a></li>

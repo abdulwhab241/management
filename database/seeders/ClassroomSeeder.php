@@ -24,7 +24,8 @@ class ClassroomSeeder extends Seeder
         foreach ($classrooms as $classroom) {
             Classroom::create([
             'name_class' => $classroom,
-            'grade_id' => Grade::all()->unique()->random()->id
+            'grade_id' => Grade::all()->unique()->random()->id,
+            'year' => 2023,
             ]);
         }
     }

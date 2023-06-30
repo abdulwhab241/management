@@ -21,7 +21,7 @@ class GradeSeeder extends Seeder
         ];
 
         foreach ($grades as $grade) {
-            Grade::create(['name' => $grade]);
+            Grade::create(['name' => $grade, 'year' => 2023]);
         }
     }
 }

@@ -36,10 +36,10 @@ class FeeInvoiceController extends Controller
     }
 
 
-    public function show($id)
-    {
-        return $this->Fees_Invoices->show($id);
-    }
+    // public function show($id)
+    // {
+    //     return $this->Fees_Invoices->show($id);
+    // }
 
     public function show_fee_invoice($id)
     {

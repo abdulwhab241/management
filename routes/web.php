@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\FinalResultController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResultController;
@@ -15,11 +15,12 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\GraduatedController;
+use App\Http\Controllers\MidResultController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\FeeInvoiceController;
-use App\Http\Controllers\MidResultController;
+use App\Http\Controllers\FinalResultController;
 use App\Http\Controllers\StudentClassController;
 use App\Http\Controllers\StudentGradeController;
 use App\Http\Controllers\ProcessingFeeController;
@@ -160,6 +161,11 @@ Route::group(
         //==============================Subjects============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Subjects', SubjectController::class);
+        });
+
+        //==============================Subjects============================
+        Route::group(['namespace' => 'App\Http\Controllers'], function () {
+            Route::resource('Users', UserController::class);
         });
 
          //==============================Quizzes============================

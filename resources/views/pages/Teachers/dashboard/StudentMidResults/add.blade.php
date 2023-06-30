@@ -14,9 +14,9 @@
 اضافة نتيـجـة الـترم الاول
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('MidResults.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة نتـائـج الـترم الاول </a></li>
-<li class="active">اضافة نتيـجـة الـترم الاول</li>
+    <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{route('StudentMidResults.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة نتـائـج الـترم الاول </a></li>
+    <li class="active">اضافة نتيـجـة الـترم الاول</li>
 </ol>
 </section>
 
@@ -36,7 +36,7 @@
 @endif
 
 
-<form  action="{{route('MidResults.store','test')}}"  method="POST" >
+<form  action="{{route('StudentMidResults.store','test')}}"  method="POST" >
 @csrf
 <div class="box-body">
 <div class="row">
@@ -87,7 +87,7 @@
 </div>
 <div class="modal-footer">
 <button type="submit"
-class="btn btn-success btn-block">تـأكيـد</button>
+class="btn btn-primary btn-block">تـأكيـد</button>
 </div>
 
 </form>

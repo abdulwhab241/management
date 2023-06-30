@@ -184,18 +184,10 @@
     </ul>
 </li>
 <li class="treeview">
-    <a href="#">
-    <i class="fa fa-users" aria-hidden="true"></i>
-    <span>المستخدمين </span>
-    <i class="fa fa-angle-left pull-left"></i>
-    </a>
-    <ul class="treeview-menu">
-    <li><a href="#"><i class="fa fa-circle-o"></i> قائمة المستخدمين</a></li>
-
-    </ul>
+    <li><a href="{{route('box')}}"><i class="fa fa-university fw" aria-hidden="true"></i>الصنـدوق</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{route('box')}}"><i class="fa fa-university" aria-hidden="true"></i>الصنـدوق</a></li>
+    <li><a href="{{route('Users.index')}}"><i class="fa fa-users"></i> قائمة المستخدمين</a></li>
 </li>
 
 

@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-اضافة النـتائـج النـهائـية للطـلاب
+اضافة نتيـجة إختـبار الـترم الثـانـي
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-اضافة النـتائـج النـهائـية للطـلاب
+اضافة نتيـجة إختـبار الـترم الثـانـي
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Final_Results.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة النـتائـج النـهائـية للطـلاب </a></li>
-<li class="active">اضافة النـتائـج النـهائـية للطـلاب</li>
+    <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{route('StudentFinalResults.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة نـتائـج إختبـارات الـترم الثـانـي </a></li>
+    <li class="active">اضافة نتيـجة إختـبار الـترم الثـانـي</li>
 </ol>
 </section>
 
@@ -36,7 +36,7 @@
 @endif
 
 
-<form  action="{{route('Final_Results.store')}}"  method="POST" >
+<form  action="{{route('StudentFinalResults.store')}}"  method="POST" >
 @csrf
 <div class="box-body">
 <div class="row">

@@ -34,7 +34,7 @@
     </button>
 </div>
 @endif
-</div><!-- /.box-header -->
+
 
 <form  action="{{route('Subjects.update','test')}}"  method="POST" >
 {{ method_field('patch') }}
@@ -119,6 +119,8 @@
 </form>
 
 
+</div>
+</div>
 </div>
 </section><!-- /.content -->
 

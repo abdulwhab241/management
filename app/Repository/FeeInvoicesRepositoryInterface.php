@@ -7,7 +7,7 @@ namespace App\Repository;
 interface FeeInvoicesRepositoryInterface
 {
     public function index();
-    public function show($id);
+    // public function show($id);
     public function edit($id);
     public function create();
     

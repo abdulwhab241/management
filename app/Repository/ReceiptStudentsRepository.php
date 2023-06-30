@@ -33,11 +33,11 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
         return view('pages.Receipts.add',compact('student'));
     }
 
-    public function show($id)
-    {
-        $student = Enrollment::findOrFail($id)->where('year', date("Y"))->get();
-        return view('pages.Receipts.show',compact('student'));
-    }
+    // public function show($id)
+    // {
+    //     $student = Enrollment::findOrFail($id)->where('year', date("Y"))->get();
+    //     return view('pages.Receipts.show',compact('student'));
+    // }
 
     public function edit($id)
     {

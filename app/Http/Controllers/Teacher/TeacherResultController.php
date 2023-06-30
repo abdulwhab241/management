@@ -50,7 +50,7 @@ class TeacherResultController extends Controller
     {
         try
         {
-            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);

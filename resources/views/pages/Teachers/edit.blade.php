@@ -33,7 +33,7 @@
     </button>
 </div>
 @endif
-</div><!-- /.box-header -->
+
 
 <form  action="{{route('Teachers.update','test')}}" method="POST" enctype="multipart/form-data">
 {{method_field('patch')}}
@@ -41,7 +41,7 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-6">
-            <label for="inputEmail4">أسم المعلـم</label>
+            <label>أسم المعلـم</label>
             <input type="text" value="{{ $Teachers->name }}" name="Name" class="form-control">
             <input type="hidden" name="id" value="{{$Teachers->id}}">
             @error('Name')
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="inputEmail4">رقـم الهاتـف</label>
+            <label>رقـم الهاتـف</label>
             <input type="text" value="{{ $Teachers->phone_number}}" name="Phone_Number" class="form-control">
             @error('Phone_Number')
             <div class="alert alert-danger">
@@ -66,7 +66,7 @@
 
     <div class="row">
         <div class="col-md-4">
-            <label for="inputEmail4">التخصـص</label>
+            <label>التخصـص</label>
             <select class="form-control select2" name="Specialization_id">
                 <option value="{{$Teachers->specialization_id}}">{{$Teachers->specializations->name}}</option>
                 @foreach($specializations as $specialization)
@@ -81,7 +81,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="inputEmail4">النـوع</label>
+            <label>النـوع</label>
             <select class="form-control select2" name="Gender_id">
                 <option value="{{$Teachers->gender_id}}">{{$Teachers->genders->name}}</option>
                 @foreach($genders as $gender)
@@ -97,7 +97,7 @@
 
         <div class="col-md-4">
             <label >تاريخ التعيين</label>
-                <input  class="form-control" type="date" value="{{$Teachers->joining_date}}" id="reservation" name="Joining_Date" >
+                <input  class="form-control" type="date" value="{{$Teachers->joining_date}}" name="Joining_Date" >
             @error('Joining_Date')
             <div class="alert alert-danger">
             <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
@@ -107,9 +107,8 @@
 
     </div>   
         <div class="form-group">
-            <label for="exampleFormControlTextarea1">العنوان</label>
-            <textarea class="form-control" name="Address"
-                        id="exampleFormControlTextarea1" rows="4">{{$Teachers->address}}</textarea>
+            <label>العنوان</label>
+            <textarea class="form-control" name="Address" rows="4">{{$Teachers->address}}</textarea>
             @error('Address')
             <div class="alert alert-danger">
             <span style="text-align: center; font-weight: bold;"><h4 style="text-align: center font-weight: bold;"> {{ $message }}</h4></span>
@@ -134,6 +133,8 @@
 </form>
 
 
+</div>
+</div>
 </div>
 </section><!-- /.content -->
 

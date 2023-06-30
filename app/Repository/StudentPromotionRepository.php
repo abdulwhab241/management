@@ -23,7 +23,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
     public function index()
     {
-        $promotions = promotion::all();
+        $promotions = promotion::where('year', date('Y'))->get();
         return view('pages.Upgrades.index',compact('promotions'));
     }
 
@@ -62,7 +62,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                     'to_Classroom'=> strip_tags($request->Classroom_id_new),
                     'academic_year'=> strip_tags($request->academic_year),
                     'academic_year_new'=> strip_tags($request->academic_year_new),
-                    // 'year' => date('Y'),
+                    'year' => date('Y'),
                     'create_by' =>auth()->user()->name,
                 ]);
 

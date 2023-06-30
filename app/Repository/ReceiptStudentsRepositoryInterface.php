@@ -9,7 +9,7 @@ interface ReceiptStudentsRepositoryInterface
     public function index();
     public function create();
 
-    public function show($id);
+    // public function show($id);
 
     public function edit($id);
 

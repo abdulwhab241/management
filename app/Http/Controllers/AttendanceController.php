@@ -34,8 +34,8 @@ class AttendanceController extends Controller
     public function store(AttendanceRequest $request)
     {
         try {
-            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
-            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Attendances = new Attendance();
             $Attendances->day = strip_tags($request->Day_id);
@@ -66,8 +66,8 @@ class AttendanceController extends Controller
     {
         try {
             // dd($request);
-            $classrooms = Student::where('id',strip_tags($request->Student_id))->pluck('classroom_id');
-            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
 
             $Attendances = Attendance::findOrFail($request->id);
             $Attendances->day = strip_tags($request->Day_id);

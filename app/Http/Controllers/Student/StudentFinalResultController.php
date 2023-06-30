@@ -20,7 +20,7 @@ class StudentFinalResultController extends Controller
                         ->first();
 
         $Mid_Results = MidResult::where('student_id', auth()->user()->id)->where('year', date('Y'))->get();
-        return view('pages.Students.Student_Final.index', compact('Final_Results','Student_Name','Mid_Results'));
+        return view('pages.Students.Student_Final.final', compact('Final_Results','Student_Name','Mid_Results'));
     }
 
     public function mid_result()

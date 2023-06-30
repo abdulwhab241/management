@@ -33,7 +33,7 @@
     </button>
 </div>
 @endif
-</div><!-- /.box-header -->
+
 
 <form  action="{{route('Teachers.store')}}"  method="POST" enctype="multipart/form-data">
 @csrf
@@ -41,7 +41,7 @@
     <div class="row">
 
             <div class="col-md-6" >
-                <label for="inputEmail4">أسم المعلـم</label>
+                <label>أسم المعلـم</label>
             <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
         
             @error('Name')
@@ -53,7 +53,7 @@
     </div>
 
             <div class="col-md-6">
-            <label for="inputEmail4">رقـم الهاتـف</label>
+            <label>رقـم الهاتـف</label>
             <input type="text" value="{{ old('Phone_Number') }}" name="Phone_Number" class="form-control ">
             @error('Phone_Number')
             <div class=" alert-danger">
@@ -66,7 +66,7 @@
 
     <div class="row">
         <div class=" col-md-4">
-            <label for="inputEmail4">التخصـص</label>
+            <label>التخصـص</label>
             <select class="form-control select2" name="Specialization_id">
                 <option selected disabled>حـدد التخصـص...</option>
                 @foreach($specializations as $specialization)
@@ -81,7 +81,7 @@
         </div>
 
         <div class="col-md-4">
-            <label for="inputEmail4">النـوع</label>
+            <label>النـوع</label>
             <select class="form-control select2" name="Gender_id">
                 <option selected disabled>حـدد النـوع...</option>
                 @foreach($genders as $gender)
@@ -97,9 +97,7 @@
 
         <div class="col-md-4">
             <label >تاريخ التعيين</label>
-            <div class='input-group'>
-                <input  class="form-control" type="date" value="{{ old('Joining_Date') }}" id="reservation" name="Joining_Date" >
-            </div>
+                <input  class="form-control" type="date" value="{{ old('Joining_Date') }}"  name="Joining_Date" >
             @error('Joining_Date')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -110,8 +108,8 @@
     <br>
 
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">العنوان</label>
-        <textarea class="form-control" name="Address" id="exampleFormControlTextarea1" rows="4">{{ old('Address') }}</textarea>
+        <label>العنوان</label>
+        <textarea class="form-control" name="Address" rows="4">{{ old('Address') }}</textarea>
         @error('Address')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -120,13 +118,13 @@
     </div>
     <br>
 
-        <div class="col">
-            <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للمعلم: </label>
-            <input type="file" accept="image/*" name="photos[]" multiple>
-        </div>
-        <br>
-
+    <div class="col">
+        <label for="photos" style="font-weight:bold; color:blue;">إختر صورة للمعلم: </label>
+        <input type="file" accept="image/*" name="photos[]" multiple>
     </div>
+    <br>
+
+</div>
 <div class="modal-footer">
 <button type="submit"
     class="btn btn-success btn-block">حفظ البيانات</button>
@@ -135,6 +133,8 @@
 </form>
 
 
+</div>
+</div>
 </div>
 </section><!-- /.content -->
 

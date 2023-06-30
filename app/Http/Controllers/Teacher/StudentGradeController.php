@@ -63,8 +63,10 @@ class StudentGradeController extends Controller
     {
         try
         {
+            // dd($request);
             $Results = Result::where('student_id', strip_tags($request->Student_id))
             ->where('month_id', strip_tags($request->Month))
+            ->where('exam_id', strip_tags($request->Subject_id))
             ->where('year', date("Y"))->sum('marks_obtained');
 
             if($Results == null)
@@ -73,7 +75,7 @@ class StudentGradeController extends Controller
             }
 
             $Total = $Results + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
-            $sections = Enrollment::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
 
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
@@ -132,6 +134,7 @@ class StudentGradeController extends Controller
     try {
         $Results = Result::where('student_id', strip_tags($request->Student_id))
                             ->where('month_id', strip_tags($request->Month))
+                            ->where('exam_id', strip_tags($request->Subject_id))
                             ->where('year', date("Y"))->sum('marks_obtained');
 
         if($Results == null)
@@ -140,7 +143,7 @@ class StudentGradeController extends Controller
         }
 
         $Total =  $Results + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
-        $sections = Enrollment::where('id',strip_tags($request->Student_id))->pluck('section_id');
+        $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
         
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
