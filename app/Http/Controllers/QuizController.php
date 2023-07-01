@@ -9,6 +9,7 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
+use App\Models\TeacherSubject;
 use App\Http\Requests\QuizRequest;
 use Illuminate\Support\Facades\DB;
 use App\Notifications\QuizNotification;
@@ -26,8 +27,8 @@ class QuizController extends Controller
     public function create()
     {
         $Teachers = Teacher::all();
-        $Subjects = Subject::all();
-        $Classrooms = Classroom::all();
+        $Subjects = Subject::where('year',date('Y'))->get();
+        $Classrooms = Classroom::where('year',date('Y'))->get();
         $Months = Month::all();
         
         return view('pages.Quizzes.add', compact('Teachers','Subjects','Classrooms','Months'));
@@ -37,8 +38,8 @@ class QuizController extends Controller
     {
         $Exam = Exam::findOrFail($id);
         $Teachers = Teacher::all();
-        $Subjects = Subject::all();
-        $Classrooms = Classroom::all();
+        $Subjects = Subject::where('year',date('Y'))->get();
+        $Classrooms = Classroom::where('year',date('Y'))->get();
         $Months = Month::all();
         
         return view('pages.Quizzes.edit', compact('Teachers','Subjects','Classrooms','Months','Exam'));

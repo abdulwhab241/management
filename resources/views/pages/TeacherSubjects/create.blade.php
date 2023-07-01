@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-اضافة مادة دراسية
+اضافة مادة لمعلم
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-اضافة مادة دراسية
+اضافة مادة لمعلم
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمـة الـمواد الدراسيـة </a></li>
-<li class="active">اضافة مادة دراسية</li>
+<li><a href="{{route('TeacherSubjects.index')}}"><i class="fa fa-book"></i> قائمـة مواد المعلمين </a></li>
+<li class="active">اضافة مادة لمعلم</li>
 </ol>
 </section>
 
@@ -35,48 +35,39 @@
 </div>
 @endif
 
-<form  action="{{route('Subjects.store','test')}}"  method="POST" >
+<form  action="{{route('TeacherSubjects.store','test')}}"  method="POST" >
 @csrf
 <div class="box-body">
 <div class="row">
-    <div class="col-md-4"> 
-        <label>أسم المادة</label>
-        <input type="text" value="{{ old('Name') }}" name="Name" class="form-control">
-        @error('Name')
+    <div class="col-md-6"> 
+        <label>أسم المعلم</label>
+        <select class="form-control select2" style="width: 100%;" name="Teacher_id">
+            <option selected disabled>أختـر من القائمة...</option>
+            @foreach($Teachers as $Teacher)
+                <option value="{{$Teacher->id}}">{{$Teacher->name}}</option>
+            @endforeach
+        </select>   
+        @error('Teacher_id')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
         @enderror
     </div>
-    <div class="col-md-4">
-        <div class="form-group">
-        <label>المرحلـة الدراسيـة</label>
-        <select class="form-control select2" style="width: 100%;" name="Grade_id">
+    <div class="col-md-6">
+        <label>المادة</label>
+        <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option selected disabled>أختـر من القائمة...</option>
-            @foreach($grades as $grade)
-                <option value="{{$grade->id}}">{{$grade->name}}</option>
+            @foreach($Subjects as $Subject)
+                <option value="{{$Subject->id}}">{{$Subject->name}}</option>
             @endforeach
         </select>                        
-        @error('Grade_id')
+        @error('Subject_id')
         <div class=" alert-danger">
         <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
         @enderror
-    </div>
 </div>
-    <div class="col-md-4">
-        <div class="form-group">
-        <label>الصـف الدراسـي</label>
-        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
 
-        </select>                       
-        @error('Classroom_id')
-        <div class=" alert-danger">
-        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-        </div>
-        @enderror
-    </div>
-</div>
 </div><br>
 
 

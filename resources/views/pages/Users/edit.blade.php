@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-تعديل مادة دراسية
+اضافة مسـتخـدم جديد
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-تعديل مادة دراسية
+اضافة مسـتخـدم جديد
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Subjects.index')}}"><i class="fa fa-book"></i> قائمـة الـمواد الدراسيـة </a></li>
-<li class="active">تعديل مادة دراسية</li>
+<li><a href="{{route('Users.index')}}"><i class="fa fa-users"></i> قائمة المستخدمين</a></li>
+<li class="active">اضافة مسـتخـدم جديد</li>
 </ol>
 </section>
 
@@ -35,16 +35,15 @@
 </div>
 @endif
 
-
-<form  action="{{route('Subjects.update','test')}}"  method="POST" >
+<form  action="{{route('Users.update','test')}}"  method="POST" >
 {{ method_field('patch') }}
 @csrf
 <div class="box-body">
     <div class="row">
         <div class="col-md-3"> 
-            <label>أسم المادة</label>
-            <input type="text" value="{{$subject->name}}" name="Name" class="form-control">
-            <input type="hidden" name="id" value="{{$subject->id}}">
+            <label>أسم المستخدم</label>
+            <input type="hidden" name="id" value="{{$User->id}}">
+            <input type="text" value="{{ $User->name }}" name="Name" class="form-control">
             @error('Name')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
@@ -52,42 +51,48 @@
             @enderror
         </div>
 
-        <div class="col-md-4">
-            <label>المرحلـة الدراسيـة</label>
-            <select class="form-control select2" style="width: 100%;" name="Grade_id">
-                @foreach($grades as $grade)
-                <option
-                    value="{{$grade->id}}" {{$grade->id == $subject->grade_id ?'selected':''}}>{{$grade->name }}</option>
-            @endforeach
-            </select>                        
-            @error('Grade_id')
+        <div class="col-md-3">
+            <label>النوع</label>
+            <select class="form-control select2" style="width: 100%;" name="Job">
+                <option >{{ $User->job }} </option>
+                <option value="ادمن">ادمن</option>
+                <option value="محاسب">محاسب</option>
+                <option value="سكرتارية">سكرتارية</option>
+            </select>
+            @error('Job')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
         </div>
 
-        <div class="col-md-4">
-            <label>الصـف الدراسـي</label>
-            <select class="form-control select2" style="width: 100%;" name="Classroom_id">
-                @foreach($classrooms as $classroom)
-                <option
-                value="{{$classroom->id}}" {{$classroom->id == $subject->classroom_id ?'selected':''}}>{{$classroom->name_class}}</option>
-                @endforeach
-            </select>                       
-            @error('Classroom_id')
+        <div class="col-md-3">
+            <label>رقم الهاتف</label>
+            <input type="text" value="{{ $User->phone_number }}" name="Phone_Number" class="form-control">                     
+            @error('Phone_Number')
             <div class=" alert-danger">
             <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
             </div>
             @enderror
+    </div>
+
+    <div class="col-md-3">
+        <label >العنوان</label>
+        <textarea class="form-control" name="Address" rows="2">{{ $User->address }}</textarea>
+        @error('Address')
+        <div class=" alert-danger">
+        <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
         </div>
+        @enderror
+    </div>
+
     </div><br>
 
 
 </div>
 <div class="modal-footer">
 <button type="submit"
-    class="btn btn-success btn-block">تعـديـل البيانات</button>
+    class="btn btn-success btn-block">تعديل البيانات</button>
 </div>
 
 </form>
@@ -102,4 +107,5 @@
 @section('js')
 @toastr_js
 @toastr_render
+
 @endsection

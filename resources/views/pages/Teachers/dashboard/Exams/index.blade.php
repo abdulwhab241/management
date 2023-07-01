@@ -119,8 +119,8 @@ id="exampleModalLabel">
                 {{ $exam->subject->name }}
             </option>
             @foreach ($subjects as $subject)
-                <option value="{{ $subject->id }}">
-                    {{ $subject->name }}
+                <option value="{{ $subject->subject_id }}">
+                    {{ $subject->subject->name }}
                 </option>
             @endforeach
         </select>
@@ -232,7 +232,7 @@ aria-hidden="true">
         <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option  selected disabled>حدد المادة الدراسية...</option>
             @foreach ($subjects as $subject)
-                <option  value="{{ $subject->id }}" >{{ $subject->name }}</option>
+                <option  value="{{ $subject->subject_id }}" >{{ $subject->subject->name }}</option>
             @endforeach
         </select>
     </div>

@@ -26,7 +26,7 @@ class MidResultController extends Controller
     public function create()
     {
         $Students = Enrollment::where('year', date("Y"))->get();
-        $Subjects = Subject::all();
+        $Subjects = Subject::where('year', date("Y"))->get();
         return view('pages.Mid_Results.add', compact('Students','Subjects'));
     }
 
@@ -34,7 +34,7 @@ class MidResultController extends Controller
     {
         $MidResult = MidResult::findOrFail($id);
         $Students = Enrollment::where('year', date("Y"))->get();
-        $Subjects = Subject::all();
+        $Subjects = Subject::where('year', date("Y"))->get();
         return view('pages.Mid_Results.edit', compact('Students','Subjects','MidResult'));
     }
 

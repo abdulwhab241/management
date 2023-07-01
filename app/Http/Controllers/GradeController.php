@@ -15,7 +15,7 @@ class GradeController extends Controller
 {
     public function index()
     {
-        $grades = Grade::all();
+        $grades = Grade::where('year',date('Y'))->get();
         return view('pages.Grades.index', compact('grades'));
     }
 
@@ -28,6 +28,7 @@ class GradeController extends Controller
             $Grade->name = strip_tags($request->Name);
             $Grade->notes = strip_tags($request->Notes);
             $Grade->create_by = auth()->user()->name;
+            $Grade->year = date('Y');
 
             $Grade->save();
             // $users = User::all();
@@ -54,6 +55,7 @@ class GradeController extends Controller
             $Grade->update([
                 $Grade->name = strip_tags($request->Name),
                 $Grade->notes = strip_tags($request->Notes),
+                $Grade->year = date('Y'),
                 $Grade->create_by = auth()->user()->name,
             ]);
 

@@ -60,7 +60,7 @@
         <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option selected disabled>أختـر من القائمة...</option>
             @foreach($Subjects as $Subject)
-                <option value="{{$Subject->id}}">{{$Subject->name}}</option>
+                <option value="{{$Subject->subject_id}}">{{$Subject->subject->name}}</option>
             @endforeach
         </select>                        
         @error('Subject_id')

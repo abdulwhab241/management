@@ -8,6 +8,7 @@ use App\Models\Enrollment;
 use App\Models\FinalResult;
 use Illuminate\Http\Request;
 use App\Models\StudentResult;
+use App\Models\TeacherSubject;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\FinalRequest;
 use App\Http\Controllers\Controller;
@@ -25,7 +26,7 @@ class StudentFinalResultController extends Controller
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $Students = MidResult::distinct()->where('year', date('Y'))->whereIn('section_id', $ids)->get(['student_id']);
-        $Subjects = Subject::where('year', date('Y'))->where('teacher_id', auth()->user()->id)->get();
+        $Subjects = TeacherSubject::where('year', date('Y'))->where('teacher_id', auth()->user()->id)->get();
         return view('pages.Teachers.dashboard.StudentFinalResults.add', compact('Students','Subjects'));
     }
 

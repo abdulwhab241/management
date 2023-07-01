@@ -22,9 +22,9 @@ class TeacherResultController extends Controller
 {
     public function index()
     { 
-        $exams = Exam::where('teacher_id',auth()->user()->id)->get();
+        $exams = Exam::where('teacher_id',auth()->user()->id)->where('year',date('Y'))->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $results = Section::with(['Results'])->whereIn('id', $ids)->get();
+        $results = Section::with(['Results'])->whereIn('id', $ids)->where('year',date('Y'))->get();
 
         return view('pages.Teachers.dashboard.Result.index', compact('exams','results'));
     }

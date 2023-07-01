@@ -62,7 +62,7 @@
         <select class="form-control select2" style="width: 100%;" name="Subject_id">
             <option value="{{$StudentGrade->subject_id}}">{{$StudentGrade->subject->name}}</option>
             @foreach($Subjects as $Subject)
-                <option value="{{$Subject->id}}">{{$Subject->name}}</option>
+                <option value="{{$Subject->subject->id}}">{{$Subject->subject->name}}</option>
             @endforeach
         </select>                        
         @error('Subject_id')

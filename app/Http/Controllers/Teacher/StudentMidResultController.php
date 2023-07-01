@@ -7,6 +7,7 @@ use App\Models\MidResult;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Models\StudentResult;
+use App\Models\TeacherSubject;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MidResultRequest;
@@ -24,7 +25,7 @@ class StudentMidResultController extends Controller
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $Students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
-        $Subjects = Subject::where('teacher_id', auth()->user()->id)->where('year',date('Y'))->get();
+        $Subjects = TeacherSubject::where('teacher_id', auth()->user()->id)->where('year',date('Y'))->get();
         return view('pages.Teachers.dashboard.StudentMidResults.add', compact('Students','Subjects'));
     }
 

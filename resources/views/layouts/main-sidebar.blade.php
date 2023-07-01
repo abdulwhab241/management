@@ -1,10 +1,7 @@
-<!-- Left side column. contains the logo and sidebar -->
-{{-- <aside class="main-sidebar">
-<!-- sidebar: style can be found in sidebar.less -->
-<section class="sidebar"  style="font-family: 'Cairo', sans-serif"> --}}
 
 
-    @if (auth('web')->check())
+
+    @if (Auth::user()->job == 'ادمن')
     @include('layouts.main-sidebar.admin-main-sidebar')
     @endif
 
@@ -15,7 +12,10 @@
     @if (auth('teacher')->check())
     @include('layouts.main-sidebar.teacher-main-sidebar')
     @endif
+    @if (Auth::user()->job == 'محاسب')
+    @include('layouts.main-sidebar.accountant-main-sidebar')
+    @endif
+    @if (Auth::user()->job == 'سكرتارية')
+    @include('layouts.main-sidebar.secretariat-main-sidebar')
+    @endif
 
-{{-- </section>
-<!-- /.sidebar -->
-</aside> --}}

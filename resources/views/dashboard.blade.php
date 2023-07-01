@@ -30,7 +30,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header" style="font-family: 'Cairo', sans-serif">
 <h1  style="font-family: 'Cairo', sans-serif">
-    لـوحـة تحـكـم الادمـن:        <span>   {{ auth()->user()->name }}</span>
+    لـوحـة تحـكـم :        <label style="color: #5686E0">الـ{{ auth()->user()->job }}</label> <span>{{ auth()->user()->name }}</span>
 </h1>
 
 </section>
@@ -38,6 +38,7 @@
 <!-- Main content -->
 <section class="content">
 <!-- Small boxes (Stat box) -->
+@if (Auth::user()->job == 'ادمن')
 <div class="row">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
@@ -254,7 +255,7 @@
       </div><!-- /.col -->
     </div> <!-- /.row -->
 
-
+    @endif
 </section><!-- /.Left col -->
 
 </div><!-- /.row (main row) -->

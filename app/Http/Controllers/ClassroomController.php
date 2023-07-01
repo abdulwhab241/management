@@ -15,8 +15,8 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $My_Classes = Classroom::all();
-        $Grades = Grade::all();
+        $My_Classes = Classroom::where('year',date('Y'))->get();
+        $Grades = Grade::where('year',date('Y'))->get();
         return view('pages.Classrooms.index',compact('My_Classes','Grades'));
     }
 
@@ -37,6 +37,7 @@ class ClassroomController extends Controller
                 $My_Classes->name_class = strip_tags($request->Name);
                 $My_Classes->grade_id = strip_tags($request->Grade_id);
                 $My_Classes->create_by = auth()->user()->name;
+                $My_Classes->year = date('Y');
                 $My_Classes->save();
 
                 // $users = User::all();
@@ -63,6 +64,7 @@ class ClassroomController extends Controller
             $Classrooms->name_class = strip_tags($request->Name),
             $Classrooms->grade_id = strip_tags($request->Grade_id),
             $Classrooms->create_by = auth()->user()->name,
+            $Classrooms->year = date('Y'),
             ]);
             toastr()->success('تم تعديل الـصـف بنجاح');
             return redirect()->route('Classrooms.index');

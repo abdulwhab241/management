@@ -7,6 +7,7 @@ use App\Models\Month;
 use App\Models\Section;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use App\Models\TeacherSubject;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,7 @@ class TeacherExamController extends Controller
     public function index()
     {
         $exams = Exam::where('teacher_id',auth()->user()->id)->where('year', date('Y'))->get();
-        $subjects = Subject::where('teacher_id',auth()->user()->id)->get();
+        $subjects = TeacherSubject::where('teacher_id',auth()->user()->id)->where('year',date('Y'))->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $Classrooms = Section::distinct()->whereIn('id', $ids)->get(['class_id']);
         $Months = Month::all();

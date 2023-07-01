@@ -23,7 +23,8 @@ class UserRequest extends FormRequest
     {
         return [
             'Name' => 'required',
-            'Phone_Number' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:9|max:9',
+            'Job' => 'required|string',
+            'Phone_Number' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:4|max:4',
             'Address' => 'required',
         ];
     }

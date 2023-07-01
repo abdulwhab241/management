@@ -12,6 +12,7 @@ use App\Models\Semester;
 use App\Models\Enrollment;
 use App\Models\StudentGrade;
 use App\Models\StudentResult;
+use App\Models\TeacherSubject;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Notification;
@@ -35,7 +36,7 @@ class StudentGradeController extends Controller
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Months = Month::all();
-        $Subjects = Subject::where('teacher_id', auth()->user()->id)->get();
+        $Subjects = TeacherSubject::where('teacher_id', auth()->user()->id)->where('year',date('Y'))->get();
 
         return view('pages.Teachers.dashboard.StudentGrades.add', compact('students','Semesters','Months','Subjects'));
     }
@@ -47,7 +48,7 @@ class StudentGradeController extends Controller
         $Students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Months = Month::all();
-        $Subjects = Subject::where('teacher_id', auth()->user()->id)->get();
+        $Subjects = TeacherSubject::where('teacher_id', auth()->user()->id)->where('year',date('Y'))->get();
 
         return view('pages.Teachers.dashboard.StudentGrades.edit', compact('Students','StudentGrade','Semesters','Months','Subjects'));
     }

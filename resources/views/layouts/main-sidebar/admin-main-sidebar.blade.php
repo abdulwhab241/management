@@ -5,13 +5,9 @@
 <!-- Sidebar user panel -->
 <div class="user-panel">
 <div class="pull-right image">
-    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
     @if (isset(Auth::user()->name))
-    @if(count(data_get(Auth::user()->image,'image')??[]))
-    @foreach(data_get(Auth::user()->image,'image') as $image)
-    <img src="{{ '/attachments/Admins/' . $image }}" class="img-circle" alt="User Image">
-    @endforeach
-    @endif
+    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
+
 </div>
 <div class="pull-left info">
     <p>{{auth()->user()->name}}</p>
@@ -111,6 +107,18 @@
 </li>
 <li class="treeview">
     <a href="#">
+    <i class="fa fa-book"></i>
+    <span>المواد الدراسية</span>
+    <i class="fa fa-angle-left pull-left"></i>
+    </a>
+    <ul class="treeview-menu">
+    <li><a href="{{route('Subjects.index')}}"><i class="fa fa-circle-o"></i> قائمة المواد الدراسية</a></li>
+    <li><a href="{{route('TeacherSubjects.index')}}"><i class="fa fa-circle-o"></i> قائمة مواد المعلمين</a></li>
+
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
     <i class="fa fa-dollar highlight-icon" aria-hidden="true"></i> <!-- this -->
     <span>الحسابـات</span>
     <i class="fa fa-angle-left pull-left"></i>
@@ -134,17 +142,7 @@
 
     </ul>
 </li>
-<li class="treeview">
-    <a href="#">
-    <i class="fa fa-book"></i>
-    <span>المواد الدراسية</span>
-    <i class="fa fa-angle-left pull-left"></i>
-    </a>
-    <ul class="treeview-menu">
-    <li><a href="{{route('Subjects.index')}}"><i class="fa fa-circle-o"></i> قائمة المواد الدراسية</a></li>
 
-    </ul>
-</li>
 <li class="treeview">
     <a href="#">
     <i class="fas fa-book-open fa-fw"></i>

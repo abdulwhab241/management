@@ -18,13 +18,13 @@ class SubjectRepository implements SubjectRepositoryInterface
 
     public function index()
     {
-        $subjects = Subject::get();
+        $subjects = Subject::where('year',date('Y'))->get();
         return view('pages.Subjects.index',compact('subjects'));
     }
 
     public function create()
     {
-        $grades = Grade::get();
+        $grades = Grade::where('year',date('Y'))->get();
         $teachers = Teacher::get();
         return view('pages.Subjects.create',compact('grades','teachers'));
     }
@@ -37,10 +37,8 @@ class SubjectRepository implements SubjectRepositoryInterface
         try {
             $subjects = new Subject();
             $subjects->name = strip_tags($request->Name);
-            $subjects->degree = strip_tags($request->Degree);
             $subjects->grade_id = strip_tags($request->Grade_id);
             $subjects->classroom_id = strip_tags($request->Classroom_id);
-            $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
 
@@ -62,9 +60,9 @@ class SubjectRepository implements SubjectRepositoryInterface
     public function edit($id){
 
         $subject =Subject::findOrFail($id);
-        $grades = Grade::get();
+        $grades = Grade::where('year',date('Y'))->get();
         $teachers = Teacher::get();
-        $classrooms = Classroom::get();
+        $classrooms = Classroom::where('year',date('Y'))->get();
         return view('pages.Subjects.edit',compact('subject','grades','teachers','classrooms'));
 
     }
@@ -74,10 +72,8 @@ class SubjectRepository implements SubjectRepositoryInterface
         try {
             $subjects =  Subject::findOrFail(strip_tags($request->id));
             $subjects->name = strip_tags($request->Name);
-            $subjects->degree = strip_tags($request->Degree);
             $subjects->grade_id = strip_tags($request->Grade_id);
             $subjects->classroom_id = strip_tags($request->Classroom_id);
-            $subjects->teacher_id = strip_tags($request->teacher_id);
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
             toastr()->success('تم تعديل المادة بنجاح');

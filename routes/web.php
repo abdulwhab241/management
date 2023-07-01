@@ -26,6 +26,7 @@ use App\Http\Controllers\StudentGradeController;
 use App\Http\Controllers\ProcessingFeeController;
 use App\Http\Controllers\TeacherClassesController;
 use App\Http\Controllers\ReceiptStudentsController;
+use App\Http\Controllers\TeacherSubjectController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -130,6 +131,9 @@ Route::group(
 
             //==============================Fees============================
             Route::resource('Fees',  FeeController::class);
+
+            //==============================Teacher Subjects============================
+            Route::resource('TeacherSubjects',  TeacherSubjectController::class);
 
             //==============================Students Receipt============================
             Route::resource('Receipts', ReceiptStudentsController::class);

@@ -2,6 +2,7 @@
 
 use App\Models\Section;
 use App\Models\Teacher;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,7 @@ Route::group(
 
         $ids = Teacher::findOrFail(auth()->user()->id)->SectionsWith()->pluck('section_id');
         $data['count_sections']= $ids->count();
-        $data['count_students']= \App\Models\Student::whereIn('section_id',$ids)->count();
+        $data['count_students']= Enrollment::whereIn('section_id',$ids)->where('year', date("Y"))->count();
 
         return view('pages.Teachers.dashboard.dashboard',$data);
 

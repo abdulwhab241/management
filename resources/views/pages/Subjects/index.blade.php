@@ -55,8 +55,6 @@ aria-pressed="true">اضافة مادة جديدة</a>
 <th style="text-align: center;" class="alert-info">أسم المادة</th>
 <th style="text-align: center;" class="alert-info">المرحلة الدراسية</th>
 <th style="text-align: center;" class="alert-info">الصف الدراسي</th>
-<th style="text-align: center;" class="alert-info">الدرجة</th>
-<th style="text-align: center;" class="alert-info">اسم المعلم</th>
 <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
 <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -69,8 +67,7 @@ aria-pressed="true">اضافة مادة جديدة</a>
 <td>{{$subject->name}}</td>
 <td>{{$subject->grade->name}}</td>
 <td>{{$subject->classroom->name_class}}</td>
-<td>{{$subject->degree}}</td>
-<td>{{$subject->teacher->name}}</td>
+
 <td>{{ $subject->create_by }}</td>
     <td>
         <div class="btn-group">

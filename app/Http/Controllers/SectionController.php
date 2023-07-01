@@ -17,9 +17,9 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $Grades = Grade::with(['Sections'])->get();
-        $Classrooms = Classroom::all();
-        $list_Grades = Grade::all();
+        $Grades = Grade::with(['Sections'])->where('year',date('Y'))->get();
+        $Classrooms = Classroom::where('year',date('Y'))->get();
+        $list_Grades = Grade::where('year',date('Y'))->get();
         $teachers = Teacher::all();
     
         return view('pages.Sections.index',compact('Grades','list_Grades','Classrooms','teachers'));
@@ -43,6 +43,7 @@ class SectionController extends Controller
             $Sections->grade_id = strip_tags($request->Grade_id);
             $Sections->class_id = strip_tags($request->Classroom_id);
             $Sections->create_by = auth()->user()->name;
+            $Sections->year = date('Y');
             $Sections->save();
             $Sections->teachers()->attach(($request->teacher_id));
 
@@ -70,6 +71,7 @@ class SectionController extends Controller
         $Sections->name_section = strip_tags($request->Name_Section);
         $Sections->grade_id = strip_tags($request->Grade_id);
         $Sections->class_id = strip_tags($request->Classroom_id);
+        $Sections->year = date('Y');
         $Sections->create_by = auth()->user()->name;
 
         if (isset($request->teacher_id)) {

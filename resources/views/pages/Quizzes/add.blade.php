@@ -64,7 +64,7 @@
     <select class="form-control select2" style="width: 100%;" name="Classroom_id">
         <option  selected disabled>أختـر من القائمة...</option>
         @foreach ($Classrooms as $Classroom)
-            <option  value="{{ $Classroom->id }}" required>{{ $Classroom->name_class }}</option>
+            <option  value="{{ $Classroom->id }}">{{ $Classroom->name_class }}</option>
         @endforeach
     </select>
     @error('Classroom_id')
@@ -79,7 +79,7 @@
     <select class="form-control select2" style="width: 100%;" name="Teacher_id">
         <option  selected disabled>أختـر من القائمة...</option>
         @foreach ($Teachers as $Teacher)
-            <option  value="{{ $Teacher->id }}" required>{{ $Teacher->name }}</option>
+            <option  value="{{ $Teacher->id }}">{{ $Teacher->name }}</option>
         @endforeach
     </select>
     @error('Teacher_id')
@@ -101,7 +101,7 @@
     <select class="form-control select2" style="width: 100%;" name="Subject_id">
         <option  selected disabled>أختـر من القائمة...</option>
         @foreach ($Subjects as $Subject)
-            <option  value="{{ $Subject->id }}" required>{{ $Subject->name }}</option>
+            <option  value="{{ $Subject->id }}">{{ $Subject->name }}</option>
         @endforeach
     </select>
     @error('Subject_id')
