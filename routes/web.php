@@ -167,9 +167,12 @@ Route::group(
             Route::resource('Subjects', SubjectController::class);
         });
 
-        //==============================Subjects============================
+        //==============================Users============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Users', UserController::class);
+            Route::post('/UserImage/{id}', [UserController::class, 'edit_user_Image']) -> name('edit_user_Image');
+            Route::get('UserProfile', [UserController::class, 'show_profile']) -> name('show_profile');
+            Route::post('/UserProfile/{id}', [UserController::class, 'edit_user_password']) -> name('edit_user_password');
         });
 
          //==============================Quizzes============================

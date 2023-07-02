@@ -15,13 +15,13 @@ class TeacherSeeder extends Seeder
     public function run(): void
     {
         DB::table('teachers')->insert([
-            'name' => 'ابراهيم ايمن هبة الله ',
+            'name' => 'تجربة ',
             'gender_id' => '1',
             'specialization_id' => '1',
             'joining_date' => '2020-05-13',
-            'phone_number' => '777888999',
+            'phone_number' => '1234',
             'password' => Hash::make('1234'),
-            'address' => 'شارع الرباط امام  مكتبة القلم الذهبي',
+            'address' => 'تجربة',
         ]);
 
         DB::table('teacher_section')->insert([

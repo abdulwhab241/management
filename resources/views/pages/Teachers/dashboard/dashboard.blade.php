@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="مدارس عمر" />
+    <meta name="description" content="مدارس " />
     <meta name="copyright" content="Abdulwhab Mohammed" />
     <meta name="keywords" content="HTML5 Template" />
     {{-- <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" /> --}}
@@ -32,7 +32,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header" style="font-family: 'Cairo', sans-serif">
 <h1  style="font-family: 'Cairo', sans-serif">
-    مـرحبـاً بالأستـاذ :        <span>   {{ auth()->user()->name }}</span>
+    صـفـحـة الأستـاذ :        <span>   {{ auth()->user()->name }}</span>
 </h1>
 
 </section>

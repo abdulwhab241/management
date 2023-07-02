@@ -81,7 +81,7 @@
 
     <div class="row">
         <div class="col-md-4 text-center">
-                <img src="/images/Print.png" style="width: 20%;" class="img-fluid border-0">
+                <img src="/images/Emblem.png" style="width: 20%;" class="img-fluid border-0">
         </div>
 
         <div class="col-md-4 text-center">
@@ -89,7 +89,7 @@
         </div>
 
         <div class="col-md-4 text-center">
-                <img src="/images/Print.png" style="width: 20%;" class="img-fluid border-0">
+                <img src="/images/Emblem.png" style="width: 20%;" class="img-fluid border-0">
         </div>
 
     </div><br>

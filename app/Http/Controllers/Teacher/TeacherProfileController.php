@@ -19,6 +19,9 @@ class TeacherProfileController extends Controller
 
     public function editImage(Request $request)
     {
+        $request->validate([
+            'photos'=>'required',
+        ]);
         // dd($request);
         $file_extension = $request->photos->getClientOriginalExtension();
         $file_name = time(). '.' . $request->Name . '.' . $file_extension;
@@ -27,7 +30,7 @@ class TeacherProfileController extends Controller
 
         try
         {
-            $information = Teacher::findOrFail($request->id);
+            $information = Teacher::findOrFail(strip_tags($request->id));
             $information->image = $file_name;
             $information->save();
     
@@ -46,7 +49,7 @@ class TeacherProfileController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        $information = Teacher::findOrFail($request->id);
+        $information = Teacher::findOrFail(strip_tags($request->id));
 
         if (!empty($request->password)) {
             $information->password = Hash::make(strip_tags($request->password));

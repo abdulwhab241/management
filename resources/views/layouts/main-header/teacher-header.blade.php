@@ -86,13 +86,15 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                 <div class="pull-right">
-                    <a href="{{route('TeacherProfile.show')}}" class="btn btn-info btn-flat">Profile</a>
+                    <a href="{{route('TeacherProfile.show')}}" class="btn btn-info btn-flat">الملف الشخصي</a>
                 </div>
                 <div class="pull-left">
     
                 <form method="POST" action="{{ route('logout_teacher','teacher') }}">
                 @csrf
-                <button class="btn btn-info btn-flat" >تسجيل الخروج</button>
+                <button class="btn btn-info btn-flat" >
+                    <i class="fa fa-sign-out fa-1x" aria-hidden="true"></i>
+                    تسجيل الخروج</button>
                 </form>
                 </div>
                 </li>

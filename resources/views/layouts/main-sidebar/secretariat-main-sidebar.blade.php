@@ -7,7 +7,7 @@
 <div class="pull-right image">
     @if (isset(Auth::user()->name))
 
-    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
+    <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
 
 </div>
 <div class="pull-left info">

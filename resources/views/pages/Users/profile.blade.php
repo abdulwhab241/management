@@ -14,7 +14,7 @@
 الملـف الشـخـصـي
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
 <li class="active">الملـف الشـخـصـي</li>
 </ol>
@@ -30,36 +30,34 @@
 <div class="col-md-6">
 <div class="box box-info">
 <div class="box-header with-border">
-<form class="form-horizontal" action="{{route('TeacherImage.editImage',$information->id)}}" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="{{route('edit_user_Image', Auth::user()->id)}}" method="post" enctype="multipart/form-data">
     @csrf
 <div class="box-body">
 <div class="card-body text-center">
-    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}"
-    alt="{{ Auth::user()->name }}" 
-            class="rounded-circle img-fluid" style="width: 150px;">
-    <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{$information->name}}</h4>
-    <h5 style="font-family: 'Cairo', sans-serif" class="margin"> أ. {{$information->specializations->name}} </h5>
+    <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}"
+    class="rounded-circle img-fluid" style="width: 150px;" alt="{{ Auth::user()->name }}" >
+    <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{Auth::user()->name}}</h4>
+    <h5 style="font-family: 'Cairo', sans-serif" class="margin">  {{ Auth::user()->phone_number }} </h5>
+    <p class="margin">   {{ Auth::user()->job }}  </p>
 </div>
 </div>
-
 <div class="row">
-<div class="form-group">
+<div class="form-group text-center">
     <label class="col-sm-4 control-label" style="font-weight:bold; color:blue;">إختر صورة: </label>
-    <input type="hidden" name="Name" value="{{ $information->name  }}">
+    <input type="hidden" name="Name" value="{{ Auth::user()->name  }}">
     <div class="col-sm-8">
-        <input type="hidden" name="id" value="{{ $information->id }}">
-    <input type="file" accept="image/*" required name="photos" >
+        <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+    <input type="file" accept="image/*" style="position: center;" name="photos" >
     </div>
 </div>
-</div>
-    <div class="box-footer">
-        <div class="col-sm-8">
+</div><br>
+    <div class="modal-footer ">
+        {{-- <div class="col-sm-8 text-center"> --}}
         <button type="submit" class="btn btn-info btn-block">تعـديـل الصـورة</button>
-        </div>
+        {{-- </div> --}}
     </div><!-- /.box-footer -->
 
 </form>
-
 </div>
 </div>
 </div>
@@ -68,30 +66,30 @@
 
 <div class="box box-info">
 <div class="box-header with-border">
-<form class="form-horizontal" action="{{route('TeacherProfile.update',$information->id)}}" method="post">
+<form class="form-horizontal" action="{{route('StudentProfile.update',Auth::user()->id)}}"  method="post">
     @csrf
     <div class="box-body">
 
         
     <div class="form-group">
-        <label class="col-sm-4 control-label">أسـم المعلـم</label>
+        <label class="col-sm-4 control-label">أسـم المستخدم</label>
         <div class="col-sm-8">
-            <input type="hidden" name="id" value="{{ $information->id }}">
-            <input type="text" style="text-align: center; font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" disabled class="form-control" id="inputEmail3" name="Name" value="{{ $information->name }}">
+            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+            <input type="text" style="text-align: center; font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" disabled class="form-control" value="{{ Auth::user()->name }}">
         </div>
         </div>
 
         <div class="form-group">
             <label class="col-sm-4 control-label">كلمـة المـرور</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="password" name="password">
+                <input type="text" required class="form-control" id="password" name="password">
             </div>
             </div>
 
 
     <br>
 </div>
-<div class="box-footer">
+<div class="modal-footer ">
     <button type="submit" class="btn btn-primary btn-block">تـعديـل البيانات</button>
 </div><!-- /.box-footer -->
 

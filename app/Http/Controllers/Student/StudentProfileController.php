@@ -18,6 +18,9 @@ class StudentProfileController extends Controller
     }
     public function editImage(Request $request)
     {
+        $request->validate([
+            'photos'=>'required',
+        ]);
         // dd($request);
         $file_extension = $request->photos->getClientOriginalExtension();
         $file_name = time(). '.' . $request->Name . '.' . $file_extension;

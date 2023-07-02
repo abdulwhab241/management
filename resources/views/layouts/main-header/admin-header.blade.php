@@ -127,7 +127,7 @@
                 @isset($Notification->data['processing_name'])
                 <a href="{{ route('show_processing',$Notification->data['processing_id']) }}">
                     {{-- <div class="pull-right">
-                        <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
+                        <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="img-circle" alt="User Image">
                     </div> --}}
                     <h4>
                         تـم بـواسطـة  {{$Notification->data['create_by']}} 
@@ -237,13 +237,13 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="user-image" alt="{{ Auth::user()->name }}" >
+            <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="user-image" alt="{{ Auth::user()->name }}" >
             <span class="hidden-xs">{{auth()->user()->name}}</span>
         </a>
         <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-                <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}">
+                <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}">
             <p>
                 {{auth()->user()->name}}
             </p>
@@ -251,26 +251,28 @@
             @endif
             <!-- Menu Body -->
             <li class="user-body">
-            <div class="col-xs-4 text-center">
-                <a href="#">Followers</a>
+            <div class="col-xs-6 text-center">
+                <a href="#">{{auth()->user()->job}}</a>
             </div>
-            <div class="col-xs-4 text-center">
-                <a href="#">Sales</a>
+            <div class="col-xs-6 text-center">
+                <a href="#">{{auth()->user()->phone_number}}</a>
             </div>
-            <div class="col-xs-4 text-center">
+            {{-- <div class="col-xs-4 text-center">
                 <a href="#">Friends</a>
-            </div>
+            </div> --}}
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
             <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="{{ route('show_profile') }}" class="btn btn-default btn-flat">الملف الشخصي</a>
             </div>
             <div class="pull-left">
 
             <form method="POST" action="{{ route('logout','web') }}">
             @csrf
-            <button class="btn btn-info  btn-flat">تسجيل الخروج</button>
+            <button class="btn btn-info  btn-flat">
+                <i class="fa fa-sign-out fa-1x" aria-hidden="true"></i>
+                تسجيل الخروج</button>
             </form>
             </div>
             </li>

@@ -10,7 +10,7 @@
     {{-- @if(count(data_get(Auth::user()->image,'image')??[])) --}}
     {{-- @foreach(data_get(Auth::user()->image,'image') as $image) --}}
     {{-- <img src="{{ '/attachments/Admins/' . $image }}" class="img-circle" alt="User Image"> --}}
-    <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
+    <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
     {{-- @endforeach --}}
     {{-- @endif --}}
 </div>
