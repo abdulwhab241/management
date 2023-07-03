@@ -46,7 +46,7 @@ class ClassroomController extends Controller
 
                 Notification::send($users, new ClassroomNotification($My_Classes->id,$create_by,$My_Classes->name_class));
             
-                toastr()->success('تم حفظ الـصـف بنجاح');
+                toastr()->success('تم إضـافة الـصـف بنجاح');
                 return redirect()->route('Classrooms.index');
             }
             catch(\Exception $e)

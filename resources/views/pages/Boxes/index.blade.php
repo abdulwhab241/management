@@ -39,7 +39,7 @@
 <br>
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
-    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
+    <table id="example1" class="box-body table-responsive " style="width:100%; text-align: center;">
 <thead>
 <tr>
     <th style="text-align: center; background-color: #86B9D4;" >#</th>

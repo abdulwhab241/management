@@ -37,7 +37,7 @@ class GradeController extends Controller
 
             Notification::send($users, new GradeNotification($Grade->id,$create_by,$Grade->name));
 
-            toastr()->success('تم حفظ المرحلة بنجاح');
+            toastr()->success('تم إضـافة المرحلة بنجاح');
             return redirect()->route('Grades.index');
         }
         catch(\Exception $e)

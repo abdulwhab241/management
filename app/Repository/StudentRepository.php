@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Repository;
-use App\Models\Fee;
+
 use App\Models\User;
 use App\Models\Grade;
-use App\Models\Image;
 use App\Models\Gender;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Classroom;
-use App\Models\My_Parent;
 use App\Models\FeeInvoice;
 use App\Models\ProcessingFee;
 use App\Models\PaymentStudent;
@@ -25,7 +23,7 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Create_Student(){
 
-        $data['Grades'] = Grade::all();
+        $data['Grades'] = Grade::where('year', date("Y"))->get();
         $data['Genders'] = Gender::all();
         return view('pages.Students.create',$data);
 
@@ -36,15 +34,20 @@ class StudentRepository implements StudentRepositoryInterface{
         $Student = Student::findOrFail($id);
         $Student_Account = StudentAccount::select('*')->where('student_id','=',$id)
                                             ->where('year', date('Y'))->get();
+
         $Payment = PaymentStudent::select('*')->where('student_id','=',$id)
                                             ->where('year', date('Y'))->get();
-        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id
-                                            ->where('year', date('Y')))->get();
+
+        $ReceiptStudent = ReceiptStudent::select('*')->where('student_id','=',$id)
+                                            ->where('year', date('Y'))->get();
+
         $ProcessingFee = ProcessingFee::select('*')->where('student_id','=',$id)
                                             ->where('year', date('Y'))->get();
+
         $FeeInvoices = FeeInvoice::select('*')->where('student_id','=',$id)
                                             ->where('year', date('Y'))->get();
-        return view('pages.Students.show',compact('Student','Student_Account','Payment','FeeInvoices','ReceiptStudent','ProcessingFee'));
+
+        return view('pages.Students.show',compact('Student','Student_Account','Payment','ReceiptStudent','FeeInvoices','ProcessingFee'));
     }
 
     public function Get_classrooms($id){
@@ -133,9 +136,9 @@ class StudentRepository implements StudentRepositoryInterface{
 
     public function Edit_Student($id)
     {
-        $data['Grades'] = Grade::all();
-        $data['Sections'] = Section::all();
-        $data['Classrooms'] = Classroom::all();
+        $data['Grades'] = Grade::where('year', date("Y"))->get();
+        $data['Sections'] = Section::where('year', date("Y"))->get();
+        $data['Classrooms'] = Classroom::where('year', date("Y"))->get();
         $data['Genders'] = Gender::all();
         $Students =  Student::findOrFail($id);
         return view('pages.Students.edit',$data,compact('Students'));

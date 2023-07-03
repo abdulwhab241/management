@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-جدول الحصـص
+جدول الحصـص الدراسية للطلاب
 @stop
 @endsection
 
@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-جدول الحصـص
+جدول الحصـص الدراسية للطلاب
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">جدول الحصـص</li>
+<li class="active">جدول الحصـص الدراسية للطلاب</li>
 </ol>
 </section>
 
@@ -106,7 +106,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف مـادة</h5>
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف جدول الحصص ليوم</h5>
             
             </div>
             <div class="modal-body">

@@ -135,8 +135,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     {
         try {
             PaymentStudent::destroy(strip_tags($request->id));
-            StudentAccount::destroy(strip_tags($request->id));
-            FundAccount::destroy(strip_tags($request->id));
+            StudentAccount::where('payment_id',strip_tags($request->id))->delete();
             toastr()->error('تـم حـذف سـند الصـرف  بنجـاح');
             return redirect()->back();
         }

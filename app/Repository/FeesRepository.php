@@ -17,22 +17,22 @@ class FeesRepository implements FeesRepositoryInterface
     public function index(){
 
         $fees = Fee::where('year', date('Y'))->get();
-        $Grades = Grade::all();
+        $Grades = Grade::where('year', date("Y"))->get();
         return view('pages.Fees.index',compact('fees','Grades'));
 
     }
 
     public function create(){
 
-        $Grades = Grade::all();
+        $Grades = Grade::where('year', date("Y"))->get();
         return view('pages.Fees.add',compact('Grades'));
     }
 
     public function edit($id){
 
         $fee = Fee::findOrFail($id);
-        $Grades = Grade::all();
-        $Classrooms = Classroom::all();
+        $Grades = Grade::where('year', date("Y"))->get();
+        $Classrooms = Classroom::where('year', date("Y"))->get();
         return view('pages.Fees.edit',compact('fee','Grades','Classrooms'));
 
     }
@@ -61,7 +61,7 @@ class FeesRepository implements FeesRepositoryInterface
             $fees->create_by = auth()->user()->name;
             $fees->save();
 
-            // $users = User::all();
+            // $users = User::where('year', date("Y"))->get();
             $users = User::where('id', '!=', auth()->user()->id)->get();
             $create_by = auth()->user()->name;
 

@@ -37,7 +37,7 @@
 </div>
 @endif
 <div class="box-header">
-<a class="btn btn-success btn-flat" style="padding:5px; margin: 5px;" href="{{route('Teachers.create')}}">
+<a class="btn btn-success btn-flat"  href="{{route('Teachers.create')}}">
     إضافة معلم</a>
 <br>
 <div class="box-tools">
@@ -57,7 +57,7 @@
     <th style="text-align: center;" class="alert-info">النوع</th>
     <th style="text-align: center;" class="alert-info">تاريخ التعيين</th>
     <th style="text-align: center;" class="alert-info">التخصص</th>
-    <th style="text-align: center;" class="alert-info"> تـاريخ الإضـافـة</th>
+    <th style="text-align: center;" class="alert-info"> العنوان</th>
     <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 </tr>
@@ -74,7 +74,7 @@
     <td>{{$Teacher->genders->name}}</td>
     <td>{{$Teacher->joining_date}}</td>
     <td>{{$Teacher->specializations->name}}</td>
-    <td>{{$Teacher->created_at}}</td>
+    <td>{{$Teacher->address}}</td>
     <td>{{ $Teacher->create_by }}</td>
         <td>
             <div class="btn-group">

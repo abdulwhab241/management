@@ -39,6 +39,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->name = strip_tags($request->Name);
             $subjects->grade_id = strip_tags($request->Grade_id);
             $subjects->classroom_id = strip_tags($request->Classroom_id);
+            $subjects->year = date('Y');
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
 
@@ -48,7 +49,7 @@ class SubjectRepository implements SubjectRepositoryInterface
 
             Notification::send($users, new SubjectNotification($subjects->id,$create_by,$subjects->name));
 
-            toastr()->success('تم حفظ المادة بنجاح');
+            toastr()->success('تم إضـافة المادة بنجاح');
             return redirect()->route('Subjects.create');
         }
         catch (\Exception $e) {
@@ -61,7 +62,7 @@ class SubjectRepository implements SubjectRepositoryInterface
 
         $subject =Subject::findOrFail($id);
         $grades = Grade::where('year',date('Y'))->get();
-        $teachers = Teacher::get();
+        $teachers = Teacher::all();
         $classrooms = Classroom::where('year',date('Y'))->get();
         return view('pages.Subjects.edit',compact('subject','grades','teachers','classrooms'));
 
@@ -74,6 +75,7 @@ class SubjectRepository implements SubjectRepositoryInterface
             $subjects->name = strip_tags($request->Name);
             $subjects->grade_id = strip_tags($request->Grade_id);
             $subjects->classroom_id = strip_tags($request->Classroom_id);
+            $subjects->year = date('Y');
             $subjects->create_by = auth()->user()->name;
             $subjects->save();
             toastr()->success('تم تعديل المادة بنجاح');

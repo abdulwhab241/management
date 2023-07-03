@@ -8,6 +8,7 @@ use App\Models\Fee;
 use App\Models\User;
 use App\Models\Student;
 use App\Models\Enrollment;
+use App\Models\FeeInvoice;
 use App\Models\FundAccount;
 use App\Models\ReceiptStudent;
 use App\Models\StudentAccount;
@@ -29,15 +30,11 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
     public function create()
     {
-        $student = Enrollment::where('year', date("Y"))->get();
+        $student = FeeInvoice::distinct()->where('year', date("Y"))->get(['student_id']);
         return view('pages.Receipts.add',compact('student'));
     }
 
-    // public function show($id)
-    // {
-    //     $student = Enrollment::findOrFail($id)->where('year', date("Y"))->get();
-    //     return view('pages.Receipts.show',compact('student'));
-    // }
+
 
     public function edit($id)
     {
@@ -64,7 +61,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->type = 'تسديـد رسـوم  (دائن)';
+            $fund_accounts->type = 'تسديـد رسـوم  ';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->receipt = strip_tags($receipt_students->description);
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
@@ -75,7 +72,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             // حفظ البيانات في جدول حساب الطالب
             $student_accounts = new StudentAccount();
             $student_accounts->date = date('Y-m-d');
-            $student_accounts->type = 'تسديـد رسـوم  (دائن)';
+            $student_accounts->type = 'تسديـد رسـوم  ';
             $student_accounts->receipt_id = strip_tags($receipt_students->id);
             $student_accounts->student_id = strip_tags($request->Student_id);
             $student_accounts->Debit_receipt =  0.00;
@@ -122,7 +119,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->type = 'تعديل تسديـد رسـوم  (دائن)';
+            $fund_accounts->type = 'تعديل تسديـد رسـوم  ';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->receipt = strip_tags($receipt_students->description);
             $fund_accounts->credit_receipt =  strip_tags($request->Debit);
@@ -134,7 +131,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
 
             $student_accounts = StudentAccount::where('receipt_id',$request->id)->first();
             $student_accounts->date = date('Y-m-d');
-            $student_accounts->type = 'تعديل تسديـد رسـوم  (دائن)';
+            $student_accounts->type = 'تعديل تسديـد رسـوم  ';
             $student_accounts->receipt_id = strip_tags($receipt_students->id);
             $student_accounts->student_id = strip_tags($request->Student_id);
             $student_accounts->Debit_receipt =  0.00;
@@ -156,8 +153,7 @@ class ReceiptStudentsRepository implements ReceiptStudentsRepositoryInterface
     {
         try {
             ReceiptStudent::destroy(strip_tags($request->id));
-            StudentAccount::destroy(strip_tags($request->id));
-            FundAccount::destroy(strip_tags($request->id));
+            StudentAccount::where('receipt_id',strip_tags($request->id))->delete();
             toastr()->error('تـم حـذف سنـد القبـض بنجـاح');
             return redirect()->back();
         }

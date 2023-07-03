@@ -26,7 +26,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function create()
     {
         $Students = Enrollment::where('year', date("Y"))->get();
-        $Grades = Grade::all();
+        $Grades = Grade::where('year', date("Y"))->get();
         return view('pages.Fees_Invoices.add',compact('Students','Grades'));
     }
 
@@ -40,7 +40,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     public function edit($id)
     {
         $fee_invoices = FeeInvoice::findOrFail($id);
-        $fees = Fee::where('classroom_id',$fee_invoices->classroom_id)->get();
+        $fees = Fee::where('classroom_id',$fee_invoices->classroom_id)->where('year', date("Y"))->get();
         return view('pages.Fees_Invoices.edit',compact('fee_invoices','fees'));
     }
 
@@ -65,7 +65,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->type = 'إضافة فاتورة دراسية (مدين)';
+            $fund_accounts->type = 'إضافة فاتورة دراسية ';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->fee_invoice = strip_tags($Fees->description);
             $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
@@ -77,7 +77,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $StudentAccount = new StudentAccount();
             $StudentAccount->student_id = strip_tags($request->Student_id);
             $StudentAccount->date = date('Y-m-d');
-            $StudentAccount->type = 'فـاتـورة دراسية (مـديـن)';
+            $StudentAccount->type = 'فـاتـورة دراسية ';
             $StudentAccount->fee_invoice_id = strip_tags($Fees->id);
             $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
             $StudentAccount->credit_feeInvoice = 0.00;
@@ -112,7 +112,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
 
             // تعديل البيانات في جدول حسابات الطلاب
             $StudentAccount = StudentAccount::where('fee_invoice_id',strip_tags($request->id))->first();
-            $StudentAccount->type = 'تعديل فـاتـورة دراسية (مـديـن)';
+            $StudentAccount->type = 'تعديل فـاتـورة دراسية ';
             $StudentAccount->Debit_feeInvoice = strip_tags($request->amount);
             $StudentAccount->description = strip_tags($request->description);
             $StudentAccount->create_by = auth()->user()->name;
@@ -122,7 +122,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             // حفظ البيانات في جدول الصندوق
             $fund_accounts = new FundAccount();
             $fund_accounts->date = date('Y-m-d');
-            $fund_accounts->type = 'تعديل فاتورة دراسية (مدين)';
+            $fund_accounts->type = 'تعديل فاتورة دراسية ';
             $fund_accounts->student_id = strip_tags($request->Student_id);
             $fund_accounts->fee_invoice = strip_tags($Fees->description);
             $fund_accounts->Debit_feeInvoice = strip_tags($request->amount);
@@ -141,8 +141,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     {
         try {
             FeeInvoice::destroy(strip_tags($request->id));
-            StudentAccount::destroy(strip_tags($request->id));
-            FundAccount::destroy(strip_tags($request->id));
+            StudentAccount::where('fee_invoice_id',strip_tags($request->id))->delete();
             toastr()->error('تـم حـذف الفـاتـورة بنجـاح');
             return redirect()->back();
         }

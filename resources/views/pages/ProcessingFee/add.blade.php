@@ -58,7 +58,6 @@
 
         <div class="col-md-4"> 
             <label> المبلغ</label>
-            <input  type="hidden" name="student_id"  value="{{$Student->id}}" class="form-control">
             <input  class="form-control" value="{{ old('Debit') }}" name="Debit" type="number" class="form-control">
             @error('Debit')
             <div class=" alert-danger">
@@ -66,10 +65,7 @@
             </div>
             @enderror
         </div>
-        {{-- <div class="col-md-3">
-            <label>رصيد الطالب </label>
-            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($Student->student_account->sum('Debit_feeInvoice') - $Student->student_account->sum('credit_receipt')) }}" type="text" readonly>
-        </div> --}}
+
         <div class="col-md-4">
             <label>البيان</label>
             <textarea class="form-control" name="description" rows="2">{{ old('description') }}</textarea>

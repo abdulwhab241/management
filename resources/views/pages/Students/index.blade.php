@@ -37,7 +37,7 @@
 @endif
 <div class="box-header">
     <div class="box-body">
-        <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+        <a href="{{route('Students.create')}}" class="btn btn-success btn-flat" role="button" 
         aria-pressed="true">اضافة طـالـب</a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_students') }}">
             <i class="fas fa-file-download"></i>  
@@ -118,10 +118,10 @@
                 disabled>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default"
+                <button type="button" class="btn btn-outline"
                         data-dismiss="modal">إغلاق</button>
                 <button type="submit"
-                        class="btn btn-danger">حذف البيانات</button>
+                        class="btn btn-outline">حذف البيانات</button>
             </div>
         </div>
         </form>

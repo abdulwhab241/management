@@ -90,7 +90,9 @@
 
     <div class="tab-pane" id="tab_2">
 <div class="row">
+    
     <div class="col-md-6">
+        @if(count($FeeInvoices) > 0)
         <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                     <thead>
@@ -111,10 +113,20 @@
             </table>
 
         </div>
-
+        @else
+        <h4 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+            <marquee direction="right">
+                <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+                    عـذراً لا يـوجـد رسوم دراسية لعـرضـها 
+                </b>
+            </marquee>
+            </h4>
+        @endif
     </div>
 
+
     <div class="col-md-6">
+        @if(count($ReceiptStudent) > 0)
         <div class="box-body table-responsive no-padding">
             <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
             <thead>
@@ -135,6 +147,15 @@
             </tbody>
         </table>
             </div>
+            @else
+            <h4 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+                <marquee direction="right">
+                    <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+                        عـذراً لا يـوجـد رسوم مدفوعة لعـرضـها 
+                    </b>
+                </marquee>
+                </h4>
+            @endif
 
     </div>
 
@@ -143,6 +164,7 @@
     <div class="row">
 
         <div class="col-md-6">
+            @if(count($ProcessingFee) > 0)
             <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
@@ -164,10 +186,21 @@
                 </tbody>
             </table>
                 </div>
+                @else
+                <h4 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+                    <marquee direction="right">
+                        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+                            عـذراً لا يـوجـد رسوم مستبعدة لعـرضـها 
+                        </b>
+                    </marquee>
+                    </h4>
+                @endif
+    
 
         </div>
 
         <div class="col-md-6">
+            @if(count($Payment) > 0)
             <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
@@ -188,6 +221,15 @@
                 </tbody>
             </table>
                 </div>
+                @else
+                <h4 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+                    <marquee direction="right">
+                        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+                            عـذراً لا يـوجـد سندات صرف  لعـرضـها 
+                        </b>
+                    </marquee>
+                    </h4>
+                @endif
 
         </div>
 

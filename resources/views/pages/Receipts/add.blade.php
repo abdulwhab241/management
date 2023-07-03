@@ -14,6 +14,7 @@
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+<li><a href="{{route('Receipts.index')}}"><i class="fa fa-list"></i> قائمـة سندات القبض </a></li>
 <li class="active">تسديـد رسـوم الطالـب </li>
 </ol>
 </section>
@@ -44,7 +45,7 @@
             <select class="form-control select2" style="width: 100%;" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($student as $Student)
-                    <option  value="{{ $Student->student_id }}" required>{{ $Student->student->name }}</option>
+                    <option  value="{{ $Student->student_id }}">{{ $Student->student->name }}</option>
                 @endforeach
             </select>
             </div>

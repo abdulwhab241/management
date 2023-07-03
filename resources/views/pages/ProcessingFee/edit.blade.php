@@ -47,7 +47,7 @@
             <div class="form-group">
             <label> المبلغ</label>
             <input  class="form-control" name="Debit" value="{{ $ProcessingFee->amount}}" type="number" >
-            <input  type="hidden" name="student_id" value="{{$ProcessingFee->student->id}}" class="form-control">
+            <input  type="hidden" name="Student_id" value="{{$ProcessingFee->student_id}}" class="form-control">
             <input  type="hidden" name="id"  value="{{$ProcessingFee->id}}" class="form-control">
         </div>
             @error('Debit')
@@ -58,7 +58,7 @@
         </div>
         <div class="col-md-3">
             <label>رصيد الطالب </label>
-            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($ProcessingFee->student_account->sum('Debit') - $ProcessingFee->student_account->sum('credit')) }}" type="text" readonly>
+            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($ProcessingFee->student->student_account->sum('Debit_feeInvoice') + $ProcessingFee->student->student_account->sum('Debit_payment') - $ProcessingFee->student->student_account->sum('credit_receipt') - $ProcessingFee->student->student_account->sum('credit_processing')  ) }}" type="text" readonly>
         </div>
         <div class="col-md-6">
             <label>البيان</label>

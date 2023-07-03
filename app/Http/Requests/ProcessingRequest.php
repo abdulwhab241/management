@@ -22,7 +22,7 @@ class ProcessingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Debit' => 'required|integer',
+            'Debit' => 'required',
             'Student_id' => 'required|integer',
             'description' => 'required',
         ];

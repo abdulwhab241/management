@@ -39,7 +39,7 @@
 
     <div class="box-body">
         <a href="{{route('ProcessingFee.create')}}" class="btn btn-success btn-flat" role="button"
-        style="margin: 5px; padding: 5px;" aria-pressed="true">إضـافـة سـند  </a>
+        aria-pressed="true">إضـافـة سـند  </a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_process') }}">
             <i class="fas fa-file-download"></i>  
         </a>
@@ -60,6 +60,7 @@
         <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
         <th style="text-align: center;" class="alert-info">المبلغ</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
+        <th style="text-align: center;" class="alert-info">رصيد الطالب</th>
         <th style="text-align: center;" class="alert-info">تاريخ المعالجة</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
@@ -73,6 +74,7 @@
 <td>{{$ProcessingFee->student->name}}</td>
 <td>{{ number_format($ProcessingFee->amount) }} ريال </td>
 <td>{{$ProcessingFee->description}}</td>
+<td>{{ number_format($ProcessingFee->student->student_account->sum('Debit_feeInvoice')  - $ProcessingFee->student->student_account->sum('credit_receipt') - $ProcessingFee->student->student_account->sum('credit_processing') ) }} ريال </td>
 <td>{{$ProcessingFee->date}}</td>
 <td>{{$ProcessingFee->create_by}}</td>
     <td>

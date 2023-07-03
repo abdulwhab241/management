@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enrollment;
+use App\Models\FeeInvoice;
 use Illuminate\Http\Request;
 use App\Models\PaymentStudent;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class PaymentController extends Controller
 
     public function create()
     {
-        $Enrollments = Enrollment::where('year', date("Y"))->get();
+        $Enrollments = FeeInvoice::distinct()->where('year', date("Y"))->get(['student_id']);
         return view('pages.Payments.add',compact('Enrollments'));
     }
 

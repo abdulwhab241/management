@@ -16,7 +16,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
     public function create()
     {
-        $Grades = Grade::all();
+        $Grades = Grade::where('year', date("Y"))->get();
         
         return view('pages.Upgrades.create',compact('Grades'));
     }

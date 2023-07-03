@@ -53,7 +53,7 @@ class SectionController extends Controller
 
             Notification::send($users, new SectionNotification($Sections->id,$create_by,$Sections->name_section));
             
-            toastr()->success('تم حفظ القسم بنجاح');
+            toastr()->success('تم إضـافة القسم بنجاح');
             return redirect()->route('Sections.index');
         }
     

@@ -11,7 +11,7 @@
                 <form action="{{route('Fees_Invoices.destroy','test')}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input type="hidden" name="id" value="{{$Fee_invoice->id}}}">
+                    <input type="hidden" name="id" value="{{ $Fee_invoice->id }}">
                     <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية حـذ فـاتـورة الطـالـب ؟</h5>
                     <input id="Name" type="text" name="Name"
                     class="form-control"
