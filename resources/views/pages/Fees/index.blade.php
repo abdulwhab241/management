@@ -34,7 +34,7 @@
 <div class="box-header">
 
 <a href="{{route('Fees.create')}}" class="btn btn-success btn-flat" role="button"
-style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة رسوم جديدة</a><br><br>
+aria-pressed="true">اضافة رسوم جديدة</a><br><br>
 
 </div>
 <div class="box-body">

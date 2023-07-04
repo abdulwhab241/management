@@ -36,7 +36,7 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Subjects.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+<a href="{{route('Subjects.create')}}" class="btn btn-success btn-flat" role="button"
 aria-pressed="true">اضافة مادة جديدة</a>
 <br><br>
 <div class="box-tools">

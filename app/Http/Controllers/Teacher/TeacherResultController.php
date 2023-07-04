@@ -22,16 +22,18 @@ class TeacherResultController extends Controller
 {
     public function index()
     { 
-        $exams = Exam::where('teacher_id',auth()->user()->id)->where('year',date('Y'))->get();
+        $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $results = Section::with(['Results'])->whereIn('id', $ids)->where('year',date('Y'))->get();
+        $Months = Month::all();
+        $Semesters = Semester::all();
 
-        return view('pages.Teachers.dashboard.Result.index', compact('exams','results'));
+        return view('pages.Teachers.dashboard.Result.index', compact('exams','results','Months','Semesters'));
     }
 
     public function create()
     {
-        $exams = Exam::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get();
+        $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
@@ -50,7 +52,7 @@ class TeacherResultController extends Controller
     {
         try
         {
-            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
 
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);
@@ -95,9 +97,9 @@ class TeacherResultController extends Controller
         // dd($request);
         try
         {
-            $sections = Student::where('id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Student::where('id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
             
-            $Exam = Result::findOrFail($request->id);
+            $Exam = Result::findOrFail(strip_tags($request->id));
             $Exam->exam_id = strip_tags($request->Exam_id);
             $Exam->student_id = strip_tags($request->Student_id);
             $Exam->semester_id = strip_tags($request->Semester_id);

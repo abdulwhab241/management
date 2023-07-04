@@ -53,9 +53,9 @@
 </div>
 </div>
     <div class="box-footer">
-        <div class="col-sm-8">
+        {{-- <div class="col-sm-8"> --}}
         <button type="submit" class="btn btn-info btn-block">تعـديـل الصـورة</button>
-        </div>
+        {{-- </div> --}}
     </div><!-- /.box-footer -->
 
 </form>

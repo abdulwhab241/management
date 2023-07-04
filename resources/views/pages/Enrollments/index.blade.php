@@ -39,7 +39,7 @@
 <div class="box-header">
 
     <div class="box-body">
-        <a href="{{route('Enrollments.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+        <a href="{{route('Enrollments.create')}}" class="btn btn-success btn-flat" role="button"
         aria-pressed="true">تسـجيـل الطـلاب </a>
         <button type="button" class="btn btn-info btn-flat" title="تسجيل الطالب الذي تم إلغاء تسجيله" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -86,7 +86,6 @@
     <td>
         <div class="btn-group">
         <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $Enrollment->id }}" title="إلـغاء تسجيـل الطالب">إلـغاء </button>
-        {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="حذف الطالب المتخرج">حذف الطالب</button> --}}
         </div>
     </td>
 </tr>
@@ -148,7 +147,7 @@ aria-hidden="true">
         <select class="form-control select2" style="width: 100%;" name="Student_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Students as $Student)
-            <option value="{{$Student->id}}" >{{$Student->name}}</option>
+            <option value="{{$Student->student_id}}" >{{$Student->student->name}}</option>
             @endforeach
         </select>
         </div>

@@ -49,7 +49,7 @@
 
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
-<table id="example1" class="table table-bordered " style="width:100%; text-align: center;">
+<table id="example1" class="table table-bordered "  style="width:100%; text-align: center;">
 <thead>
 <tr>
 
@@ -118,6 +118,8 @@
 </div>
 </div>
 @endforeach
+
+
 </tbody>
 </table>
 </div>
@@ -209,6 +211,8 @@ class="btn btn-primary btn-block">إرسـال </button>
 </div>
 </div>
 </div>
+
+
 
 
 </div>

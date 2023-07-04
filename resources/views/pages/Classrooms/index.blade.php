@@ -36,7 +36,7 @@
 @endif
 <div class="box-header">
 
-<button type="button" class="btn btn-success btn-flat" style="margin: 5px; padding: 5px;" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#exampleModal">
 اضافة صف
 </button>
 

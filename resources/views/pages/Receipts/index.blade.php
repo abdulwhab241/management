@@ -40,7 +40,7 @@
 
 
 <div class="box-body">
-    <a href="{{route('Receipts.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+    <a href="{{route('Receipts.create')}}" class="btn btn-success btn-flat" role="button"
     aria-pressed="true">اضافة سنـد تسديـد </a>
     <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_receipts') }}">
         <i class="fas fa-file-download"></i>  
@@ -60,8 +60,10 @@
     <tr>
         <th style="text-align: center;" class="alert-info">#</th>
         <th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
-        <th style="text-align: center;" class="alert-info">المبلغ</th>
+        <th style="text-align: center;" class="alert-info">الرسوم</th>
+        <th style="text-align: center;" class="alert-info">مبلغ السداد</th>
         <th style="text-align: center;" class="alert-info">البيان</th>
+        <th style="text-align: center;" class="alert-info">رصـيد المتبقي</th>
         <th style="text-align: center;" class="alert-info">تاريخ السداد</th>
         <th style="text-align: center;" class="alert-success"> انشـئ بواسطـة</th>
         <th style="text-align: center;" class="alert-warning">العمليات</th>
@@ -72,8 +74,10 @@
     <tr>
     <td>{{ $loop->iteration }}</td>
     <td>{{$receipt_student->student->name}}</td>
+    <td>{{ number_format($receipt_student->student->student_account->sum('Debit_feeInvoice')) }} ريال </td>
     <td>{{ number_format($receipt_student->Debit) }} ريال </td>
     <td>{{$receipt_student->description}}</td>
+    <td>{{ number_format($receipt_student->student->student_account->sum('Debit_feeInvoice')  - $receipt_student->student->student_account->sum('credit_receipt') - $receipt_student->student->student_account->sum('credit_processing') ) }} ريال </td>
     <td>{{$receipt_student->date}}</td>
     <td>{{$receipt_student->create_by}}</td>
         <td>

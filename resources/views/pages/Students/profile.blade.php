@@ -14,7 +14,7 @@
 الملـف الشـخـصـي
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
 <li class="active">الملـف الشـخـصـي</li>
 </ol>
@@ -52,9 +52,9 @@
 </div>
 </div>
     <div class="box-footer">
-        <div class="col-sm-8">
+        {{-- <div class="col-sm-8"> --}}
         <button type="submit" class="btn btn-info btn-block">تعـديـل الصـورة</button>
-        </div>
+        {{-- </div> --}}
     </div><!-- /.box-footer -->
 
 </form>

@@ -36,7 +36,7 @@
 </div>
 @endif
 <div class="box-header">
-<a class="btn btn-success btn-flat md-4" style="padding:5px; margin: 5px;" href="{{route('Upgrades.create')}}">
+<a class="btn btn-success btn-flat md-4" href="{{route('Upgrades.create')}}">
     إضافة ترقيـة </a>
 
 <div class="box-tools">

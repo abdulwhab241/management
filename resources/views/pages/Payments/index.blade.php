@@ -75,7 +75,6 @@
     <td>{{ number_format($payment_student->amount) }} ريال </td>
     <td>{{$payment_student->description}}</td>
     <td style="font-weight: bolder; background-color: #D0DEF6;">{{ number_format($payment_student->student->student_account->sum('Debit_feeInvoice') - $payment_student->student->student_account->sum('credit_receipt') - $payment_student->student->student_account->sum('credit_processing')  ) }} ريال </td>
-    {{-- <td>{{ number_format($ProcessingFee->student->student_account->sum('Debit_feeInvoice') + $ProcessingFee->student->student_account->sum('Debit_payment') - $ProcessingFee->student->student_account->sum('credit_receipt') - $ProcessingFee->student->student_account->sum('credit_processing') ) }} ريال </td> --}}
     <td>{{$payment_student->date}}</td>
     <td>{{$payment_student->create_by}}</td>
         <td>

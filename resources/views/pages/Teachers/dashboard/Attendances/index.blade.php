@@ -28,7 +28,7 @@
 <div class="box">
 
 <div class="box-header">
-<a href="{{route('TeacherAttendance.create')}}" class="btn btn-primary btn-flat" role="button" style="padding:5px; margin: 5px;" 
+<a href="{{route('TeacherAttendance.create')}}" class="btn btn-primary btn-flat" role="button"
 aria-pressed="true">اضافة تحضـير</a>
 <br>
 <div class="box-tools">

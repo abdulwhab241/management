@@ -46,13 +46,13 @@
     <th style="text-align: center; background-color: #86B9D4;" >أسـم الطـالـب \ الطـالبـة</th>
     <th style="text-align: center; background-color: #86B9D4;" >العملـيات</th>
     <th style="text-align: center; background-color: #86B9D4;" >الفواتير الدراسية</th>
-    <th style="text-align: center; background-color: #86B9D4;" >المبلغ (مدين)</th>
+    <th style="text-align: center; background-color: #86B9D4;" >المبلغ </th>
     <th style="text-align: center; background-color: #86B9D4;" >سندات القبض</th>
-    <th style="text-align: center; background-color: #86B9D4;" >المبلغ (دائن)</th>
+    <th style="text-align: center; background-color: #86B9D4;" >المبلغ </th>
     <th style="text-align: center; background-color: #86B9D4;" > معالجة الرسوم</th>
-    <th style="text-align: center; background-color: #86B9D4;" >المبلغ (دائن)</th>
+    <th style="text-align: center; background-color: #86B9D4;" >المبلغ </th>
     <th style="text-align: center; background-color: #86B9D4;" > سندات الصرف</th>
-    <th style="text-align: center; background-color: #86B9D4;" >المبلغ (مدين)</th>
+    <th style="text-align: center; background-color: #86B9D4;" >المبلغ </th>
     <th style="text-align: center; background-color: #86B9D4;" > تاريخ العمليات</th>
     <th style="text-align: center; background-color: #86B9D4;">تم بواسطة</th>
 </tr>

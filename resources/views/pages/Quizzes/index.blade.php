@@ -37,8 +37,7 @@
 @endif
 <div class="box-header">
 
-<a href="{{route('Quizzes.create')}}" class="btn btn-success btn-flat" role="button"
-style="margin: 5px; padding: 5px;" aria-pressed="true">إضـافـة إختبـار  </a>
+<a href="{{route('Quizzes.create')}}" class="btn btn-success btn-flat" role="button" aria-pressed="true">إضـافـة إختبـار  </a>
 <br><br>
 <div class="box-tools">
 <div class="input-group" style="width: 150px;">

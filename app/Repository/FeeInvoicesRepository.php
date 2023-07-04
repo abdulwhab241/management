@@ -30,13 +30,6 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
         return view('pages.Fees_Invoices.add',compact('Students','Grades'));
     }
 
-    // public function show($id)
-    // {
-    //     $student = Enrollment::findOrFail($id);
-    //     $fees = Fee::where('classroom_id',$student->classroom_id)->get();
-    //     return view('pages.Fees_Invoices.show',compact('student','fees'));
-    // }
-
     public function edit($id)
     {
         $fee_invoices = FeeInvoice::findOrFail($id);

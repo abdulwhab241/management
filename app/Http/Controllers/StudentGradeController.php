@@ -29,7 +29,7 @@ class StudentGradeController extends Controller
         $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Teachers = Teacher::all();
-        $Subjects = Subject::all();
+        $Subjects = Subject::where('year', date("Y"))->get();
         $Months = Month::all();
         return view('pages.Student_Grades.add', compact('Students','Semesters','Teachers','Subjects','Months'));
     }
@@ -40,7 +40,7 @@ class StudentGradeController extends Controller
         $Students = Enrollment::where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Teachers = Teacher::all();
-        $Subjects = Subject::all();
+        $Subjects = Subject::where('year', date("Y"))->get();
         $Months = Month::all();
         return view('pages.Student_Grades.edit', compact('Students','StudentGrade','Semesters','Teachers','Subjects','Months'));
     }
@@ -88,7 +88,7 @@ class StudentGradeController extends Controller
             }
 
             $Total = $Results + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
-            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
 
             $StudentGrade = new StudentGrade();
             $StudentGrade->student_id = strip_tags($request->Student_id);
@@ -147,7 +147,7 @@ class StudentGradeController extends Controller
         }
 
         $Total =  $Results + strip_tags($request->Homework) + strip_tags($request->Verbal) + strip_tags($request->Attendance);
-        $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+        $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
         
         $StudentGrade = StudentGrade::findOrFail(strip_tags($request->id));
 
@@ -192,6 +192,7 @@ class StudentGradeController extends Controller
     public function destroy(Request $request)
     {
         StudentGrade::findOrFail(strip_tags($request->id))->delete();
+        StudentResult::where('student_grade_id',strip_tags($request->id))->delete();
         toastr()->error('تم حـذف محصـلـة الطـالـب بنجاح');
         return redirect()->route('Student_Grades.index');
     }

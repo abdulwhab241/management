@@ -35,7 +35,7 @@
 </div>
 @endif
 <div class="box-header">
-    <a class="btn btn-success btn-flat" style="padding:5px; margin: 5px;" href="#" data-toggle="modal" data-target="#exampleModal">
+    <a class="btn btn-success btn-flat" href="#" data-toggle="modal" data-target="#exampleModal">
     اضافة قسـم</a>
 </div>
 

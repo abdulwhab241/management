@@ -35,8 +35,7 @@
 </div>
 @endif
 <div class="box-header">
-<button type="button" class="btn btn-success btn-flat " 
-style="padding:5px; margin: 5px;" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-success btn-flat " data-toggle="modal" data-target="#exampleModal">
 إضافة مرحلة
 </button>
 <br><br>

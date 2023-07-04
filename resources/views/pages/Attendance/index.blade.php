@@ -32,8 +32,7 @@
 </div>
 @endif
 <div class="box-header">
-<a href="{{route('Attendance.create')}}" class="btn btn-success btn-flat" role="button"
-style="margin: 5px; padding: 5px;" aria-pressed="true">تحضيـر  </a>
+<a href="{{route('Attendance.create')}}" class="btn btn-success btn-flat" role="button" aria-pressed="true">تحضيـر  </a>
 <br><br>
 <div class="box-tools">
     <div class="input-group" style="width: 150px;">

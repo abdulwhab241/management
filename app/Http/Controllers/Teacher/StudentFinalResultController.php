@@ -40,6 +40,15 @@ class StudentFinalResultController extends Controller
     {
         try {
 
+            $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id', strip_tags($request->Subject_id))->where('year', date('Y'))->pluck('id');
+
+            if($Mids->count() == 0)
+            {
+                toastr()->error('عـذاً هـذا الـطالـب لا تـوجد لـه محصـلة للـترم الأول الرجاء إضافة محصلة للترم الاول لـهذي المادة');
+                return redirect()->back();
+            }
+
             $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
             ->where('subject_id',strip_tags($request->Subject_id))
             ->where('year', date('Y'))->sum('degree');
@@ -50,13 +59,10 @@ class StudentFinalResultController extends Controller
 
             $Result = round($Degree / 30);
 
-            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
-            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('classroom_id');
+            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
 
-            $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('student_id');
-
-            $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
-            ->where('subject_id', strip_tags($request->Subject_id))->pluck('id');
+            $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('student_id');
 
             $Total = $Result + strip_tags($request->Degree);
 
@@ -99,6 +105,16 @@ class StudentFinalResultController extends Controller
     {
         try
         {
+
+            $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
+            ->where('subject_id', strip_tags($request->Subject_id))->where('year', date('Y'))->pluck('id');
+
+            if($Mids->count() == 0)
+            {
+                toastr()->error('عـذاً هـذا الـطالـب لا تـوجد لـه محصـلة للـترم الأول الرجاء إضافة محصلة للترم الاول لـهذي المادة');
+                return redirect()->back();
+            }
+
             $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
             ->where('subject_id',strip_tags($request->Subject_id))
             ->where('year', date('Y'))->sum('degree');
@@ -109,13 +125,10 @@ class StudentFinalResultController extends Controller
 
             $Result = round($Degree / 30);
 
-            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
-            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('classroom_id');
+            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
             
-            $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('student_id');
-
-            $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
-            ->where('subject_id', strip_tags($request->Subject_id))->pluck('id');
+            $Students = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('student_id');
 
             $Total = $Result + strip_tags($request->Degree);
 

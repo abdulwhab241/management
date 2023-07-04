@@ -30,7 +30,7 @@
 
 <div class="box-header">
 
-<a class="btn btn-primary btn-flat" style="padding:5px; margin: 5px;" href="{{route('TeacherResult.create')}}">
+<a class="btn btn-primary btn-flat" href="{{route('TeacherResult.create')}}">
     اضافة نتيجـة</a>
 <br><br>
 <div class="box-tools">
@@ -116,46 +116,59 @@ id="exampleModalLabel">
 @csrf
 <div class="box-body">
 
-<div class="row">
+    <div class="row">
+        <div class="col-md-6">
+            <label >الفصل الدراسي</label>
+            <select class="form-control select2" style="width: 100%;" name="Semester_id">
+                <option value="{{ $Result->semester_id }}"> {{ $Result->semester->name }} </option>
+                @foreach ($Semesters as $Semester)
+                <option value="{{ $Semester->id }}">
+                    {{ $Semester->name }}
+                </option>
+            @endforeach
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label >إختبـار شهـر</label>
+            <select class="form-control select2" style="width: 100%;" name="Result_name">
+                <option value="{{ $Result->month_id }}"> {{ $Result->month->name }} </option>
+                @foreach ($Months as $Month)
+                <option value="{{ $Month->id }}">
+                    {{ $Month->name }}
+                </option>
+            @endforeach
+            </select>
+        </div>
+    </div><br>
 
-    <div class="col-md-4"> 
+<div class="row">
+    <div class="col-md-6"> 
         <label>أسـم الطـالـب \ الطـالبـة </label>
         <input id="id" type="hidden" name="id" class="form-control"
         value="{{ $Result->id }}">
         <select class="form-control select2" style="width: 100%;" name="Student_id">
-            <option value="{{ $Result->student->id }}">
+            <option value="{{ $Result->student_id }}">
                 {{ $Result->student->name }}
             </option>
 
         </select>
     </div>
 
-    <div class="col-md-4"> 
+    <div class="col-md-6"> 
         <label>المـادة</label>
         <select class="form-control select2" style="width: 100%;" name="Exam_id">
-            <option value="{{ $Result->exam->subject->id }}">
+            <option value="{{ $Result->exam_id }}">
                 {{ $Result->exam->subject->name }}
             </option>
             @foreach ($exams as $Exam)
-            <option value="{{ $Exam->id }}">
+            <option value="{{ $Exam->subject_id }}">
                 {{ $Exam->subject->name }}
             </option>
         @endforeach
         </select>
     </div>
-    <div class="col-md-4">
-        <label >إختبـار شهـر</label>
-        <select class="form-control select2" style="width: 100%;" name="Result_name">
-            <option> {{ $Result->result_name }} </option>
-            <option value="فبراير">فبراير</option>
-            <option value="مارس">مارس</option>
-            <option value="ابريل">ابريل</option>
-            <option value="اكتوبر">اكتوبر</option>
-            <option value="نوفمبر">نوفمبر</option>
-            <option value="ديسمبر">ديسمبر</option>
-        </select>
-    </div>
 </div><br>
+
 
 <div class="row">
 

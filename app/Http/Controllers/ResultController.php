@@ -60,7 +60,7 @@ class ResultController extends Controller
     {
         try
         {
-            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
 
             $Exam = new Result();
             $Exam->exam_id = strip_tags($request->Exam_id);
@@ -94,7 +94,7 @@ class ResultController extends Controller
         try
         {
             // dd($request);
-            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
             
             $Exam = Result::findOrFail($request->id);
             $Exam->exam_id = strip_tags($request->Exam_id);

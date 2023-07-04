@@ -18,7 +18,7 @@ class MidResultController extends Controller
     public function index()
     {
         $MidResults = MidResult::where('year', date('Y'))->get();
-        $Classrooms = Classroom::all();
+        $Classrooms = Classroom::where('year', date("Y"))->get();
         $Students = MidResult::distinct()->where('year', date('Y'))->get(['student_id']);
         return view('pages.Mid_Results.index', compact('MidResults','Students','Classrooms'));
     }
@@ -108,8 +108,8 @@ class MidResultController extends Controller
 
             $Result = round($Degree / 15);
 
-            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
-            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('classroom_id');
+            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
 
             $Total = $Result + strip_tags($request->Degree);
 
@@ -160,8 +160,8 @@ class MidResultController extends Controller
             }
             $Result = round($Degree / 15);
             
-            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('classroom_id');
-            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('classroom_id');
+            $Sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
 
             $Total = $Result + strip_tags($request->Degree);
 

@@ -31,7 +31,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
     {
         try {
 
-            $students = Enrollment::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('year',$request->academic_year)->get();
+            $students = Enrollment::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('year',$request->academic_year)->where('year', date('Y'))->get();
 
             if($students->count() < 1){
                 toastr()->error('لاتوجد بيانات في جدول تسـجيـل الطلاب');

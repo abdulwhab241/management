@@ -80,7 +80,7 @@
         <select class="form-control select2" style="width: 100%;" name="Exam_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($exams as $Exam)
-                <option value="{{ $Exam->id }}">
+                <option value="{{ $Exam->subject_id }}">
                     {{ $Exam->subject->name }}
                 </option>
             @endforeach

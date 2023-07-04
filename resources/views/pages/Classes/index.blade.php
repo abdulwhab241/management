@@ -38,7 +38,7 @@
 @endif
 <div class="box-header">
     <div class="box-body">
-        <a href="{{route('Classes.create')}}" class="btn btn-success btn-flat" role="button" style="padding:5px; margin: 5px;" 
+        <a href="{{route('Classes.create')}}" class="btn btn-success btn-flat" role="button"
         aria-pressed="true">اضافة جدول الحصـص</a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_student_classes') }}">
             <i class="fas fa-file-download"></i>  

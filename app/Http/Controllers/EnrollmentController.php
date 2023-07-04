@@ -13,13 +13,13 @@ class EnrollmentController extends Controller
     public function index()
     {
         $Enrollments = Enrollment::where('year', date("Y"))->get();
-        $Students = Enrollment::onlyTrashed()->get();
+        $Students = Enrollment::onlyTrashed()->where('year', date('Y'))->get();
         return view('pages.Enrollments.index',compact('Enrollments','Students'));
     }
 
     public function create()
     {
-        $Grades = Grade::all();
+        $Grades = Grade::where('year', date('Y'))->get();
         return view('pages.Enrollments.add',compact('Grades'));
     }
 
@@ -34,7 +34,7 @@ class EnrollmentController extends Controller
             return redirect()->back();
         }
 
-        Enrollment::onlyTrashed()->where('student_id', $request->Student_id)->first()->restore();
+        Enrollment::onlyTrashed()->where('student_id', $request->Student_id)->where('year', date('Y'))->first()->restore();
         toastr()->success('تم إعـادة تسجـيـل الطـالـب بنجاح');
         return redirect()->back();
 
@@ -45,7 +45,7 @@ class EnrollmentController extends Controller
     }
     public function store(EnrollmentRequest $request)
     {
-        $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->get();
+        $students = Student::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->where('year', date('Y'))->get();
 
         if($students->count() < 1){
             toastr()->error('لاتوجد بيانات في جدول الطلاب');

@@ -36,7 +36,7 @@
 
     <div class="box-body">
         <a href="{{route('Fees_Invoices.create')}}" class="btn btn-success btn-flat" role="button"
-        style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة فـاتـورة جديدة</a>
+        aria-pressed="true">اضافة فـاتـورة جديدة</a>
         <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_fee_invoices') }}">
             <i class="fas fa-file-download"></i>  
         </a>

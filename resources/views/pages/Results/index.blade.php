@@ -39,7 +39,7 @@
 
 <div class="box-body">
     <a href="{{route('Results.create')}}" class="btn btn-success btn-flat" role="button"
-    style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة نتيـجـة</a>
+    aria-pressed="true">اضافة نتيـجـة</a>
     <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_results') }}">
         <i class="fas fa-file-download"></i>  
     </a>

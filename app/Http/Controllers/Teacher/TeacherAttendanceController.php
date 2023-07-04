@@ -39,8 +39,8 @@ class TeacherAttendanceController extends Controller
         ]);
         try {
 
-            $sections = Enrollment::where('student_id',$request->Student_id)->pluck('section_id');
-            $classrooms = Enrollment::where('student_id',$request->Student_id)->pluck('classroom_id');
+            $sections = Enrollment::where('student_id',$request->Student_id)->where('year', date('Y'))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',$request->Student_id)->where('year', date('Y'))->pluck('classroom_id');
 
             $Attendances = new Attendance();
             $Attendances->day = strip_tags($request->Day_id);
@@ -83,8 +83,8 @@ class TeacherAttendanceController extends Controller
             'Attendance' => 'required'
         ]);
         try {
-            $sections = Enrollment::where('student_id',$request->Student_id)->pluck('section_id');
-            $classrooms = Enrollment::where('student_id',$request->Student_id)->pluck('classroom_id');
+            $sections = Enrollment::where('student_id',$request->Student_id)->where('year', date('Y'))->pluck('section_id');
+            $classrooms = Enrollment::where('student_id',$request->Student_id)->where('year', date('Y'))->pluck('classroom_id');
 
             $Attendances = Attendance::findOrFail($request->id);
             $Attendances->day = strip_tags($request->Day_id);
@@ -116,7 +116,7 @@ class TeacherAttendanceController extends Controller
     public function destroy(Request $request)
     {
         try {
-            Attendance::findOrFail($request->id)->delete(); 
+            Attendance::findOrFail(strip_tags($request->id))->delete(); 
             toastr()->error('تم حذف التحضيـر بنجاح');
             return redirect()->back();
         } catch (\Exception $e) {

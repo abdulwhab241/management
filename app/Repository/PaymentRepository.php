@@ -115,7 +115,6 @@ class PaymentRepository implements PaymentRepositoryInterface
             $students_accounts->date = date('Y-m-d');
             $students_accounts->type = 'تعديل سند الصرف';
             $students_accounts->student_id = strip_tags($request->Student_id);
-            // $students_accounts->payment_id = strip_tags($payment_students->id);
             $students_accounts->Debit_payment = strip_tags($request->Debit);
             $students_accounts->credit_payment = 0.00; 
             $students_accounts->description = strip_tags($request->description);

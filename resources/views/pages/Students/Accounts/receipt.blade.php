@@ -14,7 +14,7 @@
 تسـديـد رسـوم 
 </h1>
 <ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
+    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 <li class="active">تسـديـد رسـوم</li>
 </ol>
 </section>

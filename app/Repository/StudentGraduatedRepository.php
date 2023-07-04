@@ -25,7 +25,7 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function SoftDelete($request)
     {
-        $students = Enrollment::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->get();
+        $students = Enrollment::where('grade_id',$request->Grade_id)->where('classroom_id',$request->Classroom_id)->where('section_id',$request->Section_id)->where('year', date('Y'))->get();
 
         if($students->count() < 1){
             toastr()->error('لاتوجد بيانات في جدول الطلاب');
@@ -52,7 +52,7 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
 
     public function destroy($request)
     {
-        Graduation::destroy($request->id);
+        Graduation::destroy(strip_tags($request->id));
         toastr()->error('تـم إلغـاء  تخـرج  الطـالـب  بنجـاح');
         return redirect()->back();
     }

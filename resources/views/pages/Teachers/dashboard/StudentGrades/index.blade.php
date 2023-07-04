@@ -36,7 +36,7 @@
 </div>
 @endif
 <div class="box-header">
-<a class="btn btn-primary btn-flat" style="padding:5px; margin: 5px;" href="{{route('Teacher_Grades.create')}}">
+<a class="btn btn-primary btn-flat" href="{{route('Teacher_Grades.create')}}">
     اضافة كشـف الـدرجـات</a>
 <br><br>
 <div class="box-tools">
@@ -101,9 +101,42 @@
                 <td>
                     <div class="btn-group">
                     <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل"><i class="fa fa-edit"></i></a>
+                    <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Student_Grade->id }}" title="حذف"><i class="fa fa-trash"></i></button>
                     </div>
                 </td>
             </tr>
+
+<!-- Delete modal -->
+<div class="modal fade" id="delete_result{{$Student_Grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-danger" role="document">
+<form action="{{route('Teacher_Grades.destroy',$Student_Grade->id)}}" method="post">
+{{method_field('delete')}}
+{{csrf_field()}}
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف محصلة الطالب</h5>
+
+</div>
+<div class="modal-body">
+    <p> هل انت متاكد من عملية حذف محصلة الطـالـب  </p>
+    <input type="hidden" name="id"  value="{{$Student_Grade->id}}">
+    <input  type="text" style="font-weight: bolder; font-size:20px;"
+    name="Name_Section"
+    class="form-control"
+    value="{{$Student_Grade->student->name}}"
+    disabled>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline"
+            data-dismiss="modal">إغلاق</button>
+    <button type="submit"
+            class="btn btn-outline">حذف البيانات</button>
+</div>
+</div>
+</form>
+</div>
+</div>
         
         
         
