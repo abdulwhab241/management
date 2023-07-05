@@ -12,7 +12,7 @@ class FinalResultExport implements FromView
     public function view(): View
     {
         return view('pages.Final_Result.FinalResultExcel', [
-            'FinalResults' => FinalResult::all()
+            'FinalResults' => FinalResult::where('year',date('Y'))->get()
         ]);
     }
 }

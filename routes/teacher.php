@@ -14,6 +14,7 @@ use App\Http\Controllers\Teacher\TeacherProfileController;
 use App\Http\Controllers\Teacher\StudentMidResultController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Teacher\StudentFinalResultController;
+use App\Models\TeacherSubject;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::group(
         $ids = Teacher::findOrFail(auth()->user()->id)->SectionsWith()->pluck('section_id');
         $data['count_sections']= $ids->count();
         $data['count_students']= Enrollment::whereIn('section_id',$ids)->where('year', date("Y"))->count();
+        $data['count_classrooms']= Section::distinct()->whereIn('id', $ids)->where('year', date('Y'))->get(['class_id'])->count();
+        $data['count_subjects']= TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->count();
 
         return view('pages.Teachers.dashboard.dashboard',$data);
 
@@ -50,7 +53,8 @@ Route::group(
         //==============================Teacher Students============================
         Route::get('TeacherStudent','TeacherStudentController@index')->name('student.index');
         Route::get('TeacherSections','TeacherStudentController@sections')->name('sections');
-        Route::post('editAttendance','TeacherStudentController@editAttendance')->name('editAttendance');
+        Route::get('TeacherClassrooms','TeacherStudentController@classrooms')->name('TeacherClassrooms');
+        Route::get('Subjects_Teacher','TeacherStudentController@subjects')->name('Subjects_Teacher');
         Route::get('attendance_report','TeacherStudentController@attendanceReport')->name('attendance.report');
         Route::post('attendance_report','TeacherStudentController@attendanceSearch')->name('attendance.search');
 

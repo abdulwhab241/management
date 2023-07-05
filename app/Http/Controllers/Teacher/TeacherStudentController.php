@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Attendance;
 use App\Http\Controllers\Controller;
 use App\Models\Enrollment;
+use App\Models\TeacherSubject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,13 +20,23 @@ class TeacherStudentController extends Controller
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         return view('pages.Teachers.dashboard.students.index', compact('students'));
     }
-
-
     public function sections()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $sections = Section::whereIn('id', $ids)->where('year', date('Y'))->get();
         return view('pages.Teachers.dashboard.sections.index', compact('sections'));
+    }
+    public function classrooms()
+    {
+        $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
+        $Classrooms = Section::distinct()->whereIn('id', $ids)->where('year', date('Y'))->get(['class_id']);
+        return view('pages.Teachers.dashboard.sections.classroom', compact('Classrooms'));
+    }
+
+    public function subjects()
+    {
+        $Subjects = TeacherSubject::where('teacher_id', auth()->user()->id)->where('year', date('Y'))->get();
+        return view('pages.Teachers.dashboard.sections.subject', compact('Subjects'));
     }
     
 

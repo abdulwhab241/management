@@ -23,19 +23,19 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecializationSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(SemesterSeeder::class);
-        $this->call(GradeSeeder::class);
-        $this->call(ClassroomSeeder::class);
-        $this->call(SectionSeeder::class);
-        $this->call(FeeSeeder::class);
-        $this->call(StudentSeeder::class);
-        $this->call(TeacherSeeder::class);
-        $this->call(SubjectSeeder::class);
-        $this->call(TestSeeder::class);
+        // $this->call(GradeSeeder::class);
+        // $this->call(ClassroomSeeder::class);
+        // $this->call(SectionSeeder::class);
+        // $this->call(FeeSeeder::class);
+        // $this->call(StudentSeeder::class);
+        // $this->call(TeacherSeeder::class);
+        // $this->call(SubjectSeeder::class);
+        // $this->call(TestSeeder::class);
         $this->call(MonthSeeder::class);
-        $this->call(ExamSeeder::class);
-        $this->call(ResultSeeder::class);
-        $this->call(StudentGradeSeeder::class);
-        $this->call(StudentResultSeeder::class);
+        // $this->call(ExamSeeder::class);
+        // $this->call(ResultSeeder::class);
+        // $this->call(StudentGradeSeeder::class);
+        // $this->call(StudentResultSeeder::class);
         // $this->call(FinalSeeder::class);
     }
 }

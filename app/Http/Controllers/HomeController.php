@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\FundAccount;
-use Illuminate\Http\Request;
+use App\Exports\FundAccountExport;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('selection');
-    // }
+
 
     public function dashboard()
     {
@@ -21,8 +18,13 @@ class HomeController extends Controller
 
     public function box()
     {
-        $Boxes = FundAccount::all();
+        $Boxes = FundAccount::where('year',date('Y'))->get();
         return view('pages.Boxes.index',compact('Boxes'));
+    }
+
+    public function export() 
+    {
+        return Excel::download(new FundAccountExport, 'الصندوق.xlsx');
     }
 
 }

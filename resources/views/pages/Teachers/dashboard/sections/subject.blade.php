@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-الاقسام الدراسية
+المـواد الدراسـيـة
 @stop
 @endsection
 
@@ -12,12 +12,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
 <h1>
-الاقسام الدراسية
+المـواد الدراسـيـة
 </h1>
 <ol class="breadcrumb">
 <li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
 
-<li class="active">الاقسام الدراسية</li>
+<li class="active">المـواد الدراسـيـة</li>
 </ol>
 </section>
 
@@ -33,17 +33,13 @@
     <table  class="table" style="width:100%; text-align: center;" border="2">
 <thead>
 <tr>
-    <th style="text-align: center; background-color: #D0DEF6;">المـرحلـة الـدراسيـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;">الصـف الـدراسـي </th>
-    <th style="text-align: center; background-color: #D0DEF6;">الشٌـعبـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;">الـمـادة </th>
 </tr>
 </thead>
 <tbody>
-@foreach ($sections as $section)
+@foreach ($Subjects as $Subject)
 <tr>
-    <td>{{ $section->Grades->name }}</td>
-    <td>{{ $section->My_Classes->name_class }}</td>
-    <td>{{ $section->name_section }}</td>
+    <td>{{ $Subject->subject->name }}</td>
 </tr>
 @endforeach
 </tbody>

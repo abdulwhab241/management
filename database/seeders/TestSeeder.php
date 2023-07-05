@@ -18,29 +18,38 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach(range(1,100) as $i){
+        foreach(range(1,100000) as $i){
         
-            Student::create(
+            // Student::create(
+            //     [
+            //         "name"=>fake()->name,
+            //         "gender_id"=> Gender::all()->unique()->random()->id,
+            //         "birth_date"=>'2000-02-02',
+            //         "grade_id"=>'1',
+            //         "section_id"=> Section::all()->unique()->random()->id,
+            //         "classroom_id"=> Classroom::all()->unique()->random()->id,
+            //         "academic_year"=>'2023',
+            //         "father_name"=>fake()->name,
+            //         "employer"=>fake()->name,
+            //         "father_job"=>fake()->name,
+            //         "father_phone"=>fake()->phoneNumber(),
+            //         "password"=>Hash::make('1234'),
+            //         "home_phone"=>fake()->phoneNumber(),
+            //         "address"=>fake()->name,
+            //         "mother_name"=>fake()->name,
+            //         "mother_phone"=>fake()->phoneNumber(),
+            //         "mother_job"=>fake()->phoneNumber(),
+            //         'year' => '2023'
+                
+            //     ]
+            //     );
+
+            Grade::create(
                 [
                     "name"=>fake()->name,
-                    "gender_id"=> Gender::all()->unique()->random()->id,
-                    "birth_date"=>'2000-02-02',
-                    "grade_id"=>'1',
-                    "section_id"=> Section::all()->unique()->random()->id,
-                    "classroom_id"=> Classroom::all()->unique()->random()->id,
-                    "academic_year"=>'2023',
-                    "father_name"=>fake()->name,
-                    "employer"=>fake()->name,
-                    "father_job"=>fake()->name,
-                    "father_phone"=>fake()->phoneNumber(),
-                    "password"=>Hash::make('1234'),
-                    "home_phone"=>fake()->phoneNumber(),
-                    "address"=>fake()->name,
-                    "mother_name"=>fake()->name,
-                    "mother_phone"=>fake()->phoneNumber(),
-                    "mother_job"=>fake()->phoneNumber(),
+                    "notes"=>fake()->name,
                     'year' => '2023'
-                
+            
                 ]
                 );
         }

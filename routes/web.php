@@ -52,8 +52,12 @@ Route::group(
         Route::get('/dashboard', [HomeController::class, 'dashboard']) -> name('dashboard');
 
         // define('PAGINATION_COUNT', 2);
-        Route::get('/box', [HomeController::class, 'box']) -> name('box');
 
+        //==============================Boxes============================
+        Route::get('/box', [HomeController::class, 'box']) -> name('box');
+        Route::get('export_boxes', [HomeController::class, 'export'])->name('export_Boxes'); 
+
+        //==============================Grades============================
         Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::resource('Grades', GradeController::class);
             Route::get('Notification/markAsRead', [GradeController::class, 'markAsRead']) -> name('Notification.Read');

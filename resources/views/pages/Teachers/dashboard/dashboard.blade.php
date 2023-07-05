@@ -41,7 +41,7 @@
 <section class="content">
 <!-- Small boxes (Stat box) -->
 <div class="row">
-    <div class="col-lg-6 col-xs-6">
+    <div class="col-lg-3 col-xs-3">
         <!-- small box -->
         <div class="small-box bg-yellow">
         <div class="inner">
@@ -54,7 +54,7 @@
         <a href="{{route('student.index')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
         </div>
     </div><!-- ./col -->
-<div class="col-lg-6 col-xs-6">
+    <div class="col-lg-3 col-xs-3">
     <!-- small box -->
     <div class="small-box bg-aqua">
     <div class="inner">
@@ -65,6 +65,34 @@
         <i class="fas fa-chalkboard" aria-hidden="true"></i>
     </div>
     <a href="{{route('sections')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
+    </div>
+</div><!-- ./col -->
+
+<div class="col-lg-3 col-xs-3">
+    <!-- small box -->
+    <div class="small-box bg-#D0DEF6">
+    <div class="inner">
+        <h4>عـدد الـصـفـوف الـدراسـيـة</h4>
+        <p>{{$count_classrooms}}</p>
+    </div>
+    <div class="icon">
+        <i class="fa fa-building" aria-hidden="true"></i>
+    </div>
+    <a href="{{route('TeacherClassrooms')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
+    </div>
+</div><!-- ./col -->
+
+<div class="col-lg-3 col-xs-3">
+    <!-- small box -->
+    <div class="small-box bg-green">
+    <div class="inner">
+        <h4>عـدد المـواد الـدراسـيـة</h4>
+        <p>{{$count_subjects}}</p>
+    </div>
+    <div class="icon">
+        <i class="fa fa-book" aria-hidden="true"></i>
+    </div>
+    <a href="{{route('Subjects_Teacher')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
     </div>
 </div><!-- ./col -->
 

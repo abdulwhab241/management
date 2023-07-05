@@ -12,7 +12,7 @@ class ResultsExport implements FromView
     public function view(): View
     {
         return view('pages.Results.ResultExcel', [
-            'Results' => Result::all()
+            'Results' => Result::where('year',date('Y'))->get()
         ]);
     }
 }

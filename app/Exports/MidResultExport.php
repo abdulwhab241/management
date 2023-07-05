@@ -8,18 +8,11 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class MidResultExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
-    {
-        return MidResult::all();
-    }
 
     public function view(): View
     {
         return view('pages.Mid_Results.MidResultExcel', [
-            'MidResults' => MidResult::all()
+            'MidResults' => MidResult::where('year',date('Y'))->get()
         ]);
     }
 }

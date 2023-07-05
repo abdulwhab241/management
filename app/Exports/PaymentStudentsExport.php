@@ -11,7 +11,7 @@ class PaymentStudentsExport implements FromView
     public function view(): View
     {
         return view('pages.Payments.PaymentExcel', [
-            'PaymentStudents' => PaymentStudent::all()
+            'PaymentStudents' => PaymentStudent::where('year',date('Y'))->get()
         ]);
     }
 }

@@ -11,7 +11,7 @@ class ReceiptsExport implements FromView
     public function view(): View
     {
         return view('pages.Receipts.ReceiptExcel', [
-            'ReceiptStudents' => ReceiptStudent::all()
+            'ReceiptStudents' => ReceiptStudent::where('year',date('Y'))->get()
         ]);
     }
 }

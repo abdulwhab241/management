@@ -12,7 +12,7 @@ class ProcessingExport implements FromView
     public function view(): View
     {
         return view('pages.ProcessingFee.ProcessingExcel', [
-            'ProcessingFees' => ProcessingFee::all()
+            'ProcessingFees' => ProcessingFee::where('year',date('Y'))->get()
         ]);
     }
 }

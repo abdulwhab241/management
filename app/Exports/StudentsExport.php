@@ -11,7 +11,7 @@ class StudentsExport implements FromView
     public function view(): View
     {
         return view('pages.Students.StudentExcel', [
-            'Students' => Student::all()
+            'Students' => Student::where('year',date('Y'))->get()
         ]);
     }
 

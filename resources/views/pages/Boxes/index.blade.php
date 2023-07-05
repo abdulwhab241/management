@@ -36,10 +36,19 @@
 </ul>
 </div>
 @endif
+
+<div class="box-header">
+    <div class="box-body">
+    <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_Boxes') }}">
+            <i class="fas fa-file-download"></i>  
+    </a>
+    </div>
+</div>
+
 <br>
 <div class="box-body">
 <div class="box-body table-responsive no-padding">
-    <table id="example1" class="box-body table-responsive " style="width:100%; text-align: center;">
+    <table id="example1" class="box-body table-responsive " style="width:100%; text-align: center;" border="2">
 <thead>
 <tr>
     <th style="text-align: center; background-color: #86B9D4;" >#</th>

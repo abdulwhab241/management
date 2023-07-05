@@ -12,7 +12,7 @@ class StudentGradesExport implements FromView
     public function view(): View
     {
         return view('pages.Student_Grades.StudentGradeExcel', [
-            'StudentGrades' => StudentGrade::all()
+            'StudentGrades' => StudentGrade::where('year',date('Y'))->get()
         ]);
     }
 }
