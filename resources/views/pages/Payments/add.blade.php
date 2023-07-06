@@ -65,10 +65,6 @@
             </div>
             @enderror
         </div>
-        {{-- <div class="col-md-4">
-            <label>رصيد الطالب </label>
-            <input  class="form-control" name="final_balance" style="font-weight: bolder; font-size:15px;" value="{{ number_format($student->student_account->sum('Debit_feeInvoice') - $student->student_account->sum('credit_receipt') ) }}" type="text" readonly>
-        </div> --}}
         <div class="col-md-4">
             <label>البيان</label>
             <textarea class="form-control" name="description" rows="2">{{ old('description') }}</textarea>

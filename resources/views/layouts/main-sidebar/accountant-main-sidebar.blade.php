@@ -5,14 +5,10 @@
 <!-- Sidebar user panel -->
 <div class="user-panel">
 <div class="pull-right image">
-    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
     @if (isset(Auth::user()->name))
-    {{-- @if(count(data_get(Auth::user()->image,'image')??[])) --}}
-    {{-- @foreach(data_get(Auth::user()->image,'image') as $image) --}}
-    {{-- <img src="{{ '/attachments/Admins/' . $image }}" class="img-circle" alt="User Image"> --}}
+
     <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}" >
-    {{-- @endforeach --}}
-    {{-- @endif --}}
+
 </div>
 <div class="pull-left info">
     <p>{{auth()->user()->name}}</p>
@@ -42,7 +38,6 @@
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
-    {{-- <li><a href="{{route('Fees.index')}}"><i class="fa fa-circle-o"></i> الرسـوم الدراسيـة</a></li> --}}
     <li><a href="{{route('Fees_Invoices.index')}}"><i class="fa fa-circle-o"></i> الفـواتيـر الدراسيـة</a></li>
     <li><a href="{{ route('Receipts.index') }}"><i class="fa fa-circle-o"></i> سندات القبض (تسـديـد رسـوم)</a></li>
     <li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-circle-o"></i> أستبـعاد رسـوم طـالـب </a></li>

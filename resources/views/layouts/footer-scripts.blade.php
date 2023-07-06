@@ -1,5 +1,4 @@
 <!-- jQuery 2.1.4 -->
-<!-- jQuery 2.1.4 -->
 <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -8,18 +7,10 @@
 $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.4 -->
-<!-- Bootstrap 3.3.4 -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
-{{-- <script src="/DataTable/dataTables.buttons.min.js"></script>
-<script src="/DataTable/jszip.min.js"></script> <!-- Excel -->
-<script src="/DataTable/buttons.html5.min.js"></script>
-<script src="/DataTable/buttons.print.min.js"></script> --}}
-
-{{-- <script src="/DataTable/pdfmake.min.js"></script> --}}
-{{-- <script src="/DataTable/vfs_fonts.js"></script> --}}
 
 <!-- Select2 -->
 <script src="/plugins/select2/select2.full.min.js"></script>
@@ -56,10 +47,7 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="/plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/app.min.js"></script>
-{{-- <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/dist/js/pages/dashboard.js"></script> --}}
-<!-- AdminLTE for demo purposes -->
-{{-- <script src="/dist/js/demo.js"></script> --}}
+
 
 <script type="text/javascript">
     function printDiv() {
@@ -73,20 +61,17 @@ $.widget.bridge('uibutton', $.ui.button);
 
 </script>
 
-<!-- page script -->
-{{-- <script>
-    $(document).ready(function() {
-    $('#example1').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'print'
-        ]
-    } );
-} );
-</script> --}}
+
 <script>
 $(function () {
     $("#example1").DataTable();
+    // $(document).ready( function() {
+	// 		 *      $('#example1').dataTable( {
+	// 		 *        "language": {
+	// 		 *          "infoEmpty": " - إظهار 0 الى 0 من اصل 0 سجلات"
+	// 		 *        }
+	// 		 *      } );
+	// 		 *    } );
     $('#example2').DataTable({
     "paging": true,
     "lengthChange": false,
@@ -114,58 +99,7 @@ $(function () {
         }
     }
 </script>
-{{-- 
-<!-- Get Classrooms for Students -->
-<script>
-    $(document).ready(function () {
-        $('select[name="Student_id"]').on('change', function () {
-            var Student_id = $(this).val();
-            if (Student_id) {
-                $.ajax({
-                    url: "{{ URL::to('Get_studentsClass') }}/" + Student_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="Classroom_id"]').empty();
-                        $('select[name="Classroom_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
-                        $.each(data, function (key, value) {
-                            $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            }
-            else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script> --}}
 
-{{-- <!-- Get Classrooms for Grades -->
-<script>
-    $(document).ready(function () {
-        $('select[name="Classroom_id"]').on('change', function () {
-            var Classroom_id = $(this).val();
-            if (Classroom_id) {
-                $.ajax({
-                    url: "{{ URL::to('Get_price') }}/" + Classroom_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="Fee_id"]').empty();
-                        $('select[name="Fee_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
-                        $.each(data, function (key, value) {
-                            $('select[name="Fee_id"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            }
-            else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script> --}}
 
 <!-- Get Title for Classrooms -->
 <script>

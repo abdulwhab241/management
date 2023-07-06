@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Grade;
 use App\Models\Section;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
@@ -93,9 +94,23 @@ class SectionController extends Controller
 
     public function destroy(Request $request)
     {
-        Section::findOrFail($request->id)->delete();
-        toastr()->error('تم حذف القسم بنجاح');
-        return redirect()->route('Sections.index');
+
+
+        $MyStudent_id = Student::where('section_id',strip_tags($request->id))->pluck('section_id');
+
+        if($MyStudent_id->count() == 0){
+
+            $Sections = section::findOrFail(strip_tags($request->id))->delete();
+            toastr()->error('تم حذف القسم بنجاح');
+            return redirect()->route('Sections.index');
+        }
+
+        else{
+
+            toastr()->warning(' لايمكن حذف القسم بسبب وجود طـلاب تابعة لـه احـذف الـطـلاب التابعة لـه ثم احذف القسم');
+            return redirect()->route('Sections.index');
+        }
+
     }
 
     public function getclasses($id)
