@@ -65,12 +65,13 @@
 <td>{{$loop->iteration}}</td>
 <td>{{$User->name}}</td>
 <td>{{$User->phone_number}}</td>
-<th  style="text-align: center;  background-color: #D0DEF6;">{{$User->job}}</th>
+<th style="text-align: center;  background-color: #D0DEF6;">{{$User->job}}</th>
 <td>{{$User->address}}</td>
 
     <td>
         <div class="btn-group">
-        <a href="{{route('Users.edit',$User->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+        {{-- <a href="{{route('Users.edit',$User->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a> --}}
+        <a href="#" style="margin: 3px;" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
         {{-- <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_User{{ $User->id }}" title="حذف"><i class="fa fa-trash"></i></button> --}}
         </div>
     </td>

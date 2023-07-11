@@ -34,7 +34,7 @@
 <li class="treeview">
     <a href="#">
     <i class="fas fa-school"></i>
-    <span>المراحل الدراسية</span>
+    <span> &nbsp; المراحل الدراسية</span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
@@ -173,7 +173,7 @@
 <li class="treeview">
     <a href="#">
     <i class="fas fa-books"></i>
-    <span>الحصـص الدراسية</span>
+    <span> &nbsp; الحصـص الدراسية</span>
     <i class="fa fa-angle-left pull-left"></i>
     </a>
     <ul class="treeview-menu">
@@ -181,11 +181,14 @@
     <li><a href="{{ route('Classes_Teacher.index') }}"><i class="fa fa-circle-o"></i> قائمة حصـص المعلمين</a></li>
     </ul>
 </li>
+{{-- <li class="treeview">
+    <li><a href="{{route('box')}}"><i class="fas fa-school" aria-hidden="true"></i> &nbsp; الأنـشـطـة</a></li>
+</li> --}}
 <li class="treeview">
-    <li><a href="{{route('box')}}"><i class="fa fa-university fw" aria-hidden="true"></i>الصنـدوق</a></li>
+    <li><a href="{{route('box')}}"><i class="fa fa-university fw" aria-hidden="true"></i> &nbsp; الصنـدوق</a></li>
 </li>
 <li class="treeview">
-    <li><a href="{{route('Users.index')}}"><i class="fa fa-users"></i> قائمة المستخدمين</a></li>
+    <li><a href="{{route('Users.index')}}"><i class="fa fa-users"></i> &nbsp; قائمة المستخدمين</a></li>
 </li>
 
 

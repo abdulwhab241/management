@@ -18,7 +18,7 @@ class AuthenticatedSessionController extends Controller
 
     public function show()
     {
-        return view('selection');
+        return view('welcome');
     }
 
     // public function create(): View

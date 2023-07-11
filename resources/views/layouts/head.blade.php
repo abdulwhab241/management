@@ -6,13 +6,8 @@
     href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-<!-- Font -->
-    {{-- <link href="{{ URL::asset('css/wizard.css') }}" rel="stylesheet" id="bootstrap-css"> --}}
     @yield('css')
-{{-- <!--- Style css -->
-<link rel="stylesheet" href="/style.css">
 
-<link rel="stylesheet" href="/wizard.css"> --}}
 
 
 <!-- Bootstrap 3.3.4 -->
@@ -44,8 +39,6 @@
 <link rel="stylesheet" href="/plugins/timepicker/bootstrap-timepicker.min.css">
 <!-- Select2 -->
 <link rel="stylesheet" href="/plugins/select2/select2.min.css">
-<!-- Daterange picker -->
-{{-- <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker-bs3.css"> --}}
 <!-- bootstrap wysihtml5 - text editor -->
 <link rel="stylesheet" href="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
