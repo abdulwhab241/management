@@ -18,7 +18,7 @@ class TeacherAttendanceController extends Controller
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
-        $attendances = Section::with(['StudentAttendances'])->whereIn('id', $ids)->where('year', date("Y"))->get();
+        $attendances = Attendance::whereIn('section_id', $ids)->where('year', date("Y"))->get();
     
         return view('pages.Teachers.dashboard.Attendances.index',compact('students','attendances'));
     }

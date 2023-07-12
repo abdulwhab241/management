@@ -40,46 +40,28 @@ aria-pressed="true">اضافة تحضـير</a>
 
 
 <div class="box-body">
-<div class="row">
-<div class="card-body">
-
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-@foreach ($attendances as $attendance)
-
-<div class="panel panel-info">
-
-<div class="panel-heading" role="tab" id="heading">
-<h4 class="panel-title" style="font-weight: bolder;">
-<a class="collapsed " role="button" data-toggle="collapse"  data-parent="#selector" href="#collapse" aria-expanded="false" aria-controls="collapse">
-{{ $attendance->My_Classes->name_class }} , الـشـعبـة: {{ $attendance->name_section }} 
-</a>
-</h4>
-</div>
-<div id="collapse" class="panel-collapse collapse in" role="tab" aria-labelledby="heading">
-<div class="panel-body">
-
-<div class="box-body">
 <div class="box-body table-responsive no-padding">
-<table  class="table" style="width:100%; text-align: center;">
-    <caption style="font-weight: bolder; text-align:center; color:black;">
-        {{ $attendance->My_Classes->name_class }} , الـشـعبـة: {{ $attendance->name_section }} 
-    </caption>
+<table  id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
 <thead>
 <tr>
     <th style="text-align: center; background-color: #D0DEF6;" >التـاريـخ</th>
     <th style="text-align: center; background-color: #D0DEF6;" >اليـوم</th>
     <th style="text-align: center; background-color: #D0DEF6;" >أسـم الطـالـب \ الطـالبـة</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >الـصـف الـدراسي</th>
+    <th style="text-align: center; background-color: #D0DEF6;" >الـشـعبـة</th>
     <th style="text-align: center;" class="alert-info">الحـالـة</th>
     <th style="text-align: center;" class="alert-warning">العمليات</th>
 
 </tr>
 </thead>
 <tbody>
-@foreach($attendance->StudentAttendances as $attendance)
+@foreach($attendances as $attendance)
     <tr>
         <td>{{$attendance->attendance_date}}</td>
         <td>{{$attendance->day}}</td>
         <td>{{$attendance->students->name}}</td>
+        <td>{{$attendance->classroom->name_class}}</td>
+        <td>{{$attendance->section->name_section}}</td>
         <td>{{$attendance->attendance_status}}</td>
         <td>
             <div class="btn-group">
@@ -206,15 +188,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </table>
 </div>
 </div>
-
-</div>
-</div>
-</div>
-@endforeach
-</div>
-</div>
-</div>
-</div><!--box -->
 
 
 </div>

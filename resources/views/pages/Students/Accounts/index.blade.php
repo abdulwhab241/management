@@ -26,6 +26,7 @@
 <div class="col-xs-12">
 <div class="box">
 
+    @if(count($FeeInvoices) > 0)
 <div class="box-body">
 <div class="row">
     <div class="col-md-6">
@@ -100,7 +101,17 @@
     <input  class="form-control" style="font-weight: bolder; font-size:15px; text-align: center; color:red;" value="{{ number_format( auth()->user()->student_account->sum('Debit_feeInvoice') - auth()->user()->student_account->sum('credit_receipt') ) }} ريال " type="text" readonly>
 </div>
 
-    </div>
+</div>
+
+@else
+<h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
+    <marquee direction="right">
+        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
+            عـذراً لـم يتـم تسجيـلك لـهذي السـنة الـدراسيـة راجـع الإدارة 
+        </b>
+    </marquee>
+    </h1>
+@endif
 
 </div>
 

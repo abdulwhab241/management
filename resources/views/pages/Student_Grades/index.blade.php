@@ -59,13 +59,12 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 
 <th style="text-align: center;" class="alert-info">#</th>
 <th style="text-align: center;" class="alert-info">الفـصل الدراسي</th>
+<th style="text-align: center;" class="alert-info">الـصـف الـدراسي</th>
+<th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
 <th style="text-align: center;" class="alert-info">الأستـاذ</th>
 <th style="text-align: center;" class="alert-info">المادة</th>
 <th style="text-align: center; background-color: yellow; font-weight:bolder;" >محصـلـة شهـر</th>
-<th style="text-align: center;" class="alert-info">أسـم الطـالـب \ الطـالبـة</th>
-<th style="text-align: center;" class="alert-info">واجبـات</th>
-<th style="text-align: center;" class="alert-info">شفهـي</th>
-<th style="text-align: center;" class="alert-info">مـواظبـة</th>
+<th style="text-align: center; background-color: #D0DEF6;" colspan="6">الـدرجـات</th>
 <th style="text-align: center; background-color: #E7EEFB; font-weight:bolder;">تحريري</th>
 <th style="text-align: center; background-color: #FFC0D6; font-weight:bolder;"> المحصـلة</th>
 
@@ -78,22 +77,29 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
 <tr>
 <td>{{$loop->iteration}}</td>
 <td>{{$Student_Grade->semester->name}}</td>
+<td>{{$Student_Grade->student->classroom->name_class}}</td>
+<td>{{$Student_Grade->student->name}}</td>
 <td>{{$Student_Grade->teacher->name}}</td>
 <td>{{$Student_Grade->subject->name}}</td>
 <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
-<td>{{$Student_Grade->student->name}}</td>
+<th style="background-color: #D0DEF6;">واجبـات</th>
 <td>{{$Student_Grade->homework }}</td>
+<th style="background-color: #D0DEF6;">شفهـي</th>
 <td>{{$Student_Grade->verbal}}</td>
+<th style="background-color: #D0DEF6;">مـواظبـة</th>
 <td>{{ $Student_Grade->attendance }}</td>
 <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result }}</td>
 <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
 
 
 <td>
-    <div class="btn-group">
-    <a href="{{route('Student_Grades.edit',$Student_Grade->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-    <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_Student_Grades{{ $Student_Grade->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-    </div>
+    <div class="input-group-btn">
+        <button type="button" class="btn btn-navy dropdown-toggle" data-toggle="dropdown">العمليـات <span class="fa fa-caret-down"></span></button>
+        <ul class="dropdown-menu">
+        <li><a href="{{route('Student_Grades.edit',$Student_Grade->id)}}">تـعديـل</a></li>
+        <li><a data-toggle="modal" data-target="#delete_Student_Grades{{ $Student_Grade->id }}">حـذف</a></li>
+    </ul>
+    </div><!-- /btn-group -->
 </td>
 </tr>
 
